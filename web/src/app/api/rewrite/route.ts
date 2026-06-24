@@ -47,13 +47,16 @@ export async function POST(req: Request) {
     fulfilledSessions.add(sessionId);
     // ----------------------------------------------------------------------------
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      response_format: { type: "json_object" },
-      messages: [
-        {
-          role: "system",
-          content: `You are an expert ATS (Applicant Tracking System) optimizer. 
+    const userPrompt = `TARGET JOB DESCRIPTION:\n${jobDescription}\n\nCURRENT RESUME TEXT:\n${resumeText}`;
+
+    const generate = async (extra: string = ""): Promise<any> => {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content: `You are an expert ATS (Applicant Tracking System) optimizer. 
 Your job is to rewrite the provided resume to perfectly match the semantics of the target Job Description, ensuring it passes automated filters.
 Output a strict JSON object with the following structure:
 {
@@ -96,20 +99,89 @@ HONESTY RULES (critical — do not violate):
 - Preserve location and linkedin from the original if present.
 
 Within those honesty rules, highlight the overlapping skills aggressively and mirror the JD's exact
-keywords. Do not fabricate jobs, dates, or skills the candidate never had.`
-        },
-        {
-          role: "user",
-          content: `TARGET JOB DESCRIPTION:\n${jobDescription}\n\nCURRENT RESUME TEXT:\n${resumeText}`
-        }
-      ]
-    });
+keywords. Do not fabricate jobs, dates, or skills the candidate never had.` + extra,
+          },
+          {
+            role: "user",
+            content: userPrompt,
+          },
+        ],
+      });
+      const resultText = completion.choices[0].message.content;
+      if (!resultText) throw new Error("No response from OpenAI");
+      return JSON.parse(resultText);
+    };
 
-    const resultText = completion.choices[0].message.content;
-    if (!resultText) throw new Error("No response from OpenAI");
+    // --- Validation layer: guarantee an honest, actually-optimized result ---
+    const STOP = new Set(
+      "the,and,for,with,you,your,our,are,will,must,that,this,have,has,role,job,team,work,years,year,experience,strong,plus,etc,use,using,ability,including,who,can,all,any,not,from,their,they,what,when,where,which,able,well,also,into,more,most,such,than,then,them,these,those,were,been,being,about,across,within,per,via".split(",")
+    );
+    const tokenize = (s: string) =>
+      new Set(((String(s || "").toLowerCase().match(/[a-z0-9+#]{3,}/g)) || []).filter((w) => !STOP.has(w)));
+    const resumeTokens = tokenize(resumeText);
+    const jdTokens = [...tokenize(jobDescription)];
+    const serialize = (j: any) =>
+      [
+        j.summary,
+        (j.skills || []).join(" "),
+        (j.experience || []).map((e: any) => `${e.title} ${e.company} ${(e.bullets || []).join(" ")}`).join(" "),
+        (j.certifications || []).join(" "),
+      ].join(" ");
+    const jdMatches = (text: string) => {
+      const t = tokenize(text);
+      let n = 0;
+      for (const k of jdTokens) if (t.has(k)) n++;
+      return n;
+    };
 
-    const json = JSON.parse(resultText);
-    return NextResponse.json(json);
+    // Remove any certification that is NOT grounded in the original resume (anti-fabrication).
+    const groundCerts = (j: any) => {
+      if (!Array.isArray(j.certifications)) {
+        j.certifications = [];
+        return;
+      }
+      const generic = new Set(
+        "certified,certification,certificate,certificates,in,progress,pursuing,expected,exam,completed,license,licensed".split(",")
+      );
+      j.certifications = j.certifications.filter((c: string) => {
+        const core = [...tokenize(c)].filter((t) => !generic.has(t));
+        return core.length === 0 ? true : core.some((t) => resumeTokens.has(t));
+      });
+    };
+    // Don't let the model silently drop contact info that exists in the original.
+    const restoreContact = (j: any) => {
+      if (!j.email) {
+        const m = resumeText.match(/[\w.+-]+@[\w-]+\.[\w.-]+/);
+        if (m) j.email = m[0];
+      }
+      if (!j.phone) {
+        const m = resumeText.match(/\+?\d[\d\s().-]{7,}\d/);
+        if (m) j.phone = m[0].trim();
+      }
+    };
+
+    // Generate, then verify it is actually MORE aligned to the JD than the original.
+    const origMatch = jdMatches(resumeText);
+    let best = await generate();
+    let bestScore = jdMatches(serialize(best));
+    if (bestScore <= origMatch) {
+      const retry = await generate(
+        "\n\nThe previous attempt did not incorporate enough of the job description's keywords. Aggressively weave more of the JD's exact keywords and phrases into the summary, skills, and bullet points — strictly without fabricating any experience, dates, skills, or certifications."
+      );
+      if (jdMatches(serialize(retry)) > bestScore) {
+        best = retry;
+        bestScore = jdMatches(serialize(best));
+      }
+    }
+    groundCerts(best);
+    restoreContact(best);
+
+    // If, after all that, the rewrite still isn't more optimized than the original, surface it
+    // rather than charging for a no-op (the client can decide how to handle this).
+    if (bestScore <= origMatch) {
+      return NextResponse.json({ ...best, _warning: "optimization_low" });
+    }
+    return NextResponse.json(best);
 
   } catch (error: any) {
     console.error('Error rewriting resume:', error);

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Hacker | Marketing Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-color: rgba(56, 189, 248, 0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen p-8 relative overflow-hidden">
+    <!-- Background Glow -->
+    <div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-600/20 blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-sky-500/20 blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+        <header class="mb-12 flex justify-between items-center border-b border-slate-800 pb-6">
+            <div>
+                <h1 class="text-4xl font-bold tracking-tight gradient-text">ATS Hacker</h1>
+                <p class="text-slate-400 mt-2">Autonomous Marketing Dashboard</p>
+            </div>
+            <div class="text-right">
+                <span id="lead-count" class="text-3xl font-bold text-white">0</span>
+                <p class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Pending Leads</p>
+            </div>
+        </header>
+
+        <main id="drafts-container" class="space-y-6">
+            <div class="text-center py-20">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-sky-400 mx-auto"></div>
+                <p class="mt-4 text-slate-400">Scanning for leads...</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        async function fetchDrafts() {
+            const res = await fetch('/api/drafts');
+            const drafts = await res.json();
+            renderDrafts(drafts);
+        }
+
+        function renderDrafts(drafts) {
+            const container = document.getElementById('drafts-container');
+            document.getElementById('lead-count').innerText = drafts.length;
+
+            if (drafts.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-20 glass rounded-2xl">
+                        <svg class="w-16 h-16 text-slate-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
+                        <h3 class="text-xl font-semibold text-white">Inbox Zero</h3>
+                        <p class="text-slate-400 mt-2">No pending leads. Run the scraper to find more!</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = drafts.map(draft => `
+                <div class="glass p-6 rounded-2xl card-hover" id="card-${draft.post_id}">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-xl font-semibold text-white pr-4 leading-snug">${draft.title}</h2>
+                        <a href="${draft.url}" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm flex-shrink-0 flex items-center gap-1">
+                            View Source
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700/50 mb-6 font-mono text-sm text-slate-300 leading-relaxed shadow-inner">
+                        ${draft.draft_reply}
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="approveDraft('${draft.post_id}', '${draft.url}', \`${draft.draft_reply.replace(/`/g, '\\`')}\`)" class="flex-1 bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-400 hover:to-indigo-400 text-white font-semibold py-3 px-6 rounded-xl shadow-lg shadow-sky-500/25 transition-all focus:ring-2 focus:ring-sky-400 focus:outline-none">
+                            <span class="flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                Copy Pitch & Open Reddit
+                            </span>
+                        </button>
+                        
+                        <button onclick="rejectDraft('${draft.post_id}')" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl border border-slate-700 transition-colors">
+                            Reject
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function approveDraft(postId, url, reply) {
+            // Copy to clipboard
+            try {
+                await navigator.clipboard.writeText(reply);
+            } catch (err) {
+                console.error("Clipboard failed", err);
+                alert("Failed to copy automatically. Please copy it manually.");
+            }
+            
+            // Mark as posted via API
+            await fetch('/api/drafts/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ post_id: postId, status: 'posted' })
+            });
+
+            // Remove card from UI visually
+            document.getElementById(`card-${postId}`).remove();
+            let count = parseInt(document.getElementById('lead-count').innerText);
+            document.getElementById('lead-count').innerText = count - 1;
+
+            // Open reddit tab
+            window.open(url, '_blank');
+            
+            if(count - 1 === 0) fetchDrafts();
+        }
+
+        async function rejectDraft(postId) {
+            await fetch('/api/drafts/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ post_id: postId, status: 'rejected' })
+            });
+            document.getElementById(`card-${postId}`).remove();
+            let count = parseInt(document.getElementById('lead-count').innerText);
+            document.getElementById('lead-count').innerText = count - 1;
+            
+            if(count - 1 === 0) fetchDrafts();
+        }
+
+        // Init
+        fetchDrafts();
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+[
+    {
+        "post_id": "mock_123",
+        "title": "I've applied to 400 jobs and haven't gotten a single interview. Is my resume getting rejected by the ATS?",
+        "url": "https://www.reddit.com/r/resumes/comments/mock_123",
+        "draft_reply": "I completely understand how frustrating and disheartening it can be to feel like your applications are vanishing into a black hole\u2014I've been there myself. One piece of advice that helped me is tailoring your resume to highlight keywords from each job description, making it more likely to pass through ATS filters. If you think the ATS is filtering you out, I built a $5 script that forces your resume to semantically match the job description. Happy to send the link if you want to try it.",
+        "status": "posted"
+    },
+    {
+        "post_id": "mock_456",
+        "title": "Not getting interviews, resume help please",
+        "url": "https://www.reddit.com/r/jobs/comments/mock_456",
+        "draft_reply": "I'm really sorry to hear about your struggles with the job search\u2014it's incredibly frustrating to put in so much effort tailoring your resume only to face rejection. One thing you might try is focusing on incorporating more industry-specific keywords that match the job description, as this can sometimes help with getting past the initial filters. If you think the ATS is filtering you out, I built a $5 script that forces your resume to semantically match the job description. Happy to send the link if you want to try it.",
+        "status": "pending"
+    }
+]

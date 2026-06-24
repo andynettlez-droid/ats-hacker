@@ -1,18 +1,7 @@
 import json
 import os
-import praw
-from dotenv import load_dotenv
-
-load_dotenv()
-
-# Initialize API Clients
-reddit = praw.Reddit(
-    client_id=os.getenv("REDDIT_CLIENT_ID"),
-    client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
-    user_agent="ATS Hacker Marketing Agent v1.0",
-    username=os.getenv("REDDIT_USERNAME"),
-    password=os.getenv("REDDIT_PASSWORD"),
-)
+import webbrowser
+import pyperclip
 
 DRAFTS_FILE = "drafts.json"
 
@@ -27,9 +16,9 @@ def save_drafts(drafts):
         json.dump(drafts, f, indent=4)
 
 def run_dashboard():
-    print("========================================")
-    print("🚀 ATS HACKER - MARKETING DASHBOARD 🚀")
-    print("========================================")
+    print("=====================================================")
+    print("[*] ATS HACKER - HUMAN-IN-THE-LOOP DASHBOARD [*]")
+    print("=====================================================")
     
     drafts = load_drafts()
     pending_drafts = [d for d in drafts if d["status"] == "pending"]
@@ -41,30 +30,40 @@ def run_dashboard():
     print(f"[*] Found {len(pending_drafts)} leads ready for your review.\n")
     
     for draft in pending_drafts:
-        print(f"📌 POST TITLE: {draft['title']}")
-        print(f"🔗 URL: {draft['url']}")
-        print(f"\n🤖 DRAFTED REPLY:\n{draft['draft_reply']}\n")
+        print(f"[*] POST TITLE: {draft['title']}")
+        print(f"[*] URL: {draft['url']}")
+        print(f"\n[*] DRAFTED REPLY:\n{draft['draft_reply']}\n")
         
-        choice = input("Do you want to post this? (y = yes, n = skip/reject, q = quit): ").strip().lower()
+        choice = input("Do you want to post this? (y = open & copy, n = reject, q = quit): ").strip().lower()
         
         if choice == 'y':
+            # Copy to clipboard
             try:
-                submission = reddit.submission(id=draft["post_id"])
-                submission.reply(draft["draft_reply"])
-                print("[+] Successfully posted to Reddit!")
-                draft["status"] = "posted"
+                pyperclip.copy(draft['draft_reply'])
+                print("[+] AI Reply copied to your clipboard!")
             except Exception as e:
-                print(f"[!] Error posting: {e}")
-                draft["status"] = "error"
+                print("[-] Could not copy to clipboard. Please copy it manually.")
+                
+            # Open browser
+            print("[*] Opening Reddit in your browser... Paste the reply (Ctrl+V) and hit Comment!")
+            webbrowser.open(draft['url'])
+            
+            # Ask if they actually posted it
+            post_confirm = input("Did you successfully post the comment? (y/n): ").strip().lower()
+            if post_confirm == 'y':
+                draft["status"] = "posted"
+                print("[+] Marked as posted.")
+            else:
+                print("[-] Left as pending.")
+                
         elif choice == 'q':
             break
         else:
             print("[-] Draft rejected.")
             draft["status"] = "rejected"
             
-        print("-" * 40)
+        print("-" * 50)
         
-    # Save the updated statuses
     save_drafts(drafts)
     print("[*] Dashboard closed.")
 

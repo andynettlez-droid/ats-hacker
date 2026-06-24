@@ -46,6 +46,25 @@ export default function Home() {
 
     setIsLoading(true);
     try {
+      // 1. Extract text
+      const pdfjsLib = await import('pdfjs-dist');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+      
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      let resumeText = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        resumeText += content.items.map((item: any) => item.str).join(' ') + '\n';
+      }
+
+      // 2. Save to sessionStorage
+      sessionStorage.setItem('resumeText', resumeText);
+      sessionStorage.setItem('jobDescription', jobDescription);
+      sessionStorage.setItem('fileName', file.name);
+
+      // 3. Initiate checkout
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: {

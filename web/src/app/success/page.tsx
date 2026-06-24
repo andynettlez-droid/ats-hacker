@@ -119,7 +119,7 @@ function SuccessPageContent() {
         const res = await fetch('/api/rewrite', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ resumeText, jobDescription })
+          body: JSON.stringify({ resumeText, jobDescription, sessionId })
         });
 
         if (!res.ok) {

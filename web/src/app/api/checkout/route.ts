@@ -20,8 +20,8 @@ export async function POST(req: Request) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'ATS Resume Hacker',
-              description: '1x Semantic Job Description Optimization',
+              name: 'ATSHacker — Resume Optimization',
+              description: '1x semantic job-description optimization',
             },
             unit_amount: 500, // $5.00
           },
@@ -29,6 +29,13 @@ export async function POST(req: Request) {
         },
       ],
       mode: 'payment',
+      // Branding for the charge itself. NOTE: the business name shown at the TOP of
+      // the hosted Checkout page comes from your Stripe Dashboard "Public business
+      // name", not from here — update it there if it still reads "wificheckout".
+      payment_intent_data: {
+        description: 'ATSHacker resume optimization',
+        statement_descriptor_suffix: 'ATSHacker',
+      },
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/`,
     });

@@ -41,4 +41,5 @@ def update_draft():
     return jsonify({"success": True})
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    # debug=False: never expose the Werkzeug debugger (it allows arbitrary code execution).
+    app.run(host="127.0.0.1", port=5000, debug=False)

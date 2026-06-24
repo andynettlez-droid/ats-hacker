@@ -1,16 +1,51 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock_key', {
+  apiVersion: '2026-05-27.dahlia',
+});
+
+// In-memory guard against replaying the same paid session.
+// NOTE: resets on cold start / scales per-instance. For production, persist
+// fulfilled session IDs in a database or KV store instead.
+const fulfilledSessions = new Set<string>();
 
 export async function POST(req: Request) {
   const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY || "dummy_key_for_build",
+    apiKey: process.env.OPENAI_API_KEY || 'dummy_key_for_build',
   });
   try {
-    const { resumeText, jobDescription } = await req.json();
+    const { resumeText, jobDescription, sessionId } = await req.json();
 
     if (!resumeText || !jobDescription) {
       return NextResponse.json({ error: 'Missing resume or job description' }, { status: 400 });
     }
+
+    // --- Payment gate: never run the optimizer without a verified, paid session ---
+    if (!sessionId) {
+      return NextResponse.json({ error: 'Missing payment session' }, { status: 402 });
+    }
+
+    let session;
+    try {
+      session = await stripe.checkout.sessions.retrieve(sessionId);
+    } catch {
+      return NextResponse.json({ error: 'Invalid payment session' }, { status: 402 });
+    }
+
+    if (session.payment_status !== 'paid') {
+      return NextResponse.json({ error: 'Payment not completed' }, { status: 402 });
+    }
+
+    if (fulfilledSessions.has(sessionId)) {
+      return NextResponse.json(
+        { error: 'This payment has already been used. Please purchase again.' },
+        { status: 409 }
+      );
+    }
+    fulfilledSessions.add(sessionId);
+    // ----------------------------------------------------------------------------
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",

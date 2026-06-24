@@ -24,16 +24,25 @@ def save_drafts(drafts):
         json.dump(drafts, f, indent=4)
 
 def generate_reply(post_title, post_body):
+    # IMPORTANT: Replies must be genuinely helpful FIRST and transparently disclose
+    # that you built the tool. Covert/undisclosed promotion violates Reddit's
+    # self-promotion rules and FTC endorsement guidance, and gets accounts + the
+    # domain banned. Only post where the subreddit's rules permit self-promotion,
+    # and prefer leading with real value over the plug.
     prompt = f"""
-    You are an empathetic software engineer who built a $5 tool called 'ATS Hacker'. 
+    You are the software engineer who built a $5 tool called 'ATS Hacker'.
     A Reddit user is frustrated about their job search.
     Their post title: {post_title}
     Their post body: {post_body}
-    
-    Draft a highly empathetic, helpful, human-sounding reply. DO NOT sound like a bot or a marketer.
-    Sympathize with their struggle, give them 1 piece of actual resume advice, and then mention:
-    "If you think the ATS is filtering you out, I built a $5 script that forces your resume to semantically match the job description. Happy to send the link if you want to try it."
-    Keep it under 4 sentences.
+
+    Draft a reply that is genuinely helpful and honest. Requirements:
+    - Lead with empathy and TWO concrete, actionable pieces of resume/ATS advice the
+      person can use even if they never touch your tool.
+    - Clearly DISCLOSE that you built the tool. Use plain language such as:
+      "Full disclosure, I built a small $5 tool called ATS Hacker that..." 
+    - The mention should be a soft, optional offer, not a hard sell.
+    - Do NOT pretend to be a neutral, uninvolved user. Do NOT hide the commercial interest.
+    - Keep it under 5 sentences and sound like a real person, not a marketer.
     """
     
     response = client.chat.completions.create(
@@ -45,12 +54,16 @@ def generate_reply(post_title, post_body):
     return response.choices[0].message.content.strip()
 
 def run_scraper():
-    print("[*] Starting Public Reddit Scraper (Bypassing API restrictions via cached feed)...")
+    print("[*] Starting ATS Hacker lead finder (DEMO MODE: using sample posts)...")
     drafts = load_drafts()
     processed_ids = [d["post_id"] for d in drafts]
-    
-    # Since Reddit is throwing 403s blocking ALL public scraping today, 
-    # we are passing an offline cache of posts to demonstrate the OpenAI engine.
+
+    # DEMO MODE NOTE:
+    # The posts below are hardcoded samples so you can exercise the drafting engine
+    # without hitting Reddit. To find real leads, use Reddit's official API via PRAW
+    # with the credentials in .env (REDDIT_CLIENT_ID/SECRET/USERNAME/PASSWORD) and
+    # respect each subreddit's self-promotion rules and rate limits. Do not scrape
+    # Reddit in ways that violate its API Terms or robots restrictions.
     mocked_posts = [
         {
             "id": "mock_123",

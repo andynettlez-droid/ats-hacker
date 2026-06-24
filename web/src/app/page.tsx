@@ -66,6 +66,12 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ resumeText, jobDescription }),
       });
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('text/html')) {
+        alert("Vercel Preview Protection is blocking the API! Please test on the Production URL (https://ats-hacker-swart.vercel.app) instead of this Preview URL.");
+        setIsScoring(false);
+        return;
+      }
       const data = await res.json();
       if (res.ok) setScore(data);
       else alert(data.error || "Could not score your resume.");
@@ -88,6 +94,12 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fileName: file!.name, jobDescription }),
       });
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('text/html')) {
+        alert("Vercel Preview Protection is blocking the API! Please test on the Production URL (https://ats-hacker-swart.vercel.app) instead of this Preview URL.");
+        setIsLoading(false);
+        return;
+      }
       const data = await res.json();
       if (data.url) window.location.href = data.url;
       else { alert("Checkout failed to initiate."); setIsLoading(false); }

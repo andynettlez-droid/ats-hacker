@@ -10,6 +10,8 @@ export async function POST(req: Request) {
     // We would normally parse the resume URL here to pass to metadata
     const body = await req.json();
     
+    const origin = req.headers.get('origin') || 'https://ats-hacker-swart.vercel.app';
+    
     // Create a Stripe Checkout Session for $5
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -27,8 +29,8 @@ export async function POST(req: Request) {
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}`,
+      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/`,
     });
 
     return NextResponse.json({ url: session.url });

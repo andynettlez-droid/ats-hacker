@@ -32,18 +32,23 @@ export default function Home() {
 
   // Extract text from the uploaded PDF and cache resume + JD in sessionStorage.
   const extractResumeText = async (): Promise<string> => {
-    const formData = new FormData();
-    formData.append('file', file!);
-    const res = await fetch('/api/extract', {
-      method: 'POST',
-      body: formData,
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || "Failed to extract PDF");
-    sessionStorage.setItem('resumeText', data.text);
+    const pdfjsLib = await import('pdfjs-dist');
+    // jsdelivr serves the npm package directly, so the worker always matches the
+    // installed pdfjs-dist version. (cdnjs does NOT host the v6 worker → 404 → checkout broke.)
+    pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.mjs`;
+
+    const arrayBuffer = await file!.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    let resumeText = '';
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      resumeText += content.items.map((item: any) => ('str' in item ? item.str : '')).join(' ') + '\n';
+    }
+    sessionStorage.setItem('resumeText', resumeText);
     sessionStorage.setItem('jobDescription', jobDescription);
     sessionStorage.setItem('fileName', file!.name);
-    return data.text;
+    return resumeText;
   };
 
   const validateInputs = () => {

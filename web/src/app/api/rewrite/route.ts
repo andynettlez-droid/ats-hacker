@@ -60,6 +60,8 @@ Output a strict JSON object with the following structure:
   "name": "Candidate Name",
   "email": "Email (if found, else blank)",
   "phone": "Phone (if found, else blank)",
+  "location": "City, State (if found, else blank)",
+  "linkedin": "LinkedIn URL or handle (if found, else blank)",
   "summary": "A powerful 2-sentence summary matching the JD keywords",
   "skills": ["Skill 1", "Skill 2"],
   "experience": [
@@ -79,9 +81,22 @@ Output a strict JSON object with the following structure:
       "degree": "Degree",
       "year": "Graduation Year"
     }
-  ]
+  ],
+  "certifications": ["Certification exactly as stated, preserving status like '(in progress)' or '(pursuing)'"]
 }
-Be honest but highlight the overlapping skills aggressively. Do not fabricate jobs they never had.`
+
+HONESTY RULES (critical — do not violate):
+- Never claim a credential, certification, degree, or job the candidate does not have.
+- Preserve the exact status of every certification. If the resume says a cert is "in progress",
+  "pursuing", "expected 2025", or similar, you MUST keep that qualifier and MUST NOT present it
+  as completed. Do not move an in-progress certification into "skills" or "summary" in a way that
+  implies it is earned.
+- Always include EVERY real certification from the original resume in the "certifications" array.
+  Do not drop any. Do not invent new ones.
+- Preserve location and linkedin from the original if present.
+
+Within those honesty rules, highlight the overlapping skills aggressively and mirror the JD's exact
+keywords. Do not fabricate jobs, dates, or skills the candidate never had.`
         },
         {
           role: "user",

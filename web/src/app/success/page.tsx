@@ -43,6 +43,8 @@ const ResumePDF = ({ data }: { data: any }) => (
         <View style={styles.contactInfo}>
           {data.email && <Text>{data.email}</Text>}
           {data.phone && <Text>{data.phone}</Text>}
+          {data.location && <Text>{data.location}</Text>}
+          {data.linkedin && <Text>{data.linkedin}</Text>}
         </View>
       </View>
 
@@ -87,6 +89,18 @@ const ResumePDF = ({ data }: { data: any }) => (
           ))}
         </>
       )}
+
+      {data.certifications && data.certifications.length > 0 && (
+        <>
+          <Text style={styles.sectionTitle}>Certifications</Text>
+          {data.certifications.map((c: string, i: number) => (
+            <View key={i} style={styles.bullet}>
+              <Text style={styles.bulletPoint}>•</Text>
+              <Text style={styles.bulletText}>{c}</Text>
+            </View>
+          ))}
+        </>
+      )}
     </Page>
   </Document>
 );
@@ -98,7 +112,7 @@ async function buildDocxBlob(data: any): Promise<Blob> {
   const children: docx.Paragraph[] = [];
 
   children.push(new Paragraph({ text: data.name || 'Resume', heading: HeadingLevel.TITLE }));
-  const contact = [data.email, data.phone].filter(Boolean).join('  |  ');
+  const contact = [data.email, data.phone, data.location, data.linkedin].filter(Boolean).join('  |  ');
   if (contact) children.push(new Paragraph({ children: [new TextRun({ text: contact, color: '666666' })] }));
 
   if (data.summary) {
@@ -137,6 +151,13 @@ async function buildDocxBlob(data: any): Promise<Blob> {
         ],
       }));
       if (edu.degree) children.push(new Paragraph({ children: [new TextRun({ text: edu.degree, italics: true })] }));
+    }
+  }
+
+  if (data.certifications?.length) {
+    children.push(new Paragraph({ text: 'Certifications', heading: HeadingLevel.HEADING_2 }));
+    for (const c of data.certifications) {
+      children.push(new Paragraph({ text: c, bullet: { level: 0 } }));
     }
   }
 

@@ -20,6 +20,7 @@ function getRole(slug: string): Role {
     roleMap[slug] || {
       slug,
       title: titleFromSlug(slug),
+      painPoint: "Applicant Tracking Systems are ruthless. If your resume doesn't semantically match the job description, you get auto-rejected before a human ever sees it.",
       keywords: [],
       tips: [
         'Mirror the exact keywords and job title from the posting near the top of your resume.',
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 export default async function TailoredLandingPage({ params }: { params: Promise<Params> }) {
   const { 'job-title': slug } = await params;
   const role = getRole(slug);
-  const { title, keywords, tips } = role;
+  const { title, painPoint, keywords, tips } = role;
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-emerald-500/30">
@@ -59,11 +60,16 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
         </div>
 
         <h1 className="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-8">
-          Land your dream <span className="text-emerald-500">{title}</span> job.
+          Land your dream{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">{title}</span>{' '}
+          job.
         </h1>
 
-        <p className="text-xl text-neutral-400 leading-relaxed max-w-2xl mx-auto mb-12">
-          About 75% of resumes are auto-rejected by the Applicant Tracking System before a human sees them — usually because they don&apos;t use the exact keywords expected for a {title}. Check your match score free, then we&apos;ll fix it for $5.
+        <p className="text-xl text-neutral-400 leading-relaxed max-w-2xl mx-auto mb-6">
+          {painPoint}
+        </p>
+        <p className="text-base text-neutral-500 leading-relaxed max-w-2xl mx-auto mb-12">
+          About 75% of resumes are auto-rejected before a human sees them. Check your {title} match score free, then we&apos;ll fix every gap for a one-time $5 — no subscription.
         </p>
 
         <Link href="/">

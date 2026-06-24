@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { CheckCircle, Loader2, Download } from 'lucide-react';
+import { CheckCircle, Loader2, Download, FileText } from 'lucide-react';
 import { Document, Page, Text, View, StyleSheet, pdf, Font } from '@react-pdf/renderer';
+import * as docx from 'docx';
 
 // Register standard fonts
 Font.register({
@@ -90,9 +91,75 @@ const ResumePDF = ({ data }: { data: any }) => (
   </Document>
 );
 
+// Build an ATS-friendly .docx (single column, plain text) from the resume JSON.
+// Many ATS parse .docx more reliably than PDF, so we offer both.
+async function buildDocxBlob(data: any): Promise<Blob> {
+  const { Document: Doc, Packer, Paragraph, TextRun, HeadingLevel } = docx;
+  const children: docx.Paragraph[] = [];
+
+  children.push(new Paragraph({ text: data.name || 'Resume', heading: HeadingLevel.TITLE }));
+  const contact = [data.email, data.phone].filter(Boolean).join('  |  ');
+  if (contact) children.push(new Paragraph({ children: [new TextRun({ text: contact, color: '666666' })] }));
+
+  if (data.summary) {
+    children.push(new Paragraph({ text: 'Professional Summary', heading: HeadingLevel.HEADING_2 }));
+    children.push(new Paragraph({ text: data.summary }));
+  }
+
+  if (data.skills?.length) {
+    children.push(new Paragraph({ text: 'Core Competencies', heading: HeadingLevel.HEADING_2 }));
+    children.push(new Paragraph({ text: data.skills.join(' • ') }));
+  }
+
+  if (data.experience?.length) {
+    children.push(new Paragraph({ text: 'Professional Experience', heading: HeadingLevel.HEADING_2 }));
+    for (const exp of data.experience) {
+      children.push(new Paragraph({
+        children: [
+          new TextRun({ text: exp.company || '', bold: true }),
+          new TextRun({ text: exp.dates ? `   ${exp.dates}` : '', color: '666666' }),
+        ],
+      }));
+      if (exp.title) children.push(new Paragraph({ children: [new TextRun({ text: exp.title, italics: true })] }));
+      for (const b of exp.bullets || []) {
+        children.push(new Paragraph({ text: b, bullet: { level: 0 } }));
+      }
+    }
+  }
+
+  if (data.education?.length) {
+    children.push(new Paragraph({ text: 'Education', heading: HeadingLevel.HEADING_2 }));
+    for (const edu of data.education) {
+      children.push(new Paragraph({
+        children: [
+          new TextRun({ text: edu.school || '', bold: true }),
+          new TextRun({ text: edu.year ? `   ${edu.year}` : '', color: '666666' }),
+        ],
+      }));
+      if (edu.degree) children.push(new Paragraph({ children: [new TextRun({ text: edu.degree, italics: true })] }));
+    }
+  }
+
+  const document = new Doc({ sections: [{ children }] });
+  return Packer.toBlob(document);
+}
+
+function downloadBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 function SuccessPageContent() {
   const [status, setStatus] = useState("Initializing Optimizer...");
   const [isDone, setIsDone] = useState(false);
+  const [resumeData, setResumeData] = useState<any>(null);
+  const [baseName, setBaseName] = useState("optimized_resume");
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -105,8 +172,9 @@ function SuccessPageContent() {
 
       const resumeText = sessionStorage.getItem('resumeText');
       const jobDescription = sessionStorage.getItem('jobDescription');
-      let fileName = sessionStorage.getItem('fileName') || 'optimized_resume.pdf';
-      fileName = fileName.replace('.pdf', '_ats_optimized.pdf');
+      const rawName = sessionStorage.getItem('fileName') || 'optimized_resume.pdf';
+      const base = rawName.replace(/\.pdf$/i, '') + '_ats_optimized';
+      setBaseName(base);
 
       if (!resumeText || !jobDescription) {
         setStatus("Error: We couldn't find your uploaded resume in the browser storage.");
@@ -114,7 +182,7 @@ function SuccessPageContent() {
       }
 
       setStatus("Sending to OpenAI for Semantic Optimization...");
-      
+
       try {
         const res = await fetch('/api/rewrite', {
           method: 'POST',
@@ -127,26 +195,18 @@ function SuccessPageContent() {
           throw new Error(err.error || "Failed to process");
         }
 
-        setStatus("Drafting perfectly formatted PDF...");
+        setStatus("Building your optimized resume...");
         const json = await res.json();
+        setResumeData(json);
 
-        // Generate PDF Document
+        // Auto-download the PDF for instant gratification.
         const blob = await pdf(<ResumePDF data={json} />).toBlob();
-        
-        // Trigger Download
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = fileName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        downloadBlob(blob, `${base}.pdf`);
 
-        setStatus("Resume fully optimized and downloaded!");
+        setStatus("Resume optimized! Download as PDF or .docx below.");
         setIsDone(true);
-        
-        // Cleanup storage so we don't hold sensitive data
+
+        // Cleanup storage so we don't hold sensitive data.
         sessionStorage.removeItem('resumeText');
         sessionStorage.removeItem('jobDescription');
 
@@ -158,25 +218,53 @@ function SuccessPageContent() {
     processResume();
   }, [searchParams]);
 
+  const handleDownloadPdf = async () => {
+    if (!resumeData) return;
+    const blob = await pdf(<ResumePDF data={resumeData} />).toBlob();
+    downloadBlob(blob, `${baseName}.pdf`);
+  };
+
+  const handleDownloadDocx = async () => {
+    if (!resumeData) return;
+    const blob = await buildDocxBlob(resumeData);
+    downloadBlob(blob, `${baseName}.docx`);
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 flex items-center justify-center text-white p-6">
       <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-12 shadow-2xl max-w-md w-full text-center space-y-6">
-        
+
         {!isDone ? (
           <Loader2 className="w-16 h-16 text-emerald-500 animate-spin mx-auto" />
         ) : (
           <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto" />
         )}
-        
+
         <h1 className="text-3xl font-bold">Payment Success!</h1>
-        <p className="text-neutral-400 font-medium">
-          {status}
-        </p>
-        
+        <p className="text-neutral-400 font-medium">{status}</p>
+
         {isDone && (
-          <div className="pt-6">
-            <p className="text-sm text-neutral-500 mb-4">Your brand new, ATS-compliant PDF has been downloaded to your computer.</p>
-            <a href="/" className="inline-flex items-center space-x-2 text-emerald-500 hover:text-emerald-400 font-bold transition">
+          <div className="pt-4 space-y-4">
+            <p className="text-sm text-neutral-500">
+              Your PDF downloaded automatically. ATS often parse .docx more reliably — grab that version too if you&apos;re applying through Workday or Greenhouse.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={handleDownloadPdf}
+                className="flex-1 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2"
+              >
+                <Download className="w-5 h-5" />
+                <span>Download PDF</span>
+              </button>
+              <button
+                onClick={handleDownloadDocx}
+                className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2"
+              >
+                <FileText className="w-5 h-5" />
+                <span>Download .docx</span>
+              </button>
+            </div>
+            <a href="/" className="inline-flex items-center space-x-2 text-emerald-500 hover:text-emerald-400 font-bold transition pt-2">
               <span>Optimize another resume</span>
             </a>
           </div>

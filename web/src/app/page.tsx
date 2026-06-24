@@ -32,20 +32,18 @@ export default function Home() {
 
   // Extract text from the uploaded PDF and cache resume + JD in sessionStorage.
   const extractResumeText = async (): Promise<string> => {
-    const pdfjsLib = await import('pdfjs-dist');
-    pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
-    const arrayBuffer = await file!.arrayBuffer();
-    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-    let resumeText = '';
-    for (let i = 1; i <= pdf.numPages; i++) {
-      const page = await pdf.getPage(i);
-      const content = await page.getTextContent();
-      resumeText += content.items.map((item: any) => item.str).join(' ') + '\n';
-    }
-    sessionStorage.setItem('resumeText', resumeText);
+    const formData = new FormData();
+    formData.append('file', file!);
+    const res = await fetch('/api/extract', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Failed to extract PDF");
+    sessionStorage.setItem('resumeText', data.text);
     sessionStorage.setItem('jobDescription', jobDescription);
     sessionStorage.setItem('fileName', file!.name);
-    return resumeText;
+    return data.text;
   };
 
   const validateInputs = () => {

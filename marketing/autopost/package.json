@@ -1,0 +1,14 @@
+{
+  "name": "atshacker-autopost",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Auto-post ATSHacker videos to socials via the Upload-Post API.",
+  "scripts": {
+    "dry": "node post.mjs --dry-run",
+    "post": "node post.mjs"
+  },
+  "dependencies": {
+    "upload-post": "latest"
+  }
+}

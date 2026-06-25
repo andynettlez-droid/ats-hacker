@@ -227,10 +227,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="w-full px-6 py-5 flex justify-between items-center max-w-7xl mx-auto">
         <div className="flex items-center gap-2.5">
-          <img src="/logo-mark.png" alt="ATSHacker" width="34" height="34" className="rounded-full" />
-          <span className="text-2xl font-black tracking-tighter text-slate-900">
-            ATS<span className="text-emerald-600">Hacker.</span>
-          </span>
+          <img src="/logo-full.png" alt="ATSHacker" className="h-9 w-auto" />
         </div>
         <div className="flex items-center gap-6 text-sm font-medium text-slate-600">
           <a href="#how-it-works" className="hover:text-emerald-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 rounded">How it Works</a>
@@ -492,11 +489,8 @@ export default function Home() {
       <footer className="border-t border-slate-200 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3 text-center sm:text-left">
-            <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
             <div>
-              <div className="text-lg font-black tracking-tighter text-slate-900">
-                ATS<span className="text-emerald-600">Hacker.</span>
-              </div>
+              <img src="/logo-full.png" alt="ATSHacker" className="h-7 w-auto mb-1.5" />
               <p className="text-xs text-slate-500">Honest resume keyword matching — no subscription.</p>
             </div>
           </div>

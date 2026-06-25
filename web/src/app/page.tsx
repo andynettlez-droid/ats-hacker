@@ -205,15 +205,15 @@ export default function Home() {
           <div className="space-y-8">
             <div className="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Bypass Workday &amp; Greenhouse Filters</span>
+              <span>Optimized for how Workday &amp; Greenhouse rank candidates</span>
             </div>
 
             <h1 className="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight">
-              Stop getting auto-rejected by <span className="text-emerald-500">robots.</span>
+              Stop getting buried by the <span className="text-emerald-500">keyword filter.</span>
             </h1>
 
             <p className="text-xl text-neutral-400 leading-relaxed max-w-lg">
-              About 75% of resumes are thrown out by Applicant Tracking Systems before a human ever sees them. Check your match score free, then rewrite your resume to match the job for <span className="text-white font-bold">$9.99</span>.
+              Recruiters search and rank resumes by keyword, and keyword-matched resumes are about <span className="text-white font-bold">3x more likely</span> to get seen. Check your match score free, then rewrite your resume to match the job for <span className="text-white font-bold">$9.99</span>.
             </p>
 
             <div className="space-y-4">
@@ -244,11 +244,20 @@ export default function Home() {
                 <label className="text-sm font-semibold text-neutral-300">1. Upload Current Resume (PDF)</label>
                 <input type="file" accept=".pdf" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
                 <div
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Upload your resume PDF. Drag and drop a file or press Enter to browse."
                   onClick={() => fileInputRef.current?.click()}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      fileInputRef.current?.click();
+                    }
+                  }}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
-                  className={`border-2 border-dashed rounded-xl p-8 text-center transition cursor-pointer group
+                  className={`border-2 border-dashed rounded-xl p-8 text-center transition cursor-pointer group focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/40
                     ${isDragging ? 'border-emerald-500 bg-emerald-500/10' : 'border-neutral-700 hover:border-emerald-500/50 hover:bg-neutral-800/50'}`}
                 >
                   {file ? (
@@ -298,6 +307,16 @@ export default function Home() {
                     <div className="bg-emerald-500 h-2 rounded-full transition-all" style={{ width: `${score.score}%` }}></div>
                   </div>
                   {score.verdict && <p className="text-xs text-neutral-400">{score.verdict}</p>}
+                  {score.matchedKeywords?.length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold text-emerald-400 mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> Matched keywords ({score.matchedKeywords.length})</p>
+                      <div className="flex flex-wrap gap-2">
+                        {score.matchedKeywords.map((k, i) => (
+                          <span key={i} className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded text-xs">{k}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   {score.missingKeywords?.length > 0 && (
                     <div>
                       <p className="text-xs font-semibold text-red-400 mb-2 flex items-center"><XCircle className="w-4 h-4 mr-1" /> Missing keywords ({score.missingKeywords.length})</p>
@@ -308,7 +327,21 @@ export default function Home() {
                       </div>
                     </div>
                   )}
-                  <p className="text-xs text-emerald-400 font-medium">Unlock the full rewrite below to fix every gap.</p>
+                  {/* Primary CTA at peak intent — right inside the score panel. */}
+                  <button
+                    onClick={handleCheckout}
+                    disabled={isLoading}
+                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base py-3 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <span>
+                      {isLoading
+                        ? "Connecting to Stripe..."
+                        : score.missingKeywords?.length > 0
+                          ? `Fix these ${score.missingKeywords.length} gaps — $9.99`
+                          : "Optimize my resume — $9.99"}
+                    </span>
+                    {!isLoading && <ArrowRight className="w-5 h-5" />}
+                  </button>
                   <button
                     onClick={shareScore}
                     className="w-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white text-sm font-semibold py-2.5 rounded-lg transition flex items-center justify-center gap-2"

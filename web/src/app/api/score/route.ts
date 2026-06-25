@@ -3,10 +3,44 @@ import OpenAI from 'openai';
 
 // FREE front-door endpoint: returns an ATS match score + the keywords the resume is
 // missing, WITHOUT charging. This is the conversion hook — it proves the problem
-// before the $5 rewrite unlock. No payment gate here by design.
-// (For production, add basic rate limiting / abuse protection on this route.)
+// before the $9.99 rewrite unlock. No payment gate here by design.
+
+// --- Simple per-IP rate limit -------------------------------------------------
+// Best-effort, per-instance only: this in-memory map is NOT shared across
+// serverless instances/regions, so it slows casual abuse but isn't a hard cap.
+// For a real limit, back this with Redis/Upstash. Dependency-free by design.
+const RATE_LIMIT_MAX = 12; // requests
+const RATE_LIMIT_WINDOW_MS = 60_000; // per minute
+const ipHits = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const windowStart = now - RATE_LIMIT_WINDOW_MS;
+  const hits = (ipHits.get(ip) || []).filter((t) => t > windowStart);
+  hits.push(now);
+  ipHits.set(ip, hits);
+  // Opportunistic cleanup so the map doesn't grow unbounded.
+  if (ipHits.size > 5000) {
+    for (const [key, times] of ipHits) {
+      if (times.every((t) => t <= windowStart)) ipHits.delete(key);
+    }
+  }
+  return hits.length > RATE_LIMIT_MAX;
+}
 
 export async function POST(req: Request) {
+  // x-forwarded-for is set by the platform proxy; first entry is the client IP.
+  const ip =
+    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    req.headers.get('x-real-ip') ||
+    'unknown';
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please wait a minute and try again.' },
+      { status: 429 },
+    );
+  }
+
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY || 'dummy_key_for_build',
   });

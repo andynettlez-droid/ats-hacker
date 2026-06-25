@@ -263,6 +263,21 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans flex selection:bg-emerald-500/30">
+      {/* Mobile top bar — sidebar is hidden on small screens, so surface the
+          wordmark + Logout here so mobile admins can still sign out. */}
+      <div className="md:hidden fixed top-0 inset-x-0 z-20 flex items-center justify-between bg-neutral-900 border-b border-neutral-800 px-4 py-3">
+        <div className="text-xl font-black tracking-tighter text-white">
+          ATS<span className="text-emerald-500">Hacker.</span>
+        </div>
+        <button
+          onClick={logout}
+          className="flex items-center space-x-2 text-neutral-400 hover:text-red-400 transition text-sm font-medium"
+        >
+          <LogOut className="w-4 h-4" />
+          <span>Logout</span>
+        </button>
+      </div>
+
       {/* Sidebar */}
       <aside className="w-64 bg-neutral-900 border-r border-neutral-800 flex flex-col hidden md:flex">
         <div className="p-6">
@@ -305,7 +320,7 @@ export default function AdminDashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-6 md:p-10 overflow-y-auto">
+      <main className="flex-1 p-6 md:p-10 pt-20 md:pt-10 overflow-y-auto">
         <header className="flex justify-between items-center mb-10">
           <div>
             <h1 className="text-3xl font-bold text-white">Overview</h1>

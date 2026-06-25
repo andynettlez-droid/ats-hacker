@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ATSHacker — Beat the Resume Robots for $5",
+  title: "ATSHacker — Get Your Resume Past the Keyword Filter",
   description:
-    "Most resumes are auto-rejected by Applicant Tracking Systems before a human sees them. ATSHacker rewrites your resume to semantically match the job description so you get past the filters.",
+    "Recruiters search and rank resumes by keyword. ATSHacker rewrites your resume to semantically match the job description so it ranks higher and gets seen ~3x more often — a one-time $9.99, no subscription.",
 };
 
 export default function RootLayout({

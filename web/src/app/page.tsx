@@ -215,26 +215,26 @@ export default function Home() {
   };
 
   const scoreColor = score
-    ? score.score >= 75 ? 'text-emerald-400' : score.score >= 50 ? 'text-amber-400' : 'text-red-400'
+    ? score.score >= 75 ? 'text-emerald-600' : score.score >= 50 ? 'text-amber-600' : 'text-red-600'
     : '';
   const scoreBar = score
     ? score.score >= 75 ? 'bg-emerald-500' : score.score >= 50 ? 'bg-amber-500' : 'bg-red-500'
     : 'bg-emerald-500';
-  const scoreRing = score
-    ? score.score >= 75 ? 'shadow-[0_0_60px_-15px] shadow-emerald-500/40' : score.score >= 50 ? 'shadow-[0_0_60px_-15px] shadow-amber-500/40' : 'shadow-[0_0_60px_-15px] shadow-red-500/40'
-    : '';
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-500/20">
 
       {/* Navigation */}
       <nav className="w-full p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <div className="text-2xl font-black tracking-tighter text-white">
-          ATS<span className="text-emerald-500">Hacker.</span>
+        <div className="flex items-center gap-2.5">
+          <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <span className="text-2xl font-black tracking-tighter text-slate-900">
+            ATS<span className="text-emerald-600">Hacker.</span>
+          </span>
         </div>
-        <div className="flex items-center space-x-6 text-sm font-medium text-neutral-400">
-          <a href="#how-it-works" className="hover:text-white transition">How it Works</a>
-          <a href="#pricing" className="hover:text-white transition">Pricing</a>
+        <div className="flex items-center space-x-6 text-sm font-medium text-slate-600">
+          <a href="#how-it-works" className="hover:text-slate-900 transition">How it Works</a>
+          <a href="#pricing" className="hover:text-slate-900 transition">Pricing</a>
         </div>
       </nav>
 
@@ -244,30 +244,30 @@ export default function Home() {
 
           {/* Left: pitch */}
           <div className="space-y-7">
-            <div className="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">
+            <div className="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>Optimized for how Workday &amp; Greenhouse rank candidates</span>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight">
-              Stop getting buried by the <span className="text-emerald-500">keyword filter.</span>
+            <h1 className="text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight text-slate-900">
+              Stop getting buried by the <span className="text-emerald-600">keyword filter.</span>
             </h1>
 
-            <p className="text-lg lg:text-xl text-neutral-400 leading-relaxed max-w-xl">
-              Recruiters search and rank resumes by keyword, and keyword-matched resumes are about <span className="text-white font-bold">3x more likely</span> to get seen. Check your match score free, then rewrite your resume to match the job for <span className="text-white font-bold">$9.99</span>.
+            <p className="text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl">
+              Recruiters search and rank resumes by keyword, and keyword-matched resumes are about <span className="text-slate-900 font-bold">3x more likely</span> to get seen. Check your match score free, then rewrite your resume to match the job for <span className="text-slate-900 font-bold">$9.99</span>.
             </p>
 
             <div className="space-y-3.5 pt-1">
-              <div className="flex items-center space-x-3 text-neutral-300">
-                <Gauge className="w-5 h-5 text-emerald-500 shrink-0" />
+              <div className="flex items-center space-x-3 text-slate-700">
+                <Gauge className="w-5 h-5 text-emerald-600 shrink-0" />
                 <span>Free instant ATS match score</span>
               </div>
-              <div className="flex items-center space-x-3 text-neutral-300">
-                <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
+              <div className="flex items-center space-x-3 text-slate-700">
+                <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
                 <span>Semantic keyword matching against the real job description</span>
               </div>
-              <div className="flex items-center space-x-3 text-neutral-300">
-                <Shield className="w-5 h-5 text-emerald-500 shrink-0" />
+              <div className="flex items-center space-x-3 text-slate-700">
+                <Shield className="w-5 h-5 text-emerald-600 shrink-0" />
                 <span>Your resume is never stored on our servers</span>
               </div>
             </div>
@@ -275,15 +275,15 @@ export default function Home() {
 
           {/* Right: the tool */}
           <div className="space-y-4">
-            <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
 
-              <h2 className="text-2xl font-bold mb-6">Check Your Resume</h2>
+              <h2 className="text-2xl font-bold mb-6 text-slate-900">Check Your Resume</h2>
 
               <div className="space-y-6">
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-neutral-300">1. Upload Current Resume (PDF)</label>
+                  <label className="text-sm font-semibold text-slate-700">1. Upload Current Resume (PDF)</label>
                   <input type="file" accept=".pdf" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
                   <div
                     role="button"
@@ -300,31 +300,31 @@ export default function Home() {
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
                     className={`border-2 border-dashed rounded-xl p-8 text-center transition cursor-pointer group focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/40
-                      ${isDragging ? 'border-emerald-500 bg-emerald-500/10' : 'border-neutral-700 hover:border-emerald-500/50 hover:bg-neutral-800/50'}`}
+                      ${isDragging ? 'border-emerald-500 bg-emerald-50' : 'border-slate-300 hover:border-emerald-500/60 hover:bg-slate-50'}`}
                   >
                     {file ? (
                       <div className="flex flex-col items-center">
-                        <FileText className="w-10 h-10 text-emerald-500 mb-3" />
-                        <p className="text-sm text-white font-medium">{file.name}</p>
-                        <p className="text-xs text-emerald-500 mt-1">Click to replace file</p>
+                        <FileText className="w-10 h-10 text-emerald-600 mb-3" />
+                        <p className="text-sm text-slate-900 font-medium">{file.name}</p>
+                        <p className="text-xs text-emerald-600 mt-1">Click to replace file</p>
                       </div>
                     ) : (
                       <div className="flex flex-col items-center">
-                        <UploadCloud className="w-10 h-10 text-neutral-500 group-hover:text-emerald-500 transition mb-3" />
-                        <p className="text-sm text-neutral-400">Drag and drop or <span className="text-emerald-500">browse files</span></p>
+                        <UploadCloud className="w-10 h-10 text-slate-400 group-hover:text-emerald-600 transition mb-3" />
+                        <p className="text-sm text-slate-600">Drag and drop or <span className="text-emerald-600">browse files</span></p>
                       </div>
                     )}
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-neutral-300">2. Paste Target Job Description</label>
+                  <label className="text-sm font-semibold text-slate-700">2. Paste Target Job Description</label>
                   <textarea
                     rows={4}
                     value={jobDescription}
                     onChange={(e) => setJobDescription(e.target.value)}
                     placeholder="Paste the raw text of the job description here..."
-                    className="w-full bg-neutral-950 border border-neutral-800 rounded-xl p-4 text-sm text-neutral-300 focus:outline-none focus:border-emerald-500 transition resize-none"
+                    className="w-full bg-white border border-slate-300 rounded-xl p-4 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 transition resize-none"
                   ></textarea>
                 </div>
 
@@ -332,44 +332,44 @@ export default function Home() {
                 <button
                   onClick={handleScore}
                   disabled={isScoring}
-                  className="w-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white font-bold text-base py-3 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-900 font-bold text-base py-3 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Gauge className="w-5 h-5 text-emerald-500" />
+                  <Gauge className="w-5 h-5 text-emerald-600" />
                   <span>{isScoring ? "Scoring..." : "Get Free Match Score"}</span>
                 </button>
 
                 {/* Score result panel — the score is the hero */}
                 {score && (
-                  <div className={`bg-neutral-950 border border-neutral-800 rounded-2xl p-6 space-y-5 ${scoreRing}`}>
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-5 shadow-sm">
                     {/* Hero score number */}
                     <div className="flex flex-col items-center text-center pt-1">
-                      <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-1">Your ATS Match Score</span>
+                      <span className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Your ATS Match Score</span>
                       <div className="flex items-end justify-center leading-none">
                         <span className={`text-7xl font-black tabular-nums ${scoreColor}`}>{animatedScore}</span>
-                        <span className="text-2xl font-bold text-neutral-600 mb-1.5">/100</span>
+                        <span className="text-2xl font-bold text-slate-300 mb-1.5">/100</span>
                       </div>
                     </div>
-                    <div className="w-full bg-neutral-800 rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
                       <div className={`${scoreBar} h-2 rounded-full transition-all duration-700 ease-out`} style={{ width: `${animatedScore}%` }}></div>
                     </div>
-                    {score.verdict && <p className="text-sm text-neutral-300 text-center leading-relaxed">{score.verdict}</p>}
+                    {score.verdict && <p className="text-sm text-slate-600 text-center leading-relaxed">{score.verdict}</p>}
 
                     {score.matchedKeywords?.length > 0 && (
                       <div>
-                        <p className="text-xs font-semibold text-emerald-400 mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> Matched keywords ({score.matchedKeywords.length})</p>
+                        <p className="text-xs font-semibold text-emerald-700 mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> Matched keywords ({score.matchedKeywords.length})</p>
                         <div className="flex flex-wrap gap-2">
                           {score.matchedKeywords.map((k, i) => (
-                            <span key={i} className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded text-xs">{k}</span>
+                            <span key={i} className="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs">{k}</span>
                           ))}
                         </div>
                       </div>
                     )}
                     {score.missingKeywords?.length > 0 && (
                       <div>
-                        <p className="text-xs font-semibold text-red-400 mb-2 flex items-center"><XCircle className="w-4 h-4 mr-1" /> Missing keywords ({score.missingKeywords.length})</p>
+                        <p className="text-xs font-semibold text-red-700 mb-2 flex items-center"><XCircle className="w-4 h-4 mr-1" /> Missing keywords ({score.missingKeywords.length})</p>
                         <div className="flex flex-wrap gap-2">
                           {score.missingKeywords.map((k, i) => (
-                            <span key={i} className="bg-red-500/10 border border-red-500/20 text-red-300 px-2 py-0.5 rounded text-xs">{k}</span>
+                            <span key={i} className="bg-red-100 text-red-800 px-2 py-0.5 rounded text-xs">{k}</span>
                           ))}
                         </div>
                       </div>
@@ -379,7 +379,7 @@ export default function Home() {
                     <button
                       onClick={handleCheckout}
                       disabled={isLoading}
-                      className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base py-3.5 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-900/40"
+                      className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base py-3.5 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
                     >
                       <span>
                         {isLoading
@@ -393,9 +393,9 @@ export default function Home() {
                     {/* Share-first: prominent after a score. */}
                     <button
                       onClick={shareScore}
-                      className="w-full bg-transparent hover:bg-neutral-800 border border-neutral-700 text-white text-sm font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2"
+                      className="w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-900 text-sm font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2"
                     >
-                      <Share2 className="w-4 h-4 text-emerald-500" />
+                      <Share2 className="w-4 h-4 text-emerald-600" />
                       <span>Share my score</span>
                     </button>
                   </div>
@@ -406,35 +406,35 @@ export default function Home() {
                   <button
                     onClick={handleCheckout}
                     disabled={isLoading}
-                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-900/40"
+                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
                   >
                     <span>{isLoading ? "Connecting to Stripe..." : "Pay $9.99 to Optimize"}</span>
                     {!isLoading && <ArrowRight className="w-5 h-5" />}
                   </button>
                 )}
 
-                <p className="text-xs text-center text-neutral-500">Secured by Stripe. Results delivered instantly.</p>
+                <p className="text-xs text-center text-slate-400">Secured by Stripe. Results delivered instantly.</p>
 
               </div>
             </div>
 
             {/* Honest trust row — truthful signals only, no ratings/testimonials. */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <div className="flex flex-col items-center text-center gap-1.5 bg-neutral-900/60 border border-neutral-800 rounded-xl px-2 py-3">
-                <BadgeCheck className="w-5 h-5 text-emerald-500" />
-                <span className="text-[11px] leading-tight text-neutral-400 font-medium">No subscription</span>
+              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3">
+                <BadgeCheck className="w-5 h-5 text-emerald-600" />
+                <span className="text-[11px] leading-tight text-slate-600 font-medium">No subscription</span>
               </div>
-              <div className="flex flex-col items-center text-center gap-1.5 bg-neutral-900/60 border border-neutral-800 rounded-xl px-2 py-3">
-                <Lock className="w-5 h-5 text-emerald-500" />
-                <span className="text-[11px] leading-tight text-neutral-400 font-medium">Your resume is never stored</span>
+              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3">
+                <Lock className="w-5 h-5 text-emerald-600" />
+                <span className="text-[11px] leading-tight text-slate-600 font-medium">Your resume is never stored</span>
               </div>
-              <div className="flex flex-col items-center text-center gap-1.5 bg-neutral-900/60 border border-neutral-800 rounded-xl px-2 py-3">
-                <Shield className="w-5 h-5 text-emerald-500" />
-                <span className="text-[11px] leading-tight text-neutral-400 font-medium">Honest rewrite — no fabricated experience</span>
+              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3">
+                <Shield className="w-5 h-5 text-emerald-600" />
+                <span className="text-[11px] leading-tight text-slate-600 font-medium">Honest rewrite — no fabricated experience</span>
               </div>
-              <div className="flex flex-col items-center text-center gap-1.5 bg-neutral-900/60 border border-neutral-800 rounded-xl px-2 py-3">
-                <Zap className="w-5 h-5 text-emerald-500" />
-                <span className="text-[11px] leading-tight text-neutral-400 font-medium">Instant</span>
+              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3">
+                <Zap className="w-5 h-5 text-emerald-600" />
+                <span className="text-[11px] leading-tight text-slate-600 font-medium">Instant</span>
               </div>
             </div>
           </div>
@@ -443,34 +443,34 @@ export default function Home() {
 
         {/* How it works */}
         <section id="how-it-works" className="pt-24 scroll-mt-24">
-          <h2 className="text-3xl lg:text-4xl font-black text-center tracking-tight">How it works</h2>
-          <p className="text-neutral-400 text-center mt-3 mb-12">Three steps. About 60 seconds.</p>
+          <h2 className="text-3xl lg:text-4xl font-black text-center tracking-tight text-slate-900">How it works</h2>
+          <p className="text-slate-600 text-center mt-3 mb-12">Three steps. About 60 seconds.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
-              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 font-bold flex items-center justify-center">1</span><UploadCloud className="w-5 h-5 text-emerald-500" /></div>
-              <h3 className="font-bold text-lg mb-1">Upload &amp; paste</h3>
-              <p className="text-sm text-neutral-400">Drop in your resume (PDF) and paste the job description you&apos;re targeting.</p>
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center">1</span><UploadCloud className="w-5 h-5 text-emerald-600" /></div>
+              <h3 className="font-bold text-lg mb-1 text-slate-900">Upload &amp; paste</h3>
+              <p className="text-sm text-slate-600">Drop in your resume (PDF) and paste the job description you&apos;re targeting.</p>
             </div>
-            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
-              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 font-bold flex items-center justify-center">2</span><Gauge className="w-5 h-5 text-emerald-500" /></div>
-              <h3 className="font-bold text-lg mb-1">Get your free score</h3>
-              <p className="text-sm text-neutral-400">See your 0&ndash;100 keyword match and the exact terms your resume is missing &mdash; free.</p>
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center">2</span><Gauge className="w-5 h-5 text-emerald-600" /></div>
+              <h3 className="font-bold text-lg mb-1 text-slate-900">Get your free score</h3>
+              <p className="text-sm text-slate-600">See your 0&ndash;100 keyword match and the exact terms your resume is missing &mdash; free.</p>
             </div>
-            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
-              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 font-bold flex items-center justify-center">3</span><Zap className="w-5 h-5 text-emerald-500" /></div>
-              <h3 className="font-bold text-lg mb-1">Optimize for $9.99</h3>
-              <p className="text-sm text-neutral-400">We rewrite it to match the job &mdash; honestly &mdash; and hand back a clean PDF and .docx.</p>
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center">3</span><Zap className="w-5 h-5 text-emerald-600" /></div>
+              <h3 className="font-bold text-lg mb-1 text-slate-900">Optimize for $9.99</h3>
+              <p className="text-sm text-slate-600">We rewrite it to match the job &mdash; honestly &mdash; and hand back a clean PDF and .docx.</p>
             </div>
           </div>
         </section>
 
         {/* Pricing */}
         <section id="pricing" className="pt-24 scroll-mt-24 max-w-md mx-auto w-full">
-          <h2 className="text-3xl lg:text-4xl font-black text-center tracking-tight">Simple pricing</h2>
-          <p className="text-neutral-400 text-center mt-3 mb-10">No subscription. Pay only when you want the rewrite.</p>
-          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 relative overflow-hidden">
+          <h2 className="text-3xl lg:text-4xl font-black text-center tracking-tight text-slate-900">Simple pricing</h2>
+          <p className="text-slate-600 text-center mt-3 mb-10">No subscription. Pay only when you want the rewrite.</p>
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 relative overflow-hidden shadow-sm">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
-            <div className="flex items-baseline gap-2 mb-6"><span className="text-5xl font-black">$9.99</span><span className="text-neutral-500">/ one resume</span></div>
+            <div className="flex items-baseline gap-2 mb-6"><span className="text-5xl font-black text-slate-900">$9.99</span><span className="text-slate-500">/ one resume</span></div>
             <ul className="space-y-3 mb-8">
               {[
                 "Free ATS match score + missing keywords",
@@ -478,7 +478,7 @@ export default function Home() {
                 "Polished PDF and ATS-friendly .docx",
                 "No subscription, no account required",
               ].map((t) => (
-                <li key={t} className="flex items-start gap-3 text-sm text-neutral-300"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><span>{t}</span></li>
+                <li key={t} className="flex items-start gap-3 text-sm text-slate-700"><CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" /><span>{t}</span></li>
               ))}
             </ul>
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition flex items-center justify-center gap-2">
@@ -487,6 +487,25 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-200 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3 text-center sm:text-left">
+            <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+            <div>
+              <div className="text-lg font-black tracking-tighter text-slate-900">
+                ATS<span className="text-emerald-600">Hacker.</span>
+              </div>
+              <p className="text-xs text-slate-500">Honest resume keyword matching — no subscription.</p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-6 text-sm font-medium text-slate-600">
+            <a href="#how-it-works" className="hover:text-slate-900 transition">How it Works</a>
+            <a href="#pricing" className="hover:text-slate-900 transition">Pricing</a>
+          </div>
+        </div>
+      </footer>
 
     </div>
   );

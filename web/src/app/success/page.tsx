@@ -278,53 +278,60 @@ function SuccessPageContent() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 flex items-center justify-center text-white p-6">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-12 shadow-2xl max-w-md w-full text-center space-y-6">
+    <div className="min-h-screen bg-white flex items-center justify-center text-slate-900 p-6">
+      <div className="bg-white border border-slate-200 rounded-3xl p-12 shadow-sm max-w-md w-full text-center space-y-6">
+
+        <a href="/" className="flex items-center justify-center gap-2.5">
+          <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <span className="text-xl font-black tracking-tighter text-slate-900">
+            ATS<span className="text-emerald-600">Hacker.</span>
+          </span>
+        </a>
 
         {!isDone ? (
-          <Loader2 className="w-16 h-16 text-emerald-500 animate-spin mx-auto" />
+          <Loader2 className="w-16 h-16 text-emerald-600 animate-spin mx-auto" />
         ) : (
-          <CheckCircle className="w-16 h-16 text-emerald-500 mx-auto" />
+          <CheckCircle className="w-16 h-16 text-emerald-600 mx-auto" />
         )}
 
-        <h1 className="text-3xl font-bold">Payment Success!</h1>
-        <p className="text-neutral-400 font-medium">{status}</p>
+        <h1 className="text-3xl font-bold text-slate-900">Payment Success!</h1>
+        <p className="text-slate-600 font-medium">{status}</p>
 
         {isDone && (
           <div className="pt-4 space-y-4">
             {beforeScore !== null && afterScore !== null && (
-              <div className="bg-neutral-950 border border-neutral-800 rounded-xl p-5">
-                <p className="text-xs font-semibold text-neutral-400 mb-3 tracking-wide">ATS MATCH SCORE</p>
+              <div className="bg-white border border-slate-200 rounded-xl p-5">
+                <p className="text-xs font-semibold text-slate-400 mb-3 tracking-wide">ATS MATCH SCORE</p>
                 <div className="flex items-center justify-center gap-5">
                   <div className="text-center">
-                    <div className="text-3xl font-black text-red-400">{beforeScore}</div>
-                    <div className="text-[10px] uppercase tracking-wide text-neutral-500">Before</div>
+                    <div className="text-3xl font-black text-red-600">{beforeScore}</div>
+                    <div className="text-[10px] uppercase tracking-wide text-slate-400">Before</div>
                   </div>
-                  <span className="text-2xl text-neutral-600">&rarr;</span>
+                  <span className="text-2xl text-slate-300">&rarr;</span>
                   <div className="text-center">
-                    <div className="text-3xl font-black text-emerald-500">{afterScore}</div>
-                    <div className="text-[10px] uppercase tracking-wide text-neutral-500">After</div>
+                    <div className="text-3xl font-black text-emerald-600">{afterScore}</div>
+                    <div className="text-[10px] uppercase tracking-wide text-slate-400">After</div>
                   </div>
                 </div>
                 {afterScore > beforeScore && (
-                  <p className="text-xs text-emerald-400 mt-3">+{afterScore - beforeScore} point keyword-match improvement.</p>
+                  <p className="text-xs text-emerald-600 mt-3">+{afterScore - beforeScore} point keyword-match improvement.</p>
                 )}
               </div>
             )}
             {optimizationLow && (
-              <div className="bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-left">
-                <p className="text-xs text-neutral-400">
+              <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-left">
+                <p className="text-xs text-slate-600">
                   This resume was already fairly well-matched to the job — we still tightened the keywords and phrasing for a cleaner read.
                 </p>
               </div>
             )}
-            <p className="text-sm text-neutral-500">
+            <p className="text-sm text-slate-500">
               Your PDF downloaded automatically. ATS often parse .docx more reliably — grab that version too if you&apos;re applying through Workday or Greenhouse.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleDownloadPdf}
-                className="flex-1 bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2"
+                className="flex-1 bg-white hover:bg-slate-50 border border-slate-300 text-slate-900 font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2"
               >
                 <Download className="w-5 h-5" />
                 <span>Download PDF</span>
@@ -337,7 +344,7 @@ function SuccessPageContent() {
                 <span>Download .docx</span>
               </button>
             </div>
-            <a href="/" className="inline-flex items-center space-x-2 text-emerald-500 hover:text-emerald-400 font-bold transition pt-2">
+            <a href="/" className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-500 font-bold transition pt-2">
               <span>Optimize another resume</span>
             </a>
           </div>
@@ -351,7 +358,7 @@ function SuccessPageContent() {
 import { Suspense } from 'react';
 export default function SuccessPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-neutral-950 flex items-center justify-center"><Loader2 className="w-16 h-16 text-emerald-500 animate-spin" /></div>}>
+    <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center"><Loader2 className="w-16 h-16 text-emerald-600 animate-spin" /></div>}>
       <SuccessPageContent />
     </Suspense>
   );

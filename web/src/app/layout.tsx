@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "ATSHacker — Get Your Resume Past the Keyword Filter",
   description:
     "Recruiters search and rank resumes by keyword. ATSHacker rewrites your resume to semantically match the job description so it ranks higher and gets seen ~3x more often — a one-time $9.99, no subscription.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-white text-slate-900">
         {children}
         <Analytics />
       </body>

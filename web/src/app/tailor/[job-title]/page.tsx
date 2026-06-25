@@ -47,33 +47,36 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
   const { title, painPoint, keywords, tips } = role;
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-500/20">
       <nav className="w-full p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <Link href="/" className="text-2xl font-black tracking-tighter text-white">
-          ATS<span className="text-emerald-500">Hacker.</span>
+        <Link href="/" className="flex items-center gap-2.5">
+          <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <span className="text-2xl font-black tracking-tighter text-slate-900">
+            ATS<span className="text-emerald-600">Hacker.</span>
+          </span>
         </Link>
       </nav>
 
       <main className="max-w-4xl mx-auto px-6 pt-16 pb-32 text-center">
-        <div className="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-8">
+        <div className="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-8">
           <span>Targeted specifically for {title} roles</span>
         </div>
 
-        <h1 className="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-8">
+        <h1 className="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-8 text-slate-900">
           Land your dream{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">{title}</span>{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-cyan-600">{title}</span>{' '}
           job.
         </h1>
 
-        <p className="text-xl text-neutral-400 leading-relaxed max-w-2xl mx-auto mb-6">
+        <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-6">
           {painPoint}
         </p>
-        <p className="text-base text-neutral-500 leading-relaxed max-w-2xl mx-auto mb-12">
+        <p className="text-base text-slate-500 leading-relaxed max-w-2xl mx-auto mb-12">
           Keyword-matched resumes are about 3x more likely to get seen. Check your {title} match score free, then we&apos;ll fix every gap for a one-time $9.99 — no subscription.
         </p>
 
         <Link href="/">
-          <button className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xl py-5 px-12 rounded-2xl transition inline-flex items-center space-x-3 shadow-[0_0_40px_-10px_rgba(16,185,129,0.5)]">
+          <button className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xl py-5 px-12 rounded-2xl transition inline-flex items-center space-x-3 shadow-sm">
             <span>Get my free {title} match score</span>
             <ArrowRight className="w-6 h-6" />
           </button>
@@ -82,30 +85,30 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
         {/* Unique, role-specific content (keywords + tips) for SEO depth */}
         {keywords.length > 0 && (
           <section className="mt-20 text-left">
-            <h2 className="text-2xl font-bold mb-2 flex items-center">
-              <XCircle className="w-6 h-6 text-red-500 mr-2" />
+            <h2 className="text-2xl font-bold mb-2 flex items-center text-slate-900">
+              <XCircle className="w-6 h-6 text-red-600 mr-2" />
               ATS keywords for {title} resumes
             </h2>
-            <p className="text-neutral-400 mb-6">
+            <p className="text-slate-600 mb-6">
               These are the terms an ATS most often scans for in {title} job descriptions. If your resume is missing them, you&apos;re likely being filtered out:
             </p>
             <div className="flex flex-wrap gap-3 mb-12">
               {keywords.map((k, i) => (
-                <span key={i} className="bg-neutral-900 border border-neutral-800 text-neutral-200 px-3 py-1.5 rounded-lg text-sm">{k}</span>
+                <span key={i} className="bg-white border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-sm shadow-sm">{k}</span>
               ))}
             </div>
           </section>
         )}
 
         <section className="text-left">
-          <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <Lightbulb className="w-6 h-6 text-emerald-500 mr-2" />
+          <h2 className="text-2xl font-bold mb-6 flex items-center text-slate-900">
+            <Lightbulb className="w-6 h-6 text-emerald-600 mr-2" />
             How to optimize a {title} resume for the ATS
           </h2>
           <ul className="space-y-4">
             {tips.map((tip, i) => (
-              <li key={i} className="flex items-start space-x-3 text-neutral-300">
-                <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+              <li key={i} className="flex items-start space-x-3 text-slate-700">
+                <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" />
                 <span>{tip}</span>
               </li>
             ))}

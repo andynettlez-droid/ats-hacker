@@ -43,25 +43,28 @@ export default async function SharePage({ params, searchParams }: { params: Prom
   const { m } = await searchParams;
   const s = clampScore(score);
   const missing = Math.max(0, parseInt(m || '0', 10) || 0);
-  const color = s >= 75 ? 'text-emerald-500' : s >= 50 ? 'text-yellow-500' : 'text-red-500';
+  const color = s >= 75 ? 'text-emerald-600' : s >= 50 ? 'text-amber-600' : 'text-red-600';
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans flex items-center justify-center p-6 selection:bg-emerald-500/30">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-10 shadow-2xl max-w-md w-full text-center space-y-6">
-        <div className="text-2xl font-black tracking-tighter text-white">
-          ATS<span className="text-emerald-500">Hacker.</span>
+    <div className="min-h-screen bg-white text-slate-900 font-sans flex items-center justify-center p-6 selection:bg-emerald-500/20">
+      <div className="bg-white border border-slate-200 rounded-3xl p-10 shadow-sm max-w-md w-full text-center space-y-6">
+        <div className="flex items-center justify-center gap-2.5">
+          <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <span className="text-2xl font-black tracking-tighter text-slate-900">
+            ATS<span className="text-emerald-600">Hacker.</span>
+          </span>
         </div>
-        <p className="text-neutral-400">This resume scored</p>
+        <p className="text-slate-600">This resume scored</p>
         <div className="flex items-end justify-center">
           <span className={`text-7xl font-black ${color}`}>{s}</span>
-          <span className="text-2xl text-neutral-500 pb-2">/100</span>
+          <span className="text-2xl text-slate-400 pb-2">/100</span>
         </div>
-        <p className="text-sm text-neutral-400">
+        <p className="text-sm text-slate-600">
           {missing > 0
             ? `${missing} job-description keywords were missing.`
             : 'against a target job description.'}
         </p>
-        <p className="text-neutral-400">
+        <p className="text-slate-600">
           Most resumes are ranked by keyword match. See how yours scores against any job — free.
         </p>
         <Link href="/">

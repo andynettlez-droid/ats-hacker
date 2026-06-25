@@ -58,8 +58,13 @@ export async function GET() {
       sessions.push(s);
     }
 
-    // Keep only successfully paid sessions.
-    const paid = sessions.filter((s) => s.payment_status === 'paid');
+    // Keep only successfully paid sessions that belong to ATSHacker.
+    // This Stripe account also carries legacy WiFiCheckup revenue; the checkout
+    // route tags ATSHacker sessions with metadata.app === 'atshacker' so we can
+    // exclude everything else here. (Untagged legacy/test sales are intentionally ignored.)
+    const paid = sessions.filter(
+      (s) => s.payment_status === 'paid' && s.metadata?.app === 'atshacker'
+    );
 
     let totalRevenue = 0; // dollars, current window
     let totalSales = 0; // count, current window

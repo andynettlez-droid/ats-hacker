@@ -35,7 +35,11 @@ export async function POST(req: Request) {
       payment_intent_data: {
         description: 'ATSHacker resume optimization',
         statement_descriptor_suffix: 'ATSHacker',
+        // Tag every ATSHacker charge so analytics can exclude unrelated revenue
+        // (this Stripe account also carries legacy WiFiCheckup sales).
+        metadata: { app: 'atshacker' },
       },
+      metadata: { app: 'atshacker' },
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/`,
     });

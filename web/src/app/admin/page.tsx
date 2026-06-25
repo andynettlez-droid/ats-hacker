@@ -13,6 +13,7 @@ import {
   LogOut,
   Lock,
   Loader2,
+  Globe,
 } from 'lucide-react';
 
 type DailyPoint = { date: string; revenue: number; sales: number };
@@ -34,9 +35,11 @@ type Stats = {
   growthRate: number;
   dailySeries: DailyPoint[];
   recentTransactions: Transaction[];
+  sourceBreakdown: SourceBreakdown[];
   generatedAt: string;
   error?: string;
 };
+type SourceBreakdown = { source: string; sales: number; revenue: number };
 
 const usd = (n: number) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n);
@@ -256,6 +259,7 @@ export default function AdminDashboard() {
   const growthPositive = growth >= 0;
   const series = stats?.dailySeries ?? [];
   const recentTransactions = stats?.recentTransactions ?? [];
+  const sourceBreakdown = stats?.sourceBreakdown ?? [];
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans flex selection:bg-emerald-500/30">
@@ -395,6 +399,47 @@ export default function AdminDashboard() {
             </span>
           </div>
           <RevenueChart data={series} />
+        </div>
+
+        {/* Traffic Sources */}
+        <div className="bg-neutral-900 border border-neutral-800 rounded-2xl shadow-xl overflow-hidden mb-10">
+          <div className="p-6 border-b border-neutral-800 flex justify-between items-center">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+              <Globe className="w-5 h-5 text-emerald-500" />
+              Traffic Sources
+            </h2>
+            <span className="text-sm text-neutral-500 font-medium">
+              Sales by UTM source · last {stats?.windowDays ?? 30}d
+            </span>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-neutral-950/50 text-neutral-400 text-sm uppercase tracking-wider">
+                  <th className="p-4 font-semibold">Source</th>
+                  <th className="p-4 font-semibold">Sales</th>
+                  <th className="p-4 font-semibold">Revenue</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-neutral-800">
+                {sourceBreakdown.length === 0 ? (
+                  <tr>
+                    <td colSpan={3} className="p-8 text-center text-neutral-500 text-sm">
+                      No attributed sales yet. Tag campaign links with utm_source to see this fill in.
+                    </td>
+                  </tr>
+                ) : (
+                  sourceBreakdown.map((row) => (
+                    <tr key={row.source} className="hover:bg-neutral-800/50 transition">
+                      <td className="p-4 text-sm text-white capitalize">{row.source}</td>
+                      <td className="p-4 text-sm text-neutral-300">{row.sales}</td>
+                      <td className="p-4 text-sm font-bold text-emerald-400">{usd(row.revenue)}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Recent Transactions Table */}

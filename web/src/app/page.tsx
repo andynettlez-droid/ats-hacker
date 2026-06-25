@@ -1,6 +1,25 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { track } from '@vercel/analytics';
 import { UploadCloud, CheckCircle, Shield, ArrowRight, FileText, Gauge, XCircle, Share2 } from 'lucide-react';
+
+// First-touch UTM keys we persist for sale attribution.
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
+
+// Read persisted (first-touch) UTM values from sessionStorage. Returns only
+// the keys that have a stored value. Guarded so it never throws (SSR / privacy).
+function getStoredUtms(): Record<string, string> {
+  const out: Record<string, string> = {};
+  try {
+    for (const key of UTM_KEYS) {
+      const val = sessionStorage.getItem(key);
+      if (val) out[key] = val;
+    }
+  } catch {
+    /* sessionStorage unavailable */
+  }
+  return out;
+}
 
 interface ScoreResult {
   score: number;
@@ -18,6 +37,22 @@ export default function Home() {
   const [score, setScore] = useState<ScoreResult | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // On first load, capture UTM params from the URL and persist them (first-touch:
+  // only set if not already stored). Used later for sale attribution at checkout.
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      for (const key of UTM_KEYS) {
+        const incoming = params.get(key);
+        if (incoming && !sessionStorage.getItem(key)) {
+          sessionStorage.setItem(key, incoming.slice(0, 200));
+        }
+      }
+    } catch {
+      /* ignore: URL/sessionStorage unavailable */
+    }
+  }, []);
 
   const handleDragOver = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(true); };
   const handleDragLeave = (e: React.DragEvent) => { e.preventDefault(); setIsDragging(false); };
@@ -76,8 +111,15 @@ export default function Home() {
         return;
       }
       const data = await res.json();
-      if (res.ok) setScore(data);
-      else alert(data.error || "Could not score your resume.");
+      if (res.ok) {
+        setScore(data);
+        // Funnel analytics: a free score was returned. Guarded so it never throws.
+        try {
+          track('score_completed', { score: data?.score ?? 0 });
+        } catch {
+          /* analytics best-effort */
+        }
+      } else alert(data.error || "Could not score your resume.");
     } catch (err) {
       console.error(err);
       alert("An error occurred while scoring.");
@@ -89,13 +131,21 @@ export default function Home() {
   const handleCheckout = async () => {
     if (!validateInputs()) return;
     setIsLoading(true);
+    // Funnel analytics: user initiated payment. Guarded so it never throws.
+    try {
+      track('checkout_started');
+    } catch {
+      /* analytics best-effort */
+    }
     try {
       // Reuse cached text if we already scored; otherwise extract now.
       if (!sessionStorage.getItem('resumeText')) await extractResumeText();
+      // Attach first-touch UTM params so Stripe metadata can attribute the sale.
+      const utms = getStoredUtms();
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fileName: file!.name, jobDescription }),
+        body: JSON.stringify({ fileName: file!.name, jobDescription, ...utms }),
       });
       const contentType = res.headers.get('content-type');
       if (contentType && contentType.includes('text/html')) {

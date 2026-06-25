@@ -73,6 +73,8 @@ export async function GET() {
     const daily = emptyDailySeries(periodStart, WINDOW_DAYS);
     const dailyIndex = new Map(daily.map((d, i) => [d.date, i]));
     const transactions: Transaction[] = [];
+    // Sale attribution: group current-window sales by first-touch utm_source.
+    const sourceMap = new Map<string, { sales: number; revenue: number }>();
 
     for (const s of paid) {
       const created = s.created ?? 0;
@@ -91,6 +93,13 @@ export async function GET() {
           daily[idx].revenue += amountDollars;
           daily[idx].sales += 1;
         }
+
+        // Attribute the sale to its first-touch source (fallback: 'direct').
+        const source = s.metadata?.utm_source || 'direct';
+        const bucket = sourceMap.get(source) ?? { sales: 0, revenue: 0 };
+        bucket.sales += 1;
+        bucket.revenue += amountDollars;
+        sourceMap.set(source, bucket);
 
         const email =
           s.customer_details?.email ?? s.customer_email ?? null;
@@ -135,6 +144,15 @@ export async function GET() {
     transactions.sort((a, b) => (a.date < b.date ? 1 : -1));
     const recentTransactions = transactions.slice(0, 10);
 
+    // Traffic source breakdown, highest revenue first.
+    const sourceBreakdown = Array.from(sourceMap.entries())
+      .map(([source, v]) => ({
+        source,
+        sales: v.sales,
+        revenue: Math.round(v.revenue * 100) / 100,
+      }))
+      .sort((a, b) => b.revenue - a.revenue);
+
     return NextResponse.json({
       currency: 'usd',
       windowDays: WINDOW_DAYS,
@@ -144,6 +162,7 @@ export async function GET() {
       growthRate: Math.round(growthRate * 10) / 10,
       dailySeries: daily,
       recentTransactions,
+      sourceBreakdown,
       generatedAt: new Date().toISOString(),
     });
   } catch (error: unknown) {
@@ -161,6 +180,7 @@ export async function GET() {
         growthRate: 0,
         dailySeries: emptyDailySeries(periodStart, WINDOW_DAYS),
         recentTransactions: [],
+        sourceBreakdown: [],
         generatedAt: new Date().toISOString(),
         error: 'stripe_unavailable',
       },

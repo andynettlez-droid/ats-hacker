@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     
     const origin = req.headers.get('origin') || 'https://ats-hacker-swart.vercel.app';
     
-    // Create a Stripe Checkout Session for $5
+    // Create a Stripe Checkout Session for $9.99
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
               name: 'ATSHacker — Resume Optimization',
               description: '1x semantic job-description optimization',
             },
-            unit_amount: 500, // $5.00
+            unit_amount: 999, // $9.99
           },
           quantity: 1,
         },

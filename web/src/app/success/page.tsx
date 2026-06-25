@@ -181,6 +181,8 @@ function SuccessPageContent() {
   const [isDone, setIsDone] = useState(false);
   const [resumeData, setResumeData] = useState<any>(null);
   const [baseName, setBaseName] = useState("optimized_resume");
+  const [beforeScore, setBeforeScore] = useState<number | null>(null);
+  const [afterScore, setAfterScore] = useState<number | null>(null);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -227,6 +229,27 @@ function SuccessPageContent() {
         setStatus("Resume optimized! Download as PDF or .docx below.");
         setIsDone(true);
 
+        // Before/after ATS match score (non-blocking) — proves the optimization worked.
+        const optimizedText = [
+          json.summary,
+          (json.skills || []).join(' '),
+          (json.experience || []).map((e: any) => `${e.title} ${e.company} ${(e.bullets || []).join(' ')}`).join(' '),
+          (json.certifications || []).join(' '),
+          (json.education || []).map((e: any) => `${e.school} ${e.degree}`).join(' '),
+        ].filter(Boolean).join(' ');
+        const scoreOf = (text: string) =>
+          fetch('/api/score', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ resumeText: text, jobDescription }),
+          })
+            .then((r) => (r.ok ? r.json() : null))
+            .catch(() => null);
+        Promise.all([scoreOf(resumeText), scoreOf(optimizedText)]).then(([b, a]) => {
+          if (b && typeof b.score === 'number') setBeforeScore(b.score);
+          if (a && typeof a.score === 'number') setAfterScore(a.score);
+        });
+
         // Cleanup storage so we don't hold sensitive data.
         sessionStorage.removeItem('resumeText');
         sessionStorage.removeItem('jobDescription');
@@ -266,6 +289,25 @@ function SuccessPageContent() {
 
         {isDone && (
           <div className="pt-4 space-y-4">
+            {beforeScore !== null && afterScore !== null && (
+              <div className="bg-neutral-950 border border-neutral-800 rounded-xl p-5">
+                <p className="text-xs font-semibold text-neutral-400 mb-3 tracking-wide">ATS MATCH SCORE</p>
+                <div className="flex items-center justify-center gap-5">
+                  <div className="text-center">
+                    <div className="text-3xl font-black text-red-400">{beforeScore}</div>
+                    <div className="text-[10px] uppercase tracking-wide text-neutral-500">Before</div>
+                  </div>
+                  <span className="text-2xl text-neutral-600">&rarr;</span>
+                  <div className="text-center">
+                    <div className="text-3xl font-black text-emerald-500">{afterScore}</div>
+                    <div className="text-[10px] uppercase tracking-wide text-neutral-500">After</div>
+                  </div>
+                </div>
+                {afterScore > beforeScore && (
+                  <p className="text-xs text-emerald-400 mt-3">+{afterScore - beforeScore} point keyword-match improvement.</p>
+                )}
+              </div>
+            )}
             <p className="text-sm text-neutral-500">
               Your PDF downloaded automatically. ATS often parse .docx more reliably — grab that version too if you&apos;re applying through Workday or Greenhouse.
             </p>

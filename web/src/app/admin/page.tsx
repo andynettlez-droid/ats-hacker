@@ -266,17 +266,26 @@ export default function AdminDashboard() {
             ATS<span className="text-emerald-500">Hacker.</span>
           </div>
           <nav className="space-y-2">
-            <a href="#" className="flex items-center space-x-3 px-4 py-3 bg-emerald-500/10 text-emerald-500 rounded-xl font-medium transition">
+            <button
+              onClick={loadStats}
+              className="w-full text-left flex items-center space-x-3 px-4 py-3 bg-emerald-500/10 text-emerald-500 rounded-xl font-medium transition"
+            >
               <LayoutDashboard className="w-5 h-5" />
               <span>Dashboard</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 px-4 py-3 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl font-medium transition">
+            </button>
+            <button
+              onClick={() => document.getElementById('transactions')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-full text-left flex items-center space-x-3 px-4 py-3 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl font-medium transition"
+            >
               <Users className="w-5 h-5" />
               <span>Customers</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 px-4 py-3 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl font-medium transition">
+            </button>
+            <a
+              href="/"
+              className="flex items-center space-x-3 px-4 py-3 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl font-medium transition"
+            >
               <Settings className="w-5 h-5" />
-              <span>Settings</span>
+              <span>View Site</span>
             </a>
           </nav>
         </div>
@@ -389,7 +398,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Recent Transactions Table */}
-        <div className="bg-neutral-900 border border-neutral-800 rounded-2xl shadow-xl overflow-hidden">
+        <div id="transactions" className="bg-neutral-900 border border-neutral-800 rounded-2xl shadow-xl overflow-hidden scroll-mt-6">
           <div className="p-6 border-b border-neutral-800 flex justify-between items-center">
             <h2 className="text-xl font-bold text-white">Recent Transactions</h2>
             <span className="text-sm text-neutral-500 font-medium">

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from 'react';
-import { UploadCloud, CheckCircle, Shield, ArrowRight, FileText, Gauge, XCircle } from 'lucide-react';
+import { UploadCloud, CheckCircle, Shield, ArrowRight, FileText, Gauge, XCircle, Share2 } from 'lucide-react';
 
 interface ScoreResult {
   score: number;
@@ -113,6 +113,23 @@ export default function Home() {
     }
   };
 
+  const shareScore = async () => {
+    if (!score) return;
+    const missing = score.missingKeywords?.length || 0;
+    const url = `${window.location.origin}/s/${score.score}?m=${missing}`;
+    const text = `My resume scored ${score.score}/100 on ATSHacker for this job. Check yours free:`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: 'ATSHacker', text, url });
+      } else {
+        await navigator.clipboard.writeText(`${text} ${url}`);
+        alert('Share link copied to clipboard!');
+      }
+    } catch {
+      /* user cancelled share */
+    }
+  };
+
   const scoreColor = score
     ? score.score >= 75 ? 'text-emerald-500' : score.score >= 50 ? 'text-yellow-500' : 'text-red-500'
     : '';
@@ -146,7 +163,7 @@ export default function Home() {
             </h1>
 
             <p className="text-xl text-neutral-400 leading-relaxed max-w-lg">
-              About 75% of resumes are thrown out by Applicant Tracking Systems before a human ever sees them. Check your match score free, then rewrite your resume to match the job for <span className="text-white font-bold">$5.00</span>.
+              About 75% of resumes are thrown out by Applicant Tracking Systems before a human ever sees them. Check your match score free, then rewrite your resume to match the job for <span className="text-white font-bold">$9.99</span>.
             </p>
 
             <div className="space-y-4">
@@ -242,6 +259,13 @@ export default function Home() {
                     </div>
                   )}
                   <p className="text-xs text-emerald-400 font-medium">Unlock the full rewrite below to fix every gap.</p>
+                  <button
+                    onClick={shareScore}
+                    className="w-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white text-sm font-semibold py-2.5 rounded-lg transition flex items-center justify-center gap-2"
+                  >
+                    <Share2 className="w-4 h-4 text-emerald-500" />
+                    <span>Share my score</span>
+                  </button>
                 </div>
               )}
 
@@ -251,7 +275,7 @@ export default function Home() {
                 disabled={isLoading}
                 className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span>{isLoading ? "Connecting to Stripe..." : "Pay $5.00 to Optimize"}</span>
+                <span>{isLoading ? "Connecting to Stripe..." : "Pay $9.99 to Optimize"}</span>
                 {!isLoading && <ArrowRight className="w-5 h-5" />}
               </button>
 

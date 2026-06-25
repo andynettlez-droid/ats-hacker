@@ -440,6 +440,52 @@ export default function Home() {
           </div>
 
         </div>
+
+        {/* How it works */}
+        <section id="how-it-works" className="pt-24 scroll-mt-24">
+          <h2 className="text-3xl lg:text-4xl font-black text-center tracking-tight">How it works</h2>
+          <p className="text-neutral-400 text-center mt-3 mb-12">Three steps. About 60 seconds.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 font-bold flex items-center justify-center">1</span><UploadCloud className="w-5 h-5 text-emerald-500" /></div>
+              <h3 className="font-bold text-lg mb-1">Upload &amp; paste</h3>
+              <p className="text-sm text-neutral-400">Drop in your resume (PDF) and paste the job description you&apos;re targeting.</p>
+            </div>
+            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 font-bold flex items-center justify-center">2</span><Gauge className="w-5 h-5 text-emerald-500" /></div>
+              <h3 className="font-bold text-lg mb-1">Get your free score</h3>
+              <p className="text-sm text-neutral-400">See your 0&ndash;100 keyword match and the exact terms your resume is missing &mdash; free.</p>
+            </div>
+            <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-500 font-bold flex items-center justify-center">3</span><Zap className="w-5 h-5 text-emerald-500" /></div>
+              <h3 className="font-bold text-lg mb-1">Optimize for $9.99</h3>
+              <p className="text-sm text-neutral-400">We rewrite it to match the job &mdash; honestly &mdash; and hand back a clean PDF and .docx.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing */}
+        <section id="pricing" className="pt-24 scroll-mt-24 max-w-md mx-auto w-full">
+          <h2 className="text-3xl lg:text-4xl font-black text-center tracking-tight">Simple pricing</h2>
+          <p className="text-neutral-400 text-center mt-3 mb-10">No subscription. Pay only when you want the rewrite.</p>
+          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
+            <div className="flex items-baseline gap-2 mb-6"><span className="text-5xl font-black">$9.99</span><span className="text-neutral-500">/ one resume</span></div>
+            <ul className="space-y-3 mb-8">
+              {[
+                "Free ATS match score + missing keywords",
+                "Honest rewrite — no fabricated experience",
+                "Polished PDF and ATS-friendly .docx",
+                "No subscription, no account required",
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-3 text-sm text-neutral-300"><CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" /><span>{t}</span></li>
+              ))}
+            </ul>
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition flex items-center justify-center gap-2">
+              <span>Check my score — free</span><ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </section>
       </main>
 
     </div>

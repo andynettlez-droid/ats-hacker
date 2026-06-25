@@ -23,3 +23,8 @@ venv/
 Thumbs.db
 *.log
 marketing/autopost/videos/
+
+# Remotion (marketing/remotion)
+marketing/remotion/node_modules/
+marketing/remotion/out/
+marketing/remotion/build/

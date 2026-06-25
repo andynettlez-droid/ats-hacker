@@ -1,0 +1,24 @@
+{
+  "name": "atshacker-remotion",
+  "version": "1.0.0",
+  "description": "Remotion pipeline for ATSHacker captioned vertical short-form videos (TikTok/Reels/Shorts).",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render ScoreReveal out/score-reveal.mp4",
+    "bundle": "remotion bundle",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.483",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.483",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.5.4"
+  }
+}

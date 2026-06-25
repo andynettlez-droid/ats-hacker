@@ -28,6 +28,67 @@ interface ScoreResult {
   verdict: string;
 }
 
+const BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ats-hacker-swart.vercel.app').replace(/\/$/, '');
+
+// Product/Offer structured data for the $9.99 honest resume rewrite.
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'ATSHacker',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: BASE,
+  description:
+    'Free ATS keyword match score plus an honest $9.99 resume rewrite that semantically matches the target job description so your resume ranks higher in recruiter search.',
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'USD',
+    price: '9.99',
+    availability: 'https://schema.org/InStock',
+    url: BASE,
+  },
+};
+
+// Honest FAQ — never claims an ATS "auto-rejects" applicants.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Does an ATS auto-reject resumes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. An Applicant Tracking System does not automatically reject you. It stores and indexes resumes so recruiters can search and rank them by keyword. Resumes that closely match the job description rank higher and are far more likely to be seen — roughly 3x — while poorly matched resumes get buried lower in the results.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is an ATS match score?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'It is a 0–100 measure of how closely your resume’s keywords and skills overlap with a specific job description. A higher score means your resume is more likely to surface near the top when a recruiter searches their ATS for that role.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is the match score free?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Checking your ATS keyword match score and seeing which keywords you are missing is completely free. The optional honest rewrite is a one-time $9.99 with no subscription.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you fabricate experience to boost the score?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. We never invent jobs, skills, or experience you do not have. We rewrite and reframe your real background to surface the keywords and accomplishments that genuinely match the job description.',
+      },
+    },
+  ],
+};
+
 // Animated count-up to a target number. Honors prefers-reduced-motion by
 // snapping straight to the target. Guarded for SSR.
 function useCountUp(target: number | null, durationMs = 1100): number {
@@ -223,6 +284,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-500/20">
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       {/* Navigation */}
       <nav className="w-full px-6 py-5 flex justify-between items-center max-w-7xl mx-auto">

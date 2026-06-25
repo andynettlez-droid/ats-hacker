@@ -4,6 +4,8 @@ import { CheckCircle, ArrowRight, XCircle, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
 import { roles, roleMap, type Role } from '@/data/roles';
 
+const BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ats-hacker-swart.vercel.app').replace(/\/$/, '');
+
 type Params = { 'job-title': string };
 
 // Pre-render a page for every role in the dataset at build time (great for SEO).
@@ -46,8 +48,53 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
   const role = getRole(slug);
   const { title, painPoint, keywords, tips } = role;
 
+  // Breadcrumb: Home > Resume Keywords > {Role}
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE },
+      { '@type': 'ListItem', position: 2, name: `${title} Resume Keywords`, item: `${BASE}/tailor/${slug}` },
+    ],
+  };
+
+  // Role-specific honest FAQ — keyword ranking, never "auto-reject".
+  const keywordSample = keywords.slice(0, 4).join(', ');
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `What keywords should a ${title} resume include for the ATS?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: keywords.length
+            ? `Recruiters rank ${title} resumes by how well they match the job description. Common keywords an ATS scans for include ${keywordSample}. Mirror the exact terms used in the specific posting you are applying to so your resume ranks higher in recruiter search.`
+            : `Recruiters rank ${title} resumes by how well they match the job description. Mirror the exact skills, tools, and job title used in the specific posting so your resume ranks higher in recruiter search.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `Will an ATS automatically reject my ${title} resume?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `No. The ATS does not auto-reject you. It indexes ${title} resumes so recruiters can search and rank them by keyword. A resume that closely matches the posting ranks higher and is more likely to be seen, while a poorly matched one gets buried lower in the results.`,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-500/20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <nav className="w-full p-6 flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-2.5">
           <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />

@@ -198,6 +198,116 @@ export const roles: Role[] = [
       'Quantify: calendars managed, travel booked, executives supported.',
     ],
   },
+  {
+    slug: 'nurse-practitioner',
+    title: 'Nurse Practitioner',
+    painPoint: "NP resumes rank low when certifications, populations, and prescriptive authority aren't spelled out the way the posting expects. Recruiters search for exact credentials like 'FNP-C' and specific EHR systems, so paraphrasing leaves you buried in the results.",
+    keywords: ['FNP/AGNP', 'patient assessment', 'diagnosis', 'prescriptive authority', 'EHR/Epic', 'care plans', 'chronic disease management', 'BLS/ACLS', 'patient education', 'differential diagnosis', 'primary care', 'DEA license'],
+    tips: [
+      'List the exact certification and population focus (FNP-C, AGNP, PMHNP).',
+      'Spell out prescriptive authority and DEA/state license status clearly.',
+      'Name the EHR (Epic, Cerner) and the setting (primary care, urgent care, telehealth).',
+    ],
+  },
+  {
+    slug: 'software-developer',
+    title: 'Software Developer',
+    painPoint: "Developer resumes rank low when the language or framework version is even slightly off — recruiters search for exact strings, so 'JavaScript' won't surface for a posting that requires 'TypeScript'. Miss the named stack and you drop down the results.",
+    keywords: ['JavaScript/TypeScript', 'React', 'Node.js', 'REST APIs', 'SQL', 'Git', 'unit testing', 'Agile', 'CI/CD', 'debugging', 'object-oriented design', 'cloud (AWS/Azure)'],
+    tips: [
+      'Mirror the exact stack named in the JD — "TypeScript", "React", "PostgreSQL".',
+      'Quantify impact: load time, defects reduced, features shipped, users served.',
+      'Lead each bullet with the language or framework, not the verb.',
+    ],
+  },
+  {
+    slug: 'devops-engineer',
+    title: 'DevOps Engineer',
+    painPoint: "DevOps resumes get buried when the exact tooling isn't named. Recruiters search for 'Kubernetes', 'Terraform' and specific cloud providers verbatim — write 'containers' or 'automation' instead and your resume ranks below the candidates who matched the strings.",
+    keywords: ['CI/CD', 'Kubernetes', 'Docker', 'Terraform', 'AWS', 'Ansible', 'infrastructure as code', 'monitoring', 'Linux', 'Jenkins/GitLab CI', 'Prometheus/Grafana', 'scripting (Bash/Python)'],
+    tips: [
+      'Name the exact orchestration and IaC tools (Kubernetes, Terraform, Ansible).',
+      'Match the cloud provider in the JD — AWS, GCP, or Azure, not just "cloud".',
+      'Quantify: deployment frequency, MTTR, uptime, infra cost saved.',
+    ],
+  },
+  {
+    slug: 'ux-designer',
+    title: 'UX Designer',
+    painPoint: "UX resumes get buried when the design tools and process terms don't match the posting. Recruiters search for 'Figma', 'usability testing' and 'wireframing' exactly, and a portfolio link can't be searched — if the keywords aren't in your text, your resume ranks low.",
+    keywords: ['Figma', 'user research', 'wireframing', 'prototyping', 'usability testing', 'interaction design', 'design systems', 'information architecture', 'accessibility (WCAG)', 'user flows', 'Sketch', 'personas'],
+    tips: [
+      'Name the exact tools in the JD (Figma vs Sketch vs Adobe XD).',
+      'Show outcomes: task success rate, drop-off reduced, conversion lift.',
+      'Use the JD’s process words: "discovery", "usability testing", "design system".',
+    ],
+  },
+  {
+    slug: 'data-engineer',
+    title: 'Data Engineer',
+    painPoint: "Data Engineer resumes rank low when the pipeline tools and warehouses aren't named exactly. Recruiters search for 'Spark', 'Airflow' and 'Snowflake' as literal strings — say 'big data' or 'pipelines' and you fall below candidates who matched the terms.",
+    keywords: ['ETL/ELT', 'Spark', 'Airflow', 'SQL', 'Python', 'data warehousing', 'Snowflake/BigQuery', 'Kafka', 'dbt', 'data modeling', 'AWS/GCP', 'pipeline orchestration'],
+    tips: [
+      'Name the exact warehouse and orchestration tools (Snowflake, Airflow, dbt).',
+      'Quantify scale: rows processed, pipeline latency, data volume, cost saved.',
+      'Match streaming vs batch terms (Kafka, Spark Streaming) as in the JD.',
+    ],
+  },
+  {
+    slug: 'customer-service-representative',
+    title: 'Customer Service Representative',
+    painPoint: "CSR resumes rank low when they describe duties vaguely instead of the channels, tools, and metrics the posting names. Recruiters search for 'CRM', 'ticketing' and specific platforms — generic 'helped customers' ranks below resumes that matched the exact terms.",
+    keywords: ['customer service', 'CRM/Zendesk', 'ticketing', 'conflict resolution', 'phone/email/chat support', 'CSAT', 'order processing', 'troubleshooting', 'data entry', 'de-escalation', 'product knowledge', 'SLA'],
+    tips: [
+      'Name the support platform (Zendesk, Salesforce, Freshdesk) used or required.',
+      'Quantify: tickets/day, CSAT, first-contact resolution, average handle time.',
+      'Match the channels in the JD: phone, email, live chat, social.',
+    ],
+  },
+  {
+    slug: 'executive-assistant',
+    title: 'Executive Assistant',
+    painPoint: "EA resumes rank low when the seniority and tools aren't spelled out the way the posting expects. Recruiters search for 'C-suite', 'calendar management' and exact software names — vague 'admin support' ranks below resumes that matched the terms.",
+    keywords: ['calendar management', 'executive support', 'travel coordination', 'expense reports', 'Microsoft Office', 'Concur', 'meeting coordination', 'confidentiality', 'board materials', 'stakeholder communication', 'project coordination', 'gatekeeping'],
+    tips: [
+      'State the seniority you supported (C-suite, VP, founder) explicitly.',
+      'Name the exact tools (Outlook, Google Workspace, Concur, Slack).',
+      'Quantify: executives supported, calendars managed, travel volume.',
+    ],
+  },
+  {
+    slug: 'sales-manager',
+    title: 'Sales Manager',
+    painPoint: "Sales Manager resumes rank low when leadership impact is described loosely. Recruiters search for 'quota attainment', 'pipeline' and the named CRM first — 'led a team' without the metrics and tools ranks below candidates who matched the exact terms.",
+    keywords: ['quota attainment', 'team leadership', 'pipeline management', 'CRM/Salesforce', 'forecasting', 'coaching', 'territory management', 'revenue growth', 'B2B sales', 'sales strategy', 'KPIs', 'account management'],
+    tips: [
+      'Lead with numbers: team quota %, revenue growth, rep ramp time, retention.',
+      'Name the CRM and methodology (Salesforce, MEDDIC, Challenger).',
+      'Show leadership scope: team size, territories, segment (SMB/enterprise).',
+    ],
+  },
+  {
+    slug: 'recruiter',
+    title: 'Recruiter',
+    painPoint: "Recruiter resumes rank low when the sourcing tools and metrics aren't named. ATS systems search for 'ATS', 'LinkedIn Recruiter' and 'full-cycle recruiting' verbatim — describe it vaguely and your own resume gets buried the way candidates' do.",
+    keywords: ['full-cycle recruiting', 'sourcing', 'LinkedIn Recruiter', 'ATS', 'candidate screening', 'interview coordination', 'Boolean search', 'employer branding', 'offer negotiation', 'pipeline management', 'time-to-fill', 'stakeholder management'],
+    tips: [
+      'Name the ATS (Greenhouse, Lever, Workday) and sourcing tools you used.',
+      'Quantify: roles filled, time-to-fill, offer-accept rate, pipeline built.',
+      'Match the focus: technical, executive, high-volume, or agency recruiting.',
+    ],
+  },
+  {
+    slug: 'teacher',
+    title: 'Teacher',
+    painPoint: "Teacher resumes rank low when certifications, grade levels, and methods aren't spelled out exactly. School ATS systems search for the state license, 'classroom management' and 'differentiated instruction' — paraphrasing those ranks you below matched applicants.",
+    keywords: ['classroom management', 'lesson planning', 'curriculum development', 'differentiated instruction', 'state certification', 'student assessment', 'IEP', 'classroom technology', 'parent communication', 'Common Core', 'special education', 'data-driven instruction'],
+    tips: [
+      'Spell out your certification and grade/subject exactly (e.g. "K-6 certified").',
+      'Match method terms: "differentiated instruction", "PBIS", "IEP", "SEL".',
+      'Quantify outcomes: test score gains, attendance, students taught.',
+    ],
+  },
 ];
 
 export const roleMap: Record<string, Role> = Object.fromEntries(

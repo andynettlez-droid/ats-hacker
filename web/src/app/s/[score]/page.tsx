@@ -49,7 +49,7 @@ export default async function SharePage({ params, searchParams }: { params: Prom
     <div className="min-h-screen bg-white text-slate-900 font-sans flex items-center justify-center p-6 selection:bg-emerald-500/20">
       <div className="bg-white border border-slate-200 rounded-3xl p-10 shadow-sm max-w-md w-full text-center space-y-6">
         <div className="flex items-center justify-center gap-2.5">
-          <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
           <span className="text-2xl font-black tracking-tighter text-slate-900">
             ATS<span className="text-emerald-600">Hacker.</span>
           </span>
@@ -68,7 +68,7 @@ export default async function SharePage({ params, searchParams }: { params: Prom
           Most resumes are ranked by keyword match. See how yours scores against any job — free.
         </p>
         <Link href="/">
-          <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition inline-flex items-center justify-center space-x-2">
+          <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition-all duration-200 active:scale-[0.98] hover:shadow-md inline-flex items-center justify-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2">
             <span>Check my free match score</span>
             <ArrowRight className="w-5 h-5" />
           </button>

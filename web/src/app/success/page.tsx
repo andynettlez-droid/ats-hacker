@@ -282,7 +282,7 @@ function SuccessPageContent() {
       <div className="bg-white border border-slate-200 rounded-3xl p-12 shadow-sm max-w-md w-full text-center space-y-6">
 
         <a href="/" className="flex items-center justify-center gap-2.5">
-          <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
           <span className="text-xl font-black tracking-tighter text-slate-900">
             ATS<span className="text-emerald-600">Hacker.</span>
           </span>
@@ -291,14 +291,14 @@ function SuccessPageContent() {
         {!isDone ? (
           <Loader2 className="w-16 h-16 text-emerald-600 animate-spin mx-auto" />
         ) : (
-          <CheckCircle className="w-16 h-16 text-emerald-600 mx-auto" />
+          <CheckCircle className="ath-score-pop w-16 h-16 text-emerald-600 mx-auto" />
         )}
 
         <h1 className="text-3xl font-bold text-slate-900">Payment Success!</h1>
         <p className="text-slate-600 font-medium">{status}</p>
 
         {isDone && (
-          <div className="pt-4 space-y-4">
+          <div className="ath-reveal pt-4 space-y-4">
             {beforeScore !== null && afterScore !== null && (
               <div className="bg-white border border-slate-200 rounded-xl p-5">
                 <p className="text-xs font-semibold text-slate-400 mb-3 tracking-wide">ATS MATCH SCORE</p>
@@ -331,14 +331,14 @@ function SuccessPageContent() {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleDownloadPdf}
-                className="flex-1 bg-white hover:bg-slate-50 border border-slate-300 text-slate-900 font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2"
+                className="flex-1 bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-900 font-bold py-3 rounded-xl transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40"
               >
                 <Download className="w-5 h-5" />
                 <span>Download PDF</span>
               </button>
               <button
                 onClick={handleDownloadDocx}
-                className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2"
+                className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition-all duration-200 active:scale-[0.98] hover:shadow-md flex items-center justify-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2"
               >
                 <FileText className="w-5 h-5" />
                 <span>Download .docx</span>

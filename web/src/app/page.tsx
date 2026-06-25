@@ -225,28 +225,28 @@ export default function Home() {
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-500/20">
 
       {/* Navigation */}
-      <nav className="w-full p-6 flex justify-between items-center max-w-7xl mx-auto">
+      <nav className="w-full px-6 py-5 flex justify-between items-center max-w-7xl mx-auto">
         <div className="flex items-center gap-2.5">
-          <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <img src="/logo-mark.png" alt="ATSHacker" width="34" height="34" className="rounded-full" />
           <span className="text-2xl font-black tracking-tighter text-slate-900">
             ATS<span className="text-emerald-600">Hacker.</span>
           </span>
         </div>
-        <div className="flex items-center space-x-6 text-sm font-medium text-slate-600">
-          <a href="#how-it-works" className="hover:text-slate-900 transition">How it Works</a>
-          <a href="#pricing" className="hover:text-slate-900 transition">Pricing</a>
+        <div className="flex items-center gap-6 text-sm font-medium text-slate-600">
+          <a href="#how-it-works" className="hover:text-emerald-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 rounded">How it Works</a>
+          <a href="#pricing" className="hover:text-emerald-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 rounded">Pricing</a>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 pt-16 pb-24 lg:pt-20 lg:pb-32">
+      <main className="max-w-7xl mx-auto px-6 pt-8 pb-24 lg:pt-12 lg:pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left: pitch */}
           <div className="space-y-7">
-            <div className="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-800 px-3.5 py-1.5 rounded-full text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Optimized for how Workday &amp; Greenhouse rank candidates</span>
+              <span>Built for how Workday &amp; Greenhouse rank you</span>
             </div>
 
             <h1 className="text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight text-slate-900">
@@ -275,7 +275,7 @@ export default function Home() {
 
           {/* Right: the tool */}
           <div className="space-y-4">
-            <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-emerald-300">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
 
               <h2 className="text-2xl font-bold mb-6 text-slate-900">Check Your Resume</h2>
@@ -332,7 +332,7 @@ export default function Home() {
                 <button
                   onClick={handleScore}
                   disabled={isScoring}
-                  className="w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-900 font-bold text-base py-3 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-900 font-bold text-base py-3 rounded-xl transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40"
                 >
                   <Gauge className="w-5 h-5 text-emerald-600" />
                   <span>{isScoring ? "Scoring..." : "Get Free Match Score"}</span>
@@ -340,12 +340,12 @@ export default function Home() {
 
                 {/* Score result panel — the score is the hero */}
                 {score && (
-                  <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-5 shadow-sm">
+                  <div className="ath-reveal bg-white border border-slate-200 rounded-2xl p-6 space-y-5 shadow-sm">
                     {/* Hero score number */}
                     <div className="flex flex-col items-center text-center pt-1">
                       <span className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Your ATS Match Score</span>
                       <div className="flex items-end justify-center leading-none">
-                        <span className={`text-7xl font-black tabular-nums ${scoreColor}`}>{animatedScore}</span>
+                        <span className={`ath-score-pop text-7xl font-black tabular-nums ${scoreColor}`}>{animatedScore}</span>
                         <span className="text-2xl font-bold text-slate-300 mb-1.5">/100</span>
                       </div>
                     </div>
@@ -359,7 +359,7 @@ export default function Home() {
                         <p className="text-xs font-semibold text-emerald-700 mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> Matched keywords ({score.matchedKeywords.length})</p>
                         <div className="flex flex-wrap gap-2">
                           {score.matchedKeywords.map((k, i) => (
-                            <span key={i} className="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs">{k}</span>
+                            <span key={i} className="inline-flex items-center bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md text-xs font-medium">{k}</span>
                           ))}
                         </div>
                       </div>
@@ -369,7 +369,7 @@ export default function Home() {
                         <p className="text-xs font-semibold text-red-700 mb-2 flex items-center"><XCircle className="w-4 h-4 mr-1" /> Missing keywords ({score.missingKeywords.length})</p>
                         <div className="flex flex-wrap gap-2">
                           {score.missingKeywords.map((k, i) => (
-                            <span key={i} className="bg-red-100 text-red-800 px-2 py-0.5 rounded text-xs">{k}</span>
+                            <span key={i} className="inline-flex items-center bg-red-100 text-red-800 px-2.5 py-1 rounded-md text-xs font-medium">{k}</span>
                           ))}
                         </div>
                       </div>
@@ -379,7 +379,7 @@ export default function Home() {
                     <button
                       onClick={handleCheckout}
                       disabled={isLoading}
-                      className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base py-3.5 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+                      className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base py-3.5 rounded-xl transition-all duration-200 active:scale-[0.98] hover:shadow-md flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2"
                     >
                       <span>
                         {isLoading
@@ -393,7 +393,7 @@ export default function Home() {
                     {/* Share-first: prominent after a score. */}
                     <button
                       onClick={shareScore}
-                      className="w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-900 text-sm font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2"
+                      className="w-full bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-900 text-sm font-semibold py-3 rounded-xl transition-all duration-200 active:scale-[0.98] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40"
                     >
                       <Share2 className="w-4 h-4 text-emerald-600" />
                       <span>Share my score</span>
@@ -406,7 +406,7 @@ export default function Home() {
                   <button
                     onClick={handleCheckout}
                     disabled={isLoading}
-                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition-all duration-200 active:scale-[0.98] hover:shadow-md flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2"
                   >
                     <span>{isLoading ? "Connecting to Stripe..." : "Pay $9.99 to Optimize"}</span>
                     {!isLoading && <ArrowRight className="w-5 h-5" />}
@@ -420,19 +420,19 @@ export default function Home() {
 
             {/* Honest trust row — truthful signals only, no ratings/testimonials. */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3">
+              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-white hover:shadow-sm">
                 <BadgeCheck className="w-5 h-5 text-emerald-600" />
                 <span className="text-[11px] leading-tight text-slate-600 font-medium">No subscription</span>
               </div>
-              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3">
+              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-white hover:shadow-sm">
                 <Lock className="w-5 h-5 text-emerald-600" />
                 <span className="text-[11px] leading-tight text-slate-600 font-medium">Your resume is never stored</span>
               </div>
-              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3">
+              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-white hover:shadow-sm">
                 <Shield className="w-5 h-5 text-emerald-600" />
                 <span className="text-[11px] leading-tight text-slate-600 font-medium">Honest rewrite — no fabricated experience</span>
               </div>
-              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3">
+              <div className="flex flex-col items-center text-center gap-1.5 bg-slate-50 border border-slate-200 rounded-xl px-2 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-white hover:shadow-sm">
                 <Zap className="w-5 h-5 text-emerald-600" />
                 <span className="text-[11px] leading-tight text-slate-600 font-medium">Instant</span>
               </div>
@@ -442,21 +442,21 @@ export default function Home() {
         </div>
 
         {/* How it works */}
-        <section id="how-it-works" className="pt-24 scroll-mt-24">
+        <section id="how-it-works" className="pt-28 scroll-mt-24">
           <h2 className="text-3xl lg:text-4xl font-black text-center tracking-tight text-slate-900">How it works</h2>
           <p className="text-slate-600 text-center mt-3 mb-12">Three steps. About 60 seconds.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
               <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center">1</span><UploadCloud className="w-5 h-5 text-emerald-600" /></div>
               <h3 className="font-bold text-lg mb-1 text-slate-900">Upload &amp; paste</h3>
               <p className="text-sm text-slate-600">Drop in your resume (PDF) and paste the job description you&apos;re targeting.</p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
               <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center">2</span><Gauge className="w-5 h-5 text-emerald-600" /></div>
               <h3 className="font-bold text-lg mb-1 text-slate-900">Get your free score</h3>
               <p className="text-sm text-slate-600">See your 0&ndash;100 keyword match and the exact terms your resume is missing &mdash; free.</p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md">
               <div className="flex items-center gap-3 mb-3"><span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center">3</span><Zap className="w-5 h-5 text-emerald-600" /></div>
               <h3 className="font-bold text-lg mb-1 text-slate-900">Optimize for $9.99</h3>
               <p className="text-sm text-slate-600">We rewrite it to match the job &mdash; honestly &mdash; and hand back a clean PDF and .docx.</p>
@@ -465,10 +465,10 @@ export default function Home() {
         </section>
 
         {/* Pricing */}
-        <section id="pricing" className="pt-24 scroll-mt-24 max-w-md mx-auto w-full">
+        <section id="pricing" className="pt-28 scroll-mt-24 max-w-md mx-auto w-full">
           <h2 className="text-3xl lg:text-4xl font-black text-center tracking-tight text-slate-900">Simple pricing</h2>
           <p className="text-slate-600 text-center mt-3 mb-10">No subscription. Pay only when you want the rewrite.</p>
-          <div className="bg-white border border-slate-200 rounded-3xl p-8 relative overflow-hidden shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 relative overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-lg">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
             <div className="flex items-baseline gap-2 mb-6"><span className="text-5xl font-black text-slate-900">$9.99</span><span className="text-slate-500">/ one resume</span></div>
             <ul className="space-y-3 mb-8">
@@ -481,7 +481,7 @@ export default function Home() {
                 <li key={t} className="flex items-start gap-3 text-sm text-slate-700"><CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" /><span>{t}</span></li>
               ))}
             </ul>
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition flex items-center justify-center gap-2">
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl transition-all duration-200 active:scale-[0.98] hover:shadow-md flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2">
               <span>Check my score — free</span><ArrowRight className="w-5 h-5" />
             </button>
           </div>
@@ -492,7 +492,7 @@ export default function Home() {
       <footer className="border-t border-slate-200 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3 text-center sm:text-left">
-            <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+            <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
             <div>
               <div className="text-lg font-black tracking-tighter text-slate-900">
                 ATS<span className="text-emerald-600">Hacker.</span>
@@ -500,9 +500,9 @@ export default function Home() {
               <p className="text-xs text-slate-500">Honest resume keyword matching — no subscription.</p>
             </div>
           </div>
-          <div className="flex items-center space-x-6 text-sm font-medium text-slate-600">
-            <a href="#how-it-works" className="hover:text-slate-900 transition">How it Works</a>
-            <a href="#pricing" className="hover:text-slate-900 transition">Pricing</a>
+          <div className="flex items-center gap-6 text-sm font-medium text-slate-600">
+            <a href="#how-it-works" className="hover:text-emerald-600 transition-colors">How it Works</a>
+            <a href="#pricing" className="hover:text-emerald-600 transition-colors">Pricing</a>
           </div>
         </div>
       </footer>

@@ -50,7 +50,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-emerald-500/20">
       <nav className="w-full p-6 flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-2.5">
-          <img src="/logo.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
           <span className="text-2xl font-black tracking-tighter text-slate-900">
             ATS<span className="text-emerald-600">Hacker.</span>
           </span>
@@ -76,7 +76,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
         </p>
 
         <Link href="/">
-          <button className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xl py-5 px-12 rounded-2xl transition inline-flex items-center space-x-3 shadow-sm">
+          <button className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xl py-5 px-12 rounded-2xl transition-all duration-200 active:scale-[0.98] hover:shadow-md inline-flex items-center space-x-3 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2">
             <span>Get my free {title} match score</span>
             <ArrowRight className="w-6 h-6" />
           </button>
@@ -94,7 +94,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
             </p>
             <div className="flex flex-wrap gap-3 mb-12">
               {keywords.map((k, i) => (
-                <span key={i} className="bg-white border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-sm shadow-sm">{k}</span>
+                <span key={i} className="inline-flex items-center bg-white border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg text-sm shadow-sm transition-colors hover:border-emerald-300">{k}</span>
               ))}
             </div>
           </section>
@@ -117,7 +117,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
 
         <div className="mt-16">
           <Link href="/">
-            <button className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 px-10 rounded-2xl transition inline-flex items-center space-x-3">
+            <button className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 px-10 rounded-2xl transition-all duration-200 active:scale-[0.98] hover:shadow-md inline-flex items-center space-x-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2">
               <span>Score &amp; optimize my {title} resume</span>
               <ArrowRight className="w-5 h-5" />
             </button>

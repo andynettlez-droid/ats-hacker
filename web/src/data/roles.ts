@@ -14,7 +14,7 @@ export const roles: Role[] = [
   {
     slug: 'software-engineer',
     title: 'Software Engineer',
-    painPoint: "Applicant Tracking Systems at FAANG and Fortune 500 companies filter aggressively for specific framework versions. If your resume format breaks their parser, your technical skills get stripped out entirely and you're instantly rejected.",
+    painPoint: "Recruiters at FAANG and Fortune 500 companies search for specific framework versions. If your resume format breaks the parser, your technical skills get stripped out and you rank low in their search results.",
     keywords: ['CI/CD', 'REST APIs', 'microservices', 'unit testing', 'Agile/Scrum', 'code review', 'system design', 'cloud (AWS/GCP/Azure)', 'Git', 'distributed systems'],
     tips: [
       'Lead each bullet with a language or framework the JD names (e.g. "Built React + Node services…").',
@@ -36,7 +36,7 @@ export const roles: Role[] = [
   {
     slug: 'data-scientist',
     title: 'Data Scientist',
-    painPoint: "Data Science resumes fail ATS tests because recruiters program rigid, exact string matches — the system won't treat TensorFlow and PyTorch as interchangeable, so missing the exact term means instant rejection.",
+    painPoint: "Data Science resumes rank low because recruiters search with rigid, exact string matches — the system won't treat TensorFlow and PyTorch as interchangeable, so missing the exact term buries you in the results.",
     keywords: ['machine learning', 'Python/R', 'data visualization', 'statistical modeling', 'SQL', 'deep learning', 'feature engineering', 'A/B testing', 'NLP', 'model deployment'],
     tips: [
       'Match the exact library named (TensorFlow vs PyTorch vs scikit-learn).',
@@ -58,7 +58,7 @@ export const roles: Role[] = [
   {
     slug: 'registered-nurse',
     title: 'Registered Nurse',
-    painPoint: "Healthcare ATS systems like Taleo are notoriously rigid. If your certifications (ACLS, BLS) and unit specialties aren't formatted exactly how the hospital's algorithm expects, your application is automatically discarded.",
+    painPoint: "Healthcare ATS systems like Taleo are notoriously rigid. If your certifications (ACLS, BLS) and unit specialties aren't formatted exactly how the hospital's search expects, your application gets filtered out of the recruiter's results.",
     keywords: ['patient care', 'BLS/ACLS', 'EHR/EMR', 'medication administration', 'care plans', 'HIPAA', 'triage', 'vital signs', 'patient education', 'charting'],
     tips: [
       'List certifications and licenses exactly (RN, BLS, ACLS, state license).',
@@ -102,7 +102,7 @@ export const roles: Role[] = [
   {
     slug: 'mechanical-engineer',
     title: 'Mechanical Engineer',
-    painPoint: "Engineering resumes get auto-rejected when the CAD tool or acronym is even slightly off — the ATS treats 'SolidWorks' and 'Solid Works' as different, and won't expand GD&T or FEA for you.",
+    painPoint: "Engineering resumes get buried when the CAD tool or acronym is even slightly off — the ATS treats 'SolidWorks' and 'Solid Works' as different, and won't expand GD&T or FEA for you, so you drop out of keyword search results.",
     keywords: ['CAD', 'SolidWorks', 'AutoCAD', 'GD&T', 'FEA', 'prototyping', 'DFM', 'tolerancing', 'product development', 'ASME'],
     tips: [
       'Name the CAD tool exactly as the JD does (SolidWorks vs CATIA vs Creo).',
@@ -157,7 +157,7 @@ export const roles: Role[] = [
   {
     slug: 'financial-analyst',
     title: 'Financial Analyst',
-    painPoint: "Finance resumes get auto-rejected when they say 'analyzed data' instead of 'financial modeling', 'FP&A' and 'variance analysis'. The ATS is tuned for those exact phrases, and synonyms don't count.",
+    painPoint: "Finance resumes rank low when they say 'analyzed data' instead of 'financial modeling', 'FP&A' and 'variance analysis'. Recruiters search for those exact phrases, and synonyms don't count, so you get buried.",
     keywords: ['financial modeling', 'forecasting', 'variance analysis', 'Excel', 'budgeting', 'valuation', 'P&L', 'FP&A', 'data analysis', 'GAAP'],
     tips: [
       'Include "financial modeling", "FP&A", and "variance analysis" verbatim if listed.',

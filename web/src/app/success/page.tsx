@@ -183,6 +183,7 @@ function SuccessPageContent() {
   const [baseName, setBaseName] = useState("optimized_resume");
   const [beforeScore, setBeforeScore] = useState<number | null>(null);
   const [afterScore, setAfterScore] = useState<number | null>(null);
+  const [optimizationLow, setOptimizationLow] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -221,6 +222,8 @@ function SuccessPageContent() {
         setStatus("Building your optimized resume...");
         const json = await res.json();
         setResumeData(json);
+        // The rewrite API flags resumes that were already a strong match.
+        if (json._warning === 'optimization_low') setOptimizationLow(true);
 
         // Auto-download the PDF for instant gratification.
         const blob = await pdf(<ResumePDF data={json} />).toBlob();
@@ -306,6 +309,13 @@ function SuccessPageContent() {
                 {afterScore > beforeScore && (
                   <p className="text-xs text-emerald-400 mt-3">+{afterScore - beforeScore} point keyword-match improvement.</p>
                 )}
+              </div>
+            )}
+            {optimizationLow && (
+              <div className="bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-left">
+                <p className="text-xs text-neutral-400">
+                  This resume was already fairly well-matched to the job — we still tightened the keywords and phrasing for a cleaner read.
+                </p>
               </div>
             )}
             <p className="text-sm text-neutral-500">

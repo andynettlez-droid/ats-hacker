@@ -20,7 +20,7 @@ function getRole(slug: string): Role {
     roleMap[slug] || {
       slug,
       title: titleFromSlug(slug),
-      painPoint: "Applicant Tracking Systems are ruthless. If your resume doesn't semantically match the job description, you get auto-rejected before a human ever sees it.",
+      painPoint: "Recruiters search and rank candidates by keyword. If your resume doesn't semantically match the job description, it ranks low and gets buried before a human ever scrolls to it.",
       keywords: [],
       tips: [
         'Mirror the exact keywords and job title from the posting near the top of your resume.',
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const title = getRole(slug).title;
   return {
     title: `${title} Resume Keywords — Beat the ATS | ATSHacker`,
-    description: `The Applicant Tracking System auto-rejects ${title} resumes that miss the right keywords. See the ATS keywords for ${title} roles and optimize your resume for $9.99.`,
+    description: `Recruiters rank ${title} resumes by keyword, and resumes that miss the right ones get buried. See the ATS keywords for ${title} roles and optimize your resume for $9.99.`,
     alternates: { canonical: `/tailor/${slug}` },
   };
 }
@@ -69,7 +69,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
           {painPoint}
         </p>
         <p className="text-base text-neutral-500 leading-relaxed max-w-2xl mx-auto mb-12">
-          About 75% of resumes are auto-rejected before a human sees them. Check your {title} match score free, then we&apos;ll fix every gap for a one-time $9.99 — no subscription.
+          Keyword-matched resumes are about 3x more likely to get seen. Check your {title} match score free, then we&apos;ll fix every gap for a one-time $9.99 — no subscription.
         </p>
 
         <Link href="/">

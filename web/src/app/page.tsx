@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
 import { track } from '@vercel/analytics';
-import { UploadCloud, CheckCircle, Shield, ArrowRight, FileText, Gauge, XCircle, Share2 } from 'lucide-react';
+import { UploadCloud, CheckCircle, Shield, ArrowRight, FileText, Gauge, XCircle, Share2, Zap, Lock, BadgeCheck } from 'lucide-react';
 
 // First-touch UTM keys we persist for sale attribution.
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
@@ -28,6 +28,39 @@ interface ScoreResult {
   verdict: string;
 }
 
+// Animated count-up to a target number. Honors prefers-reduced-motion by
+// snapping straight to the target. Guarded for SSR.
+function useCountUp(target: number | null, durationMs = 1100): number {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (target == null) { setValue(0); return; }
+
+    const prefersReduced =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced || typeof requestAnimationFrame !== 'function') {
+      setValue(target);
+      return;
+    }
+
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / durationMs);
+      // easeOutCubic for a satisfying settle.
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(Math.round(target * eased));
+      if (t < 1) raf = requestAnimationFrame(tick);
+      else setValue(target);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, durationMs]);
+  return value;
+}
+
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [jobDescription, setJobDescription] = useState("");
@@ -37,6 +70,7 @@ export default function Home() {
   const [score, setScore] = useState<ScoreResult | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const animatedScore = useCountUp(score ? score.score : null);
 
   // On first load, capture UTM params from the URL and persist them (first-touch:
   // only set if not already stored). Used later for sale attribution at checkout.
@@ -181,7 +215,13 @@ export default function Home() {
   };
 
   const scoreColor = score
-    ? score.score >= 75 ? 'text-emerald-500' : score.score >= 50 ? 'text-yellow-500' : 'text-red-500'
+    ? score.score >= 75 ? 'text-emerald-400' : score.score >= 50 ? 'text-amber-400' : 'text-red-400'
+    : '';
+  const scoreBar = score
+    ? score.score >= 75 ? 'bg-emerald-500' : score.score >= 50 ? 'bg-amber-500' : 'bg-red-500'
+    : 'bg-emerald-500';
+  const scoreRing = score
+    ? score.score >= 75 ? 'shadow-[0_0_60px_-15px] shadow-emerald-500/40' : score.score >= 50 ? 'shadow-[0_0_60px_-15px] shadow-amber-500/40' : 'shadow-[0_0_60px_-15px] shadow-red-500/40'
     : '';
 
   return (
@@ -199,171 +239,203 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 pt-20 pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <main className="max-w-7xl mx-auto px-6 pt-16 pb-24 lg:pt-20 lg:pb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          <div className="space-y-8">
+          {/* Left: pitch */}
+          <div className="space-y-7">
             <div className="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>Optimized for how Workday &amp; Greenhouse rank candidates</span>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+            <h1 className="text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight">
               Stop getting buried by the <span className="text-emerald-500">keyword filter.</span>
             </h1>
 
-            <p className="text-xl text-neutral-400 leading-relaxed max-w-lg">
+            <p className="text-lg lg:text-xl text-neutral-400 leading-relaxed max-w-xl">
               Recruiters search and rank resumes by keyword, and keyword-matched resumes are about <span className="text-white font-bold">3x more likely</span> to get seen. Check your match score free, then rewrite your resume to match the job for <span className="text-white font-bold">$9.99</span>.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-3.5 pt-1">
               <div className="flex items-center space-x-3 text-neutral-300">
-                <Gauge className="w-5 h-5 text-emerald-500" />
+                <Gauge className="w-5 h-5 text-emerald-500 shrink-0" />
                 <span>Free instant ATS match score</span>
               </div>
               <div className="flex items-center space-x-3 text-neutral-300">
-                <CheckCircle className="w-5 h-5 text-emerald-500" />
-                <span>Perfect semantic keyword matching</span>
+                <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0" />
+                <span>Semantic keyword matching against the real job description</span>
               </div>
               <div className="flex items-center space-x-3 text-neutral-300">
-                <Shield className="w-5 h-5 text-emerald-500" />
+                <Shield className="w-5 h-5 text-emerald-500 shrink-0" />
                 <span>Your resume is never stored on our servers</span>
               </div>
             </div>
           </div>
 
-          {/* The Vending Machine UI */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
+          {/* Right: the tool */}
+          <div className="space-y-4">
+            <div className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
 
-            <h2 className="text-2xl font-bold mb-6">Check Your Resume</h2>
+              <h2 className="text-2xl font-bold mb-6">Check Your Resume</h2>
 
-            <div className="space-y-6">
+              <div className="space-y-6">
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-neutral-300">1. Upload Current Resume (PDF)</label>
-                <input type="file" accept=".pdf" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
-                <div
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Upload your resume PDF. Drag and drop a file or press Enter to browse."
-                  onClick={() => fileInputRef.current?.click()}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      fileInputRef.current?.click();
-                    }
-                  }}
-                  onDragOver={handleDragOver}
-                  onDragLeave={handleDragLeave}
-                  onDrop={handleDrop}
-                  className={`border-2 border-dashed rounded-xl p-8 text-center transition cursor-pointer group focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/40
-                    ${isDragging ? 'border-emerald-500 bg-emerald-500/10' : 'border-neutral-700 hover:border-emerald-500/50 hover:bg-neutral-800/50'}`}
-                >
-                  {file ? (
-                    <div className="flex flex-col items-center">
-                      <FileText className="w-10 h-10 text-emerald-500 mb-3" />
-                      <p className="text-sm text-white font-medium">{file.name}</p>
-                      <p className="text-xs text-emerald-500 mt-1">Click to replace file</p>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center">
-                      <UploadCloud className="w-10 h-10 text-neutral-500 group-hover:text-emerald-500 transition mb-3" />
-                      <p className="text-sm text-neutral-400">Drag and drop or <span className="text-emerald-500">browse files</span></p>
-                    </div>
-                  )}
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-neutral-300">1. Upload Current Resume (PDF)</label>
+                  <input type="file" accept=".pdf" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-label="Upload your resume PDF. Drag and drop a file or press Enter to browse."
+                    onClick={() => fileInputRef.current?.click()}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        fileInputRef.current?.click();
+                      }
+                    }}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                    className={`border-2 border-dashed rounded-xl p-8 text-center transition cursor-pointer group focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/40
+                      ${isDragging ? 'border-emerald-500 bg-emerald-500/10' : 'border-neutral-700 hover:border-emerald-500/50 hover:bg-neutral-800/50'}`}
+                  >
+                    {file ? (
+                      <div className="flex flex-col items-center">
+                        <FileText className="w-10 h-10 text-emerald-500 mb-3" />
+                        <p className="text-sm text-white font-medium">{file.name}</p>
+                        <p className="text-xs text-emerald-500 mt-1">Click to replace file</p>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center">
+                        <UploadCloud className="w-10 h-10 text-neutral-500 group-hover:text-emerald-500 transition mb-3" />
+                        <p className="text-sm text-neutral-400">Drag and drop or <span className="text-emerald-500">browse files</span></p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-neutral-300">2. Paste Target Job Description</label>
-                <textarea
-                  rows={4}
-                  value={jobDescription}
-                  onChange={(e) => setJobDescription(e.target.value)}
-                  placeholder="Paste the raw text of the job description here..."
-                  className="w-full bg-neutral-950 border border-neutral-800 rounded-xl p-4 text-sm text-neutral-300 focus:outline-none focus:border-emerald-500 transition resize-none"
-                ></textarea>
-              </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-neutral-300">2. Paste Target Job Description</label>
+                  <textarea
+                    rows={4}
+                    value={jobDescription}
+                    onChange={(e) => setJobDescription(e.target.value)}
+                    placeholder="Paste the raw text of the job description here..."
+                    className="w-full bg-neutral-950 border border-neutral-800 rounded-xl p-4 text-sm text-neutral-300 focus:outline-none focus:border-emerald-500 transition resize-none"
+                  ></textarea>
+                </div>
 
-              {/* FREE score button */}
-              <button
-                onClick={handleScore}
-                disabled={isScoring}
-                className="w-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white font-bold text-base py-3 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <Gauge className="w-5 h-5 text-emerald-500" />
-                <span>{isScoring ? "Scoring..." : "Get Free Match Score"}</span>
-              </button>
+                {/* FREE score button */}
+                <button
+                  onClick={handleScore}
+                  disabled={isScoring}
+                  className="w-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white font-bold text-base py-3 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Gauge className="w-5 h-5 text-emerald-500" />
+                  <span>{isScoring ? "Scoring..." : "Get Free Match Score"}</span>
+                </button>
 
-              {/* Score result panel */}
-              {score && (
-                <div className="bg-neutral-950 border border-neutral-800 rounded-xl p-5 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold text-neutral-300">Your ATS Match Score</span>
-                    <span className={`text-3xl font-black ${scoreColor}`}>{score.score}<span className="text-base text-neutral-500">/100</span></span>
-                  </div>
-                  <div className="w-full bg-neutral-800 rounded-full h-2">
-                    <div className="bg-emerald-500 h-2 rounded-full transition-all" style={{ width: `${score.score}%` }}></div>
-                  </div>
-                  {score.verdict && <p className="text-xs text-neutral-400">{score.verdict}</p>}
-                  {score.matchedKeywords?.length > 0 && (
-                    <div>
-                      <p className="text-xs font-semibold text-emerald-400 mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> Matched keywords ({score.matchedKeywords.length})</p>
-                      <div className="flex flex-wrap gap-2">
-                        {score.matchedKeywords.map((k, i) => (
-                          <span key={i} className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded text-xs">{k}</span>
-                        ))}
+                {/* Score result panel — the score is the hero */}
+                {score && (
+                  <div className={`bg-neutral-950 border border-neutral-800 rounded-2xl p-6 space-y-5 ${scoreRing}`}>
+                    {/* Hero score number */}
+                    <div className="flex flex-col items-center text-center pt-1">
+                      <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-1">Your ATS Match Score</span>
+                      <div className="flex items-end justify-center leading-none">
+                        <span className={`text-7xl font-black tabular-nums ${scoreColor}`}>{animatedScore}</span>
+                        <span className="text-2xl font-bold text-neutral-600 mb-1.5">/100</span>
                       </div>
                     </div>
-                  )}
-                  {score.missingKeywords?.length > 0 && (
-                    <div>
-                      <p className="text-xs font-semibold text-red-400 mb-2 flex items-center"><XCircle className="w-4 h-4 mr-1" /> Missing keywords ({score.missingKeywords.length})</p>
-                      <div className="flex flex-wrap gap-2">
-                        {score.missingKeywords.map((k, i) => (
-                          <span key={i} className="bg-red-500/10 border border-red-500/20 text-red-300 px-2 py-0.5 rounded text-xs">{k}</span>
-                        ))}
-                      </div>
+                    <div className="w-full bg-neutral-800 rounded-full h-2 overflow-hidden">
+                      <div className={`${scoreBar} h-2 rounded-full transition-all duration-700 ease-out`} style={{ width: `${animatedScore}%` }}></div>
                     </div>
-                  )}
-                  {/* Primary CTA at peak intent — right inside the score panel. */}
+                    {score.verdict && <p className="text-sm text-neutral-300 text-center leading-relaxed">{score.verdict}</p>}
+
+                    {score.matchedKeywords?.length > 0 && (
+                      <div>
+                        <p className="text-xs font-semibold text-emerald-400 mb-2 flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> Matched keywords ({score.matchedKeywords.length})</p>
+                        <div className="flex flex-wrap gap-2">
+                          {score.matchedKeywords.map((k, i) => (
+                            <span key={i} className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded text-xs">{k}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {score.missingKeywords?.length > 0 && (
+                      <div>
+                        <p className="text-xs font-semibold text-red-400 mb-2 flex items-center"><XCircle className="w-4 h-4 mr-1" /> Missing keywords ({score.missingKeywords.length})</p>
+                        <div className="flex flex-wrap gap-2">
+                          {score.missingKeywords.map((k, i) => (
+                            <span key={i} className="bg-red-500/10 border border-red-500/20 text-red-300 px-2 py-0.5 rounded text-xs">{k}</span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Primary CTA at peak intent — right inside the score panel. */}
+                    <button
+                      onClick={handleCheckout}
+                      disabled={isLoading}
+                      className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base py-3.5 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-900/40"
+                    >
+                      <span>
+                        {isLoading
+                          ? "Connecting to Stripe..."
+                          : score.missingKeywords?.length > 0
+                            ? `Fix these ${score.missingKeywords.length} gaps — $9.99`
+                            : "Optimize my resume — $9.99"}
+                      </span>
+                      {!isLoading && <ArrowRight className="w-5 h-5" />}
+                    </button>
+                    {/* Share-first: prominent after a score. */}
+                    <button
+                      onClick={shareScore}
+                      className="w-full bg-transparent hover:bg-neutral-800 border border-neutral-700 text-white text-sm font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2"
+                    >
+                      <Share2 className="w-4 h-4 text-emerald-500" />
+                      <span>Share my score</span>
+                    </button>
+                  </div>
+                )}
+
+                {/* PAID unlock (shown before a score is run) */}
+                {!score && (
                   <button
                     onClick={handleCheckout}
                     disabled={isLoading}
-                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base py-3 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-900/40"
                   >
-                    <span>
-                      {isLoading
-                        ? "Connecting to Stripe..."
-                        : score.missingKeywords?.length > 0
-                          ? `Fix these ${score.missingKeywords.length} gaps — $9.99`
-                          : "Optimize my resume — $9.99"}
-                    </span>
+                    <span>{isLoading ? "Connecting to Stripe..." : "Pay $9.99 to Optimize"}</span>
                     {!isLoading && <ArrowRight className="w-5 h-5" />}
                   </button>
-                  <button
-                    onClick={shareScore}
-                    className="w-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-white text-sm font-semibold py-2.5 rounded-lg transition flex items-center justify-center gap-2"
-                  >
-                    <Share2 className="w-4 h-4 text-emerald-500" />
-                    <span>Share my score</span>
-                  </button>
-                </div>
-              )}
+                )}
 
-              {/* PAID unlock */}
-              <button
-                onClick={handleCheckout}
-                disabled={isLoading}
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg py-4 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <span>{isLoading ? "Connecting to Stripe..." : "Pay $9.99 to Optimize"}</span>
-                {!isLoading && <ArrowRight className="w-5 h-5" />}
-              </button>
+                <p className="text-xs text-center text-neutral-500">Secured by Stripe. Results delivered instantly.</p>
 
-              <p className="text-xs text-center text-neutral-500">Secured by Stripe. Results delivered instantly.</p>
+              </div>
+            </div>
 
+            {/* Honest trust row — truthful signals only, no ratings/testimonials. */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <div className="flex flex-col items-center text-center gap-1.5 bg-neutral-900/60 border border-neutral-800 rounded-xl px-2 py-3">
+                <BadgeCheck className="w-5 h-5 text-emerald-500" />
+                <span className="text-[11px] leading-tight text-neutral-400 font-medium">No subscription</span>
+              </div>
+              <div className="flex flex-col items-center text-center gap-1.5 bg-neutral-900/60 border border-neutral-800 rounded-xl px-2 py-3">
+                <Lock className="w-5 h-5 text-emerald-500" />
+                <span className="text-[11px] leading-tight text-neutral-400 font-medium">Your resume is never stored</span>
+              </div>
+              <div className="flex flex-col items-center text-center gap-1.5 bg-neutral-900/60 border border-neutral-800 rounded-xl px-2 py-3">
+                <Shield className="w-5 h-5 text-emerald-500" />
+                <span className="text-[11px] leading-tight text-neutral-400 font-medium">Honest rewrite — no fabricated experience</span>
+              </div>
+              <div className="flex flex-col items-center text-center gap-1.5 bg-neutral-900/60 border border-neutral-800 rounded-xl px-2 py-3">
+                <Zap className="w-5 h-5 text-emerald-500" />
+                <span className="text-[11px] leading-tight text-neutral-400 font-medium">Instant</span>
+              </div>
             </div>
           </div>
 

@@ -380,22 +380,82 @@ export default function Home() {
           {/* Right Hero Video/Graphic Mockup */}
           <div className="lg:col-span-5 relative">
             <div className="absolute inset-0 bg-emerald-500/10 rounded-3xl blur-3xl -z-10 transform scale-95"></div>
-            <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xl space-y-4">
+            <div className="bg-white border border-slate-200 rounded-3xl p-5 shadow-2xl space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-400"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                   <div className="w-3 h-3 rounded-full bg-green-400"></div>
                 </div>
-                <div className="bg-slate-50 rounded-lg px-4 py-1 text-xs text-slate-500 font-semibold">
-                  ats-match-score-reveal.pdf
+                <div className="bg-slate-50 rounded-lg px-3 py-1 text-[10px] text-slate-500 font-bold tracking-wide">
+                  ATS Match Score Transformation
                 </div>
               </div>
-              <div className="relative overflow-hidden rounded-xl bg-slate-950 aspect-[4/3] flex items-center justify-center">
-                <div className="text-center p-8 space-y-3">
-                  <Gauge className="w-12 h-12 text-emerald-500 mx-auto animate-bounce" />
-                  <p className="text-emerald-500 font-extrabold text-3xl">89 / 100</p>
-                  <p className="text-slate-400 text-xs max-w-xs">AI has successfully woven 12 missing semantic keywords into the resume bullets.</p>
+              <div className="space-y-4">
+                {/* 1. Poor Original Resume Card */}
+                <div className="border border-red-200 bg-red-50/30 rounded-2xl p-4 space-y-3 relative overflow-hidden hover:border-red-300 hover:shadow-md hover:scale-[1.02] hover:-rotate-1 transition-all duration-300 transform select-none cursor-default">
+                  <div className="absolute top-3 right-4 flex items-center gap-1.5">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-red-500">Score:</span>
+                    <span className="bg-red-500 text-white text-xs font-black px-2 py-0.5 rounded-lg shadow-sm">34 / 100</span>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <h4 className="text-xs font-bold text-slate-800">Original Resume</h4>
+                    <p className="text-[10px] text-slate-400 leading-none">Standard formatting • Poor keyword match</p>
+                  </div>
+                  
+                  <div className="space-y-2 pt-2 border-t border-slate-100 text-left">
+                    <div>
+                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Missing Keywords</p>
+                      <div className="flex flex-wrap gap-1">
+                        {['BGP Routing', 'VPN Security', 'Automation'].map((kw, i) => (
+                          <span key={i} className="text-[8px] bg-red-50 text-red-600 border border-red-100 px-1.5 py-0.5 rounded-md font-semibold">✕ {kw}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Experience Bullet</p>
+                      <p className="text-[10px] text-slate-500 italic mt-0.5">"Responsible for updating core network protocols."</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Arrow transition */}
+                <div className="flex justify-center my-1">
+                  <span className="bg-emerald-50 text-emerald-600 rounded-full px-3 py-1 border border-emerald-100 shadow-sm text-[10px] font-extrabold uppercase tracking-wide">&darr; Optimized by ATSHacker</span>
+                </div>
+
+                {/* 2. Converted Good Resume Card */}
+                <div className="border border-emerald-200 bg-emerald-50/20 rounded-2xl p-4 space-y-3 relative overflow-hidden shadow-sm hover:border-emerald-400 hover:shadow-xl hover:scale-[1.03] hover:rotate-1 transition-all duration-300 transform select-none cursor-default">
+                  <div className="absolute top-3 right-4 flex items-center gap-1.5">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-600">Score:</span>
+                    <span className="bg-emerald-600 text-white text-xs font-black px-2 py-0.5 rounded-lg shadow-sm">92 / 100</span>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <h4 className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                      <span>Tailored Resume</span>
+                      <Sparkles className="w-3 h-3 text-emerald-600 fill-emerald-600/10 animate-pulse" />
+                    </h4>
+                    <p className="text-[10px] text-emerald-600 font-bold leading-none font-sans">ATS Optimized • Semantic alignment</p>
+                  </div>
+                  
+                  <div className="space-y-2 pt-2 border-t border-slate-100 text-left">
+                    <div>
+                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Matched Keywords</p>
+                      <div className="flex flex-wrap gap-1">
+                        {['BGP Routing', 'VPN Security', 'Automation'].map((kw, i) => (
+                          <span key={i} className="text-[8px] bg-emerald-50 text-emerald-700 border border-emerald-100 px-1.5 py-0.5 rounded-md font-semibold">✓ {kw}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Optimized Bullet</p>
+                      <p className="text-[10px] text-slate-700 font-medium mt-0.5 leading-relaxed">
+                        "Architected and deployed dynamic <span className="bg-emerald-500/10 border-b border-emerald-500/20 text-slate-900 font-extrabold px-0.5 rounded">BGP Routing</span> protocols and secure client <span className="bg-emerald-500/10 border-b border-emerald-500/20 text-slate-900 font-extrabold px-0.5 rounded">VPN Security</span> tunnels, introducing server <span className="bg-emerald-500/10 border-b border-emerald-500/20 text-slate-900 font-extrabold px-0.5 rounded">Automation</span> that cut latency by 30%."
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -697,13 +757,13 @@ export default function Home() {
                 ]
               },
             ].map((tmpl, idx) => (
-              <div key={idx} className="group border border-slate-100 bg-slate-50 rounded-2xl p-4 hover:shadow-lg transition duration-300">
+              <div key={idx} className="group border border-slate-200/60 bg-slate-50 rounded-2xl p-4 hover:shadow-xl hover:border-emerald-500/20 hover:scale-[1.03] transition-all duration-300 transform cursor-pointer">
                 <div className="aspect-[3/4] rounded-xl bg-white shadow-sm overflow-hidden p-5 flex flex-col justify-between relative text-left">
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px]">{tmpl.initials}</div>
+                      <div className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-emerald-50 group-hover:text-emerald-700 flex items-center justify-center font-black text-slate-700 text-[10px] transition-all duration-300">{tmpl.initials}</div>
                       <div className="flex-1 min-w-0">
-                        <div className="text-xs font-black text-slate-900 truncate leading-tight">{tmpl.candName}</div>
+                        <div className="text-xs font-black text-slate-900 truncate leading-tight group-hover:text-emerald-950 transition-colors duration-200">{tmpl.candName}</div>
                         <div className="text-[9px] text-slate-500 font-bold truncate leading-none mt-0.5">{tmpl.candTitle}</div>
                       </div>
                     </div>
@@ -718,16 +778,16 @@ export default function Home() {
                         <div className="text-[8px] font-black text-slate-400 uppercase tracking-wider">Experience Highlights</div>
                         {tmpl.bullets.map((b, bIdx) => (
                           <div key={bIdx} className="flex gap-1 items-start text-[8px] text-slate-600 leading-normal">
-                            <span className="text-emerald-500 font-bold mt-0.5">•</span>
+                            <span className="text-emerald-500 font-bold mt-0.5 group-hover:scale-125 transition-transform duration-300">•</span>
                             <p className="flex-1 line-clamp-2">{b}</p>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
-                  <div className={`h-1.5 w-full ${tmpl.color} rounded-full`}></div>
+                  <div className={`h-1 group-hover:h-2 w-full ${tmpl.color} rounded-full transition-all duration-300`}></div>
                 </div>
-                <h4 className="font-bold text-slate-900 mt-4 text-center">{tmpl.name}</h4>
+                <h4 className="font-bold text-slate-900 mt-4 text-center group-hover:text-emerald-700 transition-colors duration-200">{tmpl.name}</h4>
                 <p className="text-xs text-slate-500 text-center mt-1 px-2">{tmpl.desc}</p>
               </div>
             ))}

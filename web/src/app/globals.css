@@ -43,6 +43,41 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: no-preference) {
   .ath-reveal { animation: ath-reveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
   .ath-score-pop { animation: ath-score-pop 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+  
+  /* --- Interactive float animations --- */
+  @keyframes float-badge {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+  }
+  @keyframes float-badge-alt {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+  }
+  .animate-float-slow {
+    animation: float-badge 3.5s ease-in-out infinite;
+  }
+  .animate-float-slower {
+    animation: float-badge-alt 4s ease-in-out infinite;
+  }
+  
+  /* --- Keyword highlights on card hover --- */
+  .optimized-card {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .optimized-card:hover {
+    border-color: var(--color-emerald-400, #34d399);
+    box-shadow: 0 12px 25px -5px rgba(16, 185, 129, 0.15), 0 8px 10px -6px rgba(16, 185, 129, 0.15);
+  }
+  .optimized-card:hover .highlight-keyword {
+    background-color: #d1fae5; /* bg-emerald-100 */
+    color: #065f46; /* text-emerald-800 */
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(16, 185, 129, 0.1);
+  }
+  .highlight-keyword {
+    transition: all 0.25s ease-in-out;
+    display: inline-block;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

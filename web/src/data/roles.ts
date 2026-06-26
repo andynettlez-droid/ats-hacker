@@ -308,6 +308,28 @@ export const roles: Role[] = [
       'Quantify outcomes: test score gains, attendance, students taught.',
     ],
   },
+  {
+    slug: 'network-engineer',
+    title: 'Network Engineer',
+    painPoint: "Network Engineer resumes get filtered out when they list certifications loosely. The ATS screens for exact acronyms like 'CCNA', 'CCNP', or 'JNCIA' and specific hardware vendor terms like 'Cisco Catalysts' or 'Juniper Junos' — if you miss the exact string, you drop down in recruiter searches.",
+    keywords: ['routing & switching', 'firewalls (ASA/Palo Alto)', 'Cisco iOS', 'VPN', 'LAN/WAN', 'subnetting', 'network security', 'BGP/OSPF', 'Wireshark', 'troubleshooting'],
+    tips: [
+      'List certifications (CCNA, CCNP, CompTIA Network+) prominently near the top.',
+      'Specify exact hardware vendor names (Cisco Catalyst, Palo Alto, Fortinet) matching the job post.',
+      'Detail scale: number of nodes, users, sites, or uptime achieved (e.g. "99.99% uptime").',
+    ],
+  },
+  {
+    slug: 'product-designer',
+    title: 'Product Designer',
+    painPoint: "Product Designer resumes get buried when they rely on PDF portfolios alone instead of readable text. The ATS searches for 'Figma', 'interaction design', and 'user journey maps' as literal text strings — if these terms aren't in your resume copy, the algorithm ranks you lower.",
+    keywords: ['Figma', 'interaction design', 'prototyping', 'user research', 'design systems', 'wireframing', 'UI/UX', 'user journey mapping', 'mobile/web design', 'information architecture'],
+    tips: [
+      'Name exact design tools and developer handoff workflows (Figma, Zeplin, InVision).',
+      'Show commercial metrics: conversion rate increases, signup lifts, or usability task time reduced.',
+      'Use the exact wording from the JD for design phases (e.g., "rapid prototyping", "user flows").',
+    ],
+  },
 ];
 
 export const roleMap: Record<string, Role> = Object.fromEntries(

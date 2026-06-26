@@ -330,6 +330,61 @@ export const roles: Role[] = [
       'Use the exact wording from the JD for design phases (e.g., "rapid prototyping", "user flows").',
     ],
   },
+  {
+    slug: 'frontend-developer',
+    title: 'Frontend Developer',
+    painPoint: "Frontend developer resumes get filtered out when version-specific tools are missing. Recruiter search queries look for precise matches like 'React 18', 'Next.js', or 'Tailwind CSS'. If your resume lists general frontend skills without these exact keywords, you rank low in the ATS search result page.",
+    keywords: ['React.js', 'TypeScript', 'HTML5/CSS3', 'Next.js', 'Tailwind CSS', 'state management (Redux/Zustand)', 'Webpack/Vite', 'unit testing (Jest/RTL)', 'responsive design', 'REST APIs'],
+    tips: [
+      'List the exact modern rendering frameworks you have used (Next.js, Remix, Astro) to match specific JD requirements.',
+      'Show business-facing UI metrics: page performance lift (LCP/FID), conversion rate changes, or accessibility audit compliance.',
+      'Specify CSS frameworks explicitly: Tailwind CSS, styled-components, or Sass, as keyword matches are strict.',
+    ],
+  },
+  {
+    slug: 'backend-developer',
+    title: 'Backend Developer',
+    painPoint: "Backend developer resumes get buried when they describe system tasks loosely instead of listing the exact database engines, messaging systems, and runtime versions. If you list 'databases' instead of 'PostgreSQL' or 'Redis', you will fail the strict matching logic of the recruiter's search.",
+    keywords: ['Node.js/Go/Java', 'RESTful APIs', 'SQL/NoSQL (PostgreSQL/MongoDB)', 'microservices', 'Docker', 'message queues (RabbitMQ/Kafka)', 'system architecture', 'ORM (Prisma/Hibernate)', 'CI/CD pipelines', 'caching (Redis)'],
+    tips: [
+      'List your backend runtimes and languages prominently (e.g. Node.js v20, Go, Java Spring Boot).',
+      'Quantify API efficiency and scale: throughput, server response time reduction, database query optimizations, or traffic scaling.',
+      'Name your primary message brokers and database systems explicitly; generic terms do not rank.',
+    ],
+  },
+  {
+    slug: 'fullstack-developer',
+    title: 'Fullstack Developer',
+    painPoint: "Fullstack developer resumes get filtered because they split their stack skills vaguely. The ATS looks for both frontend and backend tooling in the same profile (e.g. 'React' + 'Node.js' + 'SQL'). If your stack details are spread out or use synonym naming conventions, the system marks you as incomplete.",
+    keywords: ['React/Next.js', 'Node.js/Express', 'TypeScript', 'RESTful APIs', 'SQL/PostgreSQL', 'Git/GitHub', 'Docker', 'AWS/GCP', 'HTML5/Tailwind CSS', 'system architecture'],
+    tips: [
+      'Write a concise stack profile summary at the top naming the exact stack you specialize in (e.g. MERN, Next.js/Postgres).',
+      'Detail both user interface accomplishments and system/database optimizations in your bullet points.',
+      'Explicitly name hosting and cloud platforms (Vercel, AWS, Heroku) matching the job description.',
+    ],
+  },
+  {
+    slug: 'cybersecurity-analyst',
+    title: 'Cybersecurity Analyst',
+    painPoint: "Cybersecurity resumes rank low when specific compliance frameworks and security tools are missing from the text. Recruiters search with strict strings like 'SIEM', 'SOC', 'NIST', or 'Splunk'. Synonyms or generic 'system monitoring' phrasing will not match, leaving your application buried.",
+    keywords: ['SIEM/Splunk', 'incident response', 'vulnerability management', 'network security', 'NIST framework', 'SOC operations', 'firewalls', 'identity & access management (IAM)', 'penetration testing', 'CISSP/CEH'],
+    tips: [
+      'List certifications (Security+, CISSP, CEH) clearly at the top of your resume.',
+      'Name the exact security monitoring and analysis software you are certified in or have used (Splunk, Wireshark, CrowdStrike).',
+      'Match the regulatory and standard frameworks listed in the JD (NIST, ISO 27001, SOC 2, HIPAA).',
+    ],
+  },
+  {
+    slug: 'it-support-specialist',
+    title: 'IT Support Specialist',
+    painPoint: "IT Support resumes get filtered when troubleshooting channels and administration suites are described loosely. Recruiters configuration screens require terms like 'Active Directory', 'ITIL', or 'SaaS administration'. If your resume lists general 'desktop support', you fall behind matched applicants.",
+    keywords: ['Active Directory', 'SaaS administration (Google Workspace/Office 365)', 'troubleshooting', 'helpdesk ticketing (Jira/Zendesk)', 'hardware diagnostics', 'network configuration', 'ITIL guidelines', 'customer service', 'operating systems (Windows/macOS)', 'asset management'],
+    tips: [
+      'Name the exact administration consoles you managed (Office 365 Admin, Google Workspace Admin console).',
+      'Quantify helpdesk volume and resolution metrics: average first-contact resolution time, CSAT ratings, or weekly ticket throughput.',
+      'Use standard framework names like ITIL explicitly if the job description mentions them.',
+    ],
+  },
 ];
 
 export const roleMap: Record<string, Role> = Object.fromEntries(

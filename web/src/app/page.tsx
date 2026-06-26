@@ -331,13 +331,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Hero Content */}
           <div className="lg:col-span-7 space-y-8">
-            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
-              <Star className="w-3.5 h-3.5 fill-emerald-600 text-emerald-600" />
-              <span>4.8/5 Star rating based on 10,000+ tailored resumes</span>
+            <div className="inline-flex items-center gap-2 bg-emerald-50/70 border border-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
+              <Shield className="w-3.5 h-3.5 fill-emerald-600/10 text-emerald-600" />
+              <span>100% secure checkout via Stripe • One-time payment, no subscriptions</span>
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-none">
-              The professional resume and <span className="text-emerald-600">cover letter builder</span> recruiters trust.
+              The professional resume and <span className="text-emerald-600">cover letter builder</span> designed for ATS.
             </h1>
             
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
@@ -640,25 +640,89 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: 'Modern Slate', color: 'bg-slate-800', desc: 'Minimal layout with a bold heading header structure.' },
-              { name: 'Professional Emerald', color: 'bg-emerald-800', desc: 'Curated corporate design highlighting core competencies.' },
-              { name: 'Minimal Clean', color: 'bg-gray-100 border border-slate-200', desc: 'Ultra-clean single column optimized for dense records.' },
-              { name: 'Creative Orange', color: 'bg-orange-600', desc: 'Vibrant highlight accents to separate sections clearly.' },
+              {
+                name: 'Modern Slate',
+                color: 'bg-slate-800',
+                desc: 'Minimal layout with a bold heading header structure.',
+                initials: 'JD',
+                candName: 'John Doe',
+                candTitle: 'Network Engineer',
+                skills: 'Cisco • Python • AWS',
+                bullets: [
+                  'Optimized core network infrastructure for 40% speed-up.',
+                  'Implemented secure VPN tunnels and firewall policies.',
+                  'Configured dynamic OSPF/BGP routing protocols.'
+                ]
+              },
+              {
+                name: 'Professional Emerald',
+                color: 'bg-emerald-800',
+                desc: 'Curated corporate design highlighting core competencies.',
+                initials: 'SJ',
+                candName: 'Sarah Jenkins',
+                candTitle: 'Software Engineer',
+                skills: 'React • Node.js • TypeScript',
+                bullets: [
+                  'Re-architected legacy dashboard using Next.js/Turbopack.',
+                  'Reduced bundle sizes by 45% and page load times.',
+                  'Collaborated closely with cross-functional designer teams.'
+                ]
+              },
+              {
+                name: 'Minimal Clean',
+                color: 'bg-gray-100 border border-slate-200',
+                desc: 'Ultra-clean single column optimized for dense records.',
+                initials: 'AR',
+                candName: 'Alex Rivera',
+                candTitle: 'Product Designer',
+                skills: 'Figma • UI/UX • Design Systems',
+                bullets: [
+                  'Redesigned core checkout UI resulting in 20% conversion bump.',
+                  'Created scalable UI component library for Figma workflow.',
+                  'Conducted 15+ user testing sessions to iterate prototypes.'
+                ]
+              },
+              {
+                name: 'Creative Orange',
+                color: 'bg-orange-600',
+                desc: 'Vibrant highlight accents to separate sections clearly.',
+                initials: 'EC',
+                candName: 'Emily Chen',
+                candTitle: 'Marketing Specialist',
+                skills: 'SEO • Content • Analytics',
+                bullets: [
+                  'Grew organic traffic by 150% via targeted search campaigns.',
+                  'Designed visual newsletter templates for 50k subscribers.',
+                  'Analyzed weekly conversion funnels using Google Analytics.'
+                ]
+              },
             ].map((tmpl, idx) => (
               <div key={idx} className="group border border-slate-100 bg-slate-50 rounded-2xl p-4 hover:shadow-lg transition duration-300">
-                <div className="aspect-[3/4] rounded-xl bg-white shadow-sm overflow-hidden p-6 flex flex-col justify-between relative">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-700 text-xs">JD</div>
-                      <div className="space-y-1 flex-1">
-                        <div className="h-3 w-2/3 bg-slate-200 rounded"></div>
-                        <div className="h-2 w-1/2 bg-slate-100 rounded"></div>
+                <div className="aspect-[3/4] rounded-xl bg-white shadow-sm overflow-hidden p-5 flex flex-col justify-between relative text-left">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-black text-slate-700 text-[10px]">{tmpl.initials}</div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-black text-slate-900 truncate leading-tight">{tmpl.candName}</div>
+                        <div className="text-[9px] text-slate-500 font-bold truncate leading-none mt-0.5">{tmpl.candTitle}</div>
                       </div>
                     </div>
-                    <div className="space-y-2 pt-2 border-t border-slate-100">
-                      <div className="h-2.5 w-full bg-slate-150 rounded"></div>
-                      <div className="h-2.5 w-5/6 bg-slate-150 rounded"></div>
-                      <div className="h-2.5 w-4/5 bg-slate-150 rounded"></div>
+                    
+                    <div className="border-t border-slate-100 pt-2 space-y-2">
+                      <div>
+                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-wider mb-0.5">Skills</div>
+                        <div className="text-[9px] text-slate-600 font-bold leading-none">{tmpl.skills}</div>
+                      </div>
+                      
+                      <div className="space-y-1 pt-1 border-t border-slate-100">
+                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-wider">Experience Highlights</div>
+                        {tmpl.bullets.map((b, bIdx) => (
+                          <div key={bIdx} className="flex gap-1 items-start text-[8px] text-slate-600 leading-normal">
+                            <span className="text-emerald-500 font-bold mt-0.5">•</span>
+                            <p className="flex-1 line-clamp-2">{b}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className={`h-1.5 w-full ${tmpl.color} rounded-full`}></div>

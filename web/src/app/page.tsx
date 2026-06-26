@@ -308,21 +308,32 @@ export default function Home() {
       {/* Modern Navigation */}
       <nav className="w-full bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <img src="/logo-full.png" alt="ATSHacker" className="h-9 w-auto" />
+          <div className="flex items-center gap-2 select-none cursor-pointer">
+            <div className="bg-blue-600 text-white font-extrabold text-sm px-2.5 py-1.5 rounded-lg flex items-center justify-center shadow-sm">
+              AE
+            </div>
+            <span className="text-xl font-black text-slate-900 tracking-tight">ATSHacker</span>
           </div>
           <div className="flex items-center gap-8 text-sm font-bold text-slate-600">
-            <button onClick={() => scrollToTool('resume')} className="hover:text-emerald-600 transition">Optimize Resume</button>
-            <button onClick={() => scrollToTool('cover_letter')} className="hover:text-emerald-600 transition">Write Cover Letter</button>
-            <a href="#templates" className="hover:text-emerald-600 transition hidden sm:block">Templates</a>
-            <a href="#pricing" className="hover:text-emerald-600 transition">Pricing</a>
+            <button onClick={() => scrollToTool('resume')} className="hover:text-blue-600 transition">Features</button>
+            <a href="#templates" className="hover:text-blue-600 transition">Templates</a>
+            <a href="#pricing" className="hover:text-blue-600 transition">Pricing</a>
+            <button onClick={() => scrollToTool('resume')} className="hover:text-blue-600 transition">Blog</button>
           </div>
-          <button 
-            onClick={() => scrollToTool('resume')} 
-            className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold px-4 py-2 rounded-lg transition shadow-sm hidden md:block"
-          >
-            Get Started
-          </button>
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => scrollToTool('resume')} 
+              className="text-slate-600 hover:text-blue-600 text-sm font-bold transition"
+            >
+              Log In
+            </button>
+            <button 
+              onClick={() => scrollToTool('resume')} 
+              className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-extrabold px-4 py-2.5 rounded-lg transition shadow-sm hidden md:block"
+            >
+              Sign Up
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -331,32 +342,25 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Hero Content */}
           <div className="lg:col-span-7 space-y-8">
-            <div className="inline-flex items-center gap-2 bg-emerald-50/70 border border-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
-              <Shield className="w-3.5 h-3.5 fill-emerald-600/10 text-emerald-600" />
+            <div className="inline-flex items-center gap-2 bg-blue-50/70 border border-blue-100 text-blue-800 px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
+              <Shield className="w-3.5 h-3.5 fill-blue-600/10 text-blue-600" />
               <span>100% secure checkout via Stripe • One-time payment, no subscriptions</span>
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-none">
-              The professional resume and <span className="text-emerald-600">cover letter builder</span> designed for ATS.
+              The professional resume and cover letter builder designed for ATS.
             </h1>
             
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
-              ATS databases search and rank candidates by job description keywords. Keyword-matched documents are <span className="text-slate-950 font-extrabold">3x more likely</span> to secure interviews. Check your match rate free, then optimize in 60 seconds.
+              Beat the bots, get noticed, and land your dream job with resumes tailored to specific job descriptions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <button 
                 onClick={() => scrollToTool('resume')} 
-                className="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                className="bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
               >
-                <span>Optimize My Resume</span>
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <button 
-                onClick={() => scrollToTool('cover_letter')} 
-                className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 shadow-sm flex items-center justify-center gap-2"
-              >
-                <span>Create Matching Cover Letter</span>
+                <span>Create Your Optimized Resume Now</span>
               </button>
             </div>
 
@@ -379,82 +383,159 @@ export default function Home() {
 
           {/* Right Hero Video/Graphic Mockup */}
           <div className="lg:col-span-5 relative">
-            <div className="absolute inset-0 bg-emerald-500/10 rounded-3xl blur-3xl -z-10 transform scale-95"></div>
+            <div className="absolute inset-0 bg-blue-500/10 rounded-3xl blur-3xl -z-10 transform scale-95"></div>
             <div className="bg-white border border-slate-200 rounded-3xl p-5 shadow-2xl space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                </div>
-                <div className="bg-slate-50 rounded-lg px-3 py-1 text-[10px] text-slate-500 font-bold tracking-wide">
+              <div className="text-center pb-2 border-b border-slate-100">
+                <h3 className="text-xs font-black text-slate-500 tracking-wider uppercase">
                   ATS Match Score Transformation
-                </div>
+                </h3>
               </div>
-              <div className="space-y-4">
-                {/* 1. Poor Original Resume Card */}
-                <div className="border border-red-200 bg-red-50/30 rounded-2xl p-4 space-y-3 relative overflow-hidden hover:border-red-300 hover:shadow-md hover:scale-[1.02] hover:-rotate-1 transition-all duration-300 transform select-none cursor-default">
-                  <div className="absolute top-3 right-4 flex items-center gap-1.5">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-red-500">Score:</span>
-                    <span className="bg-red-500 text-white text-xs font-black px-2 py-0.5 rounded-lg shadow-sm">34 / 100</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Column 1: Poor Original Resume */}
+                <div className="space-y-3">
+                  <div className="text-center">
+                    <span className="inline-block bg-red-50 border border-red-150 text-red-700 text-[10px] font-black px-2 py-0.5 rounded-md">
+                      Poor Original Resume (34/100)
+                    </span>
                   </div>
-                  
-                  <div className="space-y-1">
-                    <h4 className="text-xs font-bold text-slate-800">Original Resume</h4>
-                    <p className="text-[10px] text-slate-400 leading-none">Standard formatting • Poor keyword match</p>
-                  </div>
-                  
-                  <div className="space-y-2 pt-2 border-t border-slate-100 text-left">
-                    <div>
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Missing Keywords</p>
-                      <div className="flex flex-wrap gap-1">
-                        {['BGP Routing', 'VPN Security', 'Automation'].map((kw, i) => (
-                          <span key={i} className="text-[8px] bg-red-50 text-red-600 border border-red-100 px-1.5 py-0.5 rounded-md font-semibold">✕ {kw}</span>
-                        ))}
+                  {/* Mini Resume Card */}
+                  <div className="border border-red-200 bg-white rounded-xl p-2.5 shadow-sm relative flex flex-col justify-between h-[210px] overflow-hidden select-none hover:scale-[1.02] hover:-rotate-1 transition-all duration-300 cursor-default">
+                    {/* Header */}
+                    <div className="flex items-center gap-1.5 border-b border-slate-150 pb-1.5 mb-1.5">
+                      <img 
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=80&h=80" 
+                        alt="Emily Carter" 
+                        className="w-7 h-7 rounded-full object-cover border border-slate-200"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[9px] font-black text-slate-800 truncate leading-none">Emily Carter</div>
+                        <div className="text-[7px] text-slate-500 font-bold truncate leading-none mt-0.5">Sales Manager, Chicago</div>
                       </div>
                     </div>
-                    <div>
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Experience Bullet</p>
-                      <p className="text-[10px] text-slate-500 italic mt-0.5">"Responsible for updating core network protocols."</p>
+                    {/* Two column preview */}
+                    <div className="flex-grow grid grid-cols-12 gap-1 text-[7px] leading-none mb-1">
+                      {/* Left Side (30%) */}
+                      <div className="col-span-4 bg-rose-50/50 p-1 rounded space-y-1 border-r border-slate-100 flex flex-col justify-between">
+                        <div className="space-y-0.5">
+                          <div className="h-0.5 w-4 bg-rose-200 rounded"></div>
+                          <div className="space-y-0.5">
+                            <div className="flex items-center gap-0.5">
+                              <span className="w-0.5 h-0.5 rounded-full bg-rose-400"></span>
+                              <div className="h-0.5 w-6 bg-slate-200 rounded"></div>
+                            </div>
+                            <div className="flex items-center gap-0.5">
+                              <span className="w-0.5 h-0.5 rounded-full bg-rose-400"></span>
+                              <div className="h-0.5 w-5 bg-slate-200 rounded"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="space-y-0.5">
+                          <div className="h-0.5 w-6 bg-slate-200 rounded"></div>
+                          <div className="h-0.5 w-5 bg-slate-200 rounded"></div>
+                        </div>
+                      </div>
+                      {/* Right Side (70%) */}
+                      <div className="col-span-8 p-1 flex flex-col justify-between">
+                        <div className="space-y-1">
+                          <div className="h-0.5 w-8 bg-slate-350 rounded"></div>
+                          <div className="space-y-0.5 pl-1 border-l border-slate-200">
+                            <div className="h-0.5 w-12 bg-slate-200 rounded"></div>
+                            <div className="h-0.5 w-10 bg-slate-150 rounded"></div>
+                          </div>
+                        </div>
+                        <div className="space-y-0.5">
+                          <div className="h-0.5 w-6 bg-slate-350 rounded"></div>
+                          <div className="h-0.5 w-10 bg-slate-200 rounded"></div>
+                        </div>
+                      </div>
                     </div>
+                    {/* Stamp score */}
+                    <div className="absolute bottom-2 right-2 bg-red-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded shadow">
+                      34/100
+                    </div>
+                  </div>
+                  {/* Bullets */}
+                  <div className="space-y-1 text-left text-[10px] leading-tight">
+                    <p className="font-bold text-red-700">
+                      • Missing Keywords: <span className="font-extrabold text-red-900">BGP Routing, VPN Security, Cloud Architecture</span>
+                    </p>
+                    <p className="text-slate-500 pl-2">
+                      <span className="font-bold text-slate-700">Example:</span> Vague ineffective bullets with vague, and-ineffective resume bullet.
+                    </p>
                   </div>
                 </div>
 
-                {/* Arrow transition */}
-                <div className="flex justify-center my-1">
-                  <span className="bg-emerald-50 text-emerald-600 rounded-full px-3 py-1 border border-emerald-100 shadow-sm text-[10px] font-extrabold uppercase tracking-wide">&darr; Optimized by ATSHacker</span>
-                </div>
-
-                {/* 2. Converted Good Resume Card */}
-                <div className="border border-emerald-200 bg-emerald-50/20 rounded-2xl p-4 space-y-3 relative overflow-hidden shadow-sm hover:border-emerald-400 hover:shadow-xl hover:scale-[1.03] hover:rotate-1 transition-all duration-300 transform select-none cursor-default">
-                  <div className="absolute top-3 right-4 flex items-center gap-1.5">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-600">Score:</span>
-                    <span className="bg-emerald-600 text-white text-xs font-black px-2 py-0.5 rounded-lg shadow-sm">92 / 100</span>
+                {/* Column 2: Optimized Resume */}
+                <div className="space-y-3">
+                  <div className="text-center">
+                    <span className="inline-block bg-emerald-50 border border-emerald-150 text-emerald-700 text-[10px] font-black px-2 py-0.5 rounded-md">
+                      Optimized Resume (92/100)
+                    </span>
                   </div>
-                  
-                  <div className="space-y-1">
-                    <h4 className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                      <span>Tailored Resume</span>
-                      <Sparkles className="w-3 h-3 text-emerald-600 fill-emerald-600/10 animate-pulse" />
-                    </h4>
-                    <p className="text-[10px] text-emerald-600 font-bold leading-none font-sans">ATS Optimized • Semantic alignment</p>
-                  </div>
-                  
-                  <div className="space-y-2 pt-2 border-t border-slate-100 text-left">
-                    <div>
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Matched Keywords</p>
-                      <div className="flex flex-wrap gap-1">
-                        {['BGP Routing', 'VPN Security', 'Automation'].map((kw, i) => (
-                          <span key={i} className="text-[8px] bg-emerald-50 text-emerald-700 border border-emerald-100 px-1.5 py-0.5 rounded-md font-semibold">✓ {kw}</span>
-                        ))}
+                  {/* Mini Resume Card */}
+                  <div className="border border-emerald-350 bg-white rounded-xl p-2.5 shadow-md relative flex flex-col justify-between h-[210px] overflow-hidden select-none hover:scale-[1.02] hover:rotate-1 transition-all duration-300 cursor-default">
+                    {/* Header */}
+                    <div className="flex items-center gap-1.5 border-b border-slate-150 pb-1.5 mb-1.5">
+                      <img 
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=80&h=80" 
+                        alt="Sarah Jenkins" 
+                        className="w-7 h-7 rounded-full object-cover border border-slate-200"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[9px] font-black text-slate-800 truncate leading-none">Sarah Jenkins</div>
+                        <div className="text-[7px] text-slate-500 font-bold truncate leading-none mt-0.5">Software Engineer, Austin</div>
                       </div>
                     </div>
-                    <div>
-                      <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Optimized Bullet</p>
-                      <p className="text-[10px] text-slate-700 font-medium mt-0.5 leading-relaxed">
-                        "Architected and deployed dynamic <span className="bg-emerald-500/10 border-b border-emerald-500/20 text-slate-900 font-extrabold px-0.5 rounded">BGP Routing</span> protocols and secure client <span className="bg-emerald-500/10 border-b border-emerald-500/20 text-slate-900 font-extrabold px-0.5 rounded">VPN Security</span> tunnels, introducing server <span className="bg-emerald-500/10 border-b border-emerald-500/20 text-slate-900 font-extrabold px-0.5 rounded">Automation</span> that cut latency by 30%."
-                      </p>
+                    {/* Two column preview */}
+                    <div className="flex-grow grid grid-cols-12 gap-1 text-[7px] leading-none mb-1">
+                      {/* Left Side (30%) */}
+                      <div className="col-span-4 bg-emerald-50/50 p-1 rounded space-y-1 border-r border-slate-100 flex flex-col justify-between">
+                        <div className="space-y-0.5">
+                          <div className="h-0.5 w-4 bg-emerald-300 rounded"></div>
+                          <div className="space-y-0.5">
+                            <div className="flex items-center gap-0.5">
+                              <span className="w-0.5 h-0.5 rounded-full bg-emerald-400"></span>
+                              <div className="h-0.5 w-6 bg-slate-200 rounded"></div>
+                            </div>
+                            <div className="flex items-center gap-0.5">
+                              <span className="w-0.5 h-0.5 rounded-full bg-emerald-400"></span>
+                              <div className="h-0.5 w-5 bg-slate-200 rounded"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="space-y-0.5">
+                          <div className="h-0.5 w-6 bg-slate-200 rounded"></div>
+                          <div className="h-0.5 w-5 bg-slate-200 rounded"></div>
+                        </div>
+                      </div>
+                      {/* Right Side (70%) */}
+                      <div className="col-span-8 p-1 flex flex-col justify-between">
+                        <div className="space-y-1">
+                          <div className="h-0.5 w-8 bg-slate-350 rounded"></div>
+                          <div className="space-y-0.5 pl-1 border-l border-slate-200">
+                            <div className="h-0.5 w-12 bg-slate-200 rounded"></div>
+                            <div className="h-0.5 w-10 bg-slate-150 rounded"></div>
+                          </div>
+                        </div>
+                        <div className="space-y-0.5">
+                          <div className="h-0.5 w-6 bg-slate-350 rounded"></div>
+                          <div className="h-0.5 w-10 bg-slate-200 rounded"></div>
+                        </div>
+                      </div>
                     </div>
+                    {/* Stamp score */}
+                    <div className="absolute bottom-2 right-2 bg-emerald-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded shadow">
+                      92/100
+                    </div>
+                  </div>
+                  {/* Bullets */}
+                  <div className="space-y-1 text-left text-[10px] leading-tight">
+                    <p className="font-bold text-emerald-700">
+                      • Matched Keywords: <span className="font-extrabold text-emerald-800">BGP Routing, VPN Security, Cloud Architecture</span>
+                    </p>
+                    <p className="text-slate-600 pl-2">
+                      <span className="font-bold text-slate-800">Example:</span> Designed and implemented secure multi-site VPN networks, improving connectivity by 40% and enhancing overall system security.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -478,7 +559,7 @@ export default function Home() {
             <button
               onClick={() => { setActiveTab('resume'); setScore(null); }}
               className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200
-                ${activeTab === 'resume' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'}`}
+                ${activeTab === 'resume' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}
             >
               <FileText className="w-4 h-4" />
               <span>Resume Tailoring</span>
@@ -486,7 +567,7 @@ export default function Home() {
             <button
               onClick={() => { setActiveTab('cover_letter'); setScore(null); }}
               className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200
-                ${activeTab === 'cover_letter' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'}`}
+                ${activeTab === 'cover_letter' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-600 hover:text-blue-600 hover:bg-slate-50'}`}
             >
               <Sparkles className="w-4 h-4" />
               <span>Cover Letter Generator</span>
@@ -497,10 +578,10 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Tool Card: Col-span 7 */}
           <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400"></div>
             
             <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-              {activeTab === 'resume' ? <FileText className="text-emerald-600" /> : <Sparkles className="text-emerald-600" />}
+              {activeTab === 'resume' ? <FileText className="text-blue-600" /> : <Sparkles className="text-blue-600" />}
               {activeTab === 'resume' ? 'ATS Resume Tailoring Input' : 'Matching Cover Letter Tailoring Input'}
             </h3>
 
@@ -517,19 +598,19 @@ export default function Home() {
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
-                  className={`border-2 border-dashed rounded-2xl p-8 text-center transition cursor-pointer group focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/40
-                    ${isDragging ? 'border-emerald-500 bg-emerald-50' : 'border-slate-300 hover:border-emerald-500/60 hover:bg-slate-50'}`}
+                  className={`border-2 border-dashed rounded-2xl p-8 text-center transition cursor-pointer group focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40
+                    ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-slate-300 hover:border-blue-500/60 hover:bg-slate-50'}`}
                 >
                   {file ? (
                     <div className="flex flex-col items-center">
-                      <FileText className="w-12 h-12 text-emerald-600 mb-3" />
+                      <FileText className="w-12 h-12 text-blue-600 mb-3" />
                       <p className="text-sm text-slate-900 font-bold">{file.name}</p>
-                      <p className="text-xs text-emerald-600 mt-1">Click to replace file</p>
+                      <p className="text-xs text-blue-600 mt-1">Click to replace file</p>
                     </div>
                   ) : (
                     <div className="flex flex-col items-center">
-                      <UploadCloud className="w-12 h-12 text-slate-400 group-hover:text-emerald-600 transition mb-3" />
-                      <p className="text-sm text-slate-600 font-semibold">Drag and drop your resume PDF or <span className="text-emerald-600">browse files</span></p>
+                      <UploadCloud className="w-12 h-12 text-slate-400 group-hover:text-blue-600 transition mb-3" />
+                      <p className="text-sm text-slate-600 font-semibold">Drag and drop your resume PDF or <span className="text-blue-600">browse files</span></p>
                     </div>
                   )}
                 </div>
@@ -543,7 +624,7 @@ export default function Home() {
                   value={jobDescription}
                   onChange={(e) => setJobDescription(e.target.value)}
                   placeholder="Paste the target job description requirements here..."
-                  className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 transition resize-none"
+                  className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition resize-none"
                 ></textarea>
               </div>
 
@@ -553,16 +634,16 @@ export default function Home() {
                   <button
                     onClick={handleScore}
                     disabled={isScoring}
-                    className="w-full bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-900 font-bold text-base py-3.5 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                    className="w-full bg-white hover:bg-slate-50 hover:border-blue-300 border border-slate-300 text-slate-900 font-bold text-base py-3.5 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
                   >
-                    <Gauge className="w-5 h-5 text-emerald-600" />
+                    <Gauge className="w-5 h-5 text-blue-600" />
                     <span>{isScoring ? "Scoring..." : "Check My Free ATS Score"}</span>
                   </button>
 
                   <button
                     onClick={() => handleCheckout('resume')}
                     disabled={isLoading}
-                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-lg py-4 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center space-x-2 disabled:opacity-50"
+                    className="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-lg py-4 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center space-x-2 disabled:opacity-50"
                   >
                     <span>{isLoading ? "Connecting..." : "Optimize Resume — $9.99"}</span>
                     {!isLoading && <ArrowRight className="w-5 h-5" />}
@@ -572,7 +653,7 @@ export default function Home() {
                 <button
                   onClick={() => handleCheckout('cover_letter')}
                   disabled={isLoading}
-                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-lg py-4 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center space-x-2 disabled:opacity-50"
+                  className="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-lg py-4 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
                   <span>{isLoading ? "Connecting..." : "Generate Cohesive Cover Letter — $9.99"}</span>
                   {!isLoading && <ArrowRight className="w-5 h-5" />}
@@ -580,18 +661,18 @@ export default function Home() {
               )}
 
               {/* Bundle Upsell Promo (only when NOT checking out bundle already) */}
-              <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <h4 className="font-extrabold text-emerald-950 text-sm flex items-center gap-1.5">
-                    <Sparkles className="w-4 h-4 text-emerald-600" />
+                  <h4 className="font-extrabold text-blue-950 text-sm flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-blue-600" />
                     <span>Recommended: Get the Bundle & Save 25%!</span>
                   </h4>
-                  <p className="text-xs text-emerald-800 mt-1 font-medium">Get both the ATS-optimized resume + matching tailored cover letter.</p>
+                  <p className="text-xs text-blue-800 mt-1 font-medium">Get both the ATS-optimized resume + matching tailored cover letter.</p>
                 </div>
                 <button
                   onClick={() => handleCheckout('bundle')}
                   disabled={isLoading}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold py-2.5 px-4 rounded-xl transition shadow-sm self-stretch sm:self-auto text-center"
+                  className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-extrabold py-2.5 px-4 rounded-xl transition shadow-sm self-stretch sm:self-auto text-center"
                 >
                   Get Bundle — $14.99
                 </button>
@@ -642,7 +723,7 @@ export default function Home() {
                 <button
                   onClick={() => handleCheckout('resume')}
                   disabled={isLoading}
-                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base py-3.5 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                  className="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-base py-3.5 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                 >
                   <span>Fix all missing gaps — $9.99</span>
                   <ArrowRight className="w-4 h-4" />
@@ -652,7 +733,7 @@ export default function Home() {
                   onClick={shareScore}
                   className="w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-1.5"
                 >
-                  <Share2 className="w-4 h-4 text-emerald-600" />
+                  <Share2 className="w-4 h-4 text-blue-600" />
                   <span>Share My Score</span>
                 </button>
               </div>
@@ -661,21 +742,21 @@ export default function Home() {
                 <h4 className="font-extrabold text-slate-800 text-lg">Why optimize with ATSHacker?</h4>
                 <ul className="space-y-4">
                   <li className="flex gap-3">
-                    <BadgeCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <BadgeCheck className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-bold text-slate-900">Semantic AI Matching</p>
                       <p className="text-xs text-slate-500 mt-0.5">We reframe your accomplishments to match the Job Description without fabricating experience.</p>
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <Layout className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <Layout className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-bold text-slate-900">Single-Column Formats</p>
                       <p className="text-xs text-slate-500 mt-0.5">Tested against Workday, Taleo, and Greenhouse to prevent text extraction errors.</p>
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <Award className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <Award className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-bold text-slate-900">Cohesive Personal Branding</p>
                       <p className="text-xs text-slate-500 mt-0.5">Get a matching cover letter utilizing the same formatting styles for a highly polished application.</p>
@@ -698,97 +779,218 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                name: 'Modern Slate',
-                color: 'bg-slate-800',
-                desc: 'Minimal layout with a bold heading header structure.',
-                initials: 'JD',
-                candName: 'John Doe',
-                candTitle: 'Network Engineer',
-                skills: 'Cisco • Python • AWS',
-                bullets: [
-                  'Optimized core network infrastructure for 40% speed-up.',
-                  'Implemented secure VPN tunnels and firewall policies.',
-                  'Configured dynamic OSPF/BGP routing protocols.'
-                ]
+                name: 'Emily Carter',
+                title: 'Sales Manager, Chicago',
+                avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150',
+                themeBg: 'bg-rose-50/30',
+                accentText: 'text-rose-600',
+                accentBg: 'bg-rose-500',
+                accentBorder: 'border-rose-200',
+                skills: ['Sales Strategy', 'CRM (Salesforce)', 'Client Relations', 'Team Leadership'],
+                email: 'emily.carter@gmail.com',
+                phone: '312-555-0199',
+                address: 'Chicago, IL',
+                jobs: [
+                  {
+                    company: 'Sertons Sormon',
+                    role: 'Sales Manager',
+                    date: 'Apr 2018 - Apr 2023',
+                    bullets: [
+                      'Led and managed sales operations, increasing revenue by 34%.',
+                      'Maintained a customer satisfaction rating of 96% via accounts management.'
+                    ]
+                  },
+                  {
+                    company: 'Sertons Sormon',
+                    role: 'Sales Associate',
+                    date: 'Apr 2017 - Apr 2018',
+                    bullets: [
+                      'Exceeded individual sales targets by 15% each quarter.'
+                    ]
+                  }
+                ],
+                education: {
+                  school: 'Chicago State University',
+                  degree: 'B.S. in Business Administration',
+                  date: 'Graduated 2016'
+                }
               },
               {
-                name: 'Professional Emerald',
-                color: 'bg-emerald-800',
-                desc: 'Curated corporate design highlighting core competencies.',
-                initials: 'SJ',
-                candName: 'Sarah Jenkins',
-                candTitle: 'Software Engineer',
-                skills: 'React • Node.js • TypeScript',
-                bullets: [
-                  'Re-architected legacy dashboard using Next.js/Turbopack.',
-                  'Reduced bundle sizes by 45% and page load times.',
-                  'Collaborated closely with cross-functional designer teams.'
-                ]
+                name: 'John Doe',
+                title: 'Network Engineer, Dallas',
+                avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150',
+                themeBg: 'bg-blue-50/30',
+                accentText: 'text-blue-600',
+                accentBg: 'bg-blue-600',
+                accentBorder: 'border-blue-200',
+                skills: ['BGP/OSPF Routing', 'VPN Security', 'AWS Cloud Architecture', 'Network Automation'],
+                email: 'john.doe@gmail.com',
+                phone: '214-555-0120',
+                address: 'Dallas, TX',
+                jobs: [
+                  {
+                    company: 'Jehoo Engineer',
+                    role: 'Network Engineer',
+                    date: 'Apr 2020 - Aug 2024',
+                    bullets: [
+                      'Designed and deployed secure multi-site VPN networks, improving connectivity by 40%.',
+                      'Configured dynamic BGP routing protocols, cutting latency by 30%.'
+                    ]
+                  },
+                  {
+                    company: 'Jehoo Engineer',
+                    role: 'Junior Administrator',
+                    date: 'Apr 2017 - Aug 2020',
+                    bullets: [
+                      'Monitored network systems and troubleshot routing issues.'
+                    ]
+                  }
+                ],
+                education: {
+                  school: 'University of Texas at Dallas',
+                  degree: 'B.S. in Computer Science',
+                  date: 'Graduated 2016'
+                }
               },
               {
-                name: 'Minimal Clean',
-                color: 'bg-gray-100 border border-slate-200',
-                desc: 'Ultra-clean single column optimized for dense records.',
-                initials: 'AR',
-                candName: 'Alex Rivera',
-                candTitle: 'Product Designer',
-                skills: 'Figma • UI/UX • Design Systems',
-                bullets: [
-                  'Redesigned core checkout UI resulting in 20% conversion bump.',
-                  'Created scalable UI component library for Figma workflow.',
-                  'Conducted 15+ user testing sessions to iterate prototypes.'
-                ]
-              },
-              {
-                name: 'Creative Orange',
-                color: 'bg-orange-600',
-                desc: 'Vibrant highlight accents to separate sections clearly.',
-                initials: 'EC',
-                candName: 'Emily Chen',
-                candTitle: 'Marketing Specialist',
-                skills: 'SEO • Content • Analytics',
-                bullets: [
-                  'Grew organic traffic by 150% via targeted search campaigns.',
-                  'Designed visual newsletter templates for 50k subscribers.',
-                  'Analyzed weekly conversion funnels using Google Analytics.'
-                ]
-              },
-            ].map((tmpl, idx) => (
-              <div key={idx} className="group border border-slate-200/60 bg-slate-50 rounded-2xl p-4 hover:shadow-xl hover:border-emerald-500/20 hover:scale-[1.03] transition-all duration-300 transform cursor-pointer">
-                <div className="aspect-[3/4] rounded-xl bg-white shadow-sm overflow-hidden p-5 flex flex-col justify-between relative text-left">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-emerald-50 group-hover:text-emerald-700 flex items-center justify-center font-black text-slate-700 text-[10px] transition-all duration-300">{tmpl.initials}</div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-xs font-black text-slate-900 truncate leading-tight group-hover:text-emerald-950 transition-colors duration-200">{tmpl.candName}</div>
-                        <div className="text-[9px] text-slate-500 font-bold truncate leading-none mt-0.5">{tmpl.candTitle}</div>
-                      </div>
-                    </div>
-                    
-                    <div className="border-t border-slate-100 pt-2 space-y-2">
-                      <div>
-                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-wider mb-0.5">Skills</div>
-                        <div className="text-[9px] text-slate-600 font-bold leading-none">{tmpl.skills}</div>
+                name: 'Sarah Jenkins',
+                title: 'Software Engineer, Austin',
+                avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150',
+                themeBg: 'bg-slate-50',
+                accentText: 'text-slate-700',
+                accentBg: 'bg-slate-700',
+                accentBorder: 'border-slate-300',
+                skills: ['React / Next.js', 'Node.js / Express', 'TypeScript', 'System Architecture'],
+                email: 'sarah.jenkins@gmail.com',
+                phone: '512-555-0145',
+                address: 'Austin, TX',
+                jobs: [
+                  {
+                    company: 'Software Engineer',
+                    role: 'Senior Software Engineer',
+                    date: 'Apr 2015 - Dec 2020',
+                    bullets: [
+                      'Re-architected client dashboard, improving load times by 45% using Next.js.',
+                      'Mentored 4 junior developers and established code review standards.'
+                    ]
+                  },
+                  {
+                    company: 'Software Engineer',
+                    role: 'Software Developer',
+                    date: 'Apr 2013 - Apr 2015',
+                    bullets: [
+                      'Designed and implemented secure REST APIs handling 10k daily requests.'
+                    ]
+                  }
+                ],
+                education: {
+                  school: 'University of Texas at Austin',
+                  degree: 'B.S. in Software Engineering',
+                  date: 'Graduated 2012'
+                }
+              }
+            ].map((cand, idx) => (
+              <div key={idx} className="group bg-white border border-slate-200 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 transform overflow-hidden cursor-pointer flex flex-col">
+                {/* Resume Paper Container */}
+                <div className="flex-grow grid grid-cols-12 text-left bg-white min-h-[500px]">
+                  {/* Left Column (35%) */}
+                  <div className={`col-span-4 ${cand.themeBg} p-4 border-r border-slate-100 flex flex-col justify-between`}>
+                    <div className="space-y-6">
+                      {/* Avatar */}
+                      <div className="text-center">
+                        <img 
+                          src={cand.avatar} 
+                          alt={cand.name}
+                          className="w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto object-cover border border-slate-200 shadow-md"
+                        />
                       </div>
                       
-                      <div className="space-y-1 pt-1 border-t border-slate-100">
-                        <div className="text-[8px] font-black text-slate-400 uppercase tracking-wider">Experience Highlights</div>
-                        {tmpl.bullets.map((b, bIdx) => (
-                          <div key={bIdx} className="flex gap-1 items-start text-[8px] text-slate-600 leading-normal">
-                            <span className="text-emerald-500 font-bold mt-0.5 group-hover:scale-125 transition-transform duration-300">•</span>
-                            <p className="flex-1 line-clamp-2">{b}</p>
-                          </div>
-                        ))}
+                      {/* Skills */}
+                      <div className="space-y-3">
+                        <h5 className="text-[10px] font-black text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-1">
+                          Skills
+                        </h5>
+                        <div className="space-y-2">
+                          {cand.skills.map((skill, sIdx) => (
+                            <div key={sIdx} className="space-y-0.5">
+                              <div className="text-[9px] font-bold text-slate-700 leading-none">{skill}</div>
+                              <div className="h-1 w-full bg-slate-200 rounded-full overflow-hidden">
+                                <div className={`h-full ${cand.accentBg} rounded-full`} style={{ width: `${85 - sIdx * 8}%` }}></div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Contact */}
+                      <div className="space-y-3">
+                        <h5 className="text-[10px] font-black text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-1">
+                          Contact
+                        </h5>
+                        <div className="space-y-1.5 text-[9px] text-slate-600 font-medium">
+                          <p className="truncate"><span className="font-bold text-slate-700">Email:</span><br />{cand.email}</p>
+                          <p><span className="font-bold text-slate-700">Phone:</span><br />{cand.phone}</p>
+                          <p><span className="font-bold text-slate-700">Address:</span><br />{cand.address}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className={`h-1 group-hover:h-2 w-full ${tmpl.color} rounded-full transition-all duration-300`}></div>
+
+                  {/* Right Column (65%) */}
+                  <div className="col-span-8 p-6 flex flex-col justify-between">
+                    <div>
+                      {/* Name & Title */}
+                      <div className="mb-6">
+                        <h4 className="text-xl font-black text-slate-900 leading-tight">{cand.name}</h4>
+                        <p className="text-[10px] font-bold text-slate-500 mt-1">({cand.title})</p>
+                      </div>
+
+                      {/* Work History */}
+                      <div className="space-y-4">
+                        <h5 className="text-[10px] font-black text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-1">
+                          Work History
+                        </h5>
+                        <div className="relative pl-4 border-l border-slate-150 space-y-4">
+                          {cand.jobs.map((job, jIdx) => (
+                            <div key={jIdx} className="relative space-y-1">
+                              {/* Timeline dot */}
+                              <span className={`absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full ${cand.accentBg} border-2 border-white shadow-sm`}></span>
+                              <div className="flex justify-between items-baseline gap-2">
+                                <div className="text-[10px] font-black text-slate-800">{job.role}</div>
+                                <div className="text-[8px] text-slate-500 font-bold whitespace-nowrap">{job.date}</div>
+                              </div>
+                              <div className="text-[9px] text-slate-500 font-bold italic leading-none mb-1.5">{job.company}</div>
+                              <ul className="space-y-1 list-disc pl-3">
+                                {job.bullets.map((b, bIdx) => (
+                                  <li key={bIdx} className="text-[9px] text-slate-600 leading-relaxed">
+                                    {b}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Education */}
+                      <div className="space-y-3 mt-6">
+                        <h5 className="text-[10px] font-black text-slate-800 uppercase tracking-widest border-b border-slate-200 pb-1">
+                          Education
+                        </h5>
+                        <div className="space-y-1">
+                          <div className="flex justify-between items-baseline gap-2">
+                            <div className="text-[10px] font-black text-slate-800">{cand.education.school}</div>
+                            <div className="text-[8px] text-slate-500 font-bold whitespace-nowrap">{cand.education.date}</div>
+                          </div>
+                          <p className="text-[9px] text-slate-600 font-medium">{cand.education.degree}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h4 className="font-bold text-slate-900 mt-4 text-center group-hover:text-emerald-700 transition-colors duration-200">{tmpl.name}</h4>
-                <p className="text-xs text-slate-500 text-center mt-1 px-2">{tmpl.desc}</p>
               </div>
             ))}
           </div>
@@ -804,7 +1006,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
           {/* Card 1: Resume */}
-          <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm transition hover:border-emerald-300 hover:shadow-md">
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm transition hover:border-blue-300 hover:shadow-md">
             <div>
               <h3 className="font-extrabold text-slate-900 text-xl mb-2">Resume Tailoring</h3>
               <p className="text-xs text-slate-500 font-semibold mb-6">Perfect for individual target job descriptions.</p>
@@ -813,29 +1015,29 @@ export default function Home() {
                 <span className="text-slate-400 text-xs font-bold">/ rewrite</span>
               </div>
               <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Free ATS score analysis</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>AI semantic keyword alignment</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Honest, non-fabricated experience</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Free ATS score analysis</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>AI semantic keyword alignment</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Honest, non-fabricated experience</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
               </ul>
             </div>
             <button 
               onClick={() => scrollToTool('resume')} 
-              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-sm mt-8 block"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-sm mt-8 block"
             >
               Get Started
             </button>
           </div>
 
           {/* Card 2: Bundle */}
-          <div className="bg-white border-2 border-emerald-500 rounded-3xl p-8 flex flex-col justify-between shadow-md relative hover:shadow-xl transition transform -translate-y-2">
-            <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-sm">
+          <div className="bg-white border-2 border-blue-500 rounded-3xl p-8 flex flex-col justify-between shadow-md relative hover:shadow-xl transition transform -translate-y-2">
+            <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-sm">
               Best Value (Save 25%)
             </span>
             <div>
               <h3 className="font-extrabold text-slate-900 text-xl mb-2 flex items-center gap-1.5">
                 <span>Resume & CL Bundle</span>
-                <Sparkles className="w-4 h-4 text-emerald-600" />
+                <Sparkles className="w-4 h-4 text-blue-600" />
               </h3>
               <p className="text-xs text-slate-500 font-semibold mb-6">Complete tailored job application toolkit.</p>
               <div className="flex items-baseline gap-1 mb-6">
@@ -843,22 +1045,22 @@ export default function Home() {
                 <span className="text-slate-400 text-xs font-bold">/ package</span>
               </div>
               <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>All Resume Tailoring features</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Cohesive matching Cover Letter</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Matching typography & headers</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>PDF & Word copies for both docs</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>All Resume Tailoring features</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Cohesive matching Cover Letter</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Matching typography & headers</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>PDF & Word copies for both docs</span></li>
               </ul>
             </div>
             <button 
               onClick={() => handleCheckout('bundle')} 
-              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-md mt-8 block"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-md mt-8 block"
             >
               Tailor Both Now
             </button>
           </div>
 
           {/* Card 3: Cover Letter */}
-          <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm transition hover:border-emerald-300 hover:shadow-md">
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm transition hover:border-blue-300 hover:shadow-md">
             <div>
               <h3 className="font-extrabold text-slate-900 text-xl mb-2">Cover Letter Only</h3>
               <p className="text-xs text-slate-500 font-semibold mb-6">Perfect for quick matching intros.</p>
@@ -867,15 +1069,15 @@ export default function Home() {
                 <span className="text-slate-400 text-xs font-bold">/ document</span>
               </div>
               <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Tailored to target job description</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Aligned with candidate's true history</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Cohesive layout and spacing design</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Tailored to target job description</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Aligned with candidate's true history</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Cohesive layout and spacing design</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
               </ul>
             </div>
             <button 
               onClick={() => scrollToTool('cover_letter')} 
-              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-sm mt-8 block"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-sm mt-8 block"
             >
               Get Started
             </button>
@@ -919,13 +1121,18 @@ export default function Home() {
       <footer className="border-t border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <img src="/logo-full.png" alt="ATSHacker" className="h-7 w-auto mb-1.5 animate-pulse" />
+            <div className="flex items-center gap-2 select-none cursor-pointer mb-1.5">
+              <div className="bg-blue-600 text-white font-extrabold text-[10px] px-1.5 py-1 rounded flex items-center justify-center shadow-sm">
+                AE
+              </div>
+              <span className="text-sm font-black text-slate-900 tracking-tight">ATSHacker</span>
+            </div>
             <p className="text-xs text-slate-500 font-medium">Honest resume & cover letter keyword optimization — no monthly subscriptions.</p>
           </div>
           <div className="flex items-center gap-6 text-sm font-bold text-slate-500">
-            <button onClick={() => scrollToTool('resume')} className="hover:text-emerald-600 transition">Optimize Resume</button>
-            <button onClick={() => scrollToTool('cover_letter')} className="hover:text-emerald-600 transition">Write Cover Letter</button>
-            <a href="#pricing" className="hover:text-emerald-600 transition">Pricing</a>
+            <button onClick={() => scrollToTool('resume')} className="hover:text-blue-600 transition">Optimize Resume</button>
+            <button onClick={() => scrollToTool('cover_letter')} className="hover:text-blue-600 transition">Write Cover Letter</button>
+            <a href="#pricing" className="hover:text-blue-600 transition">Pricing</a>
           </div>
         </div>
       </footer>

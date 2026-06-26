@@ -1,83 +1,92 @@
 [
-  {
-    "caption": "327 applications, 2 callbacks? It's your keywords. Free ATS match score - link in bio #jobsearch",
-    "file": "videos/ad-desk.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": null
-  },
-  {
-    "caption": "200 resumes per opening. Match the keywords or get buried. Free ATS score, link in bio #careertok",
-    "file": "videos/ad-resume.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": "2026-06-26T16:00:00Z"
-  },
-  {
-    "caption": "327 apps, 2 callbacks? Ranks by keyword. Match them or stay buried. Free score, link in bio #jobsearch",
-    "file": "videos/score-reveal-fixed.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": "2026-06-27T16:00:00Z"
-  },
-  {
-    "caption": "Recruiters search by keyword. Not matched = not seen. Free checker, link in bio #resumetips",
-    "file": "videos/resumes-keyword-check.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": "2026-06-28T16:00:00Z"
-  },
-  {
-    "caption": "Why resumes get buried: lack of keywords. Get a free ATS score check. Link in bio #jobsearch",
-    "file": "videos/resumes-get-buried.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": "2026-06-29T16:00:00Z"
-  },
-  {
-    "caption": "ATS doesn't auto-reject you - it ranks by keyword. Match it. Free score, link in bio #jobsearch",
-    "file": "videos/ats-no-autoreject.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": "2026-06-30T16:00:00Z"
-  },
-  {
-    "caption": "Same resume, different job = different score. Tailor every time. Free score, link in bio #jobhunt",
-    "file": "videos/same-resume-different-jobs.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": "2026-07-01T16:00:00Z"
-  },
-  {
-    "caption": "No more resume subscriptions. Free match score, $9.99 once to fix. Link in bio #careeradvice",
-    "file": "videos/stop-paying-subscriptions.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": "2026-07-02T16:00:00Z"
-  },
-  {
-    "caption": "Job title is key. Match the JD phrasing to rank higher. Free score check, link in bio #jobhunt",
-    "file": "videos/number-one-keyword.mp4",
-    "platforms": [
-      "instagram",
-      "youtube"
-    ],
-    "scheduleDate": "2026-07-03T16:00:00Z"
-  }
+    {
+        "caption": "327 applications, 2 callbacks? It's your keywords. Free ATS match score - link in bio #jobsearch",
+        "file": "videos/ad-desk.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null
+    },
+    {
+        "caption": "200 resumes per opening. Match the keywords or get buried. Free ATS score, link in bio #careertok",
+        "file": "videos/ad-resume.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-06-26T16:00:00Z"
+    },
+    {
+        "caption": "327 apps, 2 callbacks? Ranks by keyword. Match them or stay buried. Free score, link in bio #jobsearch",
+        "file": "videos/score-reveal-fixed.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-06-27T16:00:00Z"
+    },
+    {
+        "caption": "Recruiters search by keyword. Not matched = not seen. Free checker, link in bio #resumetips",
+        "file": "videos/resumes-keyword-check.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-06-28T16:00:00Z"
+    },
+    {
+        "caption": "Why resumes get buried: lack of keywords. Get a free ATS score check. Link in bio #jobsearch",
+        "file": "videos/resumes-get-buried.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-06-29T16:00:00Z"
+    },
+    {
+        "caption": "ATS doesn't auto-reject you - it ranks by keyword. Match it. Free score, link in bio #jobsearch",
+        "file": "videos/ats-no-autoreject.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-06-30T16:00:00Z"
+    },
+    {
+        "caption": "Same resume, different job = different score. Tailor every time. Free score, link in bio #jobhunt",
+        "file": "videos/same-resume-different-jobs.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-07-01T16:00:00Z"
+    },
+    {
+        "caption": "No more resume subscriptions. Free match score, $9.99 once to fix. Link in bio #careeradvice",
+        "file": "videos/stop-paying-subscriptions.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-07-02T16:00:00Z"
+    },
+    {
+        "caption": "Job title is key. Match the JD phrasing to rank higher. Free score check, link in bio #jobhunt",
+        "file": "videos/number-one-keyword.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-07-03T16:00:00Z"
+    },
+    {
+        "caption": "Rejected by Workday? The bots hate you. Stop getting filtered by recruiters. Get your score free. Link in bio \ud83d\udc47 #jobsearch #careeradvice",
+        "file": "videos/autonomous-ad.mp4",
+        "platforms": [
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-06-27T16:00:00Z"
+    }
 ]

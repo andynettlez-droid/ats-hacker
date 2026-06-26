@@ -114,9 +114,10 @@ for (const variant of videoVariants) {
   fs.writeFileSync(tempPropsPath, JSON.stringify(variant.props, null, 2));
 
   try {
-const command = process.platform === 'win32'
-      ? `node.exe node_modules/@remotion/cli/remotion-cli.js render ScoreReveal out/${variant.fileName} --props=temp_props.json`
-      : `npx remotion render ScoreReveal out/${variant.fileName} --props=temp_props.json`;
+    const composition = variant.composition || (variant.props && variant.props.avatarVideoUrl ? 'AvatarReveal' : 'ScoreReveal');
+    const command = process.platform === 'win32'
+      ? `node.exe node_modules/@remotion/cli/remotion-cli.js render ${composition} out/${variant.fileName} --props=temp_props.json`
+      : `npx remotion render ${composition} out/${variant.fileName} --props=temp_props.json`;
     console.log(`Executing: ${command}`);
     execSync(command, { cwd: __dirname, stdio: 'inherit' });
 

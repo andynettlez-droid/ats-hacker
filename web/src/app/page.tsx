@@ -324,10 +324,10 @@ export default function Home() {
             <img src="/logo-full.png" alt="ATSHacker" className="h-9 w-auto" />
           </div>
           <div className="flex items-center gap-8 text-sm font-bold text-slate-600">
-            <button onClick={() => scrollToTool('resume')} className="hover:text-emerald-600 transition">Features</button>
+            <a href="#features" className="hover:text-emerald-600 transition">Features</a>
             <a href="#templates" className="hover:text-emerald-600 transition">Templates</a>
             <a href="#pricing" className="hover:text-emerald-600 transition">Pricing</a>
-            <button onClick={() => scrollToTool('resume')} className="hover:text-emerald-600 transition">Blog</button>
+            <a href="#faq" className="hover:text-emerald-600 transition">FAQ</a>
           </div>
           <div className="flex items-center gap-4">
             <button 
@@ -347,7 +347,7 @@ export default function Home() {
       </nav>
 
       {/* Zety-inspired Hero Section */}
-      <header className="bg-gradient-to-b from-white to-slate-50 border-b border-slate-100 py-16 lg:py-24 overflow-hidden">
+      <header id="features" className="bg-gradient-to-b from-white to-slate-50 border-b border-slate-100 py-16 lg:py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Hero Content */}
           <div className="lg:col-span-7 space-y-8">
@@ -1406,7 +1406,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-slate-100/50 border-t border-slate-200/60 py-20">
+      <section id="faq" className="bg-slate-100/50 border-t border-slate-200/60 py-20">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl font-black text-center text-slate-900 mb-12">Frequently Asked Questions</h2>
           <div className="space-y-6">

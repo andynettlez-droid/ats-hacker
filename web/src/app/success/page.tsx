@@ -105,8 +105,44 @@ const ResumePDF = ({ data }: { data: any }) => (
   </Document>
 );
 
+const CoverLetterPDF = ({ data }: { data: any }) => {
+  const cl = data.coverLetter || {};
+  const paragraphs = cl.bodyParagraphs || [];
+
+  return (
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.header}>
+          <Text style={styles.name}>{data.name}</Text>
+          <View style={styles.contactInfo}>
+            {data.email && <Text>{data.email}</Text>}
+            {data.phone && <Text>{data.phone}</Text>}
+            {data.location && <Text>{data.location}</Text>}
+            {data.linkedin && <Text>{data.linkedin}</Text>}
+          </View>
+        </View>
+
+        <View style={{ marginTop: 15, marginBottom: 15 }}>
+          <Text style={{ fontSize: 10, color: '#666', marginBottom: 15 }}>
+            {cl.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </Text>
+          <Text style={{ fontWeight: 'bold', fontSize: 11, marginBottom: 2 }}>{cl.recipientName || 'Hiring Manager'}</Text>
+          <Text style={{ fontSize: 11, color: '#333' }}>{cl.companyName || 'The Company'}</Text>
+        </View>
+
+        <Text style={{ fontSize: 11, marginBottom: 12, fontWeight: 'bold' }}>{cl.salutation || 'Dear Hiring Manager,'}</Text>
+
+        {paragraphs.map((para: string, idx: number) => (
+          <Text key={idx} style={{ fontSize: 11, lineHeight: 1.6, marginBottom: 12 }}>{para}</Text>
+        ))}
+
+        <Text style={{ fontSize: 11, marginTop: 15, lineHeight: 1.6 }}>{cl.signOff || `Sincerely,\n\n${data.name}`}</Text>
+      </Page>
+    </Document>
+  );
+};
+
 // Build an ATS-friendly .docx (single column, plain text) from the resume JSON.
-// Many ATS parse .docx more reliably than PDF, so we offer both.
 async function buildDocxBlob(data: any): Promise<Blob> {
   const { Document: Doc, Packer, Paragraph, TextRun, HeadingLevel } = docx;
   const children: docx.Paragraph[] = [];
@@ -165,6 +201,37 @@ async function buildDocxBlob(data: any): Promise<Blob> {
   return Packer.toBlob(document);
 }
 
+// Build an ATS-friendly .docx for the cover letter
+async function buildCoverLetterDocxBlob(data: any): Promise<Blob> {
+  const { Document: Doc, Packer, Paragraph, TextRun, HeadingLevel } = docx;
+  const children: docx.Paragraph[] = [];
+  const cl = data.coverLetter || {};
+
+  children.push(new Paragraph({ text: data.name || 'Cover Letter', heading: HeadingLevel.TITLE }));
+  const contact = [data.email, data.phone, data.location, data.linkedin].filter(Boolean).join('  |  ');
+  if (contact) children.push(new Paragraph({ children: [new TextRun({ text: contact, color: '666666' })] }));
+
+  children.push(new Paragraph({ text: '' }));
+  const dateStr = cl.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  children.push(new Paragraph({ text: dateStr }));
+  children.push(new Paragraph({ text: cl.recipientName || 'Hiring Manager', children: [new TextRun({ text: cl.recipientName || 'Hiring Manager', bold: true })] }));
+  children.push(new Paragraph({ text: cl.companyName || 'The Company' }));
+  children.push(new Paragraph({ text: '' }));
+
+  children.push(new Paragraph({ text: cl.salutation || 'Dear Hiring Manager,', children: [new TextRun({ text: cl.salutation || 'Dear Hiring Manager,', bold: true })] }));
+  children.push(new Paragraph({ text: '' }));
+
+  for (const para of cl.bodyParagraphs || []) {
+    children.push(new Paragraph({ text: para }));
+    children.push(new Paragraph({ text: '' }));
+  }
+
+  children.push(new Paragraph({ text: cl.signOff || `Sincerely,\n\n${data.name}` }));
+
+  const document = new Doc({ sections: [{ children }] });
+  return Packer.toBlob(document);
+}
+
 function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -184,6 +251,7 @@ function SuccessPageContent() {
   const [beforeScore, setBeforeScore] = useState<number | null>(null);
   const [afterScore, setAfterScore] = useState<number | null>(null);
   const [optimizationLow, setOptimizationLow] = useState(false);
+  const [copied, setCopied] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -219,41 +287,57 @@ function SuccessPageContent() {
           throw new Error(err.error || "Failed to process");
         }
 
-        setStatus("Building your optimized resume...");
+        setStatus("Building optimized files...");
         const json = await res.json();
         setResumeData(json);
-        // The rewrite API flags resumes that were already a strong match.
         if (json._warning === 'optimization_low') setOptimizationLow(true);
 
-        // Auto-download the PDF for instant gratification.
-        const blob = await pdf(<ResumePDF data={json} />).toBlob();
-        downloadBlob(blob, `${base}.pdf`);
+        // Auto-download files based on purchase type
+        if (json.coverLetter && !json.experience) {
+          // Cover Letter only
+          const clBlob = await pdf(<CoverLetterPDF data={json} />).toBlob();
+          downloadBlob(clBlob, `${base}_cover_letter.pdf`);
+        } else if (json.coverLetter && json.experience) {
+          // Bundle
+          const resumeBlob = await pdf(<ResumePDF data={json} />).toBlob();
+          downloadBlob(resumeBlob, `${base}_resume.pdf`);
+          const clBlob = await pdf(<CoverLetterPDF data={json} />).toBlob();
+          downloadBlob(clBlob, `${base}_cover_letter.pdf`);
+        } else {
+          // Resume only
+          const resumeBlob = await pdf(<ResumePDF data={json} />).toBlob();
+          downloadBlob(resumeBlob, `${base}_resume.pdf`);
+        }
 
-        setStatus("Resume optimized! Download as PDF or .docx below.");
+        setStatus("Optimization completed! Download files below.");
         setIsDone(true);
 
-        // Before/after ATS match score (non-blocking) — proves the optimization worked.
-        const optimizedText = [
-          json.summary,
-          (json.skills || []).join(' '),
-          (json.experience || []).map((e: any) => `${e.title} ${e.company} ${(e.bullets || []).join(' ')}`).join(' '),
-          (json.certifications || []).join(' '),
-          (json.education || []).map((e: any) => `${e.school} ${e.degree}`).join(' '),
-        ].filter(Boolean).join(' ');
-        const scoreOf = (text: string) =>
-          fetch('/api/score', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ resumeText: text, jobDescription }),
-          })
-            .then((r) => (r.ok ? r.json() : null))
-            .catch(() => null);
-        Promise.all([scoreOf(resumeText), scoreOf(optimizedText)]).then(([b, a]) => {
-          if (b && typeof b.score === 'number') setBeforeScore(b.score);
-          if (a && typeof a.score === 'number') setAfterScore(a.score);
-        });
+        // Score check if resume was rewritten
+        if (json.experience) {
+          const optimizedText = [
+            json.summary,
+            (json.skills || []).join(' '),
+            (json.experience || []).map((e: any) => `${e.title} ${e.company} ${(e.bullets || []).join(' ')}`).join(' '),
+            (json.certifications || []).join(' '),
+            (json.education || []).map((e: any) => `${e.school} ${e.degree}`).join(' '),
+          ].filter(Boolean).join(' ');
 
-        // Cleanup storage so we don't hold sensitive data.
+          const scoreOf = (text: string) =>
+            fetch('/api/score', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ resumeText: text, jobDescription }),
+            })
+              .then((r) => (r.ok ? r.json() : null))
+              .catch(() => null);
+
+          Promise.all([scoreOf(resumeText), scoreOf(optimizedText)]).then(([b, a]) => {
+            if (b && typeof b.score === 'number') setBeforeScore(b.score);
+            if (a && typeof a.score === 'number') setAfterScore(a.score);
+          });
+        }
+
+        // Cleanup storage
         sessionStorage.removeItem('resumeText');
         sessionStorage.removeItem('jobDescription');
 
@@ -268,18 +352,50 @@ function SuccessPageContent() {
   const handleDownloadPdf = async () => {
     if (!resumeData) return;
     const blob = await pdf(<ResumePDF data={resumeData} />).toBlob();
-    downloadBlob(blob, `${baseName}.pdf`);
+    downloadBlob(blob, `${baseName}_resume.pdf`);
   };
 
   const handleDownloadDocx = async () => {
     if (!resumeData) return;
     const blob = await buildDocxBlob(resumeData);
-    downloadBlob(blob, `${baseName}.docx`);
+    downloadBlob(blob, `${baseName}_resume.docx`);
+  };
+
+  const handleDownloadCoverLetterPdf = async () => {
+    if (!resumeData || !resumeData.coverLetter) return;
+    const blob = await pdf(<CoverLetterPDF data={resumeData} />).toBlob();
+    downloadBlob(blob, `${baseName}_cover_letter.pdf`);
+  };
+
+  const handleDownloadCoverLetterDocx = async () => {
+    if (!resumeData || !resumeData.coverLetter) return;
+    const blob = await buildCoverLetterDocxBlob(resumeData);
+    downloadBlob(blob, `${baseName}_cover_letter.docx`);
+  };
+
+  const handleCopyCoverLetter = () => {
+    if (!resumeData?.coverLetter) return;
+    const cl = resumeData.coverLetter;
+    const text = [
+      cl.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+      '',
+      cl.recipientName || 'Hiring Manager',
+      cl.companyName || 'The Company',
+      '',
+      cl.salutation || 'Dear Hiring Manager,',
+      '',
+      ...(cl.bodyParagraphs || []),
+      '',
+      cl.signOff || `Sincerely,\n\n${resumeData.name}`
+    ].join('\n');
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center text-slate-900 p-6">
-      <div className="bg-white border border-slate-200 rounded-3xl p-12 shadow-sm max-w-md w-full text-center space-y-6">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center text-slate-900 p-6">
+      <div className={`bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-md w-full transition-all duration-300 ${resumeData?.coverLetter ? 'max-w-2xl' : 'max-w-md'} text-center space-y-6`}>
 
         <a href="/" className="flex items-center justify-center gap-2.5">
           <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
@@ -294,30 +410,31 @@ function SuccessPageContent() {
           <CheckCircle className="ath-score-pop w-16 h-16 text-emerald-600 mx-auto" />
         )}
 
-        <h1 className="text-3xl font-bold text-slate-900">Payment Success!</h1>
+        <h1 className="text-3xl font-bold text-slate-900">Successful Optimization!</h1>
         <p className="text-slate-600 font-medium">{status}</p>
 
         {isDone && (
-          <div className="ath-reveal pt-4 space-y-4">
-            {beforeScore !== null && afterScore !== null && (
-              <div className="bg-white border border-slate-200 rounded-xl p-5">
+          <div className="ath-reveal pt-4 space-y-6 text-left">
+            {beforeScore !== null && afterScore !== null && resumeData?.experience && (
+              <div className="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-5 text-center">
                 <p className="text-xs font-semibold text-slate-400 mb-3 tracking-wide">ATS MATCH SCORE</p>
-                <div className="flex items-center justify-center gap-5">
+                <div className="flex items-center justify-center gap-6">
                   <div className="text-center">
                     <div className="text-3xl font-black text-red-600">{beforeScore}</div>
-                    <div className="text-[10px] uppercase tracking-wide text-slate-400">Before</div>
+                    <div className="text-[10px] uppercase tracking-wide text-slate-400 font-bold">Before</div>
                   </div>
                   <span className="text-2xl text-slate-300">&rarr;</span>
                   <div className="text-center">
                     <div className="text-3xl font-black text-emerald-600">{afterScore}</div>
-                    <div className="text-[10px] uppercase tracking-wide text-slate-400">After</div>
+                    <div className="text-[10px] uppercase tracking-wide text-slate-400 font-bold">After</div>
                   </div>
                 </div>
                 {afterScore > beforeScore && (
-                  <p className="text-xs text-emerald-600 mt-3">+{afterScore - beforeScore} point keyword-match improvement.</p>
+                  <p className="text-xs text-emerald-700 font-medium mt-3">+{afterScore - beforeScore} point keyword-match improvement.</p>
                 )}
               </div>
             )}
+
             {optimizationLow && (
               <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-left">
                 <p className="text-xs text-slate-600">
@@ -325,28 +442,96 @@ function SuccessPageContent() {
                 </p>
               </div>
             )}
-            <p className="text-sm text-slate-500">
-              Your PDF downloaded automatically. ATS often parse .docx more reliably — grab that version too if you&apos;re applying through Workday or Greenhouse.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={handleDownloadPdf}
-                className="flex-1 bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-900 font-bold py-3 rounded-xl transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40"
-              >
-                <Download className="w-5 h-5" />
-                <span>Download PDF</span>
-              </button>
-              <button
-                onClick={handleDownloadDocx}
-                className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition-all duration-200 active:scale-[0.98] hover:shadow-md flex items-center justify-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 focus-visible:ring-offset-2"
-              >
-                <FileText className="w-5 h-5" />
-                <span>Download .docx</span>
-              </button>
+
+            <div className="space-y-4">
+              {resumeData?.experience && (
+                <div className="border border-slate-200 rounded-2xl p-5 bg-slate-50/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2.5 bg-emerald-50 text-emerald-700 rounded-lg">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900">ATS-Optimized Resume</h3>
+                      <p className="text-xs text-slate-500 font-medium">Tailored semantic keywords and achievements.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 w-full md:w-auto">
+                    <button
+                      onClick={handleDownloadPdf}
+                      className="flex-1 md:flex-none bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-905 font-bold py-2 px-4 rounded-xl text-sm transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-1"
+                    >
+                      <span>PDF</span>
+                    </button>
+                    <button
+                      onClick={handleDownloadDocx}
+                      className="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-xl text-sm transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-1"
+                    >
+                      <span>Word</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {resumeData?.coverLetter && (
+                <div className="border border-slate-200 rounded-2xl p-5 bg-slate-50/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2.5 bg-emerald-50 text-emerald-700 rounded-lg">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900">Tailored Cover Letter</h3>
+                      <p className="text-xs text-slate-500 font-medium">Cohesive styling matching your new resume.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 w-full md:w-auto">
+                    <button
+                      onClick={handleDownloadCoverLetterPdf}
+                      className="flex-1 md:flex-none bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-905 font-bold py-2 px-4 rounded-xl text-sm transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-1"
+                    >
+                      <span>PDF</span>
+                    </button>
+                    <button
+                      onClick={handleDownloadCoverLetterDocx}
+                      className="flex-1 md:flex-none bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded-xl text-sm transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-1"
+                    >
+                      <span>Word</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-            <a href="/" className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-500 font-bold transition pt-2">
-              <span>Optimize another resume</span>
-            </a>
+
+            {resumeData?.coverLetter && (
+              <div className="border border-slate-200 rounded-2xl p-6 bg-slate-50/30 space-y-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-bold text-slate-950">Cover Letter Preview</h3>
+                  <button
+                    onClick={handleCopyCoverLetter}
+                    className="bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 text-xs font-bold py-1.5 px-3 rounded-lg transition-all"
+                  >
+                    {copied ? 'Copied!' : 'Copy Text'}
+                  </button>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-xl p-5 text-xs text-slate-800 space-y-3 font-mono leading-relaxed max-h-60 overflow-y-auto">
+                  <p>{resumeData.coverLetter.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                  <div>
+                    <p className="font-bold">{resumeData.coverLetter.recipientName}</p>
+                    <p>{resumeData.coverLetter.companyName}</p>
+                  </div>
+                  <p className="font-bold">{resumeData.coverLetter.salutation}</p>
+                  {(resumeData.coverLetter.bodyParagraphs || []).map((p: string, i: number) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                  <p className="whitespace-pre-line">{resumeData.coverLetter.signOff}</p>
+                </div>
+              </div>
+            )}
+
+            <div className="text-center pt-2">
+              <a href="/" className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-500 font-bold transition">
+                <span>Tailor another document</span>
+              </a>
+            </div>
           </div>
         )}
 

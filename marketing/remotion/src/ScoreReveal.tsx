@@ -2,7 +2,7 @@ import React from "react";
 import {
   AbsoluteFill,
   Sequence,
-  Video,
+  OffthreadVideo,
   interpolate,
   spring,
   useCurrentFrame,
@@ -67,7 +67,7 @@ const Background: React.FC<{ bgVideo?: string }> = ({ bgVideo }) => {
     const src = isRemote(bgVideo) ? bgVideo : staticFile(bgVideo);
     return (
       <AbsoluteFill>
-        <Video
+        <OffthreadVideo
           src={src}
           muted
           loop

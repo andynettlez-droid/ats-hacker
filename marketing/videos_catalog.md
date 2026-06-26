@@ -59,3 +59,56 @@ This catalog indexes all generated and pre-existing video assets for ATSHacker m
 *   **Path:** `marketing/autopost/videos/score-jump.mp4`
 *   **Concept:** Direct product demo.
 *   **Video Hook:** "Watch this resume go from 30% to 90% match in seconds."
+
+
+## 4. Programmatic Video Pipeline Rendered Cycle
+
+### [Recruiters search resumes by keyword.](file:///C:/Users/andyn/.gemini/antigravity/scratch/ats_hacker/marketing/remotion/out/resumes-keyword-check.mp4)
+*   **Path:** `marketing/autopost/videos/resumes-keyword-check.mp4`
+*   **Hook:** "Recruiters search resumes by keyword."
+*   **Missing Keywords:** ["SQL","metrics","pipeline"]
+*   **Score Change:** 32% &rarr; 88%
+*   **Scheduled Date:** 2026-06-28T16:00:00Z
+*   **Caption:** "Recruiters search by keyword. Not matched = not seen. Free checker, link in bio #resumetips"
+
+### [Why resumes get buried under 100s of apps.](file:///C:/Users/andyn/.gemini/antigravity/scratch/ats_hacker/marketing/remotion/out/resumes-get-buried.mp4)
+*   **Path:** `marketing/autopost/videos/resumes-get-buried.mp4`
+*   **Hook:** "Why resumes get buried under 100s of apps."
+*   **Missing Keywords:** ["Python","analytics","dashboards"]
+*   **Score Change:** 45% &rarr; 92%
+*   **Scheduled Date:** 2026-06-29T16:00:00Z
+*   **Caption:** "Why resumes get buried: lack of keywords. Get a free ATS score check. Link in bio #jobsearch"
+
+### [The ATS does NOT auto-reject you.](file:///C:/Users/andyn/.gemini/antigravity/scratch/ats_hacker/marketing/remotion/out/ats-no-autoreject.mp4)
+*   **Path:** `marketing/autopost/videos/ats-no-autoreject.mp4`
+*   **Hook:** "The ATS does NOT auto-reject you."
+*   **Missing Keywords:** ["Agile","cross-functional","deliverables"]
+*   **Score Change:** 55% &rarr; 91%
+*   **Scheduled Date:** 2026-06-30T16:00:00Z
+*   **Caption:** "ATS doesn't auto-reject you - it ranks by keyword. Match it. Free score, link in bio #jobsearch"
+
+### [Same resume, different jobs totally different scores.](file:///C:/Users/andyn/.gemini/antigravity/scratch/ats_hacker/marketing/remotion/out/same-resume-different-jobs.mp4)
+*   **Path:** `marketing/autopost/videos/same-resume-different-jobs.mp4`
+*   **Hook:** "Same resume, different jobs totally different scores."
+*   **Missing Keywords:** ["AWS","CI/CD","Kubernetes"]
+*   **Score Change:** 28% &rarr; 85%
+*   **Scheduled Date:** 2026-07-01T16:00:00Z
+*   **Caption:** "Same resume, different job = different score. Tailor every time. Free score, link in bio #jobhunt"
+
+### [Stop paying $30/month for resume builders.](file:///C:/Users/andyn/.gemini/antigravity/scratch/ats_hacker/marketing/remotion/out/stop-paying-subscriptions.mp4)
+*   **Path:** `marketing/autopost/videos/stop-paying-subscriptions.mp4`
+*   **Hook:** "Stop paying $30/month for resume builders."
+*   **Missing Keywords:** ["Figma","wireframes","prototypes"]
+*   **Score Change:** 39% &rarr; 94%
+*   **Scheduled Date:** 2026-07-02T16:00:00Z
+*   **Caption:** "No more resume subscriptions. Free match score, $9.99 once to fix. Link in bio #careeradvice"
+
+### [The #1 keyword is your target job title.](file:///C:/Users/andyn/.gemini/antigravity/scratch/ats_hacker/marketing/remotion/out/number-one-keyword.mp4)
+*   **Path:** `marketing/autopost/videos/number-one-keyword.mp4`
+*   **Hook:** "The #1 keyword is your target job title."
+*   **Missing Keywords:** ["product manager","roadmap","KPIs"]
+*   **Score Change:** 41% &rarr; 89%
+*   **Scheduled Date:** 2026-07-03T16:00:00Z
+*   **Caption:** "Job title is key. Match the JD phrasing to rank higher. Free score check, link in bio #jobhunt"
+
+

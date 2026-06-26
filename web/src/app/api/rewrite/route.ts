@@ -46,6 +46,7 @@ export async function POST(req: Request) {
     }
     fulfilledSessions.add(sessionId);
     // ----------------------------------------------------------------------------
+    const productType = session.metadata?.product_type || 'resume';
 
     const userPrompt = `TARGET JOB DESCRIPTION:\n${jobDescription}\n\nCURRENT RESUME TEXT:\n${resumeText}`;
 
@@ -106,6 +107,46 @@ keywords. Do not fabricate jobs, dates, or skills the candidate never had.` + ex
             content: userPrompt,
           },
         ],
+      });
+      const resultText = completion.choices[0].message.content;
+      if (!resultText) throw new Error("No response from OpenAI");
+      return JSON.parse(resultText);
+    };
+
+    const generateCoverLetter = async (resumeJson: any): Promise<any> => {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content: `You are an expert career consultant and cover letter writer.
+Your job is to draft a professional cover letter tailored to the target Job Description, utilizing the candidate's real experience from their Resume.
+
+Output a strict JSON object with the following structure:
+{
+  "recipientName": "Hiring Team or Hiring Manager",
+  "companyName": "Company Name (extract from Job Description if possible, else 'the company')",
+  "salutation": "Dear Hiring Manager,",
+  "bodyParagraphs": [
+    "Paragraph 1 (Clear hook: state interest in the role, reference the company by name, and state a brief overview of why you are a fit)",
+    "Paragraph 2 (Highlight your experience matching the JD keywords. Keep it factual and aligned with the resume's experience, without fabricating any details)",
+    "Paragraph 3 (Discuss how your core competencies and soft/hard skills will solve their immediate business needs)",
+    "Paragraph 4 (Call to action: request an interview, thank them for their time, and state that you look forward to discussing further)"
+  ],
+  "signOff": "Sincerely,\\n\\nCandidate Name"
+}
+
+HONESTY RULES (critical — do not violate):
+- Never claim a credential, experience, or skill the candidate does not have in their resume.
+- Use only the achievements and background present in the candidate's resume.
+- Keep the language professional, direct, and free of hype.`
+          },
+          {
+            role: "user",
+            content: `TARGET JOB DESCRIPTION:\n${jobDescription}\n\nCANDIDATE RESUME DETAILS:\n${JSON.stringify(resumeJson)}`
+          }
+        ]
       });
       const resultText = completion.choices[0].message.content;
       if (!resultText) throw new Error("No response from OpenAI");
@@ -175,6 +216,16 @@ keywords. Do not fabricate jobs, dates, or skills the candidate never had.` + ex
     }
     groundCerts(best);
     restoreContact(best);
+
+    // Call cover letter generator if this is a cover letter or bundle purchase
+    if (productType === 'cover_letter' || productType === 'bundle') {
+      try {
+        const coverLetter = await generateCoverLetter(best);
+        best.coverLetter = coverLetter;
+      } catch (clErr) {
+        console.error('Error generating cover letter:', clErr);
+      }
+    }
 
     // If, after all that, the rewrite still isn't more optimized than the original, surface it
     // rather than charging for a no-op (the client can decide how to handle this).

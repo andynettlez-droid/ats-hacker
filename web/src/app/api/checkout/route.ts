@@ -21,14 +21,26 @@ function utmMetadata(body: Record<string, unknown>): Record<string, string> {
 
 export async function POST(req: Request) {
   try {
-    // We would normally parse the resume URL here to pass to metadata
     const body = await req.json();
-
+    const type = body.type || 'resume'; // 'resume', 'cover_letter', or 'bundle'
     const utms = utmMetadata(body);
-
     const origin = req.headers.get('origin') || 'https://ats-hacker-swart.vercel.app';
     
-    // Create a Stripe Checkout Session for $9.99
+    let productName = 'ATSHacker — Resume Optimization';
+    let productDesc = '1x semantic job-description resume optimization';
+    let amount = 999; // $9.99
+
+    if (type === 'cover_letter') {
+      productName = 'ATSHacker — Cover Letter Generation';
+      productDesc = '1x semantic job-description cover letter tailoring';
+      amount = 999; // $9.99
+    } else if (type === 'bundle') {
+      productName = 'ATSHacker — Resume & Cover Letter Bundle';
+      productDesc = '1x semantic job-description resume & matching cover letter tailoring';
+      amount = 1499; // $14.99
+    }
+
+    // Create a Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
@@ -36,26 +48,21 @@ export async function POST(req: Request) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: 'ATSHacker — Resume Optimization',
-              description: '1x semantic job-description optimization',
+              name: productName,
+              description: productDesc,
             },
-            unit_amount: 999, // $9.99
+            unit_amount: amount,
           },
           quantity: 1,
         },
       ],
       mode: 'payment',
-      // Branding for the charge itself. NOTE: the business name shown at the TOP of
-      // the hosted Checkout page comes from your Stripe Dashboard "Public business
-      // name", not from here — update it there if it still reads "wificheckout".
       payment_intent_data: {
-        description: 'ATSHacker resume optimization',
+        description: productName,
         statement_descriptor_suffix: 'ATSHacker',
-        // Tag every ATSHacker charge so analytics can exclude unrelated revenue
-        // (this Stripe account also carries legacy WiFiCheckup sales).
-        metadata: { app: 'atshacker', ...utms },
+        metadata: { app: 'atshacker', product_type: type, ...utms },
       },
-      metadata: { app: 'atshacker', ...utms },
+      metadata: { app: 'atshacker', product_type: type, ...utms },
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/`,
     });

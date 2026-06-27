@@ -215,7 +215,7 @@ const ResumePDF = ({ data }: { data: ResumeData }) => (
           <Text style={styles.title}>{exp.title}</Text>
           {exp.bullets?.map((b: string, j: number) => (
             <View key={j} style={styles.bullet}>
-              <Text style={styles.bulletPoint}>•</Text>
+              <Text style={styles.bulletPoint}>{"\u2022"}</Text>
               <Text style={styles.bulletText}>{b}</Text>
             </View>
           ))}
@@ -242,7 +242,7 @@ const ResumePDF = ({ data }: { data: ResumeData }) => (
           <Text style={styles.sectionTitle}>Certifications</Text>
           {data.certifications.map((c: string, i: number) => (
             <View key={i} style={styles.bullet}>
-              <Text style={styles.bulletPoint}>•</Text>
+              <Text style={styles.bulletPoint}>{"\u2022"}</Text>
               <Text style={styles.bulletText}>{c}</Text>
             </View>
           ))}
@@ -305,7 +305,7 @@ async function buildDocxBlob(data: ResumeData): Promise<Blob> {
 
   if (data.skills?.length) {
     children.push(new Paragraph({ text: 'Core Competencies', heading: HeadingLevel.HEADING_2 }));
-    children.push(new Paragraph({ text: data.skills.join(' • ') }));
+    children.push(new Paragraph({ text: data.skills.join(' | ') }));
   }
 
   if (data.experience?.length) {
@@ -361,11 +361,11 @@ async function buildCoverLetterDocxBlob(data: ResumeData): Promise<Blob> {
   children.push(new Paragraph({ text: '' }));
   const dateStr = cl.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   children.push(new Paragraph({ text: dateStr }));
-  children.push(new Paragraph({ text: cl.recipientName || 'Hiring Manager', children: [new TextRun({ text: cl.recipientName || 'Hiring Manager', bold: true })] }));
+  children.push(new Paragraph({ children: [new TextRun({ text: cl.recipientName || 'Hiring Manager', bold: true })] }));
   children.push(new Paragraph({ text: cl.companyName || 'The Company' }));
   children.push(new Paragraph({ text: '' }));
 
-  children.push(new Paragraph({ text: cl.salutation || 'Dear Hiring Manager,', children: [new TextRun({ text: cl.salutation || 'Dear Hiring Manager,', bold: true })] }));
+  children.push(new Paragraph({ children: [new TextRun({ text: cl.salutation || 'Dear Hiring Manager,', bold: true })] }));
   children.push(new Paragraph({ text: '' }));
 
   for (const para of cl.bodyParagraphs || []) {
@@ -617,7 +617,7 @@ function SuccessPageContent() {
             {optimizationLow && (
               <div className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-left">
                 <p className="text-xs text-slate-600">
-                  This resume was already fairly well-matched to the job — we still tightened the keywords and phrasing for a cleaner read.
+                  This resume was already fairly well-matched to the job - we still tightened the keywords and phrasing for a cleaner read.
                 </p>
               </div>
             )}

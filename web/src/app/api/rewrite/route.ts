@@ -129,7 +129,7 @@ function normalizeNumberToken(value: string): string {
 }
 
 function extractNumberTokens(text: string): Set<string> {
-  const matches = text.match(/[$€£]?\s*\d+(?:[.,]\d+)*(?:\s*(?:%|k|m|million|billion))?/gi) || [];
+  const matches = text.match(/[\u0024\u20ac\u00a3]?\s*\d+(?:[.,]\d+)*(?:\s*(?:%|k|m|million|billion))?/gi) || [];
   return new Set(matches.map(normalizeNumberToken));
 }
 
@@ -151,8 +151,8 @@ function extractCertifications(text: string): string[] {
   const credentialPattern =
     /\b(certifications?|licenses?|credentials?|certified|certificate|CISSP|PMP|CPA|CFA|RN|LPN|LVN|CNA|ACLS|BLS|CCNA|CCNP|AWS|Azure|GCP|Security\+|Network\+|A\+|SHRM(?:-CP|-SCP)?|PHR|SPHR|P\.?E\.?|CSM|Six Sigma)\b/i;
   const chunks = text
-    .split(/\r?\n|[•·]|;/)
-    .map((line) => line.replace(/^[\s\-–—*]+/, '').trim())
+    .split(/\r?\n|[\u2022\u00b7]|;/)
+    .map((line) => line.replace(/^[\s\-\u2013\u2014*]+/, '').trim())
     .filter((line) => line.length >= 2 && line.length <= 180);
 
   return uniqueStrings(
@@ -418,7 +418,7 @@ Output a strict JSON object with the following structure:
   "certifications": ["Certification exactly as stated, preserving status like '(in progress)' or '(pursuing)'"]
 }
 
-HONESTY RULES (critical — do not violate):
+HONESTY RULES (critical - do not violate):
 - Never claim a credential, certification, degree, or job the candidate does not have.
 - Never add a metric, percentage, dollar amount, date, title, company, tool, or skill unless it is supported by the original resume text.
 - Preserve the exact status of every certification. If the resume says a cert is "in progress",
@@ -467,7 +467,7 @@ Output a strict JSON object with the following structure:
   "signOff": "Sincerely,\\n\\nCandidate Name"
 }
 
-HONESTY RULES (critical — do not violate):
+HONESTY RULES (critical - do not violate):
 - Never claim a credential, experience, or skill the candidate does not have in their resume.
 - Use only the achievements and background present in the candidate's resume.
 - Reference the target role, company when available, and at least 2-3 concrete job-description requirements.
@@ -476,7 +476,7 @@ HONESTY RULES (critical — do not violate):
           },
           {
             role: "user",
-            content: `TARGET JOB DESCRIPTION:\n${jobDescription}\n\nCANDIDATE RESUME DETAILS:\n${JSON.stringify(resumeJson)}`
+            content: `TARGET JOB DESCRIPTION:\n${jobDescription}\n\nCURRENT RESUME TEXT:\n${resumeText}\n\nSTRUCTURED RESUME DETAILS:\n${JSON.stringify(resumeJson)}\n\nEXTRACTED CANDIDATE FACTS TO PRESERVE:\n${candidateFactsPrompt(candidateFacts)}`
           }
         ]
       });
@@ -496,12 +496,13 @@ HONESTY RULES (critical — do not violate):
 
     // Generate, then verify it is actually MORE aligned to the JD than the original.
     const origMatch = jdMatches(resumeText);
+    const includesResumeRewrite = productType !== 'cover_letter';
     let best = applyFactGrounding(await generate(), candidateFacts, resumeText);
     let bestScore = jdMatches(serializeResume(best));
     let bestErrors = resumeQualityErrors(best, candidateFacts, resumeText);
     if (bestScore <= origMatch) {
       const retry = await generate(
-        "\n\nThe previous attempt did not incorporate enough of the job description's keywords. Aggressively weave more of the JD's exact keywords and phrases into the summary, skills, and bullet points — strictly without fabricating any experience, dates, skills, or certifications."
+        "\n\nThe previous attempt did not incorporate enough of the job description's keywords. Aggressively weave more of the JD's exact keywords and phrases into the summary, skills, and bullet points - strictly without fabricating any experience, dates, skills, or certifications."
       );
       const groundedRetry = applyFactGrounding(retry, candidateFacts, resumeText);
       const retryScore = jdMatches(serializeResume(groundedRetry));
@@ -515,7 +516,7 @@ HONESTY RULES (critical — do not violate):
     best = applyFactGrounding(best, candidateFacts, resumeText);
     bestScore = jdMatches(serializeResume(best));
     bestErrors = resumeQualityErrors(best, candidateFacts, resumeText);
-    if (bestErrors.length > 0) {
+    if (includesResumeRewrite && bestErrors.length > 0) {
       throw new Error(`Could not produce a grounded, complete resume rewrite: ${bestErrors.join("; ")}`);
     }
 
@@ -555,9 +556,9 @@ Regenerate it with 3-4 substantive paragraphs, exact job-description requirement
 
     // If, after all that, the rewrite still isn't more optimized than the original, surface it
     // rather than charging for a no-op (the client can decide how to handle this).
-    if (bestScore <= origMatch || bestErrors.length > 0) {
+    if (includesResumeRewrite && (bestScore <= origMatch || bestErrors.length > 0)) {
       const lowOptimizationResponse =
-        productType === 'cover_letter' ? response : { ...response, _warning: "optimization_low" };
+        { ...response, _warning: "optimization_low" };
       fulfilledResults.set(normalizedSessionId, lowOptimizationResponse);
       return NextResponse.json(lowOptimizationResponse);
     }

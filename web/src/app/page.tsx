@@ -122,7 +122,7 @@ const faqSchema = {
       name: 'What is an ATS match score?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'It is a 0–100 measure of how closely your resume’s keywords and skills overlap with a specific job description. A higher score means your resume is more likely to surface near the top when a recruiter searches their ATS for that role.',
+        text: "It is a 0-100 measure of how closely your resume's keywords and skills overlap with a specific job description. A higher score means your resume is more likely to surface near the top when a recruiter searches their ATS for that role.",
       },
     },
     {
@@ -546,22 +546,22 @@ export default function Home() {
                         <div className="text-[7px] text-slate-500 font-bold truncate leading-none mt-0.5">Marketing, Chicago IL</div>
                       </div>
                     </div>
-                    {/* Single column — no structure */}
+                    {/* Single column - no structure */}
                     <div className="flex-grow text-[5.5px] text-slate-500 leading-tight text-left space-y-1.5">
                       <div className="font-extrabold text-[6px] text-slate-700 uppercase tracking-wide border-b border-rose-100 pb-0.5">Objective</div>
                       <p className="italic text-slate-400 text-[5px] leading-tight">&quot;Looking for a marketing role where I can use my skills and grow professionally.&quot;</p>
                       <div className="font-extrabold text-[6px] text-slate-700 uppercase tracking-wide border-b border-rose-100 pb-0.5 mt-1">Experience</div>
                       <div className="pl-1 space-y-0.5">
-                        <p className="font-bold text-[6px] text-slate-700">Marketing Manager — Growth Labs</p>
+                        <p className="font-bold text-[6px] text-slate-700">Marketing Manager - Growth Labs</p>
                         <p className="text-[5px] text-slate-400">2021 - Present</p>
-                        <p className="text-[5px] italic text-slate-500">• Responsible for social media</p>
-                        <p className="text-[5px] italic text-slate-500">• Helped with marketing campaigns</p>
-                        <p className="text-[5px] italic text-slate-500">• Managed the team</p>
+                        <p className="text-[5px] italic text-slate-500">- Responsible for social media</p>
+                        <p className="text-[5px] italic text-slate-500">- Helped with marketing campaigns</p>
+                        <p className="text-[5px] italic text-slate-500">- Managed the team</p>
                       </div>
                       <div className="font-extrabold text-[6px] text-slate-700 uppercase tracking-wide border-b border-rose-100 pb-0.5 mt-1">Skills</div>
                       <p className="text-[5px] text-slate-400">Social Media, Team Player, Writing, Microsoft Word, PowerPoint</p>
                       <div className="font-extrabold text-[6px] text-slate-700 uppercase tracking-wide border-b border-rose-100 pb-0.5">Education</div>
-                      <p className="text-[5px] text-slate-600">DePaul University — Marketing</p>
+                      <p className="text-[5px] text-slate-600">DePaul University - Marketing</p>
                     </div>
                   </div>
                   {/* Bullets */}
@@ -593,25 +593,25 @@ export default function Home() {
                       />
                       <div className="flex-1 min-w-0">
                         <div className="text-[9px] font-black text-slate-800 truncate leading-none">Michael Torres</div>
-                        <div className="text-[7px] text-emerald-700 font-bold truncate leading-none mt-0.5">Senior Marketing Manager • Chicago, IL</div>
+                        <div className="text-[7px] text-emerald-700 font-bold truncate leading-none mt-0.5">Senior Marketing Manager - Chicago, IL</div>
                       </div>
                     </div>
-                    {/* Two column — professional layout */}
+                    {/* Two column - professional layout */}
                     <div className="flex-grow grid grid-cols-12 gap-1 text-[5.5px] leading-tight text-left">
                       {/* Left sidebar */}
                       <div className="col-span-4 bg-emerald-50/40 p-1 rounded border-r border-emerald-100 flex flex-col justify-between">
                         <div className="space-y-1">
                           <div className="font-extrabold text-[5px] text-emerald-700 uppercase tracking-wide border-b border-emerald-100 pb-0.5 mb-0.5">Core Skills</div>
                           <div className="space-y-0.5 font-semibold text-emerald-800 text-[5px]">
-                            <p className="highlight-keyword px-0.5 rounded">• Demand Generation</p>
-                            <p className="highlight-keyword px-0.5 rounded">• LinkedIn/Meta Ads</p>
-                            <p className="highlight-keyword px-0.5 rounded">• HubSpot & Marketo</p>
-                            <p className="highlight-keyword px-0.5 rounded">• CAC/LTV Analysis</p>
+                            <p className="highlight-keyword px-0.5 rounded">- Demand Generation</p>
+                            <p className="highlight-keyword px-0.5 rounded">- LinkedIn/Meta Ads</p>
+                            <p className="highlight-keyword px-0.5 rounded">- HubSpot & Marketo</p>
+                            <p className="highlight-keyword px-0.5 rounded">- CAC/LTV Analysis</p>
                           </div>
                           <div className="font-extrabold text-[5px] text-emerald-700 uppercase tracking-wide border-b border-emerald-100 pb-0.5 mt-1 mb-0.5">Certifications</div>
                           <div className="text-[4.5px] text-slate-600 font-medium space-y-0.5">
-                            <p>• Google Analytics 4</p>
-                            <p>• HubSpot Inbound Mktg</p>
+                            <p>- Google Analytics 4</p>
+                            <p>- HubSpot Inbound Mktg</p>
                           </div>
                         </div>
                         <div className="text-[4.5px] font-medium border-t border-emerald-100 pt-0.5 mt-1">
@@ -627,27 +627,27 @@ export default function Home() {
                           <div className="space-y-1 pl-1 border-l border-emerald-300">
                             <div>
                               <p className="font-extrabold text-[6px] text-slate-800 leading-none">Senior Marketing Manager</p>
-                              <p className="text-[4.5px] text-slate-400 font-bold">Growth Labs Inc. • Jan 2021 – Present</p>
+                              <p className="text-[4.5px] text-slate-400 font-bold">Growth Labs Inc. - Jan 2021 - Present</p>
                               <p className="text-[5px] text-slate-700 font-medium mt-0.5 leading-tight">
-                                • Scaled <span className="highlight-keyword font-bold px-0.5 rounded">B2B demand gen</span> pipeline from $800K to <span className="highlight-keyword font-bold px-0.5 rounded">$2.4M ARR</span>
+                                - Scaled <span className="highlight-keyword font-bold px-0.5 rounded">B2B demand gen</span> pipeline from $800K to <span className="highlight-keyword font-bold px-0.5 rounded">$2.4M ARR</span>
                               </p>
                               <p className="text-[5px] text-slate-700 font-medium leading-tight">
-                                • Cut <span className="highlight-keyword font-bold px-0.5 rounded">CAC by 32%</span> via <span className="highlight-keyword font-bold px-0.5 rounded">LinkedIn Ads</span> audience segmentation
+                                - Cut <span className="highlight-keyword font-bold px-0.5 rounded">CAC by 32%</span> via <span className="highlight-keyword font-bold px-0.5 rounded">LinkedIn Ads</span> audience segmentation
                               </p>
                               <p className="text-[5px] text-slate-700 font-medium leading-tight">
-                                • Built <span className="highlight-keyword font-bold px-0.5 rounded">HubSpot</span> lead scoring workflow; 3x MQL-to-SQL rate
+                                - Built <span className="highlight-keyword font-bold px-0.5 rounded">HubSpot</span> lead scoring workflow; 3x MQL-to-SQL rate
                               </p>
                             </div>
                             <div>
                               <p className="font-extrabold text-[5.5px] text-slate-800 leading-none">Marketing Specialist</p>
-                              <p className="text-[4.5px] text-slate-400 font-bold">Growth Labs Inc. • 2018 – 2020</p>
-                              <p className="text-[5px] text-slate-600 font-medium mt-0.5">• Grew LinkedIn following 140%; launched gated content program</p>
+                              <p className="text-[4.5px] text-slate-400 font-bold">Growth Labs Inc. - 2018 - 2020</p>
+                              <p className="text-[5px] text-slate-600 font-medium mt-0.5">- Grew LinkedIn following 140%; launched gated content program</p>
                             </div>
                           </div>
                         </div>
                         <div className="border-t border-slate-100 pt-0.5 mt-0.5">
                           <div className="font-extrabold text-[4.5px] text-slate-400 uppercase">Education</div>
-                          <p className="text-[5px] font-bold text-slate-700">DePaul University — B.A. Marketing & Comm.</p>
+                          <p className="text-[5px] font-bold text-slate-700">DePaul University - B.A. Marketing & Comm.</p>
                         </div>
                       </div>
                     </div>
@@ -658,7 +658,7 @@ export default function Home() {
                       <CheckCircle className="w-3 h-3 inline mr-0.5 -mt-0.5" /> Matched: <span className="highlight-keyword font-extrabold text-emerald-800 px-0.5 rounded">Demand Gen</span>, <span className="highlight-keyword font-extrabold text-emerald-800 px-0.5 rounded">LinkedIn Ads</span>, <span className="highlight-keyword font-extrabold text-emerald-800 px-0.5 rounded">HubSpot</span>, <span className="highlight-keyword font-extrabold text-emerald-800 px-0.5 rounded">CAC/LTV</span>
                     </p>
                     <p className="text-slate-300 pl-2">
-                      <span className="font-bold text-slate-100">Impact:</span> Scaled B2B pipeline from $800K → $2.4M ARR. Cut CAC by 32% via LinkedIn audience segmentation.
+                      <span className="font-bold text-slate-100">Impact:</span> Scaled B2B pipeline from $800K to $2.4M ARR. Cut CAC by 32% via LinkedIn audience segmentation.
                     </p>
                   </div>
                 </div>
@@ -776,7 +776,7 @@ export default function Home() {
                     disabled={isLoading}
                     className="w-full rounded-xl border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 py-4 text-lg font-extrabold text-white shadow-[0_18px_60px_rgba(56,213,255,0.22)] transition hover:brightness-110 flex items-center justify-center space-x-2 disabled:opacity-50"
                   >
-                    <span>{isLoading ? "Connecting..." : "Optimize Resume — $9.99"}</span>
+                    <span>{isLoading ? "Connecting..." : "Optimize Resume - $9.99"}</span>
                     {!isLoading && <ArrowRight className="w-5 h-5" />}
                   </button>
                 </div>
@@ -786,7 +786,7 @@ export default function Home() {
                   disabled={isLoading}
                   className="w-full rounded-xl border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 py-4 text-lg font-extrabold text-white shadow-[0_18px_60px_rgba(56,213,255,0.22)] transition hover:brightness-110 flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
-                  <span>{isLoading ? "Connecting..." : "Generate Cohesive Cover Letter — $9.99"}</span>
+                  <span>{isLoading ? "Connecting..." : "Generate Cohesive Cover Letter - $9.99"}</span>
                   {!isLoading && <ArrowRight className="w-5 h-5" />}
                 </button>
               )}
@@ -805,7 +805,7 @@ export default function Home() {
                   disabled={isLoading}
                   className="bg-emerald-400 hover:bg-emerald-300 text-slate-950 text-xs font-extrabold py-2.5 px-4 rounded-xl transition shadow-sm self-stretch sm:self-auto text-center"
                 >
-                  Get Bundle — $14.99
+                  Get Bundle - $14.99
                 </button>
               </div>
 
@@ -856,7 +856,7 @@ export default function Home() {
                   disabled={isLoading}
                   className="w-full rounded-xl border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 py-3.5 text-base font-extrabold text-white shadow-[0_18px_60px_rgba(56,213,255,0.22)] transition hover:brightness-110 flex items-center justify-center gap-2"
                 >
-                  <span>Fix all missing gaps — $9.99</span>
+                  <span>Fix all missing gaps - $9.99</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
@@ -960,7 +960,7 @@ export default function Home() {
                 coverLetter: {
                   date: 'June 26, 2026',
                   recipient: 'Head of Product\nStripe Inc.\nSan Francisco, CA 94103',
-                  subject: 'Subject: Application for Senior Product Manager — Payments',
+                  subject: 'Subject: Application for Senior Product Manager - Payments',
                   body: [
                     'Dear Head of Product,',
                     'I am excited to apply for the Senior Product Manager role on the Payments team at Stripe. At Convoy Logistics, I own the roadmap for a $12M ARR freight-matching platform. I have led 14 A/B experiments that lifted shipper conversion by 22% and significantly reduced churn.',
@@ -970,7 +970,7 @@ export default function Home() {
                     'Priya Ramirez'
                   ]
                 },
-                mockText: `Priya Ramirez\n415-555-0182 | priya.ramirez@gmail.com | San Francisco, CA\n\nProfessional Summary:\nAnalytical and customer-centric Senior Product Manager with 5+ years of experience leading cross-functional teams to design, build, and scale B2B SaaS and logistics products. Proven track record of owning end-to-end roadmap strategy for a $12M ARR logistics platform, running high-impact A/B experiments, and using data-driven insights (SQL, Amplitude) to increase conversion and reduce churn.\n\nSkills:\nProduct Roadmapping, Agile/Scrum Methodologies, SQL, Amplitude, Product Analytics, Stakeholder Management, User Research, A/B Testing, PRD Writing, Jira.\n\nWork Experience:\nConvoy Logistics | Senior Product Manager | San Francisco, CA | March 2021 – Present\n- Owned the end-to-end product strategy and roadmap for a $12M ARR freight-matching web and mobile platform serving over 4,000 active carriers.\n- Designed and ran 14 A/B experiments that successfully lifted shipper booking conversion rates by 22% and decreased carrier churn by 11%.\n- Authored detailed PRDs, mapped user journeys, and collaborated with a 12-person cross-functional squad of engineers, designers, and data scientists.\n\nConvoy Logistics | Associate Product Manager | San Francisco, CA | June 2019 – February 2021\n- Led the redesign of the carrier onboarding flow, simplifying verification steps and cutting candidate drop-off rate from 38% to 17%.\n- Conducted 30+ qualitative user interviews to understand driver pain points, translating insights into key feature enhancements.\n\nEducation:\nUC Berkeley | B.S. in Cognitive Science | San Francisco, CA | Graduated 2018`,
+                mockText: `Priya Ramirez\n415-555-0182 | priya.ramirez@gmail.com | San Francisco, CA\n\nProfessional Summary:\nAnalytical and customer-centric Senior Product Manager with 5+ years of experience leading cross-functional teams to design, build, and scale B2B SaaS and logistics products. Proven track record of owning end-to-end roadmap strategy for a $12M ARR logistics platform, running high-impact A/B experiments, and using data-driven insights (SQL, Amplitude) to increase conversion and reduce churn.\n\nSkills:\nProduct Roadmapping, Agile/Scrum Methodologies, SQL, Amplitude, Product Analytics, Stakeholder Management, User Research, A/B Testing, PRD Writing, Jira.\n\nWork Experience:\nConvoy Logistics | Senior Product Manager | San Francisco, CA | March 2021 - Present\n- Owned the end-to-end product strategy and roadmap for a $12M ARR freight-matching web and mobile platform serving over 4,000 active carriers.\n- Designed and ran 14 A/B experiments that successfully lifted shipper booking conversion rates by 22% and decreased carrier churn by 11%.\n- Authored detailed PRDs, mapped user journeys, and collaborated with a 12-person cross-functional squad of engineers, designers, and data scientists.\n\nConvoy Logistics | Associate Product Manager | San Francisco, CA | June 2019 - February 2021\n- Led the redesign of the carrier onboarding flow, simplifying verification steps and cutting candidate drop-off rate from 38% to 17%.\n- Conducted 30+ qualitative user interviews to understand driver pain points, translating insights into key feature enhancements.\n\nEducation:\nUC Berkeley | B.S. in Cognitive Science | San Francisco, CA | Graduated 2018`,
                 mockJobDescription: `Stripe is looking for a Senior Product Manager to lead product strategy and execution for our Core Payments platform.\n\nKey Responsibilities:\n- Own the end-to-end product roadmap for Stripe's payments APIs, developer portals, and merchant onboarding flows.\n- Collaborate with engineering, data science, and design to ship highly reliable payments infrastructure.\n- Use data-driven product analytics (SQL, Amplitude, Tableau) to design A/B experiments and optimize merchant conversion.\n- Engage directly with key enterprise merchant stakeholders to gather product requirements.\n\nRequired Qualifications:\n- 4+ years of product management experience, preferably in B2B SaaS, API products, or fintech.\n- Deep expertise in Agile / Scrum methodologies, PRD writing, and product roadmapping.\n- Strong analytical skills with the ability to write SQL queries and run A/B testing frameworks.\n- Exceptional stakeholder management and communication skills.`
               },
               {
@@ -993,7 +993,7 @@ export default function Home() {
                     role: 'ICU Registered Nurse',
                     date: 'Aug 2020 - Present',
                     bullets: [
-                      'Provided critical care for a 22-bed Medical ICU, managing ventilators, vasopressors, and central lines for 4–5 patients per shift.',
+                      'Provided critical care for a 22-bed Medical ICU, managing ventilators, vasopressors, and central lines for 4-5 patients per shift.',
                       'Reduced medication error rate by 18% by implementing barcode scanning protocols in Epic EMR.'
                     ]
                   },
@@ -1024,7 +1024,7 @@ export default function Home() {
                     'David Nakamura, BSN, RN'
                   ]
                 },
-                mockText: `David Nakamura, BSN, RN\n720-555-0137 | david.nakamura@gmail.com | Denver, CO\n\nProfessional Summary:\nDedicated, clinical ICU Registered Nurse (BSN, RN) with 6+ years of experience providing high-acuity care in fast-paced ICU settings. Proven expert in patient assessment, ventilator management, central line care, and vasopressor administration. Commended for team collaboration, patient advocacy, and maintaining compliance with clinical safety guidelines. Expert user of Epic EMR.\n\nSkills:\nICU/Critical Care Nursing, Epic EMR, Patient Assessment, Ventilator Management, Vasopressor Administration, Central Line Care, BLS & ACLS Certified, Patient Safety, EKG Monitoring.\n\nWork Experience:\nUCHealth Medical Center | ICU Registered Nurse | Denver, CO | August 2020 – Present\n- Delivered critical care for high-acuity patients in a 22-bed Medical Intensive Care Unit (MICU), managing complex ventilators, vasopressors, and arterial lines.\n- Led clinical pilot for Epic EMR barcode scanning protocols, reducing ward medication administration errors by 18%.\n- Coordinated with interdisciplinary teams of physicians, respiratory therapists, and pharmacologists to manage critical care plans for 4-5 patients per shift.\n\nUCHealth Medical Center | Med-Surg RN | Denver, CO | May 2018 – July 2020\n- Provided comprehensive post-surgical care for up to 6 patients simultaneously on a busy medical-surgical unit.\n- Maintained a 94% patient satisfaction rating based on post-discharge patient care surveys.\n\nEducation & Credentials:\nUniversity of Colorado | Bachelor of Science in Nursing (BSN) | Denver, CO | Graduated 2018\n- RN License, State of Colorado (Active)\n- BLS (Basic Life Support) & ACLS (Advanced Cardiovascular Life Support) Certified (Active)\n- CCRN (Critical Care Registered Nurse) Certified (Active)`,
+                mockText: `David Nakamura, BSN, RN\n720-555-0137 | david.nakamura@gmail.com | Denver, CO\n\nProfessional Summary:\nDedicated, clinical ICU Registered Nurse (BSN, RN) with 6+ years of experience providing high-acuity care in fast-paced ICU settings. Proven expert in patient assessment, ventilator management, central line care, and vasopressor administration. Commended for team collaboration, patient advocacy, and maintaining compliance with clinical safety guidelines. Expert user of Epic EMR.\n\nSkills:\nICU/Critical Care Nursing, Epic EMR, Patient Assessment, Ventilator Management, Vasopressor Administration, Central Line Care, BLS & ACLS Certified, Patient Safety, EKG Monitoring.\n\nWork Experience:\nUCHealth Medical Center | ICU Registered Nurse | Denver, CO | August 2020 - Present\n- Delivered critical care for high-acuity patients in a 22-bed Medical Intensive Care Unit (MICU), managing complex ventilators, vasopressors, and arterial lines.\n- Led clinical pilot for Epic EMR barcode scanning protocols, reducing ward medication administration errors by 18%.\n- Coordinated with interdisciplinary teams of physicians, respiratory therapists, and pharmacologists to manage critical care plans for 4-5 patients per shift.\n\nUCHealth Medical Center | Med-Surg RN | Denver, CO | May 2018 - July 2020\n- Provided comprehensive post-surgical care for up to 6 patients simultaneously on a busy medical-surgical unit.\n- Maintained a 94% patient satisfaction rating based on post-discharge patient care surveys.\n\nEducation & Credentials:\nUniversity of Colorado | Bachelor of Science in Nursing (BSN) | Denver, CO | Graduated 2018\n- RN License, State of Colorado (Active)\n- BLS (Basic Life Support) & ACLS (Advanced Cardiovascular Life Support) Certified (Active)\n- CCRN (Critical Care Registered Nurse) Certified (Active)`,
                 mockJobDescription: `Mayo Clinic is seeking a skilled ICU Registered Nurse (RN) to join our Critical Care Intensive Care Unit.\n\nKey Responsibilities:\n- Provide direct, evidence-based nursing care to high-acuity ICU patients.\n- Monitor patient vital signs, perform comprehensive patient assessments, and manage advanced equipment including ventilators, central lines, and arterial lines.\n- Administer critical care medications including vasopressors, antiarrhythmics, and sedatives.\n- Document clinical notes and assessments accurately using Epic EMR system.\n- Work collaboratively with ICU physicians and clinical specialists to adjust patient care plans.\n\nRequired Qualifications:\n- BSN (Bachelor of Science in Nursing) degree from an accredited school of nursing.\n- Active Registered Nurse (RN) license in good standing.\n- Current certifications in BLS (Basic Life Support) and ACLS (Advanced Cardiovascular Life Support). CCRN certification is a strong plus.\n- Experience with patient assessment and Critical Care / Intensive Care Nursing protocols.`
               },
               {
@@ -1068,7 +1068,7 @@ export default function Home() {
                 coverLetter: {
                   date: 'June 26, 2026',
                   recipient: 'Finance Hiring Manager\nGoldman Sachs\nNew York, NY 10282',
-                  subject: 'Subject: Application for Vice President — FP&A',
+                  subject: 'Subject: Application for Vice President - FP&A',
                   body: [
                     'Dear Finance Hiring Manager,',
                     'I am writing to apply for the VP of FP&A role at Goldman Sachs. In my current role at Meridian Capital Group, I build 3-statement financial models for commercial real estate transactions exceeding $200M and present variance analyses to C-suite stakeholders.',
@@ -1078,7 +1078,7 @@ export default function Home() {
                     'Rachel Whitfield'
                   ]
                 },
-                mockText: `Rachel Whitfield\n917-555-0163 | rachel.whitfield@gmail.com | New York, NY\n\nProfessional Summary:\nMeticulous and results-oriented Senior Financial Analyst with 5+ years of experience building complex financial models and managing corporate FP&A pipelines. Proven track record in 3-statement modeling, M&A due diligence, and budgeting. Expert in automating reporting processes using Excel VBA macros, Power BI, and Tableau to drive data-driven executive decisions.\n\nSkills:\nFinancial Modeling, Excel (VBA & Advanced Macros), Power BI, Tableau, Corporate FP&A, GAAP Compliance, Budgeting & Forecasting, Variance Analysis, Due Diligence, SQL.\n\nWork Experience:\nMeridian Capital Group | Senior Financial Analyst | New York, NY | January 2022 – Present\n- Built and maintained dynamic 3-statement financial models (income, balance sheet, cash flow) for commercial real estate transactions exceeding $200M.\n- Automated monthly corporate budget variance reporting using Excel VBA macros and Power BI, saving the finance team 12 hours per reporting cycle.\n- Conducted financial analysis and prepared detailed board decks for presentation to C-suite executives and board members.\n\nMeridian Capital Group | Financial Analyst | New York, NY | June 2019 – December 2021\n- Supported financial due diligence for 8 M&A acquisitions totaling $75M in deal volume, reviewing historical financial statements for GAAP compliance.\n- Monitored and reported on weekly departmental spend, identifying $40K in annual software duplication savings.\n\nEducation:\nNYU Stern School of Business | B.S. in Finance & Accounting | New York, NY | Graduated 2019`,
+                mockText: `Rachel Whitfield\n917-555-0163 | rachel.whitfield@gmail.com | New York, NY\n\nProfessional Summary:\nMeticulous and results-oriented Senior Financial Analyst with 5+ years of experience building complex financial models and managing corporate FP&A pipelines. Proven track record in 3-statement modeling, M&A due diligence, and budgeting. Expert in automating reporting processes using Excel VBA macros, Power BI, and Tableau to drive data-driven executive decisions.\n\nSkills:\nFinancial Modeling, Excel (VBA & Advanced Macros), Power BI, Tableau, Corporate FP&A, GAAP Compliance, Budgeting & Forecasting, Variance Analysis, Due Diligence, SQL.\n\nWork Experience:\nMeridian Capital Group | Senior Financial Analyst | New York, NY | January 2022 - Present\n- Built and maintained dynamic 3-statement financial models (income, balance sheet, cash flow) for commercial real estate transactions exceeding $200M.\n- Automated monthly corporate budget variance reporting using Excel VBA macros and Power BI, saving the finance team 12 hours per reporting cycle.\n- Conducted financial analysis and prepared detailed board decks for presentation to C-suite executives and board members.\n\nMeridian Capital Group | Financial Analyst | New York, NY | June 2019 - December 2021\n- Supported financial due diligence for 8 M&A acquisitions totaling $75M in deal volume, reviewing historical financial statements for GAAP compliance.\n- Monitored and reported on weekly departmental spend, identifying $40K in annual software duplication savings.\n\nEducation:\nNYU Stern School of Business | B.S. in Finance & Accounting | New York, NY | Graduated 2019`,
                 mockJobDescription: `Goldman Sachs is hiring a Vice President of FP&A (Financial Planning & Analysis) to join our Corporate Treasury and Finance Division in New York.\n\nKey Responsibilities:\n- Direct the division's corporate budgeting, forecasting, and long-term financial modeling processes.\n- Construct complex 3-statement financial models to simulate different economic scenarios and evaluate strategic investments.\n- Automate manual finance processes and build executive reporting dashboards in Power BI or Tableau.\n- Perform detailed monthly variance analyses comparing actual spend against target budget.\n- Coordinate due diligence for internal corporate development and strategic acquisition deals.\n- Ensure all financial planning and reporting remains in strict compliance with GAAP standards.\n\nRequired Qualifications:\n- 5+ years of experience in corporate finance, investment banking, FP&A, or accounting.\n- Exceptional expertise in Excel (advanced modeling, VBA, macros) and business intelligence tools (Power BI, Tableau).\n- Thorough understanding of GAAP compliance and corporate accounting.\n- Proven experience building 3-statement models and performing due diligence.`
               }
             ].map((cand, idx) => (
@@ -1206,9 +1206,9 @@ export default function Home() {
                           </div>
                           <div className="text-[8px] text-slate-500 font-semibold flex flex-wrap justify-center gap-x-2 gap-y-0.5 mt-2">
                             <span>{cand.address}</span>
-                            <span>•</span>
+                            <span>-</span>
                             <span>{cand.phone}</span>
-                            <span>•</span>
+                            <span>-</span>
                             <span className="truncate">{cand.email}</span>
                           </div>
                         </div>
@@ -1236,7 +1236,7 @@ export default function Home() {
                             {cand.jobs.map((job, jIdx) => (
                               <div key={jIdx} className="space-y-1">
                                 <div className="flex justify-between items-baseline gap-2">
-                                  <div className="text-[9px] font-black text-slate-800">{job.role} — <span className="text-[8px] text-slate-500 font-bold italic">{job.company}</span></div>
+                                  <div className="text-[9px] font-black text-slate-800">{job.role} - <span className="text-[8px] text-slate-500 font-bold italic">{job.company}</span></div>
                                   <div className="text-[7.5px] text-slate-500 font-bold whitespace-nowrap">{job.date}</div>
                                 </div>
                                 <ul className="space-y-0.5 list-disc pl-3">
@@ -1338,7 +1338,7 @@ export default function Home() {
                         <div className="bg-violet-950 text-white p-5 border-b border-violet-800 flex items-center justify-between gap-4">
                           <div>
                             <h4 className="text-xl font-black tracking-tight">{cand.name}</h4>
-                            <p className="text-[9px] text-violet-300 font-bold uppercase tracking-wider mt-1">Cover Letter • {cand.title}</p>
+                            <p className="text-[9px] text-violet-300 font-bold uppercase tracking-wider mt-1">Cover Letter - {cand.title}</p>
                           </div>
                           <img src={cand.avatar} alt={cand.name} className="w-12 h-12 rounded-full object-cover border-2 border-violet-400 shadow-sm" />
                         </div>
@@ -1367,9 +1367,9 @@ export default function Home() {
                       <div className="flex-grow p-5 space-y-3">
                         <div className="text-center space-y-1 border-b border-sky-200 pb-3">
                           <h4 className="text-xl font-black text-slate-900 leading-none">{cand.name}</h4>
-                          <p className="text-[9px] font-bold text-sky-700 uppercase tracking-wider">Cover Letter • {cand.title}</p>
+                          <p className="text-[9px] font-bold text-sky-700 uppercase tracking-wider">Cover Letter - {cand.title}</p>
                           <div className="text-[8px] text-slate-500 font-semibold flex justify-center gap-2 mt-2">
-                            <span>{cand.address}</span><span>•</span><span>{cand.phone}</span><span>•</span><span>{cand.email}</span>
+                            <span>{cand.address}</span><span>-</span><span>{cand.phone}</span><span>-</span><span>{cand.email}</span>
                           </div>
                         </div>
                         <div className="text-[8.5px] leading-relaxed text-slate-600 space-y-2.5">

@@ -99,7 +99,8 @@
             "youtube"
         ],
         "scheduleDate": null,
-        "status": "review_required"
+        "status": "posted",
+        "postedAt": "2026-06-27T16:32:17Z"
     },
     {
         "title": "Qualified, but hard to find?",
@@ -111,7 +112,8 @@
             "youtube"
         ],
         "scheduleDate": null,
-        "status": "review_required"
+        "status": "posted",
+        "postedAt": "2026-06-27T16:32:17Z"
     },
     {
         "title": "Most resumes get buried first",
@@ -123,6 +125,7 @@
             "youtube"
         ],
         "scheduleDate": null,
-        "status": "review_required"
+        "status": "posted",
+        "postedAt": "2026-06-27T16:32:17Z"
     }
 ]

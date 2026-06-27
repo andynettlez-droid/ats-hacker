@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';
+import Link from 'next/link';
 import {
   DollarSign,
   CreditCard,
@@ -228,7 +229,10 @@ export default function AdminDashboard() {
   }, []);
 
   useEffect(() => {
-    loadStats();
+    const timer = window.setTimeout(() => {
+      void loadStats();
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, [loadStats]);
 
   const logout = async () => {
@@ -299,13 +303,13 @@ export default function AdminDashboard() {
               <Users className="w-5 h-5" />
               <span>Customers</span>
             </button>
-            <a
+            <Link
               href="/"
               className="flex items-center space-x-3 px-4 py-3 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-xl font-medium transition"
             >
               <Settings className="w-5 h-5" />
               <span>View Site</span>
-            </a>
+            </Link>
           </nav>
         </div>
         <div className="mt-auto p-6">

@@ -25,7 +25,7 @@ export const roles: Role[] = [
   {
     slug: 'data-analyst',
     title: 'Data Analyst',
-    painPoint: "Analyst resumes get filtered when they list generic 'reporting' instead of the exact BI tools and SQL dialects the posting names. The ATS scores you on rigid keyword matches, not on the spirit of your experience.",
+    painPoint: "Analyst resumes rank lower when they list generic 'reporting' instead of the exact BI tools and SQL dialects the posting names. The ATS scores you on rigid keyword matches, not on the spirit of your experience.",
     keywords: ['SQL', 'data visualization', 'Tableau', 'Power BI', 'Excel', 'A/B testing', 'ETL', 'Python/pandas', 'dashboards', 'KPIs'],
     tips: [
       'Name the BI tools in the JD explicitly — ATS matches "Power BI", not "BI tools".',
@@ -58,7 +58,7 @@ export const roles: Role[] = [
   {
     slug: 'registered-nurse',
     title: 'Registered Nurse',
-    painPoint: "Healthcare ATS systems like Taleo are notoriously rigid. If your certifications (ACLS, BLS) and unit specialties aren't formatted exactly how the hospital's search expects, your application gets filtered out of the recruiter's results.",
+    painPoint: "Healthcare ATS systems like Taleo are notoriously rigid. If your certifications (ACLS, BLS) and unit specialties aren't formatted exactly how the hospital's search expects, your application can drop lower in the recruiter's results.",
     keywords: ['patient care', 'BLS/ACLS', 'EHR/EMR', 'medication administration', 'care plans', 'HIPAA', 'triage', 'vital signs', 'patient education', 'charting'],
     tips: [
       'List certifications and licenses exactly (RN, BLS, ACLS, state license).',
@@ -69,7 +69,7 @@ export const roles: Role[] = [
   {
     slug: 'accountant',
     title: 'Accountant',
-    painPoint: "Accounting resumes get filtered when they say 'handled finances' instead of the precise terms — GAAP, reconciliation, month-end close — that the ATS is told to require. Vague wording reads as 'unqualified' to the algorithm.",
+    painPoint: "Accounting resumes rank lower when they say 'handled finances' instead of the precise terms - GAAP, reconciliation, month-end close - that the ATS is told to require. Vague wording can look like a weak match to the search.",
     keywords: ['GAAP', 'accounts payable', 'accounts receivable', 'reconciliation', 'general ledger', 'QuickBooks', 'month-end close', 'financial reporting', 'audit', 'Excel'],
     tips: [
       'Include "GAAP" and any software named (QuickBooks, NetSuite, SAP).',
@@ -91,7 +91,7 @@ export const roles: Role[] = [
   {
     slug: 'sales-representative',
     title: 'Sales Representative',
-    painPoint: "Sales resumes get filtered when they describe activities instead of leading with numbers and the CRM named in the posting. Recruiters set the ATS to screen for quota attainment and specific tools first.",
+    painPoint: "Sales resumes rank lower when they describe activities instead of leading with numbers and the CRM named in the posting. Recruiters often search for quota attainment and specific tools first.",
     keywords: ['quota attainment', 'pipeline management', 'CRM/Salesforce', 'prospecting', 'cold calling', 'closing', 'B2B/B2C', 'account management', 'upselling', 'lead qualification'],
     tips: [
       'Lead with numbers: % of quota, revenue closed, deal size, ranking.',
@@ -113,7 +113,7 @@ export const roles: Role[] = [
   {
     slug: 'customer-success-manager',
     title: 'Customer Success Manager',
-    painPoint: "CSM resumes get filtered when they say 'helped customers' instead of the retention metrics and SaaS vocabulary — churn, NRR, QBRs — the ATS is configured to find. The algorithm rewards the exact jargon.",
+    painPoint: "CSM resumes rank lower when they say 'helped customers' instead of the retention metrics and SaaS vocabulary - churn, NRR, QBRs - the ATS is configured to find. The search rewards the exact jargon.",
     keywords: ['customer retention', 'churn reduction', 'onboarding', 'upsell/cross-sell', 'NPS', 'account management', 'SaaS', 'renewals', 'CRM', 'QBRs'],
     tips: [
       'Quantify retention: churn %, NRR, renewal rate, expansion revenue.',
@@ -146,7 +146,7 @@ export const roles: Role[] = [
   {
     slug: 'human-resources-manager',
     title: 'Human Resources Manager',
-    painPoint: "HR resumes get filtered when certifications and compliance terms aren't spelled out exactly. The ATS screens for 'SHRM-CP', 'FMLA' and the specific HRIS — paraphrasing those costs you the match.",
+    painPoint: "HR resumes rank lower when certifications and compliance terms aren't spelled out exactly. The ATS screens for 'SHRM-CP', 'FMLA' and the specific HRIS - paraphrasing those costs you the match.",
     keywords: ['talent acquisition', 'employee relations', 'HRIS', 'onboarding', 'performance management', 'compliance', 'benefits administration', 'FMLA', 'PHR/SHRM', 'compensation'],
     tips: [
       'Spell out certifications exactly (PHR, SPHR, SHRM-CP).',
@@ -168,7 +168,7 @@ export const roles: Role[] = [
   {
     slug: 'business-analyst',
     title: 'Business Analyst',
-    painPoint: "BA resumes get filtered when deliverables are described loosely. The ATS hunts for 'requirements gathering', 'BRD' and 'user stories' — say 'wrote docs' and the algorithm passes you over.",
+    painPoint: "BA resumes rank lower when deliverables are described loosely. The ATS hunts for 'requirements gathering', 'BRD' and 'user stories' - say 'wrote docs' and the recruiter search can pass you over.",
     keywords: ['requirements gathering', 'process improvement', 'stakeholder management', 'SQL', 'data analysis', 'user stories', 'Agile', 'documentation', 'gap analysis', 'BRD'],
     tips: [
       'Match artifact terms exactly: "BRD", "user stories", "use cases".',
@@ -190,7 +190,7 @@ export const roles: Role[] = [
   {
     slug: 'administrative-assistant',
     title: 'Administrative Assistant',
-    painPoint: "Admin resumes get filtered when software and support terms are vague. The ATS screens for the exact tools — 'Outlook', 'Concur' — and phrases like 'executive support'; 'office work' won't match.",
+    painPoint: "Admin resumes rank lower when software and support terms are vague. The ATS screens for the exact tools - 'Outlook', 'Concur' - and phrases like 'executive support'; 'office work' won't match.",
     keywords: ['calendar management', 'scheduling', 'Microsoft Office', 'travel coordination', 'data entry', 'correspondence', 'expense reports', 'office management', 'customer service', 'documentation'],
     tips: [
       'Name the exact software (Outlook, Google Workspace, Concur).',
@@ -311,7 +311,7 @@ export const roles: Role[] = [
   {
     slug: 'network-engineer',
     title: 'Network Engineer',
-    painPoint: "Network Engineer resumes get filtered out when they list certifications loosely. The ATS screens for exact acronyms like 'CCNA', 'CCNP', or 'JNCIA' and specific hardware vendor terms like 'Cisco Catalysts' or 'Juniper Junos' — if you miss the exact string, you drop down in recruiter searches.",
+    painPoint: "Network Engineer resumes rank lower when they list certifications loosely. The ATS screens for exact acronyms like 'CCNA', 'CCNP', or 'JNCIA' and specific hardware vendor terms like 'Cisco Catalysts' or 'Juniper Junos' - if you miss the exact string, you drop down in recruiter searches.",
     keywords: ['routing & switching', 'firewalls (ASA/Palo Alto)', 'Cisco iOS', 'VPN', 'LAN/WAN', 'subnetting', 'network security', 'BGP/OSPF', 'Wireshark', 'troubleshooting'],
     tips: [
       'List certifications (CCNA, CCNP, CompTIA Network+) prominently near the top.',
@@ -333,7 +333,7 @@ export const roles: Role[] = [
   {
     slug: 'frontend-developer',
     title: 'Frontend Developer',
-    painPoint: "Frontend developer resumes get filtered out when version-specific tools are missing. Recruiter search queries look for precise matches like 'React 18', 'Next.js', or 'Tailwind CSS'. If your resume lists general frontend skills without these exact keywords, you rank low in the ATS search result page.",
+    painPoint: "Frontend developer resumes rank lower when version-specific tools are missing. Recruiter search queries look for precise matches like 'React 18', 'Next.js', or 'Tailwind CSS'. If your resume lists general frontend skills without these exact keywords, you rank low in the ATS search result page.",
     keywords: ['React.js', 'TypeScript', 'HTML5/CSS3', 'Next.js', 'Tailwind CSS', 'state management (Redux/Zustand)', 'Webpack/Vite', 'unit testing (Jest/RTL)', 'responsive design', 'REST APIs'],
     tips: [
       'List the exact modern rendering frameworks you have used (Next.js, Remix, Astro) to match specific JD requirements.',
@@ -355,7 +355,7 @@ export const roles: Role[] = [
   {
     slug: 'fullstack-developer',
     title: 'Fullstack Developer',
-    painPoint: "Fullstack developer resumes get filtered because they split their stack skills vaguely. The ATS looks for both frontend and backend tooling in the same profile (e.g. 'React' + 'Node.js' + 'SQL'). If your stack details are spread out or use synonym naming conventions, the system marks you as incomplete.",
+    painPoint: "Fullstack developer resumes rank lower when they split their stack skills vaguely. The ATS looks for both frontend and backend tooling in the same profile (e.g. 'React' + 'Node.js' + 'SQL'). If your stack details are spread out or use synonym naming conventions, the system may mark you as an incomplete match.",
     keywords: ['React/Next.js', 'Node.js/Express', 'TypeScript', 'RESTful APIs', 'SQL/PostgreSQL', 'Git/GitHub', 'Docker', 'AWS/GCP', 'HTML5/Tailwind CSS', 'system architecture'],
     tips: [
       'Write a concise stack profile summary at the top naming the exact stack you specialize in (e.g. MERN, Next.js/Postgres).',
@@ -377,7 +377,7 @@ export const roles: Role[] = [
   {
     slug: 'it-support-specialist',
     title: 'IT Support Specialist',
-    painPoint: "IT Support resumes get filtered when troubleshooting channels and administration suites are described loosely. Recruiters configuration screens require terms like 'Active Directory', 'ITIL', or 'SaaS administration'. If your resume lists general 'desktop support', you fall behind matched applicants.",
+    painPoint: "IT Support resumes rank lower when troubleshooting channels and administration suites are described loosely. Recruiter search screens often require terms like 'Active Directory', 'ITIL', or 'SaaS administration'. If your resume lists general 'desktop support', you fall behind matched applicants.",
     keywords: ['Active Directory', 'SaaS administration (Google Workspace/Office 365)', 'troubleshooting', 'helpdesk ticketing (Jira/Zendesk)', 'hardware diagnostics', 'network configuration', 'ITIL guidelines', 'customer service', 'operating systems (Windows/macOS)', 'asset management'],
     tips: [
       'Name the exact administration consoles you managed (Office 365 Admin, Google Workspace Admin console).',

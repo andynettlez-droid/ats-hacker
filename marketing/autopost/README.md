@@ -1,41 +1,50 @@
 # ATSHacker Auto-Poster (Upload-Post)
 
-Automatically publish or schedule your launch videos to TikTok, Instagram, and YouTube
-through **Upload-Post's official API** — no browser bots, ToS-compliant. Free tier = **10 uploads/month**.
+Publish or schedule Signal launch videos to TikTok, Instagram, and YouTube through Upload-Post's official API. TikTok, Instagram, and YouTube are connected, and the current posting cap is unlimited.
 
-## Why this (vs. botting the apps)
-Logging a bot into tiktok.com / instagram.com violates their terms, hits CAPTCHAs, and gets
-accounts banned. Upload-Post uses the platforms' official publishing APIs, so it's safe and reliable.
+## Why This
 
-## One-time setup (~10 min)
-1. **Create an Upload-Post account:** https://app.upload-post.com (free plan is fine to start).
-2. **Create a "user profile"** in their dashboard and **connect** your TikTok, Instagram, and
-   YouTube accounts to it (you do the OAuth login — that part can't be automated for you).
-   - Instagram must be a **Business/Creator** account to publish via API (Upload-Post walks you through it).
-3. **Get your API key** from the dashboard.
-4. **Configure secrets:** copy `.env.example` to `.env` and fill in:
-   - `UPLOAD_POST_API_KEY` — your key
-   - `UPLOAD_POST_USER` — the profile username you created in step 2
-   (The repo's .gitignore already ignores `.env` — never commit it.)
-5. **Add your videos:** download the 3 MP4s and put them in `marketing/autopost/videos/`
-   as `score-jump.mp4`, `myth-buster.mp4`, `drop-your-score.mp4` (or edit the paths in `posts.json`).
-6. **Install the SDK:**  `cd marketing/autopost && npm install`
+Use the official publishing path instead of browser automation. It is more reliable, avoids login challenges, and keeps posting behavior inside the platform-approved API flow.
 
-## Use it
-- Preview without sending:  `npm run dry`   (or `node post.mjs --dry-run`)
-- Publish / schedule:        `npm run post`  (or `node post.mjs`)
+## One-Time Setup
 
-## Editing what gets posted — `posts.json`
-Each entry:
-- `caption` — the post text/caption.
-- `file` — path to the video (relative to this folder, e.g. `videos/score-jump.mp4`).
-- `platforms` — any of `tiktok`, `instagram`, `youtube`, `x`, `linkedin`, `facebook`, etc.
-- `scheduleDate` — `null` to post now, or a **UTC** time like `"2026-06-26T15:00:00Z"` to schedule.
+1. Create an Upload-Post account: https://app.upload-post.com
+2. Create a user profile in the dashboard.
+3. Connect TikTok, Instagram, and YouTube to that profile.
+4. Add secrets to `marketing/autopost/.env`:
+   - `UPLOAD_POST_API_KEY`
+   - `UPLOAD_POST_USER`
+5. Put MP4 files in `marketing/autopost/videos/`.
+6. Install the SDK from this folder with `npm install`.
 
-That's it. Run `npm run post` once and Upload-Post handles publishing/scheduling to every platform.
+## Use It
 
-## Notes & limits
-- Free plan: 10 uploads/month, 1 profile. Paid (~$24/mo) lifts limits / adds profiles.
-- Video posting is supported on the free tier (counts toward the 10/mo).
-- Manage or cancel scheduled posts in the Upload-Post dashboard (or via their schedule API).
-- To go fully hands-off later, this `npm run post` can be wired to a cron/scheduled task.
+- Preview everything without sending: `npm run dry`
+- Preview one file only: `node post.mjs --dry-run --only videos/signal-breakthrough-cinematic.mp4 --now`
+- Publish approved entries: `npm run post`
+- Publish one reviewed draft: `node post.mjs --only videos/signal-breakthrough-cinematic.mp4 --now --approved`
+
+## Review Gate
+
+Queue entries can use:
+
+- `"status": "review_required"`
+- `"status": "draft"`
+
+Those entries are visible in dry runs, but live posting is blocked unless `--approved` is passed. This keeps the pipeline fast without accidentally posting an unreviewed creative.
+
+## `posts.json` Fields
+
+- `title`: short title for YouTube and API metadata.
+- `caption`: post text/caption.
+- `file`: path to the video relative to this folder.
+- `platforms`: any connected target platforms, normally `tiktok`, `instagram`, and `youtube`.
+- `scheduleDate`: `null` to post now, or a UTC time like `"2026-06-26T15:00:00Z"`.
+- `status`: optional review gate, usually `review_required` until the creative is approved.
+
+## Operating Notes
+
+- Current setup: TikTok, Instagram, and YouTube connected.
+- Current posting cap: unlimited.
+- Still stagger posts intentionally so each creative gets a clean test window and readable analytics.
+- Do not use live posting for competitor comparisons, job-market claims, or product promises until a human has reviewed the creative.

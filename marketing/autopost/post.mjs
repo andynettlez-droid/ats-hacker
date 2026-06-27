@@ -1,19 +1,15 @@
 #!/usr/bin/env node
 /**
  * ATSHacker auto-poster (Upload-Post).
- * Publishes/schedules local video files to your connected socials via Upload-Post's
- * official API (ToS-compliant — no browser botting). Free tier = 10 uploads/month.
+ * Publishes or schedules local video files through Upload-Post's official API.
  *
  * Usage:
- *   node post.mjs --dry-run   # validate + preview, send nothing
- *   node post.mjs             # actually post / schedule
+ *   node post.mjs --dry-run
+ *   node post.mjs
+ *   node post.mjs --only videos/signal-breakthrough-cinematic.mp4 --now --approved
  *
- * Setup (see README.md):
- *   1) npm install            (installs the official upload-post SDK)
- *   2) create .env with UPLOAD_POST_API_KEY and UPLOAD_POST_USER (see .env.example)
- *   3) edit posts.json (caption, local video file path, platforms, optional scheduleDate)
- *
- * Requires Node 18+.
+ * Entries with status "draft" or "review_required" are blocked from live posting
+ * unless --approved is passed. Dry runs still show them for review.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -21,83 +17,126 @@ import { dirname, join, isAbsolute } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DRY_RUN = process.argv.includes('--dry-run');
+const FORCE_NOW = process.argv.includes('--now');
+const APPROVED_REVIEW = process.argv.includes('--approved');
+const onlyArgIndex = process.argv.findIndex((arg) => arg === '--only');
+const ONLY_FILE = onlyArgIndex >= 0 ? process.argv[onlyArgIndex + 1] : null;
+const REVIEW_STATUSES = new Set(['draft', 'review_required']);
 
-// Minimal .env loader (no dependency).
+// Minimal .env loader; real environment variables win.
 (function loadEnv() {
   try {
     for (const line of readFileSync(join(__dirname, '.env'), 'utf8').split('\n')) {
-      const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/i);
-      if (m) process.env[m[1]] ||= m[2].replace(/^["']|["']$/g, '');
+      const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/i);
+      if (match) process.env[match[1]] ||= match[2].replace(/^["']|["']$/g, '');
     }
-  } catch { /* rely on real env vars */ }
+  } catch {
+    // Rely on real env vars.
+  }
 })();
 
 const API_KEY = process.env.UPLOAD_POST_API_KEY;
 const USER = process.env.UPLOAD_POST_USER;
 if (!API_KEY || !USER) {
-  console.error('❌ Missing UPLOAD_POST_API_KEY or UPLOAD_POST_USER. Add them to marketing/autopost/.env (see .env.example).');
+  console.error('Missing UPLOAD_POST_API_KEY or UPLOAD_POST_USER. Add them to marketing/autopost/.env.');
   process.exit(1);
 }
 
-const posts = JSON.parse(readFileSync(join(__dirname, 'posts.json'), 'utf8'));
+let posts = JSON.parse(readFileSync(join(__dirname, 'posts.json'), 'utf8'));
 if (!Array.isArray(posts) || !posts.length) {
-  console.error('❌ posts.json is empty.');
+  console.error('posts.json is empty.');
   process.exit(1);
 }
 
-// Resolve + validate every post before sending anything.
-let bad = 0;
-for (const [i, p] of posts.entries()) {
-  const tag = `#${i + 1} "${(p.caption || '').slice(0, 40)}…"`;
-  if (!p.caption || !Array.isArray(p.platforms) || !p.platforms.length || !p.file) {
-    console.error(`❌ ${tag} — needs caption, file, and a non-empty platforms array.`);
-    bad++; p.__bad = true; continue;
-  }
-  p.__path = isAbsolute(p.file) ? p.file : join(__dirname, p.file);
-  if (!existsSync(p.__path)) {
-    console.error(`❌ ${tag} — file not found: ${p.__path}`);
-    bad++; p.__bad = true;
+if (ONLY_FILE) {
+  posts = posts.filter((post) => post.file === ONLY_FILE);
+  if (!posts.length) {
+    console.error(`No post found for --only ${ONLY_FILE}.`);
+    process.exit(1);
   }
 }
-if (bad) { console.error(`\nFix the ${bad} problem(s) above and re-run.`); process.exit(1); }
+
+let bad = 0;
+for (const [index, post] of posts.entries()) {
+  const tag = `#${index + 1} "${(post.caption || '').slice(0, 40)}..."`;
+  if (!post.caption || !Array.isArray(post.platforms) || !post.platforms.length || !post.file) {
+    console.error(`${tag} needs caption, file, and a non-empty platforms array.`);
+    bad++;
+    post.__bad = true;
+    continue;
+  }
+
+  post.__reviewRequired = REVIEW_STATUSES.has(post.status);
+  post.__path = isAbsolute(post.file) ? post.file : join(__dirname, post.file);
+  if (!existsSync(post.__path)) {
+    console.error(`${tag} file not found: ${post.__path}`);
+    bad++;
+    post.__bad = true;
+  }
+}
+
+if (bad) {
+  console.error(`\nFix the ${bad} problem(s) above and re-run.`);
+  process.exit(1);
+}
 
 if (DRY_RUN) {
-  for (const [i, p] of posts.entries()) {
-    console.log(`🟡 DRY RUN #${i + 1}: ${p.platforms.join(', ')}${p.scheduleDate ? ` @ ${p.scheduleDate}` : ' (now)'}\n   file: ${p.__path}\n   caption: ${p.caption}\n`);
+  for (const [index, post] of posts.entries()) {
+    const status = post.status ? ` [${post.status}]` : '';
+    const gate = post.__reviewRequired ? ' - live posting blocked until --approved' : '';
+    const when = post.scheduleDate && !FORCE_NOW ? ` @ ${post.scheduleDate}` : ' (now)';
+    console.log(
+      `DRY RUN #${index + 1}${status}: ${post.platforms.join(', ')}${when}${gate}\n` +
+        `   file: ${post.__path}\n` +
+        `   caption: ${post.caption}\n`,
+    );
   }
-  console.log('Dry run only — nothing sent. Remove --dry-run to publish.');
+  console.log('Dry run only; nothing sent. Remove --dry-run to publish approved entries.');
   process.exit(0);
 }
 
-// Real send via the official SDK.
 let mod;
 try {
   mod = await import('upload-post');
 } catch {
-  console.error('❌ The upload-post SDK is not installed. Run: npm install');
+  console.error('The upload-post SDK is not installed. Run: npm install');
   process.exit(1);
 }
+
 const UploadPost = mod.UploadPost || mod.default?.UploadPost || mod.default;
 const uploader = new UploadPost(API_KEY);
 
 let failures = 0;
-for (const [i, p] of posts.entries()) {
-  const tag = `#${i + 1} "${(p.caption || '').slice(0, 40)}…"`;
+let skipped = 0;
+for (const [index, post] of posts.entries()) {
+  const tag = `#${index + 1} "${(post.caption || '').slice(0, 40)}..."`;
+  if (post.__reviewRequired && !APPROVED_REVIEW) {
+    console.log(`SKIP ${tag} - status=${post.status}; rerun with --approved after human review.`);
+    skipped++;
+    continue;
+  }
+
   const opts = {
-    title: p.caption,
+    title: post.title || (post.caption || '').slice(0, 96),
     user: USER,
-    platforms: p.platforms,
-    ...(p.scheduleDate ? { scheduled_date: p.scheduleDate, async_upload: true } : {}),
+    platforms: post.platforms,
+    description: post.description || post.caption,
+    instagramTitle: post.instagramTitle || post.caption,
+    youtubeTitle: post.youtubeTitle || post.title || (post.caption || '').slice(0, 96),
+    youtubeDescription: post.youtubeDescription || post.description || post.caption,
+    ...(post.scheduleDate && !FORCE_NOW ? { scheduled_date: post.scheduleDate, async_upload: true } : {}),
   };
+
   try {
-    const res = await uploader.upload(p.__path, opts);
+    const res = await uploader.upload(post.__path, opts);
     const ok = res?.success !== false;
-    console.log(`${ok ? '✅' : '❌'} ${tag} — ${p.scheduleDate ? 'scheduled' : 'posted'} ${ok ? '' : '→ ' + JSON.stringify(res)}`);
+    console.log(`${ok ? 'OK' : 'FAIL'} ${tag} - ${post.scheduleDate ? 'scheduled' : 'posted'} ${ok ? '' : '-> ' + JSON.stringify(res)}`);
     if (!ok) failures++;
-  } catch (e) {
-    console.error(`❌ ${tag} — ${e.message}`);
+  } catch (error) {
+    console.error(`FAIL ${tag} - ${error.message}`);
     failures++;
   }
 }
-console.log(`\nDone. ${posts.length - failures} ok, ${failures} failed.`);
+
+console.log(`\nDone. ${posts.length - failures - skipped} ok, ${skipped} skipped, ${failures} failed.`);
 process.exit(failures ? 1 : 0);

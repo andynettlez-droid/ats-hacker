@@ -374,7 +374,7 @@ export default function Home() {
     : 'bg-emerald-500';
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-cyan-500/20 antialiased">
+    <div className="min-h-screen bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/20 antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
@@ -902,11 +902,17 @@ export default function Home() {
       </section>
 
       {/* Visual Template Previews Section */}
-      <section id="templates" className="bg-white border-t border-b border-slate-100 py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section id="templates" className="relative overflow-hidden border-t border-b border-cyan-400/10 bg-[#06101e] py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(56,213,255,0.14),transparent_26rem),radial-gradient(circle_at_80%_12%,rgba(52,211,153,0.08),transparent_24rem)]" />
+        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(125,223,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.05)_1px,transparent_1px)] [background-size:52px_52px]" />
+        <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 className="text-3xl font-black text-slate-900">Cohesive Document Templates</h2>
-            <p className="text-slate-600">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">
+              <Layout className="w-3.5 h-3.5 text-cyan-200" />
+              ATS-safe templates
+            </span>
+            <h2 className="text-3xl font-black text-slate-50">Cohesive document templates</h2>
+            <p className="text-slate-300">
               Both your resume and cover letter will share identical styling tokens for a consistent professional appearance.
             </p>
           </div>
@@ -1076,11 +1082,11 @@ export default function Home() {
                 mockJobDescription: `Goldman Sachs is hiring a Vice President of FP&A (Financial Planning & Analysis) to join our Corporate Treasury and Finance Division in New York.\n\nKey Responsibilities:\n- Direct the division's corporate budgeting, forecasting, and long-term financial modeling processes.\n- Construct complex 3-statement financial models to simulate different economic scenarios and evaluate strategic investments.\n- Automate manual finance processes and build executive reporting dashboards in Power BI or Tableau.\n- Perform detailed monthly variance analyses comparing actual spend against target budget.\n- Coordinate due diligence for internal corporate development and strategic acquisition deals.\n- Ensure all financial planning and reporting remains in strict compliance with GAAP standards.\n\nRequired Qualifications:\n- 5+ years of experience in corporate finance, investment banking, FP&A, or accounting.\n- Exceptional expertise in Excel (advanced modeling, VBA, macros) and business intelligence tools (Power BI, Tableau).\n- Thorough understanding of GAAP compliance and corporate accounting.\n- Proven experience building 3-statement models and performing due diligence.`
               }
             ].map((cand, idx) => (
-              <div key={idx} className="group bg-white border border-slate-200 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 transform overflow-hidden flex flex-col">
+              <div key={idx} className="group overflow-hidden rounded-3xl border border-cyan-400/20 bg-[#07111f]/90 shadow-[0_28px_90px_rgba(0,0,0,0.32),inset_0_0_42px_rgba(56,213,255,0.04)] transition-all duration-300 transform hover:scale-[1.02] hover:border-cyan-300/40 flex flex-col">
                 {/* Doc Type Toggle Header */}
-                <div className="bg-slate-50 border-b border-slate-100 px-4 py-3 flex justify-between items-center select-none">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">Template Showcase</span>
-                  <div className="bg-white border border-slate-200 rounded-xl p-1 inline-flex gap-1 shadow-sm">
+                <div className="border-b border-cyan-400/15 bg-white/5 px-4 py-3 flex justify-between items-center select-none">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-cyan-100">Template Showcase</span>
+                  <div className="inline-flex gap-1 rounded-xl border border-cyan-400/15 bg-[#030712]/70 p-1 shadow-[inset_0_0_18px_rgba(56,213,255,0.04)]">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -1088,8 +1094,8 @@ export default function Home() {
                       }}
                       className={`px-3 py-1 rounded-lg text-[10px] font-black transition-all duration-250 cursor-pointer ${
                         candDocTypes[idx] === 'resume'
-                          ? 'bg-emerald-600 text-white shadow-sm'
-                          : 'text-slate-600 hover:text-emerald-600 hover:bg-slate-50'
+                          ? 'bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 text-white shadow-sm'
+                          : 'text-slate-300 hover:text-cyan-100 hover:bg-cyan-400/10'
                       }`}
                     >
                       Resume
@@ -1101,8 +1107,8 @@ export default function Home() {
                       }}
                       className={`px-3 py-1 rounded-lg text-[10px] font-black transition-all duration-250 cursor-pointer ${
                         candDocTypes[idx] === 'cover_letter'
-                          ? 'bg-emerald-600 text-white shadow-sm'
-                          : 'text-slate-600 hover:text-emerald-600 hover:bg-slate-50'
+                          ? 'bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 text-white shadow-sm'
+                          : 'text-slate-300 hover:text-cyan-100 hover:bg-cyan-400/10'
                       }`}
                     >
                       Cover Letter
@@ -1451,90 +1457,97 @@ export default function Home() {
       </section>
 
       {/* Pricing Plans */}
-      <section id="pricing" className="max-w-7xl mx-auto px-6 py-20">
+      <section id="pricing" className="relative overflow-hidden border-b border-cyan-400/10 bg-[#030712] px-6 py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(37,99,235,0.18),transparent_28rem),radial-gradient(circle_at_78%_22%,rgba(56,213,255,0.12),transparent_30rem)]" />
+        <div className="relative max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <h2 className="text-3xl font-black text-slate-900">Simple, Pay-As-You-Go Pricing</h2>
-          <p className="text-slate-600">No monthly subscriptions or hidden cancellation fees. Pay only when you apply.</p>
+          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">
+            <BadgeCheck className="w-3.5 h-3.5 text-emerald-300" />
+            Pay per application
+          </span>
+          <h2 className="text-3xl font-black text-slate-50">Simple, pay-as-you-go pricing</h2>
+          <p className="text-slate-300">No monthly subscriptions or hidden cancellation fees. Pay only when you apply.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
           {/* Card 1: Resume */}
-          <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm transition hover:border-emerald-300 hover:shadow-md">
+          <div className="rounded-3xl border border-cyan-400/20 bg-[#07111f]/90 p-8 flex flex-col justify-between shadow-[0_24px_80px_rgba(0,0,0,0.28),inset_0_0_42px_rgba(56,213,255,0.04)] transition hover:border-cyan-300/40">
             <div>
-              <h3 className="font-extrabold text-slate-900 text-xl mb-2">Resume Tailoring</h3>
-              <p className="text-xs text-slate-500 font-semibold mb-6">Perfect for individual target job descriptions.</p>
+              <h3 className="font-extrabold text-slate-50 text-xl mb-2">Resume Tailoring</h3>
+              <p className="text-xs text-slate-400 font-semibold mb-6">Perfect for individual target job descriptions.</p>
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-black text-slate-900">$9.99</span>
+                <span className="text-4xl font-black text-slate-50">$9.99</span>
                 <span className="text-slate-400 text-xs font-bold">/ rewrite</span>
               </div>
-              <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Free ATS score analysis</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>AI semantic keyword alignment</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Honest, non-fabricated experience</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
+              <ul className="space-y-3 text-sm text-slate-300 border-t border-cyan-400/15 pt-6">
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Free ATS score analysis</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>AI semantic keyword alignment</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Honest, non-fabricated experience</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
               </ul>
             </div>
             <button 
               onClick={() => scrollToTool('resume')} 
-              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-sm mt-8 block"
+              className="w-full rounded-xl border border-cyan-300/25 bg-white/5 py-3.5 text-center font-extrabold text-cyan-50 shadow-[inset_0_0_24px_rgba(56,213,255,0.06)] transition hover:border-cyan-200/60 hover:bg-cyan-400/10 mt-8 block"
             >
               Get Started
             </button>
           </div>
 
           {/* Card 2: Bundle */}
-          <div className="bg-white border-2 border-emerald-500 rounded-3xl p-8 flex flex-col justify-between shadow-md relative hover:shadow-xl transition transform -translate-y-2">
-            <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-sm">
+          <div className="bg-[#07111f]/95 border-2 border-cyan-300/55 rounded-3xl p-8 flex flex-col justify-between shadow-[0_28px_110px_rgba(56,213,255,0.16),inset_0_0_52px_rgba(56,213,255,0.06)] relative hover:border-cyan-200/80 transition transform -translate-y-2">
+            <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-400 text-[#032014] text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-sm">
               Best Value (Save 25%)
             </span>
             <div>
-              <h3 className="font-extrabold text-slate-900 text-xl mb-2 flex items-center gap-1.5">
+              <h3 className="font-extrabold text-slate-50 text-xl mb-2 flex items-center gap-1.5">
                 <span>Resume & CL Bundle</span>
-                <Sparkles className="w-4 h-4 text-emerald-600" />
+                <Sparkles className="w-4 h-4 text-cyan-200" />
               </h3>
-              <p className="text-xs text-slate-500 font-semibold mb-6">Complete tailored job application toolkit.</p>
+              <p className="text-xs text-slate-400 font-semibold mb-6">Complete tailored job application toolkit.</p>
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-black text-slate-900">$14.99</span>
+                <span className="text-4xl font-black text-slate-50">$14.99</span>
                 <span className="text-slate-400 text-xs font-bold">/ package</span>
               </div>
-              <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>All Resume Tailoring features</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Cohesive matching Cover Letter</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Matching typography & headers</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>PDF & Word copies for both docs</span></li>
+              <ul className="space-y-3 text-sm text-slate-300 border-t border-cyan-400/15 pt-6">
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>All Resume Tailoring features</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Cohesive matching Cover Letter</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Matching typography & headers</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>PDF & Word copies for both docs</span></li>
               </ul>
             </div>
             <button 
               onClick={() => handleCheckout('bundle')} 
-              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-md mt-8 block"
+              className="w-full rounded-xl border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 py-3.5 text-center font-extrabold text-white shadow-[0_18px_60px_rgba(56,213,255,0.22)] transition hover:brightness-110 mt-8 block"
             >
               Tailor Both Now
             </button>
           </div>
 
           {/* Card 3: Cover Letter */}
-          <div className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm transition hover:border-emerald-300 hover:shadow-md">
+          <div className="rounded-3xl border border-cyan-400/20 bg-[#07111f]/90 p-8 flex flex-col justify-between shadow-[0_24px_80px_rgba(0,0,0,0.28),inset_0_0_42px_rgba(56,213,255,0.04)] transition hover:border-cyan-300/40">
             <div>
-              <h3 className="font-extrabold text-slate-900 text-xl mb-2">Cover Letter Only</h3>
-              <p className="text-xs text-slate-500 font-semibold mb-6">Perfect for quick matching intros.</p>
+              <h3 className="font-extrabold text-slate-50 text-xl mb-2">Cover Letter Only</h3>
+              <p className="text-xs text-slate-400 font-semibold mb-6">Perfect for quick matching intros.</p>
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-black text-slate-900">$9.99</span>
+                <span className="text-4xl font-black text-slate-50">$9.99</span>
                 <span className="text-slate-400 text-xs font-bold">/ document</span>
               </div>
-              <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Tailored to target job description</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Aligned with candidate&apos;s true history</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Cohesive layout and spacing design</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
+              <ul className="space-y-3 text-sm text-slate-300 border-t border-cyan-400/15 pt-6">
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Tailored to target job description</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Aligned with candidate&apos;s true history</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Cohesive layout and spacing design</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-300 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
               </ul>
             </div>
             <button 
               onClick={() => scrollToTool('cover_letter')} 
-              className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-xl transition text-center shadow-sm mt-8 block"
+              className="w-full rounded-xl border border-cyan-300/25 bg-white/5 py-3.5 text-center font-extrabold text-cyan-50 shadow-[inset_0_0_24px_rgba(56,213,255,0.06)] transition hover:border-cyan-200/60 hover:bg-cyan-400/10 mt-8 block"
             >
               Get Started
             </button>
           </div>
+        </div>
         </div>
       </section>
 

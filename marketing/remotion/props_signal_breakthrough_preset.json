@@ -1,0 +1,16 @@
+{
+  "hook1": "Qualified, but buried in search?",
+  "hook2": "Signal clears the path.",
+  "subline": "Match your real experience to the role language recruiters search.",
+  "missing": [
+    "SQL",
+    "workflow automation",
+    "stakeholder reporting",
+    "cloud delivery"
+  ],
+  "beforeScore": 38,
+  "afterScore": 91,
+  "cta": "Check your score free. Link in bio",
+  "musicSrc": "audio/signal-studio-breakthrough.wav",
+  "musicVolume": 0.58
+}

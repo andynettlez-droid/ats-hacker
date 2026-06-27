@@ -7,11 +7,14 @@
   "scripts": {
     "studio": "remotion studio",
     "render": "remotion render ScoreReveal out/score-reveal.mp4",
+    "render:signal": "remotion render SignalViralAd out/signal-viral-mascot-audio.mp4 --props=props_signal_viral_preset.json",
+    "render:breakthrough": "remotion render SignalBreakthroughAd out/signal-breakthrough-cinematic.mp4 --props=props_signal_breakthrough_preset.json",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@remotion/cli": "4.0.483",
+    "@remotion/media": "^4.0.483",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "remotion": "4.0.483",

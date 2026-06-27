@@ -137,7 +137,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
               ATS keywords for {title} resumes
             </h2>
             <p className="text-slate-600 mb-6">
-              These are the terms an ATS most often scans for in {title} job descriptions. If your resume is missing them, you&apos;re likely being filtered out:
+              These are the terms an ATS most often scans for in {title} job descriptions. If your resume is missing them, you&apos;re likely to rank lower in recruiter searches:
             </p>
             <div className="flex flex-wrap gap-3 mb-12">
               {keywords.map((k, i) => (

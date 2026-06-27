@@ -17,6 +17,7 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+marketing_agent/runs/
 
 # OS / editor
 .DS_Store
@@ -28,3 +29,5 @@ marketing/autopost/videos/
 marketing/remotion/node_modules/
 marketing/remotion/out/
 marketing/remotion/build/
+marketing/remotion/temp_props.json
+marketing/remotion/frame_checks*/

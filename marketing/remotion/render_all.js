@@ -6,6 +6,31 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const claimSafetyPatterns = [
+  { pattern: /\bauto[-\s]?reject(?:ed|s|ion)?\b/i, reason: 'avoid ATS auto-reject claims' },
+  { pattern: /\bbeat(?:ing)?\s+(?:the\s+)?(?:bots?|ats)\b/i, reason: 'avoid adversarial beat-the-bot framing' },
+  { pattern: /\bguarantee[ds]?\b|\bwill\s+land\b|\bland\s+your\s+dream\b/i, reason: 'avoid outcome guarantees' },
+  { pattern: /\b\d+x\s+(?:more\s+)?callbacks?\b/i, reason: 'avoid unsupported callback multipliers' },
+  { pattern: /\b100%\s+(?:ats\s+)?compatible\b/i, reason: 'avoid absolute compatibility claims' },
+];
+
+const findClaimSafetyIssues = (variant) => {
+  const fields = {
+    caption: variant.caption,
+    hook1: variant.props?.hook1,
+    hook2: variant.props?.hook2,
+    subline: variant.props?.subline,
+    cta: variant.props?.cta,
+  };
+
+  return Object.entries(fields).flatMap(([field, value]) => {
+    if (typeof value !== 'string') return [];
+    return claimSafetyPatterns
+      .filter(({ pattern }) => pattern.test(value))
+      .map(({ reason }) => `${variant.fileName} ${field}: ${reason}`);
+  });
+};
+
 const videoVariants = [
   {
     fileName: 'resumes-keyword-check.mp4',
@@ -39,12 +64,12 @@ const videoVariants = [
   },
   {
     fileName: 'ats-no-autoreject.mp4',
-    caption: "ATS doesn't auto-reject you - it ranks by keyword. Match it. Free score, link in bio #jobsearch",
+    caption: 'ATS search is keyword-based. Match the role language. Free score, link in bio #jobsearch',
     scheduleDate: '2026-06-30T16:00:00Z',
     props: {
-      hook1: 'The ATS does NOT',
-      hook2: 'auto-reject you.',
-      subline: 'It just ranks you. Match keywords to rank.',
+      hook1: 'ATS search is',
+      hook2: 'keyword-based.',
+      subline: 'Recruiters search and rank resumes by role language.',
       missing: ['Agile', 'cross-functional', 'deliverables'],
       beforeScore: 55,
       afterScore: 91,
@@ -98,6 +123,11 @@ const videoVariants = [
     }
   }
 ];
+
+const safetyIssues = videoVariants.flatMap(findClaimSafetyIssues);
+if (safetyIssues.length > 0) {
+  throw new Error(`Claim safety check failed:\n${safetyIssues.join('\n')}`);
+}
 
 const cmdPrefix = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 

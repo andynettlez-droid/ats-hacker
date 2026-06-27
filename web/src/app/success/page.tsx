@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { CheckCircle, Loader2, Download, FileText } from 'lucide-react';
+import Link from 'next/link';
+import { CheckCircle, Loader2, FileText } from 'lucide-react';
 import { Document, Page, Text, View, StyleSheet, pdf, Font } from '@react-pdf/renderer';
 import * as docx from 'docx';
 
@@ -35,7 +36,153 @@ const styles = StyleSheet.create({
   schoolName: { fontWeight: 'bold' }
 });
 
-const ResumePDF = ({ data }: { data: any }) => (
+type ProductType = 'resume' | 'cover_letter' | 'bundle';
+const CHECKOUT_PAYLOAD_KEY = 'atshacker.checkout_payload.v1';
+const CHECKOUT_PAYLOAD_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+const FULFILLED_OUTPUT_PREFIX = 'atshacker.fulfilled_output.v1.';
+const FULFILLED_OUTPUT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+
+type ResumeExperience = {
+  company?: string;
+  title?: string;
+  dates?: string;
+  bullets?: string[];
+};
+
+type ResumeEducation = {
+  school?: string;
+  degree?: string;
+  year?: string;
+};
+
+type CoverLetterData = {
+  date?: string;
+  recipientName?: string;
+  companyName?: string;
+  salutation?: string;
+  bodyParagraphs?: string[];
+  signOff?: string;
+};
+
+type ResumeData = {
+  productType?: ProductType;
+  _warning?: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  location?: string;
+  linkedin?: string;
+  summary?: string;
+  skills?: string[];
+  experience?: ResumeExperience[];
+  education?: ResumeEducation[];
+  certifications?: string[];
+  coverLetter?: CoverLetterData;
+};
+
+type CheckoutPayload = {
+  resumeText: string;
+  jobDescription: string;
+  fileName: string;
+};
+
+type FulfilledOutput = {
+  createdAt: number;
+  baseName: string;
+  resumeData: ResumeData;
+  beforeScore?: number | null;
+  afterScore?: number | null;
+  optimizationLow?: boolean;
+};
+
+function fulfilledOutputKey(sessionId: string): string {
+  return `${FULFILLED_OUTPUT_PREFIX}${sessionId}`;
+}
+
+function readFulfilledOutput(sessionId: string): FulfilledOutput | null {
+  try {
+    const raw = localStorage.getItem(fulfilledOutputKey(sessionId));
+    if (!raw) return null;
+
+    const parsed = JSON.parse(raw) as Partial<FulfilledOutput>;
+    const createdAt = parsed.createdAt;
+    const baseName = parsed.baseName;
+    const isFresh = typeof createdAt === 'number' && Date.now() - createdAt < FULFILLED_OUTPUT_MAX_AGE_MS;
+    if (!isFresh || !parsed.resumeData || typeof baseName !== 'string') return null;
+
+    return {
+      createdAt,
+      baseName,
+      resumeData: parsed.resumeData,
+      beforeScore: typeof parsed.beforeScore === 'number' ? parsed.beforeScore : null,
+      afterScore: typeof parsed.afterScore === 'number' ? parsed.afterScore : null,
+      optimizationLow: Boolean(parsed.optimizationLow),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function saveFulfilledOutput(sessionId: string, output: Omit<FulfilledOutput, 'createdAt'>) {
+  try {
+    localStorage.setItem(
+      fulfilledOutputKey(sessionId),
+      JSON.stringify({
+        createdAt: Date.now(),
+        ...output,
+      }),
+    );
+  } catch {
+    /* local storage unavailable */
+  }
+}
+
+function readCheckoutPayload(): CheckoutPayload | null {
+  try {
+    const sessionPayload = {
+      resumeText: sessionStorage.getItem('resumeText') || '',
+      jobDescription: sessionStorage.getItem('jobDescription') || '',
+      fileName: sessionStorage.getItem('fileName') || 'optimized_resume.pdf',
+    };
+    if (sessionPayload.resumeText && sessionPayload.jobDescription) return sessionPayload;
+  } catch {
+    /* session storage unavailable */
+  }
+
+  try {
+    const raw = localStorage.getItem(CHECKOUT_PAYLOAD_KEY);
+    if (!raw) return null;
+
+    const parsed = JSON.parse(raw) as Partial<CheckoutPayload> & { createdAt?: number };
+    const isFresh = typeof parsed.createdAt === 'number' && Date.now() - parsed.createdAt < CHECKOUT_PAYLOAD_MAX_AGE_MS;
+    if (!isFresh || typeof parsed.resumeText !== 'string' || typeof parsed.jobDescription !== 'string') return null;
+
+    return {
+      resumeText: parsed.resumeText,
+      jobDescription: parsed.jobDescription,
+      fileName: typeof parsed.fileName === 'string' ? parsed.fileName : 'optimized_resume.pdf',
+    };
+  } catch {
+    return null;
+  }
+}
+
+function clearCheckoutPayload() {
+  try {
+    sessionStorage.removeItem('resumeText');
+    sessionStorage.removeItem('jobDescription');
+    sessionStorage.removeItem('fileName');
+  } catch {
+    /* session storage unavailable */
+  }
+  try {
+    localStorage.removeItem(CHECKOUT_PAYLOAD_KEY);
+  } catch {
+    /* local storage unavailable */
+  }
+}
+
+const ResumePDF = ({ data }: { data: ResumeData }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.header}>
@@ -59,7 +206,7 @@ const ResumePDF = ({ data }: { data: any }) => (
       </View>
 
       <Text style={styles.sectionTitle}>Professional Experience</Text>
-      {data.experience?.map((exp: any, i: number) => (
+      {data.experience?.map((exp, i) => (
         <View key={i} style={styles.job}>
           <View style={styles.jobHeader}>
             <Text style={styles.company}>{exp.company}</Text>
@@ -78,7 +225,7 @@ const ResumePDF = ({ data }: { data: any }) => (
       {data.education && data.education.length > 0 && (
         <>
           <Text style={styles.sectionTitle}>Education</Text>
-          {data.education.map((edu: any, i: number) => (
+          {data.education.map((edu, i) => (
             <View key={i} style={styles.school}>
               <View style={styles.jobHeader}>
                 <Text style={styles.schoolName}>{edu.school}</Text>
@@ -105,8 +252,8 @@ const ResumePDF = ({ data }: { data: any }) => (
   </Document>
 );
 
-const CoverLetterPDF = ({ data }: { data: any }) => {
-  const cl = data.coverLetter || {};
+const CoverLetterPDF = ({ data }: { data: ResumeData }) => {
+  const cl: CoverLetterData = data.coverLetter || {};
   const paragraphs = cl.bodyParagraphs || [];
 
   return (
@@ -143,7 +290,7 @@ const CoverLetterPDF = ({ data }: { data: any }) => {
 };
 
 // Build an ATS-friendly .docx (single column, plain text) from the resume JSON.
-async function buildDocxBlob(data: any): Promise<Blob> {
+async function buildDocxBlob(data: ResumeData): Promise<Blob> {
   const { Document: Doc, Packer, Paragraph, TextRun, HeadingLevel } = docx;
   const children: docx.Paragraph[] = [];
 
@@ -202,10 +349,10 @@ async function buildDocxBlob(data: any): Promise<Blob> {
 }
 
 // Build an ATS-friendly .docx for the cover letter
-async function buildCoverLetterDocxBlob(data: any): Promise<Blob> {
+async function buildCoverLetterDocxBlob(data: ResumeData): Promise<Blob> {
   const { Document: Doc, Packer, Paragraph, TextRun, HeadingLevel } = docx;
   const children: docx.Paragraph[] = [];
-  const cl = data.coverLetter || {};
+  const cl: CoverLetterData = data.coverLetter || {};
 
   children.push(new Paragraph({ text: data.name || 'Cover Letter', heading: HeadingLevel.TITLE }));
   const contact = [data.email, data.phone, data.location, data.linkedin].filter(Boolean).join('  |  ');
@@ -246,12 +393,13 @@ function downloadBlob(blob: Blob, filename: string) {
 function SuccessPageContent() {
   const [status, setStatus] = useState("Initializing Optimizer...");
   const [isDone, setIsDone] = useState(false);
-  const [resumeData, setResumeData] = useState<any>(null);
+  const [resumeData, setResumeData] = useState<ResumeData | null>(null);
   const [baseName, setBaseName] = useState("optimized_resume");
   const [beforeScore, setBeforeScore] = useState<number | null>(null);
   const [afterScore, setAfterScore] = useState<number | null>(null);
   const [optimizationLow, setOptimizationLow] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -262,9 +410,22 @@ function SuccessPageContent() {
         return;
       }
 
-      const resumeText = sessionStorage.getItem('resumeText');
-      const jobDescription = sessionStorage.getItem('jobDescription');
-      const rawName = sessionStorage.getItem('fileName') || 'optimized_resume.pdf';
+      const restored = readFulfilledOutput(sessionId);
+      if (restored) {
+        setBaseName(restored.baseName);
+        setResumeData(restored.resumeData);
+        setBeforeScore(restored.beforeScore ?? null);
+        setAfterScore(restored.afterScore ?? null);
+        setOptimizationLow(Boolean(restored.optimizationLow));
+        setStatus("Optimization restored. Your files are ready to download again.");
+        setIsDone(true);
+        return;
+      }
+
+      const payload = readCheckoutPayload();
+      const resumeText = payload?.resumeText;
+      const jobDescription = payload?.jobDescription;
+      const rawName = payload?.fileName || 'optimized_resume.pdf';
       const base = rawName.replace(/\.pdf$/i, '') + '_ats_optimized';
       setBaseName(base);
 
@@ -283,33 +444,23 @@ function SuccessPageContent() {
         });
 
         if (!res.ok) {
-          const err = await res.json();
+          const err = (await res.json()) as { error?: string };
           throw new Error(err.error || "Failed to process");
         }
 
         setStatus("Building optimized files...");
-        const json = await res.json();
+        const json = (await res.json()) as ResumeData;
         setResumeData(json);
         if (json._warning === 'optimization_low') setOptimizationLow(true);
+        saveFulfilledOutput(sessionId, {
+          baseName: base,
+          resumeData: json,
+          beforeScore: null,
+          afterScore: null,
+          optimizationLow: json._warning === 'optimization_low',
+        });
 
-        // Auto-download files based on purchase type
-        if (json.coverLetter && !json.experience) {
-          // Cover Letter only
-          const clBlob = await pdf(<CoverLetterPDF data={json} />).toBlob();
-          downloadBlob(clBlob, `${base}_cover_letter.pdf`);
-        } else if (json.coverLetter && json.experience) {
-          // Bundle
-          const resumeBlob = await pdf(<ResumePDF data={json} />).toBlob();
-          downloadBlob(resumeBlob, `${base}_resume.pdf`);
-          const clBlob = await pdf(<CoverLetterPDF data={json} />).toBlob();
-          downloadBlob(clBlob, `${base}_cover_letter.pdf`);
-        } else {
-          // Resume only
-          const resumeBlob = await pdf(<ResumePDF data={json} />).toBlob();
-          downloadBlob(resumeBlob, `${base}_resume.pdf`);
-        }
-
-        setStatus("Optimization completed! Download files below.");
+        setStatus("Optimization completed! Download your files below.");
         setIsDone(true);
 
         // Score check if resume was rewritten
@@ -317,9 +468,9 @@ function SuccessPageContent() {
           const optimizedText = [
             json.summary,
             (json.skills || []).join(' '),
-            (json.experience || []).map((e: any) => `${e.title} ${e.company} ${(e.bullets || []).join(' ')}`).join(' '),
+            (json.experience || []).map((e) => `${e.title} ${e.company} ${(e.bullets || []).join(' ')}`).join(' '),
             (json.certifications || []).join(' '),
-            (json.education || []).map((e: any) => `${e.school} ${e.degree}`).join(' '),
+            (json.education || []).map((e) => `${e.school} ${e.degree}`).join(' '),
           ].filter(Boolean).join(' ');
 
           const scoreOf = (text: string) =>
@@ -332,17 +483,25 @@ function SuccessPageContent() {
               .catch(() => null);
 
           Promise.all([scoreOf(resumeText), scoreOf(optimizedText)]).then(([b, a]) => {
-            if (b && typeof b.score === 'number') setBeforeScore(b.score);
-            if (a && typeof a.score === 'number') setAfterScore(a.score);
+            const nextBefore = b && typeof b.score === 'number' ? b.score : null;
+            const nextAfter = a && typeof a.score === 'number' ? a.score : null;
+            if (nextBefore !== null) setBeforeScore(nextBefore);
+            if (nextAfter !== null) setAfterScore(nextAfter);
+            saveFulfilledOutput(sessionId, {
+              baseName: base,
+              resumeData: json,
+              beforeScore: nextBefore,
+              afterScore: nextAfter,
+              optimizationLow: json._warning === 'optimization_low',
+            });
           });
         }
 
-        // Cleanup storage
-        sessionStorage.removeItem('resumeText');
-        sessionStorage.removeItem('jobDescription');
+        clearCheckoutPayload();
 
-      } catch (err: any) {
-        setStatus(`Error: ${err.message}`);
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : 'Failed to process';
+        setStatus(`Error: ${message}`);
       }
     };
 
@@ -351,26 +510,46 @@ function SuccessPageContent() {
 
   const handleDownloadPdf = async () => {
     if (!resumeData) return;
-    const blob = await pdf(<ResumePDF data={resumeData} />).toBlob();
-    downloadBlob(blob, `${baseName}_resume.pdf`);
+    setDownloadError(null);
+    try {
+      const blob = await pdf(<ResumePDF data={resumeData} />).toBlob();
+      downloadBlob(blob, `${baseName}_resume.pdf`);
+    } catch {
+      setDownloadError('We could not build the PDF. Please try the Word download while we recover the PDF export.');
+    }
   };
 
   const handleDownloadDocx = async () => {
     if (!resumeData) return;
-    const blob = await buildDocxBlob(resumeData);
-    downloadBlob(blob, `${baseName}_resume.docx`);
+    setDownloadError(null);
+    try {
+      const blob = await buildDocxBlob(resumeData);
+      downloadBlob(blob, `${baseName}_resume.docx`);
+    } catch {
+      setDownloadError('We could not build the Word file. Please try again in a moment.');
+    }
   };
 
   const handleDownloadCoverLetterPdf = async () => {
     if (!resumeData || !resumeData.coverLetter) return;
-    const blob = await pdf(<CoverLetterPDF data={resumeData} />).toBlob();
-    downloadBlob(blob, `${baseName}_cover_letter.pdf`);
+    setDownloadError(null);
+    try {
+      const blob = await pdf(<CoverLetterPDF data={resumeData} />).toBlob();
+      downloadBlob(blob, `${baseName}_cover_letter.pdf`);
+    } catch {
+      setDownloadError('We could not build the cover letter PDF. Please try the Word download while we recover the PDF export.');
+    }
   };
 
   const handleDownloadCoverLetterDocx = async () => {
     if (!resumeData || !resumeData.coverLetter) return;
-    const blob = await buildCoverLetterDocxBlob(resumeData);
-    downloadBlob(blob, `${baseName}_cover_letter.docx`);
+    setDownloadError(null);
+    try {
+      const blob = await buildCoverLetterDocxBlob(resumeData);
+      downloadBlob(blob, `${baseName}_cover_letter.docx`);
+    } catch {
+      setDownloadError('We could not build the cover letter Word file. Please try again in a moment.');
+    }
   };
 
   const handleCopyCoverLetter = () => {
@@ -397,12 +576,12 @@ function SuccessPageContent() {
     <div className="min-h-screen bg-slate-50 flex items-center justify-center text-slate-900 p-6">
       <div className={`bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-md w-full transition-all duration-300 ${resumeData?.coverLetter ? 'max-w-2xl' : 'max-w-md'} text-center space-y-6`}>
 
-        <a href="/" className="flex items-center justify-center gap-2.5">
+        <Link href="/" className="flex items-center justify-center gap-2.5">
           <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
           <span className="text-xl font-black tracking-tighter text-slate-900">
             ATS<span className="text-emerald-600">Hacker.</span>
           </span>
-        </a>
+        </Link>
 
         {!isDone ? (
           <Loader2 className="w-16 h-16 text-emerald-600 animate-spin mx-auto" />
@@ -443,6 +622,12 @@ function SuccessPageContent() {
               </div>
             )}
 
+            {downloadError && (
+              <div className="bg-red-50 border border-red-100 rounded-xl px-4 py-3 text-left">
+                <p className="text-xs text-red-700">{downloadError}</p>
+              </div>
+            )}
+
             <div className="space-y-4">
               {resumeData?.experience && (
                 <div className="border border-slate-200 rounded-2xl p-5 bg-slate-50/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -458,7 +643,7 @@ function SuccessPageContent() {
                   <div className="flex gap-2 w-full md:w-auto">
                     <button
                       onClick={handleDownloadPdf}
-                      className="flex-1 md:flex-none bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-905 font-bold py-2 px-4 rounded-xl text-sm transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-1"
+                      className="flex-1 md:flex-none bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-900 font-bold py-2 px-4 rounded-xl text-sm transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-1"
                     >
                       <span>PDF</span>
                     </button>
@@ -486,7 +671,7 @@ function SuccessPageContent() {
                   <div className="flex gap-2 w-full md:w-auto">
                     <button
                       onClick={handleDownloadCoverLetterPdf}
-                      className="flex-1 md:flex-none bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-905 font-bold py-2 px-4 rounded-xl text-sm transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-1"
+                      className="flex-1 md:flex-none bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-900 font-bold py-2 px-4 rounded-xl text-sm transition-all duration-200 active:scale-[0.98] flex items-center justify-center space-x-1"
                     >
                       <span>PDF</span>
                     </button>
@@ -528,9 +713,9 @@ function SuccessPageContent() {
             )}
 
             <div className="text-center pt-2">
-              <a href="/" className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-500 font-bold transition">
+              <Link href="/" className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-500 font-bold transition">
                 <span>Tailor another document</span>
-              </a>
+              </Link>
             </div>
           </div>
         )}

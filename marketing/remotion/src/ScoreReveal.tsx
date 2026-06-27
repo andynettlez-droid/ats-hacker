@@ -70,7 +70,6 @@ const Background: React.FC<{ bgVideo?: string }> = ({ bgVideo }) => {
         <OffthreadVideo
           src={src}
           muted
-          loop
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
         {/* dark scrim for caption legibility over B-roll */}

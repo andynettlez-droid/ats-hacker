@@ -87,8 +87,9 @@ keywords genuinely found in the job description. Do not invent skills.`,
       json.score = Math.max(0, Math.min(100, Math.round(json.score)));
     }
     return NextResponse.json(json);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error scoring resume:', error);
-    return NextResponse.json({ error: error.message || 'Failed to score resume' }, { status: 500 });
+    const message = error instanceof Error ? error.message : 'Failed to score resume';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

@@ -1,0 +1,17 @@
+{
+  "hook1": "Qualified, but hard to find?",
+  "hook2": "Check the match.",
+  "subline": "Recruiters search resumes by job-description language before deeper review.",
+  "missing": [
+    "SQL",
+    "workflow automation",
+    "stakeholder reporting",
+    "metrics"
+  ],
+  "beforeScore": 38,
+  "afterScore": 91,
+  "cta": "Check your score free. Link in bio",
+  "avatarVideoUrl": "avatar.mp4",
+  "musicSrc": "audio/signal-pulse.wav",
+  "musicVolume": 0.32
+}

@@ -5,6 +5,26 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock_key', {
   apiVersion: '2026-05-27.dahlia',
 });
 
+const PRODUCT_CONFIG = {
+  resume: {
+    productName: 'ATSHacker - Resume Optimization',
+    productDesc: '1x semantic job-description resume optimization',
+    amount: 999,
+  },
+  cover_letter: {
+    productName: 'ATSHacker - Cover Letter Generation',
+    productDesc: '1x semantic job-description cover letter tailoring',
+    amount: 999,
+  },
+  bundle: {
+    productName: 'ATSHacker - Resume & Cover Letter Bundle',
+    productDesc: '1x semantic job-description resume & matching cover letter tailoring',
+    amount: 1499,
+  },
+} as const;
+
+type ProductType = keyof typeof PRODUCT_CONFIG;
+
 // Pull UTM params out of the request body, sanitize, and cap length so we never
 // blow Stripe's 500-char metadata limit. Omits any that are absent/empty.
 function utmMetadata(body: Record<string, unknown>): Record<string, string> {
@@ -19,30 +39,33 @@ function utmMetadata(body: Record<string, unknown>): Record<string, string> {
   return out;
 }
 
+function isProductType(value: unknown): value is ProductType {
+  return typeof value === 'string' && value in PRODUCT_CONFIG;
+}
+
+function resolveAppOrigin(req: Request): string {
+  const configured = process.env.NEXT_PUBLIC_APP_URL || process.env.APP_URL;
+  const vercel = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined;
+  const fallback = 'https://ats-hacker-swart.vercel.app';
+  const allowed = new Set([configured, vercel, fallback, 'http://localhost:3000'].filter(Boolean));
+  const origin = req.headers.get('origin');
+
+  return origin && allowed.has(origin) ? origin : configured || vercel || fallback;
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const type = body.type || 'resume'; // 'resume', 'cover_letter', or 'bundle'
-    const utms = utmMetadata(body);
-    const origin = req.headers.get('origin') || 'https://ats-hacker-swart.vercel.app';
-    
-    let productName = 'ATSHacker — Resume Optimization';
-    let productDesc = '1x semantic job-description resume optimization';
-    let amount = 999; // $9.99
-
-    if (type === 'cover_letter') {
-      productName = 'ATSHacker — Cover Letter Generation';
-      productDesc = '1x semantic job-description cover letter tailoring';
-      amount = 999; // $9.99
-    } else if (type === 'bundle') {
-      productName = 'ATSHacker — Resume & Cover Letter Bundle';
-      productDesc = '1x semantic job-description resume & matching cover letter tailoring';
-      amount = 1499; // $14.99
+    const type = body.type || 'resume';
+    if (!isProductType(type)) {
+      return NextResponse.json({ error: 'Invalid product type' }, { status: 400 });
     }
 
-    // Create a Stripe Checkout Session
+    const utms = utmMetadata(body);
+    const origin = resolveAppOrigin(req);
+    const { productName, productDesc, amount } = PRODUCT_CONFIG[type];
+
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
       line_items: [
         {
           price_data: {
@@ -68,8 +91,9 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ url: session.url });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error creating Stripe session:', error);
-    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+    const message = error instanceof Error ? error.message : 'Internal Server Error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

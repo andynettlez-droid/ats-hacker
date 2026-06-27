@@ -1552,9 +1552,18 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="bg-slate-100/50 border-t border-slate-200/60 py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl font-black text-center text-slate-900 mb-12">Frequently Asked Questions</h2>
+      <section id="faq" className="relative overflow-hidden border-t border-cyan-400/10 bg-[#06101e] py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,213,255,0.13),transparent_26rem)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(125,223,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.035)_1px,transparent_1px)] bg-[size:52px_52px] opacity-60" />
+        <div className="relative max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12 space-y-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">
+              <Shield className="w-3.5 h-3.5 text-emerald-300" />
+              Honest answers
+            </span>
+            <h2 className="text-3xl font-black text-slate-50">Frequently Asked Questions</h2>
+            <p className="text-sm text-slate-300">Clear expectations before users upload a resume or pay for a rewrite.</p>
+          </div>
           <div className="space-y-6">
             {[
               {
@@ -1563,20 +1572,20 @@ export default function Home() {
               },
               {
                 q: "What is an ATS match score?",
-                a: "It is a 0–100 measure of how closely your resume’s keywords and skills overlap with a specific job description. A higher score means your resume is more likely to surface near the top when a recruiter searches their ATS for that role."
+                a: "It is a 0-100 estimate of how closely your resume keywords, skills, and phrasing overlap with a specific job description. A higher score means your resume is easier to find when a recruiter searches for that role language."
               },
               {
                 q: "How does the Cover Letter matching work?",
-                a: "It reads the target job description and your uploaded resume details. Then, it drafts a custom letter emphasizing how your actual skills fulfill their requirements. It shares the identical fonts, borders, and margins as your resume, creating a clean, cohesive application package."
+                a: "It reads the target job description and your uploaded resume details. Then it drafts a custom letter emphasizing how your actual skills map to the role requirements, creating a clean, cohesive application package."
               },
               {
                 q: "Do you fabricate experience to boost the score?",
                 a: "No. We never invent jobs, skills, or experience you do not have. We rewrite and reframe your real background to surface the keywords and accomplishments that genuinely match the job description."
               }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white border border-slate-200/60 rounded-2xl p-6 shadow-sm">
-                <h4 className="font-extrabold text-slate-900 text-base mb-2">{item.q}</h4>
-                <p className="text-sm text-slate-600 leading-relaxed">{item.a}</p>
+              <div key={idx} className="rounded-2xl border border-cyan-400/15 bg-[#07111f]/80 p-6 shadow-[inset_0_0_34px_rgba(56,213,255,0.035)]">
+                <h4 className="font-extrabold text-slate-50 text-base mb-2">{item.q}</h4>
+                <p className="text-sm text-slate-300 leading-relaxed">{item.a}</p>
               </div>
             ))}
           </div>
@@ -1584,18 +1593,18 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white">
+      <footer className="border-t border-cyan-400/10 bg-[#030712]">
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <div className="flex items-center gap-2 select-none cursor-pointer mb-1.5" onClick={() => scrollToTool('resume')}>
               <img src="/logo-full.png" alt="ATSHacker" className="h-7 w-auto" />
             </div>
-            <p className="text-xs text-slate-500 font-medium">Honest resume & cover letter keyword optimization — no monthly subscriptions.</p>
+            <p className="text-xs text-slate-400 font-medium">Honest resume and cover letter keyword optimization. No monthly subscriptions.</p>
           </div>
-          <div className="flex items-center gap-6 text-sm font-bold text-slate-500">
-            <button onClick={() => scrollToTool('resume')} className="hover:text-emerald-600 transition">Optimize Resume</button>
-            <button onClick={() => scrollToTool('cover_letter')} className="hover:text-emerald-600 transition">Write Cover Letter</button>
-            <a href="#pricing" className="hover:text-emerald-600 transition">Pricing</a>
+          <div className="flex items-center gap-6 text-sm font-bold text-slate-400">
+            <button onClick={() => scrollToTool('resume')} className="hover:text-cyan-200 transition">Optimize Resume</button>
+            <button onClick={() => scrollToTool('cover_letter')} className="hover:text-cyan-200 transition">Write Cover Letter</button>
+            <a href="#pricing" className="hover:text-cyan-200 transition">Pricing</a>
           </div>
         </div>
       </footer>

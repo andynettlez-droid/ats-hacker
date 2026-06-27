@@ -1,0 +1,16 @@
+{
+  "hook1": "Your resume needs a clear path.",
+  "hook2": "Signal opens it.",
+  "subline": "Signal maps company filter language to proof already in your resume.",
+  "missing": [
+    "SQL",
+    "workflow automation",
+    "stakeholder reporting",
+    "cloud delivery"
+  ],
+  "beforeScore": 38,
+  "afterScore": 91,
+  "cta": "Check your score free. Link in bio",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.3
+}

@@ -127,5 +127,17 @@
         "scheduleDate": null,
         "status": "posted",
         "postedAt": "2026-06-27T16:32:17Z"
+    },
+    {
+        "title": "Signal opens the path",
+        "caption": "Your resume needs a clear path. Signal maps company filter language to proof already in your resume, then phases it into the hiring manager screen. Check your score free. #jobsearch #resumehelp #careertok #airesume",
+        "file": "videos/signal-filter-breakthrough-quiet-draft.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "review_required"
     }
 ]

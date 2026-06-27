@@ -34,8 +34,8 @@ export const defaultSignalBreakthroughAdProps: SignalBreakthroughAdProps = {
   beforeScore: 38,
   afterScore: 91,
   cta: "Check your score free. Link in bio",
-  musicSrc: "audio/signal-studio-breakthrough.wav",
-  musicVolume: 0.58,
+  musicSrc: "audio/signal-quiet-orbit.wav",
+  musicVolume: 0.28,
 };
 
 const FONT = '"Inter", "Helvetica Neue", Arial, sans-serif';
@@ -415,7 +415,77 @@ const HiringManager: React.FC<{ reveal: number }> = ({ reveal }) => (
         textAlign: "center",
       }}
     >
-      Ready for human review
+      Hiring manager computer
+    </div>
+    <div
+      style={{
+        position: "absolute",
+        left: 38,
+        right: 38,
+        bottom: 128,
+        height: 190,
+        borderRadius: 24,
+        border: "1px solid rgba(56,213,255,0.34)",
+        background:
+          "linear-gradient(180deg, rgba(2,6,23,0.96), rgba(15,23,42,0.88)), radial-gradient(circle at 50% 8%, rgba(56,213,255,0.22), transparent 10rem)",
+        boxShadow: `0 0 ${24 + reveal * 42}px rgba(56,213,255,${0.10 + reveal * 0.18}), inset 0 0 34px rgba(56,213,255,0.08)`,
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          left: 22,
+          top: 18,
+          color: CYAN,
+          fontSize: 13,
+          fontWeight: 950,
+          letterSpacing: 1.6,
+          textTransform: "uppercase",
+        }}
+      >
+        Recruiter screen
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 24,
+          right: 24,
+          top: 56,
+          bottom: 20,
+          borderRadius: 18,
+          border: "1px solid rgba(52,211,153,0.24)",
+          background: "rgba(52,211,153,0.08)",
+          overflow: "hidden",
+        }}
+      >
+        {[0, 1, 2, 3].map((line) => (
+          <div
+            key={line}
+            style={{
+              position: "absolute",
+              left: 18,
+              right: 18 + line * 18,
+              top: 18 + line * 22,
+              height: 7,
+              borderRadius: 99,
+              background: line === 0 ? "rgba(248,250,252,0.85)" : "rgba(125,223,255,0.52)",
+              boxShadow: line === 0 ? "0 0 14px rgba(255,255,255,0.18)" : undefined,
+            }}
+          />
+        ))}
+        <div
+          style={{
+            position: "absolute",
+            right: 18,
+            bottom: 14,
+            color: "#d1fae5",
+            fontSize: 15,
+            fontWeight: 900,
+          }}
+        >
+          Review-ready
+        </div>
+      </div>
     </div>
   </div>
 );
@@ -429,7 +499,7 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
   afterScore,
   cta,
   musicSrc,
-  musicVolume = 0.52,
+  musicVolume = 0.28,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -529,7 +599,7 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
           <div style={{ color: CYAN, fontSize: 18, fontWeight: 950, textTransform: "uppercase", letterSpacing: 2 }}>
             Signal pathway // live
           </div>
-          <div style={{ color: MUTED, fontSize: 18, fontWeight: 800 }}>Low visibility → Aligned proof → Review-ready</div>
+          <div style={{ color: MUTED, fontSize: 18, fontWeight: 800 }}>Company filters / aligned proof / hiring manager screen</div>
         </div>
 
         {missing.slice(0, 4).map((keyword, index) => (
@@ -554,9 +624,9 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
           </div>
         ))}
 
-        <Barrier label="keyword gap" x={450} broken={cracks[0] > 0.04} crack={cracks[0]} />
-        <Barrier label="format noise" x={570} broken={cracks[1] > 0.04} crack={cracks[1]} />
-        <Barrier label="generic proof" x={690} broken={cracks[2] > 0.04} crack={cracks[2]} />
+        <Barrier label="company filters" x={450} broken={cracks[0] > 0.04} crack={cracks[0]} />
+        <Barrier label="role language" x={570} broken={cracks[1] > 0.04} crack={cracks[1]} />
+        <Barrier label="proof gaps" x={690} broken={cracks[2] > 0.04} crack={cracks[2]} />
 
         <div
           style={{
@@ -605,9 +675,9 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
           <HiringManager reveal={managerReveal} />
         </div>
 
-        {frame >= 145 && frame < 345 ? <Caption emphasis="low visibility">Signal breaks through</Caption> : null}
-        {frame >= 345 && frame < 515 ? <Caption emphasis="real proof">Then upgrades your</Caption> : null}
-        {frame >= 515 && frame < 665 ? <Caption emphasis="human review">And phases it toward</Caption> : null}
+        {frame >= 145 && frame < 345 ? <Caption emphasis="company filters">Signal breaks through</Caption> : null}
+        {frame >= 345 && frame < 515 ? <Caption emphasis="real proof">Then rebuilds your</Caption> : null}
+        {frame >= 515 && frame < 665 ? <Caption emphasis="the hiring manager screen">And phases it into</Caption> : null}
       </AbsoluteFill>
 
       <AbsoluteFill style={{ opacity: scoreOpacity, alignItems: "center", justifyContent: "center", textAlign: "center" }}>
@@ -616,7 +686,7 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
           <div style={{ opacity: exitFade(frame, 705, 758), transform: "scale(0.86)" }}>
             <ScoreRing score={beforeScore} progress={1} />
           </div>
-          <div style={{ color: CYAN, fontSize: 62, fontWeight: 950 }}>→</div>
+          <div style={{ color: CYAN, fontSize: 62, fontWeight: 950 }}>to</div>
           <ScoreRing score={afterScore} progress={scoreProgress} startScore={beforeScore} />
         </div>
         <div style={{ color: TEXT, fontSize: 62, fontWeight: 950, marginTop: 30 }}>No fake experience.</div>

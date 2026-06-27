@@ -137,6 +137,29 @@ function saveFulfilledOutput(sessionId: string, output: Omit<FulfilledOutput, 'c
   }
 }
 
+async function readServerFulfilledOutput(sessionId: string): Promise<FulfilledOutput | null> {
+  try {
+    const response = await fetch(`/api/rewrite?sessionId=${encodeURIComponent(sessionId)}`, {
+      cache: 'no-store',
+    });
+    if (!response.ok) return null;
+
+    const parsed = await response.json() as Partial<FulfilledOutput>;
+    if (!parsed.resumeData || typeof parsed.baseName !== 'string') return null;
+
+    return {
+      createdAt: typeof parsed.createdAt === 'number' ? parsed.createdAt : Date.now(),
+      baseName: parsed.baseName,
+      resumeData: parsed.resumeData,
+      beforeScore: typeof parsed.beforeScore === 'number' ? parsed.beforeScore : null,
+      afterScore: typeof parsed.afterScore === 'number' ? parsed.afterScore : null,
+      optimizationLow: Boolean(parsed.optimizationLow || parsed.resumeData._warning === 'optimization_low'),
+    };
+  } catch {
+    return null;
+  }
+}
+
 function readCheckoutPayload(): CheckoutPayload | null {
   try {
     const sessionPayload = {
@@ -422,6 +445,26 @@ function SuccessPageContent() {
         return;
       }
 
+      setStatus("Checking for a saved optimization...");
+      const serverRestored = await readServerFulfilledOutput(sessionId);
+      if (serverRestored) {
+        setBaseName(serverRestored.baseName);
+        setResumeData(serverRestored.resumeData);
+        setBeforeScore(serverRestored.beforeScore ?? null);
+        setAfterScore(serverRestored.afterScore ?? null);
+        setOptimizationLow(Boolean(serverRestored.optimizationLow));
+        saveFulfilledOutput(sessionId, {
+          baseName: serverRestored.baseName,
+          resumeData: serverRestored.resumeData,
+          beforeScore: serverRestored.beforeScore ?? null,
+          afterScore: serverRestored.afterScore ?? null,
+          optimizationLow: Boolean(serverRestored.optimizationLow),
+        });
+        setStatus("Optimization restored from your paid session. Your files are ready to download again.");
+        setIsDone(true);
+        return;
+      }
+
       const payload = readCheckoutPayload();
       const resumeText = payload?.resumeText;
       const jobDescription = payload?.jobDescription;
@@ -440,7 +483,7 @@ function SuccessPageContent() {
         const res = await fetch('/api/rewrite', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ resumeText, jobDescription, sessionId })
+          body: JSON.stringify({ resumeText, jobDescription, sessionId, fileName: rawName })
         });
 
         if (!res.ok) {

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import Stripe from 'stripe';
+import { buildFulfillmentBaseName, readFulfillment, writeFulfillment } from '@/lib/fulfillmentStore';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock_key', {
   apiVersion: '2026-05-27.dahlia',
@@ -59,10 +60,6 @@ type CandidateFacts = {
   certifications: string[];
   numberTokens: Set<string>;
 };
-
-// Best-effort replay cache for repeat API calls in the same server instance.
-// Production should replace this with a database or KV store keyed by Stripe session ID.
-const fulfilledResults = new Map<string, unknown>();
 
 const MAX_INPUT_CHARS = 60_000;
 const STOP_WORDS = new Set(
@@ -336,12 +333,47 @@ function candidateFactsPrompt(facts: CandidateFacts): string {
   });
 }
 
+async function validatePaidSessionId(sessionId: string): Promise<ProductType | NextResponse> {
+  let session;
+  try {
+    session = await stripe.checkout.sessions.retrieve(sessionId);
+  } catch {
+    return NextResponse.json({ error: 'Invalid payment session' }, { status: 402 });
+  }
+
+  return validatePaidSession(session);
+}
+
+export async function GET(req: Request) {
+  try {
+    const url = new URL(req.url);
+    const sessionId = url.searchParams.get('sessionId')?.trim();
+    if (!sessionId) {
+      return NextResponse.json({ error: 'Missing payment session' }, { status: 402 });
+    }
+
+    const productType = await validatePaidSessionId(sessionId);
+    if (productType instanceof NextResponse) return productType;
+
+    const cachedFulfillment = await readFulfillment(sessionId);
+    if (!cachedFulfillment) {
+      return NextResponse.json({ error: 'No saved optimization found for this session' }, { status: 404 });
+    }
+
+    return NextResponse.json(cachedFulfillment);
+  } catch (error: unknown) {
+    console.error('Error reading fulfillment:', error);
+    const message = error instanceof Error ? error.message : 'Failed to read fulfillment';
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
 export async function POST(req: Request) {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY || 'dummy_key_for_build',
   });
   try {
-    const { resumeText, jobDescription, sessionId } = await req.json();
+    const { resumeText, jobDescription, sessionId, fileName } = await req.json();
 
     if (typeof resumeText !== 'string' || typeof jobDescription !== 'string') {
       return NextResponse.json({ error: 'Missing resume or job description' }, { status: 400 });
@@ -360,22 +392,16 @@ export async function POST(req: Request) {
     }
     const normalizedSessionId = sessionId.trim();
 
-    const cachedFulfillment = fulfilledResults.get(normalizedSessionId);
+    const cachedFulfillment = await readFulfillment(normalizedSessionId);
     if (cachedFulfillment) {
-      return NextResponse.json(cachedFulfillment);
+      return NextResponse.json(cachedFulfillment.resumeData);
     }
 
-    let session;
-    try {
-      session = await stripe.checkout.sessions.retrieve(normalizedSessionId);
-    } catch {
-      return NextResponse.json({ error: 'Invalid payment session' }, { status: 402 });
-    }
-
-    const productType = validatePaidSession(session);
+    const productType = await validatePaidSessionId(normalizedSessionId);
     if (productType instanceof NextResponse) {
       return productType;
     }
+    const baseName = buildFulfillmentBaseName(fileName);
     const candidateFacts = extractCandidateFacts(resumeText);
     const userPrompt = `TARGET JOB DESCRIPTION:\n${jobDescription}\n\nCURRENT RESUME TEXT:\n${resumeText}\n\nEXTRACTED CANDIDATE FACTS TO PRESERVE:\n${candidateFactsPrompt(candidateFacts)}`;
 
@@ -559,10 +585,18 @@ Regenerate it with 3-4 substantive paragraphs, exact job-description requirement
     if (includesResumeRewrite && (bestScore <= origMatch || bestErrors.length > 0)) {
       const lowOptimizationResponse =
         { ...response, _warning: "optimization_low" };
-      fulfilledResults.set(normalizedSessionId, lowOptimizationResponse);
+      await writeFulfillment(normalizedSessionId, {
+        createdAt: Date.now(),
+        baseName,
+        resumeData: lowOptimizationResponse,
+      });
       return NextResponse.json(lowOptimizationResponse);
     }
-    fulfilledResults.set(normalizedSessionId, response);
+    await writeFulfillment(normalizedSessionId, {
+      createdAt: Date.now(),
+      baseName,
+      resumeData: response,
+    });
     return NextResponse.json(response);
 
   } catch (error: unknown) {

@@ -369,9 +369,6 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY || 'dummy_key_for_build',
-  });
   try {
     const { resumeText, jobDescription, sessionId, fileName } = await req.json();
 
@@ -392,15 +389,19 @@ export async function POST(req: Request) {
     }
     const normalizedSessionId = sessionId.trim();
 
+    const productType = await validatePaidSessionId(normalizedSessionId);
+    if (productType instanceof NextResponse) {
+      return productType;
+    }
+
     const cachedFulfillment = await readFulfillment(normalizedSessionId);
     if (cachedFulfillment) {
       return NextResponse.json(cachedFulfillment.resumeData);
     }
 
-    const productType = await validatePaidSessionId(normalizedSessionId);
-    if (productType instanceof NextResponse) {
-      return productType;
-    }
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY || 'dummy_key_for_build',
+    });
     const baseName = buildFulfillmentBaseName(fileName);
     const candidateFacts = extractCandidateFacts(resumeText);
     const userPrompt = `TARGET JOB DESCRIPTION:\n${jobDescription}\n\nCURRENT RESUME TEXT:\n${resumeText}\n\nEXTRACTED CANDIDATE FACTS TO PRESERVE:\n${candidateFactsPrompt(candidateFacts)}`;

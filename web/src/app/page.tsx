@@ -181,16 +181,16 @@ function useCountUp(target: number | null, durationMs = 1100): number {
 function SignalAtom({ className = '' }: { className?: string }) {
   return (
     <span className={`relative inline-flex items-center justify-center ${className}`} aria-hidden="true">
-      <span className="absolute inset-x-1 inset-y-3 rounded-full border border-cyan-200/70 -rotate-[22deg] shadow-[0_0_18px_rgba(56,213,255,0.35)]" />
-      <span className="absolute inset-x-1 inset-y-3 rounded-full border border-cyan-300/60 rotate-[58deg] shadow-[0_0_18px_rgba(56,213,255,0.28)]" />
-      <span className="absolute inset-x-4 inset-y-1 rounded-full border border-cyan-100/35 rotate-90" />
-      <span className="relative h-5 w-5 rounded-full bg-[radial-gradient(circle_at_45%_35%,#ffffff_0_12%,#38d5ff_24%,#2563eb_62%,#020617_100%)] shadow-[0_0_32px_rgba(56,213,255,0.85),inset_0_0_16px_rgba(255,255,255,0.35)]">
-        <span className="absolute left-[31%] top-[40%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]" />
-        <span className="absolute right-[31%] top-[40%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]" />
+      <span className="signal-ring signal-ring-a absolute inset-x-1 inset-y-3 rounded-full border border-cyan-200/70 -rotate-[22deg] shadow-[0_0_18px_rgba(56,213,255,0.35)]" />
+      <span className="signal-ring signal-ring-b absolute inset-x-1 inset-y-3 rounded-full border border-cyan-300/60 rotate-[58deg] shadow-[0_0_18px_rgba(56,213,255,0.28)]" />
+      <span className="signal-ring signal-ring-c absolute inset-x-4 inset-y-1 rounded-full border border-cyan-100/35 rotate-90" />
+      <span className="signal-core relative h-5 w-5 rounded-full bg-[radial-gradient(circle_at_45%_35%,#ffffff_0_12%,#38d5ff_24%,#2563eb_62%,#020617_100%)] shadow-[0_0_32px_rgba(56,213,255,0.85),inset_0_0_16px_rgba(255,255,255,0.35)]">
+        <span className="signal-eye absolute left-[31%] top-[40%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]" />
+        <span className="signal-eye absolute right-[31%] top-[40%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]" />
         <span className="absolute left-1/2 top-[60%] h-1.5 w-3 -translate-x-1/2 rounded-b-full border-b border-white/90" />
       </span>
-      <span className="absolute left-1 top-2 h-1 w-1 rounded-full bg-white shadow-[0_0_10px_rgba(56,213,255,0.9)]" />
-      <span className="absolute right-0 top-4 h-1 w-1 rounded-full bg-white/80 shadow-[0_0_10px_rgba(56,213,255,0.9)]" />
+      <span className="signal-spark signal-spark-a absolute left-1 top-2 h-1 w-1 rounded-full bg-white shadow-[0_0_10px_rgba(56,213,255,0.9)]" />
+      <span className="signal-spark signal-spark-b absolute right-0 top-4 h-1 w-1 rounded-full bg-white/80 shadow-[0_0_10px_rgba(56,213,255,0.9)]" />
     </span>
   );
 }
@@ -393,8 +393,8 @@ export default function Home() {
             onClick={() => scrollToTool('resume')}
             aria-label="Signal by ATSHacker home"
           >
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white p-1 shadow-[0_0_26px_rgba(52,211,153,0.22)] ring-1 ring-emerald-300/30">
-              <img src="/logo-mark.png" alt="" className="h-8 w-8 object-contain" />
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-cyan-200/30 bg-[#07111f]/90 shadow-[0_0_34px_rgba(56,213,255,0.2),inset_0_0_22px_rgba(56,213,255,0.08)] ring-1 ring-cyan-300/20">
+              <SignalAtom className="signal-mascot h-9 w-9" />
             </span>
             <div className="min-w-0 leading-tight sm:border-l sm:border-cyan-400/20 sm:pl-3">
               <p className="text-sm sm:text-[11px] font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-cyan-100 truncate">Signal</p>

@@ -43,6 +43,61 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: no-preference) {
   .ath-reveal { animation: ath-reveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
   .ath-score-pop { animation: ath-score-pop 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+
+  @keyframes signal-mascot-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+  @keyframes signal-orbit-a {
+    from { transform: rotate(-22deg); }
+    to { transform: rotate(338deg); }
+  }
+  @keyframes signal-orbit-b {
+    from { transform: rotate(58deg); }
+    to { transform: rotate(-302deg); }
+  }
+  @keyframes signal-orbit-c {
+    from { transform: rotate(90deg); }
+    to { transform: rotate(450deg); }
+  }
+  @keyframes signal-core-pulse {
+    0%, 100% { filter: brightness(1); transform: scale(1); }
+    50% { filter: brightness(1.12); transform: scale(1.04); }
+  }
+  @keyframes signal-blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.16); }
+  }
+  @keyframes signal-sparkle {
+    0%, 100% { opacity: 0.35; transform: scale(0.7); }
+    50% { opacity: 1; transform: scale(1.25); }
+  }
+
+  .signal-mascot {
+    animation: signal-mascot-float 3.8s ease-in-out infinite;
+  }
+  .signal-ring-a {
+    animation: signal-orbit-a 7s linear infinite;
+  }
+  .signal-ring-b {
+    animation: signal-orbit-b 9s linear infinite;
+  }
+  .signal-ring-c {
+    animation: signal-orbit-c 11s linear infinite;
+  }
+  .signal-core {
+    animation: signal-core-pulse 3.2s ease-in-out infinite;
+  }
+  .signal-eye {
+    transform-origin: center;
+    animation: signal-blink 5.2s ease-in-out infinite;
+  }
+  .signal-spark {
+    animation: signal-sparkle 2.7s ease-in-out infinite;
+  }
+  .signal-spark-b {
+    animation-delay: 0.8s;
+  }
   
   /* --- Interactive float animations --- */
   @keyframes float-badge {

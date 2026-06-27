@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const TITLE = "ATSHacker — Get Your Resume Past the Keyword Filter";
+const TITLE = "Signal by ATSHacker - Resume and Cover Letter Copilot";
 const DESCRIPTION =
-  "Recruiters search and rank resumes by keyword. ATSHacker rewrites your resume to semantically match the job description so it ranks higher and gets seen ~3x more often — a one-time $9.99, no subscription.";
+  "Signal compares your resume to a real job description, finds language recruiters may miss, and helps rewrite your real experience without inventing facts.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
@@ -33,11 +33,11 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "ATSHacker",
+    siteName: "Signal by ATSHacker",
     title: TITLE,
     description: DESCRIPTION,
     url: BASE,
-    images: [{ url: DEFAULT_OG, width: 1200, height: 630, alt: "ATSHacker — ATS match score" }],
+    images: [{ url: DEFAULT_OG, width: 1200, height: 630, alt: "Signal by ATSHacker ATS match score" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -51,17 +51,17 @@ export const metadata: Metadata = {
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "ATSHacker",
+  name: "Signal by ATSHacker",
   url: BASE,
   logo: `${BASE}/logo.png`,
   description:
-    "ATSHacker gives you a free ATS keyword match score and an honest $9.99 resume rewrite that semantically matches the job description.",
+    "Signal by ATSHacker gives users a free ATS keyword match score and honest one-time resume and cover letter optimization.",
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "ATSHacker",
+  name: "Signal by ATSHacker",
   url: BASE,
 };
 

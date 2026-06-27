@@ -3,11 +3,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { track } from '@vercel/analytics';
 import { 
   UploadCloud, CheckCircle, Shield, ArrowRight, FileText, Gauge, 
-  XCircle, Share2, Zap, Lock, BadgeCheck, Star, Sparkles, Award, Layout, BookOpen 
+  XCircle, Share2, BadgeCheck, Sparkles, Award, Layout, Menu, X
 } from 'lucide-react';
 
 // First-touch UTM keys we persist for sale attribution.
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
+const CHECKOUT_PAYLOAD_KEY = 'atshacker.checkout_payload.v1';
 
 function getStoredUtms(): Record<string, string> {
   const out: Record<string, string> = {};
@@ -22,6 +23,32 @@ function getStoredUtms(): Record<string, string> {
   return out;
 }
 
+function writeResumeSessionPayload(resumeText: string, jobDescription: string, fileName: string) {
+  try {
+    sessionStorage.setItem('resumeText', resumeText);
+    sessionStorage.setItem('jobDescription', jobDescription);
+    sessionStorage.setItem('fileName', fileName);
+  } catch {
+    /* session storage unavailable */
+  }
+}
+
+function mirrorCheckoutPayload(fallback?: { resumeText: string; jobDescription: string; fileName: string }) {
+  try {
+    const resumeText = fallback?.resumeText || sessionStorage.getItem('resumeText');
+    const jobDescription = fallback?.jobDescription || sessionStorage.getItem('jobDescription');
+    const fileName = fallback?.fileName || sessionStorage.getItem('fileName');
+    if (!resumeText || !jobDescription || !fileName) return;
+
+    localStorage.setItem(
+      CHECKOUT_PAYLOAD_KEY,
+      JSON.stringify({ resumeText, jobDescription, fileName, createdAt: Date.now() })
+    );
+  } catch {
+    /* local storage unavailable */
+  }
+}
+
 interface ScoreResult {
   score: number;
   matchedKeywords: string[];
@@ -29,17 +56,27 @@ interface ScoreResult {
   verdict: string;
 }
 
+type MockResumeFile = File & {
+  isMockTemplate?: true;
+  mockText?: string;
+  mockJobDescription?: string;
+};
+
+type PdfTextContentItem = {
+  str?: string;
+};
+
 const BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ats-hacker-swart.vercel.app').replace(/\/$/, '');
 
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'ATSHacker',
+  name: 'Signal by ATSHacker',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
   url: BASE,
   description:
-    'Free ATS keyword match score plus an honest $9.99 resume rewrite and cover letter generation that semantically matches the target job description so your resume ranks higher in recruiter search.',
+    'Free ATS keyword match score plus honest one-time resume and cover letter optimization that helps your real experience match the language recruiters search for.',
   offers: [
     {
       '@type': 'Offer',
@@ -77,7 +114,7 @@ const faqSchema = {
       name: 'Does an ATS auto-reject resumes?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. An Applicant Tracking System does not automatically reject you. It stores and indexes resumes so recruiters can search and rank them by keyword. Resumes that closely match the job description rank higher and are far more likely to be seen — roughly 3x — while poorly matched resumes get buried lower in the results.',
+        text: 'No. An Applicant Tracking System does not automatically reject you. It stores and indexes resumes so recruiters can search and rank them by keyword. Resumes that closely match the job description are easier for recruiters to find.',
       },
     },
     {
@@ -110,7 +147,12 @@ const faqSchema = {
 function useCountUp(target: number | null, durationMs = 1100): number {
   const [value, setValue] = useState(0);
   useEffect(() => {
-    if (target == null) { setValue(0); return; }
+    const scheduleValue = (nextValue: number) => {
+      const timer = window.setTimeout(() => setValue(nextValue), 0);
+      return () => window.clearTimeout(timer);
+    };
+
+    if (target == null) return scheduleValue(0);
 
     const prefersReduced =
       typeof window !== 'undefined' &&
@@ -118,8 +160,7 @@ function useCountUp(target: number | null, durationMs = 1100): number {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReduced || typeof requestAnimationFrame !== 'function') {
-      setValue(target);
-      return;
+      return scheduleValue(target);
     }
 
     let raf = 0;
@@ -137,6 +178,23 @@ function useCountUp(target: number | null, durationMs = 1100): number {
   return value;
 }
 
+function SignalAtom({ className = '' }: { className?: string }) {
+  return (
+    <span className={`relative inline-flex items-center justify-center ${className}`} aria-hidden="true">
+      <span className="absolute inset-x-1 inset-y-3 rounded-full border border-cyan-200/70 -rotate-[22deg] shadow-[0_0_18px_rgba(56,213,255,0.35)]" />
+      <span className="absolute inset-x-1 inset-y-3 rounded-full border border-cyan-300/60 rotate-[58deg] shadow-[0_0_18px_rgba(56,213,255,0.28)]" />
+      <span className="absolute inset-x-4 inset-y-1 rounded-full border border-cyan-100/35 rotate-90" />
+      <span className="relative h-5 w-5 rounded-full bg-[radial-gradient(circle_at_45%_35%,#ffffff_0_12%,#38d5ff_24%,#2563eb_62%,#020617_100%)] shadow-[0_0_32px_rgba(56,213,255,0.85),inset_0_0_16px_rgba(255,255,255,0.35)]">
+        <span className="absolute left-[31%] top-[40%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]" />
+        <span className="absolute right-[31%] top-[40%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]" />
+        <span className="absolute left-1/2 top-[60%] h-1.5 w-3 -translate-x-1/2 rounded-b-full border-b border-white/90" />
+      </span>
+      <span className="absolute left-1 top-2 h-1 w-1 rounded-full bg-white shadow-[0_0_10px_rgba(56,213,255,0.9)]" />
+      <span className="absolute right-0 top-4 h-1 w-1 rounded-full bg-white/80 shadow-[0_0_10px_rgba(56,213,255,0.9)]" />
+    </span>
+  );
+}
+
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [jobDescription, setJobDescription] = useState("");
@@ -145,6 +203,7 @@ export default function Home() {
   const [isScoring, setIsScoring] = useState(false);
   const [score, setScore] = useState<ScoreResult | null>(null);
   const [activeTab, setActiveTab] = useState<'resume' | 'cover_letter'>('resume');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [candDocTypes, setCandDocTypes] = useState<Record<number, 'resume' | 'cover_letter'>>({
     0: 'resume',
     1: 'resume',
@@ -181,11 +240,10 @@ export default function Home() {
   };
 
   const extractResumeText = async (): Promise<string> => {
-    if (file && (file as any).isMockTemplate) {
-      const mockText = (file as any).mockText || '';
-      sessionStorage.setItem('resumeText', mockText);
-      sessionStorage.setItem('jobDescription', jobDescription);
-      sessionStorage.setItem('fileName', file.name);
+    const mockTemplate = file as MockResumeFile | null;
+    if (mockTemplate?.isMockTemplate) {
+      const mockText = mockTemplate.mockText || '';
+      writeResumeSessionPayload(mockText, jobDescription, mockTemplate.name);
       return mockText;
     }
     const pdfjsLib = await import('pdfjs-dist');
@@ -197,11 +255,12 @@ export default function Home() {
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
       const content = await page.getTextContent();
-      resumeText += content.items.map((item: any) => ('str' in item ? item.str : '')).join(' ') + '\n';
+      resumeText += content.items.map((item) => {
+        const maybeText = item as PdfTextContentItem;
+        return typeof maybeText.str === 'string' ? maybeText.str : '';
+      }).join(' ') + '\n';
     }
-    sessionStorage.setItem('resumeText', resumeText);
-    sessionStorage.setItem('jobDescription', jobDescription);
-    sessionStorage.setItem('fileName', file!.name);
+    writeResumeSessionPayload(resumeText, jobDescription, file!.name);
     return resumeText;
   };
 
@@ -254,7 +313,14 @@ export default function Home() {
       /* analytics best-effort */
     }
     try {
-      if (!sessionStorage.getItem('resumeText')) await extractResumeText();
+      let storedResumeText = '';
+      try {
+        storedResumeText = sessionStorage.getItem('resumeText') || '';
+      } catch {
+        /* session storage unavailable */
+      }
+      const resumeText = storedResumeText || await extractResumeText();
+      mirrorCheckoutPayload({ resumeText, jobDescription, fileName: file!.name });
       const utms = getStoredUtms();
       const res = await fetch('/api/checkout', {
         method: 'POST',
@@ -279,6 +345,7 @@ export default function Home() {
 
   const scrollToTool = (tab: 'resume' | 'cover_letter') => {
     setActiveTab(tab);
+    setMobileMenuOpen(false);
     toolSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -286,10 +353,10 @@ export default function Home() {
     if (!score) return;
     const missing = score.missingKeywords?.length || 0;
     const url = `${window.location.origin}/s/${score.score}?m=${missing}`;
-    const text = `My resume scored ${score.score}/100 on ATSHacker for this job. Check yours free:`;
+    const text = `My resume scored ${score.score}/100 on Signal by ATSHacker for this job. Check yours free:`;
     try {
       if (navigator.share) {
-        await navigator.share({ title: 'ATSHacker', text, url });
+        await navigator.share({ title: 'Signal by ATSHacker', text, url });
       } else {
         await navigator.clipboard.writeText(`${text} ${url}`);
         alert('Share link copied to clipboard!');
@@ -307,7 +374,7 @@ export default function Home() {
     : 'bg-emerald-500';
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-emerald-500/20 antialiased">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-cyan-500/20 antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
@@ -318,99 +385,157 @@ export default function Home() {
       />
 
       {/* Modern Navigation */}
-      <nav className="w-full bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2 select-none cursor-pointer" onClick={() => scrollToTool('resume')}>
-            <img src="/logo-full.png" alt="ATSHacker" className="h-9 w-auto" />
+      <nav className="w-full sticky top-0 z-50 border-b border-cyan-400/15 bg-[#030712]/90 shadow-[0_12px_40px_rgba(0,0,0,0.28)] backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center gap-3">
+          <button
+            type="button"
+            className="flex flex-1 items-center gap-2 sm:gap-3 min-w-0 select-none text-left sm:flex-none"
+            onClick={() => scrollToTool('resume')}
+            aria-label="Signal by ATSHacker home"
+          >
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white p-1 shadow-[0_0_26px_rgba(52,211,153,0.22)] ring-1 ring-emerald-300/30">
+              <img src="/logo-mark.png" alt="" className="h-8 w-8 object-contain" />
+            </span>
+            <div className="min-w-0 leading-tight sm:border-l sm:border-cyan-400/20 sm:pl-3">
+              <p className="text-sm sm:text-[11px] font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-cyan-100 truncate">Signal</p>
+              <p className="hidden text-[11px] font-bold text-slate-400 truncate min-[360px]:block">by ATSHacker</p>
+            </div>
+          </button>
+
+          <div className="hidden lg:flex items-center gap-8 text-sm font-bold text-slate-300">
+            <a href="#features" className="hover:text-cyan-200 transition">Features</a>
+            <a href="#templates" className="hover:text-cyan-200 transition">Templates</a>
+            <a href="#pricing" className="hover:text-cyan-200 transition">Pricing</a>
+            <a href="#faq" className="hover:text-cyan-200 transition">FAQ</a>
           </div>
-          <div className="flex items-center gap-8 text-sm font-bold text-slate-600">
-            <a href="#features" className="hover:text-emerald-600 transition">Features</a>
-            <a href="#templates" className="hover:text-emerald-600 transition">Templates</a>
-            <a href="#pricing" className="hover:text-emerald-600 transition">Pricing</a>
-            <a href="#faq" className="hover:text-emerald-600 transition">FAQ</a>
-          </div>
-          <div className="flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-4">
             <button 
               onClick={() => scrollToTool('resume')} 
-              className="text-slate-600 hover:text-emerald-600 text-sm font-bold transition"
+              className="text-slate-300 hover:text-cyan-200 text-sm font-bold transition"
             >
-              Log In
+              Free Score
             </button>
             <button 
               onClick={() => scrollToTool('resume')} 
-              className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold px-4 py-2.5 rounded-lg transition shadow-sm hidden md:block"
+              className="hidden rounded-lg border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 px-4 py-2.5 text-xs font-extrabold text-white shadow-[0_0_26px_rgba(56,213,255,0.22)] transition hover:brightness-110 md:block"
             >
-              Sign Up
+              Get Seen
+            </button>
+          </div>
+          <div className="flex sm:hidden items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={() => scrollToTool('resume')}
+              className="rounded-lg border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 px-3 py-2 text-xs font-extrabold text-white shadow-sm transition hover:brightness-110 whitespace-nowrap"
+            >
+              Free Score
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              className="w-10 h-10 inline-flex items-center justify-center rounded-lg border border-cyan-300/25 text-cyan-100 hover:text-white hover:border-cyan-200/60 transition"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
+        {mobileMenuOpen && (
+          <div className="sm:hidden border-t border-cyan-400/15 bg-[#030712]/95 px-4 py-3 shadow-lg backdrop-blur-md">
+            <div className="grid grid-cols-2 gap-2 text-sm font-bold text-slate-200">
+              <a href="#features" onClick={() => setMobileMenuOpen(false)} className="rounded-lg border border-cyan-400/15 px-3 py-2 hover:border-cyan-300/50 hover:text-cyan-100 transition">Features</a>
+              <a href="#templates" onClick={() => setMobileMenuOpen(false)} className="rounded-lg border border-cyan-400/15 px-3 py-2 hover:border-cyan-300/50 hover:text-cyan-100 transition">Templates</a>
+              <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="rounded-lg border border-cyan-400/15 px-3 py-2 hover:border-cyan-300/50 hover:text-cyan-100 transition">Pricing</a>
+              <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="rounded-lg border border-cyan-400/15 px-3 py-2 hover:border-cyan-300/50 hover:text-cyan-100 transition">FAQ</a>
+            </div>
+            <button
+              type="button"
+              onClick={() => scrollToTool('resume')}
+              className="mt-3 w-full rounded-lg bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 px-4 py-3 text-sm font-extrabold text-white transition hover:brightness-110"
+            >
+              Get Seen
+            </button>
+          </div>
+        )}
       </nav>
 
-      {/* Zety-inspired Hero Section */}
-      <header id="features" className="bg-gradient-to-b from-white to-slate-50 border-b border-slate-100 py-16 lg:py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      {/* Signal hero section */}
+      <header id="features" className="relative overflow-hidden border-b border-cyan-400/10 bg-[#030712] py-16 lg:py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(56,213,255,0.18),transparent_28rem),radial-gradient(circle_at_86%_22%,rgba(37,99,235,0.2),transparent_32rem),radial-gradient(circle_at_52%_82%,rgba(52,211,153,0.08),transparent_28rem)]" />
+        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(125,223,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.07)_1px,transparent_1px)] [background-size:52px_52px]" />
+        <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Hero Content */}
-          <div className="lg:col-span-7 space-y-8">
-            <div className="inline-flex items-center gap-2 bg-emerald-50/70 border border-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
-              <Shield className="w-3.5 h-3.5 fill-emerald-600/10 text-emerald-600" />
-              <span>100% secure checkout via Stripe • One-time payment, no subscriptions</span>
+          <div className="relative z-10 lg:col-span-7 space-y-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">
+              <Shield className="w-3.5 h-3.5 fill-emerald-400/10 text-emerald-300" />
+              <span>Signal by ATSHacker - one-time payment, no subscriptions</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-none">
-              The professional resume and <span className="text-emerald-600">cover letter builder</span> designed for ATS.
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-50 leading-none">
+              Your resume is qualified. <span className="bg-gradient-to-r from-cyan-100 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">Now make sure it gets seen.</span>
             </h1>
             
-            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
-              Beat the bots, get noticed, and land your dream job with resumes tailored to specific job descriptions.
+            <p className="text-lg text-slate-300 leading-relaxed max-w-2xl">
+              Signal compares your resume to the target job description, shows what recruiter searches may miss, and rewrites your real experience without inventing facts.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <button 
                 onClick={() => scrollToTool('resume')} 
-                className="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base px-8 py-4 rounded-xl transition duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                className="rounded-xl border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 px-8 py-4 text-base font-extrabold text-white shadow-[0_18px_60px_rgba(56,213,255,0.24)] transition duration-200 hover:brightness-110 flex items-center justify-center gap-2"
               >
-                <span>Create Your Optimized Resume Now</span>
+                <span>Check Your Resume Signal</span>
               </button>
+              <a
+                href="#templates"
+                className="rounded-xl border border-cyan-300/25 bg-white/5 px-8 py-4 text-base font-extrabold text-cyan-50 shadow-[inset_0_0_24px_rgba(56,213,255,0.06)] transition hover:border-cyan-200/60 hover:bg-cyan-400/10 flex items-center justify-center"
+              >
+                See ATS Templates
+              </a>
             </div>
 
             {/* Key benefits metrics */}
-            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-slate-200/60 max-w-xl">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-4 border-t border-cyan-400/15 max-w-xl">
               <div>
-                <p className="text-3xl font-black text-slate-900">3x</p>
-                <p className="text-xs text-slate-500 font-semibold mt-1">More Callbacks</p>
+                <p className="text-2xl sm:text-3xl font-black text-cyan-100">Free</p>
+                <p className="text-xs text-slate-400 font-semibold mt-1">Match Scan</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-slate-900">60s</p>
-                <p className="text-xs text-slate-500 font-semibold mt-1">Average Setup</p>
+                <p className="text-2xl sm:text-3xl font-black text-cyan-100">$9.99</p>
+                <p className="text-xs text-slate-400 font-semibold mt-1">One-Time Fix</p>
               </div>
               <div>
-                <p className="text-3xl font-black text-slate-900">100%</p>
-                <p className="text-xs text-slate-500 font-semibold mt-1">ATS Compatible</p>
+                <p className="text-2xl sm:text-3xl font-black text-cyan-100">No</p>
+                <p className="text-xs text-slate-400 font-semibold mt-1">Fake Experience</p>
               </div>
             </div>
           </div>
 
           {/* Right Hero Video/Graphic Mockup */}
           <div className="lg:col-span-5 relative">
-            <div className="absolute inset-0 bg-emerald-500/10 rounded-3xl blur-3xl -z-10 transform scale-95"></div>
-            <div className="bg-white border border-slate-200 rounded-3xl p-5 shadow-2xl space-y-4">
-              <div className="text-center pb-2 border-b border-slate-100">
-                <h3 className="text-xs font-black text-slate-500 tracking-wider uppercase">
-                  ATS Match Score Transformation
+            <div className="absolute inset-0 bg-cyan-400/12 rounded-3xl blur-3xl -z-10 transform scale-95"></div>
+            <div className="relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-[#07111f]/90 p-5 shadow-[0_28px_120px_rgba(0,0,0,0.45),0_0_80px_rgba(56,213,255,0.12)] backdrop-blur space-y-4">
+              <div className="pointer-events-none absolute right-4 top-4 hidden sm:block">
+                <SignalAtom className="h-16 w-16" />
+              </div>
+              <div className="text-center pb-2 border-b border-cyan-400/15">
+                <h3 className="text-xs font-black text-cyan-100 tracking-wider uppercase">
+                  Signal Match Report
                 </h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Column 1: Poor Original Resume */}
                 <div className="space-y-3">
                   <div className="text-center">
-                    <span className="inline-block bg-red-50 border border-red-150 text-red-700 text-[10px] font-black px-2 py-0.5 rounded-md animate-float-slow">
-                      Poor Original Resume (34/100)
+                    <span className="inline-block bg-red-50 border border-red-200 text-red-700 text-[10px] font-black px-2 py-0.5 rounded-md animate-float-slow">
+                      Low Match Signal (34/100)
                     </span>
                   </div>
                   {/* Mini Original Resume Card */}
                   <div className="border border-red-200 bg-white rounded-xl p-2.5 shadow-sm relative flex flex-col justify-between h-[230px] overflow-hidden select-none hover:scale-[1.02] hover:-rotate-1 transition-all duration-300 cursor-default">
                     {/* Header */}
-                    <div className="flex items-center gap-1.5 border-b border-slate-150 pb-1.5 mb-1">
+                    <div className="flex items-center gap-1.5 border-b border-slate-200 pb-1.5 mb-1">
                       <img 
                         src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=80&h=80" 
                         alt="Michael Torres" 
@@ -424,7 +549,7 @@ export default function Home() {
                     {/* Single column — no structure */}
                     <div className="flex-grow text-[5.5px] text-slate-500 leading-tight text-left space-y-1.5">
                       <div className="font-extrabold text-[6px] text-slate-700 uppercase tracking-wide border-b border-rose-100 pb-0.5">Objective</div>
-                      <p className="italic text-slate-400 text-[5px] leading-tight">"Looking for a marketing role where I can use my skills and grow professionally."</p>
+                      <p className="italic text-slate-400 text-[5px] leading-tight">&quot;Looking for a marketing role where I can use my skills and grow professionally.&quot;</p>
                       <div className="font-extrabold text-[6px] text-slate-700 uppercase tracking-wide border-b border-rose-100 pb-0.5 mt-1">Experience</div>
                       <div className="pl-1 space-y-0.5">
                         <p className="font-bold text-[6px] text-slate-700">Marketing Manager — Growth Labs</p>
@@ -441,11 +566,11 @@ export default function Home() {
                   </div>
                   {/* Bullets */}
                   <div className="space-y-1 text-left text-[10px] leading-tight">
-                    <p className="font-bold text-red-700">
-                      <XCircle className="w-3 h-3 inline mr-0.5 -mt-0.5" /> Missing: <span className="font-extrabold text-red-900">LinkedIn Ads, Demand Gen, Marketing Ops, HubSpot, CAC/LTV</span>
+                    <p className="font-bold text-red-200">
+                      <XCircle className="w-3 h-3 inline mr-0.5 -mt-0.5" /> Missing: <span className="font-extrabold text-red-100">LinkedIn Ads, Demand Gen, Marketing Ops, HubSpot, CAC/LTV</span>
                     </p>
-                    <p className="text-slate-500 pl-2">
-                      <span className="font-bold text-slate-700">Vague:</span> "Responsible for social media. Helped with campaigns. Managed the team."
+                    <p className="text-slate-300 pl-2">
+                      <span className="font-bold text-slate-100">Vague:</span> &quot;Responsible for social media. Helped with campaigns. Managed the team.&quot;
                     </p>
                   </div>
                 </div>
@@ -529,11 +654,11 @@ export default function Home() {
                   </div>
                   {/* Bullets */}
                   <div className="space-y-1 text-left text-[10px] leading-tight">
-                    <p className="font-bold text-emerald-700">
+                    <p className="font-bold text-emerald-200">
                       <CheckCircle className="w-3 h-3 inline mr-0.5 -mt-0.5" /> Matched: <span className="highlight-keyword font-extrabold text-emerald-800 px-0.5 rounded">Demand Gen</span>, <span className="highlight-keyword font-extrabold text-emerald-800 px-0.5 rounded">LinkedIn Ads</span>, <span className="highlight-keyword font-extrabold text-emerald-800 px-0.5 rounded">HubSpot</span>, <span className="highlight-keyword font-extrabold text-emerald-800 px-0.5 rounded">CAC/LTV</span>
                     </p>
-                    <p className="text-slate-650 pl-2">
-                      <span className="font-bold text-slate-800">Impact:</span> Scaled B2B pipeline from $800K → $2.4M ARR. Cut CAC by 32% via LinkedIn audience segmentation.
+                    <p className="text-slate-300 pl-2">
+                      <span className="font-bold text-slate-100">Impact:</span> Scaled B2B pipeline from $800K → $2.4M ARR. Cut CAC by 32% via LinkedIn audience segmentation.
                     </p>
                   </div>
                 </div>
@@ -544,21 +669,28 @@ export default function Home() {
       </header>
 
       {/* Interactive Tool Section */}
-      <section ref={toolSectionRef} className="max-w-7xl mx-auto px-6 py-20 scroll-mt-24">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <h2 className="text-3xl sm:text-4xl font-black text-slate-900">Get Started in 3 Steps</h2>
-          <p className="text-slate-600 text-base sm:text-lg">
-            Choose your tool option below, upload your PDF resume, and paste the job description you are targeting.
-          </p>
-        </div>
+      <section ref={toolSectionRef} className="relative overflow-hidden bg-[#030712] px-6 py-20 scroll-mt-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(56,213,255,0.14),transparent_24rem),radial-gradient(circle_at_80%_18%,rgba(52,211,153,0.1),transparent_26rem)]" />
+        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(125,223,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.05)_1px,transparent_1px)] [background-size:52px_52px]" />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">
+              <Gauge className="w-3.5 h-3.5 text-cyan-200" />
+              Product entry point
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-50">Check your resume against a real job.</h2>
+            <p className="text-slate-300 text-base sm:text-lg">
+              Upload your resume, paste the target role, and let Signal show where your real experience is not matching the language recruiters search for.
+            </p>
+          </div>
 
         {/* Tab Selection */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white border border-slate-200 rounded-2xl p-1.5 shadow-sm inline-flex gap-1.5">
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex gap-1.5 rounded-2xl border border-cyan-400/15 bg-white/5 p-1.5 shadow-[inset_0_0_28px_rgba(56,213,255,0.05)]">
             <button
               onClick={() => { setActiveTab('resume'); setScore(null); }}
               className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200
-                ${activeTab === 'resume' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:text-emerald-600 hover:bg-slate-50'}`}
+                ${activeTab === 'resume' ? 'bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 text-white shadow-[0_0_30px_rgba(56,213,255,0.2)]' : 'text-slate-300 hover:text-cyan-100 hover:bg-cyan-400/10'}`}
             >
               <FileText className="w-4 h-4" />
               <span>Resume Tailoring</span>
@@ -566,28 +698,28 @@ export default function Home() {
             <button
               onClick={() => { setActiveTab('cover_letter'); setScore(null); }}
               className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200
-                ${activeTab === 'cover_letter' ? 'bg-emerald-600 text-white shadow-sm' : 'text-slate-600 hover:text-emerald-600 hover:bg-slate-50'}`}
+                ${activeTab === 'cover_letter' ? 'bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 text-white shadow-[0_0_30px_rgba(56,213,255,0.2)]' : 'text-slate-300 hover:text-cyan-100 hover:bg-cyan-400/10'}`}
             >
               <Sparkles className="w-4 h-4" />
               <span>Cover Letter Generator</span>
             </button>
+            </div>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Tool Card: Col-span 7 */}
-          <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
+          <div className="lg:col-span-7 relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-[#07111f]/90 p-6 sm:p-8 shadow-[0_28px_110px_rgba(0,0,0,0.32),inset_0_0_52px_rgba(56,213,255,0.04)]">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-400"></div>
             
-            <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-              {activeTab === 'resume' ? <FileText className="text-emerald-600" /> : <Sparkles className="text-emerald-600" />}
-              {activeTab === 'resume' ? 'ATS Resume Tailoring Input' : 'Matching Cover Letter Tailoring Input'}
+            <h3 className="text-xl font-bold text-slate-50 mb-6 flex items-center gap-2">
+              {activeTab === 'resume' ? <FileText className="text-cyan-200" /> : <Sparkles className="text-cyan-200" />}
+              {activeTab === 'resume' ? 'Signal Resume Score Input' : 'Matching Cover Letter Input'}
             </h3>
 
             <div className="space-y-6">
               {/* File Upload */}
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-700">1. Upload Current Resume (PDF)</label>
+                <label className="text-sm font-bold text-slate-200">1. Upload Current Resume (PDF)</label>
                 <input type="file" accept=".pdf" ref={fileInputRef} className="hidden" onChange={handleFileChange} />
                 <div
                   role="button"
@@ -597,19 +729,19 @@ export default function Home() {
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
-                  className={`border-2 border-dashed rounded-2xl p-8 text-center transition cursor-pointer group focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/40
-                    ${isDragging ? 'border-emerald-500 bg-emerald-50' : 'border-slate-300 hover:border-emerald-500/60 hover:bg-slate-50'}`}
+                  className={`border-2 border-dashed rounded-2xl p-8 text-center transition cursor-pointer group focus:outline-none focus:border-cyan-300 focus:ring-2 focus:ring-cyan-400/30
+                    ${isDragging ? 'border-cyan-300 bg-cyan-400/10' : 'border-cyan-400/25 bg-cyan-950/20 hover:border-cyan-300/70 hover:bg-cyan-400/10'}`}
                 >
                   {file ? (
                     <div className="flex flex-col items-center">
-                      <FileText className="w-12 h-12 text-emerald-600 mb-3" />
-                      <p className="text-sm text-slate-900 font-bold">{file.name}</p>
-                      <p className="text-xs text-emerald-600 mt-1">Click to replace file</p>
+                      <FileText className="w-12 h-12 text-cyan-200 mb-3" />
+                      <p className="text-sm text-slate-50 font-bold">{file.name}</p>
+                      <p className="text-xs text-cyan-200 mt-1">Click to replace file</p>
                     </div>
                   ) : (
                     <div className="flex flex-col items-center">
-                      <UploadCloud className="w-12 h-12 text-slate-400 group-hover:text-emerald-600 transition mb-3" />
-                      <p className="text-sm text-slate-600 font-semibold">Drag and drop your resume PDF or <span className="text-emerald-600">browse files</span></p>
+                      <UploadCloud className="w-12 h-12 text-slate-400 group-hover:text-cyan-200 transition mb-3" />
+                      <p className="text-sm text-slate-300 font-semibold">Drag and drop your resume PDF or <span className="text-cyan-200">browse files</span></p>
                     </div>
                   )}
                 </div>
@@ -617,13 +749,13 @@ export default function Home() {
 
               {/* Textarea */}
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-700">2. Paste Target Job Description</label>
+                <label className="text-sm font-bold text-slate-200">2. Paste Target Job Description</label>
                 <textarea
                   rows={5}
                   value={jobDescription}
                   onChange={(e) => setJobDescription(e.target.value)}
                   placeholder="Paste the target job description requirements here..."
-                  className="w-full bg-white border border-slate-300 rounded-2xl p-4 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 transition resize-none"
+                  className="w-full bg-[#020617]/70 border border-cyan-400/20 rounded-2xl p-4 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-cyan-300 focus:ring-2 focus:ring-cyan-400/30 transition resize-none"
                 ></textarea>
               </div>
 
@@ -633,16 +765,16 @@ export default function Home() {
                   <button
                     onClick={handleScore}
                     disabled={isScoring}
-                    className="w-full bg-white hover:bg-slate-50 hover:border-emerald-300 border border-slate-300 text-slate-900 font-bold text-base py-3.5 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                    className="w-full bg-white/5 hover:bg-cyan-400/10 hover:border-cyan-300/60 border border-cyan-400/20 text-cyan-50 font-bold text-base py-3.5 rounded-xl transition flex items-center justify-center space-x-2 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-cyan-400/40"
                   >
-                    <Gauge className="w-5 h-5 text-emerald-600" />
+                    <Gauge className="w-5 h-5 text-cyan-200" />
                     <span>{isScoring ? "Scoring..." : "Check My Free ATS Score"}</span>
                   </button>
 
                   <button
                     onClick={() => handleCheckout('resume')}
                     disabled={isLoading}
-                    className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-lg py-4 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center space-x-2 disabled:opacity-50"
+                    className="w-full rounded-xl border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 py-4 text-lg font-extrabold text-white shadow-[0_18px_60px_rgba(56,213,255,0.22)] transition hover:brightness-110 flex items-center justify-center space-x-2 disabled:opacity-50"
                   >
                     <span>{isLoading ? "Connecting..." : "Optimize Resume — $9.99"}</span>
                     {!isLoading && <ArrowRight className="w-5 h-5" />}
@@ -652,7 +784,7 @@ export default function Home() {
                 <button
                   onClick={() => handleCheckout('cover_letter')}
                   disabled={isLoading}
-                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-lg py-4 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center space-x-2 disabled:opacity-50"
+                  className="w-full rounded-xl border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 py-4 text-lg font-extrabold text-white shadow-[0_18px_60px_rgba(56,213,255,0.22)] transition hover:brightness-110 flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
                   <span>{isLoading ? "Connecting..." : "Generate Cohesive Cover Letter — $9.99"}</span>
                   {!isLoading && <ArrowRight className="w-5 h-5" />}
@@ -660,49 +792,49 @@ export default function Home() {
               )}
 
               {/* Bundle Upsell Promo (only when NOT checking out bundle already) */}
-              <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <h4 className="font-extrabold text-emerald-950 text-sm flex items-center gap-1.5">
-                    <Sparkles className="w-4 h-4 text-emerald-600" />
+                  <h4 className="font-extrabold text-emerald-100 text-sm flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-emerald-200" />
                     <span>Recommended: Get the Bundle & Save 25%!</span>
                   </h4>
-                  <p className="text-xs text-emerald-800 mt-1 font-medium">Get both the ATS-optimized resume + matching tailored cover letter.</p>
+                  <p className="text-xs text-emerald-100/75 mt-1 font-medium">Get both the ATS-optimized resume + matching tailored cover letter.</p>
                 </div>
                 <button
                   onClick={() => handleCheckout('bundle')}
                   disabled={isLoading}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold py-2.5 px-4 rounded-xl transition shadow-sm self-stretch sm:self-auto text-center"
+                  className="bg-emerald-400 hover:bg-emerald-300 text-slate-950 text-xs font-extrabold py-2.5 px-4 rounded-xl transition shadow-sm self-stretch sm:self-auto text-center"
                 >
                   Get Bundle — $14.99
                 </button>
               </div>
 
-              <p className="text-xs text-center text-slate-400">Secured with Stripe. Resume data is never stored on our servers.</p>
+              <p className="text-xs text-center text-slate-500">Secured with Stripe. Resume data is never stored on our servers.</p>
             </div>
           </div>
 
           {/* Results Sidebar / Info Card: Col-span 5 */}
           <div className="lg:col-span-5 space-y-6">
             {score ? (
-              <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-md space-y-5">
+              <div className="rounded-3xl border border-cyan-400/20 bg-[#07111f]/90 p-6 shadow-[0_28px_110px_rgba(0,0,0,0.32),inset_0_0_52px_rgba(56,213,255,0.04)] space-y-5">
                 <div className="text-center pt-2">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">ATS MATCH SCORE</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-cyan-200 block mb-1">Signal Match Score</span>
                   <div className="flex items-end justify-center leading-none">
                     <span className={`text-7xl font-black tabular-nums ${scoreColor}`}>{animatedScore}</span>
-                    <span className="text-2xl font-bold text-slate-300 mb-1.5">/100</span>
+                    <span className="text-2xl font-bold text-slate-500 mb-1.5">/100</span>
                   </div>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
                   <div className={`${scoreBar} h-2 rounded-full transition-all duration-700 ease-out`} style={{ width: `${animatedScore}%` }}></div>
                 </div>
-                {score.verdict && <p className="text-sm text-slate-600 text-center leading-relaxed font-semibold">{score.verdict}</p>}
+                {score.verdict && <p className="text-sm text-slate-300 text-center leading-relaxed font-semibold">{score.verdict}</p>}
 
                 {score.missingKeywords?.length > 0 && (
                   <div className="space-y-2">
-                    <p className="text-xs font-bold text-red-700 flex items-center"><XCircle className="w-4 h-4 mr-1 shrink-0" /> Missing keywords ({score.missingKeywords.length})</p>
-                    <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto p-1 bg-slate-50 border border-slate-100 rounded-xl">
+                    <p className="text-xs font-bold text-red-200 flex items-center"><XCircle className="w-4 h-4 mr-1 shrink-0" /> Missing keywords ({score.missingKeywords.length})</p>
+                    <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto p-1 bg-red-950/20 border border-red-300/15 rounded-xl">
                       {score.missingKeywords.map((k, i) => (
-                        <span key={i} className="inline-flex items-center bg-red-50 text-red-800 px-2 py-0.5 rounded-md text-[10px] font-bold">{k}</span>
+                        <span key={i} className="inline-flex items-center bg-red-400/10 text-red-100 px-2 py-0.5 rounded-md text-[10px] font-bold">{k}</span>
                       ))}
                     </div>
                   </div>
@@ -710,10 +842,10 @@ export default function Home() {
 
                 {score.matchedKeywords?.length > 0 && (
                   <div className="space-y-2">
-                    <p className="text-xs font-bold text-emerald-700 flex items-center"><CheckCircle className="w-4 h-4 mr-1 shrink-0" /> Matched keywords ({score.matchedKeywords.length})</p>
-                    <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto p-1 bg-slate-50 border border-slate-100 rounded-xl">
+                    <p className="text-xs font-bold text-emerald-200 flex items-center"><CheckCircle className="w-4 h-4 mr-1 shrink-0" /> Matched keywords ({score.matchedKeywords.length})</p>
+                    <div className="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto p-1 bg-emerald-950/20 border border-emerald-300/15 rounded-xl">
                       {score.matchedKeywords.map((k, i) => (
-                        <span key={i} className="inline-flex items-center bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md text-[10px] font-bold">{k}</span>
+                        <span key={i} className="inline-flex items-center bg-emerald-400/10 text-emerald-100 px-2 py-0.5 rounded-md text-[10px] font-bold">{k}</span>
                       ))}
                     </div>
                   </div>
@@ -722,7 +854,7 @@ export default function Home() {
                 <button
                   onClick={() => handleCheckout('resume')}
                   disabled={isLoading}
-                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base py-3.5 rounded-xl transition shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                  className="w-full rounded-xl border border-cyan-200/40 bg-gradient-to-r from-blue-600 via-cyan-600 to-emerald-500 py-3.5 text-base font-extrabold text-white shadow-[0_18px_60px_rgba(56,213,255,0.22)] transition hover:brightness-110 flex items-center justify-center gap-2"
                 >
                   <span>Fix all missing gaps — $9.99</span>
                   <ArrowRight className="w-4 h-4" />
@@ -730,41 +862,42 @@ export default function Home() {
 
                 <button
                   onClick={shareScore}
-                  className="w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-1.5"
+                  className="w-full bg-white/5 hover:bg-cyan-400/10 border border-cyan-400/20 text-cyan-50 text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-1.5"
                 >
-                  <Share2 className="w-4 h-4 text-emerald-600" />
+                  <Share2 className="w-4 h-4 text-cyan-200" />
                   <span>Share My Score</span>
                 </button>
               </div>
             ) : (
-              <div className="bg-slate-100/50 border border-slate-200/60 rounded-3xl p-6 sm:p-8 space-y-6">
-                <h4 className="font-extrabold text-slate-800 text-lg">Why optimize with ATSHacker?</h4>
+              <div className="rounded-3xl border border-cyan-400/20 bg-white/5 p-6 sm:p-8 shadow-[inset_0_0_42px_rgba(56,213,255,0.04)] space-y-6">
+                <h4 className="font-extrabold text-slate-50 text-lg">Why use Signal?</h4>
                 <ul className="space-y-4">
                   <li className="flex gap-3">
-                    <BadgeCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <BadgeCheck className="w-5 h-5 text-cyan-200 shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-bold text-slate-900">Semantic AI Matching</p>
-                      <p className="text-xs text-slate-500 mt-0.5">We reframe your accomplishments to match the Job Description without fabricating experience.</p>
+                      <p className="text-sm font-bold text-slate-50">Recruiter Search Alignment</p>
+                      <p className="text-xs text-slate-400 mt-0.5">Signal reframes your accomplishments to match the job description without fabricating experience.</p>
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <Layout className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <Layout className="w-5 h-5 text-cyan-200 shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-bold text-slate-900">Single-Column Formats</p>
-                      <p className="text-xs text-slate-500 mt-0.5">Tested against Workday, Taleo, and Greenhouse to prevent text extraction errors.</p>
+                      <p className="text-sm font-bold text-slate-50">Single-Column Formats</p>
+                      <p className="text-xs text-slate-400 mt-0.5">Clean layouts reduce parsing risk and stay easy for people to scan.</p>
                     </div>
                   </li>
                   <li className="flex gap-3">
-                    <Award className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <Award className="w-5 h-5 text-cyan-200 shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-bold text-slate-900">Cohesive Personal Branding</p>
-                      <p className="text-xs text-slate-500 mt-0.5">Get a matching cover letter utilizing the same formatting styles for a highly polished application.</p>
+                      <p className="text-sm font-bold text-slate-50">Cohesive Personal Branding</p>
+                      <p className="text-xs text-slate-400 mt-0.5">Get a matching cover letter using the same structure and tone as your optimized resume.</p>
                     </div>
                   </li>
                 </ul>
               </div>
             )}
           </div>
+        </div>
         </div>
       </section>
 
@@ -956,7 +1089,7 @@ export default function Home() {
                       className={`px-3 py-1 rounded-lg text-[10px] font-black transition-all duration-250 cursor-pointer ${
                         candDocTypes[idx] === 'resume'
                           ? 'bg-emerald-600 text-white shadow-sm'
-                          : 'text-slate-650 hover:text-emerald-600 hover:bg-slate-50'
+                          : 'text-slate-600 hover:text-emerald-600 hover:bg-slate-50'
                       }`}
                     >
                       Resume
@@ -969,7 +1102,7 @@ export default function Home() {
                       className={`px-3 py-1 rounded-lg text-[10px] font-black transition-all duration-250 cursor-pointer ${
                         candDocTypes[idx] === 'cover_letter'
                           ? 'bg-emerald-600 text-white shadow-sm'
-                          : 'text-slate-650 hover:text-emerald-600 hover:bg-slate-50'
+                          : 'text-slate-600 hover:text-emerald-600 hover:bg-slate-50'
                       }`}
                     >
                       Cover Letter
@@ -1013,7 +1146,7 @@ export default function Home() {
                             </div>
                             <div className="space-y-2 pt-2 border-t border-violet-100">
                               <h5 className="text-[9px] font-black text-violet-900 uppercase tracking-widest">Contact</h5>
-                              <div className="space-y-1 text-[8.5px] text-slate-650 font-medium">
+                              <div className="space-y-1 text-[8.5px] text-slate-600 font-medium">
                                 <p className="truncate"><span className="font-bold text-slate-700">Email:</span> {cand.email}</p>
                                 <p><span className="font-bold text-slate-700">Phone:</span> {cand.phone}</p>
                                 <p><span className="font-bold text-slate-700">Address:</span> {cand.address}</p>
@@ -1024,7 +1157,7 @@ export default function Home() {
                           <div className="col-span-8 p-5 space-y-4">
                             <div className="space-y-3">
                               <h5 className="text-[9px] font-black text-violet-900 uppercase tracking-widest border-b border-slate-200 pb-1">Work History</h5>
-                              <div className="relative pl-3.5 border-l border-slate-155 space-y-3">
+                              <div className="relative pl-3.5 border-l border-slate-200 space-y-3">
                                 {cand.jobs.map((job, jIdx) => (
                                   <div key={jIdx} className="relative space-y-0.5">
                                     <span className={`absolute -left-[18.5px] top-1 w-2 h-2 rounded-full ${cand.accentBg} border border-white shadow-sm`}></span>
@@ -1035,7 +1168,7 @@ export default function Home() {
                                     <div className="text-[8px] text-slate-500 font-bold italic leading-none">{job.company}</div>
                                     <ul className="space-y-0.5 list-disc pl-3 mt-1">
                                       {job.bullets.map((b, bIdx) => (
-                                        <li key={bIdx} className="text-[8.5px] text-slate-655 leading-relaxed">{b}</li>
+                                        <li key={bIdx} className="text-[8.5px] text-slate-600 leading-relaxed">{b}</li>
                                       ))}
                                     </ul>
                                   </div>
@@ -1076,12 +1209,12 @@ export default function Home() {
                         {/* Professional Summary */}
                         <div className="space-y-1">
                           <h5 className="text-[9px] font-black text-sky-900 uppercase tracking-widest border-b border-slate-200 pb-0.5">Professional Summary</h5>
-                          <p className="text-[8.5px] text-slate-655 leading-relaxed">Dedicated Clinical Intensive Care Nurse (BSN, RN) with 6+ years of ICU and Med-Surg experience. Certified in ACLS, BLS, and CCRN with clinical expertise in ventilator care, vasopressors, and patient safety.</p>
+                          <p className="text-[8.5px] text-slate-600 leading-relaxed">Dedicated Clinical Intensive Care Nurse (BSN, RN) with 6+ years of ICU and Med-Surg experience. Certified in ACLS, BLS, and CCRN with clinical expertise in ventilator care, vasopressors, and patient safety.</p>
                         </div>
                         {/* Skills Grid */}
                         <div className="space-y-1">
                           <h5 className="text-[9px] font-black text-sky-900 uppercase tracking-widest border-b border-slate-200 pb-0.5">Clinical Skills</h5>
-                          <div className="grid grid-cols-2 gap-2 text-[8px] text-slate-750 font-bold bg-slate-50/50 p-2 rounded-xl border border-slate-100">
+                          <div className="grid grid-cols-2 gap-2 text-[8px] text-slate-700 font-bold bg-slate-50/50 p-2 rounded-xl border border-slate-100">
                             {cand.skills.map((skill, sIdx) => (
                               <div key={sIdx} className="flex items-center gap-1">
                                 <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
@@ -1102,7 +1235,7 @@ export default function Home() {
                                 </div>
                                 <ul className="space-y-0.5 list-disc pl-3">
                                   {job.bullets.map((b, bIdx) => (
-                                    <li key={bIdx} className="text-[8.5px] text-slate-655 leading-relaxed">{b}</li>
+                                    <li key={bIdx} className="text-[8.5px] text-slate-600 leading-relaxed">{b}</li>
                                   ))}
                                 </ul>
                               </div>
@@ -1173,7 +1306,7 @@ export default function Home() {
                                     <div className="text-[8px] text-slate-400 font-bold leading-none">{job.company}</div>
                                     <ul className="space-y-0.5 list-disc pl-3">
                                       {job.bullets.map((b, bIdx) => (
-                                        <li key={bIdx} className="text-[8.5px] text-slate-655 leading-relaxed">{b}</li>
+                                        <li key={bIdx} className="text-[8.5px] text-slate-600 leading-relaxed">{b}</li>
                                       ))}
                                     </ul>
                                   </div>
@@ -1187,7 +1320,7 @@ export default function Home() {
                               <div className="font-black text-slate-800">{cand.education.school}</div>
                               <div className="text-slate-500 font-bold">{cand.education.date}</div>
                             </div>
-                            <p className="text-[8px] text-slate-650 font-medium">{cand.education.degree}</p>
+                            <p className="text-[8px] text-slate-600 font-medium">{cand.education.degree}</p>
                           </div>
                         </div>
                       </div>
@@ -1196,7 +1329,7 @@ export default function Home() {
                     // Cover Letter View
                     cand.layout === 'pm' ? (
                       <div className="flex-grow flex flex-col">
-                        <div className="bg-violet-955 text-white p-5 border-b border-violet-800 flex items-center justify-between gap-4">
+                        <div className="bg-violet-950 text-white p-5 border-b border-violet-800 flex items-center justify-between gap-4">
                           <div>
                             <h4 className="text-xl font-black tracking-tight">{cand.name}</h4>
                             <p className="text-[9px] text-violet-300 font-bold uppercase tracking-wider mt-1">Cover Letter • {cand.title}</p>
@@ -1213,10 +1346,10 @@ export default function Home() {
                               <p className="font-extrabold text-slate-800">{cand.coverLetter.date}</p>
                               <p className="mt-1 text-slate-400 whitespace-pre-line leading-normal">{cand.coverLetter.recipient}</p>
                             </div>
-                            <p className="font-black text-slate-900 border-l-2 border-violet-650 pl-2">
+                            <p className="font-black text-slate-900 border-l-2 border-violet-600 pl-2">
                               {cand.coverLetter.subject}
                             </p>
-                            <div className="space-y-2 mt-2 text-slate-655">
+                            <div className="space-y-2 mt-2 text-slate-600">
                               {cand.coverLetter.body.map((p, pIdx) => (
                                 <p key={pIdx}>{p}</p>
                               ))}
@@ -1241,7 +1374,7 @@ export default function Home() {
                           <p className="font-black text-slate-900 border-l-2 border-sky-600 pl-2">
                             {cand.coverLetter.subject}
                           </p>
-                          <div className="space-y-2 text-slate-655">
+                          <div className="space-y-2 text-slate-600">
                             {cand.coverLetter.body.map((p, pIdx) => (
                               <p key={pIdx}>{p}</p>
                             ))}
@@ -1264,7 +1397,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="col-span-8 p-5 space-y-3 text-[8.5px] leading-relaxed text-slate-650">
+                        <div className="col-span-8 p-5 space-y-3 text-[8.5px] leading-relaxed text-slate-600">
                           <div>
                             <h4 className="text-xl font-black text-slate-900 leading-none">{cand.name}</h4>
                             <p className="text-[9px] font-bold text-amber-700 mt-1 uppercase tracking-wider">{cand.title}</p>
@@ -1276,7 +1409,7 @@ export default function Home() {
                           <p className="font-black text-slate-900 border-l-2 border-amber-600 pl-2">
                             {cand.coverLetter.subject}
                           </p>
-                          <div className="space-y-2 text-slate-655">
+                          <div className="space-y-2 text-slate-600">
                             {cand.coverLetter.body.map((p, pIdx) => (
                               <p key={pIdx}>{p}</p>
                             ))}
@@ -1293,10 +1426,10 @@ export default function Home() {
                     onClick={(e) => {
                       e.stopPropagation();
                       // Create a mock File object
-                      const mockFile = new File([""], `${cand.name.replace(/\s+/g, '_')}_Resume.pdf`, { type: 'application/pdf' });
-                      (mockFile as any).isMockTemplate = true;
-                      (mockFile as any).mockText = cand.mockText;
-                      (mockFile as any).mockJobDescription = cand.mockJobDescription;
+                      const mockFile = new File([""], `${cand.name.replace(/\s+/g, '_')}_Resume.pdf`, { type: 'application/pdf' }) as MockResumeFile;
+                      mockFile.isMockTemplate = true;
+                      mockFile.mockText = cand.mockText;
+                      mockFile.mockJobDescription = cand.mockJobDescription;
                       
                       setFile(mockFile);
                       setJobDescription(cand.mockJobDescription);
@@ -1334,7 +1467,7 @@ export default function Home() {
                 <span className="text-4xl font-black text-slate-900">$9.99</span>
                 <span className="text-slate-400 text-xs font-bold">/ rewrite</span>
               </div>
-              <ul className="space-y-3 text-sm text-slate-650 border-t border-slate-100 pt-6">
+              <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Free ATS score analysis</span></li>
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>AI semantic keyword alignment</span></li>
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Honest, non-fabricated experience</span></li>
@@ -1364,7 +1497,7 @@ export default function Home() {
                 <span className="text-4xl font-black text-slate-900">$14.99</span>
                 <span className="text-slate-400 text-xs font-bold">/ package</span>
               </div>
-              <ul className="space-y-3 text-sm text-slate-650 border-t border-slate-100 pt-6">
+              <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>All Resume Tailoring features</span></li>
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Cohesive matching Cover Letter</span></li>
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Matching typography & headers</span></li>
@@ -1388,9 +1521,9 @@ export default function Home() {
                 <span className="text-4xl font-black text-slate-900">$9.99</span>
                 <span className="text-slate-400 text-xs font-bold">/ document</span>
               </div>
-              <ul className="space-y-3 text-sm text-slate-650 border-t border-slate-100 pt-6">
+              <ul className="space-y-3 text-sm text-slate-600 border-t border-slate-100 pt-6">
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Tailored to target job description</span></li>
-                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Aligned with candidate's true history</span></li>
+                <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Aligned with candidate&apos;s true history</span></li>
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Cohesive layout and spacing design</span></li>
                 <li className="flex items-start gap-2.5"><CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /><span>Clean PDF & Word formats</span></li>
               </ul>
@@ -1413,7 +1546,7 @@ export default function Home() {
             {[
               {
                 q: "Does an ATS auto-reject resumes?",
-                a: "No. An Applicant Tracking System does not automatically reject you. It stores and indexes resumes so recruiters can search and rank them by keyword. Resumes that closely match the job description rank higher and are far more likely to be seen — roughly 3x — while poorly matched resumes get buried lower in the results."
+                a: "No. An Applicant Tracking System does not automatically reject you. It stores and indexes resumes so recruiters can search and rank them by keyword. Resumes that closely match the job description are easier for recruiters to find."
               },
               {
                 q: "What is an ATS match score?",

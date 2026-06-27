@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { CheckCircle, Loader2, FileText } from 'lucide-react';
 import { Document, Page, Text, View, StyleSheet, pdf, Font } from '@react-pdf/renderer';
 import * as docx from 'docx';
+import { SignalMascot } from '@/components/SignalMascot';
 
 // Register standard fonts
 Font.register({
@@ -619,9 +620,11 @@ function SuccessPageContent() {
       <div className={`bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-md w-full transition-all duration-300 ${resumeData?.coverLetter ? 'max-w-2xl' : 'max-w-md'} text-center space-y-6`}>
 
         <Link href="/" className="flex items-center justify-center gap-2.5">
-          <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <span className="grid h-10 w-10 place-items-center rounded-2xl border border-cyan-200/40 bg-[#07111f] shadow-[0_0_28px_rgba(56,213,255,0.18),inset_0_0_18px_rgba(56,213,255,0.08)]">
+            <SignalMascot className="signal-mascot h-8 w-8" />
+          </span>
           <span className="text-xl font-black tracking-tighter text-slate-900">
-            ATS<span className="text-emerald-600">Hacker.</span>
+            Signal<span className="text-emerald-600">.</span>
           </span>
         </Link>
 

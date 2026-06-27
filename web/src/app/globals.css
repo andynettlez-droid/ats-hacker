@@ -98,6 +98,9 @@ html { scroll-behavior: smooth; }
   .signal-spark-b {
     animation-delay: 0.8s;
   }
+  .signal-spark-c {
+    animation-delay: 1.35s;
+  }
   
   /* --- Interactive float animations --- */
   @keyframes float-badge {

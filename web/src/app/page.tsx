@@ -5,6 +5,7 @@ import {
   UploadCloud, CheckCircle, Shield, ArrowRight, FileText, Gauge, 
   XCircle, Share2, BadgeCheck, Sparkles, Award, Layout, Menu, X
 } from 'lucide-react';
+import { SignalMascot, SignalPeek } from '@/components/SignalMascot';
 
 // First-touch UTM keys we persist for sale attribution.
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
@@ -176,23 +177,6 @@ function useCountUp(target: number | null, durationMs = 1100): number {
     return () => cancelAnimationFrame(raf);
   }, [target, durationMs]);
   return value;
-}
-
-function SignalAtom({ className = '' }: { className?: string }) {
-  return (
-    <span className={`relative inline-flex items-center justify-center ${className}`} aria-hidden="true">
-      <span className="signal-ring signal-ring-a absolute inset-x-1 inset-y-3 rounded-full border border-cyan-200/70 -rotate-[22deg] shadow-[0_0_18px_rgba(56,213,255,0.35)]" />
-      <span className="signal-ring signal-ring-b absolute inset-x-1 inset-y-3 rounded-full border border-cyan-300/60 rotate-[58deg] shadow-[0_0_18px_rgba(56,213,255,0.28)]" />
-      <span className="signal-ring signal-ring-c absolute inset-x-4 inset-y-1 rounded-full border border-cyan-100/35 rotate-90" />
-      <span className="signal-core relative h-5 w-5 rounded-full bg-[radial-gradient(circle_at_45%_35%,#ffffff_0_12%,#38d5ff_24%,#2563eb_62%,#020617_100%)] shadow-[0_0_32px_rgba(56,213,255,0.85),inset_0_0_16px_rgba(255,255,255,0.35)]">
-        <span className="signal-eye absolute left-[31%] top-[40%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]" />
-        <span className="signal-eye absolute right-[31%] top-[40%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.85)]" />
-        <span className="absolute left-1/2 top-[60%] h-1.5 w-3 -translate-x-1/2 rounded-b-full border-b border-white/90" />
-      </span>
-      <span className="signal-spark signal-spark-a absolute left-1 top-2 h-1 w-1 rounded-full bg-white shadow-[0_0_10px_rgba(56,213,255,0.9)]" />
-      <span className="signal-spark signal-spark-b absolute right-0 top-4 h-1 w-1 rounded-full bg-white/80 shadow-[0_0_10px_rgba(56,213,255,0.9)]" />
-    </span>
-  );
 }
 
 export default function Home() {
@@ -394,7 +378,7 @@ export default function Home() {
             aria-label="Signal by ATSHacker home"
           >
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-cyan-200/30 bg-[#07111f]/90 shadow-[0_0_34px_rgba(56,213,255,0.2),inset_0_0_22px_rgba(56,213,255,0.08)] ring-1 ring-cyan-300/20">
-              <SignalAtom className="signal-mascot h-9 w-9" />
+              <SignalMascot className="signal-mascot h-9 w-9" />
             </span>
             <div className="min-w-0 leading-tight sm:border-l sm:border-cyan-400/20 sm:pl-3">
               <p className="text-sm sm:text-[11px] font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-cyan-100 truncate">Signal</p>
@@ -464,6 +448,7 @@ export default function Home() {
       <header id="features" className="relative overflow-hidden border-b border-cyan-400/10 bg-[#030712] py-16 lg:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(56,213,255,0.18),transparent_28rem),radial-gradient(circle_at_86%_22%,rgba(37,99,235,0.2),transparent_32rem),radial-gradient(circle_at_52%_82%,rgba(52,211,153,0.08),transparent_28rem)]" />
         <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(125,223,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.07)_1px,transparent_1px)] [background-size:52px_52px]" />
+        <SignalPeek className="right-8 top-24 xl:right-14 xl:top-28" size="h-16 w-16" />
         <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Hero Content */}
           <div className="relative z-10 lg:col-span-7 space-y-8">
@@ -517,7 +502,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-cyan-400/12 rounded-3xl blur-3xl -z-10 transform scale-95"></div>
             <div className="relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-[#07111f]/90 p-5 shadow-[0_28px_120px_rgba(0,0,0,0.45),0_0_80px_rgba(56,213,255,0.12)] backdrop-blur space-y-4">
               <div className="pointer-events-none absolute right-4 top-4 hidden sm:block">
-                <SignalAtom className="h-16 w-16" />
+                <SignalMascot className="signal-mascot h-16 w-16" />
               </div>
               <div className="text-center pb-2 border-b border-cyan-400/15">
                 <h3 className="text-xs font-black text-cyan-100 tracking-wider uppercase">
@@ -672,6 +657,7 @@ export default function Home() {
       <section ref={toolSectionRef} className="relative overflow-hidden bg-[#030712] px-6 py-20 scroll-mt-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(56,213,255,0.14),transparent_24rem),radial-gradient(circle_at_80%_18%,rgba(52,211,153,0.1),transparent_26rem)]" />
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(125,223,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.05)_1px,transparent_1px)] [background-size:52px_52px]" />
+        <SignalPeek className="left-8 top-10 xl:left-16" size="h-12 w-12" />
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">
@@ -905,6 +891,7 @@ export default function Home() {
       <section id="templates" className="relative overflow-hidden border-t border-b border-cyan-400/10 bg-[#06101e] py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(56,213,255,0.14),transparent_26rem),radial-gradient(circle_at_80%_12%,rgba(52,211,153,0.08),transparent_24rem)]" />
         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(125,223,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.05)_1px,transparent_1px)] [background-size:52px_52px]" />
+        <SignalPeek className="right-10 top-12 xl:right-20" size="h-14 w-14" />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">
@@ -1459,6 +1446,7 @@ export default function Home() {
       {/* Pricing Plans */}
       <section id="pricing" className="relative overflow-hidden border-b border-cyan-400/10 bg-[#030712] px-6 py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(37,99,235,0.18),transparent_28rem),radial-gradient(circle_at_78%_22%,rgba(56,213,255,0.12),transparent_30rem)]" />
+        <SignalPeek className="left-8 top-12 xl:left-20" size="h-12 w-12" />
         <div className="relative max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">
@@ -1555,6 +1543,7 @@ export default function Home() {
       <section id="faq" className="relative overflow-hidden border-t border-cyan-400/10 bg-[#06101e] py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,213,255,0.13),transparent_26rem)]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(125,223,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.035)_1px,transparent_1px)] bg-[size:52px_52px] opacity-60" />
+        <SignalPeek className="right-10 bottom-10 xl:right-20" size="h-12 w-12" />
         <div className="relative max-w-4xl mx-auto px-6">
           <div className="text-center mb-12 space-y-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-950/30 px-4 py-1.5 text-xs font-bold text-cyan-100 shadow-[inset_0_0_24px_rgba(56,213,255,0.08)]">

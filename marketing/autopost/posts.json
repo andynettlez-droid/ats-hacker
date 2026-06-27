@@ -100,5 +100,29 @@
         ],
         "scheduleDate": null,
         "status": "review_required"
+    },
+    {
+        "title": "Qualified, but hard to find?",
+        "caption": "Qualified, but hard to find? Signal compares your resume to the role language recruiters search before deeper review. Check your score free. #jobsearch #resumehelp #resumetips #careertok #airesume",
+        "file": "videos/signal-viral-mascot.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "review_required"
+    },
+    {
+        "title": "Most resumes get buried first",
+        "caption": "Most resumes get buried because the role language is missing. Signal shows the gap and helps rewrite your real experience, no fake claims. Check your score free. #jobsearch #resumehelp #careeradvice #careertok",
+        "file": "videos/signal-reveal.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "review_required"
     }
 ]

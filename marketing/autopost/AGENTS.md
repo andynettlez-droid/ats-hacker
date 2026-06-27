@@ -17,6 +17,7 @@ This folder publishes short-form videos to social through the Upload-Post API. I
 3. Use `status: "review_required"` for every new creative unless the user has explicitly approved it.
 4. Preview first with `node post.mjs --dry-run --only videos/NAME.mp4 --now`.
 5. Only after approval, publish with `node post.mjs --only videos/NAME.mp4 --now --approved`.
+6. After a successful API response, mark the entry `status: "posted"` and add `postedAt`.
 
 Example entry:
 
@@ -35,6 +36,7 @@ Example entry:
 
 - Do not publish live unless the user explicitly approves the exact video/caption.
 - Do not pass `--approved` during normal dry-run or QA work.
+- Do not repost an entry marked `posted` unless the user explicitly asks for a repost; use `--include-posted` only then.
 - Do not use platforms beyond `tiktok`, `instagram`, and `youtube` unless the Upload-Post profile is connected first.
 - Keep YouTube titles under 100 characters.
 - Use honest framing: Signal improves match clarity and role-language alignment. Do not claim an ATS auto-rejects people based on content parsing.

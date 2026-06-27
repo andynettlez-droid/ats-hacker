@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { CheckCircle, ArrowRight, XCircle, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
 import { roles, roleMap, type Role } from '@/data/roles';
+import { SignalMascot } from '@/components/SignalMascot';
 
 const BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ats-hacker-swart.vercel.app').replace(/\/$/, '');
 
@@ -37,8 +38,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { 'job-title': slug } = await params;
   const title = getRole(slug).title;
   return {
-    title: `${title} Resume Keywords — Beat the ATS | ATSHacker`,
-    description: `Recruiters rank ${title} resumes by keyword, and resumes that miss the right ones get buried. See the ATS keywords for ${title} roles and optimize your resume for $9.99.`,
+    title: `${title} Resume Keywords - Signal by ATSHacker`,
+    description: `Recruiters search ${title} resumes by role language. See common keywords for ${title} roles and check your resume match score free.`,
     alternates: { canonical: `/tailor/${slug}` },
   };
 }
@@ -97,9 +98,11 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
       />
       <nav className="w-full p-6 flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" className="flex items-center gap-2.5">
-          <img src="/logo-mark.png" alt="ATSHacker" width="32" height="32" className="rounded-full" />
+          <span className="grid h-10 w-10 place-items-center rounded-2xl border border-cyan-200/40 bg-[#07111f] shadow-[0_0_28px_rgba(56,213,255,0.18),inset_0_0_18px_rgba(56,213,255,0.08)]">
+            <SignalMascot className="signal-mascot h-8 w-8" />
+          </span>
           <span className="text-2xl font-black tracking-tighter text-slate-900">
-            ATS<span className="text-emerald-600">Hacker.</span>
+            Signal<span className="text-emerald-600">.</span>
           </span>
         </Link>
       </nav>
@@ -119,7 +122,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
           {painPoint}
         </p>
         <p className="text-base text-slate-500 leading-relaxed max-w-2xl mx-auto mb-12">
-          Keyword-matched resumes are about 3x more likely to get seen. Check your {title} match score free, then we&apos;ll fix every gap for a one-time $9.99 — no subscription.
+          A resume that mirrors the role language is easier for recruiters to find. Check your {title} match score free, then fix the gaps for a one-time $9.99, no subscription.
         </p>
 
         <Link href="/">

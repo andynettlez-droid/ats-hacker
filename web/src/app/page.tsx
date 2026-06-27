@@ -1586,7 +1586,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <div className="flex items-center gap-2 select-none cursor-pointer mb-1.5" onClick={() => scrollToTool('resume')}>
-              <img src="/logo-full.png" alt="ATSHacker" className="h-7 w-auto" />
+              <span className="grid h-9 w-9 place-items-center rounded-2xl border border-cyan-200/30 bg-[#07111f]/90 shadow-[0_0_28px_rgba(56,213,255,0.18),inset_0_0_18px_rgba(56,213,255,0.08)]">
+                <SignalMascot className="signal-mascot h-7 w-7" />
+              </span>
+              <span className="text-lg font-black tracking-tight text-slate-50">
+                Signal<span className="text-emerald-300">.</span>
+              </span>
             </div>
             <p className="text-xs text-slate-400 font-medium">Honest resume and cover letter keyword optimization. No monthly subscriptions.</p>
           </div>

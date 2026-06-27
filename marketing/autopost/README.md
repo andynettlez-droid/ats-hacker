@@ -23,6 +23,7 @@ Use the official publishing path instead of browser automation. It is more relia
 - Preview one file only: `node post.mjs --dry-run --only videos/signal-breakthrough-cinematic.mp4 --now`
 - Publish approved entries: `npm run post`
 - Publish one reviewed draft: `node post.mjs --only videos/signal-breakthrough-cinematic.mp4 --now --approved`
+- Repost an entry already marked posted only when intentional: `node post.mjs --only videos/name.mp4 --now --include-posted`
 
 ## Review Gate
 
@@ -33,6 +34,8 @@ Queue entries can use:
 
 Those entries are visible in dry runs, but live posting is blocked unless `--approved` is passed. This keeps the pipeline fast without accidentally posting an unreviewed creative.
 
+Entries with `"status": "posted"` are skipped by default. Use `--include-posted` only for an intentional repost.
+
 ## `posts.json` Fields
 
 - `title`: short title for YouTube and API metadata.
@@ -40,7 +43,7 @@ Those entries are visible in dry runs, but live posting is blocked unless `--app
 - `file`: path to the video relative to this folder.
 - `platforms`: any connected target platforms, normally `tiktok`, `instagram`, and `youtube`.
 - `scheduleDate`: `null` to post now, or a UTC time like `"2026-06-26T15:00:00Z"`.
-- `status`: optional review gate, usually `review_required` until the creative is approved.
+- `status`: optional workflow state. Use `review_required` until approval, then `posted` after the API confirms publication.
 
 ## Operating Notes
 

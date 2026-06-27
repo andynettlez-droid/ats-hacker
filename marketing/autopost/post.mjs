@@ -7,9 +7,11 @@
  *   node post.mjs --dry-run
  *   node post.mjs
  *   node post.mjs --only videos/signal-breakthrough-cinematic.mp4 --now --approved
+ *   node post.mjs --only videos/signal-breakthrough-cinematic.mp4 --now --include-posted
  *
  * Entries with status "draft" or "review_required" are blocked from live posting
  * unless --approved is passed. Dry runs still show them for review.
+ * Entries with status "posted" are skipped unless --include-posted is passed.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -19,9 +21,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const DRY_RUN = process.argv.includes('--dry-run');
 const FORCE_NOW = process.argv.includes('--now');
 const APPROVED_REVIEW = process.argv.includes('--approved');
+const INCLUDE_POSTED = process.argv.includes('--include-posted');
 const onlyArgIndex = process.argv.findIndex((arg) => arg === '--only');
 const ONLY_FILE = onlyArgIndex >= 0 ? process.argv[onlyArgIndex + 1] : null;
 const REVIEW_STATUSES = new Set(['draft', 'review_required']);
+const POSTED_STATUSES = new Set(['posted']);
 
 // Minimal .env loader; real environment variables win.
 (function loadEnv() {
@@ -67,6 +71,7 @@ for (const [index, post] of posts.entries()) {
   }
 
   post.__reviewRequired = REVIEW_STATUSES.has(post.status);
+  post.__alreadyPosted = POSTED_STATUSES.has(post.status);
   post.__path = isAbsolute(post.file) ? post.file : join(__dirname, post.file);
   if (!existsSync(post.__path)) {
     console.error(`${tag} file not found: ${post.__path}`);
@@ -84,14 +89,15 @@ if (DRY_RUN) {
   for (const [index, post] of posts.entries()) {
     const status = post.status ? ` [${post.status}]` : '';
     const gate = post.__reviewRequired ? ' - live posting blocked until --approved' : '';
+    const postedGate = post.__alreadyPosted ? ' - skipped unless --include-posted' : '';
     const when = post.scheduleDate && !FORCE_NOW ? ` @ ${post.scheduleDate}` : ' (now)';
     console.log(
-      `DRY RUN #${index + 1}${status}: ${post.platforms.join(', ')}${when}${gate}\n` +
+      `DRY RUN #${index + 1}${status}: ${post.platforms.join(', ')}${when}${gate}${postedGate}\n` +
         `   file: ${post.__path}\n` +
         `   caption: ${post.caption}\n`,
     );
   }
-  console.log('Dry run only; nothing sent. Remove --dry-run to publish approved entries.');
+  console.log('Dry run only; nothing sent. Remove --dry-run to publish eligible entries.');
   process.exit(0);
 }
 
@@ -112,6 +118,11 @@ for (const [index, post] of posts.entries()) {
   const tag = `#${index + 1} "${(post.caption || '').slice(0, 40)}..."`;
   if (post.__reviewRequired && !APPROVED_REVIEW) {
     console.log(`SKIP ${tag} - status=${post.status}; rerun with --approved after human review.`);
+    skipped++;
+    continue;
+  }
+  if (post.__alreadyPosted && !INCLUDE_POSTED) {
+    console.log(`SKIP ${tag} - status=posted; rerun with --include-posted only if this is an intentional repost.`);
     skipped++;
     continue;
   }

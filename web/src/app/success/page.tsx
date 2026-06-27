@@ -445,26 +445,6 @@ function SuccessPageContent() {
         return;
       }
 
-      setStatus("Checking for a saved optimization...");
-      const serverRestored = await readServerFulfilledOutput(sessionId);
-      if (serverRestored) {
-        setBaseName(serverRestored.baseName);
-        setResumeData(serverRestored.resumeData);
-        setBeforeScore(serverRestored.beforeScore ?? null);
-        setAfterScore(serverRestored.afterScore ?? null);
-        setOptimizationLow(Boolean(serverRestored.optimizationLow));
-        saveFulfilledOutput(sessionId, {
-          baseName: serverRestored.baseName,
-          resumeData: serverRestored.resumeData,
-          beforeScore: serverRestored.beforeScore ?? null,
-          afterScore: serverRestored.afterScore ?? null,
-          optimizationLow: Boolean(serverRestored.optimizationLow),
-        });
-        setStatus("Optimization restored from your paid session. Your files are ready to download again.");
-        setIsDone(true);
-        return;
-      }
-
       const payload = readCheckoutPayload();
       const resumeText = payload?.resumeText;
       const jobDescription = payload?.jobDescription;
@@ -473,6 +453,25 @@ function SuccessPageContent() {
       setBaseName(base);
 
       if (!resumeText || !jobDescription) {
+        setStatus("Checking for a saved optimization...");
+        const serverRestored = await readServerFulfilledOutput(sessionId);
+        if (serverRestored) {
+          setBaseName(serverRestored.baseName);
+          setResumeData(serverRestored.resumeData);
+          setBeforeScore(serverRestored.beforeScore ?? null);
+          setAfterScore(serverRestored.afterScore ?? null);
+          setOptimizationLow(Boolean(serverRestored.optimizationLow));
+          saveFulfilledOutput(sessionId, {
+            baseName: serverRestored.baseName,
+            resumeData: serverRestored.resumeData,
+            beforeScore: serverRestored.beforeScore ?? null,
+            afterScore: serverRestored.afterScore ?? null,
+            optimizationLow: Boolean(serverRestored.optimizationLow),
+          });
+          setStatus("Optimization restored from your paid session. Your files are ready to download again.");
+          setIsDone(true);
+          return;
+        }
         setStatus("Error: We couldn't find your uploaded resume in the browser storage.");
         return;
       }

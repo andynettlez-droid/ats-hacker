@@ -1,0 +1,64 @@
+[
+  {
+    "date": "2026-06-28",
+    "topic": "AI resumes all sound the same, so recruiters search for proof",
+    "series": "Recruiter Search Test",
+    "packet": "marketing\\daily_content\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof",
+    "youtube": {
+      "title": "Your AI resume sounds professional. That might be the problem. | Resume Teardown",
+      "status": "script_ready",
+      "target": "daily long-form YouTube"
+    },
+    "shorts": [
+      {
+        "title": "Your AI resume has LinkedIn breath",
+        "brief": "marketing\\video_briefs\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-short-1.md",
+        "props": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_1.json",
+        "status": "render_ready"
+      },
+      {
+        "title": "Stop writing helped with campaigns",
+        "brief": "marketing\\video_briefs\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-short-2.md",
+        "props": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_2.json",
+        "status": "render_ready"
+      },
+      {
+        "title": "The ATS is not a wizard",
+        "brief": "marketing\\video_briefs\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-short-3.md",
+        "props": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_3.json",
+        "status": "render_ready"
+      }
+    ],
+    "creativeQuality": {
+      "overallScore": 100,
+      "passed": true,
+      "verdict": "post_grade_script_packet",
+      "notes": [],
+      "blockers": [],
+      "shorts": [
+        {
+          "title": "Your AI resume has LinkedIn breath",
+          "score": 90,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "Stop writing helped with campaigns",
+          "score": 90,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "The ATS is not a wizard",
+          "score": 90,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        }
+      ]
+    },
+    "reviewStatus": "needs_render_and_review"
+  }
+]

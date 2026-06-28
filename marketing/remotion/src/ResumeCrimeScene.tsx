@@ -171,12 +171,16 @@ const ResumeSheet: React.FC<{
                 <div
                   style={{
                     position: "absolute",
-                    right: -28,
-                    top: -26,
+                    right: 14,
+                    top: -14,
+                    padding: "2px 8px",
+                    borderRadius: 999,
+                    background: "#fbfdff",
                     color: RED,
-                    fontSize: 25,
+                    fontSize: 22,
                     fontWeight: 950,
-                    transform: "rotate(7deg)",
+                    transform: "rotate(2deg)",
+                    zIndex: 3,
                   }}
                 >
                   Too vague
@@ -526,7 +530,9 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
 
       <AbsoluteFill style={{ opacity: ctaOpacity, alignItems: "center", justifyContent: "center", textAlign: "center", padding: 78 }}>
         <SignalMascot expression="happy" style={{ width: 250, height: 250 }} />
-        <div style={{ color: TEXT, fontSize: 84, fontWeight: 950, lineHeight: 0.96, marginTop: 34 }}>34/100 to 92/100</div>
+        <div style={{ color: TEXT, fontSize: 84, fontWeight: 950, lineHeight: 0.96, marginTop: 34 }}>
+          {beforeScore}/100 to {afterScore}/100
+        </div>
         <div style={{ color: CYAN, fontSize: 38, fontWeight: 950, lineHeight: 1.16, marginTop: 26, maxWidth: 790 }}>{cta}</div>
       </AbsoluteFill>
 

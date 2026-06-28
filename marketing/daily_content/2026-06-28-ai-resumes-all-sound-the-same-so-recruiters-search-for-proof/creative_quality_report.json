@@ -1,0 +1,30 @@
+{
+  "overallScore": 100,
+  "passed": true,
+  "verdict": "post_grade_script_packet",
+  "notes": [],
+  "blockers": [],
+  "shorts": [
+    {
+      "title": "Your AI resume has LinkedIn breath",
+      "score": 90,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "Stop writing helped with campaigns",
+      "score": 90,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "The ATS is not a wizard",
+      "score": 90,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    }
+  ]
+}

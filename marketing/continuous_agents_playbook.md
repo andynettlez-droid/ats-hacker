@@ -13,6 +13,13 @@ The system should automate production work, not final judgment. Product and docu
 
 Find timely career-tech topics and turn the best ones into trustworthy short-form video drafts for TikTok, Instagram Reels, and YouTube Shorts.
 
+Daily production target:
+
+- 1 long-form YouTube episode packet.
+- 3-5 short-form cutdowns from the same packet.
+- 1 viewer/customer review that checks whether the concept is entertaining, useful, and commercially clear.
+- Render-ready Remotion props for each short.
+
 ### Daily Inputs
 
 - Current platform trends and search interest in the career, job-search, resume, ATS, AI writing, and AI coding/productivity lanes.
@@ -53,10 +60,12 @@ Each top candidate should produce:
 - Working title.
 - One-sentence thesis.
 - Hook variants.
-- 20-35 second script.
+- 8-10 minute YouTube script or teardown outline.
+- 20-45 second short-form scripts.
 - Storyboard.
 - Visual direction.
 - Audio direction.
+- Viewer/customer review: would a frustrated job hunter laugh, keep watching, and trust the free-score CTA?
 - Caption and hashtag set.
 - Platform-specific title/description.
 - Source notes.
@@ -92,8 +101,10 @@ node post.mjs --only videos/NAME.mp4 --now --approved
 ### Video QA Checklist
 
 - First frame has a readable hook.
+- First two seconds are funny, painfully relatable, or sharply curiosity-driven.
 - On-screen text fits in 9:16 mobile.
 - Signal mascot is visible and recognizable.
+- The joke punches at vague resume language or broken job-search mechanics, never at unemployed people.
 - No old human presenter is used by accident.
 - Claims are accurate and non-defamatory.
 - No fake customer outcomes.

@@ -128,12 +128,19 @@ Short-form content is top-of-funnel. The product should appear as the proof mech
    - Compare subscription pressure to one-time application help.
    - Keep claims current and sourced.
 
-### Weekly Content System
+### Daily Content System
 
-- 1 researched YouTube topic per week.
-- 1 long-form script or teardown outline.
-- 3-5 Shorts/Reels/TikToks cut from the same research packet.
-- 1 product or landing-page improvement tied to the strongest content angle.
+- 1 researched long-form YouTube packet per day while capacity allows.
+- 3-5 Shorts/Reels/TikToks from the same daily packet.
+- 1 viewer/customer review per packet:
+  - funny or painfully relatable in the first two seconds;
+  - useful teardown before the CTA;
+  - no shame toward job seekers;
+  - free Signal score as the first ask;
+  - paid bundle only after the gap is obvious.
+- 1 product or landing-page improvement per week tied to the strongest-performing content angle.
+
+Daily does not mean publish weak work. The automation should create the packet every day; public posting should remain review-gated until the exact asset, caption, and CTA pass QA.
 
 ## Side-Income Math
 

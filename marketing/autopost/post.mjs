@@ -13,7 +13,7 @@
  * unless --approved is passed. Dry runs still show them for review.
  * Entries with status "posted" are skipped unless --include-posted is passed.
  */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, isAbsolute } from 'node:path';
 
@@ -46,14 +46,15 @@ if (!API_KEY || !USER) {
   process.exit(1);
 }
 
-let posts = JSON.parse(readFileSync(join(__dirname, 'posts.json'), 'utf8'));
-if (!Array.isArray(posts) || !posts.length) {
+const allPosts = JSON.parse(readFileSync(join(__dirname, 'posts.json'), 'utf8'));
+if (!Array.isArray(allPosts) || !allPosts.length) {
   console.error('posts.json is empty.');
   process.exit(1);
 }
 
+let posts = allPosts;
 if (ONLY_FILE) {
-  posts = posts.filter((post) => post.file === ONLY_FILE);
+  posts = allPosts.filter((post) => post.file === ONLY_FILE);
   if (!posts.length) {
     console.error(`No post found for --only ${ONLY_FILE}.`);
     process.exit(1);
@@ -114,6 +115,7 @@ const uploader = new UploadPost(API_KEY);
 
 let failures = 0;
 let skipped = 0;
+let changed = false;
 for (const [index, post] of posts.entries()) {
   const tag = `#${index + 1} "${(post.caption || '').slice(0, 40)}..."`;
   if (post.__reviewRequired && !APPROVED_REVIEW) {
@@ -142,11 +144,38 @@ for (const [index, post] of posts.entries()) {
     const res = await uploader.upload(post.__path, opts);
     const ok = res?.success !== false;
     console.log(`${ok ? 'OK' : 'FAIL'} ${tag} - ${post.scheduleDate ? 'scheduled' : 'posted'} ${ok ? '' : '-> ' + JSON.stringify(res)}`);
-    if (!ok) failures++;
+    if (!ok) {
+      post.status = 'failed';
+      post.lastError = JSON.stringify(res);
+      post.lastAttemptAt = new Date().toISOString();
+      changed = true;
+      failures++;
+    } else {
+      post.status = post.scheduleDate && !FORCE_NOW ? 'scheduled' : 'posted';
+      post.postedAt = new Date().toISOString();
+      post.uploadPostResult = res;
+      delete post.lastError;
+      changed = true;
+    }
   } catch (error) {
     console.error(`FAIL ${tag} - ${error.message}`);
+    post.status = 'failed';
+    post.lastError = error.message;
+    post.lastAttemptAt = new Date().toISOString();
+    changed = true;
     failures++;
   }
+}
+
+if (changed) {
+  for (const post of allPosts) {
+    delete post.__reviewRequired;
+    delete post.__alreadyPosted;
+    delete post.__path;
+    delete post.__bad;
+  }
+  writeFileSync(join(__dirname, 'posts.json'), JSON.stringify(allPosts, null, 4) + '\n');
+  console.log('posts.json updated with latest posting status.');
 }
 
 console.log(`\nDone. ${posts.length - failures - skipped} ok, ${skipped} skipped, ${failures} failed.`);

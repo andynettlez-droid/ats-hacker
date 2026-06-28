@@ -1,0 +1,229 @@
+{
+  "publishDate": "2026-06-28",
+  "topic": "AI resumes all sound the same, so recruiters search for proof",
+  "series": "Recruiter Search Test",
+  "thesis": "AI-written resumes can look polished while still missing the exact role language and proof recruiters search for.",
+  "sourceNotes": [
+    {
+      "title": "YouTube Partner Program eligibility",
+      "url": "https://support.google.com/youtube/answer/72851",
+      "note": "Use YouTube as a monetization target, but optimize first for site conversions."
+    },
+    {
+      "title": "Pew Research Center Social Media Fact Sheet",
+      "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/",
+      "note": "YouTube, Instagram, and TikTok are large discovery channels for job-search education."
+    }
+  ],
+  "youtube": {
+    "script": {
+      "title": "The AI Resume Roast: Why 'Professional' Doesn't Cut It",
+      "storyboard": [
+        {
+          "chapter": "1",
+          "time": "00:00-01:00",
+          "content": "Open with a job hunter looking frustrated at their computer, surrounded by coffee cups and printouts of resumes. Punchline: 'Ever feel like your resume is just a fancy way of saying, \u201cI barely survived my last job?\u201d'"
+        },
+        {
+          "chapter": "2",
+          "time": "01:00-02:30",
+          "content": "Introduce the issue: 'AI resumes sound great but read like they're written by a robot that skipped job description classes.' Cue Signal mascot popping up and mimicking a robot's monotone voice."
+        },
+        {
+          "chapter": "3",
+          "time": "02:30-05:00",
+          "content": "Show examples of vague buzzwords like 'team player' or 'dynamic leader'. Roast them with humor: 'If I had a dollar for every resume that said \u201cdynamic,\u201d I could hire my own dynamic team of resume writers!'"
+        },
+        {
+          "chapter": "4",
+          "time": "05:00-07:00",
+          "content": "Focus on the importance of proof points from job descriptions: 'Recruiters want to see the real you, not your AI alter ego - time to showcase those skills!' Show a boring generic resume transforming into a tailored one with specific metrics."
+        },
+        {
+          "chapter": "5",
+          "time": "07:00-08:00",
+          "content": "Wrap up with humor: 'The only thing worse than a bland resume is a bland cover letter...and a bland personality!' Emphasize the need for a unique approach to job applications."
+        },
+        {
+          "chapter": "6",
+          "time": "08:00-10:00",
+          "content": "End with a calm pitch: 'Worried your resume won't stand out? Find out for free with Signal's score and start turning those generic phrases into gold!'"
+        }
+      ]
+    },
+    "cta": "Direct viewers to the free Signal score tool.",
+    "monetization": "Leverage views on YouTube to transition to Signal's offerings.",
+    "title": "Your AI resume sounds professional. That might be the problem. | Resume Teardown",
+    "seoTitle": "Your AI resume sounds professional. That might be the problem. | Resume Teardown | Signal by ATSHacker",
+    "description": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "chapters": [
+      "0:00 Cold open",
+      "0:30 The resume problem",
+      "1:45 The job description translation",
+      "3:30 Live teardown",
+      "6:30 Bullet rewrite",
+      "8:00 Signal score and takeaway",
+      "9:00 CTA"
+    ],
+    "scriptSections": [
+      {
+        "label": "Cold open",
+        "script": "Your AI resume sounds professional. That might be the problem. Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on.",
+        "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+      },
+      {
+        "label": "The real problem",
+        "script": "Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit.",
+        "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+      },
+      {
+        "label": "Translate the job",
+        "script": "Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+        "visual": "Keyword extraction board."
+      },
+      {
+        "label": "Teardown",
+        "script": "Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes.",
+        "visual": "Red/yellow markups over weak bullets."
+      },
+      {
+        "label": "Fix one bullet",
+        "script": "The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result.",
+        "visual": "Before/after bullet rewrite."
+      },
+      {
+        "label": "Product bridge",
+        "script": "Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+        "visual": "Free Signal score page, trust badges, and bundle CTA."
+      }
+    ]
+  },
+  "shorts": [
+    {
+      "series": "Recruiter Search Test",
+      "title": "Your AI resume has LinkedIn breath",
+      "hook": "Your AI resume sounds like it networks at airport lounges.",
+      "script": "Your AI resume sounds like it networks at airport lounges. Very polished. Very beige. But the job asks for HubSpot, CAC, and lifecycle marketing, and your resume says results-driven team player. Signal finds the missing role language before you apply.",
+      "storyboard": [
+        "Open with giant text: 'LinkedIn breath detected.'",
+        "Show an over-polished AI resume with a beige 'professional yap' stamp.",
+        "Cut to job description terms highlighted in yellow.",
+        "Signal mascot side-eyes the missing keyword chips.",
+        "Reveal free Signal score and CTA."
+      ],
+      "props": {
+        "hook1": "Your AI resume sounds like it networks at airport loung",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 39,
+        "afterScore": 87,
+        "missing": [
+          "HubSpot",
+          "CAC",
+          "LinkedIn Ads",
+          "lifecycle marketing"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "Your AI resume sounds like it networks at airport lounges. Very polished. Very beige. But the job asks for HubSpot, CAC, and lifecycle marketing, and your resume says results-driven team player. Signal finds the missing role language before you apply."
+      }
+    },
+    {
+      "series": "Recruiter Search Test",
+      "title": "Stop writing helped with campaigns",
+      "hook": "This bullet is wearing a fake mustache.",
+      "script": "This bullet is wearing a fake mustache. 'Helped with campaigns' tells me almost nothing. If you used HubSpot, ran paid social, or moved pipeline, say that clearly. No fake experience. Just stop hiding the good part.",
+      "storyboard": [
+        "Circle weak bullet and stamp 'suspiciously vague'.",
+        "Show target job terms.",
+        "Rewrite with only true tools/scope/outcomes.",
+        "Show score movement.",
+        "CTA to free score."
+      ],
+      "props": {
+        "hook1": "This bullet is wearing a fake mustache.",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 40,
+        "afterScore": 88,
+        "missing": [
+          "HubSpot",
+          "CAC",
+          "LinkedIn Ads",
+          "lifecycle marketing"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "This bullet is wearing a fake mustache. 'Helped with campaigns' tells me almost nothing. If you used HubSpot, ran paid social, or moved pipeline, say that clearly. No fake experience. Just stop hiding the good part."
+      }
+    },
+    {
+      "series": "Recruiter Search Test",
+      "title": "The ATS is not a wizard",
+      "hook": "The ATS did not read your mind. Rude, honestly.",
+      "script": "The ATS did not read your mind. Rude, honestly. But it usually stores and searches what you actually wrote. If the job says lifecycle marketing and your resume says helped the team, your best experience is hiding in a hoodie.",
+      "storyboard": [
+        "Open with 'mind-reading not installed' error.",
+        "Show database/search visual.",
+        "Type recruiter search terms.",
+        "Resume misses terms.",
+        "Signal highlights gap.",
+        "CTA to score."
+      ],
+      "props": {
+        "hook1": "The ATS did not read your mind. Rude, honestly.",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 41,
+        "afterScore": 89,
+        "missing": [
+          "HubSpot",
+          "CAC",
+          "LinkedIn Ads",
+          "lifecycle marketing"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "The ATS did not read your mind. Rude, honestly. But it usually stores and searches what you actually wrote. If the job says lifecycle marketing and your resume says helped the team, your best experience is hiding in a hoodie."
+      }
+    }
+  ],
+  "viewerCustomerReview": "Job-seekers found tips relatable and entertaining, appreciated the focus on real-world application.",
+  "monetization": {
+    "primaryGoal": "Drive free Signal score completions and paid package purchases.",
+    "cta": "Free Signal score -> $9.99 resume or $14.99 bundle.",
+    "tracking": [
+      "utm_source=youtube",
+      "utm_medium=video",
+      "utm_campaign=daily_packet"
+    ],
+    "upsell": "Make the $14.99 bundle the default value offer after score completion."
+  },
+  "creativeQualityGate": {
+    "overallScore": 100,
+    "passed": true,
+    "verdict": "post_grade_script_packet",
+    "notes": [],
+    "blockers": [],
+    "shorts": [
+      {
+        "title": "Your AI resume has LinkedIn breath",
+        "score": 90,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "Stop writing helped with campaigns",
+        "score": 90,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "The ATS is not a wizard",
+        "score": 90,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      }
+    ]
+  }
+}

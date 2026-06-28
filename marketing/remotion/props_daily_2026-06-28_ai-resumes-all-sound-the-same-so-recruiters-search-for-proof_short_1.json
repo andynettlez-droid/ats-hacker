@@ -1,0 +1,25 @@
+{
+  "hook": "Your AI resume has LinkedIn breath.",
+  "subhook": "Polished. Beige. Missing the role language.",
+  "resumeTitle": "AI-Polished Resume",
+  "jobTitle": "Target Job Description",
+  "jobKeywords": [
+    "HubSpot",
+    "CAC",
+    "LinkedIn Ads",
+    "lifecycle marketing"
+  ],
+  "weakBullets": [
+    "Results-driven team player.",
+    "Helped with marketing campaigns.",
+    "Worked with cross-functional teams."
+  ],
+  "beforeBullet": "Helped with marketing campaigns.",
+  "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+  "beforeScore": 39,
+  "afterScore": 87,
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review"
+}

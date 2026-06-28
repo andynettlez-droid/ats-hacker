@@ -7,17 +7,17 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_mock_key', {
 
 const PRODUCT_CONFIG = {
   resume: {
-    productName: 'ATSHacker - Resume Optimization',
+    productName: 'Signal by ATSHacker - Resume Optimization',
     productDesc: '1x semantic job-description resume optimization',
     amount: 999,
   },
   cover_letter: {
-    productName: 'ATSHacker - Cover Letter Generation',
+    productName: 'Signal by ATSHacker - Cover Letter Generation',
     productDesc: '1x semantic job-description cover letter tailoring',
     amount: 999,
   },
   bundle: {
-    productName: 'ATSHacker - Resume & Cover Letter Bundle',
+    productName: 'Signal by ATSHacker - Resume & Cover Letter Bundle',
     productDesc: '1x semantic job-description resume & matching cover letter tailoring',
     amount: 1499,
   },
@@ -82,7 +82,7 @@ export async function POST(req: Request) {
       mode: 'payment',
       payment_intent_data: {
         description: productName,
-        statement_descriptor_suffix: 'ATSHacker',
+        statement_descriptor_suffix: 'SIGNAL',
         metadata: { app: 'atshacker', product_type: type, ...utms },
       },
       metadata: { app: 'atshacker', product_type: type, ...utms },

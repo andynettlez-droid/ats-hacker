@@ -10,6 +10,8 @@
     "render:signal": "remotion render SignalViralAd out/signal-viral-mascot-audio.mp4 --props=props_signal_viral_preset.json",
     "render:breakthrough": "remotion render SignalBreakthroughAd out/signal-breakthrough-cinematic.mp4 --props=props_signal_breakthrough_preset.json",
     "render:breakthrough:draft": "remotion render SignalBreakthroughAd out/signal-filter-breakthrough-quiet-draft.mp4 --props=props_signal_filter_breakthrough_draft.json",
+    "render:breakthrough:studio": "remotion render SignalBreakthroughAd out/signal-filter-breakthrough-studio.mp4 --props=props_signal_studio_breakthrough.json",
+    "render:crime-scene": "remotion render ResumeCrimeScene out/resume-crime-scene-demand-gen.mp4 --props=props_resume_crime_scene.json",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"
   },

@@ -75,7 +75,7 @@ function isProductType(value: unknown): value is ProductType {
 
 function validatePaidSession(session: Stripe.Checkout.Session): ProductType | NextResponse {
   if (session.metadata?.app !== 'atshacker') {
-    return NextResponse.json({ error: 'Payment session is not for ATSHacker' }, { status: 402 });
+    return NextResponse.json({ error: 'Payment session is not for Signal by ATSHacker' }, { status: 402 });
   }
 
   const productType = session.metadata?.product_type;

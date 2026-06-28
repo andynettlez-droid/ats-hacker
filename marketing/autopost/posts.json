@@ -138,6 +138,19 @@
             "youtube"
         ],
         "scheduleDate": null,
+        "status": "posted",
+        "postedAt": "2026-06-27T18:01:59Z"
+    },
+    {
+        "title": "This Resume Got a 34/100. Here's Why.",
+        "caption": "This resume looked fine, but it did not match the job language. Signal shows the missing role terms and rewrites real experience without fake claims. Check your score free. #resumehelp #jobsearch #careertok #resumetips",
+        "file": "videos/resume-crime-scene-demand-gen.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
         "status": "review_required"
     }
 ]

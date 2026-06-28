@@ -3,6 +3,8 @@ import { Audio } from "@remotion/media";
 import {
   AbsoluteFill,
   Easing,
+  Sequence,
+  Video,
   interpolate,
   spring,
   staticFile,
@@ -22,6 +24,14 @@ export const signalBreakthroughAdSchema = z.object({
   cta: z.string(),
   musicSrc: z.string().optional(),
   musicVolume: z.number().min(0).max(1).optional(),
+  voiceoverSrc: z.string().optional(),
+  voiceoverVolume: z.number().min(0).max(1).optional(),
+  sfxSrc: z.string().optional(),
+  sfxVolume: z.number().min(0).max(1).optional(),
+  avatarVideoUrl: z.string().optional(),
+  avatarStartFrame: z.number().optional(),
+  avatarEndFrame: z.number().optional(),
+  avatarLabel: z.string().optional(),
 });
 
 export type SignalBreakthroughAdProps = z.infer<typeof signalBreakthroughAdSchema>;
@@ -36,6 +46,11 @@ export const defaultSignalBreakthroughAdProps: SignalBreakthroughAdProps = {
   cta: "Check your score free. Link in bio",
   musicSrc: "audio/signal-quiet-orbit.wav",
   musicVolume: 0.28,
+  voiceoverVolume: 0.92,
+  sfxVolume: 0.1,
+  avatarStartFrame: 0,
+  avatarEndFrame: 132,
+  avatarLabel: "Career coach",
 };
 
 const FONT = '"Inter", "Helvetica Neue", Arial, sans-serif';
@@ -490,6 +505,60 @@ const HiringManager: React.FC<{ reveal: number }> = ({ reveal }) => (
   </div>
 );
 
+const AvatarPresenter: React.FC<{
+  src: string;
+  label: string;
+  opacity: number;
+}> = ({ src, label, opacity }) => (
+  <div
+    style={{
+      position: "absolute",
+      right: 58,
+      top: 126,
+      width: 246,
+      height: 356,
+      borderRadius: 32,
+      overflow: "hidden",
+      border: "1px solid rgba(56,213,255,0.30)",
+      background: "rgba(2,6,23,0.74)",
+      boxShadow: "0 28px 90px rgba(0,0,0,0.42), 0 0 46px rgba(56,213,255,0.16)",
+      opacity,
+      zIndex: 90,
+    }}
+  >
+    <Video
+      src={staticFile(src)}
+      muted
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        filter: "saturate(1.04) contrast(1.04)",
+      }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        left: 14,
+        right: 14,
+        bottom: 14,
+        padding: "9px 12px",
+        borderRadius: 16,
+        background: "rgba(3,7,18,0.78)",
+        border: "1px solid rgba(56,213,255,0.20)",
+        color: "#dbeafe",
+        fontSize: 15,
+        fontWeight: 900,
+        textTransform: "uppercase",
+        letterSpacing: 1,
+        textAlign: "center",
+      }}
+    >
+      {label}
+    </div>
+  </div>
+);
+
 export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
   hook1,
   hook2,
@@ -500,6 +569,14 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
   cta,
   musicSrc,
   musicVolume = 0.28,
+  voiceoverSrc,
+  voiceoverVolume = 0.92,
+  sfxSrc,
+  sfxVolume = 0.1,
+  avatarVideoUrl,
+  avatarStartFrame = 0,
+  avatarEndFrame = 132,
+  avatarLabel = "Career coach",
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -563,6 +640,28 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
           }
         />
       ) : null}
+      {voiceoverSrc ? (
+        <Audio
+          src={staticFile(voiceoverSrc)}
+          volume={(audioFrame) =>
+            interpolate(audioFrame, [0, 10, 27 * fps, 30 * fps], [0, voiceoverVolume, voiceoverVolume, 0], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            })
+          }
+        />
+      ) : null}
+      {sfxSrc ? (
+        <Audio
+          src={staticFile(sfxSrc)}
+          volume={(audioFrame) =>
+            interpolate(audioFrame, [0, 18, 23 * fps, 27 * fps], [0, sfxVolume, sfxVolume, 0], {
+              extrapolateLeft: "clamp",
+              extrapolateRight: "clamp",
+            })
+          }
+        />
+      ) : null}
 
       <div
         style={{
@@ -585,6 +684,15 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
 
       <AbsoluteFill style={{ opacity: introOpacity, alignItems: "center", justifyContent: "center", textAlign: "center", padding: 76 }}>
         <SignalMascot expression="focused" style={{ width: 250, height: 250, marginBottom: 40 }} />
+        {avatarVideoUrl ? (
+          <Sequence from={avatarStartFrame} durationInFrames={Math.max(1, avatarEndFrame - avatarStartFrame)}>
+            <AvatarPresenter
+              src={avatarVideoUrl}
+              label={avatarLabel}
+              opacity={clampFade(frame, avatarStartFrame, avatarStartFrame + 12) * exitFade(frame, avatarEndFrame - 18, avatarEndFrame)}
+            />
+          </Sequence>
+        ) : null}
         <div style={{ color: TEXT, fontSize: 78, lineHeight: 0.98, fontWeight: 950, letterSpacing: 0, maxWidth: 900 }}>
           {hook1}
         </div>

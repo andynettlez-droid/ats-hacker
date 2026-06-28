@@ -8,6 +8,11 @@ import {
   signalBreakthroughAdSchema,
   defaultSignalBreakthroughAdProps,
 } from "./SignalBreakthroughAd";
+import {
+  ResumeCrimeScene,
+  resumeCrimeSceneSchema,
+  defaultResumeCrimeSceneProps,
+} from "./ResumeCrimeScene";
 
 const FPS = 30;
 const SCORE_REVEAL_DURATION = 16;
@@ -15,6 +20,7 @@ const AVATAR_REVEAL_DURATION = 17; // 17 seconds @ 30 FPS = 510 frames
 const ATS_REVEAL_DURATION = 74; // 74 seconds @ 30 FPS = 2220 frames
 const SIGNAL_VIRAL_DURATION = 30;
 const SIGNAL_BREAKTHROUGH_DURATION = 30;
+const RESUME_CRIME_SCENE_DURATION = 45;
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -68,6 +74,16 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         schema={signalBreakthroughAdSchema}
         defaultProps={defaultSignalBreakthroughAdProps}
+      />
+      <Composition
+        id="ResumeCrimeScene"
+        component={ResumeCrimeScene}
+        durationInFrames={RESUME_CRIME_SCENE_DURATION * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        schema={resumeCrimeSceneSchema}
+        defaultProps={defaultResumeCrimeSceneProps}
       />
     </>
   );

@@ -23,7 +23,7 @@ function getRole(slug: string): Role {
     roleMap[slug] || {
       slug,
       title: titleFromSlug(slug),
-      painPoint: "Recruiters search and rank candidates by keyword. If your resume doesn't semantically match the job description, it ranks low and gets buried before a human ever scrolls to it.",
+      painPoint: 'Recruiters search resumes by role language. If your resume does not clearly match the job description, it can appear lower in search and be harder for hiring teams to find.',
       keywords: [],
       tips: [
         'Mirror the exact keywords and job title from the posting near the top of your resume.',
@@ -59,7 +59,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
     ],
   };
 
-  // Role-specific honest FAQ — keyword ranking, never "auto-reject".
+  // Role-specific honest FAQ - recruiter search, not automatic rejection claims.
   const keywordSample = keywords.slice(0, 4).join(', ');
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -71,8 +71,8 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
         acceptedAnswer: {
           '@type': 'Answer',
           text: keywords.length
-            ? `Recruiters rank ${title} resumes by how well they match the job description. Common keywords an ATS scans for include ${keywordSample}. Mirror the exact terms used in the specific posting you are applying to so your resume ranks higher in recruiter search.`
-            : `Recruiters rank ${title} resumes by how well they match the job description. Mirror the exact skills, tools, and job title used in the specific posting so your resume ranks higher in recruiter search.`,
+            ? `Recruiters often search ${title} resumes by how well they match the job description. Common role terms include ${keywordSample}. Mirror the exact terms used in the specific posting you are applying to so your resume is easier to find in recruiter search.`
+            : `Recruiters often search ${title} resumes by how well they match the job description. Mirror the exact skills, tools, and job title used in the specific posting so your resume is easier to find in recruiter search.`,
         },
       },
       {
@@ -80,7 +80,7 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
         name: `Will an ATS automatically reject my ${title} resume?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `No. The ATS does not auto-reject you. It indexes ${title} resumes so recruiters can search and rank them by keyword. A resume that closely matches the posting ranks higher and is more likely to be seen, while a poorly matched one gets buried lower in the results.`,
+          text: `Usually, no. An ATS stores and indexes ${title} resumes so recruiters can search them by role language, skills, tools, and experience. A resume that closely matches the posting can be easier to find, while a poorly matched one may appear lower in recruiter search results.`,
         },
       },
     ],
@@ -137,10 +137,10 @@ export default async function TailoredLandingPage({ params }: { params: Promise<
           <section className="mt-20 text-left">
             <h2 className="text-2xl font-bold mb-2 flex items-center text-slate-900">
               <XCircle className="w-6 h-6 text-red-600 mr-2" />
-              ATS keywords for {title} resumes
+              Role keywords for {title} resumes
             </h2>
             <p className="text-slate-600 mb-6">
-              These are the terms an ATS most often scans for in {title} job descriptions. If your resume is missing them, you&apos;re likely to rank lower in recruiter searches:
+              These are the terms recruiters often search for in {title} job descriptions. If your resume is missing the relevant ones, it can be harder to find in recruiter searches:
             </p>
             <div className="flex flex-wrap gap-3 mb-12">
               {keywords.map((k, i) => (

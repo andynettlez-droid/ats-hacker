@@ -1,0 +1,27 @@
+{
+  "hook": "This resume got a 34/100.",
+  "subhook": "The person was actually qualified.",
+  "resumeTitle": "Marketing Specialist Resume",
+  "jobTitle": "Demand Generation Manager",
+  "jobKeywords": [
+    "Demand Gen",
+    "LinkedIn Ads",
+    "HubSpot",
+    "CAC analysis"
+  ],
+  "weakBullets": [
+    "Responsible for social media.",
+    "Helped with marketing campaigns.",
+    "Worked with the team."
+  ],
+  "beforeBullet": "Helped with marketing campaigns.",
+  "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+  "beforeScore": 34,
+  "afterScore": 92,
+  "cta": "Paste the job description. Check your free Signal score before you apply.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "voiceoverVolume": 0.94,
+  "sfxVolume": 0.06,
+  "avatarLabel": "Recruiter review"
+}

@@ -11,6 +11,7 @@ POSTS_PATH = MARKETING_DIR / "autopost" / "posts.json"
 METRICS_PATH = MARKETING_DIR / "content_metrics.json"
 REPORTS_DIR = MARKETING_DIR / "content_reports"
 AUDIO_DIR = MARKETING_DIR / "remotion" / "public" / "audio"
+TREND_INTAKE_PATH = MARKETING_DIR / "content_research" / "trend_intake_latest.json"
 
 
 def read_json(path: Path, fallback):
@@ -104,7 +105,26 @@ def build_report() -> dict:
         if isinstance(entry.get("creativeQuality"), dict) and entry["creativeQuality"].get("passed")
     ]
     render_ready_shorts = sum(len(as_list(entry.get("shorts"))) for entry in calendar)
-    has_studio_voiceover = any(AUDIO_DIR.glob("daily-*-voiceover.mp3")) or (AUDIO_DIR / "signal-studio-voiceover.mp3").exists()
+    has_calendar_voiceover = any(
+        isinstance(short.get("audioReadiness"), dict) and short["audioReadiness"].get("studioVoiceover")
+        for entry in calendar
+        for short in as_list(entry.get("shorts"))
+        if isinstance(short, dict)
+    )
+    trend_intake = read_json(TREND_INTAKE_PATH, {})
+    has_source_backed_trend_intake = bool(
+        isinstance(trend_intake, dict)
+        and trend_intake.get("topCandidate")
+        and any(
+            isinstance(note, dict) and note.get("url")
+            for note in as_list(trend_intake.get("topCandidate", {}).get("sourceNotes"))
+        )
+    )
+    has_studio_voiceover = (
+        has_calendar_voiceover
+        or any(AUDIO_DIR.glob("daily-*-voiceover.mp3"))
+        or (AUDIO_DIR / "signal-studio-voiceover.mp3").exists()
+    )
     has_quiet_music = (AUDIO_DIR / "signal-quiet-orbit.wav").exists() or (AUDIO_DIR / "signal-studio-bed.mp3").exists()
 
     queue_counts = {}
@@ -123,6 +143,7 @@ def build_report() -> dict:
         "calendarPath": str(CALENDAR_PATH.relative_to(ROOT)),
         "postsPath": str(POSTS_PATH.relative_to(ROOT)),
         "metricsPath": str(METRICS_PATH.relative_to(ROOT)),
+        "trendIntakePath": str(TREND_INTAKE_PATH.relative_to(ROOT)),
         "calendarCounts": calendar_counts,
         "queueCounts": queue_counts,
         "dailyPackets": calendar,
@@ -133,6 +154,7 @@ def build_report() -> dict:
             "renderReadyShorts": render_ready_shorts,
             "hasStudioVoiceover": has_studio_voiceover,
             "hasQuietMusic": has_quiet_music,
+            "hasSourceBackedTrendIntake": has_source_backed_trend_intake,
             "needsFullRenderReview": any(entry.get("reviewStatus") == "needs_render_and_review" for entry in calendar),
         },
         "monetizationReadiness": {
@@ -143,6 +165,7 @@ def build_report() -> dict:
             "hasMetrics": bool(metrics),
             "hasStudioVoiceover": has_studio_voiceover,
             "hasQuietMusic": has_quiet_music,
+            "hasSourceBackedTrendIntake": has_source_backed_trend_intake,
             "missing": [
                 item
                 for item, ok in [
@@ -150,7 +173,8 @@ def build_report() -> dict:
                     ("studio voiceover for daily shorts", has_studio_voiceover),
                     ("long-form 16:9 renderer", False),
                     ("thumbnail generator", False),
-                    ("source-backed live trend intake", False),
+                    ("source-backed trend intake", has_source_backed_trend_intake),
+                    ("automated live trend API connector", False),
                 ]
                 if not ok
             ],
@@ -179,6 +203,7 @@ def write_markdown(report: dict, path: Path) -> None:
         f"- Metrics available: {readiness['hasMetrics']}",
         f"- Studio voiceover available: {readiness['hasStudioVoiceover']}",
         f"- Quiet music available: {readiness['hasQuietMusic']}",
+        f"- Source-backed trend intake available: {readiness['hasSourceBackedTrendIntake']}",
         "",
         "Missing:",
     ])
@@ -190,6 +215,7 @@ def write_markdown(report: dict, path: Path) -> None:
         f"- Render-ready shorts: {creative['renderReadyShorts']}",
         f"- Studio voiceover: {creative['hasStudioVoiceover']}",
         f"- Quiet music: {creative['hasQuietMusic']}",
+        f"- Source-backed trend intake: {creative['hasSourceBackedTrendIntake']}",
         f"- Needs full render review: {creative['needsFullRenderReview']}",
     ])
     lines.extend(["", "## Daily Packets", ""])

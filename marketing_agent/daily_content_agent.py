@@ -5,6 +5,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+import requests
 from dotenv import load_dotenv
 from creative_quality_gate import score_packet
 
@@ -20,7 +21,9 @@ BRIEFS_DIR = MARKETING_DIR / "video_briefs"
 PACKETS_DIR = MARKETING_DIR / "daily_content"
 REMOTION_DIR = MARKETING_DIR / "remotion"
 REMOTION_PUBLIC_DIR = REMOTION_DIR / "public"
+REMOTION_AUDIO_DIR = REMOTION_PUBLIC_DIR / "audio"
 CALENDAR_PATH = MARKETING_DIR / "content_calendar.json"
+TREND_INTAKE_PATH = MARKETING_DIR / "content_research" / "trend_intake_latest.json"
 
 
 TREND_SEEDS = [
@@ -147,6 +150,11 @@ def safe_slug(value: str) -> str:
     return slug[:64] or "daily-content"
 
 
+def safe_audio_slug(date_slug: str, title: str, index: int) -> str:
+    title_slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")[:42] or "short"
+    return f"{safe_slug(date_slug)}-{title_slug}-{index}"
+
+
 def public_asset_exists(ref: str | None) -> bool:
     if not ref:
         return False
@@ -157,6 +165,7 @@ def ensure_dirs() -> None:
     BRIEFS_DIR.mkdir(parents=True, exist_ok=True)
     PACKETS_DIR.mkdir(parents=True, exist_ok=True)
     REMOTION_DIR.mkdir(parents=True, exist_ok=True)
+    REMOTION_AUDIO_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def load_openai_client():
@@ -165,6 +174,103 @@ def load_openai_client():
     if not key or key == "sk-proj-your_openai_api_key_here" or OpenAI is None:
         return None
     return OpenAI(api_key=key)
+
+
+def load_elevenlabs_config() -> dict:
+    load_dotenv(ROOT / "marketing_agent" / ".env")
+    key = os.getenv("ELEVENLABS_API_KEY", "")
+    if key == "your_elevenlabs_api_key_here":
+        key = ""
+    return {
+        "apiKey": key,
+        "voiceId": os.getenv("ELEVENLABS_VOICE_ID", "21m00Tcm4TlvDq8ikWAM"),
+        "modelId": os.getenv("ELEVENLABS_MODEL_ID", "eleven_multilingual_v2"),
+    }
+
+
+def has_elevenlabs_config() -> bool:
+    return bool(load_elevenlabs_config()["apiKey"])
+
+
+def read_json(path: Path, fallback):
+    if not path.exists():
+        return fallback
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return fallback
+
+
+def generate_elevenlabs_voiceover(text: str, dest_name: str) -> str | None:
+    config = load_elevenlabs_config()
+    if not config["apiKey"]:
+        return None
+
+    dest_path = REMOTION_AUDIO_DIR / dest_name
+    response = requests.post(
+        f"https://api.elevenlabs.io/v1/text-to-speech/{config['voiceId']}",
+        headers={
+            "xi-api-key": config["apiKey"],
+            "Content-Type": "application/json",
+            "Accept": "audio/mpeg",
+        },
+        json={
+            "text": text,
+            "model_id": config["modelId"],
+            "voice_settings": {
+                "stability": 0.48,
+                "similarity_boost": 0.82,
+                "style": 0.28,
+                "use_speaker_boost": True,
+            },
+        },
+        timeout=90,
+    )
+    response.raise_for_status()
+    dest_path.write_bytes(response.content)
+    if dest_path.stat().st_size < 1024:
+        raise RuntimeError(f"ElevenLabs voiceover is too small: {dest_path}")
+    return f"audio/{dest_name}"
+
+
+def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, prepare_audio: bool, force_audio: bool) -> dict:
+    voiceover_text = str(
+        short.get("props", {}).get("voiceover_text")
+        or short.get("script")
+        or crime_scene_props.get("hook")
+        or ""
+    )[:900]
+    crime_scene_props["audioReadiness"] = {
+        "studioVoiceover": False,
+        "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
+        "reason": "studio voiceover not requested",
+    }
+
+    if public_asset_exists("audio/signal-quiet-orbit.wav"):
+        crime_scene_props["musicSrc"] = "audio/signal-quiet-orbit.wav"
+        crime_scene_props["musicVolume"] = 0.16
+
+    if not prepare_audio:
+        return crime_scene_props
+
+    if not has_elevenlabs_config():
+        crime_scene_props["audioReadiness"]["reason"] = "ELEVENLABS_API_KEY is not configured"
+        return crime_scene_props
+
+    voice_name = f"daily-{short_slug}-voiceover.mp3"
+    voice_ref = f"audio/{voice_name}"
+    if force_audio or not public_asset_exists(voice_ref):
+        voice_ref = generate_elevenlabs_voiceover(voiceover_text, voice_name) or voice_ref
+
+    if public_asset_exists(voice_ref):
+        crime_scene_props["voiceoverSrc"] = voice_ref
+        crime_scene_props["voiceoverVolume"] = 0.94
+        crime_scene_props["audioReadiness"] = {
+            "studioVoiceover": True,
+            "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
+            "reason": "ready",
+        }
+    return crime_scene_props
 
 
 def choose_seed(topic: str | None) -> dict:
@@ -176,6 +282,17 @@ def choose_seed(topic: str | None) -> dict:
             "hook": topic,
             "keywords": ["resume", "job description", "Signal score", "job search"],
             "source_notes": TREND_SEEDS[0]["source_notes"],
+        }
+    intake = read_json(TREND_INTAKE_PATH, {})
+    top = intake.get("topCandidate") if isinstance(intake, dict) else None
+    if isinstance(top, dict) and top.get("topic") and top.get("sourceNotes"):
+        return {
+            "topic": str(top.get("topic")),
+            "series": str(top.get("series") or "Daily Research Packet"),
+            "thesis": str(top.get("contentAngle") or top.get("whyNow") or "Turn a sourced job-search trend into a useful resume teardown."),
+            "hook": str(top.get("hook") or top.get("topic")),
+            "keywords": ["resume", "job description", "Signal score", "job search"],
+            "source_notes": top.get("sourceNotes") or TREND_SEEDS[0]["source_notes"],
         }
     return TREND_SEEDS[0]
 
@@ -681,7 +798,7 @@ def write_markdown_packet(packet: dict, packet_dir: Path) -> None:
     (packet_dir / "viewer_customer_review.md").write_text("\n".join(review_lines), encoding="utf-8")
 
 
-def write_short_briefs_and_props(packet: dict, packet_dir: Path) -> list[dict]:
+def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: bool, force_audio: bool) -> list[dict]:
     written = []
     date_slug = packet["publishDate"]
     topic_slug = safe_slug(packet["topic"])
@@ -739,6 +856,8 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path) -> list[dict]:
         if public_asset_exists(sfx_ref):
             crime_scene_props["sfxSrc"] = sfx_ref
             crime_scene_props["sfxVolume"] = 0.04
+        audio_slug = safe_audio_slug(date_slug, short.get("title", f"short-{idx}"), idx)
+        crime_scene_props = attach_daily_audio(crime_scene_props, short, audio_slug, prepare_audio, force_audio)
 
         brief = [
             f"# {short.get('title', 'Signal short')}",
@@ -768,6 +887,7 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path) -> list[dict]:
             "- Keep Signal mascot visible.",
             "- Keep captions readable on mobile.",
             "- No unsupported auto-reject, guarantee, or fake-outcome claims.",
+            f"- Audio readiness: `{crime_scene_props.get('audioReadiness', {}).get('reason', 'unknown')}`.",
             "- Queue as review_required after rendering.",
         ])
         brief_path.write_text("\n".join(brief), encoding="utf-8")
@@ -777,6 +897,7 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path) -> list[dict]:
             "props": str(props_path.relative_to(ROOT)),
             "title": short.get("title", "Signal short"),
             "composition": "ResumeCrimeScene",
+            "audioReadiness": crime_scene_props.get("audioReadiness", {}),
         })
     return written
 
@@ -806,6 +927,7 @@ def update_calendar(packet: dict, packet_dir: Path, written_shorts: list[dict]) 
                 "brief": item["brief"],
                 "props": item["props"],
                 "status": "render_ready",
+                "audioReadiness": item.get("audioReadiness", {}),
             }
             for item in written_shorts
         ],
@@ -823,6 +945,17 @@ def update_calendar(packet: dict, packet_dir: Path, written_shorts: list[dict]) 
     CALENDAR_PATH.write_text(json.dumps(calendar, indent=2), encoding="utf-8")
 
 
+def build_daily_caption(short: dict) -> str:
+    title = str(short.get("title", "Resume teardown")).rstrip(".")
+    hook = str(short.get("hook", "")).rstrip(".")
+    base = f"{title}. {hook}. Check your free Signal score before you apply."
+    tags = "#jobsearch #resumehelp #careertok #resumetips #airesume"
+    caption = f"{base} {tags}"
+    if len(caption) > 280:
+        caption = f"{title}. Check your free Signal score before you apply. {tags}"
+    return caption
+
+
 def write_render_commands(packet_dir: Path, written_shorts: list[dict]) -> None:
     commands = [
         "# Run from marketing/remotion",
@@ -832,10 +965,31 @@ def write_render_commands(packet_dir: Path, written_shorts: list[dict]) -> None:
     ]
     for item in written_shorts:
         props = item["props"].replace("\\", "/").replace("marketing/remotion/", "")
-        out_name = safe_slug(item["title"]) + ".mp4"
+        out_name = f"daily-{safe_slug(item['title'])}.mp4"
         composition = item.get("composition", "ResumeCrimeScene")
         commands.append(f"npx remotion render {composition} out/{out_name} --props={props}")
     (packet_dir / "render_commands.ps1").write_text("\n".join(commands), encoding="utf-8")
+
+
+def write_autopost_drafts(packet: dict, packet_dir: Path, written_shorts: list[dict]) -> None:
+    shorts_by_title = {short.get("title"): short for short in packet.get("shorts", []) if isinstance(short, dict)}
+    drafts = []
+    for item in written_shorts:
+        title = item["title"]
+        short = shorts_by_title.get(title, {"title": title, "hook": title})
+        out_name = f"daily-{safe_slug(title)}.mp4"
+        drafts.append({
+            "title": title[:96],
+            "caption": build_daily_caption(short),
+            "file": f"videos/{out_name}",
+            "platforms": ["tiktok", "instagram", "youtube"],
+            "scheduleDate": None,
+            "status": "review_required",
+            "renderProps": item["props"],
+            "composition": item.get("composition", "ResumeCrimeScene"),
+            "audioReadiness": item.get("audioReadiness", {}),
+        })
+    (packet_dir / "autopost_drafts.json").write_text(json.dumps(drafts, indent=2), encoding="utf-8")
 
 
 def main() -> None:
@@ -843,6 +997,8 @@ def main() -> None:
     parser.add_argument("--date", default=datetime.now(timezone.utc).strftime("%Y-%m-%d"))
     parser.add_argument("--topic", default=None, help="Optional specific daily topic.")
     parser.add_argument("--json", action="store_true", help="Print machine-readable output.")
+    parser.add_argument("--prepare-audio", action="store_true", help="Generate ElevenLabs voiceover files when credentials are configured.")
+    parser.add_argument("--force-audio", action="store_true", help="Regenerate daily voiceover files even if cached files exist.")
     args = parser.parse_args()
 
     ensure_dirs()
@@ -855,14 +1011,16 @@ def main() -> None:
     (packet_dir / "packet.json").write_text(json.dumps(packet, indent=2), encoding="utf-8")
     (packet_dir / "source_notes.json").write_text(json.dumps(packet.get("sourceNotes", []), indent=2), encoding="utf-8")
     write_markdown_packet(packet, packet_dir)
-    written_shorts = write_short_briefs_and_props(packet, packet_dir)
+    written_shorts = write_short_briefs_and_props(packet, packet_dir, args.prepare_audio, args.force_audio)
     write_render_commands(packet_dir, written_shorts)
+    write_autopost_drafts(packet, packet_dir, written_shorts)
     update_calendar(packet, packet_dir, written_shorts)
 
     result = {
         "packet": str(packet_dir.relative_to(ROOT)),
         "youtube": str((packet_dir / "youtube_episode.md").relative_to(ROOT)),
         "shorts": written_shorts,
+        "autopostDrafts": str((packet_dir / "autopost_drafts.json").relative_to(ROOT)),
         "calendar": str(CALENDAR_PATH.relative_to(ROOT)),
     }
     if args.json:

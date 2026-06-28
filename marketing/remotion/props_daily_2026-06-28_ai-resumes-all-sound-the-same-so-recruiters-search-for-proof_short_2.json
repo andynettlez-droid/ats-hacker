@@ -21,5 +21,12 @@
   "cta": "Check your free Signal score.",
   "musicSrc": "audio/signal-quiet-orbit.wav",
   "musicVolume": 0.16,
-  "avatarLabel": "Recruiter review"
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "reason": "ready"
+  },
+  "voiceoverSrc": "audio/daily-2026-06-28-stop-writing-helped-with-campaigns-2-voiceover.mp3",
+  "voiceoverVolume": 0.94
 }

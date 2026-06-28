@@ -28,4 +28,5 @@ Composition: `ResumeCrimeScene`
 - Keep Signal mascot visible.
 - Keep captions readable on mobile.
 - No unsupported auto-reject, guarantee, or fake-outcome claims.
+- Audio readiness: `ready`.
 - Queue as review_required after rendering.

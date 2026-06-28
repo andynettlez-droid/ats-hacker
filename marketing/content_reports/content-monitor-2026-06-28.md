@@ -1,12 +1,12 @@
 # Signal Content Monitor
 
-Generated: 2026-06-28T04:06:53.952521+00:00
+Generated: 2026-06-28T10:26:54.252849+00:00
 
 ## Queue Counts
 
 - posted: 4
 - queued: 10
-- review_required: 1
+- review_required: 2
 
 ## Monetization Readiness
 
@@ -15,22 +15,23 @@ Generated: 2026-06-28T04:06:53.952521+00:00
 - Review queue exists: True
 - Posted assets exist: True
 - Metrics available: False
-- Studio voiceover available: False
+- Studio voiceover available: True
 - Quiet music available: True
+- Source-backed trend intake available: True
 
 Missing:
 - platform metrics feed
-- studio voiceover for daily shorts
 - long-form 16:9 renderer
 - thumbnail generator
-- source-backed live trend intake
+- automated live trend API connector
 
 ## Creative Readiness
 
 - Post-grade packets: 1
 - Render-ready shorts: 3
-- Studio voiceover: False
+- Studio voiceover: True
 - Quiet music: True
+- Source-backed trend intake: True
 - Needs full render review: True
 
 ## Daily Packets
@@ -171,6 +172,15 @@ Missing:
 - Next action: Add 24-hour metrics from platform dashboards or APIs.
 
 ### videos/resume-crime-scene-demand-gen.mp4
+
+- Status: review_required
+- Views: 0
+- Clicks: 0
+- Score completions: 0
+- Purchases: 0
+- Next action: Review the exact video, caption, and CTA before posting.
+
+### videos/daily-your-ai-resume-has-linkedin-breath.mp4
 
 - Status: review_required
 - Views: 0

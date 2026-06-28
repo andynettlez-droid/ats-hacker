@@ -2,7 +2,7 @@
 
 Publish date: 2026-06-28
 Series: Recruiter Search Test
-Thesis: AI-written resumes can look polished while still missing the exact role language and proof recruiters search for.
+Thesis: Recruiter-style teardown of an AI-polished resume that misses HubSpot, CAC, LinkedIn Ads, and lifecycle marketing.
 
 ## SEO
 
@@ -59,4 +59,4 @@ Visual: Free Signal score page, trust badges, and bundle CTA.
 
 ## CTA
 
-Direct viewers to the free Signal score tool.
+Paste the job description and check your free Signal score before you apply.

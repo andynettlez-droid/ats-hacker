@@ -14,19 +14,34 @@
         "title": "Your AI resume has LinkedIn breath",
         "brief": "marketing\\video_briefs\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-short-1.md",
         "props": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_1.json",
-        "status": "render_ready"
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "reason": "ready"
+        }
       },
       {
         "title": "Stop writing helped with campaigns",
         "brief": "marketing\\video_briefs\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-short-2.md",
         "props": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_2.json",
-        "status": "render_ready"
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "reason": "ready"
+        }
       },
       {
         "title": "The ATS is not a wizard",
         "brief": "marketing\\video_briefs\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-short-3.md",
         "props": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_3.json",
-        "status": "render_ready"
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "reason": "ready"
+        }
       }
     ],
     "creativeQuality": {

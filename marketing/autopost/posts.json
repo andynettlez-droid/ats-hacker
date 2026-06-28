@@ -152,5 +152,24 @@
         ],
         "scheduleDate": null,
         "status": "review_required"
+    },
+    {
+        "title": "Your AI resume has LinkedIn breath",
+        "caption": "Your AI resume has LinkedIn breath. Your AI resume sounds like it networks at airport lounges. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-your-ai-resume-has-linkedin-breath.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_1.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "reason": "ready"
+        }
     }
 ]

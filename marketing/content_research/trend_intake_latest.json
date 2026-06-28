@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-06-28T04:16:22.775862+00:00",
+  "method": "source-backed intake file; replace or append with live exports from YouTube, TikTok Creative Center, Google Trends, Reddit, or LinkedIn.",
+  "topCandidate": {
+    "topic": "AI resumes all sound the same, so recruiters search for proof",
+    "series": "Recruiter Search Test",
+    "hook": "Your AI resume sounds professional. That might be the problem.",
+    "whyNow": "AI-written resumes are common enough that job seekers need a trust-building way to show real proof, not generic polish.",
+    "contentAngle": "Recruiter-style teardown of an AI-polished resume that misses HubSpot, CAC, LinkedIn Ads, and lifecycle marketing.",
+    "sourceNotes": [
+      {
+        "title": "YouTube Analytics engagement and retention",
+        "url": "https://support.google.com/youtube/answer/9314355",
+        "note": "Monitor retention and engagement after posting, not just views."
+      },
+      {
+        "title": "TikTok Creative Center",
+        "url": "https://ads.tiktok.com/business/creativecenter/",
+        "note": "Use trend discovery to validate current hooks and sounds before publishing."
+      }
+    ],
+    "score": 100,
+    "status": "candidate"
+  },
+  "candidates": [
+    {
+      "topic": "AI resumes all sound the same, so recruiters search for proof",
+      "series": "Recruiter Search Test",
+      "hook": "Your AI resume sounds professional. That might be the problem.",
+      "whyNow": "AI-written resumes are common enough that job seekers need a trust-building way to show real proof, not generic polish.",
+      "contentAngle": "Recruiter-style teardown of an AI-polished resume that misses HubSpot, CAC, LinkedIn Ads, and lifecycle marketing.",
+      "sourceNotes": [
+        {
+          "title": "YouTube Analytics engagement and retention",
+          "url": "https://support.google.com/youtube/answer/9314355",
+          "note": "Monitor retention and engagement after posting, not just views."
+        },
+        {
+          "title": "TikTok Creative Center",
+          "url": "https://ads.tiktok.com/business/creativecenter/",
+          "note": "Use trend discovery to validate current hooks and sounds before publishing."
+        }
+      ],
+      "score": 100,
+      "status": "candidate"
+    },
+    {
+      "topic": "The ATS auto-reject myth versus recruiter search reality",
+      "series": "ATS Myth Lab",
+      "hook": "The ATS probably did not throw your resume away. Here is the real problem.",
+      "whyNow": "Fear-based ATS content gets clicks, but a clearer explanation builds more trust and conversion.",
+      "contentAngle": "Show the difference between parsing/indexing/search and unsupported auto-reject claims.",
+      "sourceNotes": [
+        {
+          "title": "Signal viral content workflow",
+          "url": "marketing/content_research/viral_success_workflow.md",
+          "note": "Keep claims safe and avoid adversarial ATS promises."
+        }
+      ],
+      "score": 90,
+      "status": "candidate"
+    }
+  ]
+}

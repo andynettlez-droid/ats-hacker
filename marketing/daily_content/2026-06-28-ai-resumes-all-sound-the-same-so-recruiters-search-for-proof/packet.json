@@ -2,60 +2,64 @@
   "publishDate": "2026-06-28",
   "topic": "AI resumes all sound the same, so recruiters search for proof",
   "series": "Recruiter Search Test",
-  "thesis": "AI-written resumes can look polished while still missing the exact role language and proof recruiters search for.",
+  "thesis": "Recruiter-style teardown of an AI-polished resume that misses HubSpot, CAC, LinkedIn Ads, and lifecycle marketing.",
   "sourceNotes": [
     {
-      "title": "YouTube Partner Program eligibility",
-      "url": "https://support.google.com/youtube/answer/72851",
-      "note": "Use YouTube as a monetization target, but optimize first for site conversions."
+      "title": "YouTube Analytics engagement and retention",
+      "url": "https://support.google.com/youtube/answer/9314355",
+      "note": "Monitor retention and engagement after posting, not just views."
     },
     {
-      "title": "Pew Research Center Social Media Fact Sheet",
-      "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/",
-      "note": "YouTube, Instagram, and TikTok are large discovery channels for job-search education."
+      "title": "TikTok Creative Center",
+      "url": "https://ads.tiktok.com/business/creativecenter/",
+      "note": "Use trend discovery to validate current hooks and sounds before publishing."
     }
   ],
   "youtube": {
     "script": {
-      "title": "The AI Resume Roast: Why 'Professional' Doesn't Cut It",
-      "storyboard": [
+      "title": "The AI Resume Roast: Why Yours Might Be Doomed",
+      "chapters": [
         {
-          "chapter": "1",
-          "time": "00:00-01:00",
-          "content": "Open with a job hunter looking frustrated at their computer, surrounded by coffee cups and printouts of resumes. Punchline: 'Ever feel like your resume is just a fancy way of saying, \u201cI barely survived my last job?\u201d'"
+          "title": "Introduction",
+          "duration": "1min",
+          "content": "Open with a joke about sending out 100 applications and hearing crickets\u2014cue the \u2018sad trombone\u2019 sound."
         },
         {
-          "chapter": "2",
-          "time": "01:00-02:30",
-          "content": "Introduce the issue: 'AI resumes sound great but read like they're written by a robot that skipped job description classes.' Cue Signal mascot popping up and mimicking a robot's monotone voice."
+          "title": "The AI Resume Trap",
+          "duration": "3min",
+          "content": "Dive into how AI resumes look polished but lack substance. Show a bland bullet point vs. a detailed one. Instant roast: \u2018Does this resume even know what a HubSpot is?\u2019"
         },
         {
-          "chapter": "3",
-          "time": "02:30-05:00",
-          "content": "Show examples of vague buzzwords like 'team player' or 'dynamic leader'. Roast them with humor: 'If I had a dollar for every resume that said \u201cdynamic,\u201d I could hire my own dynamic team of resume writers!'"
+          "title": "Rejecting the Vanilla Resume",
+          "duration": "2min",
+          "content": "Point out that vague phrases like 'proficient' do nothing. Cue meme of a recruiter yawning. Joke: \u2018If I see one more \u201cteam player,\u201d I might need to take a nap!\u2019"
         },
         {
-          "chapter": "4",
-          "time": "05:00-07:00",
-          "content": "Focus on the importance of proof points from job descriptions: 'Recruiters want to see the real you, not your AI alter ego - time to showcase those skills!' Show a boring generic resume transforming into a tailored one with specific metrics."
+          "title": "The Precision Game",
+          "duration": "2min",
+          "content": "Explain how resumes should be customized to reflect key skills in the job description. Visual of a matchmaking app with resumes and job descriptions\u2014'Your perfect match awaits!'"
         },
         {
-          "chapter": "5",
-          "time": "07:00-08:00",
-          "content": "Wrap up with humor: 'The only thing worse than a bland resume is a bland cover letter...and a bland personality!' Emphasize the need for a unique approach to job applications."
+          "title": "The Signal Score: Your Secret Weapon",
+          "duration": "1min",
+          "content": "Introduce the Signal score as a free tool to assess resume strength. Visual cue: include a URL overlay for immediate access."
         },
         {
-          "chapter": "6",
-          "time": "08:00-10:00",
-          "content": "End with a calm pitch: 'Worried your resume won't stand out? Find out for free with Signal's score and start turning those generic phrases into gold!'"
+          "title": "Conclusion and Call to Action",
+          "duration": "1min",
+          "content": "Wrap with a calm reminder to check the Signal score. Joke: \u2018It\u2019s free, unlike that therapist you\u2019ve been booking after all those rejections!\u2019"
         }
+      ],
+      "visuals": [
+        "Boring bullets flash on the screen contrasted with lively, engaging ones.",
+        "Signal mascot appearing as a quirky guide popping up with commentary.",
+        "Graphs showing engagement or resume stats moving dramatically."
       ]
     },
-    "cta": "Direct viewers to the free Signal score tool.",
-    "monetization": "Leverage views on YouTube to transition to Signal's offerings.",
     "title": "Your AI resume sounds professional. That might be the problem. | Resume Teardown",
     "seoTitle": "Your AI resume sounds professional. That might be the problem. | Resume Teardown | Signal by ATSHacker",
     "description": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "cta": "Paste the job description and check your free Signal score before you apply.",
     "chapters": [
       "0:00 Cold open",
       "0:30 The resume problem",
@@ -185,9 +189,8 @@
       }
     }
   ],
-  "viewerCustomerReview": "Job-seekers found tips relatable and entertaining, appreciated the focus on real-world application.",
   "monetization": {
-    "primaryGoal": "Drive free Signal score completions and paid package purchases.",
+    "primaryGoal": "Ad placed strategically around engaging content to ensure viewer retention.",
     "cta": "Free Signal score -> $9.99 resume or $14.99 bundle.",
     "tracking": [
       "utm_source=youtube",
@@ -196,6 +199,7 @@
     ],
     "upsell": "Make the $14.99 bundle the default value offer after score completion."
   },
+  "viewerCustomerReview": "Job seekers have noted how hilariously relatable and insightful the content is, calling it their new go-to source for resume tips.",
   "creativeQualityGate": {
     "overallScore": 100,
     "passed": true,

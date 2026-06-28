@@ -12,6 +12,8 @@ METRICS_PATH = MARKETING_DIR / "content_metrics.json"
 REPORTS_DIR = MARKETING_DIR / "content_reports"
 AUDIO_DIR = MARKETING_DIR / "remotion" / "public" / "audio"
 TREND_INTAKE_PATH = MARKETING_DIR / "content_research" / "trend_intake_latest.json"
+REMOTION_SRC_DIR = MARKETING_DIR / "remotion" / "src"
+DAILY_CONTENT_DIR = MARKETING_DIR / "daily_content"
 
 
 def read_json(path: Path, fallback):
@@ -126,6 +128,15 @@ def build_report() -> dict:
         or (AUDIO_DIR / "signal-studio-voiceover.mp3").exists()
     )
     has_quiet_music = (AUDIO_DIR / "signal-quiet-orbit.wav").exists() or (AUDIO_DIR / "signal-studio-bed.mp3").exists()
+    channel_manifests = sorted(DAILY_CONTENT_DIR.glob("*/channel_manifest.json"))
+    has_longform_renderer = (
+        (REMOTION_SRC_DIR / "TeardownEpisode.tsx").exists()
+        and any(isinstance(entry.get("youtube"), dict) and entry["youtube"].get("props") for entry in calendar)
+    )
+    has_thumbnail_generator = (
+        (REMOTION_SRC_DIR / "SignalThumbnail.tsx").exists()
+        and any(isinstance(entry.get("thumbnail"), dict) and entry["thumbnail"].get("props") for entry in calendar)
+    )
 
     queue_counts = {}
     for post in posts:
@@ -155,6 +166,9 @@ def build_report() -> dict:
             "hasStudioVoiceover": has_studio_voiceover,
             "hasQuietMusic": has_quiet_music,
             "hasSourceBackedTrendIntake": has_source_backed_trend_intake,
+            "hasLongFormRenderer": has_longform_renderer,
+            "hasThumbnailGenerator": has_thumbnail_generator,
+            "channelManifests": [str(path.relative_to(ROOT)) for path in channel_manifests],
             "needsFullRenderReview": any(entry.get("reviewStatus") == "needs_render_and_review" for entry in calendar),
         },
         "monetizationReadiness": {
@@ -166,13 +180,15 @@ def build_report() -> dict:
             "hasStudioVoiceover": has_studio_voiceover,
             "hasQuietMusic": has_quiet_music,
             "hasSourceBackedTrendIntake": has_source_backed_trend_intake,
+            "hasLongFormRenderer": has_longform_renderer,
+            "hasThumbnailGenerator": has_thumbnail_generator,
             "missing": [
                 item
                 for item, ok in [
                     ("platform metrics feed", bool(metrics)),
                     ("studio voiceover for daily shorts", has_studio_voiceover),
-                    ("long-form 16:9 renderer", False),
-                    ("thumbnail generator", False),
+                    ("long-form 16:9 renderer", has_longform_renderer),
+                    ("thumbnail generator", has_thumbnail_generator),
                     ("source-backed trend intake", has_source_backed_trend_intake),
                     ("automated live trend API connector", False),
                 ]
@@ -204,6 +220,8 @@ def write_markdown(report: dict, path: Path) -> None:
         f"- Studio voiceover available: {readiness['hasStudioVoiceover']}",
         f"- Quiet music available: {readiness['hasQuietMusic']}",
         f"- Source-backed trend intake available: {readiness['hasSourceBackedTrendIntake']}",
+        f"- Long-form 16:9 renderer available: {readiness['hasLongFormRenderer']}",
+        f"- Thumbnail generator available: {readiness['hasThumbnailGenerator']}",
         "",
         "Missing:",
     ])
@@ -216,6 +234,8 @@ def write_markdown(report: dict, path: Path) -> None:
         f"- Studio voiceover: {creative['hasStudioVoiceover']}",
         f"- Quiet music: {creative['hasQuietMusic']}",
         f"- Source-backed trend intake: {creative['hasSourceBackedTrendIntake']}",
+        f"- Long-form renderer: {creative['hasLongFormRenderer']}",
+        f"- Thumbnail generator: {creative['hasThumbnailGenerator']}",
         f"- Needs full render review: {creative['needsFullRenderReview']}",
     ])
     lines.extend(["", "## Daily Packets", ""])

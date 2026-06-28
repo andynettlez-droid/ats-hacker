@@ -1,0 +1,34 @@
+{
+  "date": "2026-06-28",
+  "topic": "AI resumes all sound the same, so recruiters search for proof",
+  "status": "render_ready_review_required",
+  "episode": {
+    "composition": "TeardownEpisode",
+    "props": "marketing/remotion/props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_episode.json",
+    "output": "marketing/remotion/out/daily-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-episode.mp4",
+    "format": "1920x1080",
+    "status": "render_ready",
+    "audioReadiness": {
+      "studioVoiceover": false,
+      "quietMusic": true,
+      "reason": "episode voiceover needs full-length narration pass before publication"
+    }
+  },
+  "thumbnail": {
+    "composition": "SignalThumbnail",
+    "props": "marketing/remotion/props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_thumbnail.json",
+    "output": "marketing/remotion/out/daily-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-thumbnail.png",
+    "format": "1280x720",
+    "status": "render_ready"
+  },
+  "reviewGate": {
+    "required": true,
+    "checks": [
+      "Render the episode and thumbnail.",
+      "Verify the hook is visible in the opening seconds.",
+      "Verify resume, job description, score movement, and Signal mascot are visible.",
+      "Verify audio is studio-quality and music stays quiet.",
+      "Verify no unsupported ATS, guarantee, or fake-experience claims."
+    ]
+  }
+}

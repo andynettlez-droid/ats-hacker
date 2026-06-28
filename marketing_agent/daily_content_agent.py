@@ -798,6 +798,141 @@ def write_markdown_packet(packet: dict, packet_dir: Path) -> None:
     (packet_dir / "viewer_customer_review.md").write_text("\n".join(review_lines), encoding="utf-8")
 
 
+def first_short_props(packet: dict) -> dict:
+    for short in packet.get("shorts", []) or []:
+        if isinstance(short, dict) and isinstance(short.get("props"), dict):
+            return short["props"]
+    return {}
+
+
+def build_episode_props(packet: dict) -> dict:
+    youtube = packet.get("youtube") if isinstance(packet.get("youtube"), dict) else {}
+    sections = [
+        {
+            "label": str(section.get("label", f"Section {idx}")),
+            "script": str(section.get("script", "")),
+            "visual": str(section.get("visual", "Resume teardown board with job-description highlights.")),
+        }
+        for idx, section in enumerate(youtube.get("scriptSections", []) or [], start=1)
+        if isinstance(section, dict)
+    ]
+    props = first_short_props(packet)
+    keywords = [str(item) for item in props.get("missing", []) if str(item).strip()][:5]
+    if len(keywords) < 3:
+        keywords = ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"]
+
+    voiceover_text = " ".join(
+        str(section.get("script", ""))
+        for section in sections
+        if isinstance(section, dict)
+    )
+    return {
+        "title": str(youtube.get("title") or packet.get("topic") or "Daily resume teardown"),
+        "thesis": str(packet.get("thesis") or "A recruiter-style resume teardown that turns vague experience into role-specific proof."),
+        "cta": str(youtube.get("cta") or "Paste the job description and check your free Signal score before you apply."),
+        "sections": sections or build_fallback_packet({"topic": packet.get("topic", "Daily resume teardown"), "series": packet.get("series", "Daily"), "thesis": "", "hook": "", "keywords": keywords, "source_notes": []}, packet.get("publishDate", "daily"))["youtube"]["scriptSections"],
+        "keywords": keywords,
+        "weakBullets": [
+            "Results-driven team player.",
+            "Helped with marketing campaigns.",
+            "Worked with cross-functional teams.",
+        ],
+        "beforeBullet": "Helped with marketing campaigns.",
+        "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+        "beforeScore": int(props.get("beforeScore", 34) or 34),
+        "afterScore": int(props.get("afterScore", 92) or 92),
+        "musicSrc": "audio/signal-quiet-orbit.wav",
+        "musicVolume": 0.11,
+        "voiceoverVolume": 0.94,
+        "voiceover_text": voiceover_text[:3500],
+    }
+
+
+def build_thumbnail_props(packet: dict) -> dict:
+    props = first_short_props(packet)
+    keywords = [str(item) for item in props.get("missing", []) if str(item).strip()][:5]
+    if len(keywords) < 3:
+        keywords = ["HubSpot", "CAC", "LinkedIn Ads"]
+    return {
+        "title": "Qualified but invisible",
+        "badge": str(packet.get("series") or "Resume teardown")[:32],
+        "beforeScore": int(props.get("beforeScore", 34) or 34),
+        "afterScore": int(props.get("afterScore", 92) or 92),
+        "leftLabel": "Vague resume",
+        "rightLabel": "Job-match proof",
+        "keywords": keywords,
+    }
+
+
+def write_episode_thumbnail_and_manifest(packet: dict, packet_dir: Path, prepare_audio: bool, force_audio: bool) -> dict:
+    date_slug = safe_slug(packet["publishDate"])
+    topic_slug = safe_slug(packet["topic"])
+    episode_props_path = REMOTION_DIR / f"props_daily_{date_slug}_{topic_slug}_episode.json"
+    thumbnail_props_path = REMOTION_DIR / f"props_daily_{date_slug}_{topic_slug}_thumbnail.json"
+    episode_out = f"daily-{topic_slug}-episode.mp4"
+    thumbnail_out = f"daily-{topic_slug}-thumbnail.png"
+
+    episode_props = build_episode_props(packet)
+    thumbnail_props = build_thumbnail_props(packet)
+    episode_props["audioReadiness"] = {
+        "studioVoiceover": False,
+        "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
+        "reason": "studio episode voiceover not requested",
+    }
+    if prepare_audio:
+        if has_elevenlabs_config():
+            voice_name = f"daily-{date_slug}-{topic_slug[:42]}-episode-voiceover.mp3"
+            voice_ref = f"audio/{voice_name}"
+            if force_audio or not public_asset_exists(voice_ref):
+                generated_ref = generate_elevenlabs_voiceover(episode_props.get("voiceover_text", ""), voice_name)
+                voice_ref = generated_ref or voice_ref
+            if public_asset_exists(voice_ref):
+                episode_props["voiceoverSrc"] = voice_ref
+                episode_props["audioReadiness"] = {
+                    "studioVoiceover": True,
+                    "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
+                    "reason": "ready",
+                }
+        else:
+            episode_props["audioReadiness"]["reason"] = "ELEVENLABS_API_KEY is not configured"
+
+    episode_props_path.write_text(json.dumps(episode_props, indent=2), encoding="utf-8")
+    thumbnail_props_path.write_text(json.dumps(thumbnail_props, indent=2), encoding="utf-8")
+
+    manifest = {
+        "date": packet["publishDate"],
+        "topic": packet["topic"],
+        "status": "render_ready_review_required",
+        "episode": {
+            "composition": "TeardownEpisode",
+            "props": str(episode_props_path.relative_to(ROOT)),
+            "output": f"marketing/remotion/out/{episode_out}",
+            "format": "1920x1080",
+            "status": "render_ready",
+            "audioReadiness": episode_props.get("audioReadiness", {}),
+        },
+        "thumbnail": {
+            "composition": "SignalThumbnail",
+            "props": str(thumbnail_props_path.relative_to(ROOT)),
+            "output": f"marketing/remotion/out/{thumbnail_out}",
+            "format": "1280x720",
+            "status": "render_ready",
+        },
+        "reviewGate": {
+            "required": True,
+            "checks": [
+                "Render the episode and thumbnail.",
+                "Verify the hook is visible in the opening seconds.",
+                "Verify resume, job description, score movement, and Signal mascot are visible.",
+                "Verify audio is studio-quality and music stays quiet.",
+                "Verify no unsupported ATS, guarantee, or fake-experience claims.",
+            ],
+        },
+    }
+    (packet_dir / "channel_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    return manifest
+
+
 def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: bool, force_audio: bool) -> list[dict]:
     written = []
     date_slug = packet["publishDate"]
@@ -902,7 +1037,7 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
     return written
 
 
-def update_calendar(packet: dict, packet_dir: Path, written_shorts: list[dict]) -> None:
+def update_calendar(packet: dict, packet_dir: Path, written_shorts: list[dict], channel_manifest: dict) -> None:
     if CALENDAR_PATH.exists():
         try:
             calendar = json.loads(CALENDAR_PATH.read_text(encoding="utf-8"))
@@ -918,9 +1053,13 @@ def update_calendar(packet: dict, packet_dir: Path, written_shorts: list[dict]) 
         "packet": str(packet_dir.relative_to(ROOT)),
         "youtube": {
             "title": packet["youtube"].get("title", ""),
-            "status": "script_ready",
+            "status": "render_ready_review_required",
             "target": "daily long-form YouTube",
+            "manifest": str((packet_dir / "channel_manifest.json").relative_to(ROOT)),
+            "props": channel_manifest.get("episode", {}).get("props"),
+            "output": channel_manifest.get("episode", {}).get("output"),
         },
+        "thumbnail": channel_manifest.get("thumbnail", {}),
         "shorts": [
             {
                 "title": item["title"],
@@ -956,13 +1095,25 @@ def build_daily_caption(short: dict) -> str:
     return caption
 
 
-def write_render_commands(packet_dir: Path, written_shorts: list[dict]) -> None:
+def write_render_commands(packet_dir: Path, written_shorts: list[dict], channel_manifest: dict) -> None:
     commands = [
         "# Run from marketing/remotion",
-        "# These render-ready props feed existing short-form templates.",
+        "# These render-ready props produce the daily YouTube episode, thumbnail, and Shorts.",
         "# Review still frames before posting.",
         "",
     ]
+    episode = channel_manifest.get("episode", {})
+    thumbnail = channel_manifest.get("thumbnail", {})
+    if episode.get("props") and episode.get("output"):
+        props = str(episode["props"]).replace("\\", "/").replace("marketing/remotion/", "")
+        output = str(episode["output"]).replace("\\", "/").replace("marketing/remotion/", "")
+        commands.append(f"npx remotion render TeardownEpisode {output} --props={props}")
+    if thumbnail.get("props") and thumbnail.get("output"):
+        props = str(thumbnail["props"]).replace("\\", "/").replace("marketing/remotion/", "")
+        output = str(thumbnail["output"]).replace("\\", "/").replace("marketing/remotion/", "")
+        commands.append(f"npx remotion still SignalThumbnail {output} --props={props}")
+    if len(commands) > 4:
+        commands.append("")
     for item in written_shorts:
         props = item["props"].replace("\\", "/").replace("marketing/remotion/", "")
         out_name = f"daily-{safe_slug(item['title'])}.mp4"
@@ -1011,14 +1162,16 @@ def main() -> None:
     (packet_dir / "packet.json").write_text(json.dumps(packet, indent=2), encoding="utf-8")
     (packet_dir / "source_notes.json").write_text(json.dumps(packet.get("sourceNotes", []), indent=2), encoding="utf-8")
     write_markdown_packet(packet, packet_dir)
+    channel_manifest = write_episode_thumbnail_and_manifest(packet, packet_dir, args.prepare_audio, args.force_audio)
     written_shorts = write_short_briefs_and_props(packet, packet_dir, args.prepare_audio, args.force_audio)
-    write_render_commands(packet_dir, written_shorts)
+    write_render_commands(packet_dir, written_shorts, channel_manifest)
     write_autopost_drafts(packet, packet_dir, written_shorts)
-    update_calendar(packet, packet_dir, written_shorts)
+    update_calendar(packet, packet_dir, written_shorts, channel_manifest)
 
     result = {
         "packet": str(packet_dir.relative_to(ROOT)),
         "youtube": str((packet_dir / "youtube_episode.md").relative_to(ROOT)),
+        "channelManifest": str((packet_dir / "channel_manifest.json").relative_to(ROOT)),
         "shorts": written_shorts,
         "autopostDrafts": str((packet_dir / "autopost_drafts.json").relative_to(ROOT)),
         "calendar": str(CALENDAR_PATH.relative_to(ROOT)),

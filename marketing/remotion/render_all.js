@@ -182,10 +182,18 @@ for (const variant of videoVariants) {
   // Avoid duplicate entries
   if (!posts.some(p => p.file === postFileRelative)) {
     posts.push({
+      title: `${variant.props.hook1} ${variant.props.hook2}`.slice(0, 96),
       caption: variant.caption,
       file: postFileRelative,
-      platforms: ['instagram', 'youtube'],
-      scheduleDate: variant.scheduleDate
+      platforms: ['tiktok', 'instagram', 'youtube'],
+      scheduleDate: variant.scheduleDate,
+      status: 'review_required',
+      reviewGate: {
+        source: 'marketing/remotion/render_all.js',
+        required: true,
+        reason: 'legacy batch renders must receive creator review before live posting',
+        createdAt: new Date().toISOString()
+      }
     });
     console.log(`Queued post: ${variant.fileName} scheduled for ${variant.scheduleDate}`);
   }

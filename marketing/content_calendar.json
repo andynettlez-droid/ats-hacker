@@ -6,8 +6,18 @@
     "packet": "marketing\\daily_content\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof",
     "youtube": {
       "title": "Your AI resume sounds professional. That might be the problem. | Resume Teardown",
-      "status": "script_ready",
-      "target": "daily long-form YouTube"
+      "status": "render_ready_review_required",
+      "target": "daily long-form YouTube",
+      "manifest": "marketing\\daily_content\\2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof\\channel_manifest.json",
+      "props": "marketing/remotion/props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_episode.json",
+      "output": "marketing/remotion/out/daily-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-episode.mp4"
+    },
+    "thumbnail": {
+      "composition": "SignalThumbnail",
+      "props": "marketing/remotion/props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_thumbnail.json",
+      "output": "marketing/remotion/out/daily-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-thumbnail.png",
+      "format": "1280x720",
+      "status": "render_ready"
     },
     "shorts": [
       {

@@ -42,6 +42,9 @@ POSITIVE_MARKERS = {
         "score",
         "Signal",
         "free score",
+        "redline",
+        "before/after",
+        "scorecard",
     ],
     "humor": [
         "beige",
@@ -55,6 +58,28 @@ POSITIVE_MARKERS = {
         "yap",
     ],
 }
+
+VISIBLE_ARTIFACT_MARKERS = [
+    "resume",
+    "job description",
+    "bullet",
+    "score",
+    "keyword",
+    "highlight",
+    "redline",
+    "before",
+    "after",
+]
+
+SERIES_FORMATS = [
+    "resume crime scene",
+    "ats myth lab",
+    "job description translation",
+    "one bullet fix",
+    "recruiter search test",
+    "ai resume roast",
+    "resume builder cost trap",
+]
 
 
 DISQUALIFIERS = [
@@ -131,6 +156,16 @@ def has_score_props(short: dict) -> bool:
     return isinstance(before, (int, float)) and isinstance(after, (int, float)) and after > before
 
 
+def has_visible_artifact(blob: str) -> bool:
+    low = blob.lower()
+    return sum(1 for marker in VISIBLE_ARTIFACT_MARKERS if marker in low) >= 3
+
+
+def has_repeatable_series(blob: str) -> bool:
+    low = blob.lower()
+    return any(series in low for series in SERIES_FORMATS)
+
+
 def score_short(short: dict) -> dict:
     props = short.get("props") if isinstance(short.get("props"), dict) else {}
     blob = "\n".join(
@@ -180,10 +215,20 @@ def score_short(short: dict) -> dict:
     else:
         notes.append("Keep resume, job description, bullet, score, and Signal visible.")
 
+    if has_visible_artifact(blob):
+        score += 5
+    else:
+        notes.append("Every short needs a concrete on-screen artifact: resume line, JD excerpt, scorecard, redline, or before/after diff.")
+
     if has_numbered_payoff(blob) or has_score_props(short):
         score += 10
     else:
         notes.append("Include a clear score jump or numeric proof payoff.")
+
+    if has_repeatable_series(blob):
+        score += 5
+    else:
+        notes.append("Use a repeatable series shell such as Resume Crime Scene, ATS Myth Lab, or One Bullet Fix.")
 
     if "free signal score" in low or "free score" in low:
         score += 10
@@ -227,6 +272,11 @@ def score_packet(packet: dict) -> dict:
     else:
         notes.append("Needs stronger visual plan around resume/JD/bullet/score, not presenter-only content.")
 
+    if has_visible_artifact(blob):
+        score += 4
+    else:
+        notes.append("Needs visible artifacts throughout: resume line, JD excerpt, scorecard, redline, or before/after diff.")
+
     if count_markers(blob, POSITIVE_MARKERS["humor"]) >= 3:
         score += 14
     else:
@@ -246,6 +296,11 @@ def score_packet(packet: dict) -> dict:
         score += 6
     else:
         notes.append("Needs at least three short-form cutdowns.")
+
+    if has_repeatable_series(blob):
+        score += 4
+    else:
+        notes.append("Needs a repeatable creator series wrapper, not a one-off tip.")
 
     if packet.get("sourceNotes"):
         score += 6

@@ -34,7 +34,7 @@ export type SignalRevealProps = z.infer<typeof signalRevealSchema>;
 
 export const defaultSignalRevealProps: SignalRevealProps = {
   hook1: "Most resumes",
-  hook2: "get buried first.",
+  hook2: "get missed first.",
   subline: "Recruiters search by keywords before they ever open a resume.",
   missing: ["SQL", "Leadership", "Customer Growth", "Product Strategy", "Automation", "Stakeholder Management"],
   beforeScore: 42,

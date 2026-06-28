@@ -93,8 +93,51 @@ type FulfilledOutput = {
   resumeData: ResumeData;
   beforeScore?: number | null;
   afterScore?: number | null;
+  keywordGap?: KeywordGapReport | null;
   optimizationLow?: boolean;
 };
+
+type ScoreResult = {
+  score?: number;
+  matchedKeywords?: unknown;
+  missingKeywords?: unknown;
+  verdict?: string;
+};
+
+type KeywordGapReport = {
+  missingBefore: string[];
+  matchedBefore: string[];
+  stillMissingAfter: string[];
+  coveredAfter: string[];
+};
+
+function normalizeKeywordList(value: unknown, limit = 8): string[] {
+  if (!Array.isArray(value)) return [];
+  const seen = new Set<string>();
+  return value
+    .map((item) => (typeof item === 'string' ? item.trim() : ''))
+    .filter(Boolean)
+    .filter((item) => {
+      const key = item.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, limit);
+}
+
+function keywordGapFromScores(before: ScoreResult | null, after: ScoreResult | null): KeywordGapReport | null {
+  if (!before && !after) return null;
+  const missingBefore = normalizeKeywordList(before?.missingKeywords, 10);
+  const matchedBefore = normalizeKeywordList(before?.matchedKeywords, 8);
+  const stillMissingAfter = normalizeKeywordList(after?.missingKeywords, 8);
+  const matchedAfter = normalizeKeywordList(after?.matchedKeywords, 10);
+  const missingBeforeKeys = new Set(missingBefore.map((keyword) => keyword.toLowerCase()));
+  const coveredAfter = matchedAfter.filter((keyword) => missingBeforeKeys.has(keyword.toLowerCase())).slice(0, 8);
+
+  if (!missingBefore.length && !matchedBefore.length && !stillMissingAfter.length && !coveredAfter.length) return null;
+  return { missingBefore, matchedBefore, stillMissingAfter, coveredAfter };
+}
 
 function fulfilledOutputKey(sessionId: string): string {
   return `${FULFILLED_OUTPUT_PREFIX}${sessionId}`;
@@ -117,6 +160,7 @@ function readFulfilledOutput(sessionId: string): FulfilledOutput | null {
       resumeData: parsed.resumeData,
       beforeScore: typeof parsed.beforeScore === 'number' ? parsed.beforeScore : null,
       afterScore: typeof parsed.afterScore === 'number' ? parsed.afterScore : null,
+      keywordGap: parsed.keywordGap || null,
       optimizationLow: Boolean(parsed.optimizationLow),
     };
   } catch {
@@ -154,6 +198,7 @@ async function readServerFulfilledOutput(sessionId: string): Promise<FulfilledOu
       resumeData: parsed.resumeData,
       beforeScore: typeof parsed.beforeScore === 'number' ? parsed.beforeScore : null,
       afterScore: typeof parsed.afterScore === 'number' ? parsed.afterScore : null,
+      keywordGap: parsed.keywordGap || null,
       optimizationLow: Boolean(parsed.optimizationLow || parsed.resumeData._warning === 'optimization_low'),
     };
   } catch {
@@ -421,10 +466,14 @@ function SuccessPageContent() {
   const [baseName, setBaseName] = useState("optimized_resume");
   const [beforeScore, setBeforeScore] = useState<number | null>(null);
   const [afterScore, setAfterScore] = useState<number | null>(null);
+  const [keywordGap, setKeywordGap] = useState<KeywordGapReport | null>(null);
   const [optimizationLow, setOptimizationLow] = useState(false);
   const [copied, setCopied] = useState(false);
   const [downloadError, setDownloadError] = useState<string | null>(null);
   const searchParams = useSearchParams();
+  const visibleCoveredKeywords = keywordGap
+    ? normalizeKeywordList([...(keywordGap.coveredAfter || []), ...(keywordGap.matchedBefore || [])], 8)
+    : [];
 
   useEffect(() => {
     const processResume = async () => {
@@ -440,6 +489,7 @@ function SuccessPageContent() {
         setResumeData(restored.resumeData);
         setBeforeScore(restored.beforeScore ?? null);
         setAfterScore(restored.afterScore ?? null);
+        setKeywordGap(restored.keywordGap ?? null);
         setOptimizationLow(Boolean(restored.optimizationLow));
         setStatus("Optimization restored. Your files are ready to download again.");
         setIsDone(true);
@@ -461,12 +511,14 @@ function SuccessPageContent() {
           setResumeData(serverRestored.resumeData);
           setBeforeScore(serverRestored.beforeScore ?? null);
           setAfterScore(serverRestored.afterScore ?? null);
+          setKeywordGap(serverRestored.keywordGap ?? null);
           setOptimizationLow(Boolean(serverRestored.optimizationLow));
           saveFulfilledOutput(sessionId, {
             baseName: serverRestored.baseName,
             resumeData: serverRestored.resumeData,
             beforeScore: serverRestored.beforeScore ?? null,
             afterScore: serverRestored.afterScore ?? null,
+            keywordGap: serverRestored.keywordGap ?? null,
             optimizationLow: Boolean(serverRestored.optimizationLow),
           });
           setStatus("Optimization restored from your paid session. Your files are ready to download again.");
@@ -500,6 +552,7 @@ function SuccessPageContent() {
           resumeData: json,
           beforeScore: null,
           afterScore: null,
+          keywordGap: null,
           optimizationLow: json._warning === 'optimization_low',
         });
 
@@ -516,7 +569,7 @@ function SuccessPageContent() {
             (json.education || []).map((e) => `${e.school} ${e.degree}`).join(' '),
           ].filter(Boolean).join(' ');
 
-          const scoreOf = (text: string) =>
+          const scoreOf = (text: string): Promise<ScoreResult | null> =>
             fetch('/api/score', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -528,13 +581,16 @@ function SuccessPageContent() {
           Promise.all([scoreOf(resumeText), scoreOf(optimizedText)]).then(([b, a]) => {
             const nextBefore = b && typeof b.score === 'number' ? b.score : null;
             const nextAfter = a && typeof a.score === 'number' ? a.score : null;
+            const nextKeywordGap = keywordGapFromScores(b, a);
             if (nextBefore !== null) setBeforeScore(nextBefore);
             if (nextAfter !== null) setAfterScore(nextAfter);
+            setKeywordGap(nextKeywordGap);
             saveFulfilledOutput(sessionId, {
               baseName: base,
               resumeData: json,
               beforeScore: nextBefore,
               afterScore: nextAfter,
+              keywordGap: nextKeywordGap,
               optimizationLow: json._warning === 'optimization_low',
             });
           });
@@ -655,6 +711,52 @@ function SuccessPageContent() {
                 </div>
                 {afterScore > beforeScore && (
                   <p className="text-xs text-emerald-700 font-medium mt-3">+{afterScore - beforeScore} point keyword-match improvement.</p>
+                )}
+              </div>
+            )}
+
+            {keywordGap && resumeData?.experience && (
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 space-y-4">
+                <div>
+                  <p className="text-xs font-semibold text-slate-400 tracking-wide uppercase">Keyword gap report</p>
+                  <h2 className="text-lg font-black text-slate-950 mt-1">What Signal made easier to find</h2>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="rounded-xl border border-red-100 bg-red-50/50 p-4">
+                    <p className="text-[11px] uppercase tracking-wide font-black text-red-500 mb-2">Weak or missing before</p>
+                    <div className="flex flex-wrap gap-2">
+                      {(keywordGap.missingBefore.length ? keywordGap.missingBefore : ['No major gaps found']).map((keyword) => (
+                        <span key={keyword} className="rounded-full border border-red-100 bg-white px-2.5 py-1 text-xs font-bold text-red-700">
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl border border-emerald-100 bg-emerald-50/60 p-4">
+                    <p className="text-[11px] uppercase tracking-wide font-black text-emerald-600 mb-2">Now covered or clearer</p>
+                    <div className="flex flex-wrap gap-2">
+                      {(visibleCoveredKeywords.length ? visibleCoveredKeywords : ['Role language tightened']).map((keyword) => (
+                        <span key={keyword} className="rounded-full border border-emerald-100 bg-white px-2.5 py-1 text-xs font-bold text-emerald-700">
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {keywordGap.stillMissingAfter.length > 0 && (
+                  <div className="rounded-xl border border-amber-100 bg-amber-50/60 px-4 py-3">
+                    <p className="text-[11px] uppercase tracking-wide font-black text-amber-600 mb-2">Still worth checking manually</p>
+                    <div className="flex flex-wrap gap-2">
+                      {keywordGap.stillMissingAfter.map((keyword) => (
+                        <span key={keyword} className="rounded-full border border-amber-100 bg-white px-2.5 py-1 text-xs font-bold text-amber-700">
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 )}
               </div>
             )}

@@ -58,7 +58,7 @@ SAFE_DEFAULT_PROPS = {
     "afterScore": 91,
     "missing": ["SQL", "workflow automation", "stakeholder reporting", "metrics"],
     "cta": "Get your score free. Link in bio",
-    "voiceover_text": "Your resume is not being rejected by a robot. But it may be hard to find when recruiters search for job-specific language. Signal by ATSHacker reads the role, spots missing keywords and proof points, then helps rewrite your bullets around what you actually did. No fake experience. Just a clearer match.",
+    "voiceover_text": "Your resume can look qualified and still be hard to find. Recruiters search for job-specific language. Signal by ATSHacker reads the role, spots missing keywords and proof points, then helps rewrite your bullets around what you actually did. No fake experience. Just a clearer match.",
 }
 
 VIRAL_SIGNAL_PROPS = {
@@ -69,7 +69,7 @@ VIRAL_SIGNAL_PROPS = {
     "afterScore": 91,
     "missing": ["SQL", "workflow automation", "stakeholder reporting", "metrics"],
     "cta": "Check your score free. Link in bio",
-    "voiceover_text": "Your resume is not being rejected by a robot. But it may be hard to find when recruiters search for job-specific language. Signal by ATSHacker reads the role, spots missing keywords and proof points, then helps rewrite your bullets around what you actually did. No fake experience. Just a clearer match.",
+    "voiceover_text": "Your resume can look qualified and still be hard to find. Recruiters search for job-specific language. Signal by ATSHacker reads the role, spots missing keywords and proof points, then helps rewrite your bullets around what you actually did. No fake experience. Just a clearer match.",
 }
 
 STUDIO_BREAKTHROUGH_PROPS = {
@@ -80,7 +80,7 @@ STUDIO_BREAKTHROUGH_PROPS = {
     "afterScore": 92,
     "missing": ["SQL", "workflow automation", "stakeholder reporting", "cloud delivery"],
     "cta": "Check your score free. Link in bio",
-    "voiceover_text": "Your resume is not fighting a robot. It is trying to pass through company filters before a recruiter opens it. Signal reads the job, finds the missing role language, rebuilds your real proof, and phases the resume into the hiring manager screen. No fake experience. Just a clearer match.",
+    "voiceover_text": "Your resume is not broken. It is trying to pass through company filters before a recruiter opens it. Signal reads the job, finds the missing role language, rebuilds your real proof, and phases the resume into the hiring manager screen. No fake experience. Just a clearer match.",
     "musicSrc": "audio/signal-studio-bed.mp3",
     "musicVolume": 0.18,
     "voiceoverSrc": "audio/signal-studio-voiceover.mp3",

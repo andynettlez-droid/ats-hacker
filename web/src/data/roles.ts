@@ -14,7 +14,7 @@ export const roles: Role[] = [
   {
     slug: 'software-engineer',
     title: 'Software Engineer',
-    painPoint: "Recruiters at FAANG and Fortune 500 companies search for specific framework versions. If your resume format breaks the parser, your technical skills get stripped out and you rank low in their search results.",
+    painPoint: "Technical recruiters often search for specific languages, frameworks, and versions. If those terms are unclear or hidden in a complex format, your strongest skills can be harder to find in search results.",
     keywords: ['CI/CD', 'REST APIs', 'microservices', 'unit testing', 'Agile/Scrum', 'code review', 'system design', 'cloud (AWS/GCP/Azure)', 'Git', 'distributed systems'],
     tips: [
       'Lead each bullet with a language or framework the JD names (e.g. "Built React + Node services…").',
@@ -25,7 +25,7 @@ export const roles: Role[] = [
   {
     slug: 'data-analyst',
     title: 'Data Analyst',
-    painPoint: "Analyst resumes rank lower when they list generic 'reporting' instead of the exact BI tools and SQL dialects the posting names. The ATS scores you on rigid keyword matches, not on the spirit of your experience.",
+    painPoint: "Analyst resumes are easier to find when they name the exact BI tools, SQL dialects, and business outcomes in the posting. Generic 'reporting' language can undersell relevant experience.",
     keywords: ['SQL', 'data visualization', 'Tableau', 'Power BI', 'Excel', 'A/B testing', 'ETL', 'Python/pandas', 'dashboards', 'KPIs'],
     tips: [
       'Name the BI tools in the JD explicitly — ATS matches "Power BI", not "BI tools".',
@@ -36,7 +36,7 @@ export const roles: Role[] = [
   {
     slug: 'data-scientist',
     title: 'Data Scientist',
-    painPoint: "Data Science resumes rank low because recruiters search with rigid, exact string matches — the system won't treat TensorFlow and PyTorch as interchangeable, so missing the exact term buries you in the results.",
+    painPoint: "Data science recruiters often search for exact libraries, modeling methods, and deployment terms. If the posting names TensorFlow, PyTorch, NLP, or MLOps, your resume should make relevant matches obvious.",
     keywords: ['machine learning', 'Python/R', 'data visualization', 'statistical modeling', 'SQL', 'deep learning', 'feature engineering', 'A/B testing', 'NLP', 'model deployment'],
     tips: [
       'Match the exact library named (TensorFlow vs PyTorch vs scikit-learn).',
@@ -47,7 +47,7 @@ export const roles: Role[] = [
   {
     slug: 'project-manager',
     title: 'Project Manager',
-    painPoint: "PM resumes are vulnerable because the role is defined by soft, semantic skills. If you write 'ran projects' instead of the JD's 'stakeholder management' and 'cross-functional leadership', the ATS assumes you lack the core competencies.",
+    painPoint: "Project manager resumes can sound too generic when they say 'ran projects' instead of the role's specific delivery, stakeholder, risk, and cross-functional leadership language.",
     keywords: ['stakeholder management', 'Agile', 'Scrum', 'risk management', 'budget management', 'PMP', 'Jira', 'roadmap', 'cross-functional', 'deliverables'],
     tips: [
       'If the JD lists PMP/CSM/PRINCE2, put the exact acronym near the top.',
@@ -58,7 +58,7 @@ export const roles: Role[] = [
   {
     slug: 'registered-nurse',
     title: 'Registered Nurse',
-    painPoint: "Healthcare ATS systems like Taleo are notoriously rigid. If your certifications (ACLS, BLS) and unit specialties aren't formatted exactly how the hospital's search expects, your application can drop lower in the recruiter's results.",
+    painPoint: "Healthcare recruiters often search by license, certification, unit specialty, and EHR. If ACLS, BLS, specialty units, or charting systems are missing or unclear, your fit can be harder to spot.",
     keywords: ['patient care', 'BLS/ACLS', 'EHR/EMR', 'medication administration', 'care plans', 'HIPAA', 'triage', 'vital signs', 'patient education', 'charting'],
     tips: [
       'List certifications and licenses exactly (RN, BLS, ACLS, state license).',
@@ -69,7 +69,7 @@ export const roles: Role[] = [
   {
     slug: 'accountant',
     title: 'Accountant',
-    painPoint: "Accounting resumes rank lower when they say 'handled finances' instead of the precise terms - GAAP, reconciliation, month-end close - that the ATS is told to require. Vague wording can look like a weak match to the search.",
+    painPoint: "Accounting resumes are stronger when they name precise responsibilities like GAAP, reconciliation, month-end close, audit support, and the accounting systems used.",
     keywords: ['GAAP', 'accounts payable', 'accounts receivable', 'reconciliation', 'general ledger', 'QuickBooks', 'month-end close', 'financial reporting', 'audit', 'Excel'],
     tips: [
       'Include "GAAP" and any software named (QuickBooks, NetSuite, SAP).',
@@ -80,7 +80,7 @@ export const roles: Role[] = [
   {
     slug: 'marketing-manager',
     title: 'Marketing Manager',
-    painPoint: "Marketing resumes get rejected when they lean on design instead of parsing-friendly text. The ATS strips your formatting and looks purely for ROI metrics and exact tool competencies — if those words aren't there, neither are you.",
+    painPoint: "Marketing resumes can underperform when design takes over and the text does not clearly show channels, tools, metrics, pipeline impact, and campaign outcomes.",
     keywords: ['SEO', 'content marketing', 'campaign management', 'Google Analytics', 'marketing automation', 'lead generation', 'brand strategy', 'social media', 'ROI', 'A/B testing'],
     tips: [
       'Quantify results: leads, CAC, ROAS, conversion rate, pipeline influenced.',
@@ -91,7 +91,7 @@ export const roles: Role[] = [
   {
     slug: 'sales-representative',
     title: 'Sales Representative',
-    painPoint: "Sales resumes rank lower when they describe activities instead of leading with numbers and the CRM named in the posting. Recruiters often search for quota attainment and specific tools first.",
+    painPoint: "Sales resumes are stronger when they lead with numbers, quota attainment, pipeline ownership, and the CRM named in the posting instead of describing activities broadly.",
     keywords: ['quota attainment', 'pipeline management', 'CRM/Salesforce', 'prospecting', 'cold calling', 'closing', 'B2B/B2C', 'account management', 'upselling', 'lead qualification'],
     tips: [
       'Lead with numbers: % of quota, revenue closed, deal size, ranking.',
@@ -102,7 +102,7 @@ export const roles: Role[] = [
   {
     slug: 'mechanical-engineer',
     title: 'Mechanical Engineer',
-    painPoint: "Engineering resumes get buried when the CAD tool or acronym is even slightly off — the ATS treats 'SolidWorks' and 'Solid Works' as different, and won't expand GD&T or FEA for you, so you drop out of keyword search results.",
+    painPoint: "Engineering recruiters search for specific CAD tools, standards, and technical acronyms. If SolidWorks, GD&T, FEA, or DFM experience is vague, your strongest technical fit can be missed.",
     keywords: ['CAD', 'SolidWorks', 'AutoCAD', 'GD&T', 'FEA', 'prototyping', 'DFM', 'tolerancing', 'product development', 'ASME'],
     tips: [
       'Name the CAD tool exactly as the JD does (SolidWorks vs CATIA vs Creo).',
@@ -113,7 +113,7 @@ export const roles: Role[] = [
   {
     slug: 'customer-success-manager',
     title: 'Customer Success Manager',
-    painPoint: "CSM resumes rank lower when they say 'helped customers' instead of the retention metrics and SaaS vocabulary - churn, NRR, QBRs - the ATS is configured to find. The search rewards the exact jargon.",
+    painPoint: "CSM resumes are easier to find when they use the SaaS language recruiters search for: churn, NRR, QBRs, renewals, onboarding, health scores, and expansion revenue.",
     keywords: ['customer retention', 'churn reduction', 'onboarding', 'upsell/cross-sell', 'NPS', 'account management', 'SaaS', 'renewals', 'CRM', 'QBRs'],
     tips: [
       'Quantify retention: churn %, NRR, renewal rate, expansion revenue.',
@@ -124,7 +124,7 @@ export const roles: Role[] = [
   {
     slug: 'product-manager',
     title: 'Product Manager',
-    painPoint: "Product Manager resumes are uniquely vulnerable because PM skills are highly semantic. Write 'managed features' instead of 'cross-functional leadership' and 'product roadmap', and the system assumes you don't meet the core competencies.",
+    painPoint: "Product manager resumes lose clarity when they say 'managed features' instead of showing roadmap ownership, prioritization, user research, cross-functional leadership, and measurable product outcomes.",
     keywords: ['product roadmap', 'user research', 'A/B testing', 'go-to-market', 'KPIs/OKRs', 'stakeholder management', 'Agile', 'prioritization', 'analytics', 'wireframing'],
     tips: [
       'Show outcomes: adoption, retention, revenue moved — not just "shipped features".',
@@ -135,7 +135,7 @@ export const roles: Role[] = [
   {
     slug: 'graphic-designer',
     title: 'Graphic Designer',
-    painPoint: "Designers get burned twice: heavy visual layouts confuse the parser, and tool names must match exactly — 'Adobe Creative Cloud' won't match a posting that says 'Creative Suite'. The ATS reads text, not your portfolio.",
+    painPoint: "Designer resumes need readable text as well as a portfolio. Recruiters still search for tools, deliverable types, design systems, branding, layout, and UI/UX terms in the resume itself.",
     keywords: ['Adobe Creative Suite', 'Photoshop', 'Illustrator', 'InDesign', 'Figma', 'typography', 'branding', 'layout', 'UI/UX', 'visual design'],
     tips: [
       'Match the exact tool name — "Adobe Creative Cloud" vs "Creative Suite" matters to ATS.',
@@ -146,7 +146,7 @@ export const roles: Role[] = [
   {
     slug: 'human-resources-manager',
     title: 'Human Resources Manager',
-    painPoint: "HR resumes rank lower when certifications and compliance terms aren't spelled out exactly. The ATS screens for 'SHRM-CP', 'FMLA' and the specific HRIS - paraphrasing those costs you the match.",
+    painPoint: "HR resumes are stronger when certifications, compliance terms, HRIS platforms, and employee-relations scope are spelled out clearly instead of hidden behind broad HR language.",
     keywords: ['talent acquisition', 'employee relations', 'HRIS', 'onboarding', 'performance management', 'compliance', 'benefits administration', 'FMLA', 'PHR/SHRM', 'compensation'],
     tips: [
       'Spell out certifications exactly (PHR, SPHR, SHRM-CP).',
@@ -157,7 +157,7 @@ export const roles: Role[] = [
   {
     slug: 'financial-analyst',
     title: 'Financial Analyst',
-    painPoint: "Finance resumes rank low when they say 'analyzed data' instead of 'financial modeling', 'FP&A' and 'variance analysis'. Recruiters search for those exact phrases, and synonyms don't count, so you get buried.",
+    painPoint: "Finance resumes can look generic when they say 'analyzed data' instead of naming financial modeling, FP&A, variance analysis, forecasting, valuation, and budget ownership.",
     keywords: ['financial modeling', 'forecasting', 'variance analysis', 'Excel', 'budgeting', 'valuation', 'P&L', 'FP&A', 'data analysis', 'GAAP'],
     tips: [
       'Include "financial modeling", "FP&A", and "variance analysis" verbatim if listed.',
@@ -168,7 +168,7 @@ export const roles: Role[] = [
   {
     slug: 'business-analyst',
     title: 'Business Analyst',
-    painPoint: "BA resumes rank lower when deliverables are described loosely. The ATS hunts for 'requirements gathering', 'BRD' and 'user stories' - say 'wrote docs' and the recruiter search can pass you over.",
+    painPoint: "Business analyst resumes are easier to find when deliverables are named clearly: requirements gathering, BRDs, user stories, process maps, gap analysis, and stakeholder workshops.",
     keywords: ['requirements gathering', 'process improvement', 'stakeholder management', 'SQL', 'data analysis', 'user stories', 'Agile', 'documentation', 'gap analysis', 'BRD'],
     tips: [
       'Match artifact terms exactly: "BRD", "user stories", "use cases".',
@@ -179,7 +179,7 @@ export const roles: Role[] = [
   {
     slug: 'operations-manager',
     title: 'Operations Manager',
-    painPoint: "Ops resumes get screened out when they omit the methodology and metrics the posting names. The ATS looks for 'Lean/Six Sigma', 'process optimization' and hard numbers — generic 'managed operations' doesn't register.",
+    painPoint: "Operations resumes need the methodology and metrics the posting names. Generic 'managed operations' is weaker than Lean/Six Sigma, process optimization, throughput, cost, and team-scope proof.",
     keywords: ['process optimization', 'supply chain', 'KPIs', 'Lean/Six Sigma', 'inventory management', 'P&L', 'team leadership', 'logistics', 'continuous improvement', 'vendor management'],
     tips: [
       'List Lean/Six Sigma belt level exactly if you hold one.',
@@ -190,7 +190,7 @@ export const roles: Role[] = [
   {
     slug: 'administrative-assistant',
     title: 'Administrative Assistant',
-    painPoint: "Admin resumes rank lower when software and support terms are vague. The ATS screens for the exact tools - 'Outlook', 'Concur' - and phrases like 'executive support'; 'office work' won't match.",
+    painPoint: "Administrative resumes are stronger when they name the exact tools, support scope, scheduling work, travel coordination, expense systems, and executive or office responsibilities.",
     keywords: ['calendar management', 'scheduling', 'Microsoft Office', 'travel coordination', 'data entry', 'correspondence', 'expense reports', 'office management', 'customer service', 'documentation'],
     tips: [
       'Name the exact software (Outlook, Google Workspace, Concur).',
@@ -201,7 +201,7 @@ export const roles: Role[] = [
   {
     slug: 'nurse-practitioner',
     title: 'Nurse Practitioner',
-    painPoint: "NP resumes rank low when certifications, populations, and prescriptive authority aren't spelled out the way the posting expects. Recruiters search for exact credentials like 'FNP-C' and specific EHR systems, so paraphrasing leaves you buried in the results.",
+    painPoint: "Nurse practitioner resumes should make credentials, population focus, prescriptive authority, EHR systems, and clinical settings easy to find for healthcare recruiters.",
     keywords: ['FNP/AGNP', 'patient assessment', 'diagnosis', 'prescriptive authority', 'EHR/Epic', 'care plans', 'chronic disease management', 'BLS/ACLS', 'patient education', 'differential diagnosis', 'primary care', 'DEA license'],
     tips: [
       'List the exact certification and population focus (FNP-C, AGNP, PMHNP).',
@@ -212,7 +212,7 @@ export const roles: Role[] = [
   {
     slug: 'software-developer',
     title: 'Software Developer',
-    painPoint: "Developer resumes rank low when the language or framework version is even slightly off — recruiters search for exact strings, so 'JavaScript' won't surface for a posting that requires 'TypeScript'. Miss the named stack and you drop down the results.",
+    painPoint: "Developer resumes are easier to find when the named stack is explicit. If the role asks for TypeScript, React, PostgreSQL, or AWS, those relevant terms should be clear in your skills and bullets.",
     keywords: ['JavaScript/TypeScript', 'React', 'Node.js', 'REST APIs', 'SQL', 'Git', 'unit testing', 'Agile', 'CI/CD', 'debugging', 'object-oriented design', 'cloud (AWS/Azure)'],
     tips: [
       'Mirror the exact stack named in the JD — "TypeScript", "React", "PostgreSQL".',
@@ -223,7 +223,7 @@ export const roles: Role[] = [
   {
     slug: 'devops-engineer',
     title: 'DevOps Engineer',
-    painPoint: "DevOps resumes get buried when the exact tooling isn't named. Recruiters search for 'Kubernetes', 'Terraform' and specific cloud providers verbatim — write 'containers' or 'automation' instead and your resume ranks below the candidates who matched the strings.",
+    painPoint: "DevOps resumes need exact tooling and cloud language. Kubernetes, Terraform, CI/CD, monitoring, and cloud providers should be visible when they match the target role.",
     keywords: ['CI/CD', 'Kubernetes', 'Docker', 'Terraform', 'AWS', 'Ansible', 'infrastructure as code', 'monitoring', 'Linux', 'Jenkins/GitLab CI', 'Prometheus/Grafana', 'scripting (Bash/Python)'],
     tips: [
       'Name the exact orchestration and IaC tools (Kubernetes, Terraform, Ansible).',
@@ -234,7 +234,7 @@ export const roles: Role[] = [
   {
     slug: 'ux-designer',
     title: 'UX Designer',
-    painPoint: "UX resumes get buried when the design tools and process terms don't match the posting. Recruiters search for 'Figma', 'usability testing' and 'wireframing' exactly, and a portfolio link can't be searched — if the keywords aren't in your text, your resume ranks low.",
+    painPoint: "UX resumes need both portfolio links and searchable text. Make tools, research methods, usability testing, wireframing, accessibility, and design-system work clear in the resume.",
     keywords: ['Figma', 'user research', 'wireframing', 'prototyping', 'usability testing', 'interaction design', 'design systems', 'information architecture', 'accessibility (WCAG)', 'user flows', 'Sketch', 'personas'],
     tips: [
       'Name the exact tools in the JD (Figma vs Sketch vs Adobe XD).',
@@ -245,7 +245,7 @@ export const roles: Role[] = [
   {
     slug: 'data-engineer',
     title: 'Data Engineer',
-    painPoint: "Data Engineer resumes rank low when the pipeline tools and warehouses aren't named exactly. Recruiters search for 'Spark', 'Airflow' and 'Snowflake' as literal strings — say 'big data' or 'pipelines' and you fall below candidates who matched the terms.",
+    painPoint: "Data engineer resumes are stronger when pipeline tools, warehouses, orchestration, cloud platforms, and scale are named directly instead of hidden behind generic 'big data' language.",
     keywords: ['ETL/ELT', 'Spark', 'Airflow', 'SQL', 'Python', 'data warehousing', 'Snowflake/BigQuery', 'Kafka', 'dbt', 'data modeling', 'AWS/GCP', 'pipeline orchestration'],
     tips: [
       'Name the exact warehouse and orchestration tools (Snowflake, Airflow, dbt).',
@@ -256,7 +256,7 @@ export const roles: Role[] = [
   {
     slug: 'customer-service-representative',
     title: 'Customer Service Representative',
-    painPoint: "CSR resumes rank low when they describe duties vaguely instead of the channels, tools, and metrics the posting names. Recruiters search for 'CRM', 'ticketing' and specific platforms — generic 'helped customers' ranks below resumes that matched the exact terms.",
+    painPoint: "Customer service resumes are easier to match when they name channels, ticketing tools, CRM platforms, CSAT, SLAs, de-escalation, and support volume instead of broad service duties.",
     keywords: ['customer service', 'CRM/Zendesk', 'ticketing', 'conflict resolution', 'phone/email/chat support', 'CSAT', 'order processing', 'troubleshooting', 'data entry', 'de-escalation', 'product knowledge', 'SLA'],
     tips: [
       'Name the support platform (Zendesk, Salesforce, Freshdesk) used or required.',
@@ -267,7 +267,7 @@ export const roles: Role[] = [
   {
     slug: 'executive-assistant',
     title: 'Executive Assistant',
-    painPoint: "EA resumes rank low when the seniority and tools aren't spelled out the way the posting expects. Recruiters search for 'C-suite', 'calendar management' and exact software names — vague 'admin support' ranks below resumes that matched the terms.",
+    painPoint: "Executive assistant resumes should make seniority, calendar ownership, travel coordination, board materials, confidentiality, and the exact tools used easy to find.",
     keywords: ['calendar management', 'executive support', 'travel coordination', 'expense reports', 'Microsoft Office', 'Concur', 'meeting coordination', 'confidentiality', 'board materials', 'stakeholder communication', 'project coordination', 'gatekeeping'],
     tips: [
       'State the seniority you supported (C-suite, VP, founder) explicitly.',
@@ -278,7 +278,7 @@ export const roles: Role[] = [
   {
     slug: 'sales-manager',
     title: 'Sales Manager',
-    painPoint: "Sales Manager resumes rank low when leadership impact is described loosely. Recruiters search for 'quota attainment', 'pipeline' and the named CRM first — 'led a team' without the metrics and tools ranks below candidates who matched the exact terms.",
+    painPoint: "Sales manager resumes need leadership impact in measurable terms. Quota attainment, pipeline, CRM, forecasting, coaching, team size, and revenue growth should be clear.",
     keywords: ['quota attainment', 'team leadership', 'pipeline management', 'CRM/Salesforce', 'forecasting', 'coaching', 'territory management', 'revenue growth', 'B2B sales', 'sales strategy', 'KPIs', 'account management'],
     tips: [
       'Lead with numbers: team quota %, revenue growth, rep ramp time, retention.',
@@ -289,7 +289,7 @@ export const roles: Role[] = [
   {
     slug: 'recruiter',
     title: 'Recruiter',
-    painPoint: "Recruiter resumes rank low when the sourcing tools and metrics aren't named. ATS systems search for 'ATS', 'LinkedIn Recruiter' and 'full-cycle recruiting' verbatim — describe it vaguely and your own resume gets buried the way candidates' do.",
+    painPoint: "Recruiter resumes are stronger when sourcing tools, ATS platforms, full-cycle recruiting, time-to-fill, pipeline metrics, and stakeholder management are named directly.",
     keywords: ['full-cycle recruiting', 'sourcing', 'LinkedIn Recruiter', 'ATS', 'candidate screening', 'interview coordination', 'Boolean search', 'employer branding', 'offer negotiation', 'pipeline management', 'time-to-fill', 'stakeholder management'],
     tips: [
       'Name the ATS (Greenhouse, Lever, Workday) and sourcing tools you used.',
@@ -300,7 +300,7 @@ export const roles: Role[] = [
   {
     slug: 'teacher',
     title: 'Teacher',
-    painPoint: "Teacher resumes rank low when certifications, grade levels, and methods aren't spelled out exactly. School ATS systems search for the state license, 'classroom management' and 'differentiated instruction' — paraphrasing those ranks you below matched applicants.",
+    painPoint: "Teacher resumes should make certifications, grade levels, subject areas, classroom management, differentiated instruction, IEP work, and measurable student outcomes easy to find.",
     keywords: ['classroom management', 'lesson planning', 'curriculum development', 'differentiated instruction', 'state certification', 'student assessment', 'IEP', 'classroom technology', 'parent communication', 'Common Core', 'special education', 'data-driven instruction'],
     tips: [
       'Spell out your certification and grade/subject exactly (e.g. "K-6 certified").',
@@ -311,7 +311,7 @@ export const roles: Role[] = [
   {
     slug: 'network-engineer',
     title: 'Network Engineer',
-    painPoint: "Network Engineer resumes rank lower when they list certifications loosely. The ATS screens for exact acronyms like 'CCNA', 'CCNP', or 'JNCIA' and specific hardware vendor terms like 'Cisco Catalysts' or 'Juniper Junos' - if you miss the exact string, you drop down in recruiter searches.",
+    painPoint: "Network engineer resumes are easier to find when certifications, routing protocols, firewall platforms, vendors, network scale, and uptime impact are named clearly.",
     keywords: ['routing & switching', 'firewalls (ASA/Palo Alto)', 'Cisco iOS', 'VPN', 'LAN/WAN', 'subnetting', 'network security', 'BGP/OSPF', 'Wireshark', 'troubleshooting'],
     tips: [
       'List certifications (CCNA, CCNP, CompTIA Network+) prominently near the top.',
@@ -322,7 +322,7 @@ export const roles: Role[] = [
   {
     slug: 'product-designer',
     title: 'Product Designer',
-    painPoint: "Product Designer resumes get buried when they rely on PDF portfolios alone instead of readable text. The ATS searches for 'Figma', 'interaction design', and 'user journey maps' as literal text strings — if these terms aren't in your resume copy, the algorithm ranks you lower.",
+    painPoint: "Product designer resumes need portfolio proof plus searchable text. Tools, interaction design, user journeys, design systems, and product outcomes should be clear in the resume.",
     keywords: ['Figma', 'interaction design', 'prototyping', 'user research', 'design systems', 'wireframing', 'UI/UX', 'user journey mapping', 'mobile/web design', 'information architecture'],
     tips: [
       'Name exact design tools and developer handoff workflows (Figma, Zeplin, InVision).',
@@ -333,7 +333,7 @@ export const roles: Role[] = [
   {
     slug: 'frontend-developer',
     title: 'Frontend Developer',
-    painPoint: "Frontend developer resumes rank lower when version-specific tools are missing. Recruiter search queries look for precise matches like 'React 18', 'Next.js', or 'Tailwind CSS'. If your resume lists general frontend skills without these exact keywords, you rank low in the ATS search result page.",
+    painPoint: "Frontend resumes are stronger when the exact framework, rendering model, styling system, testing stack, accessibility work, and performance impact are easy to scan.",
     keywords: ['React.js', 'TypeScript', 'HTML5/CSS3', 'Next.js', 'Tailwind CSS', 'state management (Redux/Zustand)', 'Webpack/Vite', 'unit testing (Jest/RTL)', 'responsive design', 'REST APIs'],
     tips: [
       'List the exact modern rendering frameworks you have used (Next.js, Remix, Astro) to match specific JD requirements.',
@@ -344,7 +344,7 @@ export const roles: Role[] = [
   {
     slug: 'backend-developer',
     title: 'Backend Developer',
-    painPoint: "Backend developer resumes get buried when they describe system tasks loosely instead of listing the exact database engines, messaging systems, and runtime versions. If you list 'databases' instead of 'PostgreSQL' or 'Redis', you will fail the strict matching logic of the recruiter's search.",
+    painPoint: "Backend resumes are easier to match when databases, runtimes, messaging systems, API architecture, caching, and infrastructure choices are named directly.",
     keywords: ['Node.js/Go/Java', 'RESTful APIs', 'SQL/NoSQL (PostgreSQL/MongoDB)', 'microservices', 'Docker', 'message queues (RabbitMQ/Kafka)', 'system architecture', 'ORM (Prisma/Hibernate)', 'CI/CD pipelines', 'caching (Redis)'],
     tips: [
       'List your backend runtimes and languages prominently (e.g. Node.js v20, Go, Java Spring Boot).',
@@ -355,7 +355,7 @@ export const roles: Role[] = [
   {
     slug: 'fullstack-developer',
     title: 'Fullstack Developer',
-    painPoint: "Fullstack developer resumes rank lower when they split their stack skills vaguely. The ATS looks for both frontend and backend tooling in the same profile (e.g. 'React' + 'Node.js' + 'SQL'). If your stack details are spread out or use synonym naming conventions, the system may mark you as an incomplete match.",
+    painPoint: "Fullstack resumes need a clear stack story across frontend, backend, database, APIs, deployment, and system ownership so recruiters can quickly understand the fit.",
     keywords: ['React/Next.js', 'Node.js/Express', 'TypeScript', 'RESTful APIs', 'SQL/PostgreSQL', 'Git/GitHub', 'Docker', 'AWS/GCP', 'HTML5/Tailwind CSS', 'system architecture'],
     tips: [
       'Write a concise stack profile summary at the top naming the exact stack you specialize in (e.g. MERN, Next.js/Postgres).',
@@ -366,7 +366,7 @@ export const roles: Role[] = [
   {
     slug: 'cybersecurity-analyst',
     title: 'Cybersecurity Analyst',
-    painPoint: "Cybersecurity resumes rank low when specific compliance frameworks and security tools are missing from the text. Recruiters search with strict strings like 'SIEM', 'SOC', 'NIST', or 'Splunk'. Synonyms or generic 'system monitoring' phrasing will not match, leaving your application buried.",
+    painPoint: "Cybersecurity resumes are stronger when tools, frameworks, environments, incident response work, SIEM/SOC experience, and compliance language are named clearly.",
     keywords: ['SIEM/Splunk', 'incident response', 'vulnerability management', 'network security', 'NIST framework', 'SOC operations', 'firewalls', 'identity & access management (IAM)', 'penetration testing', 'CISSP/CEH'],
     tips: [
       'List certifications (Security+, CISSP, CEH) clearly at the top of your resume.',
@@ -377,7 +377,7 @@ export const roles: Role[] = [
   {
     slug: 'it-support-specialist',
     title: 'IT Support Specialist',
-    painPoint: "IT Support resumes rank lower when troubleshooting channels and administration suites are described loosely. Recruiter search screens often require terms like 'Active Directory', 'ITIL', or 'SaaS administration'. If your resume lists general 'desktop support', you fall behind matched applicants.",
+    painPoint: "IT support resumes are easier to match when troubleshooting scope, administration tools, ticketing systems, ITIL practices, SaaS platforms, and support metrics are clear.",
     keywords: ['Active Directory', 'SaaS administration (Google Workspace/Office 365)', 'troubleshooting', 'helpdesk ticketing (Jira/Zendesk)', 'hardware diagnostics', 'network configuration', 'ITIL guidelines', 'customer service', 'operating systems (Windows/macOS)', 'asset management'],
     tips: [
       'Name the exact administration consoles you managed (Office 365 Admin, Google Workspace Admin console).',

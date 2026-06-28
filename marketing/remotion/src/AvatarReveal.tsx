@@ -34,7 +34,7 @@ export const avatarRevealSchema = z.object({
 export type AvatarRevealProps = z.infer<typeof avatarRevealSchema>;
 
 export const defaultAvatarRevealProps: AvatarRevealProps = {
-  hook1: "Getting buried?",
+  hook1: "Resume not surfacing?",
   hook2: "Keywords are missing.",
   subline: "Recruiters search and rank resumes by job-description match.",
   missing: ["Kubernetes", "CI/CD", "scalability"],
@@ -101,11 +101,11 @@ export const AvatarReveal: React.FC<AvatarRevealProps> = ({
   // 4. Captions animation (mock captions parsed from words/timings, scrolling automatically)
   // Let's create general captions that scroll up based on frame.
   const captionItems = [
-    { text: "If your resume keeps getting buried after applying...", start: 0, end: 90 },
+    { text: "If your resume keeps disappearing in recruiter search...", start: 0, end: 90 },
     { text: "It may not match the recruiter search.", start: 90, end: 150 },
     { text: "Applicant Tracking Systems index and rank keywords.", start: 150, end: 230 },
     { text: "Match the job language without inventing experience.", start: 230, end: 320 },
-    { text: "ATS Hacker scans the JD and optimizes your resume bullet points.", start: 320, end: 410 },
+    { text: "Signal scans the JD and rewrites your resume bullets around real proof.", start: 320, end: 410 },
     { text: "Check your match score free. Link in bio to try it now.", start: 410, end: durationInFrames }
   ];
 

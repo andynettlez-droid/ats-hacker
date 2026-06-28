@@ -76,6 +76,49 @@ type PdfTextContentItem = {
 
 const BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ats-hacker-swart.vercel.app').replace(/\/$/, '');
 
+const CRIME_SCENE_DEMO = {
+  name: 'Michael Torres',
+  fileName: 'Resume_Crime_Scene_Demand_Gen.pdf',
+  resumeText: `Michael Torres
+Chicago, IL | michael.torres@example.com | 312-555-0194
+
+Professional Summary:
+Marketing professional with experience supporting social media, campaign planning, writing, and team projects. Strong communicator who enjoys creative work and helping companies grow.
+
+Skills:
+Social Media, Team Player, Writing, Microsoft Office, PowerPoint, Communication, Project Coordination.
+
+Work Experience:
+Growth Labs | Marketing Manager | Chicago, IL | 2021 - Present
+- Responsible for social media.
+- Helped with marketing campaigns.
+- Managed the team.
+- Worked with other departments to improve marketing performance.
+
+Growth Labs | Marketing Specialist | Chicago, IL | 2018 - 2020
+- Created weekly posts for social channels.
+- Supported campaign launches and wrote marketing copy.
+- Assisted with reporting and team meetings.
+
+Education:
+DePaul University | B.A. Marketing & Communications | Chicago, IL`,
+  jobDescription: `Senior Demand Generation Manager
+
+We are hiring a Senior Demand Generation Manager to own B2B pipeline growth across paid social, lifecycle, and marketing operations.
+
+Responsibilities:
+- Build and scale demand generation campaigns across LinkedIn Ads, paid social, email, and content syndication.
+- Own HubSpot workflows, lead scoring, campaign attribution, and MQL-to-SQL conversion reporting.
+- Analyze CAC, LTV, pipeline contribution, and channel ROI to improve acquisition efficiency.
+- Partner with sales and revenue operations to improve campaign handoff and forecasting.
+- Create performance reports for executive stakeholders and recommend budget shifts.
+
+Requirements:
+- 4+ years of B2B SaaS demand generation, growth marketing, or marketing operations experience.
+- Hands-on experience with LinkedIn Ads, HubSpot, lifecycle marketing, CAC/LTV analysis, and pipeline reporting.
+- Proven ability to improve conversion rates, lower CAC, and generate measurable revenue impact.`,
+};
+
 const productSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -307,6 +350,38 @@ export default function Home() {
     return true;
   };
 
+  const createMockResumeFile = (name: string, resumeText: string, targetJobDescription: string): MockResumeFile => {
+    const mockFile = new File([""], name, { type: 'application/pdf' }) as MockResumeFile;
+    mockFile.isMockTemplate = true;
+    mockFile.mockText = resumeText;
+    mockFile.mockJobDescription = targetJobDescription;
+    return mockFile;
+  };
+
+  const scoreResumeText = async (resumeText: string, targetJobDescription: string) => {
+    const res = await fetch('/api/score', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ resumeText, jobDescription: targetJobDescription }),
+    });
+    const contentType = res.headers.get('content-type');
+    if (contentType && contentType.includes('text/html')) {
+      alert("Vercel Preview Protection is blocking the API! Please test on the Production URL (https://ats-hacker-swart.vercel.app) instead of this Preview URL.");
+      return;
+    }
+    const data = await res.json();
+    if (res.ok) {
+      setScore(data);
+      try {
+        track('score_completed', { score: data?.score ?? 0 });
+      } catch {
+        /* analytics best-effort */
+      }
+    } else {
+      alert(data.error || "Could not score your resume.");
+    }
+  };
+
   const handleScore = async () => {
     if (!validateInputs()) return;
     setIsScoring(true);
@@ -314,29 +389,40 @@ export default function Home() {
     setShareStatus('');
     try {
       const resumeText = await extractResumeText();
-      const res = await fetch('/api/score', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ resumeText, jobDescription }),
-      });
-      const contentType = res.headers.get('content-type');
-      if (contentType && contentType.includes('text/html')) {
-        alert("Vercel Preview Protection is blocking the API! Please test on the Production URL (https://ats-hacker-swart.vercel.app) instead of this Preview URL.");
-        setIsScoring(false);
-        return;
-      }
-      const data = await res.json();
-      if (res.ok) {
-        setScore(data);
-        try {
-          track('score_completed', { score: data?.score ?? 0 });
-        } catch {
-          /* analytics best-effort */
-        }
-      } else alert(data.error || "Could not score your resume.");
+      await scoreResumeText(resumeText, jobDescription);
     } catch (err) {
       console.error(err);
       alert("An error occurred while scoring.");
+    } finally {
+      setIsScoring(false);
+    }
+  };
+
+  const runCrimeSceneDemo = async () => {
+    const mockFile = createMockResumeFile(
+      CRIME_SCENE_DEMO.fileName,
+      CRIME_SCENE_DEMO.resumeText,
+      CRIME_SCENE_DEMO.jobDescription,
+    );
+    setFile(mockFile);
+    setJobDescription(CRIME_SCENE_DEMO.jobDescription);
+    setActiveTab('resume');
+    setScore(null);
+    setShareStatus('');
+    writeResumeSessionPayload(CRIME_SCENE_DEMO.resumeText, CRIME_SCENE_DEMO.jobDescription, CRIME_SCENE_DEMO.fileName);
+    toolSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+
+    setIsScoring(true);
+    try {
+      await scoreResumeText(CRIME_SCENE_DEMO.resumeText, CRIME_SCENE_DEMO.jobDescription);
+      try {
+        track('demo_started', { demo: 'resume_crime_scene' });
+      } catch {
+        /* analytics best-effort */
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An error occurred while loading the demo.");
     } finally {
       setIsScoring(false);
     }
@@ -538,12 +624,15 @@ export default function Home() {
               >
                 <span>Check Your Resume Signal</span>
               </button>
-              <a
-                href="#templates"
-                className="rounded-xl border border-cyan-300/25 bg-white/5 px-8 py-4 text-base font-extrabold text-cyan-50 shadow-[inset_0_0_24px_rgba(56,213,255,0.06)] transition hover:border-cyan-200/60 hover:bg-cyan-400/10 flex items-center justify-center"
+              <button
+                type="button"
+                onClick={runCrimeSceneDemo}
+                disabled={isScoring}
+                className="rounded-xl border border-cyan-300/25 bg-white/5 px-8 py-4 text-base font-extrabold text-cyan-50 shadow-[inset_0_0_24px_rgba(56,213,255,0.06)] transition hover:border-cyan-200/60 hover:bg-cyan-400/10 flex items-center justify-center gap-2 disabled:opacity-60"
               >
-                See ATS Templates
-              </a>
+                <Sparkles className="h-4 w-4 text-cyan-200" />
+                <span>{isScoring ? 'Loading Teardown...' : 'Watch Resume Crime Scene'}</span>
+              </button>
             </div>
 
             {/* Key benefits metrics */}
@@ -769,6 +858,28 @@ export default function Home() {
             </h3>
 
             <div className="space-y-6">
+              {activeTab === 'resume' && !score && (
+                <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-4 sm:p-5">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="min-w-0">
+                      <p className="text-sm font-black text-cyan-50">Resume Crime Scene sample</p>
+                      <p className="mt-1 text-xs font-semibold leading-relaxed text-cyan-50/70">
+                        Load a fictional weak demand-gen resume, compare it to a real-style job post, and watch Signal find the invisible gaps.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={runCrimeSceneDemo}
+                      disabled={isScoring}
+                      className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border border-cyan-200/30 bg-[#020617]/70 px-4 text-xs font-extrabold text-cyan-50 transition hover:border-cyan-200/70 hover:bg-cyan-400/10 disabled:opacity-60"
+                    >
+                      <Gauge className="h-4 w-4 text-cyan-200" />
+                      <span>{isScoring ? 'Scoring sample...' : 'Run sample teardown'}</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
               {/* File Upload */}
               <div className="space-y-2">
                 <label className="text-sm font-bold text-slate-200">1. Upload Current Resume (PDF)</label>
@@ -1521,11 +1632,11 @@ export default function Home() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      // Create a mock File object
-                      const mockFile = new File([""], `${cand.name.replace(/\s+/g, '_')}_Resume.pdf`, { type: 'application/pdf' }) as MockResumeFile;
-                      mockFile.isMockTemplate = true;
-                      mockFile.mockText = cand.mockText;
-                      mockFile.mockJobDescription = cand.mockJobDescription;
+                      const mockFile = createMockResumeFile(
+                        `${cand.name.replace(/\s+/g, '_')}_Resume.pdf`,
+                        cand.mockText,
+                        cand.mockJobDescription,
+                      );
                       
                       setFile(mockFile);
                       setJobDescription(cand.mockJobDescription);

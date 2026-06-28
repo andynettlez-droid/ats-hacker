@@ -42,18 +42,23 @@ Expand `/tailor/[job-title]` coverage to capture high-volume search queries (e.g
 ---
 
 ## 3. Short-Form Video & Automation Loop
-*Target: Establish a consistent, hands-off pipeline for TikTok/Shorts/Reels views.*
+*Target: Establish a consistent pipeline for TikTok/Shorts/Reels views that sends qualified traffic to the free Signal score.*
 
 ### A. Dynamic Value-Based Scripts
-Move away from generic templates. Run 3 primary script categories:
-1.  **The "Workday Trap":** Screen recording showing a resume scoring 35% on Workday, then using ATSHacker to lift it to 96% and sorting it to the top.
-2.  **The "Keyword Translation":** Showing why writing "built websites" gets filtered while "React, TypeScript, Redux" ranks.
-3.  **The Competitor Cost Wedge:** Highlighting the absurdity of paying $40/month to job boards when you can fix your resume once for $9.99.
+Move away from generic templates. Run repeatable series that create trust and product intent:
+1.  **Resume Crime Scene:** A recruiter-style teardown shows why a resume looks fine but does not match a specific job description. Fix one bullet and reveal the score improvement.
+2.  **Job Description Translation:** Show why vague language like "built websites" is weaker than role language such as "React, TypeScript, accessibility, API integration" when that is what the job asks for.
+3.  **ATS Myth Lab:** Explain what ATS platforms usually do: parse, store, index, search, and filter resumes. Avoid "robot auto-rejected you" unless the specific claim is sourced.
+4.  **Competitor Cost Wedge:** Compare subscription-heavy resume tools against Signal's one-time application package. Use current sourced pricing before naming competitors.
+5.  **One Bullet Fix:** Rewrite one weak bullet into a clearer, measurable, job-aligned bullet without inventing experience.
+
+Do not claim a resume will be "sorted to the top" of Workday, Greenhouse, Lever, or any ATS. The safe claim is that better job-language alignment can make relevant experience easier to find and understand.
 
 ### B. Automatic Post Scheduling
-*   Queue 10-15 videos in `marketing/autopost/posts.json` at the start of each month.
-*   Schedule uploads to release automatically at peak times (e.g. 12:00 PM and 6:00 PM local time).
-*   Add CTA overlay: *"Drop your job title below, and I'll send you the keyword checklist."*
+*   Queue 10-15 review-ready videos in `marketing/autopost/posts.json` at the start of each month.
+*   Keep each queued post as `review_required` until the exact file, caption, and platform targets are approved.
+*   Schedule approved uploads at clean test windows so each creative gets measurable results.
+*   Add CTA overlay: *"Paste the job description. Check your free Signal score."*
 
 ---
 

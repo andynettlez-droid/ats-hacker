@@ -1,133 +1,179 @@
-# ATSHacker — Marketing Plan & Content Calendar
+# Signal by ATSHacker Marketing And Revenue Roadmap
 
-_Last updated: June 2026_
+Last updated: June 2026
 
-## 1. Positioning
+## Objective
 
-**One-liner:** "Beat the resume robots for $5 — no subscription."
+Generate small, repeatable side income by turning job-search attention into free Signal score completions, then converting the highest-intent users into one-time paid application packages.
 
-The entire ATS-optimization market sells **monthly subscriptions**: Jobscan (~$49.95/mo),
-Teal+ (~$29/mo), Rezi (~$19–49/mo). A job seeker who just got auto-rejected does not
-want another recurring bill — they want **this one resume fixed for this one job, right
-now.** That is the wedge.
+The business is not "viral videos." The business is:
 
-| | Competitors | ATSHacker |
-|---|---|---|
-| Price | $19–50 / month | **$5 once** |
-| Commitment | Subscription | None |
-| Promise | "Tools to optimize" | "Fixed resume in 60 seconds" |
-| Buyer mindset | Researching | Frustrated, ready to act now |
+Traffic -> free score -> visible gap -> trust -> paid resume / cover letter / bundle.
 
-**Core message pillars (use everywhere):**
-1. ~75% of resumes are filtered out by ATS before a human sees them.
-2. ATS scores you on *exact* keyword match to the job description ("Adobe Creative
-   Cloud" ≠ "Adobe Creative Suite").
-3. The job title is the single most important keyword — candidates who include it are
-   reportedly ~10x more likely to get an interview.
-4. We rewrite your existing resume to mirror the JD's language — honestly, no invented
-   experience — for $5.
+## Current Offer Ladder
 
-## 2. Product note that affects marketing (fix before scaling spend)
+| Offer | Price | Purpose |
+| --- | ---: | --- |
+| Free Signal score | $0 | Prove the resume-to-job gap before asking for money. |
+| Resume optimization | $9.99 | Main impulse purchase for one target job. |
+| Cover letter only | $9.99 | Secondary purchase for users who already have a resume. |
+| Resume + cover letter bundle | $14.99 | Best-value default and current AOV lift. |
+| Multi-role pack | TBD, likely $19.99-$24.99 | Future repeat-purchase product for active job seekers. |
 
-Many ATS parse **.docx** more reliably than PDF, and some recruiters request .docx.
-ATSHacker currently outputs **PDF only**. Before pouring traffic in, consider offering a
-**.docx download option** — it removes a real objection and lets you truthfully say
-"ATS-friendly .docx + PDF." Don't advertise a benefit the output doesn't deliver.
+## Positioning
 
-## 3. Keyword strategy (ranked by intent → effort)
+Signal helps qualified job seekers make their real experience easier to find and understand.
 
-These are grouped by *buyer intent*. High-intent, low-competition long-tails first —
-that's where a small site wins.
+Use this language:
 
-**Tier 1 — high intent, buy-now (target with landing pages):**
-- "[role] resume keywords" (e.g. "software engineer resume keywords")
-- "ats resume checker free" / "ats resume scanner"
-- "tailor resume to job description"
-- "optimize resume for ats"
-- "make resume match job description"
+- "Your resume may not be speaking the job description's language."
+- "Signal compares your resume to the target role and shows missing recruiter-search terms."
+- "We rewrite real experience. No fake skills, jobs, degrees, or outcomes."
+- "One-time payment. No subscription."
 
-**Tier 2 — high intent, problem-aware (target with blog + soft CTA):**
-- "why is my resume not getting interviews"
-- "applied to 100 jobs no interviews"
-- "is workday rejecting my resume"
-- "does my resume pass ats"
-- "resume getting auto rejected"
+Avoid this language unless backed by a specific source in the piece:
 
-**Tier 3 — informational, top-of-funnel (build authority, internal-link to Tier 1):**
-- "what is an applicant tracking system"
-- "how does workday / greenhouse screen resumes"
-- "ats friendly resume format"
-- "pdf vs docx resume ats"
+- "ATS robots rejected you."
+- "75% of resumes are automatically filtered out."
+- "Guaranteed interviews."
+- "We beat Workday / Greenhouse / Lever."
+- "This will sort you to the top."
 
-**Programmatic SEO (your biggest lever):** the `/tailor/[job-title]` route should become
-30–50 unique pages, one per high-volume role, each targeting "[role] resume keywords"
-and "ats resume for [role]". Each page needs *unique* copy (role-specific keyword list +
-advice) — thin/duplicated pages get ignored or penalized. Priority roles: software
-engineer, data analyst, project manager, registered nurse, accountant, marketing manager,
-sales rep, mechanical engineer, customer success manager, product manager.
+## Site Roadmap
 
-## 4. Funnel & conversion
+### Phase 1: Revenue Foundation
 
-The highest-leverage growth move isn't more traffic — it's a **free taste**:
+- Keep the free Signal score as the primary entry point.
+- Keep trust messaging beside every payment CTA: Stripe secured, no subscription, no fake experience.
+- Add `.docx` export alongside PDF.
+- Persist paid outputs by Stripe session ID so customers can safely redownload.
+- Make export and rewrite failures visible with retry paths.
+- Add checkout/success tests for resume, cover letter, and bundle purchases.
 
-> **Free "ATS Match Score":** user pastes JD + uploads resume → instant 0–100 score and
-> the top 3 *missing* keywords, free. The full rewrite + download is the $5 unlock.
+### Phase 2: Conversion Lift
 
-This converts far better than a cold "pay $5" button because the score *proves the
-problem* before asking for money. It's also inherently shareable ("I scored 41/100 😭").
-Build this as the front door; every channel below points to it.
+- Add a before/after preview before checkout:
+  - show one rewritten bullet or section preview;
+  - blur the remaining optimized output;
+  - CTA: "Unlock full optimized package."
+- Add clearer bundle nudges after free score completion.
+- Add a multi-role application pack once single-purchase flow is durable.
+- Add email capture only after the free score gives value.
+- Track score completion, checkout start, purchase, bundle take rate, and source channel.
 
-Funnel: Channel → free Match Score page → "you're missing 9 keywords" → $5 unlock →
-download (PDF + .docx) → post-purchase ask: "tailoring for more roles? 3-pack for $10."
+### Phase 3: Quality And Trust
 
-**Economics reality:** $5 once is thin for paid ads. Make organic + the 3-pack/upsell
-carry growth first; only test paid after you know the Match-Score→$5 conversion rate.
+- Add grounding checks that flag invented facts before export.
+- Add cover-letter specificity validation:
+  - company name;
+  - role title;
+  - 2-3 role-specific requirements;
+  - matching resume proof.
+- Add "what changed and why" explanations after generation.
+- Add better example outputs for resume and cover letter quality review.
+- Add an admin retry/recovery screen for support cases.
 
-## 5. Channel playbooks
+### Phase 4: SEO
 
-**A. Programmatic SEO (primary, compounding):** ship the 30–50 role pages; submit a
-sitemap; internal-link Tier-3 blog posts → Tier-1 role pages. Compounds for free.
+- Expand `/tailor/[job-title]` to at least 50 quality role pages.
+- Prioritize role pages around:
+  - "[role] resume keywords";
+  - "ATS resume for [role]";
+  - "tailor resume to [role] job description";
+  - "resume score for [role]."
+- Make every role page unique:
+  - role-specific keyword list;
+  - sample weak bullet;
+  - sample stronger bullet;
+  - role-specific free-score CTA.
+- Add blog/internal-link support pages:
+  - ATS-friendly resume format;
+  - PDF vs DOCX resume;
+  - what an ATS actually does;
+  - why qualified resumes can still be hard to find.
 
-**B. Short-form video (TikTok / Reels / Shorts):** the demo *is* the ad — 20–30s screen
-recording: paste JD → keywords light up → score jumps → download. Post daily for 2–3
-weeks; job-search content travels fast. CTA: "free score, link in bio."
+## Social And YouTube Strategy
 
-**C. Reddit / forums (disclosed only):** r/resumes, r/jobs, r/recruitinghell,
-r/jobsearchhacks. Build karma with genuinely helpful answers; when relevant, disclose
-("full disclosure, I built a $5 tool…") and only link where the sub allows it. One good
-launch post per sub beats 50 covert replies — covert promotion gets you and your domain
-banned. (This matches the disclosed-reply prompt now in `scraper.py`.)
+Short-form content is top-of-funnel. The product should appear as the proof mechanism, not as a generic SaaS ad.
 
-**D. Email capture:** offer the free Match Score result by email → light nurture for
-people who didn't buy on the spot.
+### Core Series
 
-## 6. 6-week content calendar
+1. Resume Crime Scene
+   - Anonymous resume teardown.
+   - Find 2-3 visibility problems.
+   - Fix one bullet.
+   - Reveal score movement.
 
-Assumes a solo founder, ~5–7 hrs/week. "Ship" = build/publish; "Post" = social.
+2. ATS Myth Lab
+   - Debunk common job-search myths.
+   - Build trust by explaining what ATS systems usually do: parse, store, index, search, and filter.
 
-| Week | SEO / Product | Content | Social (3–5x/wk) | Community |
-|------|---------------|---------|------------------|-----------|
-| **1** | Build free **ATS Match Score** front door; add **.docx** output | Blog: "Why you're not getting interviews (it's the ATS)" → Tier-2 | Film 5 demo clips; post 3 | Lurk + answer 3 r/resumes posts (no link) |
-| **2** | Ship first **10 /tailor role pages**; submit sitemap | Blog: "ATS-friendly resume format (PDF vs .docx)" → Tier-3 | Post 4 demo/tip clips | Answer 5 posts; build karma |
-| **3** | Ship **next 10 role pages**; add internal links blog→role | Blog: "[Role] resume keywords: the 2026 list" (pillar) | Post 4; reuse top clip as ad creative test | **One disclosed launch post** in r/resumes |
-| **4** | Ship **final 10–20 role pages** | Blog: "Is Workday auto-rejecting you? How screening works" | Post 4; start a "ATS score reactions" series | Disclosed launch post in r/jobs |
-| **5** | Add **3-pack ($10) upsell** + email capture | Guest angle: pitch 2 career newsletters/creators | Post 4; first paid test ($50–100) on best clip | Disclosed post in r/recruitinghell |
-| **6** | Fix top drop-off in funnel (analytics) | Refresh weakest blog post; add FAQ schema | Post 4; double down on best-performing format | Recurring "free resume review" comment habit |
+3. Job Description Translation
+   - Take a real-style job post.
+   - Translate it into keywords, skills, tools, and proof points a resume should reflect.
 
-## 7. Metrics (review weekly)
+4. One Bullet Fix
+   - Before/after bullet rewrite in under 30 seconds.
+   - CTA: "Run your own free Signal score."
 
-Track only what ties to revenue:
-- **Match Score completions** (free front-door usage) — top of funnel.
-- **Free → $5 conversion rate** — the number that decides if paid ads can ever work.
-- **Sales / day** and **revenue / channel** (UTM tags on every link).
-- **Organic impressions & clicks** (Google Search Console) per role page.
-- **Upsell take rate** (3-pack).
-- North-star: **profit per visitor**, not pageviews.
+5. Recruiter Search Test
+   - Ask whether a resume would appear for specific recruiter searches such as HubSpot, CAC, lifecycle marketing, SQL, Kubernetes, Epic, or FP&A.
 
-## 8. Guardrails (non-negotiable)
+6. AI Resume Tool Head-To-Head
+   - Compare tools using transparent criteria.
+   - Use live research and source notes.
+   - Avoid unverifiable "best" claims.
 
-- Disclose creator status everywhere; no astroturfing, fake reviews, or personas.
-- Truthful claims only — cite the ~75%/keyword stats, don't invent testimonials.
-- Respect each platform's self-promotion rules and rate limits.
-- Don't advertise outputs the product doesn't yet deliver (e.g. .docx until shipped).
-- Get human approval before publishing, posting, emailing real people, or spending money.
+7. Resume Builder Cost Trap
+   - Compare subscription pressure to one-time application help.
+   - Keep claims current and sourced.
+
+### Weekly Content System
+
+- 1 researched YouTube topic per week.
+- 1 long-form script or teardown outline.
+- 3-5 Shorts/Reels/TikToks cut from the same research packet.
+- 1 product or landing-page improvement tied to the strongest content angle.
+
+## Side-Income Math
+
+Targets based on a likely $13-$15 average order value:
+
+| Monthly goal | Approximate sales needed |
+| --- | ---: |
+| $500 | 35-45 sales |
+| $1,500 | 100-120 sales |
+| $3,000 | 200-230 sales |
+
+Early social funnel assumptions:
+
+- 100,000 targeted short-form views.
+- 0.3%-0.8% click-through to site.
+- 35%-50% of visitors complete the free score.
+- 3%-6% of score completers buy.
+
+That produces a rough range of 3-24 sales per 100,000 targeted views. The path to small side income is plausible, but it requires consistent targeted content plus a high-trust conversion flow.
+
+## Metrics
+
+Review weekly:
+
+- views by series;
+- link clicks by post;
+- free Signal score completions;
+- free-score-to-checkout-start rate;
+- checkout-start-to-purchase rate;
+- bundle take rate;
+- revenue by UTM source;
+- refund/support issues;
+- Google Search Console impressions and clicks for role pages.
+
+North star: profit per visitor.
+
+## Guardrails
+
+- Disclose creator status in communities and founder-led posts.
+- No fake reviews, fake testimonials, covert posting, or invented outcomes.
+- Use sourced claims for competitor pricing, platform behavior, market stats, and tool comparisons.
+- Do not publish social posts, email real people, or spend money without review of the exact asset/copy.
+- Product and documentation commits may be pushed during the active autonomous build once checks pass.

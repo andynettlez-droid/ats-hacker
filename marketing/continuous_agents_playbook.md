@@ -5,7 +5,7 @@ This playbook defines the two continuous agent lanes for Signal by ATSHacker:
 - Growth Studio Agent: researches topics, writes scripts, renders short-form drafts, and queues review-ready social assets.
 - Product Build Agent: continues UI, product, quality, checkout, export, and resume/cover-letter improvements.
 
-The system should automate production work, not final judgment. Public posting, competitor claims, deploys, and pushes still require explicit human approval.
+The system should automate production work, not final judgment. Product and documentation changes may be committed and pushed during the active autonomous build once checks pass. Public social posting, competitor claims, outbound messages, and paid spend still require explicit review of the exact asset/copy.
 
 ## Lane 1: Growth Studio Agent
 
@@ -140,7 +140,8 @@ Keep improving the production product while the growth lane creates draft demand
   - Web: typecheck, lint, build, targeted route tests.
   - Marketing video: Remotion typecheck, render, still-frame QA.
   - Autopost: syntax check and dry run.
-- Do not push, deploy, or publish unless explicitly told.
+- Product and documentation commits may be pushed under the active autonomous build once scoped checks pass.
+- Do not publish social posts, send outbound messages, or spend money unless explicitly approved for the exact asset/copy.
 
 ### Product QA Checklist
 

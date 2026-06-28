@@ -274,6 +274,40 @@ function buildShareScoreUrl(origin: string, score: ScoreResult): string {
   return `${origin}/s/${score.score}?${params.toString()}`;
 }
 
+function PaymentTrustBadges() {
+  const items = [
+    {
+      icon: <Shield className="h-4 w-4 text-cyan-200" />,
+      title: 'Stripe secured',
+      detail: 'Card details stay with Stripe.',
+    },
+    {
+      icon: <CheckCircle className="h-4 w-4 text-emerald-200" />,
+      title: 'No subscription',
+      detail: 'One-time checkout only.',
+    },
+    {
+      icon: <BadgeCheck className="h-4 w-4 text-cyan-200" />,
+      title: 'No fake experience',
+      detail: 'We rewrite what is real.',
+    },
+  ];
+
+  return (
+    <div className="grid gap-2 sm:grid-cols-3">
+      {items.map((item) => (
+        <div key={item.title} className="rounded-xl border border-cyan-300/15 bg-[#020617]/55 p-3">
+          <div className="flex items-center gap-2">
+            {item.icon}
+            <p className="text-[11px] font-black uppercase tracking-wide text-cyan-50">{item.title}</p>
+          </div>
+          <p className="mt-1 text-[11px] font-semibold leading-snug text-slate-400">{item.detail}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [jobDescription, setJobDescription] = useState("");
@@ -954,6 +988,8 @@ export default function Home() {
                 </button>
               )}
 
+              <PaymentTrustBadges />
+
               {/* Bundle Upsell Promo (only when NOT checking out bundle already) */}
               <div className="rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
@@ -972,7 +1008,7 @@ export default function Home() {
                 </button>
               </div>
 
-              <p className="text-xs text-center text-slate-500">Secured with Stripe. Resume data is never stored on our servers.</p>
+              <p className="text-xs text-center text-slate-500">Processed for this application package. We do not sell resume data or store card details.</p>
             </div>
           </div>
 

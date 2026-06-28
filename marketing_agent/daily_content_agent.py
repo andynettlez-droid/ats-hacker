@@ -845,6 +845,7 @@ def build_episode_props(packet: dict) -> dict:
         "musicVolume": 0.11,
         "voiceoverVolume": 0.94,
         "voiceover_text": voiceover_text[:3500],
+        "voiceoverSegments": [],
     }
 
 
@@ -881,17 +882,38 @@ def write_episode_thumbnail_and_manifest(packet: dict, packet_dir: Path, prepare
     }
     if prepare_audio:
         if has_elevenlabs_config():
-            voice_name = f"daily-{date_slug}-{topic_slug[:42]}-episode-voiceover.mp3"
-            voice_ref = f"audio/{voice_name}"
-            if force_audio or not public_asset_exists(voice_ref):
-                generated_ref = generate_elevenlabs_voiceover(episode_props.get("voiceover_text", ""), voice_name)
-                voice_ref = generated_ref or voice_ref
-            if public_asset_exists(voice_ref):
-                episode_props["voiceoverSrc"] = voice_ref
+            fps = 30
+            intro_frames = 8 * fps
+            outro_frames = 18 * fps
+            total_frames = 8 * 60 * fps
+            usable_frames = total_frames - intro_frames - outro_frames
+            sections = episode_props.get("sections", [])
+            section_count = max(1, len(sections))
+            section_frames = max(1, usable_frames // section_count)
+            voiceover_segments = []
+            for idx, section in enumerate(sections, start=1):
+                if not isinstance(section, dict):
+                    continue
+                narration = str(section.get("voiceover") or section.get("script") or "").strip()
+                if not narration:
+                    continue
+                voice_name = f"daily-{date_slug}-{topic_slug[:34]}-episode-{idx}-voiceover.mp3"
+                voice_ref = f"audio/{voice_name}"
+                if force_audio or not public_asset_exists(voice_ref):
+                    generated_ref = generate_elevenlabs_voiceover(narration[:2800], voice_name)
+                    voice_ref = generated_ref or voice_ref
+                if public_asset_exists(voice_ref):
+                    voiceover_segments.append({
+                        "src": voice_ref,
+                        "fromFrame": intro_frames + (idx - 1) * section_frames,
+                        "volume": 0.94,
+                    })
+            if voiceover_segments:
+                episode_props["voiceoverSegments"] = voiceover_segments
                 episode_props["audioReadiness"] = {
                     "studioVoiceover": True,
                     "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
-                    "reason": "ready",
+                    "reason": f"{len(voiceover_segments)} episode sections ready",
                 }
         else:
             episode_props["audioReadiness"]["reason"] = "ELEVENLABS_API_KEY is not configured"

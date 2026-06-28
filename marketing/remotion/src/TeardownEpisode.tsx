@@ -3,6 +3,7 @@ import { Audio } from "@remotion/media";
 import {
   AbsoluteFill,
   Easing,
+  Sequence,
   interpolate,
   spring,
   staticFile,
@@ -33,6 +34,15 @@ export const teardownEpisodeSchema = z.object({
   musicVolume: z.number().min(0).max(1).optional(),
   voiceoverSrc: z.string().optional(),
   voiceoverVolume: z.number().min(0).max(1).optional(),
+  voiceoverSegments: z
+    .array(
+      z.object({
+        src: z.string(),
+        fromFrame: z.number(),
+        volume: z.number().min(0).max(1).optional(),
+      }),
+    )
+    .optional(),
 });
 
 export type TeardownEpisodeProps = z.infer<typeof teardownEpisodeSchema>;
@@ -340,6 +350,7 @@ export const TeardownEpisode: React.FC<TeardownEpisodeProps> = ({
   musicVolume = 0.11,
   voiceoverSrc,
   voiceoverVolume = 0.94,
+  voiceoverSegments = [],
 }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
@@ -395,6 +406,11 @@ export const TeardownEpisode: React.FC<TeardownEpisodeProps> = ({
         />
       ) : null}
       {voiceoverSrc ? <Audio src={staticFile(voiceoverSrc)} volume={voiceoverVolume} /> : null}
+      {voiceoverSegments.map((segment) => (
+        <Sequence key={`${segment.src}-${segment.fromFrame}`} from={segment.fromFrame}>
+          <Audio src={staticFile(segment.src)} volume={segment.volume ?? voiceoverVolume} />
+        </Sequence>
+      ))}
 
       <div
         style={{

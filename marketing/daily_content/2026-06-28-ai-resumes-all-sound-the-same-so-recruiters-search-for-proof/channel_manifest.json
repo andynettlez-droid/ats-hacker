@@ -8,10 +8,11 @@
     "output": "marketing/remotion/out/daily-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-episode.mp4",
     "format": "1920x1080",
     "status": "render_ready",
+    "voiceoverScript": "marketing/daily_content/2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof/longform_voiceover.md",
     "audioReadiness": {
       "studioVoiceover": false,
       "quietMusic": true,
-      "reason": "episode voiceover needs full-length narration pass before publication"
+      "reason": "episode voiceover script drafted; ElevenLabs section files not rendered yet"
     }
   },
   "thumbnail": {

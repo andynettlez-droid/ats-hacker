@@ -53,9 +53,10 @@
   "musicVolume": 0.11,
   "voiceoverVolume": 0.94,
   "voiceover_text": "Your AI resume sounds professional. That might be the problem. Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on. Most resumes are not failing because the person is unqualified. They fail because the resume says helped with stuff while the job description is asking for a specific toolkit. Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. Now compare the resume line by line. Vague bullets like helped with campaigns do not give recruiters the same signal as specific tools, scope, and outcomes. The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result. Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+  "voiceoverSegments": [],
   "audioReadiness": {
     "studioVoiceover": false,
     "quietMusic": true,
-    "reason": "episode voiceover needs full-length narration pass before publication"
+    "reason": "episode voiceover script drafted; ElevenLabs section files not rendered yet"
   }
 }

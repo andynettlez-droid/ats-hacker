@@ -57,6 +57,13 @@ interface ScoreResult {
   verdict: string;
 }
 
+type ShareScoreDetails = {
+  missingCount: number;
+  missingSamples: string[];
+  matchedSamples: string[];
+  headline: string;
+};
+
 type MockResumeFile = File & {
   isMockTemplate?: true;
   mockText?: string;
@@ -179,6 +186,51 @@ function useCountUp(target: number | null, durationMs = 1100): number {
   return value;
 }
 
+function sanitizeShareKeyword(keyword: string): string {
+  const normalized = keyword
+    .replace(/[^\w\s+#./-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return normalized.length > 34 ? `${normalized.slice(0, 31)}...` : normalized;
+}
+
+function keywordSamples(keywords: string[] = [], limit = 3): string[] {
+  const seen = new Set<string>();
+  return keywords
+    .map(sanitizeShareKeyword)
+    .filter((keyword) => {
+      const key = keyword.toLowerCase();
+      if (!keyword || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, limit);
+}
+
+function shareHeadline(score: number): string {
+  if (score >= 75) return 'Strong Signal';
+  if (score >= 50) return 'Needs Sharper Targeting';
+  return 'Qualified, But Invisible';
+}
+
+function buildShareScoreDetails(score: ScoreResult): ShareScoreDetails {
+  return {
+    missingCount: score.missingKeywords?.length || 0,
+    missingSamples: keywordSamples(score.missingKeywords, 3),
+    matchedSamples: keywordSamples(score.matchedKeywords, 2),
+    headline: shareHeadline(score.score),
+  };
+}
+
+function buildShareScoreUrl(origin: string, score: ScoreResult): string {
+  const details = buildShareScoreDetails(score);
+  const params = new URLSearchParams();
+  params.set('m', String(details.missingCount));
+  if (details.missingSamples.length) params.set('mk', details.missingSamples.join('|'));
+  if (details.matchedSamples.length) params.set('hit', details.matchedSamples.join('|'));
+  return `${origin}/s/${score.score}?${params.toString()}`;
+}
+
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [jobDescription, setJobDescription] = useState("");
@@ -186,6 +238,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isScoring, setIsScoring] = useState(false);
   const [score, setScore] = useState<ScoreResult | null>(null);
+  const [shareStatus, setShareStatus] = useState('');
   const [activeTab, setActiveTab] = useState<'resume' | 'cover_letter'>('resume');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [candDocTypes, setCandDocTypes] = useState<Record<number, 'resume' | 'cover_letter'>>({
@@ -258,6 +311,7 @@ export default function Home() {
     if (!validateInputs()) return;
     setIsScoring(true);
     setScore(null);
+    setShareStatus('');
     try {
       const resumeText = await extractResumeText();
       const res = await fetch('/api/score', {
@@ -335,18 +389,29 @@ export default function Home() {
 
   const shareScore = async () => {
     if (!score) return;
-    const missing = score.missingKeywords?.length || 0;
-    const url = `${window.location.origin}/s/${score.score}?m=${missing}`;
-    const text = `My resume scored ${score.score}/100 on Signal by ATSHacker for this job. Check yours free:`;
+    const url = buildShareScoreUrl(window.location.origin, score);
+    const details = buildShareScoreDetails(score);
+    const text = `My resume scored ${score.score}/100 on Signal by ATSHacker. ${details.headline}. Check yours free:`;
     try {
       if (navigator.share) {
         await navigator.share({ title: 'Signal by ATSHacker', text, url });
+        setShareStatus('Share card ready.');
       } else {
         await navigator.clipboard.writeText(`${text} ${url}`);
-        alert('Share link copied to clipboard!');
+        setShareStatus('Share link copied.');
+      }
+      try {
+        track('score_shared', { score: score.score, missing: details.missingCount });
+      } catch {
+        /* analytics best-effort */
       }
     } catch {
-      /* ignore */
+      try {
+        await navigator.clipboard.writeText(`${text} ${url}`);
+        setShareStatus('Share link copied.');
+      } catch {
+        setShareStatus('Could not copy the share link.');
+      }
     }
   };
 
@@ -356,6 +421,7 @@ export default function Home() {
   const scoreBar = score
     ? score.score >= 75 ? 'bg-emerald-500' : score.score >= 50 ? 'bg-amber-500' : 'bg-red-500'
     : 'bg-emerald-500';
+  const shareDetails = score ? buildShareScoreDetails(score) : null;
 
   return (
     <div className="min-h-screen bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/20 antialiased">
@@ -837,6 +903,42 @@ export default function Home() {
                   </div>
                 )}
 
+                {shareDetails && (
+                  <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-4 space-y-3">
+                    <div className="flex items-start gap-3">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-cyan-200/25 bg-[#020617]/70">
+                        <Share2 className="h-4 w-4 text-cyan-100" />
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-sm font-black text-cyan-50">Share-safe score card</p>
+                        <p className="mt-1 text-xs font-semibold leading-relaxed text-cyan-50/70">
+                          Shares your score, gap count, and a few keyword examples. No resume text included.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="rounded-xl border border-white/10 bg-[#020617]/55 p-3">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-cyan-200">{shareDetails.headline}</span>
+                        <span className={`text-lg font-black tabular-nums ${scoreColor}`}>{score.score}/100</span>
+                      </div>
+                      <p className="mt-2 text-xs font-bold text-slate-300">
+                        {shareDetails.missingCount > 0
+                          ? `${shareDetails.missingCount} job-description gaps found`
+                          : 'Target-job language looks aligned'}
+                      </p>
+                      {shareDetails.missingSamples.length > 0 && (
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {shareDetails.missingSamples.map((keyword) => (
+                            <span key={keyword} className="rounded-md bg-red-400/10 px-2 py-1 text-[10px] font-bold text-red-100">
+                              {keyword}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
                 <button
                   onClick={() => handleCheckout('resume')}
                   disabled={isLoading}
@@ -851,8 +953,9 @@ export default function Home() {
                   className="w-full bg-white/5 hover:bg-cyan-400/10 border border-cyan-400/20 text-cyan-50 text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-1.5"
                 >
                   <Share2 className="w-4 h-4 text-cyan-200" />
-                  <span>Share My Score</span>
+                  <span>Share Score Card</span>
                 </button>
+                {shareStatus && <p className="text-center text-xs font-bold text-cyan-100/80">{shareStatus}</p>}
               </div>
             ) : (
               <div className="rounded-3xl border border-cyan-400/20 bg-white/5 p-6 sm:p-8 shadow-[inset_0_0_42px_rgba(56,213,255,0.04)] space-y-6">

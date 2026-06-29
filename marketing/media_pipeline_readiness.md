@@ -25,7 +25,7 @@ The long-form YouTube lane is not yet production-ready. It has a script packet, 
 
 ## What Is Not Ready Yet
 
-- No automated frame-level video QC for overlap, safe areas, cropped text, contrast, or mascot visibility.
+- No automated frame-level visual QC for overlap, safe areas, cropped text, contrast, or mascot visibility. A metadata/queue QC gate now exists, but it does not inspect pixels.
 - No automated audio loudness/peak/LUFS check.
 - No word-level transcript/caption alignment.
 - No automatic platform metrics ingestion from TikTok, Instagram, or YouTube.
@@ -46,8 +46,8 @@ These are the assets that should be promoted for review-gated posting, not the e
 
 1. Promote the three studio short assets into `marketing/autopost/videos/` as `review_required`.
 2. Dry-run the queue and confirm the three studio cuts show as blocked until approval.
-3. Add an automated render QC script that checks expected frame stills exist and forces a human review checklist before queue promotion.
-4. Add audio QC with ffmpeg/ffprobe or a Node media parser dependency.
+3. Extend `npm run qc:daily:shorts` with frame still/pixel checks for text overlap, safe areas, contrast, and mascot visibility.
+4. Add audio loudness/peak QC with ffmpeg/ffprobe or audio sample analysis.
 5. Add metrics ingestion from the posting provider and platform dashboards.
 6. Build the long-form publish package: final render, thumbnail, title, description, chapters, pinned comment, and score-page UTM.
 

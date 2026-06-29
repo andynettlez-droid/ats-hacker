@@ -107,6 +107,14 @@ py -3 marketing_agent\promote_daily_drafts.py
 
 The promoter copies rendered files into `marketing/autopost/videos/` and registers review-gated entries in `marketing/autopost/posts.json`.
 
+After promotion, run the studio QC gate:
+
+```bat
+npm run qc:daily:shorts
+```
+
+The gate verifies the rendered and promoted files both exist, the autopost entries are still `review_required`, the videos are 1080x1920 MP4/H.264/AAC at 30fps, audio tracks exist, linked props and audio assets exist, the score moves upward, the CTA points to the free Signal score, and unsafe claim patterns are absent.
+
 Dry-run posting from `marketing/autopost`:
 
 ```bat
@@ -124,12 +132,13 @@ Live posting remains blocked for `draft` and `review_required` entries unless th
 - `marketing/remotion/public/audio/`: voiceover and music assets.
 - `marketing/remotion/out/`: rendered outputs, git-ignored.
 - `marketing/autopost/videos/`: publishable videos, git-ignored.
+- `marketing/remotion/out/daily-studio-shorts-qc.json`: latest studio short QC report, git-ignored.
 
 ## Known Gaps
 
 The pipeline can make strong supervised shorts now. It is not fully autonomous studio QA yet because it still needs:
 
-- Automated frame-level overlap/safe-area checks.
+- Automated frame-level overlap/safe-area checks beyond metadata/queue QC.
 - Automated audio loudness/peak checks.
 - Word-level transcript caption alignment.
 - Automatic platform metrics ingestion.

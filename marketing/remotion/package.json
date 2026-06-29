@@ -19,6 +19,7 @@
     "render:daily:short2:studio": "remotion render ResumeCrimeScene out/daily-one-bullet-fix-studio.mp4 --props=props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_2.json",
     "render:daily:short3:studio": "remotion render ResumeCrimeScene out/daily-ats-myth-lab-studio.mp4 --props=props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_3.json",
     "render:daily:shorts:studio": "npm run render:daily:short1:studio && npm run render:daily:short2:studio && npm run render:daily:short3:studio",
+    "qc:daily:shorts": "node scripts/qc_daily_studio_shorts.mjs",
     "voiceover:episode": "node scripts/generate_episode_voiceover.mjs",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"
@@ -26,6 +27,7 @@
   "dependencies": {
     "@remotion/cli": "4.0.483",
     "@remotion/media": "^4.0.483",
+    "@remotion/media-parser": "4.0.483",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "remotion": "4.0.483",

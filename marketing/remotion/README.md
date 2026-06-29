@@ -1,146 +1,136 @@
-# ATSHacker Remotion Pipeline
+# ATSHacker Remotion Media Pipeline
 
-Programmatic video (React + [Remotion](https://www.remotion.dev/)) for auto-generating
-captioned vertical short-form videos for **TikTok / Reels / Shorts**.
+Programmatic video production for Signal by ATSHacker. The current production lane is recruiter-style resume teardown content for TikTok, Instagram Reels, YouTube Shorts, and long-form YouTube.
 
-The flagship template is **`ScoreReveal`** — a 16-second, 1080x1920, 30fps video
-built around the ATS match-score reveal (the visual climax). Everything is
-data-driven via `defaultProps`, so you can spin up many variants by swapping props.
+The primary short-form template is `ResumeCrimeScene`, not the older `ScoreReveal` ad. The winning format is:
 
----
+1. Hook with a blunt/funny resume problem.
+2. Show the resume and target job description.
+3. Highlight missing job language.
+4. Rewrite one real bullet without inventing experience.
+5. Reveal the score movement.
+6. Send viewers to the free Signal score.
 
-## Install
+## Current Compositions
 
-> **Windows gotcha:** the shell may have `NODE_ENV=production` + `npm omit=dev`,
-> which prunes dev dependencies. Always install with dev deps explicitly:
+| Composition | Format | Use |
+| --- | --- | --- |
+| `ResumeCrimeScene` | 1080x1920, 30fps | Daily Shorts/Reels/TikTok teardown clips |
+| `TeardownEpisode` | 1920x1080, 30fps | Long-form YouTube episode |
+| `TeardownEpisodeReviewCut` | 1920x1080, 30fps | 2-minute review cut before full render |
+| `SignalThumbnail` | 1280x720 still | YouTube thumbnail |
+| `SignalBreakthroughAd` | 1080x1920, 30fps | Cinematic mascot/product ad |
+| `ScoreReveal` | 1080x1920, 30fps | Legacy simple score reveal |
+
+## Setup
+
+Node 18+ is required. Install from this folder:
 
 ```bat
 cd marketing\remotion
 set NODE_ENV=development && npm install --include=dev
 ```
 
-(macOS/Linux: `NODE_ENV=development npm install --include=dev`)
+## Preview
 
-Node 18+ is required. Remotion downloads a headless Chromium on the first render.
-
----
-
-## Preview (Remotion Studio)
-
-```bash
+```bat
 npm run studio
 ```
 
-Opens the interactive studio at <http://localhost:3000>. You can scrub the timeline,
-live-edit props in the right-hand panel, and preview every scene.
+## Render The Current Daily Studio Shorts
 
----
-
-## Render an MP4
-
-```bash
-npm run render
+```bat
+npm run render:daily:shorts:studio
 ```
 
-This runs `remotion render ScoreReveal out/score-reveal.mp4` and writes the H.264 MP4
-to `out/score-reveal.mp4`.
+Individual renders:
 
-The **first** render downloads a headless Chromium (~110 MB) — that step needs network
-access and can take a minute. Subsequent renders reuse it.
-
----
-
-## Custom props
-
-Three ways to drive the content:
-
-### 1. Inline JSON on the CLI (best for automation)
-
-```bash
-npx remotion render ScoreReveal out/my-video.mp4 --props="{\"hook1\":\"512 applications.\",\"hook2\":\"1 callback.\",\"beforeScore\":31,\"afterScore\":92,\"missing\":[\"SQL\",\"dashboards\",\"A/B testing\"],\"cta\":\"Free score in bio 👇\"}"
+```bat
+npm run render:daily:short1:studio
+npm run render:daily:short2:studio
+npm run render:daily:short3:studio
 ```
 
-### 2. A props file
+Outputs:
 
-```bash
-npx remotion render ScoreReveal out/my-video.mp4 --props=./props/data-analyst.json
+- `out/daily-your-ai-resume-has-linkedin-breath-studio.mp4`
+- `out/daily-one-bullet-fix-studio.mp4`
+- `out/daily-ats-myth-lab-studio.mp4`
+
+## Render The Daily Episode
+
+```bat
+npm run render:episode:review
 ```
 
-### 3. Edit the defaults
+Use the review cut before spending time on the full long-form render. The full episode render is:
 
-Change `defaultScoreRevealProps` in `src/ScoreReveal.tsx`.
-
-### Available props
-
-| Prop          | Type       | Description                                                        |
-| ------------- | ---------- | ------------------------------------------------------------------ |
-| `hook1`       | `string`   | First punch line (0–2.5s).                                         |
-| `hook2`       | `string`   | Emerald punch-in line.                                             |
-| `subline`     | `string`   | Explainer shown over the search-bar scene.                        |
-| `missing`     | `string[]` | Missing keywords — render as red chips that flip green.            |
-| `beforeScore` | `number`   | Starting ATS score (the count-up starts here).                     |
-| `afterScore`  | `number`   | Final ATS score. Color tiers: ≥75 emerald, 50–74 amber, <50 red.   |
-| `cta`         | `string`   | Call-to-action shown with the wordmark (12–16s).                   |
-| `bgVideo`     | `string?`  | Optional full-bleed background clip (see below).                   |
-
----
-
-## Background B-roll (Seedance / Kling / etc.)
-
-Pass a generated clip via the `bgVideo` prop. It renders full-bleed behind a dark
-scrim so captions stay legible. If omitted, a solid dark background with subtle
-emerald accents is used.
-
-- **Local file:** drop the clip in `public/` and pass the filename, e.g.
-  `--props="{\"bgVideo\":\"broll.mp4\"}"` (Remotion resolves it via `staticFile`).
-- **Remote URL:** pass an `https://...` URL directly and it is used as-is.
-
-```bash
-npx remotion render ScoreReveal out/score-reveal.mp4 --props="{\"bgVideo\":\"https://cdn.example.com/kling-clip.mp4\"}"
+```bat
+npm run render:episode
 ```
 
-A Seedance/Kling vertical (1080x1920) clip works best; the scene loops and is muted.
+Thumbnail:
 
----
-
-## End-to-end with the auto-poster
-
-The rendered MP4 feeds the Upload-Post auto-poster in `marketing/autopost/`.
-
-1. Render: `npm run render` (or with custom `--props`).
-2. Copy/move the output into the auto-poster's watch folder:
-
-   ```bat
-   copy out\score-reveal.mp4 ..\autopost\videos\
-   ```
-
-3. Reference the file in `marketing/autopost/posts.json` and run the poster
-   (`node marketing/autopost/post.mjs`). See `marketing/autopost/README.md`.
-
-> `marketing/autopost/videos/` and `marketing/remotion/out/` are git-ignored —
-> the generated MP4s are build artifacts, not source.
-
----
-
-## Project layout
-
-```
-marketing/remotion/
-├── package.json          # type: module; studio/render/bundle/typecheck scripts
-├── tsconfig.json
-├── remotion.config.ts    # h264, jpeg frames, auto concurrency
-├── public/               # optional: local bgVideo clips (staticFile)
-└── src/
-    ├── index.ts          # registerRoot
-    ├── Root.tsx          # <Composition id="ScoreReveal" .../>
-    └── ScoreReveal.tsx    # the template + scenes + props schema
+```bat
+npm run render:thumbnail
 ```
 
-## Scripts
+## Voiceover
 
-| Script              | What it does                                          |
-| ------------------- | ----------------------------------------------------- |
-| `npm run studio`    | Launch Remotion Studio (live preview).                |
-| `npm run render`    | Render `ScoreReveal` to `out/score-reveal.mp4`.       |
-| `npm run bundle`    | Bundle the project (validates the graph, no Chromium).|
-| `npm run typecheck` | `tsc --noEmit`.                                        |
+Episode voiceover is generated by:
+
+```bat
+npm run voiceover:episode
+```
+
+Short-form voiceover is handled by the daily content agent and stored in `public/audio/`. Use studio narration plus the quiet music bed. Avoid harsh whooshes, cartoon impacts, or repetitive SFX.
+
+## Review Gate
+
+Before promoting or posting:
+
+- Render stills at hook, problem, fix, score reveal, and CTA.
+- Confirm no text overlap, cropped captions, or score badge collision.
+- Confirm Signal mascot/brand is visible but not intrusive.
+- Confirm the resume and job description remain the hero.
+- Confirm the CTA leads with the free Signal score.
+- Confirm claims avoid guarantees, fake experience, "beat the ATS," and unsupported auto-reject language.
+- Confirm voiceover is clean and music stays quiet under narration.
+
+## Promote To Posting Queue
+
+Rendered MP4s are build artifacts. Promote reviewed daily drafts with:
+
+```bat
+py -3 marketing_agent\promote_daily_drafts.py
+```
+
+The promoter copies rendered files into `marketing/autopost/videos/` and registers review-gated entries in `marketing/autopost/posts.json`.
+
+Dry-run posting from `marketing/autopost`:
+
+```bat
+npm run dry
+```
+
+Live posting remains blocked for `draft` and `review_required` entries unless the poster is run with `--approved`.
+
+## Files To Know
+
+- `marketing/daily_content/.../packet.json`: source packet for the daily topic.
+- `marketing/daily_content/.../render_commands.ps1`: exact render commands for the packet.
+- `marketing/daily_content/.../autopost_drafts.json`: review-gated queue drafts.
+- `marketing/remotion/props_daily_*.json`: Remotion props for each episode/short/thumbnail.
+- `marketing/remotion/public/audio/`: voiceover and music assets.
+- `marketing/remotion/out/`: rendered outputs, git-ignored.
+- `marketing/autopost/videos/`: publishable videos, git-ignored.
+
+## Known Gaps
+
+The pipeline can make strong supervised shorts now. It is not fully autonomous studio QA yet because it still needs:
+
+- Automated frame-level overlap/safe-area checks.
+- Automated audio loudness/peak checks.
+- Word-level transcript caption alignment.
+- Automatic platform metrics ingestion.
+- A live trend API connector feeding the daily content agent.

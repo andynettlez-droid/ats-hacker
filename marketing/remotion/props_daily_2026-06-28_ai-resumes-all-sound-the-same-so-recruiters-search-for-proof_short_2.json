@@ -1,6 +1,21 @@
 {
   "hook": "This bullet is wearing a fake mustache.",
   "subhook": "It looks busy, but says almost nothing.",
+  "seriesLabel": "One bullet fix",
+  "punchline": "The work is real. The wording is hiding it.",
+  "problemPunchline": "This sentence is doing cardio and going nowhere.",
+  "markedLabel": "Says what?",
+  "teardownText": "Busy bullet.",
+  "teardownEmphasis": "Empty evidence.",
+  "teardownPunchline": "Action verbs are not a personality.",
+  "teardownIssues": [
+    "No channel",
+    "No metric",
+    "No outcome"
+  ],
+  "fixText": "One bullet.",
+  "fixEmphasis": "Actual signal.",
+  "fixPunchline": "The work did not change. The proof finally showed up.",
   "resumeTitle": "AI-Polished Resume",
   "jobTitle": "Target Job Description",
   "jobKeywords": [
@@ -18,7 +33,7 @@
   "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
   "beforeScore": 40,
   "afterScore": 88,
-  "cta": "Check your free Signal score.",
+  "cta": "Paste your resume + job. Get your free Signal score.",
   "musicSrc": "audio/signal-quiet-orbit.wav",
   "musicVolume": 0.16,
   "avatarLabel": "Recruiter review",

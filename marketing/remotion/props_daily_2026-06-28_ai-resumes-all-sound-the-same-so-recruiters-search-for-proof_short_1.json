@@ -1,6 +1,21 @@
 {
   "hook": "Your AI resume has LinkedIn breath.",
   "subhook": "Polished. Beige. Missing the role language.",
+  "seriesLabel": "AI resume roast",
+  "punchline": "Polished is not the same as searchable.",
+  "problemPunchline": "The resume is smooth. Recruiter search still misses it.",
+  "markedLabel": "Corporate fog",
+  "teardownText": "Pretty words.",
+  "teardownEmphasis": "No receipts.",
+  "teardownPunchline": "This is the part the ATS cannot search.",
+  "teardownIssues": [
+    "No job language",
+    "No marketing tools",
+    "No business result"
+  ],
+  "fixText": "Same work.",
+  "fixEmphasis": "Sharper receipts.",
+  "fixPunchline": "Now the resume speaks the job description.",
   "resumeTitle": "AI-Polished Resume",
   "jobTitle": "Target Job Description",
   "jobKeywords": [
@@ -18,7 +33,7 @@
   "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
   "beforeScore": 39,
   "afterScore": 87,
-  "cta": "Check your free Signal score.",
+  "cta": "Paste your resume + job. Get your free Signal score.",
   "musicSrc": "audio/signal-quiet-orbit.wav",
   "musicVolume": 0.16,
   "avatarLabel": "Recruiter review",

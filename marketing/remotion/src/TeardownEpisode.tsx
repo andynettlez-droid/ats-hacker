@@ -43,6 +43,7 @@ export const teardownEpisodeSchema = z.object({
       }),
     )
     .optional(),
+  durationInFrames: z.number().optional(),
 });
 
 export type TeardownEpisodeProps = z.infer<typeof teardownEpisodeSchema>;
@@ -407,7 +408,7 @@ export const TeardownEpisode: React.FC<TeardownEpisodeProps> = ({
       ) : null}
       {voiceoverSrc ? <Audio src={staticFile(voiceoverSrc)} volume={voiceoverVolume} /> : null}
       {voiceoverSegments.map((segment) => (
-        <Sequence key={`${segment.src}-${segment.fromFrame}`} from={segment.fromFrame}>
+        <Sequence key={`${segment.src}-${segment.fromFrame}`} from={segment.fromFrame} premountFor={30}>
           <Audio src={staticFile(segment.src)} volume={segment.volume ?? voiceoverVolume} />
         </Sequence>
       ))}

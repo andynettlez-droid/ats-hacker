@@ -13,7 +13,13 @@
     "render:breakthrough:studio": "remotion render SignalBreakthroughAd out/signal-filter-breakthrough-studio.mp4 --props=props_signal_studio_breakthrough.json",
     "render:crime-scene": "remotion render ResumeCrimeScene out/resume-crime-scene-demand-gen.mp4 --props=props_resume_crime_scene.json",
     "render:episode": "remotion render TeardownEpisode out/daily-teardown-episode.mp4",
+    "render:episode:review": "remotion render TeardownEpisodeReviewCut out/daily-teardown-episode-review-cut.mp4",
     "render:thumbnail": "remotion still SignalThumbnail out/daily-thumbnail.png",
+    "render:daily:short1:studio": "remotion render ResumeCrimeScene out/daily-your-ai-resume-has-linkedin-breath-studio.mp4 --props=props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_1.json",
+    "render:daily:short2:studio": "remotion render ResumeCrimeScene out/daily-one-bullet-fix-studio.mp4 --props=props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_2.json",
+    "render:daily:short3:studio": "remotion render ResumeCrimeScene out/daily-ats-myth-lab-studio.mp4 --props=props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_3.json",
+    "render:daily:shorts:studio": "npm run render:daily:short1:studio && npm run render:daily:short2:studio && npm run render:daily:short3:studio",
+    "voiceover:episode": "node scripts/generate_episode_voiceover.mjs",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"
   },

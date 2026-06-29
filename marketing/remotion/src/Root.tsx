@@ -32,6 +32,7 @@ const SIGNAL_VIRAL_DURATION = 30;
 const SIGNAL_BREAKTHROUGH_DURATION = 30;
 const RESUME_CRIME_SCENE_DURATION = 45;
 const TEARDOWN_EPISODE_DURATION = 8 * 60;
+const TEARDOWN_REVIEW_CUT_DURATION = 2 * 60;
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -105,6 +106,19 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
         schema={teardownEpisodeSchema}
         defaultProps={defaultTeardownEpisodeProps}
+      />
+      <Composition
+        id="TeardownEpisodeReviewCut"
+        component={TeardownEpisode}
+        durationInFrames={TEARDOWN_REVIEW_CUT_DURATION * FPS}
+        fps={FPS}
+        width={1920}
+        height={1080}
+        schema={teardownEpisodeSchema}
+        defaultProps={{
+          ...defaultTeardownEpisodeProps,
+          durationInFrames: TEARDOWN_REVIEW_CUT_DURATION * FPS,
+        }}
       />
       <Still
         id="SignalThumbnail"

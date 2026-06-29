@@ -1,6 +1,21 @@
 {
   "hook": "The ATS is not a wizard.",
   "subhook": "It searches what you actually wrote.",
+  "seriesLabel": "ATS myth lab",
+  "punchline": "Mind-reading is not installed.",
+  "problemPunchline": "The system cannot search thoughts.",
+  "markedLabel": "Invisible",
+  "teardownText": "The ATS reads text.",
+  "teardownEmphasis": "Not intention.",
+  "teardownPunchline": "If the tool is not written down, it might as well be imaginary.",
+  "teardownIssues": [
+    "Search cannot infer tools",
+    "No target keywords",
+    "No measurable context"
+  ],
+  "fixText": "Write the evidence.",
+  "fixEmphasis": "Then it can be found.",
+  "fixPunchline": "Not gaming the system. Helping it read your real work.",
   "resumeTitle": "AI-Polished Resume",
   "jobTitle": "Target Job Description",
   "jobKeywords": [
@@ -11,14 +26,14 @@
   ],
   "weakBullets": [
     "Results-driven team player.",
-    "Helped with marketing campaigns.",
+    "Managed campaigns.",
     "Worked with cross-functional teams."
   ],
-  "beforeBullet": "Helped with marketing campaigns.",
-  "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+  "beforeBullet": "Managed campaigns.",
+  "afterBullet": "Managed LinkedIn Ads campaigns in HubSpot, reducing CAC 32% through audience tests and lead scoring.",
   "beforeScore": 41,
   "afterScore": 89,
-  "cta": "Check your free Signal score.",
+  "cta": "Paste your resume + job. Get your free Signal score.",
   "musicSrc": "audio/signal-quiet-orbit.wav",
   "musicVolume": 0.16,
   "avatarLabel": "Recruiter review",

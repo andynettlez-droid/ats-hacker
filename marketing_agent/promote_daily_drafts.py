@@ -28,7 +28,7 @@ def latest_drafts_path() -> Path:
     return drafts[0]
 
 
-def promote(drafts_path: Path, only: str | None = None) -> dict:
+def promote(drafts_path: Path, only: str | None = None, replace_posted: bool = False) -> dict:
     drafts = read_json(drafts_path, [])
     if not isinstance(drafts, list):
         raise ValueError(f"Drafts file must contain a list: {drafts_path}")
@@ -56,9 +56,6 @@ def promote(drafts_path: Path, only: str | None = None) -> dict:
             missing.append({"file": file_ref, "expectedRender": str(source.relative_to(ROOT))})
             continue
 
-        dest = AUTOPOST_VIDEOS / filename
-        shutil.copyfile(source, dest)
-
         post = {
             "title": draft.get("title", filename)[:96],
             "caption": draft.get("caption", ""),
@@ -75,7 +72,16 @@ def promote(drafts_path: Path, only: str | None = None) -> dict:
         if existing_index is None:
             posts.append(post)
         else:
+            if posts[existing_index].get("status") == "posted" and not replace_posted:
+                skipped.append({
+                    "file": post["file"],
+                    "reason": "existing post is already marked posted; use --replace-posted only for an intentional repost",
+                })
+                continue
             posts[existing_index] = {**posts[existing_index], **post}
+
+        dest = AUTOPOST_VIDEOS / filename
+        shutil.copyfile(source, dest)
         promoted.append({"file": post["file"], "status": post["status"]})
 
     if promoted:
@@ -94,9 +100,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Copy rendered daily videos to autopost/videos and register review-gated posts.")
     parser.add_argument("--drafts", type=Path, default=None, help="Path to autopost_drafts.json. Defaults to newest daily packet.")
     parser.add_argument("--only", default=None, help="Only promote a specific draft file ref or title.")
+    parser.add_argument("--replace-posted", action="store_true", help="Allow a draft to overwrite a post record that is already marked posted.")
     args = parser.parse_args()
 
-    result = promote(args.drafts or latest_drafts_path(), args.only)
+    result = promote(args.drafts or latest_drafts_path(), args.only, args.replace_posted)
     print(json.dumps(result, indent=2))
 
 

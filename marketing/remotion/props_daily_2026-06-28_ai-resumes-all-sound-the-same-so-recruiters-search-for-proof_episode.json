@@ -52,11 +52,43 @@
   "musicSrc": "audio/signal-quiet-orbit.wav",
   "musicVolume": 0.11,
   "voiceoverVolume": 0.94,
+  "durationInFrames": 3600,
   "voiceover_text": "Your AI resume sounds professional. That might be the problem. Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on. Most resumes are not failing because the person is unqualified. They fail because the resume says helped with stuff while the job description is asking for a specific toolkit. Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. Now compare the resume line by line. Vague bullets like helped with campaigns do not give recruiters the same signal as specific tools, scope, and outcomes. The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result. Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
-  "voiceoverSegments": [],
+  "voiceoverSegments": [
+    {
+      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-1-cold-open.mp3",
+      "fromFrame": 240,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-2-the-real-problem.mp3",
+      "fromFrame": 710,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-3-translate-the-job.mp3",
+      "fromFrame": 1180,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-4-live-teardown.mp3",
+      "fromFrame": 1650,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-5-fix-one-bullet.mp3",
+      "fromFrame": 2120,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-6-product-bridge.mp3",
+      "fromFrame": 2590,
+      "volume": 0.94
+    }
+  ],
   "audioReadiness": {
-    "studioVoiceover": false,
+    "studioVoiceover": true,
     "quietMusic": true,
-    "reason": "episode voiceover script drafted; ElevenLabs section files not rendered yet"
+    "reason": "6 episode voiceover sections ready"
   }
 }

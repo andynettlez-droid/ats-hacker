@@ -4,16 +4,50 @@
   "status": "render_ready_review_required",
   "episode": {
     "composition": "TeardownEpisode",
+    "reviewCutComposition": "TeardownEpisodeReviewCut",
     "props": "marketing/remotion/props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_episode.json",
     "output": "marketing/remotion/out/daily-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-episode.mp4",
+    "reviewCutOutput": "marketing/remotion/out/daily-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof-episode-review-cut.mp4",
     "format": "1920x1080",
     "status": "render_ready",
     "voiceoverScript": "marketing/daily_content/2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof/longform_voiceover.md",
     "audioReadiness": {
-      "studioVoiceover": false,
+      "studioVoiceover": true,
       "quietMusic": true,
-      "reason": "episode voiceover script drafted; ElevenLabs section files not rendered yet"
-    }
+      "reason": "6 episode voiceover sections ready"
+    },
+    "voiceoverSegments": [
+      {
+        "label": "Cold Open",
+        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-1-cold-open.mp3",
+        "fromFrame": 240
+      },
+      {
+        "label": "The Real Problem",
+        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-2-the-real-problem.mp3",
+        "fromFrame": 710
+      },
+      {
+        "label": "Translate The Job",
+        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-3-translate-the-job.mp3",
+        "fromFrame": 1180
+      },
+      {
+        "label": "Live Teardown",
+        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-4-live-teardown.mp3",
+        "fromFrame": 1650
+      },
+      {
+        "label": "Fix One Bullet",
+        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-5-fix-one-bullet.mp3",
+        "fromFrame": 2120
+      },
+      {
+        "label": "Product Bridge",
+        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-6-product-bridge.mp3",
+        "fromFrame": 2590
+      }
+    ]
   },
   "thumbnail": {
     "composition": "SignalThumbnail",

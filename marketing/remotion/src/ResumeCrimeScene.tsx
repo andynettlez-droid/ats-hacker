@@ -17,6 +17,17 @@ import { SignalMascot } from "./components/SignalMascot";
 export const resumeCrimeSceneSchema = z.object({
   hook: z.string(),
   subhook: z.string(),
+  seriesLabel: z.string().optional(),
+  punchline: z.string().optional(),
+  problemPunchline: z.string().optional(),
+  markedLabel: z.string().optional(),
+  teardownText: z.string().optional(),
+  teardownEmphasis: z.string().optional(),
+  teardownPunchline: z.string().optional(),
+  teardownIssues: z.array(z.string()).optional(),
+  fixText: z.string().optional(),
+  fixEmphasis: z.string().optional(),
+  fixPunchline: z.string().optional(),
   resumeTitle: z.string(),
   jobTitle: z.string(),
   jobKeywords: z.array(z.string()),
@@ -41,6 +52,17 @@ export type ResumeCrimeSceneProps = z.infer<typeof resumeCrimeSceneSchema>;
 export const defaultResumeCrimeSceneProps: ResumeCrimeSceneProps = {
   hook: "This resume got a 34/100.",
   subhook: "The person was actually qualified.",
+  seriesLabel: "Recruiter reacts",
+  punchline: "Qualified, but invisible.",
+  problemPunchline: "Recruiters search for proof, not vibes.",
+  markedLabel: "Too vague",
+  teardownText: "Not fake. Just",
+  teardownEmphasis: "too vague.",
+  teardownPunchline: "This is the part costing you interviews.",
+  teardownIssues: ["No role language", "No tools", "No measurable proof"],
+  fixText: "Same experience.",
+  fixEmphasis: "Better signal.",
+  fixPunchline: "No fake experience. Just clearer evidence.",
   resumeTitle: "Marketing Specialist Resume",
   jobTitle: "Demand Generation Manager",
   jobKeywords: ["Demand Gen", "LinkedIn Ads", "HubSpot", "CAC analysis"],
@@ -108,7 +130,8 @@ const ResumeSheet: React.FC<{
   rewritten?: boolean;
   beforeBullet: string;
   afterBullet: string;
-}> = ({ title, bullets, marked, rewritten, beforeBullet, afterBullet }) => (
+  markedLabel?: string;
+}> = ({ title, bullets, marked, rewritten, beforeBullet, afterBullet, markedLabel = "Too vague" }) => (
   <div
     style={{
       width: 612,
@@ -183,7 +206,7 @@ const ResumeSheet: React.FC<{
                     zIndex: 3,
                   }}
                 >
-                  Too vague
+                  {markedLabel}
                 </div>
               </>
             ) : null}
@@ -322,14 +345,14 @@ const TopCaption: React.FC<{ text: string; emphasis?: string; tone?: "red" | "gr
         position: "absolute",
         left: 54,
         right: 54,
-        top: 52,
-        padding: "24px 30px",
+        top: 92,
+        padding: "20px 28px",
         borderRadius: 26,
         background: "rgba(2,6,23,0.86)",
         border: "1px solid rgba(56,213,255,0.22)",
         boxShadow: "0 22px 70px rgba(0,0,0,0.42)",
         color: TEXT,
-        fontSize: 45,
+        fontSize: 42,
         lineHeight: 1.08,
         fontWeight: 950,
         textAlign: "center",
@@ -342,9 +365,74 @@ const TopCaption: React.FC<{ text: string; emphasis?: string; tone?: "red" | "gr
   );
 };
 
+const CreatorBadge: React.FC<{ label: string }> = ({ label }) => (
+  <div
+    style={{
+      position: "absolute",
+      left: 44,
+      top: 26,
+      zIndex: 145,
+      display: "flex",
+      alignItems: "center",
+      gap: 9,
+      padding: "8px 12px",
+      borderRadius: 999,
+      border: "1px solid rgba(56,213,255,0.30)",
+      background: "rgba(2,6,23,0.82)",
+      color: CYAN,
+      fontSize: 14,
+      fontWeight: 950,
+      textTransform: "uppercase",
+      letterSpacing: 1.5,
+      boxShadow: "0 18px 54px rgba(0,0,0,0.38)",
+    }}
+  >
+    <SignalMascot logoMode style={{ width: 26, height: 26 }} />
+    {label}
+  </div>
+);
+
+const LowerPunchline: React.FC<{ text: string; tone?: "red" | "green" | "yellow" }> = ({ text, tone = "yellow" }) => {
+  const color = tone === "green" ? "#bbf7d0" : tone === "red" ? "#fecaca" : "#fef08a";
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 58,
+        right: 58,
+        bottom: 158,
+        zIndex: 116,
+        padding: "17px 22px",
+        borderRadius: 22,
+        border: `1px solid ${tone === "green" ? "rgba(22,163,74,0.32)" : tone === "red" ? "rgba(220,38,38,0.32)" : "rgba(250,204,21,0.30)"}`,
+        background: "rgba(2,6,23,0.84)",
+        color,
+        fontSize: 31,
+        lineHeight: 1.06,
+        fontWeight: 950,
+        textAlign: "center",
+        boxShadow: "0 20px 65px rgba(0,0,0,0.42)",
+      }}
+    >
+      {text}
+    </div>
+  );
+};
+
 export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   hook,
   subhook,
+  seriesLabel = "Recruiter reacts",
+  punchline = "Qualified, but invisible.",
+  problemPunchline = "Recruiters search for proof, not vibes.",
+  markedLabel = "Too vague",
+  teardownText = "Not fake. Just",
+  teardownEmphasis = "too vague.",
+  teardownPunchline = "This is the part costing you interviews.",
+  teardownIssues = ["No role language", "No tools", "No measurable proof"],
+  fixText = "Same experience.",
+  fixEmphasis = "Better signal.",
+  fixPunchline = "No fake experience. Just clearer evidence.",
   resumeTitle,
   jobTitle,
   jobKeywords,
@@ -419,6 +507,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           <AvatarBubble src={avatarVideoUrl} label={avatarLabel} opacity={fadeIn(frame, 0, 15) * fadeOut(frame, 128, 150)} />
         </Sequence>
       ) : null}
+      <CreatorBadge label={seriesLabel} />
 
       <AbsoluteFill style={{ opacity: hookOpacity, alignItems: "center", justifyContent: "center", padding: 70, textAlign: "center" }}>
         <div style={{ color: "#fecaca", fontSize: 28, fontWeight: 950, textTransform: "uppercase", letterSpacing: 2.4 }}>
@@ -427,10 +516,12 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
         <div style={{ color: TEXT, fontSize: 82, lineHeight: 0.98, fontWeight: 950, marginTop: 24, maxWidth: 900 }}>{hook}</div>
         <div style={{ color: CYAN, fontSize: 46, lineHeight: 1.08, fontWeight: 950, marginTop: 26, maxWidth: 800 }}>{subhook}</div>
         <ScoreBadge score={beforeScore} tone="bad" />
+        <LowerPunchline text={punchline} tone="yellow" />
       </AbsoluteFill>
 
       <AbsoluteFill style={{ opacity: problemOpacity }}>
         <TopCaption text="The job description says:" emphasis={jobKeywords.slice(0, 2).join(" + ")} />
+        <LowerPunchline text={problemPunchline} tone="red" />
         <div style={{ position: "absolute", left: 58, top: 225 }}>
           <ResumeSheet
             title={resumeTitle}
@@ -438,18 +529,20 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
             marked
             beforeBullet={beforeBullet}
             afterBullet={afterBullet}
+            markedLabel={markedLabel}
           />
         </div>
         <div style={{ position: "absolute", right: 58, top: 318 }}>
           <JobDescription jobTitle={jobTitle} keywords={jobKeywords} highlightProgress={highlightProgress} />
         </div>
-        <div style={{ position: "absolute", right: 74, bottom: 104 }}>
+        <div style={{ position: "absolute", right: 74, bottom: 420 }}>
           <ScoreBadge score={beforeScore} tone="bad" label="Low match" />
         </div>
       </AbsoluteFill>
 
       <AbsoluteFill style={{ opacity: teardownOpacity }}>
-        <TopCaption text="Not fake. Just" emphasis="too vague." tone="red" />
+        <TopCaption text={teardownText} emphasis={teardownEmphasis} tone="red" />
+        <LowerPunchline text={teardownPunchline} tone="red" />
         <div style={{ position: "absolute", left: 82, top: 260 }}>
           <ResumeSheet
             title={resumeTitle}
@@ -457,6 +550,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
             marked
             beforeBullet={beforeBullet}
             afterBullet={afterBullet}
+            markedLabel={markedLabel}
           />
         </div>
         <div
@@ -469,7 +563,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
             gap: 18,
           }}
         >
-          {["No role language", "No tools", "No measurable proof"].map((issue, index) => (
+          {teardownIssues.slice(0, 4).map((issue, index) => (
             <div
               key={issue}
               style={{
@@ -493,7 +587,8 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
       </AbsoluteFill>
 
       <AbsoluteFill style={{ opacity: fixOpacity }}>
-        <TopCaption text="Same experience." emphasis="Better signal." tone="green" />
+        <TopCaption text={fixText} emphasis={fixEmphasis} tone="green" />
+        <LowerPunchline text={fixPunchline} tone="green" />
         <div
           style={{
             position: "absolute",
@@ -508,6 +603,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
             rewritten
             beforeBullet={beforeBullet}
             afterBullet={afterBullet}
+            markedLabel={markedLabel}
           />
         </div>
         <div style={{ position: "absolute", right: 70, top: 348 }}>
@@ -517,7 +613,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           style={{
             position: "absolute",
             right: 86,
-            bottom: 104,
+            bottom: 360,
             display: "flex",
             alignItems: "center",
             gap: 16,
@@ -534,6 +630,26 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           {beforeScore}/100 to {afterScore}/100
         </div>
         <div style={{ color: CYAN, fontSize: 38, fontWeight: 950, lineHeight: 1.16, marginTop: 26, maxWidth: 790 }}>{cta}</div>
+        <div
+          style={{
+            marginTop: 28,
+            padding: "18px 34px",
+            borderRadius: 999,
+            background: "linear-gradient(135deg, #1d4ed8, #0891b2 54%, #34d399)",
+            border: "2px solid rgba(125,223,255,0.52)",
+            boxShadow: "0 20px 70px rgba(56,213,255,0.25)",
+            color: "#ffffff",
+            fontSize: 31,
+            fontWeight: 950,
+            textTransform: "uppercase",
+            letterSpacing: 1.2,
+          }}
+        >
+          Free resume roast
+        </div>
+        <div style={{ color: "#cbd5e1", fontSize: 26, lineHeight: 1.18, fontWeight: 900, marginTop: 20, maxWidth: 760 }}>
+          Paste your resume + job description before you apply.
+        </div>
       </AbsoluteFill>
 
       <div

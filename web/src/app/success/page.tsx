@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { track } from '@vercel/analytics';
 import { CheckCircle, Loader2, FileText } from 'lucide-react';
 import { Document, Page, Text, View, StyleSheet, pdf, Font } from '@react-pdf/renderer';
 import * as docx from 'docx';
@@ -470,10 +471,42 @@ function SuccessPageContent() {
   const [optimizationLow, setOptimizationLow] = useState(false);
   const [copied, setCopied] = useState(false);
   const [downloadError, setDownloadError] = useState<string | null>(null);
+  const fulfillmentTrackedRef = useRef(false);
+  const scoreLiftTrackedRef = useRef(false);
   const searchParams = useSearchParams();
   const visibleCoveredKeywords = keywordGap
     ? normalizeKeywordList([...(keywordGap.coveredAfter || []), ...(keywordGap.matchedBefore || [])], 8)
     : [];
+
+  const trackFulfillment = (source: string, data: ResumeData, lowOptimization = false) => {
+    if (fulfillmentTrackedRef.current) return;
+    fulfillmentTrackedRef.current = true;
+    try {
+      track('purchase_fulfilled', {
+        source,
+        productType: data.productType || 'unknown',
+        hasResume: Boolean(data.experience?.length),
+        hasCoverLetter: Boolean(data.coverLetter),
+        optimizationLow: Boolean(lowOptimization || data._warning === 'optimization_low'),
+      });
+    } catch {
+      /* analytics best-effort */
+    }
+  };
+
+  const trackScoreLift = (nextBefore: number | null, nextAfter: number | null) => {
+    if (scoreLiftTrackedRef.current || nextBefore === null || nextAfter === null) return;
+    scoreLiftTrackedRef.current = true;
+    try {
+      track('post_purchase_score_lift', {
+        beforeScore: nextBefore,
+        afterScore: nextAfter,
+        lift: nextAfter - nextBefore,
+      });
+    } catch {
+      /* analytics best-effort */
+    }
+  };
 
   useEffect(() => {
     const processResume = async () => {
@@ -493,6 +526,7 @@ function SuccessPageContent() {
         setOptimizationLow(Boolean(restored.optimizationLow));
         setStatus("Optimization restored. Your files are ready to download again.");
         setIsDone(true);
+        trackFulfillment('local_restore', restored.resumeData, Boolean(restored.optimizationLow));
         return;
       }
 
@@ -523,6 +557,7 @@ function SuccessPageContent() {
           });
           setStatus("Optimization restored from your paid session. Your files are ready to download again.");
           setIsDone(true);
+          trackFulfillment('server_restore', serverRestored.resumeData, Boolean(serverRestored.optimizationLow));
           return;
         }
         setStatus("Error: We couldn't find your uploaded resume in the browser storage.");
@@ -558,6 +593,7 @@ function SuccessPageContent() {
 
         setStatus("Optimization completed! Download your files below.");
         setIsDone(true);
+        trackFulfillment('fresh_generation', json, json._warning === 'optimization_low');
 
         // Score check if resume was rewritten
         if (json.experience) {
@@ -585,6 +621,7 @@ function SuccessPageContent() {
             if (nextBefore !== null) setBeforeScore(nextBefore);
             if (nextAfter !== null) setAfterScore(nextAfter);
             setKeywordGap(nextKeywordGap);
+            trackScoreLift(nextBefore, nextAfter);
             saveFulfilledOutput(sessionId, {
               baseName: base,
               resumeData: json,
@@ -611,6 +648,11 @@ function SuccessPageContent() {
     if (!resumeData) return;
     setDownloadError(null);
     try {
+      track('download_clicked', { documentType: 'resume_pdf', productType: resumeData.productType || 'unknown' });
+    } catch {
+      /* analytics best-effort */
+    }
+    try {
       const blob = await pdf(<ResumePDF data={resumeData} />).toBlob();
       downloadBlob(blob, `${baseName}_resume.pdf`);
     } catch {
@@ -621,6 +663,11 @@ function SuccessPageContent() {
   const handleDownloadDocx = async () => {
     if (!resumeData) return;
     setDownloadError(null);
+    try {
+      track('download_clicked', { documentType: 'resume_docx', productType: resumeData.productType || 'unknown' });
+    } catch {
+      /* analytics best-effort */
+    }
     try {
       const blob = await buildDocxBlob(resumeData);
       downloadBlob(blob, `${baseName}_resume.docx`);
@@ -633,6 +680,11 @@ function SuccessPageContent() {
     if (!resumeData || !resumeData.coverLetter) return;
     setDownloadError(null);
     try {
+      track('download_clicked', { documentType: 'cover_letter_pdf', productType: resumeData.productType || 'unknown' });
+    } catch {
+      /* analytics best-effort */
+    }
+    try {
       const blob = await pdf(<CoverLetterPDF data={resumeData} />).toBlob();
       downloadBlob(blob, `${baseName}_cover_letter.pdf`);
     } catch {
@@ -644,6 +696,11 @@ function SuccessPageContent() {
     if (!resumeData || !resumeData.coverLetter) return;
     setDownloadError(null);
     try {
+      track('download_clicked', { documentType: 'cover_letter_docx', productType: resumeData.productType || 'unknown' });
+    } catch {
+      /* analytics best-effort */
+    }
+    try {
       const blob = await buildCoverLetterDocxBlob(resumeData);
       downloadBlob(blob, `${baseName}_cover_letter.docx`);
     } catch {
@@ -653,6 +710,11 @@ function SuccessPageContent() {
 
   const handleCopyCoverLetter = () => {
     if (!resumeData?.coverLetter) return;
+    try {
+      track('cover_letter_copied', { productType: resumeData.productType || 'unknown' });
+    } catch {
+      /* analytics best-effort */
+    }
     const cl = resumeData.coverLetter;
     const text = [
       cl.date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),

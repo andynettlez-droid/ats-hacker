@@ -37,7 +37,7 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 | Shareable score card | Implemented basic | `/s/[score]` and `/api/og` support shareable score links. Needs share-rate tracking and stronger visual templates. |
 | Programmatic SEO | Partially implemented | `/tailor/[job-title]` exists with 35 role records and sitemap/robots support. Roadmap target remains 50+ high-quality roles. |
 | Admin/revenue visibility | Implemented basic | Admin login and Stripe-backed stats route exist. Needs fuller source-channel revenue dashboard and support recovery workflow. |
-| Analytics | Partial | Vercel Analytics events exist for score completion, checkout start, demo start, and score share. Needs complete funnel instrumentation and UTM-to-revenue reporting. |
+| Analytics | Partial | Vercel Analytics events exist for score completion, checkout start, paid fulfillment, post-purchase score lift, downloads, demo start, cover-letter copy, and score share. Needs UTM-to-revenue reporting and platform metrics ingestion. |
 | Test coverage | Thin | Lint passes with warnings. Need checkout/rewrite/success tests and a smoke script for the main conversion flow. |
 
 ## What Is Done
@@ -50,6 +50,7 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 - PDF and DOCX output are available.
 - Before/after score and keyword gap proof exists after generation.
 - Score results now show a one-bullet unlock preview before checkout, without inventing unsupported facts.
+- Success flow now tracks paid fulfillment, score lift, document downloads, and cover-letter copy actions without sending resume content.
 - Signal mascot component exists and is used throughout the product.
 - 35 role SEO pages exist.
 - Social/video pipeline is connected to the product CTA: "check your free Signal score."

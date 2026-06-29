@@ -1059,6 +1059,79 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
     return written
 
 
+def build_youtube_caption(packet: dict) -> str:
+    youtube = packet.get("youtube") if isinstance(packet.get("youtube"), dict) else {}
+    title = str(youtube.get("title") or packet.get("topic") or "Signal resume teardown").rstrip(".")
+    cta = str(youtube.get("cta") or "Check your free Signal score before you apply.").rstrip(".")
+    return f"{title}. {cta}. #jobsearch #resumehelp #careeradvice #resumetips"
+
+
+def build_youtube_longform_draft(packet: dict, channel_manifest: dict) -> dict | None:
+    episode = channel_manifest.get("episode") if isinstance(channel_manifest.get("episode"), dict) else {}
+    youtube = packet.get("youtube") if isinstance(packet.get("youtube"), dict) else {}
+    output = str(episode.get("output") or "")
+    if not output:
+        return None
+
+    filename = Path(output).name
+    title = str(youtube.get("seoTitle") or youtube.get("title") or packet.get("topic") or filename)[:96]
+    description = str(youtube.get("description") or build_youtube_caption(packet))
+    thumbnail = channel_manifest.get("thumbnail") if isinstance(channel_manifest.get("thumbnail"), dict) else {}
+
+    return {
+        "title": title,
+        "caption": build_youtube_caption(packet),
+        "file": f"videos/{filename}",
+        "platforms": ["youtube"],
+        "scheduleDate": None,
+        "status": "review_required",
+        "contentType": "youtube_long_form",
+        "youtubeKind": "long_form",
+        "target": "daily long-form YouTube",
+        "youtubeTitle": title,
+        "youtubeDescription": description,
+        "composition": episode.get("composition", "TeardownEpisode"),
+        "renderProps": episode.get("props"),
+        "thumbnail": thumbnail.get("output"),
+        "thumbnailProps": thumbnail.get("props"),
+        "renderStatus": "render_required",
+        "reviewStatus": "review_required",
+        "audioReadiness": episode.get("audioReadiness", {}),
+        "qaGate": {
+            "required": True,
+            "passed": False,
+            "status": "requires_render_review",
+            "minExpertViralScore": 94,
+            "checks": [
+                "Rendered MP4 exists in marketing/autopost/videos.",
+                "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+                "Opening hook is visible in the first 5 seconds.",
+                "Signal mascot or brand mark is visible.",
+                "No old human presenter appears unless explicitly approved.",
+                "Audio is present, balanced, and not dominated by music or effects.",
+                "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+                "Thumbnail exists or is intentionally deferred.",
+                "Human reviewer approved exact file, title, description, thumbnail, and platform target.",
+            ],
+        },
+        "expertViralGate": {
+            "required": True,
+            "minScore": 94,
+            "score": None,
+            "passed": False,
+            "status": "requires_expert_viral_review",
+        },
+        "reviewChecklist": [
+            "long-form render reviewed",
+            "thumbnail reviewed",
+            "audio present and balanced",
+            "claims reviewed",
+            "exact YouTube title and description reviewed",
+            "status remains review_required until approval",
+        ],
+    }
+
+
 def update_calendar(packet: dict, packet_dir: Path, written_shorts: list[dict], channel_manifest: dict) -> None:
     if CALENDAR_PATH.exists():
         try:
@@ -1080,6 +1153,12 @@ def update_calendar(packet: dict, packet_dir: Path, written_shorts: list[dict], 
             "manifest": str((packet_dir / "channel_manifest.json").relative_to(ROOT)),
             "props": channel_manifest.get("episode", {}).get("props"),
             "output": channel_manifest.get("episode", {}).get("output"),
+            "autopostDraft": str((packet_dir / "autopost_drafts.json").relative_to(ROOT)),
+            "qaGate": {
+                "required": True,
+                "passed": False,
+                "status": "requires_render_review",
+            },
         },
         "thumbnail": channel_manifest.get("thumbnail", {}),
         "shorts": [
@@ -1144,9 +1223,12 @@ def write_render_commands(packet_dir: Path, written_shorts: list[dict], channel_
     (packet_dir / "render_commands.ps1").write_text("\n".join(commands), encoding="utf-8")
 
 
-def write_autopost_drafts(packet: dict, packet_dir: Path, written_shorts: list[dict]) -> None:
+def write_autopost_drafts(packet: dict, packet_dir: Path, written_shorts: list[dict], channel_manifest: dict) -> None:
     shorts_by_title = {short.get("title"): short for short in packet.get("shorts", []) if isinstance(short, dict)}
     drafts = []
+    youtube_draft = build_youtube_longform_draft(packet, channel_manifest)
+    if youtube_draft:
+        drafts.append(youtube_draft)
     for item in written_shorts:
         title = item["title"]
         short = shorts_by_title.get(title, {"title": title, "hook": title})
@@ -1187,7 +1269,7 @@ def main() -> None:
     channel_manifest = write_episode_thumbnail_and_manifest(packet, packet_dir, args.prepare_audio, args.force_audio)
     written_shorts = write_short_briefs_and_props(packet, packet_dir, args.prepare_audio, args.force_audio)
     write_render_commands(packet_dir, written_shorts, channel_manifest)
-    write_autopost_drafts(packet, packet_dir, written_shorts)
+    write_autopost_drafts(packet, packet_dir, written_shorts, channel_manifest)
     update_calendar(packet, packet_dir, written_shorts, channel_manifest)
 
     result = {

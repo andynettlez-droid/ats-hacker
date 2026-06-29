@@ -64,6 +64,13 @@ type ShareScoreDetails = {
   headline: string;
 };
 
+type OptimizationPreview = {
+  before: string;
+  after: string;
+  focusKeywords: string[];
+  issue: string;
+};
+
 type MockResumeFile = File & {
   isMockTemplate?: true;
   mockText?: string;
@@ -256,6 +263,55 @@ function shareHeadline(score: number): string {
   return 'Qualified, But Invisible';
 }
 
+function cleanBulletText(line: string): string {
+  return line
+    .replace(/^\s*(?:[-*]|\u2022)\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function findPreviewBullet(resumeText: string): string {
+  const lines = resumeText
+    .split(/\r?\n/)
+    .map(cleanBulletText)
+    .filter((line) => line.length >= 12 && line.length <= 170);
+
+  const weakSignals = [
+    'responsible for',
+    'helped',
+    'assisted',
+    'worked with',
+    'managed',
+    'supported',
+    'handled',
+    'team player',
+  ];
+
+  return (
+    lines.find((line) => weakSignals.some((signal) => line.toLowerCase().includes(signal))) ||
+    lines.find((line) => /^[A-Z]/.test(line)) ||
+    'Responsible for role-related work and team projects.'
+  );
+}
+
+function buildOptimizationPreview(resumeText: string, score: ScoreResult | null): OptimizationPreview | null {
+  if (!score) return null;
+  const before = findPreviewBullet(resumeText);
+  const focusKeywords = keywordSamples(
+    score.missingKeywords?.length ? score.missingKeywords : score.matchedKeywords,
+    3,
+  );
+  const readableFocus = focusKeywords.length ? focusKeywords.join(', ') : 'the role language in this job description';
+  const after =
+    `Rebuild this around ${readableFocus}, then add only supported scope, tools, and outcomes from your real background.`;
+  const issue =
+    score.missingKeywords?.length > 0
+      ? 'This bullet may be doing real work, but it does not clearly match the job language yet.'
+      : 'This bullet can still be tightened so the strongest role language is easier to scan.';
+
+  return { before, after, focusKeywords, issue };
+}
+
 function buildShareScoreDetails(score: ScoreResult): ShareScoreDetails {
   return {
     missingCount: score.missingKeywords?.length || 0,
@@ -315,6 +371,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isScoring, setIsScoring] = useState(false);
   const [score, setScore] = useState<ScoreResult | null>(null);
+  const [resumePreviewText, setResumePreviewText] = useState('');
   const [shareStatus, setShareStatus] = useState('');
   const [activeTab, setActiveTab] = useState<'resume' | 'cover_letter'>('resume');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -347,10 +404,20 @@ export default function Home() {
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) setFile(e.dataTransfer.files[0]);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      setFile(e.dataTransfer.files[0]);
+      setScore(null);
+      setResumePreviewText('');
+      setShareStatus('');
+    }
   };
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) setFile(e.target.files[0]);
+    if (e.target.files && e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+      setScore(null);
+      setResumePreviewText('');
+      setShareStatus('');
+    }
   };
 
   const extractResumeText = async (): Promise<string> => {
@@ -358,6 +425,7 @@ export default function Home() {
     if (mockTemplate?.isMockTemplate) {
       const mockText = mockTemplate.mockText || '';
       writeResumeSessionPayload(mockText, jobDescription, mockTemplate.name);
+      setResumePreviewText(mockText);
       return mockText;
     }
     const pdfjsLib = await import('pdfjs-dist');
@@ -375,6 +443,7 @@ export default function Home() {
       }).join(' ') + '\n';
     }
     writeResumeSessionPayload(resumeText, jobDescription, file!.name);
+    setResumePreviewText(resumeText);
     return resumeText;
   };
 
@@ -442,6 +511,7 @@ export default function Home() {
     setJobDescription(CRIME_SCENE_DEMO.jobDescription);
     setActiveTab('resume');
     setScore(null);
+    setResumePreviewText(CRIME_SCENE_DEMO.resumeText);
     setShareStatus('');
     writeResumeSessionPayload(CRIME_SCENE_DEMO.resumeText, CRIME_SCENE_DEMO.jobDescription, CRIME_SCENE_DEMO.fileName);
     toolSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -542,6 +612,7 @@ export default function Home() {
     ? score.score >= 75 ? 'bg-emerald-500' : score.score >= 50 ? 'bg-amber-500' : 'bg-red-500'
     : 'bg-emerald-500';
   const shareDetails = score ? buildShareScoreDetails(score) : null;
+  const optimizationPreview = buildOptimizationPreview(resumePreviewText, score);
 
   return (
     <div className="min-h-screen bg-[#030712] text-slate-100 font-sans selection:bg-cyan-500/20 antialiased">
@@ -1046,6 +1117,58 @@ export default function Home() {
                       {score.matchedKeywords.map((k, i) => (
                         <span key={i} className="inline-flex items-center bg-emerald-400/10 text-emerald-100 px-2 py-0.5 rounded-md text-[10px] font-bold">{k}</span>
                       ))}
+                    </div>
+                  </div>
+                )}
+
+                {optimizationPreview && (
+                  <div className="rounded-2xl border border-emerald-300/20 bg-emerald-400/10 p-4 space-y-3">
+                    <div className="flex items-start gap-3">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-emerald-200/25 bg-[#020617]/70">
+                        <Sparkles className="h-4 w-4 text-emerald-100" />
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-sm font-black text-emerald-50">One-bullet unlock preview</p>
+                        <p className="mt-1 text-xs font-semibold leading-relaxed text-emerald-50/75">
+                          {optimizationPreview.issue}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid gap-2">
+                      <div className="rounded-xl border border-red-300/15 bg-red-950/20 p-3">
+                        <p className="text-[10px] font-black uppercase tracking-wide text-red-200">Before</p>
+                        <p className="mt-1 text-xs font-semibold leading-relaxed text-red-50">
+                          {optimizationPreview.before}
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-emerald-300/20 bg-[#020617]/55 p-3">
+                        <p className="text-[10px] font-black uppercase tracking-wide text-emerald-200">Signal rewrite direction</p>
+                        <p className="mt-1 text-xs font-semibold leading-relaxed text-emerald-50">
+                          {optimizationPreview.after}
+                        </p>
+                        {optimizationPreview.focusKeywords.length > 0 && (
+                          <div className="mt-2 flex flex-wrap gap-1.5">
+                            {optimizationPreview.focusKeywords.map((keyword) => (
+                              <span key={keyword} className="rounded-md bg-emerald-300/15 px-2 py-1 text-[10px] font-bold text-emerald-100">
+                                {keyword}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#020617]/45 p-3">
+                      <div className="pointer-events-none absolute inset-x-6 top-1/2 h-10 -translate-y-1/2 rounded-full bg-cyan-200/10 blur-xl" />
+                      <div className="relative space-y-1 opacity-55 blur-[1px]">
+                        <div className="h-2 w-11/12 rounded-full bg-slate-300/45" />
+                        <div className="h-2 w-9/12 rounded-full bg-slate-300/35" />
+                        <div className="h-2 w-10/12 rounded-full bg-slate-300/25" />
+                      </div>
+                      <p className="relative mt-3 text-[11px] font-bold text-cyan-50/80">
+                        Full resume rewrite, keyword gap report, and downloadable files unlock after checkout.
+                      </p>
                     </div>
                   </div>
                 )}

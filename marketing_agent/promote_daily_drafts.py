@@ -28,6 +28,22 @@ def latest_drafts_path() -> Path:
     return drafts[0]
 
 
+def is_youtube_longform(draft: dict) -> bool:
+    return draft.get("contentType") == "youtube_long_form" or draft.get("youtubeKind") == "long_form"
+
+
+def promoted_qa_gate(draft: dict) -> dict:
+    qa_gate = draft.get("qaGate") if isinstance(draft.get("qaGate"), dict) else {}
+    if is_youtube_longform(draft):
+        return {
+            **qa_gate,
+            "required": True,
+            "passed": bool(qa_gate.get("passed", False)),
+            "status": qa_gate.get("status") or "rendered_needs_human_qa",
+        }
+    return qa_gate
+
+
 def promote(drafts_path: Path, only: str | None = None, replace_posted: bool = False) -> dict:
     drafts = read_json(drafts_path, [])
     if not isinstance(drafts, list):
@@ -63,10 +79,24 @@ def promote(drafts_path: Path, only: str | None = None, replace_posted: bool = F
             "platforms": draft.get("platforms", ["tiktok", "instagram", "youtube"]),
             "scheduleDate": draft.get("scheduleDate"),
             "status": "review_required",
+            "contentType": draft.get("contentType"),
+            "youtubeKind": draft.get("youtubeKind"),
+            "target": draft.get("target"),
+            "youtubeTitle": draft.get("youtubeTitle"),
+            "youtubeDescription": draft.get("youtubeDescription"),
+            "thumbnail": draft.get("thumbnail"),
+            "thumbnailProps": draft.get("thumbnailProps"),
+            "renderStatus": "rendered_review_required" if is_youtube_longform(draft) else draft.get("renderStatus"),
+            "reviewStatus": "review_required",
             "composition": draft.get("composition"),
             "renderProps": draft.get("renderProps"),
             "audioReadiness": draft.get("audioReadiness", {}),
+            "qaGate": promoted_qa_gate(draft),
+            "expertViralGate": draft.get("expertViralGate"),
+            "expertViralScore": draft.get("expertViralScore"),
+            "reviewChecklist": draft.get("reviewChecklist", []),
         }
+        post = {key: value for key, value in post.items() if value not in (None, {}, [])}
 
         existing_index = next((idx for idx, item in enumerate(posts) if item.get("file") == post["file"]), None)
         if existing_index is None:

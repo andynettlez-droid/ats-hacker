@@ -36,6 +36,17 @@ Those entries are visible in dry runs, but live posting is blocked unless `--app
 
 Entries with `"status": "posted"` are skipped by default. Use `--include-posted` only for an intentional repost.
 
+## Long-Form YouTube Gate
+
+Long-form YouTube entries can include:
+
+- `"contentType": "youtube_long_form"`
+- `"youtubeKind": "long_form"`
+- `"qaGate": { "passed": false }`
+- `"expertViralGate": { "minScore": 94, "score": 0, "passed": false }`
+
+The poster blocks live upload for long-form entries until render QA passes and the expert viral score is at least 94. This is separate from the normal `review_required` approval gate.
+
 ## `posts.json` Fields
 
 - `title`: short title for YouTube and API metadata.

@@ -1,0 +1,86 @@
+{
+  "minScore": 94,
+  "score": 83,
+  "passed": false,
+  "verdict": "needs_work_before_publish_ready",
+  "dimensions": [
+    {
+      "name": "Packaging: title and promise",
+      "points": 6,
+      "max": 10,
+      "passed": false,
+      "note": "Title should be specific, curiosity-driven, and not clickbait."
+    },
+    {
+      "name": "First 30 seconds: pattern interrupt",
+      "points": 12,
+      "max": 12,
+      "passed": true,
+      "note": "Cold open must quickly establish tension and the visible artifact."
+    },
+    {
+      "name": "Retention architecture",
+      "points": 8,
+      "max": 14,
+      "passed": false,
+      "note": "Expert long-form needs more than a static explainer: open loop, stakes, teardown, fix, payoff, CTA."
+    },
+    {
+      "name": "Proof density",
+      "points": 9,
+      "max": 14,
+      "passed": false,
+      "note": "Use concrete tools, metrics, before/after score, and a before/after bullet."
+    },
+    {
+      "name": "Visual plan",
+      "points": 12,
+      "max": 12,
+      "passed": true,
+      "note": "Long-form must keep artifacts on-screen, not become presenter-only."
+    },
+    {
+      "name": "Trust and claim safety",
+      "points": 12,
+      "max": 12,
+      "passed": true,
+      "note": "No ATS mythology, fake outcomes, fabricated rankings, or callback guarantees."
+    },
+    {
+      "name": "Audience empathy and creator voice",
+      "points": 6,
+      "max": 10,
+      "passed": false,
+      "note": "Should feel like a sharp creator teardown, not generic SaaS education."
+    },
+    {
+      "name": "Product bridge",
+      "points": 8,
+      "max": 8,
+      "passed": true,
+      "note": "CTA should be useful and trust-preserving."
+    },
+    {
+      "name": "Audio readiness",
+      "points": 10,
+      "max": 10,
+      "passed": true,
+      "note": "Publish-ready long-form requires voiceover/narration plus balanced music."
+    },
+    {
+      "name": "Render and QA evidence",
+      "points": 0,
+      "max": 8,
+      "passed": false,
+      "note": "Must include rendered MP4 and QA pass before publish-ready status."
+    }
+  ],
+  "blockers": [
+    "Rendered long-form MP4 has not passed visual/audio QA."
+  ],
+  "nextActions": [
+    "Expand to 8-10 retention-focused sections.",
+    "Render the full 16:9 episode, inspect hook/midpoint/payoff/CTA frames, and verify audio metadata.",
+    "Only mark qaGate.passed=true after score is at least 94 and blockers are zero."
+  ]
+}

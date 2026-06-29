@@ -52,7 +52,7 @@ See the root roadmap status:
 
 Highest-priority web work:
 
-- Pre-checkout before/after preview.
+- Harden and test the one-bullet pre-checkout preview.
 - Money-path tests for checkout, rewrite, restore, and downloads.
 - Complete funnel analytics from source to purchase.
 - Generation quality gates for grounded resume bullets and specific cover letters.

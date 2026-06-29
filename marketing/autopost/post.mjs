@@ -34,6 +34,15 @@ const REVIEW_STATUSES = new Set(['draft', 'review_required']);
 const POSTED_STATUSES = new Set(['posted']);
 
 const sha256File = (filePath) => createHash('sha256').update(readFileSync(filePath)).digest('hex');
+const isYoutubeLongForm = (post) => post.contentType === 'youtube_long_form' || post.youtubeKind === 'long_form';
+const hasPassedQaGate = (post) => post.qaGate?.passed === true || post.renderReview?.passed === true;
+const hasExpertViralScore = (post) => {
+  if (!isYoutubeLongForm(post)) return true;
+  const gate = post.expertViralGate || post.qaGate || {};
+  const score = Number(gate.score ?? post.expertViralScore ?? 0);
+  const minScore = Number(gate.minScore ?? 94);
+  return score >= minScore && (gate.passed === true || post.qaGate?.passed === true);
+};
 
 const sanitizeStatus = (status) => ({
   status: status?.status,
@@ -142,6 +151,9 @@ for (const [index, post] of posts.entries()) {
 
   post.__reviewRequired = REVIEW_STATUSES.has(post.status);
   post.__alreadyPosted = POSTED_STATUSES.has(post.status);
+  post.__youtubeLongForm = isYoutubeLongForm(post);
+  post.__qaPassed = hasPassedQaGate(post);
+  post.__expertViralPassed = hasExpertViralScore(post);
   post.__path = isAbsolute(post.file) ? post.file : join(__dirname, post.file);
   if (!existsSync(post.__path)) {
     console.error(`${tag} file not found: ${post.__path}`);
@@ -161,10 +173,12 @@ if (DRY_RUN) {
   for (const [index, post] of posts.entries()) {
     const status = post.status ? ` [${post.status}]` : '';
     const gate = post.__reviewRequired ? ' - live posting blocked until --approved' : '';
+    const qaGate = post.__youtubeLongForm && !post.__qaPassed ? ' - long-form QA pass required' : '';
+    const expertGate = post.__youtubeLongForm && !post.__expertViralPassed ? ' - expert viral score required' : '';
     const postedGate = post.__alreadyPosted ? ' - skipped unless --include-posted' : '';
     const when = post.scheduleDate && !FORCE_NOW ? ` @ ${post.scheduleDate}` : ' (now)';
     console.log(
-      `DRY RUN #${index + 1}${status}: ${post.platforms.join(', ')}${when}${gate}${postedGate}\n` +
+      `DRY RUN #${index + 1}${status}: ${post.platforms.join(', ')}${when}${gate}${qaGate}${expertGate}${postedGate}\n` +
         `   file: ${post.__path}\n` +
         `   sha256: ${post.__fileHash}\n` +
         `   caption: ${post.caption}\n`,
@@ -191,6 +205,16 @@ for (const [index, post] of posts.entries()) {
   const tag = `#${index + 1} "${(post.caption || '').slice(0, 40)}..."`;
   if (post.__reviewRequired && !APPROVED_REVIEW) {
     console.log(`SKIP ${tag} - status=${post.status}; rerun with --approved after human review.`);
+    skipped++;
+    continue;
+  }
+  if (post.__youtubeLongForm && !post.__qaPassed) {
+    console.log(`SKIP ${tag} - long-form YouTube requires qaGate.passed=true after render QA before upload.`);
+    skipped++;
+    continue;
+  }
+  if (post.__youtubeLongForm && !post.__expertViralPassed) {
+    console.log(`SKIP ${tag} - long-form YouTube requires expert viral score >= 94 before upload.`);
     skipped++;
     continue;
   }
@@ -260,6 +284,9 @@ if (changed) {
     delete post.__path;
     delete post.__fileHash;
     delete post.__bad;
+    delete post.__youtubeLongForm;
+    delete post.__qaPassed;
+    delete post.__expertViralPassed;
   }
   writeFileSync(join(__dirname, 'posts.json'), JSON.stringify(allPosts, null, 4) + '\n');
   console.log('posts.json updated with latest posting status.');

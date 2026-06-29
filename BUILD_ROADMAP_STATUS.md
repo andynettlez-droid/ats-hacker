@@ -33,7 +33,7 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 | Paid offers | Implemented | Stripe checkout supports resume, cover letter, and bundle at $9.99/$9.99/$14.99. Metadata tags ATSHacker sessions for admin reporting. |
 | Paid rewrite fulfillment | Implemented with guardrails | `/api/rewrite` verifies paid Stripe sessions, caches fulfilled outputs, preserves candidate facts, and instructs the model not to invent metrics, jobs, tools, skills, or credentials. |
 | Downloads | Implemented | Success page exports resume and cover letter as PDF and ATS-friendly DOCX. It also restores fulfilled output by Stripe session when possible. |
-| Post-purchase proof | Implemented, needs polish | Success page can show before/after score lift and keyword gap. Next conversion step is a stronger pre-checkout preview. |
+| Proof before payment | Implemented basic, needs testing | Score results now include a one-bullet unlock preview plus post-purchase before/after score lift and keyword gap proof. Next step is A/B testing and a stronger generated preview. |
 | Shareable score card | Implemented basic | `/s/[score]` and `/api/og` support shareable score links. Needs share-rate tracking and stronger visual templates. |
 | Programmatic SEO | Partially implemented | `/tailor/[job-title]` exists with 35 role records and sitemap/robots support. Roadmap target remains 50+ high-quality roles. |
 | Admin/revenue visibility | Implemented basic | Admin login and Stripe-backed stats route exist. Needs fuller source-channel revenue dashboard and support recovery workflow. |
@@ -49,16 +49,17 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 - Paid fulfillment is tied to Stripe session validation and a fulfillment cache.
 - PDF and DOCX output are available.
 - Before/after score and keyword gap proof exists after generation.
+- Score results now show a one-bullet unlock preview before checkout, without inventing unsupported facts.
 - Signal mascot component exists and is used throughout the product.
 - 35 role SEO pages exist.
 - Social/video pipeline is connected to the product CTA: "check your free Signal score."
 
 ## Highest-Leverage Next Product Work
 
-1. Build the pre-checkout before/after preview.
-   - Show one real rewritten bullet or section preview before payment.
-   - Blur the rest of the optimized output.
-   - CTA: "Unlock full optimized package."
+1. Harden and test the pre-checkout preview.
+   - Measure whether the one-bullet preview lifts checkout starts.
+   - Add a stronger generated preview once grounding checks are in place.
+   - Keep the rest of the optimized output locked until checkout.
 
 2. Add reliability tests for money paths.
    - Checkout session creation for each product.
@@ -143,6 +144,7 @@ Latest checks run during this review:
 - Remotion typecheck: passed.
 - Studio short QC: passed for the three daily studio shorts.
 - Audio asset QC: passed for daily shorts and episode audio assets.
+- Long-form YouTube expert viral gate: available; current daily episode scored 83/100 and is blocked from publish-ready status until render QA and content upgrades pass.
 - Marketing agent compile check: passed.
 - Autopost dry run: passed; review-gated videos remain blocked from live posting unless explicitly approved.
 

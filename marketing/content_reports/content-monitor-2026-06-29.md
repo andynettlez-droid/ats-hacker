@@ -1,6 +1,6 @@
 # Signal Content Monitor
 
-Generated: 2026-06-29T02:34:32.351426+00:00
+Generated: 2026-06-29T02:52:01.148384+00:00
 
 ## Queue Counts
 
@@ -26,6 +26,7 @@ Generated: 2026-06-29T02:34:32.351426+00:00
 - Audio asset QC available: True
 - Audio loudness QC available: False
 - Caption alignment gate available: False
+- Long-form expert gate available: True
 
 Missing:
 - platform metrics feed
@@ -48,6 +49,7 @@ Missing:
 - Audio asset QC: True
 - Audio loudness QC: False
 - Caption alignment gate: False
+- Long-form expert gate: True
 - Needs full render review: True
 
 ## Daily Packets

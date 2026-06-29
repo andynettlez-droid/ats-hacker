@@ -26,6 +26,7 @@ The long-form YouTube lane is render-ready but not publish-ready. It has a sourc
 - The audio asset QC gate passes for linked voiceover, music, and episode segments.
 - A source-backed trend intake file exists for the current daily packet.
 - Thumbnail and long-form renderer components exist.
+- A long-form YouTube quality gate now scores title, hook, retention architecture, proof density, visual plan, claim safety, creator voice, product bridge, audio readiness, and render QA.
 
 ## What Is Not Ready Yet
 
@@ -36,6 +37,7 @@ The long-form YouTube lane is render-ready but not publish-ready. It has a sourc
 - No live automated trend feed from TikTok Creative Center, YouTube, Google Trends, Reddit, or LinkedIn. Current trend intake is file-based.
 - The script creative gate can overstate readiness because it grades packet text, not rendered video.
 - Long-form YouTube has a renderer and review path, but not a fully verified final episode workflow.
+- The current long-form packet scored 83/100 on the expert viral gate and is blocked from publish-ready status until the full episode is strengthened and rendered QA passes.
 - The queue still contains older ad-style clips that should be reviewed or retired before they dilute the new teardown format.
 
 ## Current Studio Short Assets
@@ -62,6 +64,7 @@ Latest content monitor output:
 - Studio daily queue: available.
 - Automated render QC: available.
 - Audio asset QC: available.
+- Long-form expert viral gate: available; current episode score is 83/100 and not publish-ready.
 - Missing: platform metrics feed, audio loudness/peak QC, caption/transcript alignment gate, automated live trend API connector.
 
 ## Current Audio Position
@@ -83,8 +86,9 @@ Do not treat this as finished audio engineering yet. The next quality jump is no
 3. Add audio loudness/peak QC with ffmpeg/ffprobe or PCM sample analysis.
 4. Add caption/transcript alignment checks.
 5. Add metrics ingestion from the posting provider and platform dashboards.
-6. Build the long-form publish package: final render, thumbnail, title, description, chapters, pinned comment, and score-page UTM.
-7. Convert live trend intake from file-based source notes into API-backed connectors.
+6. Rewrite the current long-form episode into 8-10 retention-focused sections and rerun the expert viral gate to 94+.
+7. Build the long-form publish package: final render, thumbnail, title, description, chapters, pinned comment, and score-page UTM.
+8. Convert live trend intake from file-based source notes into API-backed connectors.
 
 ## Production Recommendation
 

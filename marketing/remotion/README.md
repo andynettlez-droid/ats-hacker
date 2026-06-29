@@ -111,9 +111,12 @@ After promotion, run the studio QC gate:
 
 ```bat
 npm run qc:daily:shorts
+npm run qc:daily:audio
 ```
 
 The gate verifies the rendered and promoted files both exist, the autopost entries are still `review_required`, the videos are 1080x1920 MP4/H.264/AAC at 30fps, audio tracks exist, linked props and audio assets exist, the score moves upward, the CTA points to the free Signal score, and unsafe claim patterns are absent.
+
+The audio gate verifies linked voiceover/music/SFX assets, codec metadata, duration, sample rate, channels, bitrate, and restrained mix volume settings. It does not measure LUFS or true peak yet.
 
 Dry-run posting from `marketing/autopost`:
 
@@ -133,6 +136,7 @@ Live posting remains blocked for `draft` and `review_required` entries unless th
 - `marketing/remotion/out/`: rendered outputs, git-ignored.
 - `marketing/autopost/videos/`: publishable videos, git-ignored.
 - `marketing/remotion/out/daily-studio-shorts-qc.json`: latest studio short QC report, git-ignored.
+- `marketing/remotion/out/daily-audio-assets-qc.json`: latest audio asset QC report, git-ignored.
 
 ## Known Gaps
 

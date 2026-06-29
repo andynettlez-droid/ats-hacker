@@ -1,6 +1,6 @@
 # Signal Viral Content Workflow
 
-Reviewed: 2026-06-28
+Reviewed: 2026-06-29
 
 ## Research Basis
 
@@ -41,7 +41,9 @@ Current implementation:
 
 - `marketing_agent/creative_quality_gate.py`
 - Pass threshold: overall 85+ and top three shorts pass.
-- Day 1 packet currently passes the script gate, but publishing still needs studio voiceover or a deliberate silent/music-backed decision.
+- Day 1 packet currently passes the script gate.
+- Studio voiceover and quiet music assets exist for the current three daily shorts.
+- Publishing still requires review of the rendered file, caption, CTA, and audio before status changes from `review_required`.
 
 ## Daily Production Loop
 
@@ -81,14 +83,15 @@ Current implementation:
 
 ## Missing For "Extraordinary"
 
-The agent can now produce post-grade script packets and render-ready shorts. It is still missing:
+The agent can now produce post-grade script packets, render-ready shorts, studio voiceover assets, a long-form renderer, and a thumbnail renderer. It is still missing:
 
-- Live source-backed trend ingestion instead of seeded topics.
-- Studio voiceover for daily shorts, because `ELEVENLABS_API_KEY` is not configured locally.
-- Automated 16:9 long-form renderer for the daily YouTube episode.
-- Thumbnail generator using the 34 to 92 style visual formula.
+- Live API-backed trend ingestion instead of file-based source notes.
+- Automated frame-level visual QC for rendered clips.
+- Automated LUFS/true-peak audio checks.
+- Word-level transcript and caption alignment.
 - Platform metrics ingestion into `marketing/content_metrics.json`.
 - A/B testing of hook frames, captions, and CTAs.
+- A final long-form publish package workflow: full render, thumbnail QA, description, chapters, pinned comment, and UTM.
 
 ## Monetization Focus
 

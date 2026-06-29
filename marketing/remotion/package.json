@@ -20,6 +20,7 @@
     "render:daily:short3:studio": "remotion render ResumeCrimeScene out/daily-ats-myth-lab-studio.mp4 --props=props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_3.json",
     "render:daily:shorts:studio": "npm run render:daily:short1:studio && npm run render:daily:short2:studio && npm run render:daily:short3:studio",
     "qc:daily:shorts": "node scripts/qc_daily_studio_shorts.mjs",
+    "qc:daily:audio": "node scripts/qc_daily_audio_assets.mjs",
     "voiceover:episode": "node scripts/generate_episode_voiceover.mjs",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"

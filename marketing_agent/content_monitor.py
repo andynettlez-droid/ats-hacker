@@ -148,7 +148,8 @@ def build_report() -> dict:
         for post in posts
     )
     has_automated_render_qc = any(REMOTION_SCRIPTS_DIR.glob("*qc*.mjs")) or any(REMOTION_SCRIPTS_DIR.glob("*quality*.mjs"))
-    has_audio_loudness_qc = any(REMOTION_SCRIPTS_DIR.glob("*audio*q*.mjs")) or any(REMOTION_SCRIPTS_DIR.glob("*loudness*.mjs"))
+    has_audio_asset_qc = any(REMOTION_SCRIPTS_DIR.glob("*audio*asset*.mjs"))
+    has_audio_loudness_qc = any(REMOTION_SCRIPTS_DIR.glob("*loudness*.mjs")) or any(REMOTION_SCRIPTS_DIR.glob("*peak*.mjs"))
     has_caption_alignment_gate = any(REMOTION_SCRIPTS_DIR.glob("*caption*.mjs")) or any(REMOTION_SCRIPTS_DIR.glob("*transcript*.mjs"))
 
     queue_counts = {}
@@ -184,6 +185,7 @@ def build_report() -> dict:
             "hasStudioDailyExports": has_studio_daily_exports,
             "hasStudioDailyQueue": has_studio_daily_queue,
             "hasAutomatedRenderQc": has_automated_render_qc,
+            "hasAudioAssetQc": has_audio_asset_qc,
             "hasAudioLoudnessQc": has_audio_loudness_qc,
             "hasCaptionAlignmentGate": has_caption_alignment_gate,
             "channelManifests": [str(path.relative_to(ROOT)) for path in channel_manifests],
@@ -203,6 +205,7 @@ def build_report() -> dict:
             "hasStudioDailyExports": has_studio_daily_exports,
             "hasStudioDailyQueue": has_studio_daily_queue,
             "hasAutomatedRenderQc": has_automated_render_qc,
+            "hasAudioAssetQc": has_audio_asset_qc,
             "hasAudioLoudnessQc": has_audio_loudness_qc,
             "hasCaptionAlignmentGate": has_caption_alignment_gate,
             "missing": [
@@ -214,6 +217,7 @@ def build_report() -> dict:
                     ("thumbnail generator", has_thumbnail_generator),
                     ("studio daily shorts in review queue", has_studio_daily_queue),
                     ("automated render QC gate", has_automated_render_qc),
+                    ("audio asset/mix metadata QC", has_audio_asset_qc),
                     ("audio loudness/peak QC", has_audio_loudness_qc),
                     ("caption/transcript alignment gate", has_caption_alignment_gate),
                     ("source-backed trend intake", has_source_backed_trend_intake),
@@ -252,6 +256,7 @@ def write_markdown(report: dict, path: Path) -> None:
         f"- Studio daily exports available: {readiness['hasStudioDailyExports']}",
         f"- Studio daily queue ready: {readiness['hasStudioDailyQueue']}",
         f"- Automated render QC available: {readiness['hasAutomatedRenderQc']}",
+        f"- Audio asset QC available: {readiness['hasAudioAssetQc']}",
         f"- Audio loudness QC available: {readiness['hasAudioLoudnessQc']}",
         f"- Caption alignment gate available: {readiness['hasCaptionAlignmentGate']}",
         "",
@@ -271,6 +276,7 @@ def write_markdown(report: dict, path: Path) -> None:
         f"- Studio daily exports: {creative['hasStudioDailyExports']}",
         f"- Studio daily queue: {creative['hasStudioDailyQueue']}",
         f"- Automated render QC: {creative['hasAutomatedRenderQc']}",
+        f"- Audio asset QC: {creative['hasAudioAssetQc']}",
         f"- Audio loudness QC: {creative['hasAudioLoudnessQc']}",
         f"- Caption alignment gate: {creative['hasCaptionAlignmentGate']}",
         f"- Needs full render review: {creative['needsFullRenderReview']}",

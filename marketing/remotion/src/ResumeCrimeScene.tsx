@@ -480,6 +480,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
       {musicSrc ? (
         <Audio
           src={staticFile(musicSrc)}
+          loop
           volume={(audioFrame) =>
             interpolate(audioFrame, [0, fps, (totalSeconds - 2) * fps, totalSeconds * fps], [0, musicVolume, musicVolume, 0], {
               extrapolateLeft: "clamp",

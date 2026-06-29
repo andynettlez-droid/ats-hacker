@@ -1,0 +1,100 @@
+{
+  "title": "AI-looking resume bullets recruiters ignore | Resume Teardown",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "cta": "Encourage viewers to sign up for their free Signal score at the end of the video.",
+  "sections": [
+    {
+      "label": "Cold open",
+      "script": "AI-looking resume bullets recruiters ignore Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on.",
+      "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+    },
+    {
+      "label": "The real problem",
+      "script": "Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit.",
+      "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+    },
+    {
+      "label": "Translate the job",
+      "script": "Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+      "visual": "Keyword extraction board."
+    },
+    {
+      "label": "Teardown",
+      "script": "Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes.",
+      "visual": "Red/yellow markups over weak bullets."
+    },
+    {
+      "label": "Fix one bullet",
+      "script": "The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result.",
+      "visual": "Before/after bullet rewrite."
+    },
+    {
+      "label": "Product bridge",
+      "script": "Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+      "visual": "Free Signal score page, trust badges, and bundle CTA."
+    }
+  ],
+  "keywords": [
+    "HubSpot",
+    "CAC",
+    "LinkedIn Ads",
+    "lifecycle marketing"
+  ],
+  "weakBullets": [
+    "Results-driven team player.",
+    "Helped with marketing campaigns.",
+    "Worked with cross-functional teams."
+  ],
+  "beforeBullet": "Helped with marketing campaigns.",
+  "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+  "beforeScore": 39,
+  "afterScore": 87,
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.11,
+  "voiceoverVolume": 0.94,
+  "voiceover_text": "AI-looking resume bullets recruiters ignore Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on. Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit. Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes. The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result. Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+  "voiceoverSegments": [
+    {
+      "src": "audio/daily-2026-06-29-ai-looking-resume-bullets-recruite-episode-1-voiceover.mp3",
+      "fromFrame": 240,
+      "volume": 0.94,
+      "provider": "cached"
+    },
+    {
+      "src": "audio/daily-2026-06-29-ai-looking-resume-bullets-recruite-episode-2-voiceover.mp3",
+      "fromFrame": 2510,
+      "volume": 0.94,
+      "provider": "cached"
+    },
+    {
+      "src": "audio/daily-2026-06-29-ai-looking-resume-bullets-recruite-episode-3-voiceover.mp3",
+      "fromFrame": 4780,
+      "volume": 0.94,
+      "provider": "cached"
+    },
+    {
+      "src": "audio/daily-2026-06-29-ai-looking-resume-bullets-recruite-episode-4-voiceover.mp3",
+      "fromFrame": 7050,
+      "volume": 0.94,
+      "provider": "cached"
+    },
+    {
+      "src": "audio/daily-2026-06-29-ai-looking-resume-bullets-recruite-episode-5-voiceover.mp3",
+      "fromFrame": 9320,
+      "volume": 0.94,
+      "provider": "cached"
+    },
+    {
+      "src": "audio/daily-2026-06-29-ai-looking-resume-bullets-recruite-episode-6-voiceover.mp3",
+      "fromFrame": 11590,
+      "volume": 0.94,
+      "provider": "cached"
+    }
+  ],
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "cached",
+    "reason": "6 episode sections ready"
+  }
+}

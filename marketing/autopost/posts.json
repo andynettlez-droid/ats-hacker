@@ -285,13 +285,141 @@
             "youtube"
         ],
         "scheduleDate": null,
-        "status": "review_required",
+        "status": "posted",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_1.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
             "reason": "ready"
+        },
+        "reviewApproval": {
+            "reviewer": "andyn",
+            "approvedAt": "2026-06-29T11:01:21.504Z",
+            "fileSha256": "7a1bf1c175f47df02f2fff767edacfef9445a46f02e07425b5dfa30fce1905d3",
+            "file": "videos/daily-your-ai-resume-has-linkedin-breath-studio.mp4",
+            "caption": "Your AI resume has LinkedIn breath. Your AI resume sounds like it networks at airport lounges. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "Your AI resume has LinkedIn breath",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "postedAt": "2026-06-29T11:01:44.448Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=bdbc58c5281b41debf4daad39483e4f4. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "bdbc58c5281b41debf4daad39483e4f4",
+            "total_platforms": 3,
+            "job_id": "60559a9a758249eabcdedf71a0ef9b69"
+        },
+        "uploadStatus": {
+            "status": "failed",
+            "completed": 1,
+            "total": 3,
+            "request_id": "bdbc58c5281b41debf4daad39483e4f4",
+            "last_update": {
+                "$date": "2026-06-29T11:01:29.724Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "O-yrrdIvdZA",
+                    "post_url": "https://www.youtube.com/watch?v=O-yrrdIvdZA",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-06-29T11:01:29.724Z"
+                    },
+                    "media_size_bytes": 4833108,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 45,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "60559a9a758249eabcdedf71a0ef9b69"
+                }
+            ]
+        },
+        "crossPostRetry": {
+            "attemptedAt": "2026-06-29T12:17:57.445Z",
+            "platforms": [
+                "instagram",
+                "tiktok"
+            ],
+            "result": {
+                "success": true,
+                "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=6ca397fd901848259a901ecce29effc6. Docs: https://docs.upload-post.com/api/upload-status",
+                "request_id": "6ca397fd901848259a901ecce29effc6",
+                "total_platforms": 2,
+                "job_id": "a9a871b5341545d08126af69988f04d4"
+            },
+            "status": {
+                "status": "completed",
+                "completed": 2,
+                "total": 2,
+                "request_id": "6ca397fd901848259a901ecce29effc6",
+                "last_update": {
+                    "$date": "2026-06-29T12:18:37.433Z"
+                },
+                "results": [
+                    {
+                        "platform": "instagram",
+                        "success": true,
+                        "platform_post_id": "18156419704475294",
+                        "post_url": "https://www.instagram.com/reel/DaK2SegkcVa/",
+                        "error_message": null,
+                        "error_code": null,
+                        "upload_timestamp": {
+                            "$date": "2026-06-29T12:18:14.246Z"
+                        },
+                        "media_size_bytes": 4833108,
+                        "video_was_transcoded": false,
+                        "prevalidation_metadata": {
+                            "width": 1080,
+                            "height": 1920,
+                            "fps": 30,
+                            "duration": 45,
+                            "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                            "video_codec": "h264",
+                            "audio_codec": "aac"
+                        },
+                        "job_id": "a9a871b5341545d08126af69988f04d4"
+                    },
+                    {
+                        "platform": "tiktok",
+                        "success": true,
+                        "platform_post_id": "7656790496437669138",
+                        "post_url": "https://www.tiktok.com/@Andrew/video/7656790496437669138",
+                        "error_message": null,
+                        "error_code": null,
+                        "upload_timestamp": {
+                            "$date": "2026-06-29T12:18:37.433Z"
+                        },
+                        "media_size_bytes": 4833108,
+                        "video_was_transcoded": false,
+                        "prevalidation_metadata": {
+                            "width": 1080,
+                            "height": 1920,
+                            "fps": 30,
+                            "duration": 45,
+                            "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                            "video_codec": "h264",
+                            "audio_codec": "aac"
+                        },
+                        "job_id": "a9a871b5341545d08126af69988f04d4"
+                    }
+                ]
+            }
         }
     },
     {
@@ -304,13 +432,116 @@
             "youtube"
         ],
         "scheduleDate": null,
-        "status": "review_required",
+        "status": "posted",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_2.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
             "reason": "ready"
+        },
+        "reviewApproval": {
+            "reviewer": "andyn",
+            "approvedAt": "2026-06-29T11:01:49.425Z",
+            "fileSha256": "5a5b4193409b86f0279e866f118598a7f02ec78357b645ee8a116eb189b24907",
+            "file": "videos/daily-one-bullet-fix-studio.mp4",
+            "caption": "Stop writing helped with campaigns. This bullet is wearing a fake mustache. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "Stop writing helped with campaigns",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "postedAt": "2026-06-29T11:02:11.272Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=71bf0be0bb364f779d1c36f089ddcc7c. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "71bf0be0bb364f779d1c36f089ddcc7c",
+            "total_platforms": 3,
+            "job_id": "f9993c3048c4447caa4737a33b352c4f"
+        },
+        "uploadStatus": {
+            "status": "completed",
+            "completed": 3,
+            "total": 3,
+            "request_id": "71bf0be0bb364f779d1c36f089ddcc7c",
+            "last_update": {
+                "$date": "2026-06-29T11:02:53.782Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "RBV_e2A45DA",
+                    "post_url": "https://www.youtube.com/watch?v=RBV_e2A45DA",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-06-29T11:01:57.389Z"
+                    },
+                    "media_size_bytes": 4729217,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 45,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "f9993c3048c4447caa4737a33b352c4f"
+                },
+                {
+                    "platform": "instagram",
+                    "success": true,
+                    "platform_post_id": "18122793727662898",
+                    "post_url": "https://www.instagram.com/reel/DaKtnbkARed/",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-06-29T11:02:29.565Z"
+                    },
+                    "media_size_bytes": 4729217,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 45,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "f9993c3048c4447caa4737a33b352c4f"
+                },
+                {
+                    "platform": "tiktok",
+                    "success": true,
+                    "platform_post_id": "7656770971361185042",
+                    "post_url": "https://www.tiktok.com/@Andrew/video/7656770971361185042",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-06-29T11:02:53.782Z"
+                    },
+                    "media_size_bytes": 4729217,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 45,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "f9993c3048c4447caa4737a33b352c4f"
+                }
+            ]
         }
     },
     {
@@ -323,13 +554,116 @@
             "youtube"
         ],
         "scheduleDate": null,
-        "status": "review_required",
+        "status": "posted",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-06-28_ai-resumes-all-sound-the-same-so-recruiters-search-for-proof_short_3.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
             "reason": "ready"
+        },
+        "reviewApproval": {
+            "reviewer": "andyn",
+            "approvedAt": "2026-06-29T11:02:16.457Z",
+            "fileSha256": "19bedd3ee554aabb4b0ed147b7d667867a38dc8205b68df641a5abd54c5691f9",
+            "file": "videos/daily-ats-myth-lab-studio.mp4",
+            "caption": "The ATS is not a wizard. The ATS did not read your mind. Rude, honestly. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "The ATS is not a wizard",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "postedAt": "2026-06-29T11:02:39.109Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=982ba2bb7f0941399686a60531986b3d. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "982ba2bb7f0941399686a60531986b3d",
+            "total_platforms": 3,
+            "job_id": "f20cbecbef484b9ca8ba2836d2f47fe7"
+        },
+        "uploadStatus": {
+            "status": "completed",
+            "completed": 3,
+            "total": 3,
+            "request_id": "982ba2bb7f0941399686a60531986b3d",
+            "last_update": {
+                "$date": "2026-06-29T11:03:07.381Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "LhGIapJ-8NQ",
+                    "post_url": "https://www.youtube.com/watch?v=LhGIapJ-8NQ",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-06-29T11:02:22.865Z"
+                    },
+                    "media_size_bytes": 4926543,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 45,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "f20cbecbef484b9ca8ba2836d2f47fe7"
+                },
+                {
+                    "platform": "instagram",
+                    "success": true,
+                    "platform_post_id": "17959712931132446",
+                    "post_url": "https://www.instagram.com/reel/DaKtqvDD_ux/",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-06-29T11:03:04.488Z"
+                    },
+                    "media_size_bytes": 4926543,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 45,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "f20cbecbef484b9ca8ba2836d2f47fe7"
+                },
+                {
+                    "platform": "tiktok",
+                    "success": true,
+                    "platform_post_id": "7656770873159961857",
+                    "post_url": "https://www.tiktok.com/@Andrew/video/7656770873159961857",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-06-29T11:03:07.381Z"
+                    },
+                    "media_size_bytes": 4926543,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 45,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "f20cbecbef484b9ca8ba2836d2f47fe7"
+                }
+            ]
         }
     }
 ]

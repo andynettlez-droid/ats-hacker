@@ -1,55 +1,77 @@
 # Long-Form Voiceover Script
 
-Status: draft narration pass for the 16:9 YouTube teardown. This is not posted yet.
+Status: regenerated narration pass for the 16:9 YouTube teardown. This is not posted yet.
 
 ## Cold Open
 
-This resume sounds professional, which is exactly why it is dangerous. Not dangerous like illegal. Dangerous like it went to LinkedIn, bought a blazer, and forgot to bring any evidence.
+This resume looks clean, polite, and professional, which is exactly the trap.
+
+The open loop today is simple: this candidate is probably qualified, but the resume is invisible because the proof is wearing camouflage.
 
 The job description is asking for demand generation, HubSpot, LinkedIn Ads, CAC analysis, lifecycle marketing, and pipeline impact. But the resume says helped with marketing campaigns and worked with cross-functional teams.
 
-That is not bad experience. That is invisible experience. A recruiter cannot search for what you never said.
+That is not bad experience. That is invisible experience. And a recruiter cannot search for what you never said.
 
-## The Real Problem
+## Stakes
 
-Most job seekers think the resume problem is that an ATS automatically throws them away. That is the dramatic version. The more boring version is usually the more useful one.
+The painful mistake is thinking pretty language equals searchable language.
 
-Your resume gets parsed, stored, searched, filtered, and skimmed. If the role asks for very specific language and your resume answers with polite fog, your best experience can disappear.
+A recruiter does not search for professional fog. They search for a title, tools, outcomes, and proof that matches the job description.
 
-So the fix is not keyword stuffing. The fix is translation. You take the work you actually did and describe it in the language of the job you are targeting.
+So if your resume sounds impressive but avoids the exact role language, it can still lose the search test. Not because you are unqualified. Because the resume made your qualifications too hard to find.
 
-## Translate The Job
+## Search Test
 
-Before touching the resume, look at the job description like a recruiter search box. Pull out the title, the tools, the business outcomes, the metrics, and the responsibilities.
+For this role, the job description is screaming for specific signals: HubSpot, CAC analysis, LinkedIn Ads, lifecycle marketing, demand generation, pipeline, and measurable campaign performance.
 
-For this role, the important signals are HubSpot, CAC, LinkedIn Ads, lifecycle marketing, demand generation, pipeline, and measurable campaign performance.
+Those are not random buzzwords. They are the likely search terms and skim cues.
 
-Now compare that to the resume. If those ideas are missing, the resume might be qualified in real life and still weak on paper.
+Before rewriting a resume, we pull those terms out and ask one honest question: can this resume prove those things without making anything up?
 
-## Live Teardown
+## Resume Crime Scene
 
-Here is the weak bullet: helped with marketing campaigns. That could mean anything. It could mean they owned a paid acquisition project. It could also mean they sat in one meeting and said, sounds good.
+Now look at the resume. It says results-driven team player. It says helped with marketing campaigns. It says worked with cross-functional teams.
 
-Recruiters are not mind readers. Hiring managers are not going to decode a vague sentence for you.
+Those bullets are not evil. They are just too vague to do the job.
 
-The bullet needs tools, scope, and proof. What platform did you use? What audience did you target? What number moved? What business result came from the work?
+Helped with campaigns could mean they owned a paid acquisition project. It could also mean they sat in one meeting and said, sounds good. That sentence gives the recruiter almost no proof.
 
-## Fix One Bullet
+## Why It Gets Missed
 
-We are not inventing experience. We are making the real experience visible.
+Hiring teams are not mind readers. Applicant systems are not mind readers either.
 
-Instead of helped with marketing campaigns, a stronger bullet would be: cut CAC by 32 percent through LinkedIn Ads audience segmentation and HubSpot lead scoring.
+If the real work involved HubSpot, LinkedIn Ads, CAC, lifecycle marketing, or pipeline, but the resume hides all of it behind helped with campaigns, the evidence is wearing camouflage.
 
-Same person. Same experience category. Completely different signal.
+This is where a qualified person starts feeling ignored, even though the better explanation is that the resume is speaking a different language than the job description.
 
-The first version says, trust me. The second version says, here is what I did, here is what I used, and here is the result.
+## Fix The Bullet
 
-## Product Bridge
+The fix is not inventing experience. The fix is translation.
 
-That is the job Signal is designed to do. Paste the job description, upload the resume, and check the match before you apply.
+Instead of helped with marketing campaigns, write: cut CAC by thirty two percent through LinkedIn Ads audience segmentation and HubSpot lead scoring.
 
-The free score shows where the gap is. The paid resume and cover letter package only makes sense after the gap is obvious.
+Now the bullet has a tool, a method, and a result. It is still the same person and the same experience category. It is just no longer hiding behind polite fog.
 
-No fake experience. No weird ATS mythology. Just a clearer version of the work you already did.
+## Score Reveal
 
-Before you send the next application, check your free Signal score.
+Same person. Same work. Completely different signal.
+
+In this example, the resume moves from thirty four out of one hundred to ninety two out of one hundred because the words finally match the proof the role asked for.
+
+HubSpot is visible. CAC is visible. LinkedIn Ads is visible. Lifecycle marketing and pipeline impact are visible. That is the difference between nice-looking and searchable.
+
+## Trust Check
+
+Here is the line we do not cross. No fake experience. No keyword stuffing. No weird ATS mythology. No outcome promises.
+
+A strong resume does not need to become fictional. It needs to become clear.
+
+If you did not use a tool, do not claim it. If you did use it, stop burying it under generic wording.
+
+## Signal Workflow
+
+That is why Signal starts with the free score.
+
+Paste the job description, upload the resume, see the gap, and only pay for the resume or cover letter bundle if the gap is worth fixing before you apply.
+
+No fake experience. No subscription trap. Just a clearer version of the work you already did. Before you send the next application, check your free Signal score.

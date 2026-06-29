@@ -14,47 +14,82 @@
     "audioReadiness": {
       "studioVoiceover": true,
       "quietMusic": true,
-      "reason": "6 episode voiceover sections ready"
+      "provider": "openai",
+      "reason": "9 episode voiceover sections ready via openai"
     },
     "voiceoverSegments": [
       {
         "label": "Cold Open",
-        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-1-cold-open.mp3",
-        "fromFrame": 240
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-1-cold-open.mp3",
+        "fromFrame": 240,
+        "durationInSeconds": 34.92,
+        "provider": "openai"
       },
       {
-        "label": "The Real Problem",
-        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-2-the-real-problem.mp3",
-        "fromFrame": 710
+        "label": "Stakes",
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-2-stakes.mp3",
+        "fromFrame": 1333,
+        "durationInSeconds": 26.76,
+        "provider": "openai"
       },
       {
-        "label": "Translate The Job",
-        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-3-translate-the-job.mp3",
-        "fromFrame": 1180
+        "label": "Search Test",
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-3-search-test.mp3",
+        "fromFrame": 2181,
+        "durationInSeconds": 29.304,
+        "provider": "openai"
       },
       {
-        "label": "Live Teardown",
-        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-4-live-teardown.mp3",
-        "fromFrame": 1650
+        "label": "Resume Crime Scene",
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-4-resume-crime-scene.mp3",
+        "fromFrame": 3106,
+        "durationInSeconds": 22.32,
+        "provider": "openai"
       },
       {
-        "label": "Fix One Bullet",
-        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-5-fix-one-bullet.mp3",
-        "fromFrame": 2120
+        "label": "Why It Gets Missed",
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-5-why-it-gets-missed.mp3",
+        "fromFrame": 3821,
+        "durationInSeconds": 27.72,
+        "provider": "openai"
       },
       {
-        "label": "Product Bridge",
-        "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-6-product-bridge.mp3",
-        "fromFrame": 2590
+        "label": "Fix The Bullet",
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-6-fix-the-bullet.mp3",
+        "fromFrame": 4698,
+        "durationInSeconds": 23.568,
+        "provider": "openai"
+      },
+      {
+        "label": "Score Reveal",
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-7-score-reveal.mp3",
+        "fromFrame": 5451,
+        "durationInSeconds": 24.456,
+        "provider": "openai"
+      },
+      {
+        "label": "Trust Check",
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-8-trust-check.mp3",
+        "fromFrame": 6230,
+        "durationInSeconds": 22.056,
+        "provider": "openai"
+      },
+      {
+        "label": "Signal Workflow",
+        "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-9-signal-workflow.mp3",
+        "fromFrame": 6937,
+        "durationInSeconds": 22.248,
+        "provider": "openai"
       }
     ],
     "expertViralGate": {
       "minScore": 94,
-      "score": 83,
+      "score": 100,
       "passed": false,
       "verdict": "needs_work_before_publish_ready",
       "report": "marketing/daily_content/2026-06-28-ai-resumes-all-sound-the-same-so-recruiters-search-for-proof/youtube_viral_quality_report.json"
-    }
+    },
+    "durationInFrames": 8190
   },
   "thumbnail": {
     "composition": "SignalThumbnail",

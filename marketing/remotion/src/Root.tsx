@@ -1,4 +1,4 @@
-import { Composition, Still } from "remotion";
+import { Composition, Still, type CalculateMetadataFunction } from "remotion";
 import { ScoreReveal, scoreRevealSchema, defaultScoreRevealProps } from "./ScoreReveal";
 import { AvatarReveal, avatarRevealSchema, defaultAvatarRevealProps } from "./AvatarReveal";
 import { SignalReveal, signalRevealSchema, defaultSignalRevealProps } from "./SignalReveal";
@@ -17,6 +17,7 @@ import {
   TeardownEpisode,
   teardownEpisodeSchema,
   defaultTeardownEpisodeProps,
+  type TeardownEpisodeProps,
 } from "./TeardownEpisode";
 import {
   SignalThumbnail,
@@ -33,6 +34,15 @@ const SIGNAL_BREAKTHROUGH_DURATION = 30;
 const RESUME_CRIME_SCENE_DURATION = 45;
 const TEARDOWN_EPISODE_DURATION = 8 * 60;
 const TEARDOWN_REVIEW_CUT_DURATION = 2 * 60;
+
+const teardownEpisodeMetadata: CalculateMetadataFunction<TeardownEpisodeProps> = async ({
+  props,
+}) => ({
+  durationInFrames: Math.max(
+    TEARDOWN_REVIEW_CUT_DURATION * FPS,
+    Math.min(12 * 60 * FPS, Number(props.durationInFrames || TEARDOWN_EPISODE_DURATION * FPS)),
+  ),
+});
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -106,6 +116,7 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
         schema={teardownEpisodeSchema}
         defaultProps={defaultTeardownEpisodeProps}
+        calculateMetadata={teardownEpisodeMetadata}
       />
       <Composition
         id="TeardownEpisodeReviewCut"

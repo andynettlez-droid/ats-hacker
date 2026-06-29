@@ -1,0 +1,37 @@
+{
+  "overallScore": 94,
+  "passed": true,
+  "verdict": "post_grade_script_packet",
+  "notes": [
+    "Needs more safe humor that punches at vague resume language or job-search friction."
+  ],
+  "blockers": [],
+  "shorts": [
+    {
+      "title": "Corporate weather report resume",
+      "score": 95,
+      "passed": true,
+      "notes": [
+        "Use a repeatable series shell such as Resume Crime Scene, ATS Myth Lab, or One Bullet Fix."
+      ],
+      "blockers": []
+    },
+    {
+      "title": "Would your resume appear in search?",
+      "score": 83,
+      "passed": true,
+      "notes": [
+        "Add one job-search-safe joke or visual gag.",
+        "Use a repeatable series shell such as Resume Crime Scene, ATS Myth Lab, or One Bullet Fix."
+      ],
+      "blockers": []
+    },
+    {
+      "title": "Resume Crime Scene: Hidden Proof",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    }
+  ]
+}

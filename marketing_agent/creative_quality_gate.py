@@ -79,6 +79,7 @@ SERIES_FORMATS = [
     "recruiter search test",
     "ai resume roast",
     "resume builder cost trap",
+    "signal mascot rescue",
 ]
 
 

@@ -1,0 +1,236 @@
+{
+  "publishDate": "2026-06-29",
+  "topic": "AI-looking resume bullets recruiters ignore",
+  "series": "Daily Research Packet",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "sourceNotes": [
+    {
+      "title": "YouTube Partner Program eligibility",
+      "url": "https://support.google.com/youtube/answer/72851",
+      "note": "Use YouTube as a monetization target, but optimize first for site conversions."
+    },
+    {
+      "title": "Pew Research Center Social Media Fact Sheet",
+      "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/",
+      "note": "YouTube, Instagram, and TikTok are large discovery channels for job-search education."
+    }
+  ],
+  "youtube": {
+    "script": {
+      "title": "AI-looking Resume Bullets Recruiters Ignore: The Comedy Roast",
+      "chapters": [
+        {
+          "time": "0:00",
+          "title": "Introduction",
+          "content": "Open with a frustrated job-hunter joke: 'Ever feel like your resume is just a Tinder profile for boring jobs?'"
+        },
+        {
+          "time": "1:00",
+          "title": "The Problem with AI Resumes",
+          "content": "Illustrate how AI-driven resumes often sound robotic, leading to recruiter frustration\u2014cue visual of silly AI-generated bullet points."
+        },
+        {
+          "time": "2:30",
+          "title": "Recruiter Reacts",
+          "content": "A live-action segment where the Signal mascot reads vague AI resume bullets and gives blunt, hilarious feedback."
+        },
+        {
+          "time": "5:30",
+          "title": "Job Description Translation",
+          "content": "Show examples of how job descriptions can be rewritten to resonate more with recruiters while maintaining a humorous tone."
+        },
+        {
+          "time": "7:00",
+          "title": "Signal Score Call-to-Action",
+          "content": "End with a smooth pitch: 'Want to fix your resume? Get your free Signal score to make sure recruiters don\u2019t swipe left!'"
+        }
+      ]
+    },
+    "storyboard": "Visuals alternate between the Signal mascot hilariously critiquing resumes and examples of actual vague job descriptions, interspersed with funny commentary.",
+    "cta": "Encourage viewers to sign up for their free Signal score at the end of the video.",
+    "title": "AI-looking resume bullets recruiters ignore | Resume Teardown",
+    "seoTitle": "AI-looking resume bullets recruiters ignore | Resume Teardown | Signal by ATSHacker",
+    "description": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "chapters": [
+      "0:00 Cold open",
+      "0:30 The resume problem",
+      "1:45 The job description translation",
+      "3:30 Live teardown",
+      "6:30 Bullet rewrite",
+      "8:00 Signal score and takeaway",
+      "9:00 CTA"
+    ],
+    "scriptSections": [
+      {
+        "label": "Cold open",
+        "script": "AI-looking resume bullets recruiters ignore Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on.",
+        "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+      },
+      {
+        "label": "The real problem",
+        "script": "Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit.",
+        "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+      },
+      {
+        "label": "Translate the job",
+        "script": "Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+        "visual": "Keyword extraction board."
+      },
+      {
+        "label": "Teardown",
+        "script": "Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes.",
+        "visual": "Red/yellow markups over weak bullets."
+      },
+      {
+        "label": "Fix one bullet",
+        "script": "The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result.",
+        "visual": "Before/after bullet rewrite."
+      },
+      {
+        "label": "Product bridge",
+        "script": "Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+        "visual": "Free Signal score page, trust badges, and bundle CTA."
+      }
+    ]
+  },
+  "shorts": [
+    {
+      "series": "Daily Research Packet",
+      "title": "Corporate weather report resume",
+      "hook": "This bullet has a high chance of synergy and zero proof.",
+      "script": "This bullet has a high chance of synergy and zero proof. It says results-driven team player, which sounds expensive and tells me almost nothing. The job asks for HubSpot, CAC, LinkedIn Ads, and pipeline impact. Signal pulls the real proof out of the corporate weather report before you apply.",
+      "storyboard": [
+        "Open with a fake weather alert: 'High chance of synergy.'",
+        "Signal side-eyes a polished but empty resume bullet.",
+        "Job description terms pop in like warning labels.",
+        "Signal points to the missing proof chips.",
+        "Reveal free Signal score and CTA."
+      ],
+      "props": {
+        "hook1": "This bullet has a high chance of synergy and zero proof",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 39,
+        "afterScore": 87,
+        "missing": [
+          "HubSpot",
+          "CAC",
+          "LinkedIn Ads",
+          "lifecycle marketing"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "This bullet has a high chance of synergy and zero proof. It says results-driven team player, which sounds expensive and tells me almost nothing. The job asks for HubSpot, CAC, LinkedIn Ads, and pipeline impact. Signal pulls the real proof out of the corporate weather report before you apply."
+      }
+    },
+    {
+      "series": "Daily Research Packet",
+      "title": "Would your resume appear in search?",
+      "hook": "If I search HubSpot, does your resume even show up?",
+      "script": "If I search HubSpot, does your resume even show up? The job description says HubSpot, CAC, LinkedIn Ads, and lifecycle marketing. Your resume says helped with campaigns. That might be true, but it is not searchable enough. Signal translates the real work into role language.",
+      "storyboard": [
+        "Show a recruiter search box typing HubSpot.",
+        "Resume returns no match and Signal looks concerned.",
+        "Paste the job description next to the resume.",
+        "Highlight the missing role terms.",
+        "Rewrite the bullet and rerun the search.",
+        "CTA to free score."
+      ],
+      "props": {
+        "hook1": "If I search HubSpot, does your resume even show up?",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 40,
+        "afterScore": 88,
+        "missing": [
+          "HubSpot",
+          "CAC",
+          "LinkedIn Ads",
+          "lifecycle marketing"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "If I search HubSpot, does your resume even show up? The job description says HubSpot, CAC, LinkedIn Ads, and lifecycle marketing. Your resume says helped with campaigns. That might be true, but it is not searchable enough. Signal translates the real work into role language."
+      }
+    },
+    {
+      "series": "Daily Research Packet",
+      "title": "Resume Crime Scene: Hidden Proof",
+      "hook": "This resume is invisible because the best bullet is buried.",
+      "script": "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, because helped with campaigns could mean almost anything. The job description asks for HubSpot, CAC, LinkedIn Ads, and pipeline impact. So we turn the same real experience into: cut CAC by thirty two percent through LinkedIn Ads audience segmentation and HubSpot lead scoring. Same person. Better signal.",
+      "storyboard": [
+        "Open with a Resume Crime Scene tape over the weak bullet.",
+        "Signal side-eyes 'helped with campaigns' and waves a tiny red flag.",
+        "Pin the job description clues: HubSpot, CAC, LinkedIn Ads, pipeline.",
+        "Signal points from the vague bullet to the corrected proof bullet.",
+        "Score jumps from 38/100 to 91/100 while Signal celebrates.",
+        "CTA to the free Signal score."
+      ],
+      "props": {
+        "hook1": "This resume is invisible because the best bullet is bur",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 41,
+        "afterScore": 89,
+        "missing": [
+          "HubSpot",
+          "CAC",
+          "LinkedIn Ads",
+          "lifecycle marketing"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, because helped with campaigns could mean almost anything. The job description asks for HubSpot, CAC, LinkedIn Ads, and pipeline impact. So we turn the same real experience into: cut CAC by thirty two percent through LinkedIn Ads audience segmentation and HubSpot lead scoring. Same person. Better signal."
+      }
+    }
+  ],
+  "monetization": {
+    "strategy": "Use the YouTube Partner Program to monetize content while driving viewers to the free Signal score offering.",
+    "additionalNotes": "Focus on building a viewer base who finds value in actionable resume advice, increasing upsell opportunities later.",
+    "primaryGoal": "Site revenue from resume / cover letter packages, not ad revenue.",
+    "cta": "Free Signal score -> $9.99 resume or $14.99 bundle.",
+    "tracking": [
+      "utm_source=youtube",
+      "utm_medium=video",
+      "utm_campaign=daily_packet"
+    ],
+    "upsell": "Promote bundle after score completion and multi-role pack after first purchase."
+  },
+  "viewerCustomerReview": {
+    "feedback": "Frustrated job seekers who engage with this content find it relatable and immensely helpful, often returning for more tips and sharing with their networks."
+  },
+  "creativeQualityGate": {
+    "overallScore": 94,
+    "passed": true,
+    "verdict": "post_grade_script_packet",
+    "notes": [
+      "Needs more safe humor that punches at vague resume language or job-search friction."
+    ],
+    "blockers": [],
+    "shorts": [
+      {
+        "title": "Corporate weather report resume",
+        "score": 95,
+        "passed": true,
+        "notes": [
+          "Use a repeatable series shell such as Resume Crime Scene, ATS Myth Lab, or One Bullet Fix."
+        ],
+        "blockers": []
+      },
+      {
+        "title": "Would your resume appear in search?",
+        "score": 83,
+        "passed": true,
+        "notes": [
+          "Add one job-search-safe joke or visual gag.",
+          "Use a repeatable series shell such as Resume Crime Scene, ATS Myth Lab, or One Bullet Fix."
+        ],
+        "blockers": []
+      },
+      {
+        "title": "Resume Crime Scene: Hidden Proof",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      }
+    ]
+  }
+}

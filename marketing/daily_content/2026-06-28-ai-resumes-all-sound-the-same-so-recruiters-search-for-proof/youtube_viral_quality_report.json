@@ -1,14 +1,14 @@
 {
   "minScore": 94,
-  "score": 83,
+  "score": 100,
   "passed": false,
   "verdict": "needs_work_before_publish_ready",
   "dimensions": [
     {
       "name": "Packaging: title and promise",
-      "points": 6,
+      "points": 10,
       "max": 10,
-      "passed": false,
+      "passed": true,
       "note": "Title should be specific, curiosity-driven, and not clickbait."
     },
     {
@@ -20,16 +20,16 @@
     },
     {
       "name": "Retention architecture",
-      "points": 8,
+      "points": 14,
       "max": 14,
-      "passed": false,
+      "passed": true,
       "note": "Expert long-form needs more than a static explainer: open loop, stakes, teardown, fix, payoff, CTA."
     },
     {
       "name": "Proof density",
-      "points": 9,
+      "points": 14,
       "max": 14,
-      "passed": false,
+      "passed": true,
       "note": "Use concrete tools, metrics, before/after score, and a before/after bullet."
     },
     {
@@ -48,9 +48,9 @@
     },
     {
       "name": "Audience empathy and creator voice",
-      "points": 6,
+      "points": 10,
       "max": 10,
-      "passed": false,
+      "passed": true,
       "note": "Should feel like a sharp creator teardown, not generic SaaS education."
     },
     {
@@ -79,7 +79,6 @@
     "Rendered long-form MP4 has not passed visual/audio QA."
   ],
   "nextActions": [
-    "Expand to 8-10 retention-focused sections.",
     "Render the full 16:9 episode, inspect hook/midpoint/payoff/CTA frames, and verify audio metadata.",
     "Only mark qaGate.passed=true after score is at least 94 and blockers are zero."
   ]

@@ -32,6 +32,7 @@ const EXPECTED = {
   maxSfxVolume: 0.08,
   minVoiceoverVolume: 0.8,
   maxVoiceoverVolume: 1,
+  minOpenAiVoiceoverSampleRate: 24_000,
 };
 
 const parseArgs = () => {
@@ -111,7 +112,10 @@ const checkVolume = (checks, value, min, max, name) => {
 const collectShortAssets = (drafts) => {
   const items = [];
   for (const draft of drafts) {
-    if (!String(draft.file || "").endsWith("-studio.mp4")) {
+    if (
+      draft.composition !== "ResumeCrimeScene" &&
+      !String(draft.file || "").endsWith("-studio.mp4")
+    ) {
       continue;
     }
     const propsPath = resolveRootRef(draft.renderProps);
@@ -127,6 +131,7 @@ const collectShortAssets = (drafts) => {
       role: "voiceover",
       src: props.voiceoverSrc,
       volume: props.voiceoverVolume,
+      provider: props.audioReadiness?.provider,
       minDuration: EXPECTED.minVoiceoverDuration,
       maxDuration: EXPECTED.maxShortVoiceoverDuration,
       minBitrate: EXPECTED.minVoiceoverBitrate,
@@ -185,6 +190,7 @@ const collectEpisodeAssets = (manifest) => {
       src: segment.src,
       volume: segment.volume ?? props.voiceoverVolume,
       fromFrame: segment.fromFrame,
+      provider: segment.provider || props.audioReadiness?.provider,
       segmentIndex: index + 1,
       minDuration: EXPECTED.minVoiceoverDuration,
       maxDuration: EXPECTED.maxEpisodeSegmentDuration,
@@ -197,6 +203,10 @@ const collectEpisodeAssets = (manifest) => {
 const checkAsset = async (item) => {
   const checks = [];
   const filePath = resolvePublicRef(item.src);
+  const minSampleRate =
+    item.role.includes("voiceover") && ["openai", "cached"].includes(item.provider)
+      ? EXPECTED.minOpenAiVoiceoverSampleRate
+      : EXPECTED.minSampleRate;
 
   addCheck(checks, Boolean(item.src), "asset source is set", item.src || "");
   addCheck(checks, Boolean(filePath && existsSync(filePath)), "asset exists", filePath ? rel(filePath) : "");
@@ -225,9 +235,9 @@ const checkAsset = async (item) => {
     addCheck(checks, Boolean(metadata.audioCodec), "audio codec detected", metadata.audioCodec || "");
     addCheck(
       checks,
-      Number(metadata.sampleRate || 0) >= EXPECTED.minSampleRate,
-      "sample rate is studio-safe",
-      `${metadata.sampleRate || "unknown"} Hz`,
+      Number(metadata.sampleRate || 0) >= minSampleRate,
+      "sample rate meets provider floor",
+      `${metadata.sampleRate || "unknown"} Hz (provider=${item.provider || "default"}, min=${minSampleRate})`,
     );
     addCheck(
       checks,

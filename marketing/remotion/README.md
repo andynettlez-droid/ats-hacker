@@ -2,7 +2,9 @@
 
 Programmatic video production for Signal by ATSHacker. The current production lane is recruiter-style resume teardown content for TikTok, Instagram Reels, YouTube Shorts, and long-form YouTube.
 
-The primary short-form template is `ResumeCrimeScene`, not the older `ScoreReveal` ad. The winning format is:
+The primary short-form template is `ResumeCrimeScene`, not the older `ScoreReveal` ad. It now supports rotating creative formats, visual styles, pacing, and scene-by-scene Signal mascot reactions. See `marketing/SHORTS_CREATIVE_SYSTEM.md` for the active creative standard.
+
+The winning format family is:
 
 1. Hook with a blunt/funny resume problem.
 2. Show the resume and target job description.
@@ -125,6 +127,12 @@ npm run qc:daily:audio
 The gate verifies the rendered and promoted files both exist, the autopost entries are still `review_required`, the videos are 1080x1920 MP4/H.264/AAC at 30fps, audio tracks exist, linked props and audio assets exist, the score moves upward, the CTA points to the free Signal score, and unsafe claim patterns are absent.
 
 The audio gate verifies linked voiceover/music/SFX assets, codec metadata, duration, sample rate, channels, bitrate, and restrained mix volume settings. It does not measure LUFS or true peak yet.
+
+For a new daily packet, pass the packet-specific drafts and manifest to audio QC:
+
+```bat
+npm run qc:daily:audio -- --drafts ..\daily_content\YYYY-MM-DD-topic\autopost_drafts.json --manifest ..\daily_content\YYYY-MM-DD-topic\channel_manifest.json
+```
 
 Dry-run posting from `marketing/autopost`:
 

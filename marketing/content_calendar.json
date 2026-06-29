@@ -85,5 +85,108 @@
       ]
     },
     "reviewStatus": "needs_render_and_review"
+  },
+  {
+    "date": "2026-06-29",
+    "topic": "AI-looking resume bullets recruiters ignore",
+    "series": "Daily Research Packet",
+    "packet": "marketing\\daily_content\\2026-06-29-ai-looking-resume-bullets-recruiters-ignore",
+    "youtube": {
+      "title": "AI-looking resume bullets recruiters ignore | Resume Teardown",
+      "status": "render_ready_review_required",
+      "target": "daily long-form YouTube",
+      "manifest": "marketing\\daily_content\\2026-06-29-ai-looking-resume-bullets-recruiters-ignore\\channel_manifest.json",
+      "props": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_episode.json",
+      "output": "marketing/remotion/out/daily-ai-looking-resume-bullets-recruiters-ignore-episode.mp4",
+      "autopostDraft": "marketing\\daily_content\\2026-06-29-ai-looking-resume-bullets-recruiters-ignore\\autopost_drafts.json",
+      "qaGate": {
+        "required": true,
+        "passed": false,
+        "status": "requires_render_review"
+      }
+    },
+    "thumbnail": {
+      "composition": "SignalThumbnail",
+      "props": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_thumbnail.json",
+      "output": "marketing/remotion/out/daily-ai-looking-resume-bullets-recruiters-ignore-thumbnail.png",
+      "format": "1280x720",
+      "status": "render_ready"
+    },
+    "shorts": [
+      {
+        "title": "Corporate weather report resume",
+        "brief": "marketing\\video_briefs\\2026-06-29-ai-looking-resume-bullets-recruiters-ignore-short-1.md",
+        "props": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_short_1.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "cached",
+          "reason": "ready via cached"
+        }
+      },
+      {
+        "title": "Would your resume appear in search?",
+        "brief": "marketing\\video_briefs\\2026-06-29-ai-looking-resume-bullets-recruiters-ignore-short-2.md",
+        "props": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_short_2.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "cached",
+          "reason": "ready via cached"
+        }
+      },
+      {
+        "title": "Resume Crime Scene: Hidden Proof",
+        "brief": "marketing\\video_briefs\\2026-06-29-ai-looking-resume-bullets-recruiters-ignore-short-3.md",
+        "props": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_short_3.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "cached",
+          "reason": "ready via cached"
+        }
+      }
+    ],
+    "creativeQuality": {
+      "overallScore": 94,
+      "passed": true,
+      "verdict": "post_grade_script_packet",
+      "notes": [
+        "Needs more safe humor that punches at vague resume language or job-search friction."
+      ],
+      "blockers": [],
+      "shorts": [
+        {
+          "title": "Corporate weather report resume",
+          "score": 95,
+          "passed": true,
+          "notes": [
+            "Use a repeatable series shell such as Resume Crime Scene, ATS Myth Lab, or One Bullet Fix."
+          ],
+          "blockers": []
+        },
+        {
+          "title": "Would your resume appear in search?",
+          "score": 83,
+          "passed": true,
+          "notes": [
+            "Add one job-search-safe joke or visual gag.",
+            "Use a repeatable series shell such as Resume Crime Scene, ATS Myth Lab, or One Bullet Fix."
+          ],
+          "blockers": []
+        },
+        {
+          "title": "Resume Crime Scene: Hidden Proof",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        }
+      ]
+    },
+    "reviewStatus": "needs_render_and_review"
   }
 ]

@@ -1,94 +1,129 @@
 {
-  "title": "Your AI resume sounds professional. That might be the problem. | Resume Teardown",
-  "thesis": "Recruiter-style teardown of an AI-polished resume that misses HubSpot, CAC, LinkedIn Ads, and lifecycle marketing.",
+  "title": "Your AI Resume Is Invisible: Recruiter Teardown",
+  "thesis": "A funny recruiter-style teardown showing why a polished AI resume can miss HubSpot, CAC, LinkedIn Ads, lifecycle marketing, and pipeline proof.",
   "cta": "Paste the job description and check your free Signal score before you apply.",
   "sections": [
     {
       "label": "Cold open",
-      "script": "Your AI resume sounds professional. That might be the problem. Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on.",
-      "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+      "script": "This resume looks clean, polite, and professional, which is exactly the trap. The open loop today is simple: this candidate is probably qualified, but the resume is invisible because the proof is wearing camouflage.",
+      "visual": "Start on a clean resume, hard zoom to a 34/100 badge, Signal mascot points at the missing proof, then split screen with the job description."
     },
     {
-      "label": "The real problem",
-      "script": "Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit.",
-      "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+      "label": "Stakes",
+      "script": "The painful mistake is thinking pretty language equals searchable language. A recruiter does not search for professional fog. They search for a title, tools, outcomes, and proof that matches the job description.",
+      "visual": "Show a recruiter search box typing Demand Generation Manager, HubSpot, CAC, LinkedIn Ads, lifecycle marketing, and pipeline."
     },
     {
-      "label": "Translate the job",
-      "script": "Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
-      "visual": "Keyword extraction board."
+      "label": "Search test",
+      "script": "For this role, the job description is screaming HubSpot, CAC analysis, LinkedIn Ads, lifecycle marketing, demand generation, pipeline, and measurable campaign performance. Those are the signals we need to find on the resume.",
+      "visual": "Highlight keyword chips from the job description and move them into a recruiter search board."
     },
     {
-      "label": "Teardown",
-      "script": "Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes.",
-      "visual": "Red/yellow markups over weak bullets."
+      "label": "Resume crime scene",
+      "script": "Now look at the resume. It says results-driven team player, helped with marketing campaigns, and worked with cross-functional teams. That is not bad experience. That is invisible experience.",
+      "visual": "Circle each vague bullet with red/yellow annotations and label the page qualified but hard to find."
     },
     {
-      "label": "Fix one bullet",
-      "script": "The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result.",
-      "visual": "Before/after bullet rewrite."
+      "label": "Why it gets missed",
+      "script": "Hiring teams are not mind readers. If the real work involved HubSpot, LinkedIn Ads, CAC, lifecycle marketing, or pipeline, but the resume hides all of it behind helped with campaigns, the evidence is wearing camouflage.",
+      "visual": "Animate the good proof fading under vague words, then Signal pulls the terms back into view."
     },
     {
-      "label": "Product bridge",
-      "script": "Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
-      "visual": "Free Signal score page, trust badges, and bundle CTA."
+      "label": "Fix the bullet",
+      "script": "The fix is not inventing experience. The fix is translation. Instead of helped with marketing campaigns, write: cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+      "visual": "Type the before bullet, delete it, and replace it with the proof bullet while Signal validates each term."
+    },
+    {
+      "label": "Score reveal",
+      "script": "Same person. Same work. Completely different signal. The example moves from 34 out of 100 to 92 out of 100 because the resume finally says the tools, metric, and outcome the role asked for.",
+      "visual": "Score meter jumps from 34/100 to 92/100, with green checks on HubSpot, CAC, LinkedIn Ads, lifecycle marketing, and pipeline."
+    },
+    {
+      "label": "Trust check",
+      "script": "Here is the line we do not cross: no fake experience, no keyword stuffing, no ATS mythology, and no outcome promises. The resume should become clearer, not fictional.",
+      "visual": "Show four trust badges: no fake experience, no keyword stuffing, no guarantees, free score first."
+    },
+    {
+      "label": "Signal workflow",
+      "script": "That is why Signal starts with the free score. Paste the job description, upload the resume, see the gap, and only pay for the resume or cover letter bundle if the gap is worth fixing before you apply.",
+      "visual": "Show the Signal workflow: resume plus job description, free score, targeted rewrite, resume plus cover letter CTA."
     }
   ],
   "keywords": [
     "HubSpot",
     "CAC",
     "LinkedIn Ads",
-    "lifecycle marketing"
+    "lifecycle marketing",
+    "demand generation",
+    "pipeline",
+    "lead scoring"
   ],
   "weakBullets": [
     "Results-driven team player.",
     "Helped with marketing campaigns.",
-    "Worked with cross-functional teams."
+    "Worked with cross-functional teams.",
+    "Supported growth initiatives."
   ],
   "beforeBullet": "Helped with marketing campaigns.",
   "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
-  "beforeScore": 39,
-  "afterScore": 87,
+  "beforeScore": 34,
+  "afterScore": 92,
   "musicSrc": "audio/signal-quiet-orbit.wav",
-  "musicVolume": 0.11,
+  "musicVolume": 0.1,
   "voiceoverVolume": 0.94,
-  "durationInFrames": 3600,
-  "voiceover_text": "Your AI resume sounds professional. That might be the problem. Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on. Most resumes are not failing because the person is unqualified. They fail because the resume says helped with stuff while the job description is asking for a specific toolkit. Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. Now compare the resume line by line. Vague bullets like helped with campaigns do not give recruiters the same signal as specific tools, scope, and outcomes. The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result. Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+  "durationInFrames": 8190,
+  "voiceover_text": "This resume looks clean, polite, and professional, which is exactly the trap.\n\nThe open loop today is simple: this candidate is probably qualified, but the resume is invisible because the proof is wearing camouflage.\n\nThe job description is asking for demand generation, HubSpot, LinkedIn Ads, CAC analysis, lifecycle marketing, and pipeline impact. But the resume says helped with marketing campaigns and worked with cross-functional teams.\n\nThat is not bad experience. That is invisible experience. And a recruiter cannot search for what you never said.\n\nThe painful mistake is thinking pretty language equals searchable language.\n\nA recruiter does not search for professional fog. They search for a title, tools, outcomes, and proof that matches the job description.\n\nSo if your resume sounds impressive but avoids the exact role language, it can still lose the search test. Not because you are unqualified. Because the resume made your qualifications too hard to find.\n\nFor this role, the job description is screaming for specific signals: HubSpot, CAC analysis, LinkedIn Ads, lifecycle marketing, demand generation, pipeline, and measurable campaign performance.\n\nThose are not random buzzwords. They are the likely search terms and skim cues.\n\nBefore rewriting a resume, we pull those terms out and ask one honest question: can this resume prove those things without making anything up?\n\nNow look at the resume. It says results-driven team player. It says helped with marketing campaigns. It says worked with cross-functional teams.\n\nThose bullets are not evil. They are just too vague to do the job.\n\nHelped with campaigns could mean they owned a paid acquisition project. It could also mean they sat in one meeting and said, sounds good. That sentence gives the recruiter almost no proof.\n\nHiring teams are not mind readers. Applicant systems are not mind readers either.\n\nIf the real work involved HubSpot, LinkedIn Ads, CAC, lifecycle marketing, or pipeline, but the resume hides all of it behind helped with campaigns, the evidence is wearing camouflage.\n\nThis is where a qualified person starts feeling ignored, even though the better explanation is that the resume is speaking a different language than the job description.\n\nThe fix is not inventing experience. The fix is translation.\n\nInstead of helped with marketing campaigns, write: cut CAC by thirty two percent through LinkedIn Ads audience segmentation and HubSpot lead scoring.\n\nNow the bullet has a tool, a method, and a result. It is still the same person and the same experience category. It is just no longer hiding behind polite fog.\n\nSame person. Same work. Completely different signal.\n\nIn this example, the resume moves from thirty four out of one hundred to ninety two out of one hundred because the words finally match the proof the role asked for.\n\nHubSpot is visible. CAC is visible. LinkedIn Ads is visible. Lifecycle marketing and pipeline impact are visible. That is the difference between nice-looking and searchable.\n\nHere is the line we do not cross. No fake experience. No keyword stuffing. No weird ATS mythology. No outcome promises.\n\nA strong resume does not need to become fictional. It needs to become clear.\n\nIf you did not use a tool, do not claim it. If you did use it, stop burying it under generic wording.\n\nThat is why Signal starts with the free score.\n\nPaste the job description, upload the resume, see the gap, and only pay for the resume or cover letter bundle if the gap is worth fixing before you apply.\n\nNo fake experience. No subscription trap. Just a clearer version of the work you already did. Before you send the next application, check your free Signal score.",
   "voiceoverSegments": [
     {
-      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-1-cold-open.mp3",
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-1-cold-open.mp3",
       "fromFrame": 240,
       "volume": 0.94
     },
     {
-      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-2-the-real-problem.mp3",
-      "fromFrame": 710,
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-2-stakes.mp3",
+      "fromFrame": 1333,
       "volume": 0.94
     },
     {
-      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-3-translate-the-job.mp3",
-      "fromFrame": 1180,
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-3-search-test.mp3",
+      "fromFrame": 2181,
       "volume": 0.94
     },
     {
-      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-4-live-teardown.mp3",
-      "fromFrame": 1650,
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-4-resume-crime-scene.mp3",
+      "fromFrame": 3106,
       "volume": 0.94
     },
     {
-      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-5-fix-one-bullet.mp3",
-      "fromFrame": 2120,
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-5-why-it-gets-missed.mp3",
+      "fromFrame": 3821,
       "volume": 0.94
     },
     {
-      "src": "audio/daily-your-ai-resume-sounds-professional-that-might-be-the-pro-episode-6-product-bridge.mp3",
-      "fromFrame": 2590,
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-6-fix-the-bullet.mp3",
+      "fromFrame": 4698,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-7-score-reveal.mp3",
+      "fromFrame": 5451,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-8-trust-check.mp3",
+      "fromFrame": 6230,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-your-ai-resume-is-invisible-recruiter-teardown-episode-9-signal-workflow.mp3",
+      "fromFrame": 6937,
       "volume": 0.94
     }
   ],
   "audioReadiness": {
     "studioVoiceover": true,
     "quietMusic": true,
-    "reason": "6 episode voiceover sections ready"
+    "provider": "openai",
+    "reason": "9 episode voiceover sections ready via openai"
   }
 }

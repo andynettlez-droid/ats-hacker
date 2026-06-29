@@ -7,7 +7,7 @@ from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
-from creative_quality_gate import score_packet
+from creative_quality_gate import score_packet, score_short
 
 try:
     from openai import OpenAI
@@ -109,6 +109,76 @@ VIRAL_FORMATS = [
     "Recruiter Search Test",
     "AI Resume Roast",
     "Resume Builder Cost Trap",
+    "Signal Mascot Rescue",
+]
+
+
+SHORT_STYLE_ROTATION = [
+    {
+        "creativeFormat": "aiResumeRoast",
+        "visualStyle": "comic",
+        "pace": "fast",
+        "seriesLabel": "AI resume roast",
+        "signalLines": {
+            "hook": "This smells generated.",
+            "problem": "Pretty. Still invisible.",
+            "teardown": "Roast the bullet, rescue the human.",
+            "fix": "Receipts found.",
+            "cta": "Run the score first.",
+        },
+    },
+    {
+        "creativeFormat": "oneBulletFix",
+        "visualStyle": "highlighter",
+        "pace": "fast",
+        "seriesLabel": "One bullet fix",
+        "signalLines": {
+            "hook": "One sentence is sinking this.",
+            "problem": "Too vague to search.",
+            "teardown": "Give me tools, scope, result.",
+            "fix": "That is a real signal.",
+            "cta": "Fix before applying.",
+        },
+    },
+    {
+        "creativeFormat": "atsMythLab",
+        "visualStyle": "terminal",
+        "pace": "balanced",
+        "seriesLabel": "ATS myth lab",
+        "signalLines": {
+            "hook": "Mind-reading not installed.",
+            "problem": "It can only parse what you wrote.",
+            "teardown": "Search terms are missing.",
+            "fix": "Now the proof is searchable.",
+            "cta": "Test the match.",
+        },
+    },
+    {
+        "creativeFormat": "jobSearchTest",
+        "visualStyle": "stickyNote",
+        "pace": "slowBurn",
+        "seriesLabel": "Recruiter search test",
+        "signalLines": {
+            "hook": "Would this show up?",
+            "problem": "The JD is giving clues.",
+            "teardown": "The resume ignores them.",
+            "fix": "Translate, do not fabricate.",
+            "cta": "Paste the JD.",
+        },
+    },
+    {
+        "creativeFormat": "mascotRescue",
+        "visualStyle": "neon",
+        "pace": "fast",
+        "seriesLabel": "Signal rescue",
+        "signalLines": {
+            "hook": "I found the hidden proof.",
+            "problem": "It is buried under corporate fog.",
+            "teardown": "Let me pull it out.",
+            "fix": "Much better.",
+            "cta": "I will roast yours nicely.",
+        },
+    },
 ]
 
 ENTERTAINMENT_MARKERS = [
@@ -188,8 +258,25 @@ def load_elevenlabs_config() -> dict:
     }
 
 
+def load_openai_tts_config() -> dict:
+    load_dotenv(ROOT / "marketing_agent" / ".env")
+    return {
+        "apiKey": os.getenv("OPENAI_API_KEY", ""),
+        "model": os.getenv("OPENAI_TTS_MODEL", "gpt-4o-mini-tts"),
+        "voice": os.getenv("OPENAI_TTS_VOICE", "alloy"),
+        "instructions": os.getenv(
+            "OPENAI_TTS_INSTRUCTIONS",
+            "Sound like a funny, sharp recruiter doing a helpful resume teardown for frustrated job hunters. Keep it quick, warm, and entertaining.",
+        ),
+    }
+
+
 def has_elevenlabs_config() -> bool:
     return bool(load_elevenlabs_config()["apiKey"])
+
+
+def has_any_tts_config() -> bool:
+    return bool(load_elevenlabs_config()["apiKey"] or load_openai_tts_config()["apiKey"])
 
 
 def read_json(path: Path, fallback):
@@ -233,6 +320,45 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> str | None:
     return f"audio/{dest_name}"
 
 
+def generate_openai_voiceover(text: str, dest_name: str) -> str | None:
+    config = load_openai_tts_config()
+    if not config["apiKey"]:
+        return None
+
+    dest_path = REMOTION_AUDIO_DIR / dest_name
+    response = requests.post(
+        "https://api.openai.com/v1/audio/speech",
+        headers={
+            "Authorization": f"Bearer {config['apiKey']}",
+            "Content-Type": "application/json",
+        },
+        json={
+            "model": config["model"],
+            "voice": config["voice"],
+            "input": text,
+            "instructions": config["instructions"],
+            "response_format": "mp3",
+        },
+        timeout=90,
+    )
+    response.raise_for_status()
+    dest_path.write_bytes(response.content)
+    if dest_path.stat().st_size < 1024:
+        raise RuntimeError(f"OpenAI voiceover is too small: {dest_path}")
+    return f"audio/{dest_name}"
+
+
+def generate_voiceover(text: str, dest_name: str) -> tuple[str | None, str]:
+    if has_elevenlabs_config():
+        try:
+            return generate_elevenlabs_voiceover(text, dest_name), "elevenlabs"
+        except requests.HTTPError as error:
+            print(f"[!] ElevenLabs voiceover unavailable, falling back when possible: {error}")
+    if load_openai_tts_config()["apiKey"]:
+        return generate_openai_voiceover(text, dest_name), "openai"
+    return None, "none"
+
+
 def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, prepare_audio: bool, force_audio: bool) -> dict:
     voiceover_text = str(
         short.get("props", {}).get("voiceover_text")
@@ -253,14 +379,16 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
     if not prepare_audio:
         return crime_scene_props
 
-    if not has_elevenlabs_config():
-        crime_scene_props["audioReadiness"]["reason"] = "ELEVENLABS_API_KEY is not configured"
+    if not has_any_tts_config():
+        crime_scene_props["audioReadiness"]["reason"] = "No TTS provider is configured"
         return crime_scene_props
 
     voice_name = f"daily-{short_slug}-voiceover.mp3"
     voice_ref = f"audio/{voice_name}"
+    provider = "cached"
     if force_audio or not public_asset_exists(voice_ref):
-        voice_ref = generate_elevenlabs_voiceover(voiceover_text, voice_name) or voice_ref
+        generated_ref, provider = generate_voiceover(voiceover_text, voice_name)
+        voice_ref = generated_ref or voice_ref
 
     if public_asset_exists(voice_ref):
         crime_scene_props["voiceoverSrc"] = voice_ref
@@ -268,7 +396,8 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
         crime_scene_props["audioReadiness"] = {
             "studioVoiceover": True,
             "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
-            "reason": "ready",
+            "provider": provider,
+            "reason": f"ready via {provider}",
         }
     return crime_scene_props
 
@@ -305,93 +434,98 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
     shorts = [
         {
             "series": "AI Resume Roast",
-            "title": "Your AI resume has LinkedIn breath",
-            "hook": "Your AI resume sounds like it networks at airport lounges.",
+            "title": "Corporate weather report resume",
+            "hook": "This bullet has a high chance of synergy and zero proof.",
             "script": (
-                "Your AI resume sounds like it networks at airport lounges. Very polished. Very beige. "
-                "But the job asks for HubSpot, CAC, and lifecycle marketing, and your resume says results-driven team player. "
-                "Signal finds the missing role language before you apply."
+                "This bullet has a high chance of synergy and zero proof. It says results-driven team player, "
+                "which sounds expensive and tells me almost nothing. The job asks for HubSpot, CAC, LinkedIn Ads, "
+                "and pipeline impact. Signal pulls the real proof out of the corporate weather report before you apply."
             ),
             "storyboard": [
-                "Open with giant text: 'LinkedIn breath detected.'",
-                "Show an over-polished AI resume with a beige 'professional yap' stamp.",
-                "Cut to job description terms highlighted in yellow.",
-                "Signal mascot side-eyes the missing keyword chips.",
+                "Open with a fake weather alert: 'High chance of synergy.'",
+                "Signal side-eyes a polished but empty resume bullet.",
+                "Job description terms pop in like warning labels.",
+                "Signal points to the missing proof chips.",
                 "Reveal free Signal score and CTA.",
             ],
             "props": {
-                "hook1": "LinkedIn breath.",
-                "hook2": "Zero job signal.",
-                "subline": "Polished does not mean matched to the role.",
-                "beforeScore": 39,
-                "afterScore": 88,
-                "missing": keywords[:4],
+                "hook1": "Corporate weather report.",
+                "hook2": "Zero proof.",
+                "subline": "AI polish can hide the actual evidence.",
+                "beforeScore": 31,
+                "afterScore": 86,
+                "missing": ["HubSpot", "CAC", "LinkedIn Ads", "pipeline"],
                 "cta": "Check your free Signal score.",
                 "voiceover_text": (
-                    "Your AI resume sounds like it networks at airport lounges. Very polished. Very beige. "
-                    "But if the job asks for HubSpot, CAC, and lifecycle marketing, results-driven team player is not enough. "
-                    "Signal finds the missing role language before you apply."
+                    "This bullet has a high chance of synergy and zero proof. It says results-driven team player, "
+                    "which sounds expensive and tells me almost nothing. The job asks for HubSpot, CAC, LinkedIn Ads, "
+                    "and pipeline impact. Signal pulls the real proof out of the corporate weather report before you apply."
                 ),
             },
         },
         {
-            "series": "One Bullet Fix",
-            "title": "Stop writing helped with campaigns",
-            "hook": "This bullet is wearing a fake mustache.",
+            "series": "Recruiter Search Test",
+            "title": "Would your resume appear in search?",
+            "hook": "If I search HubSpot, does your resume even show up?",
             "script": (
-                "This bullet is wearing a fake mustache. 'Helped with campaigns' tells me almost nothing. "
-                "If you used HubSpot, ran paid social, or moved pipeline, say that clearly. "
-                "No fake experience. Just stop hiding the good part."
+                "If I search HubSpot, does your resume even show up? The job description says HubSpot, CAC, "
+                "LinkedIn Ads, and lifecycle marketing. Your resume says helped with campaigns. That might be true, "
+                "but it is not searchable enough. Signal translates the real work into role language."
             ),
             "storyboard": [
-                "Circle weak bullet and stamp 'suspiciously vague'.",
-                "Show target job terms.",
-                "Rewrite with only true tools/scope/outcomes.",
-                "Show score movement.",
+                "Show a recruiter search box typing HubSpot.",
+                "Resume returns no match and Signal looks concerned.",
+                "Paste the job description next to the resume.",
+                "Highlight the missing role terms.",
+                "Rewrite the bullet and rerun the search.",
                 "CTA to free score.",
             ],
             "props": {
-                "hook1": "Fake mustache bullet.",
-                "hook2": "Still too vague.",
-                "subline": "Replace vague activity with role-specific proof.",
+                "hook1": "Search box test.",
+                "hook2": "No match found.",
+                "subline": "Recruiters search for role language and proof.",
                 "beforeScore": 34,
-                "afterScore": 82,
-                "missing": ["Demand Gen", "HubSpot", "CAC", "pipeline"],
+                "afterScore": 92,
+                "missing": ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"],
                 "cta": "Run your free Signal score.",
                 "voiceover_text": (
-                    "This bullet is wearing a fake mustache. Helped with campaigns tells me almost nothing. "
-                    "If you used HubSpot, ran paid social, or moved pipeline, say that clearly. "
-                    "No fake experience. Just stop hiding the good part."
+                    "If I search HubSpot, does your resume even show up? The job description says HubSpot, CAC, "
+                    "LinkedIn Ads, and lifecycle marketing. Your resume says helped with campaigns. That might be true, "
+                    "but it is not searchable enough. Signal translates the real work into role language."
                 ),
             },
         },
         {
-            "series": "ATS Myth Lab",
-            "title": "The ATS is not a wizard",
-            "hook": "The ATS did not read your mind. Rude, honestly.",
+            "series": "Resume Crime Scene",
+            "title": "Resume Crime Scene: Hidden Proof",
+            "hook": "This resume is invisible because the best bullet is buried.",
             "script": (
-                "The ATS did not read your mind. Rude, honestly. But it usually stores and searches what you actually wrote. "
-                "If the job says lifecycle marketing and your resume says helped the team, your best experience is hiding in a hoodie."
+                "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, "
+                "because helped with campaigns could mean almost anything. The job description asks for HubSpot, CAC, "
+                "LinkedIn Ads, and pipeline impact. So we turn the same real experience into: cut CAC by thirty two percent "
+                "through LinkedIn Ads audience segmentation and HubSpot lead scoring. Same person. Better signal."
             ),
             "storyboard": [
-                "Open with 'mind-reading not installed' error.",
-                "Show database/search visual.",
-                "Type recruiter search terms.",
-                "Resume misses terms.",
-                "Signal highlights gap.",
-                "CTA to score.",
+                "Open with a Resume Crime Scene tape over the weak bullet.",
+                "Signal side-eyes 'helped with campaigns' and waves a tiny red flag.",
+                "Pin the job description clues: HubSpot, CAC, LinkedIn Ads, pipeline.",
+                "Signal points from the vague bullet to the corrected proof bullet.",
+                "Score jumps from 38/100 to 91/100 while Signal celebrates.",
+                "CTA to the free Signal score.",
             ],
             "props": {
-                "hook1": "Mind-reading?",
-                "hook2": "Not installed.",
-                "subline": "Different language can hide relevant experience.",
-                "beforeScore": 46,
-                "afterScore": 86,
-                "missing": ["role title", "tools", "metrics", "responsibilities"],
+                "hook1": "Resume Crime Scene.",
+                "hook2": "Hidden proof.",
+                "subline": "The fix is translation, not fabrication.",
+                "beforeScore": 38,
+                "afterScore": 91,
+                "missing": ["HubSpot", "CAC", "LinkedIn Ads", "pipeline"],
                 "cta": "Check your free match score.",
                 "voiceover_text": (
-                    "The ATS did not read your mind. Rude, honestly. But it usually stores and searches what you actually wrote. "
-                    "If the job says lifecycle marketing and your resume says helped the team, your best experience is hiding in a hoodie."
+                    "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, "
+                    "because helped with campaigns could mean almost anything. The job description asks for HubSpot, CAC, "
+                    "LinkedIn Ads, and pipeline impact. So we turn the same real experience into: cut CAC by thirty two percent "
+                    "through LinkedIn Ads audience segmentation and HubSpot lead scoring. Same person. Better signal."
                 ),
             },
         },
@@ -623,12 +757,29 @@ def normalize_packet(packet: dict, seed: dict, publish_date: str) -> dict:
         incoming_shorts = fallback["shorts"]
     fallback_shorts = fallback["shorts"]
     normalized_shorts = []
+    seen_short_keys = set()
     for idx, short in enumerate(incoming_shorts[:5], start=1):
         fallback_short = fallback_shorts[(idx - 1) % len(fallback_shorts)]
-        normalized_shorts.append(normalize_short(short, fallback_short, idx))
+        normalized = normalize_short(short, fallback_short, idx)
+        if not score_short(normalized).get("passed"):
+            normalized = normalize_short(fallback_short, fallback_short, idx)
+        short_key = safe_slug(f"{normalized.get('title', '')}-{normalized.get('hook', '')}")
+        if short_key in seen_short_keys:
+            continue
+        seen_short_keys.add(short_key)
+        normalized_shorts.append(normalized)
+        if len(normalized_shorts) >= 3:
+            break
     while len(normalized_shorts) < 3:
         idx = len(normalized_shorts) + 1
-        normalized_shorts.append(normalize_short({}, fallback_shorts[(idx - 1) % len(fallback_shorts)], idx))
+        normalized = normalize_short({}, fallback_shorts[(idx - 1) % len(fallback_shorts)], idx)
+        if not score_short(normalized).get("passed"):
+            normalized = normalize_short(fallback_shorts[(idx - 1) % len(fallback_shorts)], fallback_shorts[(idx - 1) % len(fallback_shorts)], idx)
+        short_key = safe_slug(f"{normalized.get('title', '')}-{normalized.get('hook', '')}")
+        if short_key in seen_short_keys:
+            break
+        seen_short_keys.add(short_key)
+        normalized_shorts.append(normalized)
     packet["shorts"] = normalized_shorts
 
     monetization = packet.get("monetization")
@@ -881,7 +1032,7 @@ def write_episode_thumbnail_and_manifest(packet: dict, packet_dir: Path, prepare
         "reason": "studio episode voiceover not requested",
     }
     if prepare_audio:
-        if has_elevenlabs_config():
+        if has_any_tts_config():
             fps = 30
             intro_frames = 8 * fps
             outro_frames = 18 * fps
@@ -899,24 +1050,27 @@ def write_episode_thumbnail_and_manifest(packet: dict, packet_dir: Path, prepare
                     continue
                 voice_name = f"daily-{date_slug}-{topic_slug[:34]}-episode-{idx}-voiceover.mp3"
                 voice_ref = f"audio/{voice_name}"
+                provider = "cached"
                 if force_audio or not public_asset_exists(voice_ref):
-                    generated_ref = generate_elevenlabs_voiceover(narration[:2800], voice_name)
+                    generated_ref, provider = generate_voiceover(narration[:2800], voice_name)
                     voice_ref = generated_ref or voice_ref
                 if public_asset_exists(voice_ref):
                     voiceover_segments.append({
                         "src": voice_ref,
                         "fromFrame": intro_frames + (idx - 1) * section_frames,
                         "volume": 0.94,
+                        "provider": provider,
                     })
             if voiceover_segments:
                 episode_props["voiceoverSegments"] = voiceover_segments
                 episode_props["audioReadiness"] = {
                     "studioVoiceover": True,
                     "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
+                    "provider": voiceover_segments[0].get("provider", "unknown"),
                     "reason": f"{len(voiceover_segments)} episode sections ready",
                 }
         else:
-            episode_props["audioReadiness"]["reason"] = "ELEVENLABS_API_KEY is not configured"
+            episode_props["audioReadiness"]["reason"] = "No TTS provider is configured"
 
     episode_props_path.write_text(json.dumps(episode_props, indent=2), encoding="utf-8")
     thumbnail_props_path.write_text(json.dumps(thumbnail_props, indent=2), encoding="utf-8")
@@ -955,6 +1109,37 @@ def write_episode_thumbnail_and_manifest(packet: dict, packet_dir: Path, prepare
     return manifest
 
 
+def style_for_short(index: int, short: dict) -> dict:
+    lower_text = f"{short.get('series', '')} {short.get('title', '')} {short.get('hook', '')}".lower()
+    if "resume crime scene" in lower_text or "invisible" in lower_text:
+        return {
+            "creativeFormat": "resumeCrimeScene",
+            "visualStyle": "highlighter",
+            "pace": "fast",
+            "seriesLabel": "Resume crime scene",
+            "signalLines": {
+                "hook": "I found the evidence.",
+                "problem": "This bullet is hiding the proof.",
+                "teardown": "Circle the vague part.",
+                "fix": "Now the result is visible.",
+                "cta": "Run the score first.",
+            },
+        }
+    if "ai resume roast" in lower_text or "weather" in lower_text or "synergy" in lower_text:
+        return SHORT_STYLE_ROTATION[0]
+    if "signal mascot" in lower_text or "signal found" in lower_text or "rescue" in lower_text:
+        return SHORT_STYLE_ROTATION[4]
+    if "myth" in lower_text or "wizard" in lower_text or "mind" in lower_text:
+        return SHORT_STYLE_ROTATION[2]
+    if "bullet" in lower_text or "mustache" in lower_text or "responsible for" in lower_text:
+        return SHORT_STYLE_ROTATION[1]
+    if "search" in lower_text or "job description" in lower_text or "same resume" in lower_text:
+        return SHORT_STYLE_ROTATION[3]
+    if "signal" in lower_text or "rescue" in lower_text:
+        return SHORT_STYLE_ROTATION[4]
+    return SHORT_STYLE_ROTATION[(index - 1) % len(SHORT_STYLE_ROTATION)]
+
+
 def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: bool, force_audio: bool) -> list[dict]:
     written = []
     date_slug = packet["publishDate"]
@@ -975,9 +1160,15 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
         job_keywords = [str(item) for item in props.get("missing", ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"])][:4]
         if sum(1 for item in job_keywords if item.lower() in {"role language", "tools", "proof", "metrics"}) >= 2:
             job_keywords = ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"]
+        style = style_for_short(idx, short)
         crime_scene_props = {
             "hook": short.get("hook", "This resume looks fine.")[:72],
             "subhook": "The problem is vague proof, not fake experience.",
+            "creativeFormat": style["creativeFormat"],
+            "visualStyle": style["visualStyle"],
+            "pace": style["pace"],
+            "seriesLabel": style["seriesLabel"],
+            "signalLines": style["signalLines"],
             "resumeTitle": "AI-Polished Resume",
             "jobTitle": "Target Job Description",
             "jobKeywords": job_keywords,
@@ -999,12 +1190,21 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
         if "linkedin breath" in lower_text or "airport" in lower_text:
             crime_scene_props["hook"] = "Your AI resume has LinkedIn breath."
             crime_scene_props["subhook"] = "Polished. Beige. Missing the role language."
+            crime_scene_props["creativeFormat"] = "aiResumeRoast"
+            crime_scene_props["visualStyle"] = "comic"
+            crime_scene_props["pace"] = "fast"
         elif "mustache" in lower_text:
             crime_scene_props["hook"] = "This bullet is wearing a fake mustache."
             crime_scene_props["subhook"] = "It looks busy, but says almost nothing."
+            crime_scene_props["creativeFormat"] = "oneBulletFix"
+            crime_scene_props["visualStyle"] = "highlighter"
+            crime_scene_props["pace"] = "fast"
         elif "wizard" in lower_text or "mind" in lower_text:
             crime_scene_props["hook"] = "The ATS is not a wizard."
             crime_scene_props["subhook"] = "It searches what you actually wrote."
+            crime_scene_props["creativeFormat"] = "atsMythLab"
+            crime_scene_props["visualStyle"] = "terminal"
+            crime_scene_props["pace"] = "balanced"
         voice_ref = props.get("voiceoverSrc", "audio/signal-studio-voiceover.mp3")
         sfx_ref = props.get("sfxSrc", "audio/signal-studio-sfx.mp3")
         if public_asset_exists(voice_ref):
@@ -1186,9 +1386,15 @@ def update_calendar(packet: dict, packet_dir: Path, written_shorts: list[dict], 
 
 
 def build_daily_caption(short: dict) -> str:
-    title = str(short.get("title", "Resume teardown")).rstrip(".")
-    hook = str(short.get("hook", "")).rstrip(".")
-    base = f"{title}. {hook}. Check your free Signal score before you apply."
+    def sentence(value: str) -> str:
+        text = str(value).strip()
+        if not text:
+            return ""
+        return text if text[-1] in ".?!" else f"{text}."
+
+    title = sentence(str(short.get("title", "Resume teardown")))
+    hook = sentence(str(short.get("hook", "")))
+    base = f"{title} {hook} Check your free Signal score before you apply.".strip()
     tags = "#jobsearch #resumehelp #careertok #resumetips #airesume"
     caption = f"{base} {tags}"
     if len(caption) > 280:

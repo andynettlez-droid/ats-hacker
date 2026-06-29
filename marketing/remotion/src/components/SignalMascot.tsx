@@ -2,9 +2,11 @@ import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 
 interface SignalMascotProps {
-  expression?: "neutral" | "focused" | "happy";
+  expression?: "neutral" | "focused" | "happy" | "surprised" | "sideEye" | "concerned" | "wink";
   dissolveProgress?: number; // 0 to 1
   logoMode?: boolean;         // if true, render smaller compact version for branding
+  gesture?: "none" | "pointLeft" | "pointRight" | "wave";
+  speaking?: boolean;
   style?: React.CSSProperties;
 }
 
@@ -12,6 +14,8 @@ export const SignalMascot: React.FC<SignalMascotProps> = ({
   expression = "neutral",
   dissolveProgress = 0,
   logoMode = false,
+  gesture = "none",
+  speaking = false,
   style,
 }) => {
   const frame = useCurrentFrame();
@@ -78,7 +82,6 @@ export const SignalMascot: React.FC<SignalMascotProps> = ({
   const isBlinking = blinkFrame >= 140 && blinkFrame <= 146;
   const eyeScaleY = isBlinking ? 0.1 : 1;
 
-  // Face SVG path based on expression
   const renderEyes = () => {
     const size = logoMode ? 6 : 12;
     const spacing = logoMode ? 12 : 24;
@@ -92,6 +95,44 @@ export const SignalMascot: React.FC<SignalMascotProps> = ({
           <path d={`M ${-spacing - size/2} ${yOffset + size/4} Q ${-spacing} ${yOffset - size/2} ${-spacing + size/2} ${yOffset + size/4}`} />
           {/* Right Eye */}
           <path d={`M ${spacing - size/2} ${yOffset + size/4} Q ${spacing} ${yOffset - size/2} ${spacing + size/2} ${yOffset + size/4}`} />
+        </g>
+      );
+    }
+
+    if (expression === "surprised") {
+      return (
+        <g fill="#00f0ff">
+          <circle cx={-spacing} cy={yOffset} r={logoMode ? 4 : 8} style={{ filter: "drop-shadow(0 0 4px #00f0ff)" }} />
+          <circle cx={spacing} cy={yOffset} r={logoMode ? 4 : 8} style={{ filter: "drop-shadow(0 0 4px #00f0ff)" }} />
+        </g>
+      );
+    }
+
+    if (expression === "sideEye") {
+      return (
+        <g fill="#00f0ff">
+          <ellipse cx={-spacing} cy={yOffset} rx={logoMode ? 4 : 8} ry={logoMode ? 4 : 8} style={{ filter: "drop-shadow(0 0 4px #00f0ff)" }} />
+          <ellipse cx={spacing} cy={yOffset} rx={logoMode ? 4 : 8} ry={logoMode ? 4 : 8} style={{ filter: "drop-shadow(0 0 4px #00f0ff)" }} />
+          <circle cx={-spacing - (logoMode ? 1.5 : 3)} cy={yOffset} r={logoMode ? 1.5 : 3} fill="#031225" />
+          <circle cx={spacing - (logoMode ? 1.5 : 3)} cy={yOffset} r={logoMode ? 1.5 : 3} fill="#031225" />
+        </g>
+      );
+    }
+
+    if (expression === "concerned") {
+      return (
+        <g stroke="#00f0ff" strokeWidth={logoMode ? 2 : 4} fill="none" strokeLinecap="round">
+          <line x1={-spacing - size / 2} y1={yOffset + size / 5} x2={-spacing + size / 2} y2={yOffset - size / 5} />
+          <line x1={spacing - size / 2} y1={yOffset - size / 5} x2={spacing + size / 2} y2={yOffset + size / 5} />
+        </g>
+      );
+    }
+
+    if (expression === "wink") {
+      return (
+        <g stroke="#00f0ff" strokeWidth={logoMode ? 2 : 4} fill="#00f0ff" strokeLinecap="round">
+          <line x1={-spacing - size / 2} y1={yOffset} x2={-spacing + size / 2} y2={yOffset} />
+          <ellipse cx={spacing} cy={yOffset} rx={logoMode ? 3.5 : 7} ry={logoMode ? 5 : 10 * eyeScaleY} style={{ filter: "drop-shadow(0 0 4px #00f0ff)" }} />
         </g>
       );
     }
@@ -113,6 +154,43 @@ export const SignalMascot: React.FC<SignalMascotProps> = ({
       <g fill="#00f0ff">
         <ellipse cx={-spacing} cy={yOffset} rx={logoMode ? 3.5 : 7} ry={logoMode ? 5 : 10 * eyeScaleY} style={{ filter: "drop-shadow(0 0 4px #00f0ff)" }} />
         <ellipse cx={spacing} cy={yOffset} rx={logoMode ? 3.5 : 7} ry={logoMode ? 5 : 10 * eyeScaleY} style={{ filter: "drop-shadow(0 0 4px #00f0ff)" }} />
+      </g>
+    );
+  };
+
+  const renderMouth = () => {
+    if (logoMode) return null;
+    const talkOpen = speaking ? Math.abs(Math.sin(frame * 0.36)) : 0;
+    if (expression === "surprised") {
+      return <ellipse cx={0} cy={23} rx={8} ry={10 + talkOpen * 4} fill="none" stroke="#9ff7ff" strokeWidth={4} />;
+    }
+    if (expression === "concerned" || expression === "focused") {
+      return <path d="M -14 25 Q 0 16 14 25" fill="none" stroke="#9ff7ff" strokeWidth={4} strokeLinecap="round" />;
+    }
+    return (
+      <path
+        d={speaking ? `M -16 21 Q 0 ${34 + talkOpen * 8} 16 21` : "M -16 20 Q 0 34 16 20"}
+        fill="none"
+        stroke="#9ff7ff"
+        strokeWidth={4}
+        strokeLinecap="round"
+      />
+    );
+  };
+
+  const renderGesture = () => {
+    if (logoMode || gesture === "none") return null;
+    const wave = Math.sin(frame * 0.2) * 8;
+    const leftArm =
+      gesture === "pointLeft" ? "M -50 6 C -82 -4 -102 -22 -122 -42" : gesture === "wave" ? `M -48 12 C -78 ${-10 + wave} -78 ${-52 + wave} -54 ${-72 + wave}` : "M -46 16 C -70 8 -82 18 -96 34";
+    const rightArm =
+      gesture === "pointRight" ? "M 50 6 C 82 -4 102 -22 122 -42" : gesture === "wave" ? `M 48 12 C 78 ${-10 - wave} 78 ${-52 - wave} 54 ${-72 - wave}` : "M 46 16 C 70 8 82 18 96 34";
+    return (
+      <g stroke="#38d5ff" strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.92}>
+        <path d={leftArm} />
+        <path d={rightArm} />
+        {gesture === "pointLeft" ? <circle cx={-124} cy={-44} r={6} fill="#38d5ff" /> : null}
+        {gesture === "pointRight" ? <circle cx={124} cy={-44} r={6} fill="#38d5ff" /> : null}
       </g>
     );
   };
@@ -192,6 +270,8 @@ export const SignalMascot: React.FC<SignalMascotProps> = ({
 
           {/* Mascot Face */}
           {renderEyes()}
+          {renderMouth()}
+          {renderGesture()}
 
           {/* Orbit Rings (Tilt ellipses matching 2D coordinate calculations) */}
           <g stroke="rgba(0, 240, 255, 0.25)" strokeWidth={logoMode ? 1.5 : 2} fill="none">

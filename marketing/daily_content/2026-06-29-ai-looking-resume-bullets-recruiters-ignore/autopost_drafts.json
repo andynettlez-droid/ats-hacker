@@ -1,0 +1,121 @@
+[
+  {
+    "title": "AI-looking resume bullets recruiters ignore | Resume Teardown | Signal by ATSHacker",
+    "caption": "AI-looking resume bullets recruiters ignore | Resume Teardown. Encourage viewers to sign up for their free Signal score at the end of the video. #jobsearch #resumehelp #careeradvice #resumetips",
+    "file": "videos/daily-ai-looking-resume-bullets-recruiters-ignore-episode.mp4",
+    "platforms": [
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "contentType": "youtube_long_form",
+    "youtubeKind": "long_form",
+    "target": "daily long-form YouTube",
+    "youtubeTitle": "AI-looking resume bullets recruiters ignore | Resume Teardown | Signal by ATSHacker",
+    "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "composition": "TeardownEpisode",
+    "renderProps": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_episode.json",
+    "thumbnail": "marketing/remotion/out/daily-ai-looking-resume-bullets-recruiters-ignore-thumbnail.png",
+    "thumbnailProps": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_thumbnail.json",
+    "renderStatus": "render_required",
+    "reviewStatus": "review_required",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "cached",
+      "reason": "6 episode sections ready"
+    },
+    "qaGate": {
+      "required": true,
+      "passed": false,
+      "status": "requires_render_review",
+      "minExpertViralScore": 94,
+      "checks": [
+        "Rendered MP4 exists in marketing/autopost/videos.",
+        "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+        "Opening hook is visible in the first 5 seconds.",
+        "Signal mascot or brand mark is visible.",
+        "No old human presenter appears unless explicitly approved.",
+        "Audio is present, balanced, and not dominated by music or effects.",
+        "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+        "Thumbnail exists or is intentionally deferred.",
+        "Human reviewer approved exact file, title, description, thumbnail, and platform target."
+      ]
+    },
+    "expertViralGate": {
+      "required": true,
+      "minScore": 94,
+      "score": null,
+      "passed": false,
+      "status": "requires_expert_viral_review"
+    },
+    "reviewChecklist": [
+      "long-form render reviewed",
+      "thumbnail reviewed",
+      "audio present and balanced",
+      "claims reviewed",
+      "exact YouTube title and description reviewed",
+      "status remains review_required until approval"
+    ]
+  },
+  {
+    "title": "Corporate weather report resume",
+    "caption": "Corporate weather report resume. This bullet has a high chance of synergy and zero proof. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-corporate-weather-report-resume.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_short_1.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "cached",
+      "reason": "ready via cached"
+    }
+  },
+  {
+    "title": "Would your resume appear in search?",
+    "caption": "Would your resume appear in search? If I search HubSpot, does your resume even show up? Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-would-your-resume-appear-in-search.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_short_2.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "cached",
+      "reason": "ready via cached"
+    }
+  },
+  {
+    "title": "Resume Crime Scene: Hidden Proof",
+    "caption": "Resume Crime Scene: Hidden Proof. This resume is invisible because the best bullet is buried. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-resume-crime-scene-hidden-proof.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_short_3.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "cached",
+      "reason": "ready via cached"
+    }
+  }
+]

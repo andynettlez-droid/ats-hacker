@@ -1,0 +1,44 @@
+{
+  "hook": "This resume is invisible because the best bullet is buried.",
+  "subhook": "The problem is vague proof, not fake experience.",
+  "creativeFormat": "resumeCrimeScene",
+  "visualStyle": "highlighter",
+  "pace": "fast",
+  "seriesLabel": "Resume crime scene",
+  "signalLines": {
+    "hook": "I found the evidence.",
+    "problem": "This bullet is hiding the proof.",
+    "teardown": "Circle the vague part.",
+    "fix": "Now the result is visible.",
+    "cta": "Run the score first."
+  },
+  "resumeTitle": "AI-Polished Resume",
+  "jobTitle": "Target Job Description",
+  "jobKeywords": [
+    "HubSpot",
+    "CAC",
+    "LinkedIn Ads",
+    "lifecycle marketing"
+  ],
+  "weakBullets": [
+    "Results-driven team player.",
+    "Helped with marketing campaigns.",
+    "Worked with cross-functional teams."
+  ],
+  "beforeBullet": "Helped with marketing campaigns.",
+  "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+  "beforeScore": 41,
+  "afterScore": 89,
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "cached",
+    "reason": "ready via cached"
+  },
+  "voiceoverSrc": "audio/daily-2026-06-29-resume-crime-scene-hidden-proof-3-voiceover.mp3",
+  "voiceoverVolume": 0.94
+}

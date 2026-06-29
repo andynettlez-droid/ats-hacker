@@ -2,6 +2,8 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseMedia } from '@remotion/media-parser';
+import { nodeReader } from '@remotion/media-parser/node';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const remotionDir = resolve(__dirname, '..');
@@ -35,13 +37,26 @@ const loadEnvFile = (path) => {
 loadEnvFile(join(root, 'marketing_agent', '.env'));
 loadEnvFile(join(root, 'marketing', 'autopost', '.env'));
 
-const apiKey = process.env.ELEVENLABS_API_KEY;
-if (!apiKey || apiKey === 'your_elevenlabs_api_key_here') {
-  throw new Error('ELEVENLABS_API_KEY is not configured in the environment.');
-}
-
+const provider = String(args.get('--provider') || process.env.TTS_PROVIDER || 'elevenlabs').toLowerCase();
+const elevenLabsApiKey = process.env.ELEVENLABS_API_KEY;
+const openAiApiKey = process.env.OPENAI_API_KEY;
 const voiceId = process.env.ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM';
 const modelId = process.env.ELEVENLABS_MODEL_ID || 'eleven_multilingual_v2';
+const openAiVoice = process.env.OPENAI_TTS_VOICE || 'alloy';
+const openAiModel = process.env.OPENAI_TTS_MODEL || 'gpt-4o-mini-tts';
+const openAiInstructions =
+  process.env.OPENAI_TTS_INSTRUCTIONS ||
+  'Sound like a sharp, warm recruiter doing a YouTube resume teardown. Keep it energetic, dryly funny, clear, and trustworthy. No fake hype.';
+
+if (provider === 'elevenlabs' && (!elevenLabsApiKey || elevenLabsApiKey === 'your_elevenlabs_api_key_here')) {
+  throw new Error('ELEVENLABS_API_KEY is not configured in the environment.');
+}
+if (provider === 'openai' && !openAiApiKey) {
+  throw new Error('OPENAI_API_KEY is not configured in the environment.');
+}
+if (!['elevenlabs', 'openai'].includes(provider)) {
+  throw new Error(`Unsupported TTS provider: ${provider}`);
+}
 
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
 const writeJson = (path, value) => writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
@@ -74,11 +89,11 @@ const parseSections = (markdown) => {
     .map((section) => ({ label: section.label, text: section.text.trim().replace(/\n{2,}/g, '\n\n') }));
 };
 
-const synthesize = async (text, destPath) => {
+const synthesizeElevenLabs = async (text, destPath) => {
   const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
     method: 'POST',
     headers: {
-      'xi-api-key': apiKey,
+      'xi-api-key': elevenLabsApiKey,
       'Content-Type': 'application/json',
       Accept: 'audio/mpeg',
     },
@@ -102,6 +117,51 @@ const synthesize = async (text, destPath) => {
   writeFileSync(destPath, bytes);
 };
 
+const synthesizeOpenAi = async (text, destPath) => {
+  const response = await fetch('https://api.openai.com/v1/audio/speech', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${openAiApiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: openAiModel,
+      voice: openAiVoice,
+      input: text,
+      instructions: openAiInstructions,
+      response_format: 'mp3',
+    }),
+  });
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`OpenAI TTS failed ${response.status}: ${body.slice(0, 240)}`);
+  }
+  const bytes = Buffer.from(await response.arrayBuffer());
+  if (bytes.length < 1024) throw new Error(`Generated audio is too small for ${basename(destPath)}`);
+  writeFileSync(destPath, bytes);
+};
+
+const synthesize = async (text, destPath) => {
+  if (provider === 'openai') {
+    await synthesizeOpenAi(text, destPath);
+    return 'openai';
+  }
+  await synthesizeElevenLabs(text, destPath);
+  return 'elevenlabs';
+};
+
+const getAudioDuration = async (filePath) => {
+  const metadata = await parseMedia({
+    src: filePath,
+    reader: nodeReader,
+    acknowledgeRemotionLicense: true,
+    fields: {
+      durationInSeconds: true,
+    },
+  });
+  return Number(metadata.durationInSeconds || 0);
+};
+
 const main = async () => {
   mkdirSync(audioDir, { recursive: true });
   const props = readJson(propsPath);
@@ -112,11 +172,10 @@ const main = async () => {
   const fps = 30;
   const introFrames = 8 * fps;
   const outroFrames = 18 * fps;
-  const totalFrames = Number(props.durationInFrames || 8 * 60 * fps);
-  const usableFrames = totalFrames - introFrames - outroFrames;
-  const sectionFrames = Math.max(1, Math.floor(usableFrames / sections.length));
+  const segmentGapFrames = 45;
   const topicSlug = safeSlug(props.title || manifest.topic || 'daily-teardown-episode');
   const segments = [];
+  let cursorFrame = introFrames;
 
   for (const [index, section] of sections.entries()) {
     const filename = `daily-${topicSlug}-episode-${index + 1}-${safeSlug(section.label)}.mp3`;
@@ -127,19 +186,25 @@ const main = async () => {
     } else {
       console.log(`Using cached ${filename}`);
     }
+    const durationInSeconds = await getAudioDuration(destPath);
     segments.push({
       label: section.label,
       src: `audio/${filename}`,
-      fromFrame: introFrames + index * sectionFrames,
+      fromFrame: cursorFrame,
       volume: 0.94,
+      durationInSeconds,
+      provider,
     });
+    cursorFrame += Math.ceil(durationInSeconds * fps) + segmentGapFrames;
   }
 
   props.voiceoverSegments = segments.map(({ src, fromFrame, volume }) => ({ src, fromFrame, volume }));
+  props.durationInFrames = Math.ceil((cursorFrame + outroFrames) / fps) * fps;
   props.audioReadiness = {
     studioVoiceover: true,
     quietMusic: true,
-    reason: `${segments.length} episode voiceover sections ready`,
+    provider,
+    reason: `${segments.length} episode voiceover sections ready via ${provider}`,
   };
   writeJson(propsPath, props);
 
@@ -148,14 +213,19 @@ const main = async () => {
     label: segment.label,
     src: segment.src,
     fromFrame: segment.fromFrame,
+    durationInSeconds: Number(segment.durationInSeconds.toFixed(3)),
+    provider: segment.provider,
   }));
   manifest.episode.audioReadiness = props.audioReadiness;
+  manifest.episode.durationInFrames = props.durationInFrames;
   writeJson(manifestPath, manifest);
 
   console.log(JSON.stringify({
     props: relative(root, propsPath),
     manifest: relative(root, manifestPath),
     segments: segments.length,
+    durationInFrames: props.durationInFrames,
+    durationInSeconds: props.durationInFrames / fps,
     audioDir: relative(root, audioDir),
   }, null, 2));
 };

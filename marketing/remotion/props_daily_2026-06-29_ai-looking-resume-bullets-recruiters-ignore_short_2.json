@@ -1,0 +1,44 @@
+{
+  "hook": "If I search HubSpot, does your resume even show up?",
+  "subhook": "The problem is vague proof, not fake experience.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "stickyNote",
+  "pace": "slowBurn",
+  "seriesLabel": "Recruiter search test",
+  "signalLines": {
+    "hook": "Would this show up?",
+    "problem": "The JD is giving clues.",
+    "teardown": "The resume ignores them.",
+    "fix": "Translate, do not fabricate.",
+    "cta": "Paste the JD."
+  },
+  "resumeTitle": "AI-Polished Resume",
+  "jobTitle": "Target Job Description",
+  "jobKeywords": [
+    "HubSpot",
+    "CAC",
+    "LinkedIn Ads",
+    "lifecycle marketing"
+  ],
+  "weakBullets": [
+    "Results-driven team player.",
+    "Helped with marketing campaigns.",
+    "Worked with cross-functional teams."
+  ],
+  "beforeBullet": "Helped with marketing campaigns.",
+  "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+  "beforeScore": 40,
+  "afterScore": 88,
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "cached",
+    "reason": "ready via cached"
+  },
+  "voiceoverSrc": "audio/daily-2026-06-29-would-your-resume-appear-in-search-2-voiceover.mp3",
+  "voiceoverVolume": 0.94
+}

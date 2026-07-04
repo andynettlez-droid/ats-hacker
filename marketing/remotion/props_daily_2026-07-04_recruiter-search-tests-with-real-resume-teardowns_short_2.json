@@ -1,6 +1,6 @@
 {
   "hook": "I searched Salesforce. Nothing.",
-  "subhook": "That is how qualified people disappear.",
+  "subhook": "Recruiters do not guess what you meant.",
   "creativeFormat": "jobSearchTest",
   "visualStyle": "terminal",
   "formatArchetype": "recruiterSearch",
@@ -106,7 +106,7 @@
   "markedLabel": "No quota signal",
   "problemPunchline": "A recruiter cannot search for the thought you meant.",
   "teardownPunchline": "This is where vague language quietly loses.",
-  "fixPunchline": "The keyword now has proof behind it.",
+  "fixPunchline": "Now the search term has proof behind it.",
   "teardownIssues": [
     "No quota proof",
     "No CRM signal",
@@ -120,8 +120,8 @@
     "studioVoiceover": true,
     "quietMusic": true,
     "provider": "elevenlabs",
-    "voiceId": null,
-    "voiceName": null,
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "voiceName": "configured voice",
     "reason": "ready via elevenlabs",
     "wordLevelCaptions": true
   },
@@ -130,601 +130,727 @@
   "captions": [
     {
       "text": "Recruiter",
-      "startMs": 58,
-      "endMs": 546,
-      "timestampMs": 58,
+      "startMs": 70,
+      "endMs": 534,
+      "timestampMs": 70,
       "confidence": null
     },
     {
       "text": "search",
-      "startMs": 604,
-      "endMs": 894,
-      "timestampMs": 604,
+      "startMs": 592,
+      "endMs": 871,
+      "timestampMs": 592,
       "confidence": null
     },
     {
       "text": "test.",
-      "startMs": 940,
-      "endMs": 1428,
-      "timestampMs": 940,
+      "startMs": 917,
+      "endMs": 1463,
+      "timestampMs": 917,
       "confidence": null
     },
     {
       "text": "I",
-      "startMs": 1602,
-      "endMs": 1683,
-      "timestampMs": 1602,
+      "startMs": 1707,
+      "endMs": 1765,
+      "timestampMs": 1707,
       "confidence": null
     },
     {
-      "text": "type",
-      "startMs": 1776,
-      "endMs": 2043,
-      "timestampMs": 1776,
+      "text": "am",
+      "startMs": 1846,
+      "endMs": 1927,
+      "timestampMs": 1846,
       "confidence": null
     },
     {
-      "text": "Salesforce.",
-      "startMs": 2078,
-      "endMs": 2926,
-      "timestampMs": 2078,
-      "confidence": null
-    },
-    {
-      "text": "Then",
-      "startMs": 3170,
-      "endMs": 3367,
-      "timestampMs": 3170,
-      "confidence": null
-    },
-    {
-      "text": "pipeline",
-      "startMs": 3448,
-      "endMs": 3913,
-      "timestampMs": 3448,
-      "confidence": null
-    },
-    {
-      "text": "generation.",
-      "startMs": 3947,
-      "endMs": 4679,
-      "timestampMs": 3947,
-      "confidence": null
-    },
-    {
-      "text": "Then",
-      "startMs": 4853,
-      "endMs": 5050,
-      "timestampMs": 4853,
-      "confidence": null
-    },
-    {
-      "text": "quota",
-      "startMs": 5132,
-      "endMs": 5468,
-      "timestampMs": 5132,
-      "confidence": null
-    },
-    {
-      "text": "attainment.",
-      "startMs": 5515,
-      "endMs": 6153,
-      "timestampMs": 5515,
-      "confidence": null
-    },
-    {
-      "text": "The",
-      "startMs": 6536,
-      "endMs": 6653,
-      "timestampMs": 6536,
-      "confidence": null
-    },
-    {
-      "text": "job",
-      "startMs": 6722,
-      "endMs": 6896,
-      "timestampMs": 6722,
-      "confidence": null
-    },
-    {
-      "text": "description",
-      "startMs": 6954,
-      "endMs": 7430,
-      "timestampMs": 6954,
-      "confidence": null
-    },
-    {
-      "text": "is",
-      "startMs": 7488,
-      "endMs": 7558,
-      "timestampMs": 7488,
-      "confidence": null
-    },
-    {
-      "text": "basically",
-      "startMs": 7616,
-      "endMs": 8045,
-      "timestampMs": 7616,
-      "confidence": null
-    },
-    {
-      "text": "telling",
-      "startMs": 8092,
-      "endMs": 8348,
-      "timestampMs": 8092,
-      "confidence": null
-    },
-    {
-      "text": "us",
-      "startMs": 8394,
-      "endMs": 8464,
-      "timestampMs": 8394,
-      "confidence": null
-    },
-    {
-      "text": "what",
-      "startMs": 8510,
-      "endMs": 8649,
-      "timestampMs": 8510,
-      "confidence": null
-    },
-    {
-      "text": "to",
-      "startMs": 8696,
-      "endMs": 8742,
-      "timestampMs": 8696,
-      "confidence": null
-    },
-    {
-      "text": "look",
-      "startMs": 8800,
-      "endMs": 8963,
-      "timestampMs": 8800,
-      "confidence": null
-    },
-    {
-      "text": "for.",
-      "startMs": 9009,
-      "endMs": 9392,
-      "timestampMs": 9009,
-      "confidence": null
-    },
-    {
-      "text": "But",
-      "startMs": 9776,
-      "endMs": 9927,
-      "timestampMs": 9776,
-      "confidence": null
-    },
-    {
-      "text": "this",
-      "startMs": 9961,
-      "endMs": 10101,
-      "timestampMs": 9961,
-      "confidence": null
-    },
-    {
-      "text": "resume",
-      "startMs": 10182,
-      "endMs": 10600,
-      "timestampMs": 10182,
-      "confidence": null
-    },
-    {
-      "text": "says,",
-      "startMs": 10646,
-      "endMs": 11076,
-      "timestampMs": 10646,
-      "confidence": null
-    },
-    {
-      "text": "Responsible",
-      "startMs": 11227,
-      "endMs": 11831,
-      "timestampMs": 11227,
+      "text": "hiring",
+      "startMs": 1997,
+      "endMs": 2299,
+      "timestampMs": 1997,
       "confidence": null
     },
     {
       "text": "for",
-      "startMs": 11865,
-      "endMs": 11970,
-      "timestampMs": 11865,
+      "startMs": 2345,
+      "endMs": 2438,
+      "timestampMs": 2345,
       "confidence": null
     },
     {
-      "text": "sales",
-      "startMs": 12016,
-      "endMs": 12307,
-      "timestampMs": 12016,
+      "text": "Mid-Market",
+      "startMs": 2496,
+      "endMs": 3007,
+      "timestampMs": 2496,
       "confidence": null
     },
     {
-      "text": "opportunities",
-      "startMs": 12341,
-      "endMs": 13015,
-      "timestampMs": 12341,
+      "text": "Account",
+      "startMs": 3042,
+      "endMs": 3344,
+      "timestampMs": 3042,
       "confidence": null
     },
     {
-      "text": "in",
-      "startMs": 13073,
-      "endMs": 13154,
-      "timestampMs": 13073,
+      "text": "Executive.",
+      "startMs": 3390,
+      "endMs": 4156,
+      "timestampMs": 3390,
       "confidence": null
     },
     {
-      "text": "assigned",
-      "startMs": 13201,
-      "endMs": 13595,
-      "timestampMs": 13201,
-      "confidence": null
-    },
-    {
-      "text": "territory.",
-      "startMs": 13630,
-      "endMs": 14350,
-      "timestampMs": 13630,
-      "confidence": null
-    },
-    {
-      "text": "That",
-      "startMs": 14861,
-      "endMs": 15070,
-      "timestampMs": 14861,
-      "confidence": null
-    },
-    {
-      "text": "may",
-      "startMs": 15139,
-      "endMs": 15255,
-      "timestampMs": 15139,
-      "confidence": null
-    },
-    {
-      "text": "be",
-      "startMs": 15325,
-      "endMs": 15418,
-      "timestampMs": 15325,
-      "confidence": null
-    },
-    {
-      "text": "true,",
-      "startMs": 15464,
-      "endMs": 15894,
-      "timestampMs": 15464,
-      "confidence": null
-    },
-    {
-      "text": "but",
-      "startMs": 15975,
-      "endMs": 16114,
-      "timestampMs": 15975,
-      "confidence": null
-    },
-    {
-      "text": "it",
-      "startMs": 16161,
-      "endMs": 16219,
-      "timestampMs": 16161,
-      "confidence": null
-    },
-    {
-      "text": "is",
-      "startMs": 16277,
-      "endMs": 16358,
-      "timestampMs": 16277,
-      "confidence": null
-    },
-    {
-      "text": "job-search",
-      "startMs": 16428,
-      "endMs": 16985,
-      "timestampMs": 16428,
-      "confidence": null
-    },
-    {
-      "text": "fog",
-      "startMs": 17043,
-      "endMs": 17287,
-      "timestampMs": 17043,
-      "confidence": null
-    },
-    {
-      "text": "with",
-      "startMs": 17345,
-      "endMs": 17484,
-      "timestampMs": 17345,
-      "confidence": null
-    },
-    {
-      "text": "a",
-      "startMs": 17519,
-      "endMs": 17554,
-      "timestampMs": 17519,
-      "confidence": null
-    },
-    {
-      "text": "name",
-      "startMs": 17624,
-      "endMs": 17844,
-      "timestampMs": 17624,
-      "confidence": null
-    },
-    {
-      "text": "badge.",
-      "startMs": 17879,
-      "endMs": 18436,
-      "timestampMs": 17879,
-      "confidence": null
-    },
-    {
-      "text": "It",
-      "startMs": 18878,
-      "endMs": 19005,
-      "timestampMs": 18878,
-      "confidence": null
-    },
-    {
-      "text": "gives",
-      "startMs": 19052,
-      "endMs": 19249,
-      "timestampMs": 19052,
-      "confidence": null
-    },
-    {
-      "text": "the",
-      "startMs": 19296,
-      "endMs": 19365,
-      "timestampMs": 19296,
+      "text": "I",
+      "startMs": 4365,
+      "endMs": 4435,
+      "timestampMs": 4365,
       "confidence": null
     },
     {
       "text": "search",
-      "startMs": 19423,
-      "endMs": 19690,
-      "timestampMs": 19423,
+      "startMs": 4551,
+      "endMs": 4841,
+      "timestampMs": 4551,
       "confidence": null
     },
     {
-      "text": "box",
-      "startMs": 19748,
-      "endMs": 20004,
-      "timestampMs": 19748,
+      "text": "Salesforce.",
+      "startMs": 4888,
+      "endMs": 5689,
+      "timestampMs": 4888,
       "confidence": null
     },
     {
-      "text": "nothing",
-      "startMs": 20085,
-      "endMs": 20375,
-      "timestampMs": 20085,
+      "text": "Nothing.",
+      "startMs": 5805,
+      "endMs": 6304,
+      "timestampMs": 5805,
       "confidence": null
     },
     {
-      "text": "useful.",
-      "startMs": 20445,
-      "endMs": 21037,
-      "timestampMs": 20445,
+      "text": "Then",
+      "startMs": 6629,
+      "endMs": 6815,
+      "timestampMs": 6629,
       "confidence": null
     },
     {
-      "text": "If",
-      "startMs": 21478,
-      "endMs": 21629,
-      "timestampMs": 21478,
+      "text": "pipeline",
+      "startMs": 6885,
+      "endMs": 7326,
+      "timestampMs": 6885,
+      "confidence": null
+    },
+    {
+      "text": "generation.",
+      "startMs": 7361,
+      "endMs": 8069,
+      "timestampMs": 7361,
+      "confidence": null
+    },
+    {
+      "text": "Still",
+      "startMs": 8220,
+      "endMs": 8487,
+      "timestampMs": 8220,
+      "confidence": null
+    },
+    {
+      "text": "weak.",
+      "startMs": 8557,
+      "endMs": 8963,
+      "timestampMs": 8557,
+      "confidence": null
+    },
+    {
+      "text": "Then",
+      "startMs": 9114,
+      "endMs": 9288,
+      "timestampMs": 9114,
+      "confidence": null
+    },
+    {
+      "text": "quota",
+      "startMs": 9369,
+      "endMs": 9694,
+      "timestampMs": 9369,
+      "confidence": null
+    },
+    {
+      "text": "attainment.",
+      "startMs": 9741,
+      "endMs": 10391,
+      "timestampMs": 9741,
+      "confidence": null
+    },
+    {
+      "text": "Basically",
+      "startMs": 10600,
+      "endMs": 11064,
+      "timestampMs": 10600,
+      "confidence": null
+    },
+    {
+      "text": "empty.",
+      "startMs": 11122,
+      "endMs": 11680,
+      "timestampMs": 11122,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 12283,
+      "endMs": 12434,
+      "timestampMs": 12283,
+      "confidence": null
+    },
+    {
+      "text": "look",
+      "startMs": 12481,
+      "endMs": 12620,
+      "timestampMs": 12481,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 12655,
+      "endMs": 12701,
+      "timestampMs": 12655,
       "confidence": null
     },
     {
       "text": "the",
-      "startMs": 21676,
-      "endMs": 21745,
-      "timestampMs": 21676,
+      "startMs": 12736,
+      "endMs": 12806,
+      "timestampMs": 12736,
       "confidence": null
     },
     {
-      "text": "real",
-      "startMs": 21815,
-      "endMs": 22024,
-      "timestampMs": 21815,
+      "text": "resume:",
+      "startMs": 12852,
+      "endMs": 13375,
+      "timestampMs": 12852,
       "confidence": null
     },
     {
-      "text": "work",
-      "startMs": 22082,
-      "endMs": 22314,
-      "timestampMs": 22082,
+      "text": "Responsible",
+      "startMs": 13526,
+      "endMs": 14153,
+      "timestampMs": 13526,
       "confidence": null
     },
     {
-      "text": "was",
-      "startMs": 22372,
-      "endMs": 22477,
-      "timestampMs": 22372,
+      "text": "for",
+      "startMs": 14187,
+      "endMs": 14292,
+      "timestampMs": 14187,
       "confidence": null
     },
     {
-      "text": "generated",
-      "startMs": 22535,
-      "endMs": 23057,
-      "timestampMs": 22535,
+      "text": "sales",
+      "startMs": 14338,
+      "endMs": 14629,
+      "timestampMs": 14338,
       "confidence": null
     },
     {
-      "text": "1.8",
-      "startMs": 23127,
-      "endMs": 23673,
-      "timestampMs": 23127,
-      "confidence": null
-    },
-    {
-      "text": "million",
-      "startMs": 23742,
-      "endMs": 24032,
-      "timestampMs": 23742,
+      "text": "opportunities",
+      "startMs": 14664,
+      "endMs": 15302,
+      "timestampMs": 14664,
       "confidence": null
     },
     {
       "text": "in",
-      "startMs": 24102,
-      "endMs": 24195,
-      "timestampMs": 24102,
+      "startMs": 15360,
+      "endMs": 15430,
+      "timestampMs": 15360,
       "confidence": null
     },
     {
-      "text": "qualified",
-      "startMs": 24265,
-      "endMs": 24752,
-      "timestampMs": 24265,
+      "text": "assigned",
+      "startMs": 15477,
+      "endMs": 15860,
+      "timestampMs": 15477,
       "confidence": null
     },
     {
-      "text": "Salesforce",
-      "startMs": 24810,
-      "endMs": 25402,
-      "timestampMs": 24810,
+      "text": "territory.",
+      "startMs": 15894,
+      "endMs": 16614,
+      "timestampMs": 15894,
       "confidence": null
     },
     {
-      "text": "pipeline,",
-      "startMs": 25449,
-      "endMs": 26227,
-      "timestampMs": 25449,
+      "text": "That",
+      "startMs": 17055,
+      "endMs": 17276,
+      "timestampMs": 17055,
       "confidence": null
     },
     {
-      "text": "say",
-      "startMs": 26610,
-      "endMs": 26796,
-      "timestampMs": 26610,
+      "text": "line",
+      "startMs": 17334,
+      "endMs": 17601,
+      "timestampMs": 17334,
       "confidence": null
     },
     {
-      "text": "that",
-      "startMs": 26842,
-      "endMs": 26993,
-      "timestampMs": 26842,
-      "confidence": null
-    },
-    {
-      "text": "plainly.",
-      "startMs": 27051,
-      "endMs": 27678,
-      "timestampMs": 27051,
-      "confidence": null
-    },
-    {
-      "text": "37",
-      "startMs": 28119,
-      "endMs": 28676,
-      "timestampMs": 28119,
-      "confidence": null
-    },
-    {
-      "text": "to",
-      "startMs": 28746,
-      "endMs": 28793,
-      "timestampMs": 28746,
-      "confidence": null
-    },
-    {
-      "text": "88.",
-      "startMs": 28874,
-      "endMs": 29605,
-      "timestampMs": 28874,
-      "confidence": null
-    },
-    {
-      "text": "Same",
-      "startMs": 29849,
-      "endMs": 30151,
-      "timestampMs": 29849,
-      "confidence": null
-    },
-    {
-      "text": "work.",
-      "startMs": 30186,
-      "endMs": 30673,
-      "timestampMs": 30186,
-      "confidence": null
-    },
-    {
-      "text": "Searchable",
-      "startMs": 31056,
-      "endMs": 31556,
-      "timestampMs": 31056,
-      "confidence": null
-    },
-    {
-      "text": "signal.",
-      "startMs": 31602,
-      "endMs": 32148,
-      "timestampMs": 31602,
-      "confidence": null
-    },
-    {
-      "text": "Run",
-      "startMs": 32357,
-      "endMs": 32566,
-      "timestampMs": 32357,
+      "text": "has",
+      "startMs": 17636,
+      "endMs": 17740,
+      "timestampMs": 17636,
       "confidence": null
     },
     {
       "text": "the",
-      "startMs": 32612,
-      "endMs": 32682,
-      "timestampMs": 32612,
+      "startMs": 17787,
+      "endMs": 17857,
+      "timestampMs": 17787,
       "confidence": null
     },
     {
-      "text": "free",
-      "startMs": 32728,
-      "endMs": 32926,
-      "timestampMs": 32728,
+      "text": "personality",
+      "startMs": 17903,
+      "endMs": 18530,
+      "timestampMs": 17903,
       "confidence": null
     },
     {
-      "text": "Signal",
-      "startMs": 32960,
-      "endMs": 33274,
-      "timestampMs": 32960,
+      "text": "of",
+      "startMs": 18588,
+      "endMs": 18646,
+      "timestampMs": 18588,
+      "confidence": null
+    },
+    {
+      "text": "an",
+      "startMs": 18692,
+      "endMs": 18751,
+      "timestampMs": 18692,
+      "confidence": null
+    },
+    {
+      "text": "empty",
+      "startMs": 18820,
+      "endMs": 19099,
+      "timestampMs": 18820,
+      "confidence": null
+    },
+    {
+      "text": "conference",
+      "startMs": 19157,
+      "endMs": 19586,
+      "timestampMs": 19157,
+      "confidence": null
+    },
+    {
+      "text": "room.",
+      "startMs": 19633,
+      "endMs": 20062,
+      "timestampMs": 19633,
+      "confidence": null
+    },
+    {
+      "text": "The",
+      "startMs": 20504,
+      "endMs": 20608,
+      "timestampMs": 20504,
+      "confidence": null
+    },
+    {
+      "text": "person",
+      "startMs": 20666,
+      "endMs": 20991,
+      "timestampMs": 20666,
+      "confidence": null
+    },
+    {
+      "text": "actually",
+      "startMs": 21061,
+      "endMs": 21444,
+      "timestampMs": 21061,
+      "confidence": null
+    },
+    {
+      "text": "generated",
+      "startMs": 21502,
+      "endMs": 22048,
+      "timestampMs": 21502,
+      "confidence": null
+    },
+    {
+      "text": "1.8",
+      "startMs": 22117,
+      "endMs": 22768,
+      "timestampMs": 22117,
+      "confidence": null
+    },
+    {
+      "text": "million",
+      "startMs": 22849,
+      "endMs": 23174,
+      "timestampMs": 22849,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 23232,
+      "endMs": 23302,
+      "timestampMs": 23232,
+      "confidence": null
+    },
+    {
+      "text": "qualified",
+      "startMs": 23371,
+      "endMs": 23847,
+      "timestampMs": 23371,
+      "confidence": null
+    },
+    {
+      "text": "Salesforce",
+      "startMs": 23905,
+      "endMs": 24463,
+      "timestampMs": 23905,
+      "confidence": null
+    },
+    {
+      "text": "pipeline,",
+      "startMs": 24497,
+      "endMs": 25206,
+      "timestampMs": 24497,
+      "confidence": null
+    },
+    {
+      "text": "but",
+      "startMs": 25589,
+      "endMs": 25728,
+      "timestampMs": 25589,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 25751,
+      "endMs": 25821,
+      "timestampMs": 25751,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 25867,
+      "endMs": 26262,
+      "timestampMs": 25867,
+      "confidence": null
+    },
+    {
+      "text": "made",
+      "startMs": 26309,
+      "endMs": 26494,
+      "timestampMs": 26309,
+      "confidence": null
+    },
+    {
+      "text": "me",
+      "startMs": 26529,
+      "endMs": 26610,
+      "timestampMs": 26529,
+      "confidence": null
+    },
+    {
+      "text": "guess.",
+      "startMs": 26669,
+      "endMs": 27179,
+      "timestampMs": 26669,
+      "confidence": null
+    },
+    {
+      "text": "Recruiters",
+      "startMs": 27504,
+      "endMs": 28015,
+      "timestampMs": 27504,
+      "confidence": null
+    },
+    {
+      "text": "do",
+      "startMs": 28062,
+      "endMs": 28143,
+      "timestampMs": 28062,
+      "confidence": null
+    },
+    {
+      "text": "not",
+      "startMs": 28236,
+      "endMs": 28387,
+      "timestampMs": 28236,
+      "confidence": null
+    },
+    {
+      "text": "guess.",
+      "startMs": 28456,
+      "endMs": 29014,
+      "timestampMs": 28456,
+      "confidence": null
+    },
+    {
+      "text": "They",
+      "startMs": 29397,
+      "endMs": 29583,
+      "timestampMs": 29397,
+      "confidence": null
+    },
+    {
+      "text": "search.",
+      "startMs": 29652,
+      "endMs": 30210,
+      "timestampMs": 29652,
+      "confidence": null
+    },
+    {
+      "text": "Rewrite",
+      "startMs": 30651,
+      "endMs": 31104,
+      "timestampMs": 30651,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 31138,
+      "endMs": 31208,
+      "timestampMs": 31138,
+      "confidence": null
+    },
+    {
+      "text": "as:",
+      "startMs": 31278,
+      "endMs": 31742,
+      "timestampMs": 31278,
+      "confidence": null
+    },
+    {
+      "text": "Generated",
+      "startMs": 32021,
+      "endMs": 32566,
+      "timestampMs": 32021,
+      "confidence": null
+    },
+    {
+      "text": "$1.8M",
+      "startMs": 32613,
+      "endMs": 33681,
+      "timestampMs": 32613,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 33739,
+      "endMs": 33843,
+      "timestampMs": 33739,
+      "confidence": null
+    },
+    {
+      "text": "qualified",
+      "startMs": 33913,
+      "endMs": 34389,
+      "timestampMs": 33913,
+      "confidence": null
+    },
+    {
+      "text": "Salesforce",
+      "startMs": 34436,
+      "endMs": 35016,
+      "timestampMs": 34436,
+      "confidence": null
+    },
+    {
+      "text": "pipeline",
+      "startMs": 35063,
+      "endMs": 35678,
+      "timestampMs": 35063,
+      "confidence": null
+    },
+    {
+      "text": "through",
+      "startMs": 35794,
+      "endMs": 36061,
+      "timestampMs": 35794,
+      "confidence": null
+    },
+    {
+      "text": "42",
+      "startMs": 36096,
+      "endMs": 36514,
+      "timestampMs": 36096,
+      "confidence": null
+    },
+    {
+      "text": "monthly",
+      "startMs": 36595,
+      "endMs": 36897,
+      "timestampMs": 36595,
+      "confidence": null
+    },
+    {
+      "text": "discovery",
+      "startMs": 36955,
+      "endMs": 37431,
+      "timestampMs": 36955,
+      "confidence": null
+    },
+    {
+      "text": "calls",
+      "startMs": 37489,
+      "endMs": 37814,
+      "timestampMs": 37489,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 37884,
+      "endMs": 38023,
+      "timestampMs": 37884,
+      "confidence": null
+    },
+    {
+      "text": "MEDDICC-based",
+      "startMs": 38093,
+      "endMs": 39126,
+      "timestampMs": 38093,
+      "confidence": null
+    },
+    {
+      "text": "account",
+      "startMs": 39149,
+      "endMs": 39439,
+      "timestampMs": 39149,
+      "confidence": null
+    },
+    {
+      "text": "prioritization.",
+      "startMs": 39498,
+      "endMs": 40670,
+      "timestampMs": 39498,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 41274,
+      "endMs": 41471,
+      "timestampMs": 41274,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 41541,
+      "endMs": 41611,
+      "timestampMs": 41541,
       "confidence": null
     },
     {
       "text": "score",
-      "startMs": 33332,
-      "endMs": 33611,
-      "timestampMs": 33332,
+      "startMs": 41657,
+      "endMs": 41936,
+      "timestampMs": 41657,
+      "confidence": null
+    },
+    {
+      "text": "moves",
+      "startMs": 41982,
+      "endMs": 42261,
+      "timestampMs": 41982,
+      "confidence": null
+    },
+    {
+      "text": "from",
+      "startMs": 42296,
+      "endMs": 42435,
+      "timestampMs": 42296,
+      "confidence": null
+    },
+    {
+      "text": "37",
+      "startMs": 42504,
+      "endMs": 43062,
+      "timestampMs": 42504,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 43131,
+      "endMs": 43201,
+      "timestampMs": 43131,
+      "confidence": null
+    },
+    {
+      "text": "88.",
+      "startMs": 43282,
+      "endMs": 43956,
+      "timestampMs": 43282,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 44397,
+      "endMs": 44618,
+      "timestampMs": 44397,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 44664,
+      "endMs": 44734,
+      "timestampMs": 44664,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 44780,
+      "endMs": 45001,
+      "timestampMs": 44780,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 45035,
+      "endMs": 45337,
+      "timestampMs": 45035,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 45395,
+      "endMs": 45674,
+      "timestampMs": 45395,
       "confidence": null
     },
     {
       "text": "before",
-      "startMs": 33657,
-      "endMs": 33924,
-      "timestampMs": 33657,
+      "startMs": 45720,
+      "endMs": 45999,
+      "timestampMs": 45720,
       "confidence": null
     },
     {
       "text": "you",
-      "startMs": 33959,
-      "endMs": 34040,
-      "timestampMs": 33959,
+      "startMs": 46034,
+      "endMs": 46104,
+      "timestampMs": 46034,
       "confidence": null
     },
     {
       "text": "send",
-      "startMs": 34098,
-      "endMs": 34319,
-      "timestampMs": 34098,
+      "startMs": 46173,
+      "endMs": 46359,
+      "timestampMs": 46173,
       "confidence": null
     },
     {
-      "text": "it.",
-      "startMs": 34389,
-      "endMs": 34644,
-      "timestampMs": 34389,
+      "text": "yours.",
+      "startMs": 46429,
+      "endMs": 46951,
+      "timestampMs": 46429,
       "confidence": null
     }
   ],
-  "durationSeconds": 37.844,
+  "durationSeconds": 50.151,
   "captionReadiness": {
     "wordLevel": true,
     "provider": "elevenlabs",

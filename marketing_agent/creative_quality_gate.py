@@ -20,6 +20,9 @@ POSITIVE_MARKERS = {
         "resume crime scene",
         "recruiter",
         "job description",
+        "ghosted",
+        "open-book",
+        "failed",
     ],
     "proof": [
         "HubSpot",
@@ -65,6 +68,11 @@ POSITIVE_MARKERS = {
         "shrug",
         "fog",
         "name badge",
+        "intern fog",
+        "conference room",
+        "computer stuff",
+        "ghosted",
+        "open-book",
     ],
 }
 
@@ -127,6 +135,69 @@ ROBOTIC_OR_REPEATED = [
     "real, but buried",
     "same person, clearer proof",
 ]
+
+
+NARRATIVE_BEAT_GROUPS = {
+    "conflict": [
+        "ghosted",
+        "nothing",
+        "vanished",
+        "expensive",
+        "ignored",
+        "failed",
+        "why this resume",
+        "why this bullet",
+    ],
+    "target_evidence": [
+        "job is asking",
+        "job asks",
+        "job post",
+        "job description",
+        "i search",
+        "search clues",
+        "recruiter search",
+    ],
+    "source_line": [
+        "resume says",
+        "bullet says",
+        "resume replies",
+        "look at the resume",
+        "their bullet",
+        "this resume answers",
+    ],
+    "consequence": [
+        "recruiters do not guess",
+        "cannot search",
+        "made me guess",
+        "buried",
+        "hid",
+        "hidden",
+        "invisible",
+        "generic",
+        "weak",
+        "nothing useful",
+    ],
+    "fix": [
+        "rewrite",
+        "better bullet",
+        "fix is",
+        "fix:",
+        "instead",
+        "specific",
+        "receipt",
+        "proof first",
+    ],
+    "payoff": [
+        "score",
+        "match score",
+        "jumps",
+        "moves from",
+        "to 92",
+        "to 90",
+        "to 88",
+        "free signal score",
+    ],
+}
 
 
 def read_json(path: Path) -> dict:
@@ -224,6 +295,21 @@ def unique_short_formats(shorts: list[dict]) -> set[str]:
     return formats
 
 
+def narrative_beats(blob: str) -> set[str]:
+    low = blob.lower()
+    found: set[str] = set()
+    for beat, markers in NARRATIVE_BEAT_GROUPS.items():
+        if any(marker in low for marker in markers):
+            found.add(beat)
+    return found
+
+
+def script_word_count(short: dict) -> int:
+    props = short.get("props") if isinstance(short.get("props"), dict) else {}
+    text = str(props.get("voiceover_text") or short.get("script") or "")
+    return len(re.findall(r"[a-zA-Z0-9']+", text))
+
+
 def score_short(short: dict) -> dict:
     props = short.get("props") if isinstance(short.get("props"), dict) else {}
     blob = "\n".join(
@@ -283,6 +369,21 @@ def score_short(short: dict) -> dict:
     else:
         notes.append("Keep resume, job description, bullet, score, and Signal visible.")
 
+    beats = narrative_beats(blob)
+    if len(beats) >= 6:
+        score += 14
+    elif len(beats) >= 5:
+        score += 8
+        blockers.append(f"Script has most narrative beats but still needs stronger {', '.join(sorted(set(NARRATIVE_BEAT_GROUPS) - beats))}.")
+    else:
+        blockers.append(f"Script lacks a complete viral story spine; found beats: {', '.join(sorted(beats)) or 'none'}.")
+
+    words = script_word_count(short)
+    if 70 <= words <= 115:
+        score += 7
+    else:
+        blockers.append(f"Voiceover should be a tight 70-115 words; current estimate is {words}.")
+
     if has_visible_artifact(blob):
         score += 5
     else:
@@ -315,7 +416,7 @@ def score_short(short: dict) -> dict:
     return {
         "title": short.get("title", "Untitled"),
         "score": max(0, min(100, score)),
-        "passed": score >= 80 and not blockers,
+        "passed": score >= 88 and not blockers,
         "notes": notes,
         "blockers": blockers,
     }
@@ -342,6 +443,17 @@ def score_packet(packet: dict) -> dict:
         score += 18
     else:
         notes.append("Needs stronger visual plan around resume/JD/bullet/score, not presenter-only content.")
+
+    beat_sets = [narrative_beats("\n".join(str(part) for part in [
+        short.get("title", ""),
+        short.get("hook", ""),
+        short.get("script", ""),
+        short.get("props", {}).get("voiceover_text", "") if isinstance(short.get("props"), dict) else "",
+    ])) for short in [s for s in packet.get("shorts", []) or [] if isinstance(s, dict)]]
+    if beat_sets and all(len(beats) >= 6 for beats in beat_sets[:3]):
+        score += 10
+    else:
+        blockers.append("Each short needs a complete conflict -> evidence -> consequence -> fix -> payoff spine.")
 
     if has_visible_artifact(blob):
         score += 4

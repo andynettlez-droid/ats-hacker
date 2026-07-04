@@ -1,6 +1,6 @@
 # Monetization Plan
 
-Primary goal: Use YouTube for visibility, optimize channel for traffic ahead of monetization goals.
+Primary goal: Focus on conversion via free Signal score before upselling.
 CTA: Free Signal score -> $9.99 resume or $14.99 bundle.
 Upsell: Make the $14.99 bundle the default value offer after score completion.
 

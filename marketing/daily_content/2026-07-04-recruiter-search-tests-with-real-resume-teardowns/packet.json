@@ -17,37 +17,50 @@
   ],
   "youtube": {
     "title": "Recruiter search tests with real resume teardowns | Resume Teardown",
-    "script": "Welcome to the Resume Roast! \n[Intro music, visuals of pain points] \nIn today\u2019s episode, we\u2019re diving into the job-search jungle with our trusty \u2018Signal scored\u2019 resumes! \n[Show an applicant spreadsheet] \nGoes like this: \n1. The classic 'I am a team player' line. \n*Cut to recruiter baffled, roasting: 'Is your team a football team or something? Tell me the position!'*\n\n2. The vague 'Responsible for customer satisfaction.' Let's repair that \u2013 slap a 'boosted retention by 30% using personalized follow-ups!' \n*Recognizing a winner vibe; cue the hero music.*\n\n3. Cluster of generic bullet points; tell me you\u2019re looking for a job without telling me you're searching... *reel in on these boring metrics\u2014yawn.* But guys, you do NOT have to settle for mediocrity! \n[Quick cut to Signal mascot shaking its head in disapproval]\n\nNow\u2014here\u2019s the secret ingredient! Use our free Signal Score to find out what you\u2019re doing right and wrong! [CTA animation] Grab it now! [End with humor} \nThank you for tuning: Subscribe for the next episode! \n[Outro music].",
+    "duration": "10 minutes",
+    "script": [
+      "INTRO: 'Ever felt like job hunting is just rage-scrolling through a sad SAT test? This is your job search crime scene investigation!'",
+      "SCENE 1: Resume in disarray - show bullet points with vague language. 'Here\u2019s your expertise: 165,000th in AI applications! Not impressed. Let\u2019s dig deeper!'",
+      "SCENE 2: Recruiter roast \u2013 break down a terrible job description. 'Sounding like you Googled 'professional jargon'? Let\u2019s cut that fluff!'",
+      "SCENE 3: Introduce Signal mascot as a mischievous guide. 'Don\u2019t worry, I\u2019m here to flush out the nonsense and elevate your resume game!'",
+      "SCENE 4: Real-time resume teardown with real jokes. 'What in the world is a 'dynamic team player\u201d?! Is that even a thing?!'",
+      "SCENE 5: Solid fix for each problem. 'This is what a real resume looks like - BAM! Now recruiters have to take you seriously.'",
+      "CONCLUSION: Call to action. 'Want your own free Signal score? Click below and watch your job-search stress shrink!'"
+    ],
     "storyboard": [
       {
-        "scene": "Intro",
-        "visual": "Animated Signal mascot enters a chaotic job application scene.",
-        "dialogue": "Welcome to the Resume Roast, where we turn your resume pain into gain!",
-        "time": "0:00 - 0:30"
+        "frame": 1,
+        "visual": "Frustrated job hunter sitting with stacks of applications.",
+        "audio": "Comedic sound effects with the intro joke."
       },
       {
-        "scene": "Vague Resume Bullet Roast",
-        "visual": "Show a 'typical resume' on screen while the recruiter reacts.",
-        "dialogue": "'Responsible for customer satisfaction!' Hmm, what does that even mean?",
-        "time": "0:30 - 2:00"
+        "frame": 2,
+        "visual": "Resume on screen transitioning to job description.",
+        "audio": "Voiceover with roast of vague language."
       },
       {
-        "scene": "Flawed Metrics",
-        "visual": "Cut to a failed resume with the playing field of job applications.",
-        "dialogue": "Don't spell mediocrity; we can innovate instead!",
-        "time": "2:00 - 4:00"
+        "frame": 3,
+        "visual": "Signal mascot pops up, looking mischievous.",
+        "audio": "Cheerful sound effect with mascot introduction."
       },
       {
-        "scene": "Call to Action",
-        "visual": "Signal mascot presents the Signal Score chart.",
-        "dialogue": "Want to rescue your resume? Get your FREE Signal Score!",
-        "time": "4:00 - 5:00"
+        "frame": 4,
+        "visual": "Editing screen showing resume corrections.",
+        "audio": "Dramatic tone as the fixes are revealed."
+      },
+      {
+        "frame": 5,
+        "visual": "Close-up on the call to action link.",
+        "audio": "Inviting tones encouraging viewers to get their Signal score."
       }
     ],
     "chapters": [
-      "{'title': 'Introduction', 'start': '0:00', 'end': '0:30'}",
-      "{'title': 'Vague Resumes', 'start': '0:30', 'end': '4:00'}",
-      "{'title': 'Your Resume Rescue', 'start': '4:00', 'end': '5:00'}"
+      "00:00 - Introduction",
+      "01:00 - Resume Roast",
+      "03:00 - Job Description Breakdown",
+      "06:00 - Signal Mascot Guidance",
+      "08:00 - Top Fixes",
+      "09:30 - Call to Action"
     ],
     "seoTitle": "Recruiter search tests with real resume teardowns | Resume Teardown with Signal by ATSHacker",
     "description": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
@@ -104,16 +117,16 @@
     {
       "series": "Resume Crime Scene",
       "title": "This resume sentence is quietly expensive",
-      "hook": "This bullet is expensive.",
-      "script": "Stop here. This is the line making a qualified person look generic. The job wants Demand Generation Manager: HubSpot workflows, LinkedIn Ads, and CAC analysis. The resume says, Helped maintain HubSpot lists for webinars and nurture emails. That is real experience, but it is wearing a beige jacket. Signal would only pull out the proof already there: built lead scoring and retargeting that cut CAC 32 percent. Now a recruiter can find what they were already searching for. Check your free Signal score before you apply.",
+      "hook": "This is why they got ghosted.",
+      "script": "I am auditing this like a recruiter. I know why this resume is getting ghosted. Not because the person is unqualified. Because the best proof is buried in the dullest sentence. The job is asking for HubSpot workflows, LinkedIn Ads, and CAC analysis. Their bullet says, Helped maintain HubSpot lists for webinars and nurture emails. That reads like intern fog. But the real evidence is built lead scoring and retargeting that cut CAC 32 percent. The rewrite is a receipt: Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%. Watch the match score move: 34 to 92. Before you apply, run the free Signal score.",
       "storyboard": [
         "Case: Marketing Coordinator -> Demand Gen Candidate against Demand Generation Manager.",
-        "Open on the resume with a red audit stamp over the weak bullet.",
-        "Cut to the target job title and three role terms.",
-        "Signal appears with a side-eye bubble, but the resume remains the main visual.",
-        "Circle the weak bullet and stamp why it fails.",
-        "Reveal the rewritten bullet as a receipt, not a fake addition.",
-        "End with the score jump and free Signal score CTA."
+        "Cold open: show the resume with a GHOSTED stamp before the narrator explains why.",
+        "Cut to job keywords as a wanted poster: HubSpot workflows, LinkedIn Ads, CAC analysis.",
+        "Zoom into the weak bullet and label it 'intern fog'.",
+        "Signal points to the hidden proof and pulls it into a receipt-style rewrite.",
+        "Reveal the rewritten bullet, then snap to the score jump.",
+        "End with a free Signal score CTA, not a hard product pitch."
       ],
       "props": {
         "hook1": "This bullet has a high chance of synergy and zero proof",
@@ -129,7 +142,7 @@
           "pipeline sourced"
         ],
         "cta": "Check your free Signal score.",
-        "voiceover_text": "Stop here. This is the line making a qualified person look generic. The job wants Demand Generation Manager: HubSpot workflows, LinkedIn Ads, and CAC analysis. The resume says, Helped maintain HubSpot lists for webinars and nurture emails. That is real experience, but it is wearing a beige jacket. Signal would only pull out the proof already there: built lead scoring and retargeting that cut CAC 32 percent. Now a recruiter can find what they were already searching for. Check your free Signal score before you apply.",
+        "voiceover_text": "I am auditing this like a recruiter. I know why this resume is getting ghosted. Not because the person is unqualified. Because the best proof is buried in the dullest sentence. The job is asking for HubSpot workflows, LinkedIn Ads, and CAC analysis. Their bullet says, Helped maintain HubSpot lists for webinars and nurture emails. That reads like intern fog. But the real evidence is built lead scoring and retargeting that cut CAC 32 percent. The rewrite is a receipt: Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%. Watch the match score move: 34 to 92. Before you apply, run the free Signal score.",
         "teardownCaseId": "demand_gen_marketing",
         "playbookId": "recruiter_roast",
         "seriesOverride": "Resume Crime Scene",
@@ -137,9 +150,9 @@
         "visualStyle": "comic",
         "formatArchetype": "redTeamAudit",
         "pace": "fast",
-        "subhook": "Not bad. Just badly labeled.",
+        "subhook": "The best proof is buried in the dullest sentence.",
         "signalLines": {
-          "hook": "This line is doing damage.",
+          "hook": "This is the ghosting line.",
           "problem": "Readable is not the same as searchable.",
           "teardown": "Roast the bullet, rescue the person.",
           "fix": "Now it has receipts.",
@@ -170,7 +183,7 @@
         "markedLabel": "Buried proof",
         "problemPunchline": "The job has clues. The resume is whispering.",
         "teardownPunchline": "This is not a skill problem. It is a labeling problem.",
-        "fixPunchline": "Same person. Better evidence.",
+        "fixPunchline": "Specific proof beats generic polish.",
         "teardownIssues": [
           "Tool is hidden",
           "No CAC result",
@@ -248,14 +261,14 @@
       "series": "Recruiter Search Test",
       "title": "I searched Salesforce and this resume vanished",
       "hook": "I searched Salesforce. Nothing.",
-      "script": "Recruiter search test. I type Salesforce. Then pipeline generation. Then quota attainment. The job description is basically telling us what to look for. But this resume says, Responsible for sales opportunities in assigned territory. That may be true, but it is job-search fog with a name badge. It gives the search box nothing useful. If the real work was generated 1.8 million in qualified Salesforce pipeline, say that plainly. 37 to 88. Same work. Searchable signal. Run the free Signal score before you send it.",
+      "script": "Recruiter search test. I am hiring for Mid-Market Account Executive. I search Salesforce. Nothing. Then pipeline generation. Still weak. Then quota attainment. Basically empty. Now look at the resume: Responsible for sales opportunities in assigned territory. That line has the personality of an empty conference room. The person actually generated 1.8 million in qualified Salesforce pipeline, but the resume made me guess. Recruiters do not guess. They search. Rewrite it as: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization. Now the score moves from 37 to 88. Run the free Signal score before you send yours.",
       "storyboard": [
         "Case: Account Executive Resume against Mid-Market Account Executive.",
-        "Open with a recruiter search box typing the first keyword.",
-        "Show zero useful matches on the resume.",
-        "Type two more role terms and show the same problem.",
-        "Signal points from the search box to the weak bullet.",
-        "Rewrite the bullet and rerun the search.",
+        "Open with a recruiter search box typing Salesforce.",
+        "Show a weak/no-match result, then rapid-cut pipeline generation and quota attainment.",
+        "Reveal the resume bullet as the reason the search failed.",
+        "Signal puts a 'recruiters do not guess' note beside the line.",
+        "Rewrite the bullet and rerun the search with a clear match.",
         "Close with the score jump and free score CTA."
       ],
       "props": {
@@ -272,7 +285,7 @@
           "MEDDICC"
         ],
         "cta": "Check your free Signal score.",
-        "voiceover_text": "Recruiter search test. I type Salesforce. Then pipeline generation. Then quota attainment. The job description is basically telling us what to look for. But this resume says, Responsible for sales opportunities in assigned territory. That may be true, but it is job-search fog with a name badge. It gives the search box nothing useful. If the real work was generated 1.8 million in qualified Salesforce pipeline, say that plainly. 37 to 88. Same work. Searchable signal. Run the free Signal score before you send it.",
+        "voiceover_text": "Recruiter search test. I am hiring for Mid-Market Account Executive. I search Salesforce. Nothing. Then pipeline generation. Still weak. Then quota attainment. Basically empty. Now look at the resume: Responsible for sales opportunities in assigned territory. That line has the personality of an empty conference room. The person actually generated 1.8 million in qualified Salesforce pipeline, but the resume made me guess. Recruiters do not guess. They search. Rewrite it as: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization. Now the score moves from 37 to 88. Run the free Signal score before you send yours.",
         "teardownCaseId": "sales_account_exec",
         "playbookId": "search_console",
         "seriesOverride": "Recruiter Search Test",
@@ -280,7 +293,7 @@
         "visualStyle": "terminal",
         "formatArchetype": "recruiterSearch",
         "pace": "balanced",
-        "subhook": "That is how qualified people disappear.",
+        "subhook": "Recruiters do not guess what you meant.",
         "signalLines": {
           "hook": "Search box says no.",
           "problem": "The proof exists. It is not findable.",
@@ -313,7 +326,7 @@
         "markedLabel": "No quota signal",
         "problemPunchline": "A recruiter cannot search for the thought you meant.",
         "teardownPunchline": "This is where vague language quietly loses.",
-        "fixPunchline": "The keyword now has proof behind it.",
+        "fixPunchline": "Now the search term has proof behind it.",
         "teardownIssues": [
           "No quota proof",
           "No CRM signal",
@@ -389,16 +402,16 @@
     },
     {
       "series": "Job Description Translation",
-      "title": "The job post gave the answer key",
-      "hook": "The job post gave the answer key.",
-      "script": "The job description is an open-book test. It asks for React, TypeScript, and Next.js. This resume answers with, Worked on frontend features for internal and customer-facing tools. That is a shrug in bullet form. The honest fix is specific: shipped React and TypeScript checkout work that reduced drop-off 14 percent. No fake experience. No stuffing. Just the same evidence in the language of the role. Before: 41. After: 90. Check your free Signal score before applying.",
+      "title": "This resume failed an open-book test",
+      "hook": "This failed an open-book test.",
+      "script": "The job post gave them the cheat sheet, and this resume still failed. React. TypeScript. Next.js. Those are not decorations. Those are search clues. Now the resume replies with: Worked on frontend features for internal and customer-facing tools. That is like answering a coding interview with 'computer stuff.' The person did the work. They just hid the language. Better bullet: Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues. No fake skills. Just the relevant proof first. Match score jumps from 41 to 90. Paste your job description and run the free Signal score.",
       "storyboard": [
         "Case: Frontend Engineer Resume against Frontend Software Engineer.",
-        "Open on the job description with answer-key highlights.",
+        "Open on the job description with answer-key highlights and a test-paper stamp.",
         "Slide the resume beside it and show the weak mismatch.",
-        "Highlight each missing role term in a different color.",
-        "Signal translates resume proof into job-description language.",
-        "Reveal the rewritten bullet with before/after color contrast.",
+        "Highlight React, TypeScript, and Next.js; then show none of them landing clearly in the weak bullet.",
+        "Signal translates hidden proof into job-description language.",
+        "Reveal the rewritten bullet as the answer key being filled in.",
         "End with the score jump and free Signal score CTA."
       ],
       "props": {
@@ -415,7 +428,7 @@
           "performance"
         ],
         "cta": "Check your free Signal score.",
-        "voiceover_text": "The job description is an open-book test. It asks for React, TypeScript, and Next.js. This resume answers with, Worked on frontend features for internal and customer-facing tools. That is a shrug in bullet form. The honest fix is specific: shipped React and TypeScript checkout work that reduced drop-off 14 percent. No fake experience. No stuffing. Just the same evidence in the language of the role. Before: 41. After: 90. Check your free Signal score before applying.",
+        "voiceover_text": "The job post gave them the cheat sheet, and this resume still failed. React. TypeScript. Next.js. Those are not decorations. Those are search clues. Now the resume replies with: Worked on frontend features for internal and customer-facing tools. That is like answering a coding interview with 'computer stuff.' The person did the work. They just hid the language. Better bullet: Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues. No fake skills. Just the relevant proof first. Match score jumps from 41 to 90. Paste your job description and run the free Signal score.",
         "teardownCaseId": "frontend_engineer",
         "playbookId": "answer_key",
         "seriesOverride": "Job Description Translation",
@@ -456,7 +469,7 @@
         "markedLabel": "Too broad",
         "problemPunchline": "The posting handed over the vocabulary.",
         "teardownPunchline": "Generic bullets fail open-book tests.",
-        "fixPunchline": "Specific beats polished.",
+        "fixPunchline": "Relevant proof first.",
         "teardownIssues": [
           "Stack is vague",
           "No shipped feature",
@@ -532,7 +545,7 @@
     }
   ],
   "monetization": {
-    "primaryGoal": "Use YouTube for visibility, optimize channel for traffic ahead of monetization goals.",
+    "primaryGoal": "Focus on conversion via free Signal score before upselling.",
     "cta": "Free Signal score -> $9.99 resume or $14.99 bundle.",
     "tracking": [
       "utm_source=youtube",
@@ -541,7 +554,10 @@
     ],
     "upsell": "Make the $14.99 bundle the default value offer after score completion."
   },
-  "viewerCustomerReview": "Absolutely hilarious\u2014turns job-search struggles into laughter! Can't wait for more!",
+  "viewerCustomerReview": {
+    "rating": 5,
+    "review": "Finally, a funny take on job search! The tips actually help. Can't wait to rewrite my resume!"
+  },
   "creativeQualityGate": {
     "overallScore": 100,
     "passed": true,
@@ -564,7 +580,7 @@
         "blockers": []
       },
       {
-        "title": "The job post gave the answer key",
+        "title": "This resume failed an open-book test",
         "score": 100,
         "passed": true,
         "notes": [],

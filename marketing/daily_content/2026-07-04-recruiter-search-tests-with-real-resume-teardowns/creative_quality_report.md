@@ -24,7 +24,7 @@ Passed: True
 - Score: 100/100
 - Passed: True
 
-### The job post gave the answer key
+### This resume failed an open-book test
 
 - Score: 100/100
 - Passed: True

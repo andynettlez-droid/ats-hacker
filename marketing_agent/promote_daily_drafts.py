@@ -45,6 +45,7 @@ def promoted_qa_gate(draft: dict) -> dict:
 
 
 def promote(drafts_path: Path, only: str | None = None, replace_posted: bool = False) -> dict:
+    drafts_path = drafts_path.resolve()
     drafts = read_json(drafts_path, [])
     if not isinstance(drafts, list):
         raise ValueError(f"Drafts file must contain a list: {drafts_path}")

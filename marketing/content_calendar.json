@@ -441,8 +441,8 @@
           "studioVoiceover": true,
           "quietMusic": true,
           "provider": "elevenlabs",
-          "voiceId": null,
-          "voiceName": null,
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
           "reason": "ready via elevenlabs",
           "wordLevelCaptions": true
         }
@@ -456,14 +456,14 @@
           "studioVoiceover": true,
           "quietMusic": true,
           "provider": "elevenlabs",
-          "voiceId": null,
-          "voiceName": null,
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
           "reason": "ready via elevenlabs",
           "wordLevelCaptions": true
         }
       },
       {
-        "title": "The job post gave the answer key",
+        "title": "This resume failed an open-book test",
         "brief": "marketing\\video_briefs\\2026-07-04-recruiter-search-tests-with-real-resume-teardowns-short-3.md",
         "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_3.json",
         "status": "render_ready",
@@ -471,8 +471,8 @@
           "studioVoiceover": true,
           "quietMusic": true,
           "provider": "elevenlabs",
-          "voiceId": null,
-          "voiceName": null,
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
           "reason": "ready via elevenlabs",
           "wordLevelCaptions": true
         }
@@ -500,7 +500,7 @@
           "blockers": []
         },
         {
-          "title": "The job post gave the answer key",
+          "title": "This resume failed an open-book test",
           "score": 100,
           "passed": true,
           "notes": [],

@@ -676,7 +676,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-06-29_ai-looking-resume-bullets-recruiters-ignore_short_1.json",
         "audioReadiness": {
@@ -684,6 +684,13 @@
             "quietMusic": true,
             "provider": "cached",
             "reason": "ready via cached"
+        },
+        "codexReviewDecision": {
+            "runId": "1d88e2aa73b70b86",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by stronger story-spine creative pass.",
+            "updatedAt": "2026-07-04T21:04:22.545543+00:00"
         }
     },
     {
@@ -709,11 +716,11 @@
             "wordLevelCaptions": true
         },
         "codexReviewDecision": {
-            "runId": "73a06794756ed761",
+            "runId": "50350129efcd445e",
             "state": "REVISION_REQUESTED",
             "reviewer": "codex-chat",
-            "note": "Superseded by varied creator-native batch; needs creative rewrite before posting.",
-            "updatedAt": "2026-07-04T20:03:01.776005+00:00"
+            "note": "Superseded by stronger story-spine creative pass.",
+            "updatedAt": "2026-07-04T21:04:22.359268+00:00"
         }
     },
     {
@@ -739,11 +746,11 @@
             "wordLevelCaptions": true
         },
         "codexReviewDecision": {
-            "runId": "608db7518987339b",
+            "runId": "d962d2cc75f39aab",
             "state": "REVISION_REQUESTED",
             "reviewer": "codex-chat",
-            "note": "Superseded by varied creator-native batch; needs creative rewrite before posting.",
-            "updatedAt": "2026-07-04T20:03:01.633814+00:00"
+            "note": "Superseded by stronger story-spine creative pass.",
+            "updatedAt": "2026-07-04T21:04:22.389527+00:00"
         }
     },
     {
@@ -909,7 +916,7 @@
         }
     },
     {
-        "title": "Recruiter search tests with real resume teardowns | Resume Teardown | Signal by ATSHacker",
+        "title": "Recruiter search tests with real resume teardowns | Resume Teardown with Signal by ATSHacker",
         "caption": "Recruiter search tests with real resume teardowns | Resume Teardown. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
         "file": "videos/daily-recruiter-search-tests-with-real-resume-teardowns-episode.mp4",
         "platforms": [
@@ -919,7 +926,7 @@
         "contentType": "youtube_long_form",
         "youtubeKind": "long_form",
         "target": "daily long-form YouTube",
-        "youtubeTitle": "Recruiter search tests with real resume teardowns | Resume Teardown | Signal by ATSHacker",
+        "youtubeTitle": "Recruiter search tests with real resume teardowns | Resume Teardown with Signal by ATSHacker",
         "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
         "thumbnail": "marketing/remotion/out/daily-recruiter-search-tests-with-real-resume-teardowns-thumbnail.png",
         "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_thumbnail.json",
@@ -969,7 +976,7 @@
     },
     {
         "title": "This resume sentence is quietly expensive",
-        "caption": "This resume sentence is quietly expensive. This bullet is expensive. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "caption": "This resume looked qualified, but the proof was buried in one dull HubSpot bullet. Same experience, clearer proof: 34->92. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
         "file": "videos/daily-this-resume-sentence-is-quietly-expensive.mp4",
         "platforms": [
             "tiktok",
@@ -984,15 +991,15 @@
             "studioVoiceover": true,
             "quietMusic": true,
             "provider": "elevenlabs",
-            "voiceId": null,
-            "voiceName": null,
+            "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+            "voiceName": "configured voice",
             "reason": "ready via elevenlabs",
             "wordLevelCaptions": true
         }
     },
     {
         "title": "I searched Salesforce and this resume vanished",
-        "caption": "I searched Salesforce and this resume vanished. I searched Salesforce. Nothing. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "caption": "Recruiter search test: Salesforce, pipeline generation, quota attainment. The resume had the work, but not the searchable proof. 37->88. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
         "file": "videos/daily-i-searched-salesforce-and-this-resume-vanished.mp4",
         "platforms": [
             "tiktok",
@@ -1007,8 +1014,8 @@
             "studioVoiceover": true,
             "quietMusic": true,
             "provider": "elevenlabs",
-            "voiceId": null,
-            "voiceName": null,
+            "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+            "voiceName": "configured voice",
             "reason": "ready via elevenlabs",
             "wordLevelCaptions": true
         }
@@ -1023,7 +1030,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_3.json",
         "audioReadiness": {
@@ -1032,6 +1039,36 @@
             "provider": "elevenlabs",
             "voiceId": null,
             "voiceName": null,
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "5f93f025efd50915",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by stronger story-spine creative pass.",
+            "updatedAt": "2026-07-04T21:04:22.338195+00:00"
+        }
+    },
+    {
+        "title": "This resume failed an open-book test",
+        "caption": "The job post gave the answer key: React, TypeScript, Next.js. The resume answered with vague frontend work. Same skills, clearer proof: 41->90. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-this-resume-failed-an-open-book-test.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_3.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+            "voiceName": "configured voice",
             "reason": "ready via elevenlabs",
             "wordLevelCaptions": true
         }

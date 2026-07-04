@@ -61,7 +61,7 @@
   },
   {
     "title": "This resume sentence is quietly expensive",
-    "caption": "This resume sentence is quietly expensive. This bullet is expensive. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "caption": "This resume looked qualified, but the proof was buried in one dull HubSpot bullet. Same experience, clearer proof: 34->92. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
     "file": "videos/daily-this-resume-sentence-is-quietly-expensive.mp4",
     "platforms": [
       "tiktok",
@@ -76,15 +76,15 @@
       "studioVoiceover": true,
       "quietMusic": true,
       "provider": "elevenlabs",
-      "voiceId": null,
-      "voiceName": null,
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
       "reason": "ready via elevenlabs",
       "wordLevelCaptions": true
     }
   },
   {
     "title": "I searched Salesforce and this resume vanished",
-    "caption": "I searched Salesforce and this resume vanished. I searched Salesforce. Nothing. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "caption": "Recruiter search test: Salesforce, pipeline generation, quota attainment. The resume had the work, but not the searchable proof. 37->88. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
     "file": "videos/daily-i-searched-salesforce-and-this-resume-vanished.mp4",
     "platforms": [
       "tiktok",
@@ -99,16 +99,16 @@
       "studioVoiceover": true,
       "quietMusic": true,
       "provider": "elevenlabs",
-      "voiceId": null,
-      "voiceName": null,
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
       "reason": "ready via elevenlabs",
       "wordLevelCaptions": true
     }
   },
   {
-    "title": "The job post gave the answer key",
-    "caption": "The job post gave the answer key. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
-    "file": "videos/daily-the-job-post-gave-the-answer-key.mp4",
+    "title": "This resume failed an open-book test",
+        "caption": "The job post gave the answer key: React, TypeScript, Next.js. The resume answered with vague frontend work. Same skills, clearer proof: 41->90. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-this-resume-failed-an-open-book-test.mp4",
     "platforms": [
       "tiktok",
       "instagram",
@@ -122,8 +122,8 @@
       "studioVoiceover": true,
       "quietMusic": true,
       "provider": "elevenlabs",
-      "voiceId": null,
-      "voiceName": null,
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
       "reason": "ready via elevenlabs",
       "wordLevelCaptions": true
     }

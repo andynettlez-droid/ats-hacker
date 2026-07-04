@@ -2,21 +2,21 @@
 
 Daily packet: `2026-07-04-recruiter-search-tests-with-real-resume-teardowns`
 Series: Resume Crime Scene
-Hook: This bullet is expensive.
+Hook: This is why they got ghosted.
 
 ## Script
 
-Stop here. This is the line making a qualified person look generic. The job wants Demand Generation Manager: HubSpot workflows, LinkedIn Ads, and CAC analysis. The resume says, Helped maintain HubSpot lists for webinars and nurture emails. That is real experience, but it is wearing a beige jacket. Signal would only pull out the proof already there: built lead scoring and retargeting that cut CAC 32 percent. Now a recruiter can find what they were already searching for. Check your free Signal score before you apply.
+I am auditing this like a recruiter. I know why this resume is getting ghosted. Not because the person is unqualified. Because the best proof is buried in the dullest sentence. The job is asking for HubSpot workflows, LinkedIn Ads, and CAC analysis. Their bullet says, Helped maintain HubSpot lists for webinars and nurture emails. That reads like intern fog. But the real evidence is built lead scoring and retargeting that cut CAC 32 percent. The rewrite is a receipt: Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%. Watch the match score move: 34 to 92. Before you apply, run the free Signal score.
 
 ## Storyboard
 
 - Case: Marketing Coordinator -> Demand Gen Candidate against Demand Generation Manager.
-- Open on the resume with a red audit stamp over the weak bullet.
-- Cut to the target job title and three role terms.
-- Signal appears with a side-eye bubble, but the resume remains the main visual.
-- Circle the weak bullet and stamp why it fails.
-- Reveal the rewritten bullet as a receipt, not a fake addition.
-- End with the score jump and free Signal score CTA.
+- Cold open: show the resume with a GHOSTED stamp before the narrator explains why.
+- Cut to job keywords as a wanted poster: HubSpot workflows, LinkedIn Ads, CAC analysis.
+- Zoom into the weak bullet and label it 'intern fog'.
+- Signal points to the hidden proof and pulls it into a receipt-style rewrite.
+- Reveal the rewritten bullet, then snap to the score jump.
+- End with a free Signal score CTA, not a hard product pitch.
 
 ## Render Props
 

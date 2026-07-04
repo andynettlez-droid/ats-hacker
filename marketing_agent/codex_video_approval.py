@@ -723,7 +723,7 @@ def update_posts_with_review_state(file_ref: str, state: str, payload: dict) -> 
             post["codexReviewDecision"] = payload
             changed = True
     if not changed:
-        raise ValueError(f"No post queue entry found for {file_ref}")
+        return
     POSTS_PATH.write_text(json.dumps(posts, indent=4) + "\n", encoding="utf-8")
 
 

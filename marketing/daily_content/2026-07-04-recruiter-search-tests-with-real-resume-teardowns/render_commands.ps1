@@ -8,4 +8,4 @@ npx remotion still SignalThumbnail out/daily-recruiter-search-tests-with-real-re
 
 npx remotion render ResumeCrimeScene out/daily-this-resume-sentence-is-quietly-expensive.mp4 --props=props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_1.json
 npx remotion render ResumeCrimeScene out/daily-i-searched-salesforce-and-this-resume-vanished.mp4 --props=props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_2.json
-npx remotion render ResumeCrimeScene out/daily-the-job-post-gave-the-answer-key.mp4 --props=props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_3.json
+npx remotion render ResumeCrimeScene out/daily-this-resume-failed-an-open-book-test.mp4 --props=props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_3.json

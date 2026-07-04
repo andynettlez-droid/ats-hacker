@@ -408,26 +408,28 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "formatArchetype": "redTeamAudit",
         "pace": "fast",
         "title": "This resume sentence is quietly expensive",
-        "hook": "This bullet is expensive.",
-        "subhook": "Not bad. Just badly labeled.",
+        "hook": "This is why they got ghosted.",
+        "subhook": "The best proof is buried in the dullest sentence.",
         "voiceover": (
-            "Stop here. This is the line making a qualified person look generic. "
-            "The job wants {role}: {kw1}, {kw2}, and {kw3}. "
-            "The resume says, {beforeBullet} That is real experience, but it is wearing a beige jacket. "
-            "Signal would only pull out the proof already there: {spokenRewrite}. "
-            "Now a recruiter can find what they were already searching for. "
-            "Check your free Signal score before you apply."
+            "I am auditing this like a recruiter. I know why this resume is getting ghosted. "
+            "Not because the person is unqualified. Because the best proof is buried in the dullest sentence. "
+            "The job is asking for {kw1}, {kw2}, and {kw3}. "
+            "Their bullet says, {beforeBullet} That reads like intern fog. "
+            "But the real evidence is {spokenRewrite}. "
+            "The rewrite is a receipt: {afterBullet} "
+            "Watch the match score move: {beforeScore} to {afterScore}. "
+            "Before you apply, run the free Signal score."
         ),
         "storyboard": [
-            "Open on the resume with a red audit stamp over the weak bullet.",
-            "Cut to the target job title and three role terms.",
-            "Signal appears with a side-eye bubble, but the resume remains the main visual.",
-            "Circle the weak bullet and stamp why it fails.",
-            "Reveal the rewritten bullet as a receipt, not a fake addition.",
-            "End with the score jump and free Signal score CTA.",
+            "Cold open: show the resume with a GHOSTED stamp before the narrator explains why.",
+            "Cut to job keywords as a wanted poster: {kw1}, {kw2}, {kw3}.",
+            "Zoom into the weak bullet and label it 'intern fog'.",
+            "Signal points to the hidden proof and pulls it into a receipt-style rewrite.",
+            "Reveal the rewritten bullet, then snap to the score jump.",
+            "End with a free Signal score CTA, not a hard product pitch.",
         ],
         "signalLines": {
-            "hook": "This line is doing damage.",
+            "hook": "This is the ghosting line.",
             "problem": "Readable is not the same as searchable.",
             "teardown": "Roast the bullet, rescue the person.",
             "fix": "Now it has receipts.",
@@ -435,7 +437,7 @@ CREATOR_FORMAT_PLAYBOOKS = [
         },
         "problemPunchline": "The job has clues. The resume is whispering.",
         "teardownPunchline": "This is not a skill problem. It is a labeling problem.",
-        "fixPunchline": "Same person. Better evidence.",
+        "fixPunchline": "Specific proof beats generic polish.",
     },
     {
         "id": "search_console",
@@ -446,22 +448,23 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "pace": "balanced",
         "title": "I searched {kw1} and this resume vanished",
         "hook": "I searched {kw1}. Nothing.",
-        "subhook": "That is how qualified people disappear.",
+        "subhook": "Recruiters do not guess what you meant.",
         "voiceover": (
-            "Recruiter search test. I type {kw1}. Then {kw2}. Then {kw3}. "
-            "The job description is basically telling us what to look for. "
-            "But this resume says, {beforeBullet} That may be true, but it is job-search fog with a name badge. "
-            "It gives the search box nothing useful. "
-            "If the real work was {spokenRewrite}, say that plainly. "
-            "{beforeScore} to {afterScore}. Same work. Searchable signal. "
-            "Run the free Signal score before you send it."
+            "Recruiter search test. I am hiring for {role}. "
+            "I search {kw1}. Nothing. Then {kw2}. Still weak. Then {kw3}. Basically empty. "
+            "Now look at the resume: {beforeBullet} That line has the personality of an empty conference room. "
+            "The person actually {spokenRewrite}, but the resume made me guess. "
+            "Recruiters do not guess. They search. "
+            "Rewrite it as: {afterBullet} "
+            "Now the score moves from {beforeScore} to {afterScore}. "
+            "Run the free Signal score before you send yours."
         ),
         "storyboard": [
-            "Open with a recruiter search box typing the first keyword.",
-            "Show zero useful matches on the resume.",
-            "Type two more role terms and show the same problem.",
-            "Signal points from the search box to the weak bullet.",
-            "Rewrite the bullet and rerun the search.",
+            "Open with a recruiter search box typing {kw1}.",
+            "Show a weak/no-match result, then rapid-cut {kw2} and {kw3}.",
+            "Reveal the resume bullet as the reason the search failed.",
+            "Signal puts a 'recruiters do not guess' note beside the line.",
+            "Rewrite the bullet and rerun the search with a clear match.",
             "Close with the score jump and free score CTA.",
         ],
         "signalLines": {
@@ -473,7 +476,7 @@ CREATOR_FORMAT_PLAYBOOKS = [
         },
         "problemPunchline": "A recruiter cannot search for the thought you meant.",
         "teardownPunchline": "This is where vague language quietly loses.",
-        "fixPunchline": "The keyword now has proof behind it.",
+        "fixPunchline": "Now the search term has proof behind it.",
     },
     {
         "id": "answer_key",
@@ -482,23 +485,25 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "visualStyle": "highlighter",
         "formatArchetype": "splitTranslation",
         "pace": "slowBurn",
-        "title": "The job post gave the answer key",
-        "hook": "The job post gave the answer key.",
+        "title": "This resume failed an open-book test",
+        "hook": "This failed an open-book test.",
         "subhook": "Your resume ignored it.",
         "voiceover": (
-            "The job description is an open-book test. "
-            "It asks for {kw1}, {kw2}, and {kw3}. "
-            "This resume answers with, {beforeBullet} That is a shrug in bullet form. "
-            "The honest fix is specific: {spokenRewrite}. "
-            "No fake experience. No stuffing. Just the same evidence in the language of the role. "
-            "Before: {beforeScore}. After: {afterScore}. Check your free Signal score before applying."
+            "The job post gave them the cheat sheet, and this resume still failed. "
+            "{kw1}. {kw2}. {kw3}. Those are not decorations. Those are search clues. "
+            "Now the resume replies with: {beforeBullet} That is like answering a coding interview with 'computer stuff.' "
+            "The person did the work. They just hid the language. "
+            "Better bullet: {afterBullet} "
+            "No fake skills. Just the relevant proof first. "
+            "Match score jumps from {beforeScore} to {afterScore}. "
+            "Paste your job description and run the free Signal score."
         ),
         "storyboard": [
-            "Open on the job description with answer-key highlights.",
+            "Open on the job description with answer-key highlights and a test-paper stamp.",
             "Slide the resume beside it and show the weak mismatch.",
-            "Highlight each missing role term in a different color.",
-            "Signal translates resume proof into job-description language.",
-            "Reveal the rewritten bullet with before/after color contrast.",
+            "Highlight {kw1}, {kw2}, and {kw3}; then show none of them landing clearly in the weak bullet.",
+            "Signal translates hidden proof into job-description language.",
+            "Reveal the rewritten bullet as the answer key being filled in.",
             "End with the score jump and free Signal score CTA.",
         ],
         "signalLines": {
@@ -510,7 +515,7 @@ CREATOR_FORMAT_PLAYBOOKS = [
         },
         "problemPunchline": "The posting handed over the vocabulary.",
         "teardownPunchline": "Generic bullets fail open-book tests.",
-        "fixPunchline": "Specific beats polished.",
+        "fixPunchline": "Relevant proof first.",
     },
 ]
 
@@ -2444,11 +2449,24 @@ def build_daily_caption(short: dict) -> str:
     title_norm = re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
     hook_norm = re.sub(r"[^a-z0-9]+", " ", hook.lower()).strip()
     hook_part = "" if hook_norm and (hook_norm == title_norm or hook_norm in title_norm) else hook
-    base = re.sub(r"\s+", " ", f"{title} {hook_part} Check your free Signal score before you apply.").strip()
+    props = short.get("props") if isinstance(short.get("props"), dict) else {}
+    before = props.get("beforeScore")
+    after = props.get("afterScore")
+    missing = [str(item).strip() for item in props.get("missing", []) if str(item).strip()]
+    score_part = f"{before}->{after}" if isinstance(before, int) and isinstance(after, int) else ""
+    missing_part = ", ".join(missing[:3])
+    lesson = "The fix is not fake experience; it is making the proof searchable."
+    if missing_part and score_part:
+        lesson = f"Missed {missing_part}. Same experience, clearer proof: {score_part}."
+    base = re.sub(
+        r"\s+",
+        " ",
+        f"{title} {hook_part} {lesson} Run the free Signal score before you apply.",
+    ).strip()
     tags = "#jobsearch #resumehelp #careertok #resumetips #airesume"
     caption = f"{base} {tags}"
     if len(caption) > 280:
-        caption = f"{title}. Check your free Signal score before you apply. {tags}"
+        caption = f"{title} Same experience, clearer proof. Run the free Signal score before you apply. {tags}"
     return caption
 
 

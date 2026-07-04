@@ -11,9 +11,12 @@ Description: A funny recruiter-style teardown of why a qualified resume can be h
 
 ## Chapters
 
-- {'title': 'Introduction', 'start': '0:00', 'end': '0:30'}
-- {'title': 'Vague Resumes', 'start': '0:30', 'end': '4:00'}
-- {'title': 'Your Resume Rescue', 'start': '4:00', 'end': '5:00'}
+- 00:00 - Introduction
+- 01:00 - Resume Roast
+- 03:00 - Job Description Breakdown
+- 06:00 - Signal Mascot Guidance
+- 08:00 - Top Fixes
+- 09:30 - Call to Action
 
 ## Script And Storyboard
 

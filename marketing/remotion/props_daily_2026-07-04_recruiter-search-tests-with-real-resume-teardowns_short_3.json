@@ -1,5 +1,5 @@
 {
-  "hook": "The job post gave the answer key.",
+  "hook": "This failed an open-book test.",
   "subhook": "Your resume ignored it.",
   "creativeFormat": "oneBulletFix",
   "visualStyle": "highlighter",
@@ -106,7 +106,7 @@
   "markedLabel": "Too broad",
   "problemPunchline": "The posting handed over the vocabulary.",
   "teardownPunchline": "Generic bullets fail open-book tests.",
-  "fixPunchline": "Specific beats polished.",
+  "fixPunchline": "Relevant proof first.",
   "teardownIssues": [
     "Stack is vague",
     "No shipped feature",
@@ -120,551 +120,733 @@
     "studioVoiceover": true,
     "quietMusic": true,
     "provider": "elevenlabs",
-    "voiceId": null,
-    "voiceName": null,
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "voiceName": "configured voice",
     "reason": "ready via elevenlabs",
     "wordLevelCaptions": true
   },
-  "voiceoverSrc": "audio/daily-2026-07-04-the-job-post-gave-the-answer-key-3-voiceover.mp3",
+  "voiceoverSrc": "audio/daily-2026-07-04-this-resume-failed-an-open-book-test-3-voiceover.mp3",
   "voiceoverVolume": 0.94,
   "captions": [
     {
       "text": "The",
-      "startMs": 58,
-      "endMs": 151,
-      "timestampMs": 58,
+      "startMs": 70,
+      "endMs": 163,
+      "timestampMs": 70,
       "confidence": null
     },
     {
       "text": "job",
-      "startMs": 221,
-      "endMs": 383,
-      "timestampMs": 221,
+      "startMs": 232,
+      "endMs": 430,
+      "timestampMs": 232,
       "confidence": null
     },
     {
-      "text": "description",
-      "startMs": 441,
-      "endMs": 940,
-      "timestampMs": 441,
+      "text": "post",
+      "startMs": 499,
+      "endMs": 778,
+      "timestampMs": 499,
       "confidence": null
     },
     {
-      "text": "is",
-      "startMs": 1022,
-      "endMs": 1138,
-      "timestampMs": 1022,
+      "text": "gave",
+      "startMs": 836,
+      "endMs": 1045,
+      "timestampMs": 836,
       "confidence": null
     },
     {
-      "text": "an",
-      "startMs": 1173,
-      "endMs": 1231,
-      "timestampMs": 1173,
+      "text": "them",
+      "startMs": 1068,
+      "endMs": 1184,
+      "timestampMs": 1068,
       "confidence": null
     },
     {
-      "text": "open-book",
-      "startMs": 1289,
-      "endMs": 1800,
-      "timestampMs": 1289,
+      "text": "the",
+      "startMs": 1231,
+      "endMs": 1300,
+      "timestampMs": 1231,
       "confidence": null
     },
     {
-      "text": "test.",
-      "startMs": 1858,
-      "endMs": 2392,
-      "timestampMs": 1858,
+      "text": "cheat",
+      "startMs": 1347,
+      "endMs": 1579,
+      "timestampMs": 1347,
       "confidence": null
     },
     {
-      "text": "It",
-      "startMs": 2635,
-      "endMs": 2775,
-      "timestampMs": 2635,
-      "confidence": null
-    },
-    {
-      "text": "asks",
-      "startMs": 2821,
-      "endMs": 3111,
-      "timestampMs": 2821,
-      "confidence": null
-    },
-    {
-      "text": "for",
-      "startMs": 3158,
-      "endMs": 3262,
-      "timestampMs": 3158,
-      "confidence": null
-    },
-    {
-      "text": "React,",
-      "startMs": 3309,
-      "endMs": 3843,
-      "timestampMs": 3309,
-      "confidence": null
-    },
-    {
-      "text": "TypeScript,",
-      "startMs": 3924,
-      "endMs": 4574,
-      "timestampMs": 3924,
+      "text": "sheet,",
+      "startMs": 1625,
+      "endMs": 2090,
+      "timestampMs": 1625,
       "confidence": null
     },
     {
       "text": "and",
-      "startMs": 4598,
-      "endMs": 4737,
-      "timestampMs": 4598,
+      "startMs": 2299,
+      "endMs": 2438,
+      "timestampMs": 2299,
       "confidence": null
     },
     {
-      "text": "Next.js.",
-      "startMs": 4807,
-      "endMs": 5724,
-      "timestampMs": 4807,
-      "confidence": null
-    },
-    {
-      "text": "This",
-      "startMs": 6165,
-      "endMs": 6362,
-      "timestampMs": 6165,
+      "text": "this",
+      "startMs": 2485,
+      "endMs": 2624,
+      "timestampMs": 2485,
       "confidence": null
     },
     {
       "text": "resume",
-      "startMs": 6444,
-      "endMs": 6861,
-      "timestampMs": 6444,
+      "startMs": 2705,
+      "endMs": 3158,
+      "timestampMs": 2705,
       "confidence": null
     },
     {
-      "text": "answers",
-      "startMs": 6908,
-      "endMs": 7268,
-      "timestampMs": 6908,
+      "text": "still",
+      "startMs": 3204,
+      "endMs": 3448,
+      "timestampMs": 3204,
       "confidence": null
     },
     {
-      "text": "with,",
-      "startMs": 7314,
-      "endMs": 7674,
-      "timestampMs": 7314,
+      "text": "failed.",
+      "startMs": 3529,
+      "endMs": 4156,
+      "timestampMs": 3529,
+      "confidence": null
+    },
+    {
+      "text": "React.",
+      "startMs": 4667,
+      "endMs": 5283,
+      "timestampMs": 4667,
+      "confidence": null
+    },
+    {
+      "text": "TypeScript.",
+      "startMs": 5399,
+      "endMs": 6223,
+      "timestampMs": 5399,
+      "confidence": null
+    },
+    {
+      "text": "Next.js.",
+      "startMs": 6374,
+      "endMs": 7500,
+      "timestampMs": 6374,
+      "confidence": null
+    },
+    {
+      "text": "Those",
+      "startMs": 8010,
+      "endMs": 8231,
+      "timestampMs": 8010,
+      "confidence": null
+    },
+    {
+      "text": "are",
+      "startMs": 8266,
+      "endMs": 8348,
+      "timestampMs": 8266,
+      "confidence": null
+    },
+    {
+      "text": "not",
+      "startMs": 8371,
+      "endMs": 8475,
+      "timestampMs": 8371,
+      "confidence": null
+    },
+    {
+      "text": "decorations.",
+      "startMs": 8522,
+      "endMs": 9358,
+      "timestampMs": 8522,
+      "confidence": null
+    },
+    {
+      "text": "Those",
+      "startMs": 9532,
+      "endMs": 9799,
+      "timestampMs": 9532,
+      "confidence": null
+    },
+    {
+      "text": "are",
+      "startMs": 9834,
+      "endMs": 9915,
+      "timestampMs": 9834,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 9938,
+      "endMs": 10205,
+      "timestampMs": 9938,
+      "confidence": null
+    },
+    {
+      "text": "clues.",
+      "startMs": 10252,
+      "endMs": 10762,
+      "timestampMs": 10252,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 11273,
+      "endMs": 11471,
+      "timestampMs": 11273,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 11529,
+      "endMs": 11598,
+      "timestampMs": 11529,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 11668,
+      "endMs": 12086,
+      "timestampMs": 11668,
+      "confidence": null
+    },
+    {
+      "text": "replies",
+      "startMs": 12132,
+      "endMs": 12539,
+      "timestampMs": 12132,
+      "confidence": null
+    },
+    {
+      "text": "with:",
+      "startMs": 12597,
+      "endMs": 12910,
+      "timestampMs": 12597,
       "confidence": null
     },
     {
       "text": "Worked",
-      "startMs": 7848,
-      "endMs": 8162,
-      "timestampMs": 7848,
+      "startMs": 13084,
+      "endMs": 13410,
+      "timestampMs": 13084,
       "confidence": null
     },
     {
       "text": "on",
-      "startMs": 8197,
-      "endMs": 8278,
-      "timestampMs": 8197,
+      "startMs": 13456,
+      "endMs": 13549,
+      "timestampMs": 13456,
       "confidence": null
     },
     {
       "text": "frontend",
-      "startMs": 8359,
-      "endMs": 8800,
-      "timestampMs": 8359,
+      "startMs": 13630,
+      "endMs": 14083,
+      "timestampMs": 13630,
       "confidence": null
     },
     {
       "text": "features",
-      "startMs": 8882,
-      "endMs": 9276,
-      "timestampMs": 8882,
+      "startMs": 14153,
+      "endMs": 14559,
+      "timestampMs": 14153,
       "confidence": null
     },
     {
       "text": "for",
-      "startMs": 9323,
-      "endMs": 9427,
-      "timestampMs": 9323,
+      "startMs": 14605,
+      "endMs": 14710,
+      "timestampMs": 14605,
       "confidence": null
     },
     {
       "text": "internal",
-      "startMs": 9485,
-      "endMs": 9950,
-      "timestampMs": 9485,
+      "startMs": 14779,
+      "endMs": 15267,
+      "timestampMs": 14779,
       "confidence": null
     },
     {
       "text": "and",
-      "startMs": 10008,
-      "endMs": 10101,
-      "timestampMs": 10008,
+      "startMs": 15325,
+      "endMs": 15418,
+      "timestampMs": 15325,
       "confidence": null
     },
     {
       "text": "customer-facing",
-      "startMs": 10182,
-      "endMs": 10983,
-      "timestampMs": 10182,
+      "startMs": 15488,
+      "endMs": 16289,
+      "timestampMs": 15488,
       "confidence": null
     },
     {
       "text": "tools.",
-      "startMs": 11041,
-      "endMs": 11610,
-      "timestampMs": 11041,
+      "startMs": 16347,
+      "endMs": 16927,
+      "timestampMs": 16347,
       "confidence": null
     },
     {
       "text": "That",
-      "startMs": 12051,
-      "endMs": 12237,
-      "timestampMs": 12051,
+      "startMs": 17368,
+      "endMs": 17566,
+      "timestampMs": 17368,
       "confidence": null
     },
     {
       "text": "is",
-      "startMs": 12295,
-      "endMs": 12365,
-      "timestampMs": 12295,
+      "startMs": 17624,
+      "endMs": 17694,
+      "timestampMs": 17624,
+      "confidence": null
+    },
+    {
+      "text": "like",
+      "startMs": 17752,
+      "endMs": 17926,
+      "timestampMs": 17752,
+      "confidence": null
+    },
+    {
+      "text": "answering",
+      "startMs": 17972,
+      "endMs": 18367,
+      "timestampMs": 17972,
       "confidence": null
     },
     {
       "text": "a",
-      "startMs": 12411,
-      "endMs": 12446,
-      "timestampMs": 12411,
+      "startMs": 18425,
+      "endMs": 18448,
+      "timestampMs": 18425,
       "confidence": null
     },
     {
-      "text": "shrug",
-      "startMs": 12492,
-      "endMs": 12725,
-      "timestampMs": 12492,
+      "text": "coding",
+      "startMs": 18529,
+      "endMs": 18866,
+      "timestampMs": 18529,
       "confidence": null
     },
     {
-      "text": "in",
-      "startMs": 12783,
-      "endMs": 12852,
-      "timestampMs": 12783,
+      "text": "interview",
+      "startMs": 18913,
+      "endMs": 19273,
+      "timestampMs": 18913,
       "confidence": null
     },
     {
-      "text": "bullet",
-      "startMs": 12910,
-      "endMs": 13166,
-      "timestampMs": 12910,
+      "text": "with",
+      "startMs": 19307,
+      "endMs": 19458,
+      "timestampMs": 19307,
       "confidence": null
     },
     {
-      "text": "form.",
-      "startMs": 13224,
-      "endMs": 13630,
-      "timestampMs": 13224,
+      "text": "'computer",
+      "startMs": 19493,
+      "endMs": 20027,
+      "timestampMs": 19493,
+      "confidence": null
+    },
+    {
+      "text": "stuff.'",
+      "startMs": 20074,
+      "endMs": 20677,
+      "timestampMs": 20074,
       "confidence": null
     },
     {
       "text": "The",
-      "startMs": 13874,
-      "endMs": 13990,
-      "timestampMs": 13874,
+      "startMs": 21118,
+      "endMs": 21235,
+      "timestampMs": 21118,
       "confidence": null
     },
     {
-      "text": "honest",
-      "startMs": 14048,
-      "endMs": 14327,
-      "timestampMs": 14048,
+      "text": "person",
+      "startMs": 21293,
+      "endMs": 21629,
+      "timestampMs": 21293,
       "confidence": null
     },
     {
-      "text": "fix",
-      "startMs": 14396,
-      "endMs": 14652,
-      "timestampMs": 14396,
+      "text": "did",
+      "startMs": 21687,
+      "endMs": 21827,
+      "timestampMs": 21687,
       "confidence": null
     },
     {
-      "text": "is",
-      "startMs": 14722,
-      "endMs": 14803,
-      "timestampMs": 14722,
+      "text": "the",
+      "startMs": 21862,
+      "endMs": 21931,
+      "timestampMs": 21862,
       "confidence": null
     },
     {
-      "text": "specific:",
-      "startMs": 14838,
-      "endMs": 15546,
-      "timestampMs": 14838,
+      "text": "work.",
+      "startMs": 21989,
+      "endMs": 22419,
+      "timestampMs": 21989,
       "confidence": null
     },
     {
-      "text": "shipped",
-      "startMs": 15755,
-      "endMs": 16056,
-      "timestampMs": 15755,
+      "text": "They",
+      "startMs": 22535,
+      "endMs": 22697,
+      "timestampMs": 22535,
+      "confidence": null
+    },
+    {
+      "text": "just",
+      "startMs": 22744,
+      "endMs": 22906,
+      "timestampMs": 22744,
+      "confidence": null
+    },
+    {
+      "text": "hid",
+      "startMs": 22953,
+      "endMs": 23127,
+      "timestampMs": 22953,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 23173,
+      "endMs": 23243,
+      "timestampMs": 23173,
+      "confidence": null
+    },
+    {
+      "text": "language.",
+      "startMs": 23301,
+      "endMs": 23940,
+      "timestampMs": 23301,
+      "confidence": null
+    },
+    {
+      "text": "Better",
+      "startMs": 24451,
+      "endMs": 24718,
+      "timestampMs": 24451,
+      "confidence": null
+    },
+    {
+      "text": "bullet:",
+      "startMs": 24764,
+      "endMs": 25170,
+      "timestampMs": 24764,
+      "confidence": null
+    },
+    {
+      "text": "Shipped",
+      "startMs": 25286,
+      "endMs": 25588,
+      "timestampMs": 25286,
       "confidence": null
     },
     {
       "text": "React",
-      "startMs": 16104,
-      "endMs": 16440,
-      "timestampMs": 16104,
+      "startMs": 25646,
+      "endMs": 26030,
+      "timestampMs": 25646,
       "confidence": null
     },
     {
       "text": "and",
-      "startMs": 16487,
-      "endMs": 16568,
-      "timestampMs": 16487,
+      "startMs": 26064,
+      "endMs": 26146,
+      "timestampMs": 26064,
       "confidence": null
     },
     {
       "text": "TypeScript",
-      "startMs": 16626,
-      "endMs": 17148,
-      "timestampMs": 16626,
+      "startMs": 26204,
+      "endMs": 26715,
+      "timestampMs": 26204,
       "confidence": null
     },
     {
       "text": "checkout",
-      "startMs": 17195,
-      "endMs": 17601,
-      "timestampMs": 17195,
+      "startMs": 26749,
+      "endMs": 27132,
+      "timestampMs": 26749,
       "confidence": null
     },
     {
-      "text": "work",
-      "startMs": 17659,
-      "endMs": 17961,
-      "timestampMs": 17659,
-      "confidence": null
-    },
-    {
-      "text": "that",
-      "startMs": 18112,
-      "endMs": 18275,
-      "timestampMs": 18112,
-      "confidence": null
-    },
-    {
-      "text": "reduced",
-      "startMs": 18321,
-      "endMs": 18693,
-      "timestampMs": 18321,
-      "confidence": null
-    },
-    {
-      "text": "drop-off",
-      "startMs": 18727,
-      "endMs": 19099,
-      "timestampMs": 18727,
-      "confidence": null
-    },
-    {
-      "text": "14",
-      "startMs": 19145,
-      "endMs": 19563,
-      "timestampMs": 19145,
-      "confidence": null
-    },
-    {
-      "text": "percent.",
-      "startMs": 19610,
-      "endMs": 20283,
-      "timestampMs": 19610,
-      "confidence": null
-    },
-    {
-      "text": "No",
-      "startMs": 20724,
-      "endMs": 20898,
-      "timestampMs": 20724,
-      "confidence": null
-    },
-    {
-      "text": "fake",
-      "startMs": 20980,
-      "endMs": 21247,
-      "timestampMs": 20980,
-      "confidence": null
-    },
-    {
-      "text": "experience.",
-      "startMs": 21282,
-      "endMs": 22048,
-      "timestampMs": 21282,
-      "confidence": null
-    },
-    {
-      "text": "No",
-      "startMs": 22164,
-      "endMs": 22326,
-      "timestampMs": 22164,
-      "confidence": null
-    },
-    {
-      "text": "stuffing.",
-      "startMs": 22396,
-      "endMs": 22953,
-      "timestampMs": 22396,
-      "confidence": null
-    },
-    {
-      "text": "Just",
-      "startMs": 23395,
-      "endMs": 23627,
-      "timestampMs": 23395,
-      "confidence": null
-    },
-    {
-      "text": "the",
-      "startMs": 23673,
-      "endMs": 23743,
-      "timestampMs": 23673,
-      "confidence": null
-    },
-    {
-      "text": "same",
-      "startMs": 23801,
-      "endMs": 24033,
-      "timestampMs": 23801,
-      "confidence": null
-    },
-    {
-      "text": "evidence",
-      "startMs": 24080,
-      "endMs": 24486,
-      "timestampMs": 24080,
+      "text": "components",
+      "startMs": 27179,
+      "endMs": 27701,
+      "timestampMs": 27179,
       "confidence": null
     },
     {
       "text": "in",
-      "startMs": 24521,
-      "endMs": 24590,
-      "timestampMs": 24521,
+      "startMs": 27748,
+      "endMs": 27817,
+      "timestampMs": 27748,
       "confidence": null
     },
     {
-      "text": "the",
-      "startMs": 24625,
-      "endMs": 24695,
-      "timestampMs": 24625,
+      "text": "Next.js,",
+      "startMs": 27887,
+      "endMs": 28793,
+      "timestampMs": 27887,
       "confidence": null
     },
     {
-      "text": "language",
-      "startMs": 24741,
-      "endMs": 25101,
-      "timestampMs": 24741,
+      "text": "reducing",
+      "startMs": 29071,
+      "endMs": 29536,
+      "timestampMs": 29071,
       "confidence": null
     },
     {
-      "text": "of",
-      "startMs": 25124,
-      "endMs": 25183,
-      "timestampMs": 25124,
-      "confidence": null
-    },
-    {
-      "text": "the",
-      "startMs": 25229,
-      "endMs": 25299,
-      "timestampMs": 25229,
-      "confidence": null
-    },
-    {
-      "text": "role.",
-      "startMs": 25357,
-      "endMs": 25844,
-      "timestampMs": 25357,
-      "confidence": null
-    },
-    {
-      "text": "Before:",
-      "startMs": 26285,
-      "endMs": 26901,
-      "timestampMs": 26285,
-      "confidence": null
-    },
-    {
-      "text": "41.",
-      "startMs": 27110,
-      "endMs": 27818,
-      "timestampMs": 27110,
-      "confidence": null
-    },
-    {
-      "text": "After:",
-      "startMs": 27992,
-      "endMs": 28480,
-      "timestampMs": 27992,
-      "confidence": null
-    },
-    {
-      "text": "90.",
-      "startMs": 28631,
-      "endMs": 29165,
-      "timestampMs": 28631,
-      "confidence": null
-    },
-    {
-      "text": "Check",
+      "text": "form",
       "startMs": 29606,
-      "endMs": 29873,
+      "endMs": 29849,
       "timestampMs": 29606,
       "confidence": null
     },
     {
-      "text": "your",
-      "startMs": 29919,
-      "endMs": 30047,
-      "timestampMs": 29919,
-      "confidence": null
-    },
-    {
-      "text": "free",
-      "startMs": 30105,
+      "text": "drop-off",
+      "startMs": 29896,
       "endMs": 30291,
-      "timestampMs": 30105,
+      "timestampMs": 29896,
       "confidence": null
     },
     {
-      "text": "Signal",
+      "text": "14%",
       "startMs": 30337,
-      "endMs": 30639,
+      "endMs": 31034,
       "timestampMs": 30337,
       "confidence": null
     },
     {
-      "text": "score",
-      "startMs": 30697,
-      "endMs": 31022,
-      "timestampMs": 30697,
-      "confidence": null
-    },
-    {
-      "text": "before",
-      "startMs": 31057,
-      "endMs": 31324,
-      "timestampMs": 31057,
-      "confidence": null
-    },
-    {
-      "text": "applying.",
+      "text": "and",
       "startMs": 31359,
-      "endMs": 31951,
+      "endMs": 31521,
       "timestampMs": 31359,
+      "confidence": null
+    },
+    {
+      "text": "closing",
+      "startMs": 31579,
+      "endMs": 31928,
+      "timestampMs": 31579,
+      "confidence": null
+    },
+    {
+      "text": "11",
+      "startMs": 31974,
+      "endMs": 32276,
+      "timestampMs": 31974,
+      "confidence": null
+    },
+    {
+      "text": "accessibility",
+      "startMs": 32311,
+      "endMs": 32996,
+      "timestampMs": 32311,
+      "confidence": null
+    },
+    {
+      "text": "issues.",
+      "startMs": 33065,
+      "endMs": 33692,
+      "timestampMs": 33065,
+      "confidence": null
+    },
+    {
+      "text": "No",
+      "startMs": 34505,
+      "endMs": 34679,
+      "timestampMs": 34505,
+      "confidence": null
+    },
+    {
+      "text": "fake",
+      "startMs": 34760,
+      "endMs": 35028,
+      "timestampMs": 34760,
+      "confidence": null
+    },
+    {
+      "text": "skills.",
+      "startMs": 35051,
+      "endMs": 35654,
+      "timestampMs": 35051,
+      "confidence": null
+    },
+    {
+      "text": "Just",
+      "startMs": 35829,
+      "endMs": 36072,
+      "timestampMs": 35829,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 36107,
+      "endMs": 36177,
+      "timestampMs": 36107,
+      "confidence": null
+    },
+    {
+      "text": "relevant",
+      "startMs": 36235,
+      "endMs": 36560,
+      "timestampMs": 36235,
+      "confidence": null
+    },
+    {
+      "text": "proof",
+      "startMs": 36618,
+      "endMs": 36850,
+      "timestampMs": 36618,
+      "confidence": null
+    },
+    {
+      "text": "first.",
+      "startMs": 36920,
+      "endMs": 37477,
+      "timestampMs": 36920,
+      "confidence": null
+    },
+    {
+      "text": "Match",
+      "startMs": 38081,
+      "endMs": 38348,
+      "timestampMs": 38081,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 38383,
+      "endMs": 38696,
+      "timestampMs": 38383,
+      "confidence": null
+    },
+    {
+      "text": "jumps",
+      "startMs": 38754,
+      "endMs": 38998,
+      "timestampMs": 38754,
+      "confidence": null
+    },
+    {
+      "text": "from",
+      "startMs": 39033,
+      "endMs": 39172,
+      "timestampMs": 39033,
+      "confidence": null
+    },
+    {
+      "text": "41",
+      "startMs": 39254,
+      "endMs": 39672,
+      "timestampMs": 39254,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 39764,
+      "endMs": 39834,
+      "timestampMs": 39764,
+      "confidence": null
+    },
+    {
+      "text": "90.",
+      "startMs": 39915,
+      "endMs": 40449,
+      "timestampMs": 39915,
+      "confidence": null
+    },
+    {
+      "text": "Paste",
+      "startMs": 40624,
+      "endMs": 40949,
+      "timestampMs": 40624,
+      "confidence": null
+    },
+    {
+      "text": "your",
+      "startMs": 40983,
+      "endMs": 41100,
+      "timestampMs": 40983,
+      "confidence": null
+    },
+    {
+      "text": "job",
+      "startMs": 41146,
+      "endMs": 41320,
+      "timestampMs": 41146,
+      "confidence": null
+    },
+    {
+      "text": "description",
+      "startMs": 41378,
+      "endMs": 41877,
+      "timestampMs": 41378,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 41947,
+      "endMs": 42075,
+      "timestampMs": 41947,
+      "confidence": null
+    },
+    {
+      "text": "run",
+      "startMs": 42133,
+      "endMs": 42284,
+      "timestampMs": 42133,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 42330,
+      "endMs": 42400,
+      "timestampMs": 42330,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 42446,
+      "endMs": 42644,
+      "timestampMs": 42446,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 42690,
+      "endMs": 43004,
+      "timestampMs": 42690,
+      "confidence": null
+    },
+    {
+      "text": "score.",
+      "startMs": 43062,
+      "endMs": 43549,
+      "timestampMs": 43062,
       "confidence": null
     }
   ],
-  "durationSeconds": 35.151,
+  "durationSeconds": 46.749,
   "captionReadiness": {
     "wordLevel": true,
     "provider": "elevenlabs",
-    "alignmentRef": "audio/daily-2026-07-04-the-job-post-gave-the-answer-key-3-voiceover.alignment.json"
+    "alignmentRef": "audio/daily-2026-07-04-this-resume-failed-an-open-book-test-3-voiceover.alignment.json"
   }
 }

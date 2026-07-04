@@ -6,16 +6,16 @@ Hook: I searched Salesforce. Nothing.
 
 ## Script
 
-Recruiter search test. I type Salesforce. Then pipeline generation. Then quota attainment. The job description is basically telling us what to look for. But this resume says, Responsible for sales opportunities in assigned territory. That may be true, but it is job-search fog with a name badge. It gives the search box nothing useful. If the real work was generated 1.8 million in qualified Salesforce pipeline, say that plainly. 37 to 88. Same work. Searchable signal. Run the free Signal score before you send it.
+Recruiter search test. I am hiring for Mid-Market Account Executive. I search Salesforce. Nothing. Then pipeline generation. Still weak. Then quota attainment. Basically empty. Now look at the resume: Responsible for sales opportunities in assigned territory. That line has the personality of an empty conference room. The person actually generated 1.8 million in qualified Salesforce pipeline, but the resume made me guess. Recruiters do not guess. They search. Rewrite it as: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization. Now the score moves from 37 to 88. Run the free Signal score before you send yours.
 
 ## Storyboard
 
 - Case: Account Executive Resume against Mid-Market Account Executive.
-- Open with a recruiter search box typing the first keyword.
-- Show zero useful matches on the resume.
-- Type two more role terms and show the same problem.
-- Signal points from the search box to the weak bullet.
-- Rewrite the bullet and rerun the search.
+- Open with a recruiter search box typing Salesforce.
+- Show a weak/no-match result, then rapid-cut pipeline generation and quota attainment.
+- Reveal the resume bullet as the reason the search failed.
+- Signal puts a 'recruiters do not guess' note beside the line.
+- Rewrite the bullet and rerun the search with a clear match.
 - Close with the score jump and free score CTA.
 
 ## Render Props

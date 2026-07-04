@@ -1,0 +1,144 @@
+{
+  "date": "2026-07-04",
+  "topic": "Recruiter reacts to real resumes against real job descriptions",
+  "status": "rendered_review_required",
+  "episode": {
+    "composition": "TeardownEpisode",
+    "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-real-resumes-against-real-job-descriptions_episode.json",
+    "output": "marketing/remotion/out/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-episode.mp4",
+    "format": "1920x1080",
+    "status": "rendered_review_required",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "reason": "9 episode voiceover sections ready via elevenlabs",
+      "wordLevelCaptions": true,
+      "withTimestamps": true
+    },
+    "voiceoverSegments": [
+      {
+        "label": "Cold open",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-1-cold-open.mp3",
+        "fromFrame": 240,
+        "durationInSeconds": 24.32,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-1-cold-open.alignment.json",
+        "withTimestamps": true
+      },
+      {
+        "label": "Open loop",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-2-open-loop.mp3",
+        "fromFrame": 988,
+        "durationInSeconds": 26.567,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-2-open-loop.alignment.json",
+        "withTimestamps": true
+      },
+      {
+        "label": "Translate the job description",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-3-translate-the-job-description.mp3",
+        "fromFrame": 1803,
+        "durationInSeconds": 28.656,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-3-translate-the-job-description.alignment.json",
+        "withTimestamps": true
+      },
+      {
+        "label": "Recruiter search test",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-4-recruiter-search-test.mp3",
+        "fromFrame": 2681,
+        "durationInSeconds": 25.731,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-4-recruiter-search-test.alignment.json",
+        "withTimestamps": true
+      },
+      {
+        "label": "Resume crime scene",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-5-resume-crime-scene.mp3",
+        "fromFrame": 3471,
+        "durationInSeconds": 25.966,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-5-resume-crime-scene.alignment.json",
+        "withTimestamps": true
+      },
+      {
+        "label": "Why it gets missed",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-6-why-it-gets-missed.mp3",
+        "fromFrame": 4268,
+        "durationInSeconds": 28.134,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-6-why-it-gets-missed.alignment.json",
+        "withTimestamps": true
+      },
+      {
+        "label": "Live bullet fix",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-7-live-bullet-fix.mp3",
+        "fromFrame": 5131,
+        "durationInSeconds": 30.589,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-7-live-bullet-fix.alignment.json",
+        "withTimestamps": true
+      },
+      {
+        "label": "Score reveal",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-8-score-reveal.mp3",
+        "fromFrame": 6067,
+        "durationInSeconds": 21.603,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-8-score-reveal.alignment.json",
+        "withTimestamps": true
+      },
+      {
+        "label": "Trust and CTA",
+        "src": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-9-trust-and-cta.mp3",
+        "fromFrame": 6734,
+        "durationInSeconds": 24.555,
+        "provider": "elevenlabs",
+        "alignmentRef": "audio/daily-recruiter-reacts-to-real-resumes-against-real-job-descri-episode-9-trust-and-cta.alignment.json",
+        "withTimestamps": true
+      }
+    ],
+    "durationInFrames": 8040,
+    "renderReview": {
+      "passed": true,
+      "runId": "070958dd422076d7",
+      "output": "marketing/remotion/out/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-episode.mp4",
+      "studioQcReport": "marketing/codex_reviews/20260704-070958dd422076d7-recruiter-reacts-to-real-resumes-against-real-job-descriptions-r/studio-qc.json",
+      "audioQcReport": "marketing/codex_reviews/20260704-070958dd422076d7-recruiter-reacts-to-real-resumes-against-real-job-descriptions-r/audio-qc.json"
+    },
+    "qaGate": {
+      "required": true,
+      "passed": true,
+      "status": "rendered_review_required",
+      "checks": {
+        "scriptClaimSafety": true,
+        "renderedMp4Exists": true,
+        "longFormMetadataQc": true,
+        "audioAssetQc": true,
+        "thumbnailRendered": true,
+        "sectionsPresent": true,
+        "voiceoverSegmentsPresent": true,
+        "ctaLeadsToFreeSignalScore": true,
+        "scoreMovesUp": true
+      }
+    }
+  },
+  "thumbnail": {
+    "composition": "SignalThumbnail",
+    "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-real-resumes-against-real-job-descriptions_thumbnail.json",
+    "output": "marketing/remotion/out/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-thumbnail.png",
+    "format": "1280x720",
+    "status": "render_ready"
+  },
+  "reviewGate": {
+    "required": true,
+    "checks": [
+      "Render the episode and thumbnail.",
+      "Verify the hook is visible in the opening seconds.",
+      "Verify resume, job description, score movement, and Signal mascot are visible.",
+      "Verify audio is studio-quality and music stays quiet.",
+      "Verify no unsupported ATS, guarantee, or fake-experience claims."
+    ]
+  }
+}

@@ -1,0 +1,670 @@
+{
+  "hook": "The job post gave the answer key.",
+  "subhook": "Your resume ignored it.",
+  "creativeFormat": "oneBulletFix",
+  "visualStyle": "highlighter",
+  "formatArchetype": "splitTranslation",
+  "pace": "slowBurn",
+  "seriesLabel": "Job Description Translation",
+  "signalLines": {
+    "hook": "The clues are right there.",
+    "problem": "Your resume answered a different question.",
+    "teardown": "Translate. Do not exaggerate.",
+    "fix": "This is the same evidence.",
+    "cta": "Paste the job first."
+  },
+  "resumeName": "Avery Patel",
+  "resumeTitle": "Frontend Engineer Resume",
+  "resumeMeta": [
+    "5 yrs product UI",
+    "React/TypeScript",
+    "Accessibility fixes"
+  ],
+  "jobTitle": "Frontend Software Engineer",
+  "jobKeywords": [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "accessibility",
+    "performance"
+  ],
+  "weakBullets": [
+    "Worked on frontend features for internal and customer-facing tools.",
+    "Collaborated with designers and backend engineers.",
+    "Helped improve application performance and user experience."
+  ],
+  "beforeBullet": "Worked on frontend features for internal and customer-facing tools.",
+  "afterBullet": "Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues.",
+  "resumeDocument": {
+    "name": "Avery Patel",
+    "headline": "Frontend Engineer",
+    "contact": [
+      "Seattle, WA",
+      "avery.patel@example.com",
+      "github.com/averypatel"
+    ],
+    "summary": "Frontend engineer with 5 years building product UI, design-system components, checkout flows, and accessibility improvements for SaaS products.",
+    "experience": [
+      {
+        "company": "MapleStack",
+        "role": "Frontend Engineer",
+        "dates": "2022 - Present",
+        "bullets": [
+          "Worked on frontend features for internal and customer-facing tools.",
+          "Collaborated with designers and backend engineers.",
+          "Helped improve application performance and user experience.",
+          "Maintained shared React components used by billing, onboarding, and account teams."
+        ]
+      },
+      {
+        "company": "OrbitCart",
+        "role": "UI Developer",
+        "dates": "2019 - 2022",
+        "bullets": [
+          "Converted Figma designs into responsive TypeScript UI components.",
+          "Triaged customer-reported accessibility issues with QA and support.",
+          "Added Playwright regression coverage for checkout and profile flows."
+        ]
+      }
+    ],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Design systems",
+      "WCAG",
+      "Performance profiling",
+      "Playwright"
+    ],
+    "education": "B.S. Computer Science, University of Washington"
+  },
+  "jobDescription": {
+    "title": "Frontend Software Engineer",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Frontend Software Engineer who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use React and TypeScript to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to Next.js.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "accessibility",
+      "performance"
+    ],
+    "searchQueries": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "accessibility"
+    ]
+  },
+  "beforeScore": 41,
+  "afterScore": 90,
+  "markedLabel": "Too broad",
+  "problemPunchline": "The posting handed over the vocabulary.",
+  "teardownPunchline": "Generic bullets fail open-book tests.",
+  "fixPunchline": "Specific beats polished.",
+  "teardownIssues": [
+    "Stack is vague",
+    "No shipped feature",
+    "No performance result"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": null,
+    "voiceName": null,
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-the-job-post-gave-the-answer-key-3-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "The",
+      "startMs": 58,
+      "endMs": 151,
+      "timestampMs": 58,
+      "confidence": null
+    },
+    {
+      "text": "job",
+      "startMs": 221,
+      "endMs": 383,
+      "timestampMs": 221,
+      "confidence": null
+    },
+    {
+      "text": "description",
+      "startMs": 441,
+      "endMs": 940,
+      "timestampMs": 441,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 1022,
+      "endMs": 1138,
+      "timestampMs": 1022,
+      "confidence": null
+    },
+    {
+      "text": "an",
+      "startMs": 1173,
+      "endMs": 1231,
+      "timestampMs": 1173,
+      "confidence": null
+    },
+    {
+      "text": "open-book",
+      "startMs": 1289,
+      "endMs": 1800,
+      "timestampMs": 1289,
+      "confidence": null
+    },
+    {
+      "text": "test.",
+      "startMs": 1858,
+      "endMs": 2392,
+      "timestampMs": 1858,
+      "confidence": null
+    },
+    {
+      "text": "It",
+      "startMs": 2635,
+      "endMs": 2775,
+      "timestampMs": 2635,
+      "confidence": null
+    },
+    {
+      "text": "asks",
+      "startMs": 2821,
+      "endMs": 3111,
+      "timestampMs": 2821,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 3158,
+      "endMs": 3262,
+      "timestampMs": 3158,
+      "confidence": null
+    },
+    {
+      "text": "React,",
+      "startMs": 3309,
+      "endMs": 3843,
+      "timestampMs": 3309,
+      "confidence": null
+    },
+    {
+      "text": "TypeScript,",
+      "startMs": 3924,
+      "endMs": 4574,
+      "timestampMs": 3924,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 4598,
+      "endMs": 4737,
+      "timestampMs": 4598,
+      "confidence": null
+    },
+    {
+      "text": "Next.js.",
+      "startMs": 4807,
+      "endMs": 5724,
+      "timestampMs": 4807,
+      "confidence": null
+    },
+    {
+      "text": "This",
+      "startMs": 6165,
+      "endMs": 6362,
+      "timestampMs": 6165,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 6444,
+      "endMs": 6861,
+      "timestampMs": 6444,
+      "confidence": null
+    },
+    {
+      "text": "answers",
+      "startMs": 6908,
+      "endMs": 7268,
+      "timestampMs": 6908,
+      "confidence": null
+    },
+    {
+      "text": "with,",
+      "startMs": 7314,
+      "endMs": 7674,
+      "timestampMs": 7314,
+      "confidence": null
+    },
+    {
+      "text": "Worked",
+      "startMs": 7848,
+      "endMs": 8162,
+      "timestampMs": 7848,
+      "confidence": null
+    },
+    {
+      "text": "on",
+      "startMs": 8197,
+      "endMs": 8278,
+      "timestampMs": 8197,
+      "confidence": null
+    },
+    {
+      "text": "frontend",
+      "startMs": 8359,
+      "endMs": 8800,
+      "timestampMs": 8359,
+      "confidence": null
+    },
+    {
+      "text": "features",
+      "startMs": 8882,
+      "endMs": 9276,
+      "timestampMs": 8882,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 9323,
+      "endMs": 9427,
+      "timestampMs": 9323,
+      "confidence": null
+    },
+    {
+      "text": "internal",
+      "startMs": 9485,
+      "endMs": 9950,
+      "timestampMs": 9485,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 10008,
+      "endMs": 10101,
+      "timestampMs": 10008,
+      "confidence": null
+    },
+    {
+      "text": "customer-facing",
+      "startMs": 10182,
+      "endMs": 10983,
+      "timestampMs": 10182,
+      "confidence": null
+    },
+    {
+      "text": "tools.",
+      "startMs": 11041,
+      "endMs": 11610,
+      "timestampMs": 11041,
+      "confidence": null
+    },
+    {
+      "text": "That",
+      "startMs": 12051,
+      "endMs": 12237,
+      "timestampMs": 12051,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 12295,
+      "endMs": 12365,
+      "timestampMs": 12295,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 12411,
+      "endMs": 12446,
+      "timestampMs": 12411,
+      "confidence": null
+    },
+    {
+      "text": "shrug",
+      "startMs": 12492,
+      "endMs": 12725,
+      "timestampMs": 12492,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 12783,
+      "endMs": 12852,
+      "timestampMs": 12783,
+      "confidence": null
+    },
+    {
+      "text": "bullet",
+      "startMs": 12910,
+      "endMs": 13166,
+      "timestampMs": 12910,
+      "confidence": null
+    },
+    {
+      "text": "form.",
+      "startMs": 13224,
+      "endMs": 13630,
+      "timestampMs": 13224,
+      "confidence": null
+    },
+    {
+      "text": "The",
+      "startMs": 13874,
+      "endMs": 13990,
+      "timestampMs": 13874,
+      "confidence": null
+    },
+    {
+      "text": "honest",
+      "startMs": 14048,
+      "endMs": 14327,
+      "timestampMs": 14048,
+      "confidence": null
+    },
+    {
+      "text": "fix",
+      "startMs": 14396,
+      "endMs": 14652,
+      "timestampMs": 14396,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 14722,
+      "endMs": 14803,
+      "timestampMs": 14722,
+      "confidence": null
+    },
+    {
+      "text": "specific:",
+      "startMs": 14838,
+      "endMs": 15546,
+      "timestampMs": 14838,
+      "confidence": null
+    },
+    {
+      "text": "shipped",
+      "startMs": 15755,
+      "endMs": 16056,
+      "timestampMs": 15755,
+      "confidence": null
+    },
+    {
+      "text": "React",
+      "startMs": 16104,
+      "endMs": 16440,
+      "timestampMs": 16104,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 16487,
+      "endMs": 16568,
+      "timestampMs": 16487,
+      "confidence": null
+    },
+    {
+      "text": "TypeScript",
+      "startMs": 16626,
+      "endMs": 17148,
+      "timestampMs": 16626,
+      "confidence": null
+    },
+    {
+      "text": "checkout",
+      "startMs": 17195,
+      "endMs": 17601,
+      "timestampMs": 17195,
+      "confidence": null
+    },
+    {
+      "text": "work",
+      "startMs": 17659,
+      "endMs": 17961,
+      "timestampMs": 17659,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 18112,
+      "endMs": 18275,
+      "timestampMs": 18112,
+      "confidence": null
+    },
+    {
+      "text": "reduced",
+      "startMs": 18321,
+      "endMs": 18693,
+      "timestampMs": 18321,
+      "confidence": null
+    },
+    {
+      "text": "drop-off",
+      "startMs": 18727,
+      "endMs": 19099,
+      "timestampMs": 18727,
+      "confidence": null
+    },
+    {
+      "text": "14",
+      "startMs": 19145,
+      "endMs": 19563,
+      "timestampMs": 19145,
+      "confidence": null
+    },
+    {
+      "text": "percent.",
+      "startMs": 19610,
+      "endMs": 20283,
+      "timestampMs": 19610,
+      "confidence": null
+    },
+    {
+      "text": "No",
+      "startMs": 20724,
+      "endMs": 20898,
+      "timestampMs": 20724,
+      "confidence": null
+    },
+    {
+      "text": "fake",
+      "startMs": 20980,
+      "endMs": 21247,
+      "timestampMs": 20980,
+      "confidence": null
+    },
+    {
+      "text": "experience.",
+      "startMs": 21282,
+      "endMs": 22048,
+      "timestampMs": 21282,
+      "confidence": null
+    },
+    {
+      "text": "No",
+      "startMs": 22164,
+      "endMs": 22326,
+      "timestampMs": 22164,
+      "confidence": null
+    },
+    {
+      "text": "stuffing.",
+      "startMs": 22396,
+      "endMs": 22953,
+      "timestampMs": 22396,
+      "confidence": null
+    },
+    {
+      "text": "Just",
+      "startMs": 23395,
+      "endMs": 23627,
+      "timestampMs": 23395,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 23673,
+      "endMs": 23743,
+      "timestampMs": 23673,
+      "confidence": null
+    },
+    {
+      "text": "same",
+      "startMs": 23801,
+      "endMs": 24033,
+      "timestampMs": 23801,
+      "confidence": null
+    },
+    {
+      "text": "evidence",
+      "startMs": 24080,
+      "endMs": 24486,
+      "timestampMs": 24080,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 24521,
+      "endMs": 24590,
+      "timestampMs": 24521,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 24625,
+      "endMs": 24695,
+      "timestampMs": 24625,
+      "confidence": null
+    },
+    {
+      "text": "language",
+      "startMs": 24741,
+      "endMs": 25101,
+      "timestampMs": 24741,
+      "confidence": null
+    },
+    {
+      "text": "of",
+      "startMs": 25124,
+      "endMs": 25183,
+      "timestampMs": 25124,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 25229,
+      "endMs": 25299,
+      "timestampMs": 25229,
+      "confidence": null
+    },
+    {
+      "text": "role.",
+      "startMs": 25357,
+      "endMs": 25844,
+      "timestampMs": 25357,
+      "confidence": null
+    },
+    {
+      "text": "Before:",
+      "startMs": 26285,
+      "endMs": 26901,
+      "timestampMs": 26285,
+      "confidence": null
+    },
+    {
+      "text": "41.",
+      "startMs": 27110,
+      "endMs": 27818,
+      "timestampMs": 27110,
+      "confidence": null
+    },
+    {
+      "text": "After:",
+      "startMs": 27992,
+      "endMs": 28480,
+      "timestampMs": 27992,
+      "confidence": null
+    },
+    {
+      "text": "90.",
+      "startMs": 28631,
+      "endMs": 29165,
+      "timestampMs": 28631,
+      "confidence": null
+    },
+    {
+      "text": "Check",
+      "startMs": 29606,
+      "endMs": 29873,
+      "timestampMs": 29606,
+      "confidence": null
+    },
+    {
+      "text": "your",
+      "startMs": 29919,
+      "endMs": 30047,
+      "timestampMs": 29919,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 30105,
+      "endMs": 30291,
+      "timestampMs": 30105,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 30337,
+      "endMs": 30639,
+      "timestampMs": 30337,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 30697,
+      "endMs": 31022,
+      "timestampMs": 30697,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 31057,
+      "endMs": 31324,
+      "timestampMs": 31057,
+      "confidence": null
+    },
+    {
+      "text": "applying.",
+      "startMs": 31359,
+      "endMs": 31951,
+      "timestampMs": 31359,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 35.151,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-04-the-job-post-gave-the-answer-key-3-voiceover.alignment.json"
+  }
+}

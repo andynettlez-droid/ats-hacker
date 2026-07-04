@@ -21,7 +21,7 @@ const DEFAULT_MANIFEST = path.join(dailyDir, "channel_manifest.json");
 
 const EXPECTED = {
   minVoiceoverDuration: 5,
-  maxShortVoiceoverDuration: 35,
+  maxShortVoiceoverDuration: 49,
   maxEpisodeSegmentDuration: 80,
   minMusicDuration: 20,
   minVoiceoverBitrate: 64_000,

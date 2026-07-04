@@ -12,6 +12,7 @@ import {
   ResumeCrimeScene,
   resumeCrimeSceneSchema,
   defaultResumeCrimeSceneProps,
+  type ResumeCrimeSceneProps,
 } from "./ResumeCrimeScene";
 import {
   TeardownEpisode,
@@ -43,6 +44,21 @@ const teardownEpisodeMetadata: CalculateMetadataFunction<TeardownEpisodeProps> =
     Math.min(12 * 60 * FPS, Number(props.durationInFrames || TEARDOWN_EPISODE_DURATION * FPS)),
   ),
 });
+
+const resumeCrimeSceneMetadata: CalculateMetadataFunction<ResumeCrimeSceneProps> = async ({
+  props,
+}) => {
+  const captionEndMs = Math.max(
+    0,
+    ...((props.captions || []).map((caption) => Number(caption.endMs || 0))),
+  );
+  const fromCaptions = captionEndMs > 0 ? Math.ceil((captionEndMs / 1000 + 3.2) * FPS) : 0;
+  const fromProps = props.durationSeconds ? Math.ceil(props.durationSeconds * FPS) : 0;
+  const desired = fromProps || fromCaptions || RESUME_CRIME_SCENE_DURATION * FPS;
+  return {
+    durationInFrames: Math.max(29 * FPS, Math.min(52 * FPS, desired)),
+  };
+};
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -106,6 +122,7 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         schema={resumeCrimeSceneSchema}
         defaultProps={defaultResumeCrimeSceneProps}
+        calculateMetadata={resumeCrimeSceneMetadata}
       />
       <Composition
         id="TeardownEpisode"

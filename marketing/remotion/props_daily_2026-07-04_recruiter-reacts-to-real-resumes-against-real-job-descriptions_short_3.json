@@ -1,0 +1,611 @@
+{
+  "hook": "This developer resume says frontend. The job searches React.",
+  "subhook": "The problem is vague proof, not fake experience.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "stickyNote",
+  "formatArchetype": "splitTranslation",
+  "pace": "slowBurn",
+  "seriesLabel": "Recruiter search test",
+  "signalLines": {
+    "hook": "Would this show up?",
+    "problem": "The JD is giving clues.",
+    "teardown": "The resume ignores them.",
+    "fix": "Translate, do not fabricate.",
+    "cta": "Paste the JD."
+  },
+  "resumeName": "Avery Patel",
+  "resumeTitle": "Frontend Engineer Resume",
+  "resumeMeta": [
+    "5 yrs product UI",
+    "React/TypeScript",
+    "Accessibility fixes"
+  ],
+  "jobTitle": "Frontend Software Engineer",
+  "jobKeywords": [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "accessibility",
+    "performance"
+  ],
+  "weakBullets": [
+    "Worked on frontend features for internal and customer-facing tools.",
+    "Collaborated with designers and backend engineers.",
+    "Helped improve application performance and user experience."
+  ],
+  "beforeBullet": "Worked on frontend features for internal and customer-facing tools.",
+  "afterBullet": "Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues.",
+  "resumeDocument": {
+    "name": "Avery Patel",
+    "headline": "Frontend Engineer",
+    "contact": [
+      "Seattle, WA",
+      "avery.patel@example.com",
+      "github.com/averypatel"
+    ],
+    "summary": "Frontend engineer with 5 years building product UI, design-system components, checkout flows, and accessibility improvements for SaaS products.",
+    "experience": [
+      {
+        "company": "MapleStack",
+        "role": "Frontend Engineer",
+        "dates": "2022 - Present",
+        "bullets": [
+          "Worked on frontend features for internal and customer-facing tools.",
+          "Collaborated with designers and backend engineers.",
+          "Helped improve application performance and user experience.",
+          "Maintained shared React components used by billing, onboarding, and account teams."
+        ]
+      },
+      {
+        "company": "OrbitCart",
+        "role": "UI Developer",
+        "dates": "2019 - 2022",
+        "bullets": [
+          "Converted Figma designs into responsive TypeScript UI components.",
+          "Triaged customer-reported accessibility issues with QA and support.",
+          "Added Playwright regression coverage for checkout and profile flows."
+        ]
+      }
+    ],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Design systems",
+      "WCAG",
+      "Performance profiling",
+      "Playwright"
+    ],
+    "education": "B.S. Computer Science, University of Washington"
+  },
+  "jobDescription": {
+    "title": "Frontend Software Engineer",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Frontend Software Engineer who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use React and TypeScript to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to Next.js.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "accessibility",
+      "performance"
+    ],
+    "searchQueries": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "accessibility"
+    ]
+  },
+  "beforeScore": 41,
+  "afterScore": 90,
+  "markedLabel": "Too broad",
+  "problemPunchline": "Engineering resumes need proof of stack plus outcome.",
+  "teardownIssues": [
+    "Stack is vague",
+    "No shipped feature",
+    "No performance result"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": null,
+    "voiceName": null,
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-this-developer-resume-hides-the-stack-3-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "This",
+      "startMs": 58,
+      "endMs": 232,
+      "timestampMs": 58,
+      "confidence": null
+    },
+    {
+      "text": "developer",
+      "startMs": 302,
+      "endMs": 731,
+      "timestampMs": 302,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 789,
+      "endMs": 1161,
+      "timestampMs": 789,
+      "confidence": null
+    },
+    {
+      "text": "says",
+      "startMs": 1184,
+      "endMs": 1382,
+      "timestampMs": 1184,
+      "confidence": null
+    },
+    {
+      "text": "frontend.",
+      "startMs": 1451,
+      "endMs": 2125,
+      "timestampMs": 1451,
+      "confidence": null
+    },
+    {
+      "text": "The",
+      "startMs": 2508,
+      "endMs": 2624,
+      "timestampMs": 2508,
+      "confidence": null
+    },
+    {
+      "text": "job",
+      "startMs": 2694,
+      "endMs": 2914,
+      "timestampMs": 2694,
+      "confidence": null
+    },
+    {
+      "text": "searches",
+      "startMs": 2984,
+      "endMs": 3379,
+      "timestampMs": 2984,
+      "confidence": null
+    },
+    {
+      "text": "React.",
+      "startMs": 3448,
+      "endMs": 4005,
+      "timestampMs": 3448,
+      "confidence": null
+    },
+    {
+      "text": "Target:",
+      "startMs": 4180,
+      "endMs": 4772,
+      "timestampMs": 4180,
+      "confidence": null
+    },
+    {
+      "text": "Frontend",
+      "startMs": 4946,
+      "endMs": 5410,
+      "timestampMs": 4946,
+      "confidence": null
+    },
+    {
+      "text": "Software",
+      "startMs": 5468,
+      "endMs": 5863,
+      "timestampMs": 5468,
+      "confidence": null
+    },
+    {
+      "text": "Engineer.",
+      "startMs": 5909,
+      "endMs": 6548,
+      "timestampMs": 5909,
+      "confidence": null
+    },
+    {
+      "text": "JD",
+      "startMs": 7245,
+      "endMs": 7535,
+      "timestampMs": 7245,
+      "confidence": null
+    },
+    {
+      "text": "asks",
+      "startMs": 7686,
+      "endMs": 8010,
+      "timestampMs": 7686,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 8057,
+      "endMs": 8162,
+      "timestampMs": 8057,
+      "confidence": null
+    },
+    {
+      "text": "React,",
+      "startMs": 8208,
+      "endMs": 8742,
+      "timestampMs": 8208,
+      "confidence": null
+    },
+    {
+      "text": "TypeScript,",
+      "startMs": 8858,
+      "endMs": 9648,
+      "timestampMs": 8858,
+      "confidence": null
+    },
+    {
+      "text": "Next.js.",
+      "startMs": 9822,
+      "endMs": 10855,
+      "timestampMs": 9822,
+      "confidence": null
+    },
+    {
+      "text": "The",
+      "startMs": 11180,
+      "endMs": 11297,
+      "timestampMs": 11180,
+      "confidence": null
+    },
+    {
+      "text": "tech",
+      "startMs": 11355,
+      "endMs": 11552,
+      "timestampMs": 11355,
+      "confidence": null
+    },
+    {
+      "text": "stack",
+      "startMs": 11587,
+      "endMs": 11831,
+      "timestampMs": 11587,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 11889,
+      "endMs": 11958,
+      "timestampMs": 11889,
+      "confidence": null
+    },
+    {
+      "text": "wearing",
+      "startMs": 12016,
+      "endMs": 12307,
+      "timestampMs": 12016,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 12353,
+      "endMs": 12376,
+      "timestampMs": 12353,
+      "confidence": null
+    },
+    {
+      "text": "fake",
+      "startMs": 12434,
+      "endMs": 12690,
+      "timestampMs": 12434,
+      "confidence": null
+    },
+    {
+      "text": "mustache.",
+      "startMs": 12725,
+      "endMs": 13444,
+      "timestampMs": 12725,
+      "confidence": null
+    },
+    {
+      "text": "Resume",
+      "startMs": 13955,
+      "endMs": 14362,
+      "timestampMs": 13955,
+      "confidence": null
+    },
+    {
+      "text": "says:",
+      "startMs": 14396,
+      "endMs": 14803,
+      "timestampMs": 14396,
+      "confidence": null
+    },
+    {
+      "text": "Worked",
+      "startMs": 14954,
+      "endMs": 15256,
+      "timestampMs": 14954,
+      "confidence": null
+    },
+    {
+      "text": "on",
+      "startMs": 15290,
+      "endMs": 15372,
+      "timestampMs": 15290,
+      "confidence": null
+    },
+    {
+      "text": "frontend",
+      "startMs": 15441,
+      "endMs": 15871,
+      "timestampMs": 15441,
+      "confidence": null
+    },
+    {
+      "text": "features",
+      "startMs": 15940,
+      "endMs": 16312,
+      "timestampMs": 15940,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 16347,
+      "endMs": 16451,
+      "timestampMs": 16347,
+      "confidence": null
+    },
+    {
+      "text": "internal",
+      "startMs": 16520,
+      "endMs": 16973,
+      "timestampMs": 16520,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 17031,
+      "endMs": 17124,
+      "timestampMs": 17031,
+      "confidence": null
+    },
+    {
+      "text": "customer-facing",
+      "startMs": 17194,
+      "endMs": 17995,
+      "timestampMs": 17194,
+      "confidence": null
+    },
+    {
+      "text": "tools.",
+      "startMs": 18053,
+      "endMs": 18587,
+      "timestampMs": 18053,
+      "confidence": null
+    },
+    {
+      "text": "Real,",
+      "startMs": 18970,
+      "endMs": 19353,
+      "timestampMs": 18970,
+      "confidence": null
+    },
+    {
+      "text": "but",
+      "startMs": 19388,
+      "endMs": 19551,
+      "timestampMs": 19388,
+      "confidence": null
+    },
+    {
+      "text": "buried.",
+      "startMs": 19597,
+      "endMs": 20143,
+      "timestampMs": 19597,
+      "confidence": null
+    },
+    {
+      "text": "Better:",
+      "startMs": 20654,
+      "endMs": 21130,
+      "timestampMs": 20654,
+      "confidence": null
+    },
+    {
+      "text": "shipped",
+      "startMs": 21281,
+      "endMs": 21617,
+      "timestampMs": 21281,
+      "confidence": null
+    },
+    {
+      "text": "React",
+      "startMs": 21675,
+      "endMs": 22070,
+      "timestampMs": 21675,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 22116,
+      "endMs": 22198,
+      "timestampMs": 22116,
+      "confidence": null
+    },
+    {
+      "text": "TypeScript",
+      "startMs": 22256,
+      "endMs": 22767,
+      "timestampMs": 22256,
+      "confidence": null
+    },
+    {
+      "text": "checkout",
+      "startMs": 22825,
+      "endMs": 23243,
+      "timestampMs": 22825,
+      "confidence": null
+    },
+    {
+      "text": "work",
+      "startMs": 23289,
+      "endMs": 23556,
+      "timestampMs": 23289,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 23730,
+      "endMs": 23893,
+      "timestampMs": 23730,
+      "confidence": null
+    },
+    {
+      "text": "reduced",
+      "startMs": 23939,
+      "endMs": 24299,
+      "timestampMs": 23939,
+      "confidence": null
+    },
+    {
+      "text": "drop-off",
+      "startMs": 24322,
+      "endMs": 24717,
+      "timestampMs": 24322,
+      "confidence": null
+    },
+    {
+      "text": "14",
+      "startMs": 24764,
+      "endMs": 25182,
+      "timestampMs": 24764,
+      "confidence": null
+    },
+    {
+      "text": "percent.",
+      "startMs": 25228,
+      "endMs": 25843,
+      "timestampMs": 25228,
+      "confidence": null
+    },
+    {
+      "text": "Same",
+      "startMs": 26354,
+      "endMs": 26656,
+      "timestampMs": 26354,
+      "confidence": null
+    },
+    {
+      "text": "person,",
+      "startMs": 26702,
+      "endMs": 27248,
+      "timestampMs": 26702,
+      "confidence": null
+    },
+    {
+      "text": "clearer",
+      "startMs": 27364,
+      "endMs": 27736,
+      "timestampMs": 27364,
+      "confidence": null
+    },
+    {
+      "text": "proof.",
+      "startMs": 27794,
+      "endMs": 28293,
+      "timestampMs": 27794,
+      "confidence": null
+    },
+    {
+      "text": "41",
+      "startMs": 29106,
+      "endMs": 29593,
+      "timestampMs": 29106,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 29686,
+      "endMs": 29756,
+      "timestampMs": 29686,
+      "confidence": null
+    },
+    {
+      "text": "90.",
+      "startMs": 29849,
+      "endMs": 30371,
+      "timestampMs": 29849,
+      "confidence": null
+    },
+    {
+      "text": "Check",
+      "startMs": 30580,
+      "endMs": 30824,
+      "timestampMs": 30580,
+      "confidence": null
+    },
+    {
+      "text": "your",
+      "startMs": 30882,
+      "endMs": 30998,
+      "timestampMs": 30882,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 31056,
+      "endMs": 31254,
+      "timestampMs": 31056,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 31300,
+      "endMs": 31613,
+      "timestampMs": 31300,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 31671,
+      "endMs": 31962,
+      "timestampMs": 31671,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 31997,
+      "endMs": 32264,
+      "timestampMs": 31997,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 32298,
+      "endMs": 32368,
+      "timestampMs": 32298,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 32426,
+      "endMs": 33030,
+      "timestampMs": 32426,
+      "confidence": null
+    }
+  ],
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-04-this-developer-resume-hides-the-stack-3-voiceover.alignment.json"
+  }
+}

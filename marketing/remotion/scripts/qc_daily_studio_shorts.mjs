@@ -35,7 +35,8 @@ const EXPECTED = {
   width: 1080,
   height: 1920,
   fps: 30,
-  durationInSeconds: 45,
+  minDurationInSeconds: 29,
+  maxDurationInSeconds: 52,
   minBytes: 1_000_000,
   minAudioSampleRate: 44_100,
 };
@@ -189,6 +190,50 @@ const checkProps = (draft, postsEntry, checks) => {
     "resume has believable role context",
     Array.isArray(props.resumeMeta) ? props.resumeMeta.join(", ") : "",
   );
+  const resumeDocument = props.resumeDocument || {};
+  const resumeExperience = Array.isArray(resumeDocument.experience) ? resumeDocument.experience : [];
+  const resumeBullets = resumeExperience.flatMap((job) => (Array.isArray(job.bullets) ? job.bullets : []));
+  addCheck(
+    checks,
+    Boolean(resumeDocument.name && resumeDocument.headline && Array.isArray(resumeDocument.contact) && resumeDocument.contact.length >= 2),
+    "professional resume document has header and contact",
+    resumeDocument.name || "",
+  );
+  addCheck(
+    checks,
+    resumeExperience.length >= 2 && resumeBullets.length >= 6,
+    "professional resume document has multiple roles and six bullets",
+    `${resumeExperience.length} roles, ${resumeBullets.length} bullets`,
+  );
+  addCheck(
+    checks,
+    resumeBullets.includes(props.beforeBullet),
+    "marked source bullet appears inside full resume document",
+    props.beforeBullet || "",
+  );
+  addCheck(
+    checks,
+    Array.isArray(resumeDocument.skills) && resumeDocument.skills.length >= 5 && Boolean(resumeDocument.education),
+    "professional resume document has skills and education",
+    Array.isArray(resumeDocument.skills) ? resumeDocument.skills.join(", ") : "",
+  );
+  const jobDescription = props.jobDescription || {};
+  addCheck(
+    checks,
+    Boolean(jobDescription.title && jobDescription.summary) &&
+      Array.isArray(jobDescription.responsibilities) &&
+      jobDescription.responsibilities.length >= 3 &&
+      Array.isArray(jobDescription.requirements) &&
+      jobDescription.requirements.length >= 4,
+    "job description artifact has responsibilities and requirements",
+    jobDescription.title || "",
+  );
+  addCheck(
+    checks,
+    ["deskMarkup", "recruiterSearch", "splitTranslation", "redTeamAudit", "mascotAssist"].includes(props.formatArchetype),
+    "format archetype is declared for visual variety",
+    props.formatArchetype || "",
+  );
   addCheck(
     checks,
     props.audioReadiness?.studioVoiceover === true,
@@ -200,6 +245,18 @@ const checkProps = (draft, postsEntry, checks) => {
     props.audioReadiness?.quietMusic === true,
     "quiet music marked ready",
     props.audioReadiness?.reason || "",
+  );
+  addCheck(
+    checks,
+    props.audioReadiness?.provider === "elevenlabs",
+    "ElevenLabs is the approved narration provider",
+    props.audioReadiness?.provider || "missing provider",
+  );
+  addCheck(
+    checks,
+    props.audioReadiness?.wordLevelCaptions === true && props.captionReadiness?.wordLevel === true,
+    "ElevenLabs timestamp captions are ready",
+    props.captionReadiness?.reason || props.audioReadiness?.reason || "",
   );
 
   const voiceoverPath = resolvePublicRef(props.voiceoverSrc);
@@ -254,8 +311,9 @@ const checkVideoMetadata = async (filePath, checks) => {
   );
   addCheck(
     checks,
-    Math.abs(Number(metadata.durationInSeconds) - EXPECTED.durationInSeconds) <= 0.75,
-    "duration matches composition",
+    Number(metadata.durationInSeconds) >= EXPECTED.minDurationInSeconds &&
+      Number(metadata.durationInSeconds) <= EXPECTED.maxDurationInSeconds,
+    "duration is tight for Shorts",
     `${metadata.durationInSeconds}s`,
   );
   addCheck(

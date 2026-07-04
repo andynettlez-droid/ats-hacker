@@ -1,0 +1,575 @@
+{
+  "publishDate": "2026-07-04",
+  "topic": "Recruiter search tests with real resume teardowns",
+  "series": "Daily Research Packet",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "sourceNotes": [
+    {
+      "title": "YouTube Partner Program eligibility",
+      "url": "https://support.google.com/youtube/answer/72851",
+      "note": "Use YouTube as a monetization target, but optimize first for site conversions."
+    },
+    {
+      "title": "Pew Research Center Social Media Fact Sheet",
+      "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/",
+      "note": "YouTube, Instagram, and TikTok are large discovery channels for job-search education."
+    }
+  ],
+  "youtube": {
+    "title": "Recruiter search tests with real resume teardowns | Resume Teardown",
+    "script": "Welcome to the Resume Roast! \n[Intro music, visuals of pain points] \nIn today\u2019s episode, we\u2019re diving into the job-search jungle with our trusty \u2018Signal scored\u2019 resumes! \n[Show an applicant spreadsheet] \nGoes like this: \n1. The classic 'I am a team player' line. \n*Cut to recruiter baffled, roasting: 'Is your team a football team or something? Tell me the position!'*\n\n2. The vague 'Responsible for customer satisfaction.' Let's repair that \u2013 slap a 'boosted retention by 30% using personalized follow-ups!' \n*Recognizing a winner vibe; cue the hero music.*\n\n3. Cluster of generic bullet points; tell me you\u2019re looking for a job without telling me you're searching... *reel in on these boring metrics\u2014yawn.* But guys, you do NOT have to settle for mediocrity! \n[Quick cut to Signal mascot shaking its head in disapproval]\n\nNow\u2014here\u2019s the secret ingredient! Use our free Signal Score to find out what you\u2019re doing right and wrong! [CTA animation] Grab it now! [End with humor} \nThank you for tuning: Subscribe for the next episode! \n[Outro music].",
+    "storyboard": [
+      {
+        "scene": "Intro",
+        "visual": "Animated Signal mascot enters a chaotic job application scene.",
+        "dialogue": "Welcome to the Resume Roast, where we turn your resume pain into gain!",
+        "time": "0:00 - 0:30"
+      },
+      {
+        "scene": "Vague Resume Bullet Roast",
+        "visual": "Show a 'typical resume' on screen while the recruiter reacts.",
+        "dialogue": "'Responsible for customer satisfaction!' Hmm, what does that even mean?",
+        "time": "0:30 - 2:00"
+      },
+      {
+        "scene": "Flawed Metrics",
+        "visual": "Cut to a failed resume with the playing field of job applications.",
+        "dialogue": "Don't spell mediocrity; we can innovate instead!",
+        "time": "2:00 - 4:00"
+      },
+      {
+        "scene": "Call to Action",
+        "visual": "Signal mascot presents the Signal Score chart.",
+        "dialogue": "Want to rescue your resume? Get your FREE Signal Score!",
+        "time": "4:00 - 5:00"
+      }
+    ],
+    "chapters": [
+      "{'title': 'Introduction', 'start': '0:00', 'end': '0:30'}",
+      "{'title': 'Vague Resumes', 'start': '0:30', 'end': '4:00'}",
+      "{'title': 'Your Resume Rescue', 'start': '4:00', 'end': '5:00'}"
+    ],
+    "seoTitle": "Recruiter search tests with real resume teardowns | Resume Teardown with Signal by ATSHacker",
+    "description": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "cta": "Paste the job description and check your free Signal score before you apply.",
+    "scriptSections": [
+      {
+        "label": "Cold open",
+        "script": "Recruiter search tests with real resume teardowns This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
+        "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+      },
+      {
+        "label": "Open loop",
+        "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+        "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff."
+      },
+      {
+        "label": "Translate the job description",
+        "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+        "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+      },
+      {
+        "label": "Recruiter search test",
+        "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+        "visual": "Search console typing the first three job-description terms and showing weak matches."
+      },
+      {
+        "label": "Resume crime scene",
+        "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
+        "visual": "Red/yellow markups over weak bullets."
+      },
+      {
+        "label": "Why it gets missed",
+        "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+        "visual": "Zoom into the weak bullet and place missing proof labels beside it."
+      },
+      {
+        "label": "Live bullet fix",
+        "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. Same person, clearer evidence.",
+        "visual": "Before/after bullet rewrite."
+      },
+      {
+        "label": "Score reveal",
+        "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+        "visual": "Score meter jumps from low match to high match with before/after resume panels."
+      },
+      {
+        "label": "Trust and CTA",
+        "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+        "visual": "Free Signal score page, trust badges, and bundle CTA."
+      }
+    ]
+  },
+  "shorts": [
+    {
+      "series": "Resume Crime Scene",
+      "title": "This resume sentence is quietly expensive",
+      "hook": "This bullet is expensive.",
+      "script": "Stop here. This is the line making a qualified person look generic. The job wants Demand Generation Manager: HubSpot workflows, LinkedIn Ads, and CAC analysis. The resume says, Helped maintain HubSpot lists for webinars and nurture emails. That is real experience, but it is wearing a beige jacket. Signal would only pull out the proof already there: built lead scoring and retargeting that cut CAC 32 percent. Now a recruiter can find what they were already searching for. Check your free Signal score before you apply.",
+      "storyboard": [
+        "Case: Marketing Coordinator -> Demand Gen Candidate against Demand Generation Manager.",
+        "Open on the resume with a red audit stamp over the weak bullet.",
+        "Cut to the target job title and three role terms.",
+        "Signal appears with a side-eye bubble, but the resume remains the main visual.",
+        "Circle the weak bullet and stamp why it fails.",
+        "Reveal the rewritten bullet as a receipt, not a fake addition.",
+        "End with the score jump and free Signal score CTA."
+      ],
+      "props": {
+        "hook1": "This bullet has a high chance of synergy and zero proof",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 34,
+        "afterScore": 92,
+        "missing": [
+          "HubSpot workflows",
+          "LinkedIn Ads",
+          "CAC analysis",
+          "MQL-to-SQL",
+          "pipeline sourced"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "Stop here. This is the line making a qualified person look generic. The job wants Demand Generation Manager: HubSpot workflows, LinkedIn Ads, and CAC analysis. The resume says, Helped maintain HubSpot lists for webinars and nurture emails. That is real experience, but it is wearing a beige jacket. Signal would only pull out the proof already there: built lead scoring and retargeting that cut CAC 32 percent. Now a recruiter can find what they were already searching for. Check your free Signal score before you apply.",
+        "teardownCaseId": "demand_gen_marketing",
+        "playbookId": "recruiter_roast",
+        "seriesOverride": "Resume Crime Scene",
+        "creativeFormat": "aiResumeRoast",
+        "visualStyle": "comic",
+        "formatArchetype": "redTeamAudit",
+        "pace": "fast",
+        "subhook": "Not bad. Just badly labeled.",
+        "signalLines": {
+          "hook": "This line is doing damage.",
+          "problem": "Readable is not the same as searchable.",
+          "teardown": "Roast the bullet, rescue the person.",
+          "fix": "Now it has receipts.",
+          "cta": "Test yours before sending."
+        },
+        "resumeName": "Jordan Lee",
+        "resumeTitle": "Marketing Coordinator -> Demand Gen Candidate",
+        "resumeMeta": [
+          "3 yrs B2B SaaS",
+          "HubSpot admin",
+          "Paid social support"
+        ],
+        "jobTitle": "Demand Generation Manager",
+        "jobKeywords": [
+          "HubSpot workflows",
+          "LinkedIn Ads",
+          "CAC analysis",
+          "MQL-to-SQL",
+          "pipeline sourced"
+        ],
+        "weakBullets": [
+          "Supported email and social campaigns across multiple channels.",
+          "Helped maintain HubSpot lists for webinars and nurture emails.",
+          "Coordinated paid social assets with design and sales."
+        ],
+        "beforeBullet": "Helped maintain HubSpot lists for webinars and nurture emails.",
+        "afterBullet": "Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%.",
+        "markedLabel": "Buried proof",
+        "problemPunchline": "The job has clues. The resume is whispering.",
+        "teardownPunchline": "This is not a skill problem. It is a labeling problem.",
+        "fixPunchline": "Same person. Better evidence.",
+        "teardownIssues": [
+          "Tool is hidden",
+          "No CAC result",
+          "No pipeline language"
+        ],
+        "resumeDocument": {
+          "name": "Jordan Lee",
+          "headline": "Marketing Coordinator -> Demand Gen Candidate",
+          "contact": [
+            "Austin, TX",
+            "jordan.lee@example.com",
+            "linkedin.com/in/jordan-lee"
+          ],
+          "summary": "B2B SaaS marketer with 3 years supporting lifecycle campaigns, webinar operations, paid social launches, and HubSpot reporting for revenue teams.",
+          "experience": [
+            {
+              "company": "Northstar Analytics",
+              "role": "Marketing Coordinator",
+              "dates": "2023 - Present",
+              "bullets": [
+                "Supported email and social campaigns across multiple channels.",
+                "Helped maintain HubSpot lists for webinars and nurture emails.",
+                "Coordinated paid social assets with design and sales.",
+                "Pulled weekly Salesforce campaign reports for marketing and sales leadership."
+              ]
+            },
+            {
+              "company": "CedarCloud Software",
+              "role": "Marketing Assistant",
+              "dates": "2021 - 2023",
+              "bullets": [
+                "Built event landing pages and tracked registrations through HubSpot forms.",
+                "Updated campaign calendars for product launches and customer webinars.",
+                "Partnered with sales operations to clean 8,400 duplicate lead records."
+              ]
+            }
+          ],
+          "skills": [
+            "HubSpot",
+            "Salesforce reports",
+            "LinkedIn Ads",
+            "Lifecycle email",
+            "Webinars",
+            "UTM tracking",
+            "CAC analysis"
+          ],
+          "education": "B.A. Marketing, University of Texas at Austin"
+        },
+        "jobDescription": {
+          "title": "Demand Generation Manager",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Demand Generation Manager who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use HubSpot workflows and LinkedIn Ads to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to CAC analysis.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "HubSpot workflows",
+            "LinkedIn Ads",
+            "CAC analysis",
+            "MQL-to-SQL",
+            "pipeline sourced"
+          ],
+          "searchQueries": [
+            "HubSpot workflows",
+            "LinkedIn Ads",
+            "CAC analysis",
+            "MQL-to-SQL"
+          ]
+        }
+      }
+    },
+    {
+      "series": "Recruiter Search Test",
+      "title": "I searched Salesforce and this resume vanished",
+      "hook": "I searched Salesforce. Nothing.",
+      "script": "Recruiter search test. I type Salesforce. Then pipeline generation. Then quota attainment. The job description is basically telling us what to look for. But this resume says, Responsible for sales opportunities in assigned territory. That may be true, but it is job-search fog with a name badge. It gives the search box nothing useful. If the real work was generated 1.8 million in qualified Salesforce pipeline, say that plainly. 37 to 88. Same work. Searchable signal. Run the free Signal score before you send it.",
+      "storyboard": [
+        "Case: Account Executive Resume against Mid-Market Account Executive.",
+        "Open with a recruiter search box typing the first keyword.",
+        "Show zero useful matches on the resume.",
+        "Type two more role terms and show the same problem.",
+        "Signal points from the search box to the weak bullet.",
+        "Rewrite the bullet and rerun the search.",
+        "Close with the score jump and free score CTA."
+      ],
+      "props": {
+        "hook1": "If I search HubSpot, does your resume even show up?",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 37,
+        "afterScore": 88,
+        "missing": [
+          "Salesforce",
+          "pipeline generation",
+          "quota attainment",
+          "discovery calls",
+          "MEDDICC"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "Recruiter search test. I type Salesforce. Then pipeline generation. Then quota attainment. The job description is basically telling us what to look for. But this resume says, Responsible for sales opportunities in assigned territory. That may be true, but it is job-search fog with a name badge. It gives the search box nothing useful. If the real work was generated 1.8 million in qualified Salesforce pipeline, say that plainly. 37 to 88. Same work. Searchable signal. Run the free Signal score before you send it.",
+        "teardownCaseId": "sales_account_exec",
+        "playbookId": "search_console",
+        "seriesOverride": "Recruiter Search Test",
+        "creativeFormat": "jobSearchTest",
+        "visualStyle": "terminal",
+        "formatArchetype": "recruiterSearch",
+        "pace": "balanced",
+        "subhook": "That is how qualified people disappear.",
+        "signalLines": {
+          "hook": "Search box says no.",
+          "problem": "The proof exists. It is not findable.",
+          "teardown": "Give the search a real term.",
+          "fix": "Now it can surface.",
+          "cta": "Search-test your resume."
+        },
+        "resumeName": "Maya Torres",
+        "resumeTitle": "Account Executive Resume",
+        "resumeMeta": [
+          "4 yrs SaaS sales",
+          "Mid-market accounts",
+          "Quota-carrying role"
+        ],
+        "jobTitle": "Mid-Market Account Executive",
+        "jobKeywords": [
+          "Salesforce",
+          "pipeline generation",
+          "quota attainment",
+          "discovery calls",
+          "MEDDICC"
+        ],
+        "weakBullets": [
+          "Managed customer conversations and followed up with prospects.",
+          "Responsible for sales opportunities in assigned territory.",
+          "Worked with marketing and customer success on accounts."
+        ],
+        "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+        "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+        "markedLabel": "No quota signal",
+        "problemPunchline": "A recruiter cannot search for the thought you meant.",
+        "teardownPunchline": "This is where vague language quietly loses.",
+        "fixPunchline": "The keyword now has proof behind it.",
+        "teardownIssues": [
+          "No quota proof",
+          "No CRM signal",
+          "No pipeline number"
+        ],
+        "resumeDocument": {
+          "name": "Maya Torres",
+          "headline": "Account Executive",
+          "contact": [
+            "Chicago, IL",
+            "maya.torres@example.com",
+            "linkedin.com/in/maya-torres"
+          ],
+          "summary": "Quota-carrying SaaS seller with 4 years across SDR and AE roles, focused on discovery, account prioritization, CRM hygiene, and mid-market pipeline creation.",
+          "experience": [
+            {
+              "company": "BrightLedger",
+              "role": "Account Executive",
+              "dates": "2024 - Present",
+              "bullets": [
+                "Managed customer conversations and followed up with prospects.",
+                "Responsible for sales opportunities in assigned territory.",
+                "Worked with marketing and customer success on accounts.",
+                "Maintained Salesforce notes, next steps, and close-date updates for active opportunities."
+              ]
+            },
+            {
+              "company": "Pinecone Workflow",
+              "role": "Sales Development Representative",
+              "dates": "2021 - 2024",
+              "bullets": [
+                "Booked discovery meetings with operations and finance leaders.",
+                "Researched account triggers and personalized outbound email sequences.",
+                "Qualified inbound leads and routed opportunities to three AE teams."
+              ]
+            }
+          ],
+          "skills": [
+            "Salesforce",
+            "MEDDICC",
+            "Discovery calls",
+            "Pipeline generation",
+            "Outbound sequencing",
+            "Forecasting",
+            "Mutual action plans"
+          ],
+          "education": "B.S. Business Administration, DePaul University"
+        },
+        "jobDescription": {
+          "title": "Mid-Market Account Executive",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Mid-Market Account Executive who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use Salesforce and pipeline generation to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to quota attainment.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "Salesforce",
+            "pipeline generation",
+            "quota attainment",
+            "discovery calls",
+            "MEDDICC"
+          ],
+          "searchQueries": [
+            "Salesforce",
+            "pipeline generation",
+            "quota attainment",
+            "discovery calls"
+          ]
+        }
+      }
+    },
+    {
+      "series": "Job Description Translation",
+      "title": "The job post gave the answer key",
+      "hook": "The job post gave the answer key.",
+      "script": "The job description is an open-book test. It asks for React, TypeScript, and Next.js. This resume answers with, Worked on frontend features for internal and customer-facing tools. That is a shrug in bullet form. The honest fix is specific: shipped React and TypeScript checkout work that reduced drop-off 14 percent. No fake experience. No stuffing. Just the same evidence in the language of the role. Before: 41. After: 90. Check your free Signal score before applying.",
+      "storyboard": [
+        "Case: Frontend Engineer Resume against Frontend Software Engineer.",
+        "Open on the job description with answer-key highlights.",
+        "Slide the resume beside it and show the weak mismatch.",
+        "Highlight each missing role term in a different color.",
+        "Signal translates resume proof into job-description language.",
+        "Reveal the rewritten bullet with before/after color contrast.",
+        "End with the score jump and free Signal score CTA."
+      ],
+      "props": {
+        "hook1": "This resume is invisible because the best bullet is bur",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 41,
+        "afterScore": 90,
+        "missing": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "accessibility",
+          "performance"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "The job description is an open-book test. It asks for React, TypeScript, and Next.js. This resume answers with, Worked on frontend features for internal and customer-facing tools. That is a shrug in bullet form. The honest fix is specific: shipped React and TypeScript checkout work that reduced drop-off 14 percent. No fake experience. No stuffing. Just the same evidence in the language of the role. Before: 41. After: 90. Check your free Signal score before applying.",
+        "teardownCaseId": "frontend_engineer",
+        "playbookId": "answer_key",
+        "seriesOverride": "Job Description Translation",
+        "creativeFormat": "oneBulletFix",
+        "visualStyle": "highlighter",
+        "formatArchetype": "splitTranslation",
+        "pace": "slowBurn",
+        "subhook": "Your resume ignored it.",
+        "signalLines": {
+          "hook": "The clues are right there.",
+          "problem": "Your resume answered a different question.",
+          "teardown": "Translate. Do not exaggerate.",
+          "fix": "This is the same evidence.",
+          "cta": "Paste the job first."
+        },
+        "resumeName": "Avery Patel",
+        "resumeTitle": "Frontend Engineer Resume",
+        "resumeMeta": [
+          "5 yrs product UI",
+          "React/TypeScript",
+          "Accessibility fixes"
+        ],
+        "jobTitle": "Frontend Software Engineer",
+        "jobKeywords": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "accessibility",
+          "performance"
+        ],
+        "weakBullets": [
+          "Worked on frontend features for internal and customer-facing tools.",
+          "Collaborated with designers and backend engineers.",
+          "Helped improve application performance and user experience."
+        ],
+        "beforeBullet": "Worked on frontend features for internal and customer-facing tools.",
+        "afterBullet": "Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues.",
+        "markedLabel": "Too broad",
+        "problemPunchline": "The posting handed over the vocabulary.",
+        "teardownPunchline": "Generic bullets fail open-book tests.",
+        "fixPunchline": "Specific beats polished.",
+        "teardownIssues": [
+          "Stack is vague",
+          "No shipped feature",
+          "No performance result"
+        ],
+        "resumeDocument": {
+          "name": "Avery Patel",
+          "headline": "Frontend Engineer",
+          "contact": [
+            "Seattle, WA",
+            "avery.patel@example.com",
+            "github.com/averypatel"
+          ],
+          "summary": "Frontend engineer with 5 years building product UI, design-system components, checkout flows, and accessibility improvements for SaaS products.",
+          "experience": [
+            {
+              "company": "MapleStack",
+              "role": "Frontend Engineer",
+              "dates": "2022 - Present",
+              "bullets": [
+                "Worked on frontend features for internal and customer-facing tools.",
+                "Collaborated with designers and backend engineers.",
+                "Helped improve application performance and user experience.",
+                "Maintained shared React components used by billing, onboarding, and account teams."
+              ]
+            },
+            {
+              "company": "OrbitCart",
+              "role": "UI Developer",
+              "dates": "2019 - 2022",
+              "bullets": [
+                "Converted Figma designs into responsive TypeScript UI components.",
+                "Triaged customer-reported accessibility issues with QA and support.",
+                "Added Playwright regression coverage for checkout and profile flows."
+              ]
+            }
+          ],
+          "skills": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "Design systems",
+            "WCAG",
+            "Performance profiling",
+            "Playwright"
+          ],
+          "education": "B.S. Computer Science, University of Washington"
+        },
+        "jobDescription": {
+          "title": "Frontend Software Engineer",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Frontend Software Engineer who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use React and TypeScript to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to Next.js.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "accessibility",
+            "performance"
+          ],
+          "searchQueries": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "accessibility"
+          ]
+        }
+      }
+    }
+  ],
+  "monetization": {
+    "primaryGoal": "Use YouTube for visibility, optimize channel for traffic ahead of monetization goals.",
+    "cta": "Free Signal score -> $9.99 resume or $14.99 bundle.",
+    "tracking": [
+      "utm_source=youtube",
+      "utm_medium=video",
+      "utm_campaign=daily_packet"
+    ],
+    "upsell": "Make the $14.99 bundle the default value offer after score completion."
+  },
+  "viewerCustomerReview": "Absolutely hilarious\u2014turns job-search struggles into laughter! Can't wait for more!",
+  "creativeQualityGate": {
+    "overallScore": 100,
+    "passed": true,
+    "verdict": "post_grade_script_packet",
+    "notes": [],
+    "blockers": [],
+    "shorts": [
+      {
+        "title": "This resume sentence is quietly expensive",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "I searched Salesforce and this resume vanished",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "The job post gave the answer key",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      }
+    ]
+  }
+}

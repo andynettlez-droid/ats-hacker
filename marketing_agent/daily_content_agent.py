@@ -399,6 +399,338 @@ CASE_SPOKEN_REWRITES = {
     "healthcare_rn": "coordinated Epic discharge plans and reduced avoidable follow-up calls",
 }
 
+CREATOR_FORMAT_PLAYBOOKS = [
+    {
+        "id": "recruiter_roast",
+        "series": "Resume Crime Scene",
+        "creativeFormat": "aiResumeRoast",
+        "visualStyle": "comic",
+        "formatArchetype": "redTeamAudit",
+        "pace": "fast",
+        "title": "This resume sentence is quietly expensive",
+        "hook": "This bullet is expensive.",
+        "subhook": "Not bad. Just badly labeled.",
+        "voiceover": (
+            "Stop here. This is the line making a qualified person look generic. "
+            "The job wants {role}: {kw1}, {kw2}, and {kw3}. "
+            "The resume says, {beforeBullet} That is real experience, but it is wearing a beige jacket. "
+            "Signal would only pull out the proof already there: {spokenRewrite}. "
+            "Now a recruiter can find what they were already searching for. "
+            "Check your free Signal score before you apply."
+        ),
+        "storyboard": [
+            "Open on the resume with a red audit stamp over the weak bullet.",
+            "Cut to the target job title and three role terms.",
+            "Signal appears with a side-eye bubble, but the resume remains the main visual.",
+            "Circle the weak bullet and stamp why it fails.",
+            "Reveal the rewritten bullet as a receipt, not a fake addition.",
+            "End with the score jump and free Signal score CTA.",
+        ],
+        "signalLines": {
+            "hook": "This line is doing damage.",
+            "problem": "Readable is not the same as searchable.",
+            "teardown": "Roast the bullet, rescue the person.",
+            "fix": "Now it has receipts.",
+            "cta": "Test yours before sending.",
+        },
+        "problemPunchline": "The job has clues. The resume is whispering.",
+        "teardownPunchline": "This is not a skill problem. It is a labeling problem.",
+        "fixPunchline": "Same person. Better evidence.",
+    },
+    {
+        "id": "search_console",
+        "series": "Recruiter Search Test",
+        "creativeFormat": "jobSearchTest",
+        "visualStyle": "terminal",
+        "formatArchetype": "recruiterSearch",
+        "pace": "balanced",
+        "title": "I searched {kw1} and this resume vanished",
+        "hook": "I searched {kw1}. Nothing.",
+        "subhook": "That is how qualified people disappear.",
+        "voiceover": (
+            "Recruiter search test. I type {kw1}. Then {kw2}. Then {kw3}. "
+            "The job description is basically telling us what to look for. "
+            "But this resume says, {beforeBullet} That may be true, but it is job-search fog with a name badge. "
+            "It gives the search box nothing useful. "
+            "If the real work was {spokenRewrite}, say that plainly. "
+            "{beforeScore} to {afterScore}. Same work. Searchable signal. "
+            "Run the free Signal score before you send it."
+        ),
+        "storyboard": [
+            "Open with a recruiter search box typing the first keyword.",
+            "Show zero useful matches on the resume.",
+            "Type two more role terms and show the same problem.",
+            "Signal points from the search box to the weak bullet.",
+            "Rewrite the bullet and rerun the search.",
+            "Close with the score jump and free score CTA.",
+        ],
+        "signalLines": {
+            "hook": "Search box says no.",
+            "problem": "The proof exists. It is not findable.",
+            "teardown": "Give the search a real term.",
+            "fix": "Now it can surface.",
+            "cta": "Search-test your resume.",
+        },
+        "problemPunchline": "A recruiter cannot search for the thought you meant.",
+        "teardownPunchline": "This is where vague language quietly loses.",
+        "fixPunchline": "The keyword now has proof behind it.",
+    },
+    {
+        "id": "answer_key",
+        "series": "Job Description Translation",
+        "creativeFormat": "oneBulletFix",
+        "visualStyle": "highlighter",
+        "formatArchetype": "splitTranslation",
+        "pace": "slowBurn",
+        "title": "The job post gave the answer key",
+        "hook": "The job post gave the answer key.",
+        "subhook": "Your resume ignored it.",
+        "voiceover": (
+            "The job description is an open-book test. "
+            "It asks for {kw1}, {kw2}, and {kw3}. "
+            "This resume answers with, {beforeBullet} That is a shrug in bullet form. "
+            "The honest fix is specific: {spokenRewrite}. "
+            "No fake experience. No stuffing. Just the same evidence in the language of the role. "
+            "Before: {beforeScore}. After: {afterScore}. Check your free Signal score before applying."
+        ),
+        "storyboard": [
+            "Open on the job description with answer-key highlights.",
+            "Slide the resume beside it and show the weak mismatch.",
+            "Highlight each missing role term in a different color.",
+            "Signal translates resume proof into job-description language.",
+            "Reveal the rewritten bullet with before/after color contrast.",
+            "End with the score jump and free Signal score CTA.",
+        ],
+        "signalLines": {
+            "hook": "The clues are right there.",
+            "problem": "Your resume answered a different question.",
+            "teardown": "Translate. Do not exaggerate.",
+            "fix": "This is the same evidence.",
+            "cta": "Paste the job first.",
+        },
+        "problemPunchline": "The posting handed over the vocabulary.",
+        "teardownPunchline": "Generic bullets fail open-book tests.",
+        "fixPunchline": "Specific beats polished.",
+    },
+]
+
+CASE_RESUME_DETAILS = {
+    "demand_gen_marketing": {
+        "contact": ["Austin, TX", "jordan.lee@example.com", "linkedin.com/in/jordan-lee"],
+        "summary": "B2B SaaS marketer with 3 years supporting lifecycle campaigns, webinar operations, paid social launches, and HubSpot reporting for revenue teams.",
+        "skills": ["HubSpot", "Salesforce reports", "LinkedIn Ads", "Lifecycle email", "Webinars", "UTM tracking", "CAC analysis"],
+        "education": "B.A. Marketing, University of Texas at Austin",
+        "experience": [
+            {
+                "company": "Northstar Analytics",
+                "role": "Marketing Coordinator",
+                "dates": "2023 - Present",
+                "bullets": [
+                    "Supported email and social campaigns across multiple channels.",
+                    "Helped maintain HubSpot lists for webinars and nurture emails.",
+                    "Coordinated paid social assets with design and sales.",
+                    "Pulled weekly Salesforce campaign reports for marketing and sales leadership.",
+                ],
+            },
+            {
+                "company": "CedarCloud Software",
+                "role": "Marketing Assistant",
+                "dates": "2021 - 2023",
+                "bullets": [
+                    "Built event landing pages and tracked registrations through HubSpot forms.",
+                    "Updated campaign calendars for product launches and customer webinars.",
+                    "Partnered with sales operations to clean 8,400 duplicate lead records.",
+                ],
+            },
+        ],
+    },
+    "sales_account_exec": {
+        "contact": ["Chicago, IL", "maya.torres@example.com", "linkedin.com/in/maya-torres"],
+        "summary": "Quota-carrying SaaS seller with 4 years across SDR and AE roles, focused on discovery, account prioritization, CRM hygiene, and mid-market pipeline creation.",
+        "skills": ["Salesforce", "MEDDICC", "Discovery calls", "Pipeline generation", "Outbound sequencing", "Forecasting", "Mutual action plans"],
+        "education": "B.S. Business Administration, DePaul University",
+        "experience": [
+            {
+                "company": "BrightLedger",
+                "role": "Account Executive",
+                "dates": "2024 - Present",
+                "bullets": [
+                    "Managed customer conversations and followed up with prospects.",
+                    "Responsible for sales opportunities in assigned territory.",
+                    "Worked with marketing and customer success on accounts.",
+                    "Maintained Salesforce notes, next steps, and close-date updates for active opportunities.",
+                ],
+            },
+            {
+                "company": "Pinecone Workflow",
+                "role": "Sales Development Representative",
+                "dates": "2021 - 2024",
+                "bullets": [
+                    "Booked discovery meetings with operations and finance leaders.",
+                    "Researched account triggers and personalized outbound email sequences.",
+                    "Qualified inbound leads and routed opportunities to three AE teams.",
+                ],
+            },
+        ],
+    },
+    "frontend_engineer": {
+        "contact": ["Seattle, WA", "avery.patel@example.com", "github.com/averypatel"],
+        "summary": "Frontend engineer with 5 years building product UI, design-system components, checkout flows, and accessibility improvements for SaaS products.",
+        "skills": ["React", "TypeScript", "Next.js", "Design systems", "WCAG", "Performance profiling", "Playwright"],
+        "education": "B.S. Computer Science, University of Washington",
+        "experience": [
+            {
+                "company": "MapleStack",
+                "role": "Frontend Engineer",
+                "dates": "2022 - Present",
+                "bullets": [
+                    "Worked on frontend features for internal and customer-facing tools.",
+                    "Collaborated with designers and backend engineers.",
+                    "Helped improve application performance and user experience.",
+                    "Maintained shared React components used by billing, onboarding, and account teams.",
+                ],
+            },
+            {
+                "company": "OrbitCart",
+                "role": "UI Developer",
+                "dates": "2019 - 2022",
+                "bullets": [
+                    "Converted Figma designs into responsive TypeScript UI components.",
+                    "Triaged customer-reported accessibility issues with QA and support.",
+                    "Added Playwright regression coverage for checkout and profile flows.",
+                ],
+            },
+        ],
+    },
+    "project_manager": {
+        "contact": ["Denver, CO", "chris.morgan@example.com", "linkedin.com/in/chris-morgan"],
+        "summary": "Project manager with 7 years coordinating technical rollouts, stakeholder updates, sprint ceremonies, delivery risks, and cross-functional operating rhythms.",
+        "skills": ["Jira", "Risk registers", "Stakeholder updates", "Agile delivery", "Budget variance", "Roadmaps", "Vendor coordination"],
+        "education": "PMP, Project Management Institute; B.A. Operations Management",
+        "experience": [
+            {
+                "company": "SummitOps",
+                "role": "Project Manager",
+                "dates": "2022 - Present",
+                "bullets": [
+                    "Managed project timelines and coordinated team priorities.",
+                    "Led meetings with stakeholders and tracked action items.",
+                    "Helped deliver projects on time and within scope.",
+                    "Prepared weekly Jira status summaries for engineering, product, and operations leaders.",
+                ],
+            },
+            {
+                "company": "Clearpath Logistics",
+                "role": "Operations Coordinator",
+                "dates": "2018 - 2022",
+                "bullets": [
+                    "Tracked vendor dependencies and updated rollout schedules.",
+                    "Coordinated implementation notes across warehouse and IT teams.",
+                    "Created issue logs for launch risks, owners, and resolution dates.",
+                ],
+            },
+        ],
+    },
+    "customer_success": {
+        "contact": ["Raleigh, NC", "sam.rivera@example.com", "linkedin.com/in/sam-rivera"],
+        "summary": "Customer success manager with 6 years supporting B2B accounts, QBRs, renewal conversations, onboarding follow-up, and customer health reporting.",
+        "skills": ["Gainsight", "QBRs", "Renewal risk", "NPS", "ARR retention", "Onboarding", "Expansion handoff"],
+        "education": "B.A. Communications, North Carolina State University",
+        "experience": [
+            {
+                "company": "HelioDesk",
+                "role": "Customer Success Manager",
+                "dates": "2021 - Present",
+                "bullets": [
+                    "Helped customers with product questions and account needs.",
+                    "Built relationships with customers to improve satisfaction.",
+                    "Partnered with sales on renewals and expansion opportunities.",
+                    "Maintained Gainsight health notes and QBR follow-up tasks for strategic accounts.",
+                ],
+            },
+            {
+                "company": "BlueRiver Support",
+                "role": "Implementation Specialist",
+                "dates": "2018 - 2021",
+                "bullets": [
+                    "Guided new customers through onboarding milestones and training calls.",
+                    "Documented common product questions for customer education materials.",
+                    "Escalated account risks to support, product, and success leadership.",
+                ],
+            },
+        ],
+    },
+    "healthcare_rn": {
+        "contact": ["Columbus, OH", "taylor.brooks@example.com", "linkedin.com/in/taylor-brooks"],
+        "summary": "Registered nurse with 5 years in acute-care environments, Epic documentation, patient education, discharge planning, and interdisciplinary care coordination.",
+        "skills": ["Epic", "Discharge planning", "Patient education", "Care coordination", "HCAHPS", "Medication reconciliation", "Family communication"],
+        "education": "B.S.N., Ohio State University; RN License, Ohio",
+        "experience": [
+            {
+                "company": "Lakeside Medical Center",
+                "role": "Registered Nurse",
+                "dates": "2021 - Present",
+                "bullets": [
+                    "Provided patient care and supported daily clinical operations.",
+                    "Communicated with families and members of the care team.",
+                    "Assisted with discharge paperwork and patient instructions.",
+                    "Documented care plans, medication changes, and patient education in Epic.",
+                ],
+            },
+            {
+                "company": "Riverbend Health",
+                "role": "Clinical Nurse",
+                "dates": "2019 - 2021",
+                "bullets": [
+                    "Supported care transitions for post-acute patient follow-up.",
+                    "Coordinated provider updates during shift handoffs.",
+                    "Reviewed discharge checklists with patients and family caregivers.",
+                ],
+            },
+        ],
+    },
+}
+
+
+def build_professional_resume_document(case: dict) -> dict:
+    details = CASE_RESUME_DETAILS.get(case["id"], {})
+    experience = details.get("experience") or [
+        {
+            "company": "Fictional Company",
+            "role": case["resumeTitle"].replace(" Resume", ""),
+            "dates": "2022 - Present",
+            "bullets": case["weakBullets"],
+        }
+    ]
+    return {
+        "name": case["resumeName"],
+        "headline": case["resumeTitle"].replace(" Resume", ""),
+        "contact": details.get("contact", ["Remote", "candidate@example.com", "linkedin.com/in/candidate"]),
+        "summary": details.get(
+            "summary",
+            f"Professional with experience aligned to {case['jobTitle']}, including role-specific tools, collaboration, and measurable delivery.",
+        ),
+        "experience": experience,
+        "skills": details.get("skills", case["jobKeywords"]),
+        "education": details.get("education", "B.A. Business Administration, State University"),
+    }
+
+
+def build_realistic_job_description(case: dict) -> dict:
+    keyword_a, keyword_b, keyword_c = case["jobKeywords"][:3]
+    return {
+        "title": case["jobTitle"],
+        "company": "TargetCo",
+        "summary": f"TargetCo is hiring a {case['jobTitle']} who can connect practical execution with measurable business outcomes.",
+        "responsibilities": [
+            f"Use {keyword_a} and {keyword_b} to improve team execution and reporting.",
+            f"Translate work into measurable outcomes tied to {keyword_c}.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders.",
+        ],
+        "requirements": case["jobKeywords"][:5],
+        "searchQueries": case["jobKeywords"][:4],
+    }
+
 
 def safe_slug(value: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
@@ -424,7 +756,7 @@ def ensure_dirs() -> None:
 
 
 def load_openai_client():
-    load_dotenv(ROOT / "marketing_agent" / ".env")
+    load_dotenv(ROOT / "marketing_agent" / ".env", override=True)
     key = os.getenv("OPENAI_API_KEY", "")
     if not key or key == "sk-proj-your_openai_api_key_here" or OpenAI is None:
         return None
@@ -432,7 +764,7 @@ def load_openai_client():
 
 
 def load_elevenlabs_config() -> dict:
-    load_dotenv(ROOT / "marketing_agent" / ".env")
+    load_dotenv(ROOT / "marketing_agent" / ".env", override=True)
     key = os.getenv("ELEVENLABS_API_KEY", "")
     if key == "your_elevenlabs_api_key_here":
         key = ""
@@ -444,7 +776,7 @@ def load_elevenlabs_config() -> dict:
 
 
 def load_openai_tts_config() -> dict:
-    load_dotenv(ROOT / "marketing_agent" / ".env")
+    load_dotenv(ROOT / "marketing_agent" / ".env", override=True)
     return {
         "apiKey": os.getenv("OPENAI_API_KEY", ""),
         "model": os.getenv("OPENAI_TTS_MODEL", "gpt-4o-mini-tts"),
@@ -462,6 +794,10 @@ def has_elevenlabs_config() -> bool:
 
 def has_any_tts_config() -> bool:
     return bool(load_elevenlabs_config()["apiKey"] or load_openai_tts_config()["apiKey"])
+
+
+def requires_elevenlabs_audio() -> bool:
+    return os.getenv("REQUIRE_ELEVENLABS", "false").lower() == "true"
 
 
 def elevenlabs_error_text(error: Exception) -> str:
@@ -585,9 +921,9 @@ def check_elevenlabs_health(probe_tts: bool = False) -> dict:
                     "text": "Signal audio probe.",
                     "model_id": config["modelId"],
                     "voice_settings": {
-                        "stability": 0.48,
-                        "similarity_boost": 0.82,
-                        "style": 0.28,
+                        "stability": 0.56,
+                        "similarity_boost": 0.86,
+                        "style": 0.18,
                         "use_speaker_boost": True,
                     },
                 },
@@ -686,10 +1022,11 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
     payload = {
         "text": text,
         "model_id": config["modelId"],
+        "output_format": "mp3_44100_128",
         "voice_settings": {
-            "stability": 0.48,
-            "similarity_boost": 0.82,
-            "style": 0.28,
+            "stability": 0.56,
+            "similarity_boost": 0.86,
+            "style": 0.18,
             "use_speaker_boost": True,
         },
     }
@@ -793,9 +1130,17 @@ def generate_voiceover(text: str, dest_name: str) -> dict:
                 if should_skip_elevenlabs_plain_retry(error):
                     ELEVENLABS_DISABLED_REASON = detail
                 print(f"[!] ElevenLabs voiceover unavailable, falling back when possible: {detail}")
+                if requires_elevenlabs_audio():
+                    raise
             except Exception as error:
                 detail = elevenlabs_error_text(error)
                 print(f"[!] ElevenLabs voiceover unavailable, falling back when possible: {detail}")
+                if requires_elevenlabs_audio():
+                    raise
+    elif requires_elevenlabs_audio():
+        raise RuntimeError("REQUIRE_ELEVENLABS=true but ELEVENLABS_API_KEY is not configured.")
+    if requires_elevenlabs_audio():
+        raise RuntimeError("ElevenLabs narration is required; OpenAI TTS fallback is disabled.")
     if load_openai_tts_config()["apiKey"]:
         return generate_openai_voiceover(text, dest_name)
     return {"src": None, "provider": "none", "withTimestamps": False, "captions": []}
@@ -838,9 +1183,10 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
         alignment_path = REMOTION_AUDIO_DIR / Path(alignment_ref).name
         if alignment_path.exists():
             alignment = read_json(alignment_path, {})
+            cached_provider = str(alignment.get("provider") or ("elevenlabs" if alignment.get("withTimestamps") else provider))
             voice_result = {
                 "src": voice_ref,
-                "provider": provider,
+                "provider": cached_provider,
                 "withTimestamps": bool(alignment.get("withTimestamps")),
                 "captions": alignment.get("captions", []),
                 "alignmentRef": alignment_ref,
@@ -849,11 +1195,18 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
     if public_asset_exists(voice_ref):
         crime_scene_props["voiceoverSrc"] = voice_ref
         crime_scene_props["voiceoverVolume"] = 0.94
+        provider = str(voice_result.get("provider") or provider)
         if voice_result.get("captions"):
             crime_scene_props["captions"] = voice_result["captions"]
+            last_end_ms = max(
+                (float(caption.get("endMs") or 0) for caption in voice_result["captions"] if isinstance(caption, dict)),
+                default=0,
+            )
+            if last_end_ms > 0:
+                crime_scene_props["durationSeconds"] = round(min(52, max(29, last_end_ms / 1000 + 3.2)), 3)
             crime_scene_props["captionReadiness"] = {
                 "wordLevel": True,
-                "provider": voice_result.get("provider", provider),
+                "provider": provider,
                 "alignmentRef": voice_result.get("alignmentRef"),
             }
         else:
@@ -898,8 +1251,23 @@ def choose_seed(topic: str | None) -> dict:
     return TREND_SEEDS[0]
 
 
+def text_from_topic(value: object, fallback: str = "Daily resume teardown") -> str:
+    if isinstance(value, dict):
+        return str(value.get("topic") or value.get("hook") or fallback)
+    if isinstance(value, list):
+        parts = []
+        for item in value:
+            if isinstance(item, dict):
+                parts.append(str(item.get("text") or item.get("content") or item.get("script") or item.get("title") or ""))
+            else:
+                parts.append(str(item))
+        joined = " ".join(part.strip() for part in parts if part and part.strip())
+        return joined or fallback
+    return str(value or fallback)
+
+
 def build_fallback_packet(seed: dict, publish_date: str) -> dict:
-    topic = seed["topic"]
+    topic = text_from_topic(seed.get("topic"))
     hook = seed["hook"]
     keywords = seed["keywords"]
     episode_title = f"{hook} | Resume Teardown"
@@ -1018,42 +1386,59 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
             ),
             "chapters": [
                 "0:00 Cold open",
-                "0:30 The resume problem",
-                "1:45 The job description translation",
-                "3:30 Live teardown",
-                "6:30 Bullet rewrite",
-                "8:00 Signal score and takeaway",
-                "9:00 CTA",
+                "0:20 The open loop",
+                "0:55 Translate the job description",
+                "1:40 Recruiter search test",
+                "2:25 Resume crime scene",
+                "3:15 Why it gets missed",
+                "4:05 Live bullet fix",
+                "5:00 Score reveal",
+                "5:35 Trust check and CTA",
             ],
             "scriptSections": [
                 {
                     "label": "Cold open",
-                    "script": f"{hook} Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on.",
+                    "script": f"{hook} This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
                     "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen.",
                 },
                 {
-                    "label": "The real problem",
-                    "script": "Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit.",
+                    "label": "Open loop",
+                    "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+                    "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff.",
+                },
+                {
+                    "label": "Translate the job description",
+                    "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
                     "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels.",
                 },
                 {
-                    "label": "Translate the job",
-                    "script": "Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
-                    "visual": "Keyword extraction board.",
+                    "label": "Recruiter search test",
+                    "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+                    "visual": "Search console typing the first three job-description terms and showing weak matches.",
                 },
                 {
-                    "label": "Teardown",
-                    "script": "Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes.",
+                    "label": "Resume crime scene",
+                    "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
                     "visual": "Red/yellow markups over weak bullets.",
                 },
                 {
-                    "label": "Fix one bullet",
-                    "script": "The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result.",
+                    "label": "Why it gets missed",
+                    "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+                    "visual": "Zoom into the weak bullet and place missing proof labels beside it.",
+                },
+                {
+                    "label": "Live bullet fix",
+                    "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. Same person, clearer evidence.",
                     "visual": "Before/after bullet rewrite.",
                 },
                 {
-                    "label": "Product bridge",
-                    "script": "Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+                    "label": "Score reveal",
+                    "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+                    "visual": "Score meter jumps from low match to high match with before/after resume panels.",
+                },
+                {
+                    "label": "Trust and CTA",
+                    "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
                     "visual": "Free Signal score page, trust badges, and bundle CTA.",
                 },
             ],
@@ -1114,40 +1499,60 @@ def select_teardown_case(index: int, short: dict | None = None, props: dict | No
     return TEARDOWN_CASES[(index - 1) % len(TEARDOWN_CASES)]
 
 
-def build_case_voiceover(case: dict) -> str:
+def case_template_context(case: dict) -> dict:
     keywords = case["jobKeywords"]
-    humor_line = CASE_HUMOR_LINES.get(case["id"], "Right now the bullet is professional yap: polite, busy, and allergic to numbers.")
     spoken_rewrite = CASE_SPOKEN_REWRITES.get(case["id"], case["afterBullet"])
-    return (
-        f"{case['hook']} Target: {case['jobTitle']}. "
-        f"JD asks for {keywords[0]}, {keywords[1]}, {keywords[2]}. "
-        f"{humor_line} Resume says: {case['beforeBullet']} "
-        f"Real, but buried. Better: {spoken_rewrite}. "
-        f"Same person, clearer proof. {case['beforeScore']} to {case['afterScore']}. "
-        "Check your free Signal score before you apply."
-    )
+    return {
+        "resumeTitle": case["resumeTitle"].replace(" Resume", ""),
+        "role": case["jobTitle"],
+        "kw1": keywords[0],
+        "kw2": keywords[1],
+        "kw3": keywords[2],
+        "beforeBullet": case["beforeBullet"].rstrip(".") + ".",
+        "afterBullet": case["afterBullet"].rstrip(".") + ".",
+        "spokenRewrite": spoken_rewrite,
+        "beforeScore": case["beforeScore"],
+        "afterScore": case["afterScore"],
+        "humorLine": CASE_HUMOR_LINES.get(case["id"], "The bullet sounds busy and allergic to numbers."),
+    }
 
 
-def build_case_storyboard(case: dict) -> list[str]:
-    return [
-        f"Open on the weak {case['resumeTitle']} with the score at {case['beforeScore']}/100.",
-        f"Show the target role: {case['jobTitle']}.",
-        f"Highlight missing terms: {', '.join(case['jobKeywords'][:3])}.",
-        f"Circle the weak bullet: {case['beforeBullet']}",
-        "Signal points at the missing proof instead of taking over the scene.",
-        f"Reveal the rewrite: {case['afterBullet']}",
-        f"Score jumps to {case['afterScore']}/100.",
-        "End on the free Signal score CTA with UTM-ready posting metadata.",
-    ]
+def playbook_for_short(index: int) -> dict:
+    return CREATOR_FORMAT_PLAYBOOKS[(index - 1) % len(CREATOR_FORMAT_PLAYBOOKS)]
+
+
+def render_case_template(template: str, case: dict) -> str:
+    return template.format(**case_template_context(case))
+
+
+def build_case_voiceover(case: dict, playbook: dict) -> str:
+    return render_case_template(playbook["voiceover"], case)
+
+
+def build_case_storyboard(case: dict, playbook: dict) -> list[str]:
+    context_line = f"Case: {case['resumeTitle']} against {case['jobTitle']}."
+    rendered = [render_case_template(step, case) for step in playbook["storyboard"]]
+    return [context_line, *rendered]
 
 
 def apply_teardown_case(short: dict, title: str, hook: str, script: str, storyboard: list, props: dict, index: int) -> tuple[str, str, str, list, dict]:
     case = select_teardown_case(index, short, props)
-    case_voiceover = build_case_voiceover(case)
-    case_storyboard = build_case_storyboard(case)
+    playbook = playbook_for_short(index)
+    case_voiceover = build_case_voiceover(case, playbook)
+    case_storyboard = build_case_storyboard(case, playbook)
+    case_title = render_case_template(playbook["title"], case)
+    case_hook = render_case_template(playbook["hook"], case)
+    case_subhook = render_case_template(playbook["subhook"], case)
     props.update({
         "teardownCaseId": case["id"],
-        "seriesOverride": CASE_SERIES_ROTATION[(index - 1) % len(CASE_SERIES_ROTATION)],
+        "playbookId": playbook["id"],
+        "seriesOverride": playbook["series"],
+        "creativeFormat": playbook["creativeFormat"],
+        "visualStyle": playbook["visualStyle"],
+        "formatArchetype": playbook["formatArchetype"],
+        "pace": playbook["pace"],
+        "subhook": case_subhook,
+        "signalLines": playbook["signalLines"],
         "resumeName": case["resumeName"],
         "resumeTitle": case["resumeTitle"],
         "resumeMeta": case["resumeMeta"],
@@ -1160,20 +1565,24 @@ def apply_teardown_case(short: dict, title: str, hook: str, script: str, storybo
         "afterScore": case["afterScore"],
         "missing": case["jobKeywords"],
         "markedLabel": case["markedLabel"],
-        "problemPunchline": case["problemPunchline"],
+        "problemPunchline": playbook["problemPunchline"],
+        "teardownPunchline": playbook["teardownPunchline"],
+        "fixPunchline": playbook["fixPunchline"],
         "teardownIssues": case["teardownIssues"],
+        "resumeDocument": build_professional_resume_document(case),
+        "jobDescription": build_realistic_job_description(case),
         "voiceover_text": case_voiceover,
     })
-    return case["shortTitle"], case["hook"], case_voiceover, case_storyboard, props
+    return case_title, case_hook, case_voiceover, case_storyboard, props
 
 
 def normalize_short(short: dict, fallback: dict, index: int) -> dict:
     if not isinstance(short, dict):
         short = {}
 
-    title = short.get("title") or fallback.get("title") or f"Signal short {index}"
-    hook = short.get("hook") or short.get("content") or fallback.get("hook") or "Your resume may be invisible."
-    script = short.get("script") or short.get("content") or fallback.get("script") or hook
+    title = text_from_topic(short.get("title") or fallback.get("title"), f"Signal short {index}")
+    hook = text_from_topic(short.get("hook") or short.get("content") or fallback.get("hook"), "Your resume may be invisible.")
+    script = text_from_topic(short.get("script") or short.get("content") or fallback.get("script"), hook)
     entertainment_text = f"{title} {hook} {script}".lower()
     used_fallback = False
     proof_markers = ["hubspot", "cac", "linkedin ads", "pipeline", "lifecycle", "34/100", "92/100", "keyword", "score"]
@@ -1235,7 +1644,7 @@ def normalize_packet(packet: dict, seed: dict, publish_date: str) -> dict:
         return fallback
 
     packet["publishDate"] = publish_date
-    packet["topic"] = str(packet.get("topic") or seed.get("topic") or fallback["topic"])
+    packet["topic"] = text_from_topic(packet.get("topic") or seed.get("topic") or fallback["topic"], fallback["topic"])
     packet["series"] = str(packet.get("series") or seed.get("series") or fallback["series"])
     packet["thesis"] = str(packet.get("thesis") or seed.get("thesis") or fallback["thesis"])
 
@@ -1455,6 +1864,20 @@ def write_markdown_packet(packet: dict, packet_dir: Path) -> None:
     ])
     (packet_dir / "youtube_episode.md").write_text("\n".join(lines), encoding="utf-8")
 
+    voiceover_lines = [
+        f"# Long-form Voiceover: {youtube['title']}",
+        "",
+        "This file is the narration source for the Remotion timing pass. Keep it script-only.",
+        "",
+    ]
+    for section in youtube.get("scriptSections", []):
+        label = str(section.get("label") or "Section").strip() or "Section"
+        script = str(section.get("script") or "").strip()
+        if not script:
+            continue
+        voiceover_lines.extend([f"## {label}", "", script, ""])
+    (packet_dir / "longform_voiceover.md").write_text("\n".join(voiceover_lines), encoding="utf-8")
+
     short_lines = [f"# Shorts Plan: {packet['topic']}", ""]
     for idx, short in enumerate(packet.get("shorts", []), start=1):
         short_lines.extend([
@@ -1629,6 +2052,19 @@ def write_episode_thumbnail_and_manifest(packet: dict, packet_dir: Path, prepare
                     voice_result = generate_voiceover(narration[:2800], voice_name)
                     provider = voice_result.get("provider", "unknown")
                     voice_ref = voice_result.get("src") or voice_ref
+                else:
+                    alignment_ref = f"audio/{voice_name.rsplit('.', 1)[0]}.alignment.json"
+                    alignment_path = REMOTION_AUDIO_DIR / Path(alignment_ref).name
+                    if alignment_path.exists():
+                        alignment = read_json(alignment_path, {})
+                        provider = str(alignment.get("provider") or ("elevenlabs" if alignment.get("withTimestamps") else provider))
+                        voice_result = {
+                            "src": voice_ref,
+                            "provider": provider,
+                            "captions": alignment.get("captions", []),
+                            "alignmentRef": alignment_ref,
+                            "withTimestamps": bool(alignment.get("withTimestamps")),
+                        }
                 if public_asset_exists(voice_ref):
                     segment = {
                         "src": voice_ref,
@@ -1696,6 +2132,7 @@ def style_for_short(index: int, short: dict) -> dict:
         return {
             "creativeFormat": "resumeCrimeScene",
             "visualStyle": "highlighter",
+            "formatArchetype": "deskMarkup",
             "pace": "fast",
             "seriesLabel": "Resume crime scene",
             "signalLines": {
@@ -1707,18 +2144,20 @@ def style_for_short(index: int, short: dict) -> dict:
             },
         }
     if "ai resume roast" in lower_text or "weather" in lower_text or "synergy" in lower_text:
-        return SHORT_STYLE_ROTATION[0]
+        return {**SHORT_STYLE_ROTATION[0], "formatArchetype": "redTeamAudit"}
     if "signal mascot" in lower_text or "signal found" in lower_text or "rescue" in lower_text:
-        return SHORT_STYLE_ROTATION[4]
+        return {**SHORT_STYLE_ROTATION[4], "formatArchetype": "mascotAssist"}
     if "myth" in lower_text or "wizard" in lower_text or "mind" in lower_text:
-        return SHORT_STYLE_ROTATION[2]
+        return {**SHORT_STYLE_ROTATION[2], "formatArchetype": "recruiterSearch"}
     if "bullet" in lower_text or "mustache" in lower_text or "responsible for" in lower_text:
-        return SHORT_STYLE_ROTATION[1]
+        return {**SHORT_STYLE_ROTATION[1], "formatArchetype": "deskMarkup"}
     if "search" in lower_text or "job description" in lower_text or "same resume" in lower_text:
-        return SHORT_STYLE_ROTATION[3]
+        return {**SHORT_STYLE_ROTATION[3], "formatArchetype": "splitTranslation"}
     if "signal" in lower_text or "rescue" in lower_text:
-        return SHORT_STYLE_ROTATION[4]
-    return SHORT_STYLE_ROTATION[(index - 1) % len(SHORT_STYLE_ROTATION)]
+        return {**SHORT_STYLE_ROTATION[4], "formatArchetype": "mascotAssist"}
+    fallback = SHORT_STYLE_ROTATION[(index - 1) % len(SHORT_STYLE_ROTATION)]
+    fallback_archetypes = ["redTeamAudit", "deskMarkup", "recruiterSearch", "splitTranslation", "mascotAssist"]
+    return {**fallback, "formatArchetype": fallback_archetypes[(index - 1) % len(fallback_archetypes)]}
 
 
 def normalize_signal_cta(value: object) -> str:
@@ -1758,12 +2197,13 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
         style = style_for_short(idx, short)
         crime_scene_props = {
             "hook": short.get("hook", "This resume looks fine.")[:72],
-            "subhook": "The problem is vague proof, not fake experience.",
-            "creativeFormat": style["creativeFormat"],
-            "visualStyle": style["visualStyle"],
-            "pace": style["pace"],
-            "seriesLabel": style["seriesLabel"],
-            "signalLines": style["signalLines"],
+            "subhook": str(props.get("subhook") or "The problem is vague proof, not fake experience."),
+            "creativeFormat": str(props.get("creativeFormat") or style["creativeFormat"]),
+            "visualStyle": str(props.get("visualStyle") or style["visualStyle"]),
+            "formatArchetype": str(props.get("formatArchetype") or style["formatArchetype"]),
+            "pace": str(props.get("pace") or style["pace"]),
+            "seriesLabel": str(props.get("seriesOverride") or style["seriesLabel"]),
+            "signalLines": props.get("signalLines") or style["signalLines"],
             "resumeName": props.get("resumeName", "Avery Johnson"),
             "resumeTitle": props.get("resumeTitle", "Role-Specific Resume"),
             "resumeMeta": props.get("resumeMeta", []),
@@ -1776,10 +2216,14 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
             ],
             "beforeBullet": props.get("beforeBullet", "Helped with projects related to the target role."),
             "afterBullet": props.get("afterBullet", "Translated the same real work into role-specific tools, scope, and measurable proof."),
+            "resumeDocument": props.get("resumeDocument"),
+            "jobDescription": props.get("jobDescription"),
             "beforeScore": int(props.get("beforeScore", 38)),
             "afterScore": int(props.get("afterScore", 88)),
             "markedLabel": props.get("markedLabel", "Too vague"),
             "problemPunchline": props.get("problemPunchline", "Recruiters search for proof, not vibes."),
+            "teardownPunchline": props.get("teardownPunchline", "This is the part costing you interviews."),
+            "fixPunchline": props.get("fixPunchline", "No fake experience. Just clearer evidence."),
             "teardownIssues": props.get("teardownIssues", ["No role language", "No tools", "No measurable proof"]),
             "cta": normalize_signal_cta(props.get("cta")),
             "musicSrc": "audio/signal-quiet-orbit.wav",
@@ -1792,18 +2236,21 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
             crime_scene_props["subhook"] = "Polished. Beige. Missing the role language."
             crime_scene_props["creativeFormat"] = "aiResumeRoast"
             crime_scene_props["visualStyle"] = "comic"
+            crime_scene_props["formatArchetype"] = "redTeamAudit"
             crime_scene_props["pace"] = "fast"
         elif "mustache" in lower_text:
             crime_scene_props["hook"] = "This bullet is wearing a fake mustache."
             crime_scene_props["subhook"] = "It looks busy, but says almost nothing."
             crime_scene_props["creativeFormat"] = "oneBulletFix"
             crime_scene_props["visualStyle"] = "highlighter"
+            crime_scene_props["formatArchetype"] = "deskMarkup"
             crime_scene_props["pace"] = "fast"
         elif "wizard" in lower_text or "mind" in lower_text:
             crime_scene_props["hook"] = "The ATS is not a wizard."
             crime_scene_props["subhook"] = "It searches what you actually wrote."
             crime_scene_props["creativeFormat"] = "atsMythLab"
             crime_scene_props["visualStyle"] = "terminal"
+            crime_scene_props["formatArchetype"] = "recruiterSearch"
             crime_scene_props["pace"] = "balanced"
         voice_ref = props.get("voiceoverSrc", "audio/signal-studio-voiceover.mp3")
         sfx_ref = props.get("sfxSrc", "audio/signal-studio-sfx.mp3")
@@ -1994,7 +2441,10 @@ def build_daily_caption(short: dict) -> str:
 
     title = sentence(str(short.get("title", "Resume teardown")))
     hook = sentence(str(short.get("hook", "")))
-    base = f"{title} {hook} Check your free Signal score before you apply.".strip()
+    title_norm = re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
+    hook_norm = re.sub(r"[^a-z0-9]+", " ", hook.lower()).strip()
+    hook_part = "" if hook_norm and (hook_norm == title_norm or hook_norm in title_norm) else hook
+    base = re.sub(r"\s+", " ", f"{title} {hook_part} Check your free Signal score before you apply.").strip()
     tags = "#jobsearch #resumehelp #careertok #resumetips #airesume"
     caption = f"{base} {tags}"
     if len(caption) > 280:
@@ -2014,6 +2464,11 @@ def write_render_commands(packet_dir: Path, written_shorts: list[dict], channel_
     if episode.get("props") and episode.get("output"):
         props = str(episode["props"]).replace("\\", "/").replace("marketing/remotion/", "")
         output = str(episode["output"]).replace("\\", "/").replace("marketing/remotion/", "")
+        voiceover_script = str((packet_dir / "longform_voiceover.md").relative_to(ROOT)).replace("\\", "/")
+        manifest = str((packet_dir / "channel_manifest.json").relative_to(ROOT)).replace("\\", "/")
+        commands.append(
+            f"node scripts/generate_episode_voiceover.mjs --props {props} --script {voiceover_script} --manifest {manifest} --require-elevenlabs"
+        )
         commands.append(f"npx remotion render TeardownEpisode {output} --props={props}")
     if thumbnail.get("props") and thumbnail.get("output"):
         props = str(thumbnail["props"]).replace("\\", "/").replace("marketing/remotion/", "")
@@ -2060,11 +2515,14 @@ def main() -> None:
     parser.add_argument("--json", action="store_true", help="Print machine-readable output.")
     parser.add_argument("--prepare-audio", action="store_true", help="Generate ElevenLabs voiceover files when credentials are configured.")
     parser.add_argument("--force-audio", action="store_true", help="Regenerate daily voiceover files even if cached files exist.")
+    parser.add_argument("--require-elevenlabs", action="store_true", help="Fail instead of falling back when ElevenLabs timestamped narration is unavailable.")
     parser.add_argument("--check-elevenlabs", action="store_true", help="Validate ElevenLabs key, voice access, and optional TTS probe.")
     parser.add_argument("--probe-elevenlabs-tts", action="store_true", help="With --check-elevenlabs, run a tiny timestamped TTS request.")
     args = parser.parse_args()
 
     ensure_dirs()
+    if args.require_elevenlabs:
+        os.environ["REQUIRE_ELEVENLABS"] = "true"
     if args.check_elevenlabs:
         health = check_elevenlabs_health(args.probe_elevenlabs_tts)
         if args.json:

@@ -1,0 +1,34 @@
+{
+  "overallScore": 94,
+  "passed": true,
+  "verdict": "post_grade_script_packet",
+  "notes": [
+    "Needs more safe humor that punches at vague resume language or job-search friction."
+  ],
+  "blockers": [],
+  "shorts": [
+    {
+      "title": "This marketing resume hid the actual revenue proof",
+      "score": 88,
+      "passed": true,
+      "notes": [
+        "Add one job-search-safe joke or visual gag."
+      ],
+      "blockers": []
+    },
+    {
+      "title": "This sales resume forgot to say sales",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "This developer resume hides the stack",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    }
+  ]
+}

@@ -30,7 +30,7 @@ const loadEnvFile = (path) => {
   for (const line of readFileSync(path, 'utf8').split(/\r?\n/)) {
     const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/i);
     if (!match) continue;
-    process.env[match[1]] ||= match[2].replace(/^["']|["']$/g, '');
+    process.env[match[1]] = match[2].replace(/^["']|["']$/g, '');
   }
 };
 
@@ -47,6 +47,7 @@ const openAiModel = process.env.OPENAI_TTS_MODEL || 'gpt-4o-mini-tts';
 const openAiInstructions =
   process.env.OPENAI_TTS_INSTRUCTIONS ||
   'Sound like a sharp, warm recruiter doing a YouTube resume teardown. Keep it energetic, dryly funny, clear, and trustworthy. No fake hype.';
+const requireElevenLabs = args.has('--require-elevenlabs') || process.env.REQUIRE_ELEVENLABS === 'true';
 
 if (provider === 'elevenlabs' && (!elevenLabsApiKey || elevenLabsApiKey === 'your_elevenlabs_api_key_here')) {
   throw new Error('ELEVENLABS_API_KEY is not configured in the environment.');
@@ -67,6 +68,70 @@ const safeSlug = (value) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .slice(0, 56) || 'episode';
+
+const normalizeAlignmentToCaptions = (alignment = {}) => {
+  const characters = Array.isArray(alignment.characters) ? alignment.characters : [];
+  const starts = Array.isArray(alignment.character_start_times_seconds) ? alignment.character_start_times_seconds : [];
+  const ends = Array.isArray(alignment.character_end_times_seconds) ? alignment.character_end_times_seconds : [];
+  const captions = [];
+  let word = '';
+  let wordStart = null;
+  let wordEnd = null;
+
+  characters.forEach((character, index) => {
+    const char = String(character);
+    const start = Number.isFinite(Number(starts[index])) ? Number(starts[index]) : null;
+    const end = Number.isFinite(Number(ends[index])) ? Number(ends[index]) : start;
+    if (/\s/.test(char)) {
+      if (word) {
+        const startMs = Math.round((wordStart || 0) * 1000);
+        captions.push({
+          text: word,
+          startMs,
+          endMs: Math.round((wordEnd || wordStart || 0) * 1000),
+          timestampMs: startMs,
+          confidence: null,
+        });
+      }
+      word = '';
+      wordStart = null;
+      wordEnd = null;
+      return;
+    }
+    if (wordStart === null) wordStart = start || 0;
+    word += char;
+    wordEnd = end || wordStart;
+  });
+
+  if (word) {
+    const startMs = Math.round((wordStart || 0) * 1000);
+    captions.push({
+      text: word,
+      startMs,
+      endMs: Math.round((wordEnd || wordStart || 0) * 1000),
+      timestampMs: startMs,
+      confidence: null,
+    });
+  }
+  return captions;
+};
+
+const writeAlignmentMetadata = (destPath, payload) => {
+  const alignment = payload.normalized_alignment || payload.alignment || {};
+  const captions = normalizeAlignmentToCaptions(alignment);
+  const alignmentPath = destPath.replace(/\.mp3$/i, '.alignment.json');
+  writeJson(alignmentPath, {
+    provider: 'elevenlabs',
+    withTimestamps: true,
+    captions,
+    alignment,
+  });
+  return {
+    alignmentRef: `audio/${basename(alignmentPath)}`,
+    captions,
+    withTimestamps: true,
+  };
+};
 
 const parseSections = (markdown) => {
   const lines = markdown.split(/\r?\n/);
@@ -89,7 +154,45 @@ const parseSections = (markdown) => {
     .map((section) => ({ label: section.label, text: section.text.trim().replace(/\n{2,}/g, '\n\n') }));
 };
 
-const synthesizeElevenLabs = async (text, destPath) => {
+const synthesizeElevenLabs = async (text, destPath, context = {}) => {
+  const body = {
+    text,
+    model_id: modelId,
+    voice_settings: {
+      stability: 0.56,
+      similarity_boost: 0.86,
+      style: 0.18,
+      use_speaker_boost: true,
+    },
+    previous_text: context.previousText || undefined,
+    next_text: context.nextText || undefined,
+    output_format: 'mp3_44100_128',
+  };
+  const timestampResponse = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}/with-timestamps`, {
+    method: 'POST',
+    headers: {
+      'xi-api-key': elevenLabsApiKey,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  if (timestampResponse.ok) {
+    const payload = await timestampResponse.json();
+    if (!payload.audio_base64) {
+      throw new Error(`ElevenLabs timestamp response omitted audio_base64 for ${basename(destPath)}`);
+    }
+    const bytes = Buffer.from(payload.audio_base64, 'base64');
+    if (bytes.length < 1024) throw new Error(`Generated audio is too small for ${basename(destPath)}`);
+    writeFileSync(destPath, bytes);
+    return writeAlignmentMetadata(destPath, payload);
+  }
+
+  const timestampError = await timestampResponse.text();
+  if (requireElevenLabs) {
+    throw new Error(`ElevenLabs timestamp TTS failed ${timestampResponse.status}: ${timestampError.slice(0, 240)}`);
+  }
+
   const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
     method: 'POST',
     headers: {
@@ -97,24 +200,16 @@ const synthesizeElevenLabs = async (text, destPath) => {
       'Content-Type': 'application/json',
       Accept: 'audio/mpeg',
     },
-    body: JSON.stringify({
-      text,
-      model_id: modelId,
-      voice_settings: {
-        stability: 0.5,
-        similarity_boost: 0.84,
-        style: 0.34,
-        use_speaker_boost: true,
-      },
-    }),
+    body: JSON.stringify(body),
   });
   if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`ElevenLabs failed ${response.status}: ${body.slice(0, 240)}`);
+    const plainError = await response.text();
+    throw new Error(`ElevenLabs failed ${response.status}: ${plainError.slice(0, 240)}; timestamp failure: ${timestampError.slice(0, 160)}`);
   }
   const bytes = Buffer.from(await response.arrayBuffer());
   if (bytes.length < 1024) throw new Error(`Generated audio is too small for ${basename(destPath)}`);
   writeFileSync(destPath, bytes);
+  return { alignmentRef: null, captions: [], withTimestamps: false };
 };
 
 const synthesizeOpenAi = async (text, destPath) => {
@@ -141,13 +236,16 @@ const synthesizeOpenAi = async (text, destPath) => {
   writeFileSync(destPath, bytes);
 };
 
-const synthesize = async (text, destPath) => {
+const synthesize = async (text, destPath, context = {}) => {
   if (provider === 'openai') {
+    if (requireElevenLabs) {
+      throw new Error('OpenAI TTS fallback is disabled because --require-elevenlabs was set.');
+    }
     await synthesizeOpenAi(text, destPath);
-    return 'openai';
+    return { provider: 'openai', captions: [], alignmentRef: null, withTimestamps: false };
   }
-  await synthesizeElevenLabs(text, destPath);
-  return 'elevenlabs';
+  const alignment = await synthesizeElevenLabs(text, destPath, context);
+  return { provider: 'elevenlabs', ...alignment };
 };
 
 const getAudioDuration = async (filePath) => {
@@ -172,7 +270,7 @@ const main = async () => {
   const fps = 30;
   const introFrames = 8 * fps;
   const outroFrames = 18 * fps;
-  const segmentGapFrames = 45;
+  const segmentGapFrames = 18;
   const topicSlug = safeSlug(props.title || manifest.topic || 'daily-teardown-episode');
   const segments = [];
   let cursorFrame = introFrames;
@@ -180,11 +278,27 @@ const main = async () => {
   for (const [index, section] of sections.entries()) {
     const filename = `daily-${topicSlug}-episode-${index + 1}-${safeSlug(section.label)}.mp3`;
     const destPath = join(audioDir, filename);
+    const previousText = sections[index - 1]?.text || '';
+    const nextText = sections[index + 1]?.text || '';
+    let synthesis = { provider, captions: [], alignmentRef: null, withTimestamps: false };
     if (force || !existsSync(destPath)) {
       console.log(`Generating ${filename}`);
-      await synthesize(section.text.slice(0, 2800), destPath);
+      synthesis = await synthesize(section.text.slice(0, 2800), destPath, {
+        previousText: previousText.slice(-700),
+        nextText: nextText.slice(0, 700),
+      });
     } else {
       console.log(`Using cached ${filename}`);
+      const alignmentPath = destPath.replace(/\.mp3$/i, '.alignment.json');
+      if (existsSync(alignmentPath)) {
+        const alignment = readJson(alignmentPath);
+        synthesis = {
+          provider: alignment.provider || provider,
+          captions: Array.isArray(alignment.captions) ? alignment.captions : [],
+          alignmentRef: `audio/${basename(alignmentPath)}`,
+          withTimestamps: Boolean(alignment.withTimestamps),
+        };
+      }
     }
     const durationInSeconds = await getAudioDuration(destPath);
     segments.push({
@@ -193,18 +307,23 @@ const main = async () => {
       fromFrame: cursorFrame,
       volume: 0.94,
       durationInSeconds,
-      provider,
+      provider: synthesis.provider || provider,
+      alignmentRef: synthesis.alignmentRef,
+      captions: synthesis.captions || [],
+      withTimestamps: Boolean(synthesis.withTimestamps),
     });
     cursorFrame += Math.ceil(durationInSeconds * fps) + segmentGapFrames;
   }
 
-  props.voiceoverSegments = segments.map(({ src, fromFrame, volume }) => ({ src, fromFrame, volume }));
+  props.voiceoverSegments = segments.map(({ src, fromFrame, volume, alignmentRef, captions }) => ({ src, fromFrame, volume, alignmentRef, captions }));
   props.durationInFrames = Math.ceil((cursorFrame + outroFrames) / fps) * fps;
   props.audioReadiness = {
     studioVoiceover: true,
     quietMusic: true,
-    provider,
-    reason: `${segments.length} episode voiceover sections ready via ${provider}`,
+    provider: segments[0]?.provider || provider,
+    reason: `${segments.length} episode voiceover sections ready via ${segments[0]?.provider || provider}`,
+    wordLevelCaptions: segments.some((segment) => segment.captions?.length),
+    withTimestamps: segments.every((segment) => segment.withTimestamps),
   };
   writeJson(propsPath, props);
 
@@ -215,6 +334,8 @@ const main = async () => {
     fromFrame: segment.fromFrame,
     durationInSeconds: Number(segment.durationInSeconds.toFixed(3)),
     provider: segment.provider,
+    alignmentRef: segment.alignmentRef,
+    withTimestamps: segment.withTimestamps,
   }));
   manifest.episode.audioReadiness = props.audioReadiness;
   manifest.episode.durationInFrames = props.durationInFrames;

@@ -4,29 +4,29 @@ Reviewed: 2026-07-04
 
 ## Verdict
 
-The short-form pipeline and the current long-form YouTube episode are ready for supervised Codex review-gated posting. The system is not yet ready for fully unattended daily channel production.
+The short-form pipeline is ready for supervised Codex review-gated posting. The current long-form YouTube render is a review cut only; it is not publish-ready because it fails the minimum long-form duration gate. The system is not yet ready for fully unattended daily channel production.
 
-The current `ResumeCrimeScene` shorts are materially stronger than the first mascot/product-demo cuts: the resume is the main character, the humor is more native to job-search audiences, the Signal mascot is present without taking over, the CTA is clearer, and the audio direction is quieter and more premium.
+The current `ResumeCrimeScene` shorts are materially stronger than the first mascot/product-demo cuts: the resume is the main character, the job description is visible, the weak bullet is grounded in a professional resume artifact, the Signal mascot is present without taking over, the CTA is clearer, and the audio direction is quieter and more premium. The latest batch also avoids the prior robotic repetition by rotating three distinct creator formats: Resume Crime Scene roast, Recruiter Search Test, and Job Description Translation.
 
 The new Codex approval layer now wraps the existing daily packet, Remotion render, QC, promotion, and posting queue. Videos move through a durable local SQLite state machine and stop at `AWAITING_CODEX_APPROVAL` until the exact reviewed file is approved in Codex.
 
-The current long-form YouTube lane now has a 5:19 rendered 1920x1080 episode, thumbnail, segmented voiceover, long-form metadata QC, audio QC, and a 100/100 expert viral gate. It still requires human review of the exact MP4 before live posting.
+The current long-form YouTube lane has a rendered 1920x1080 review cut, thumbnail path, segmented ElevenLabs voiceover, audio QC, and Codex approval gating. It still needs expansion to a real long-form structure before it can move to `AWAITING_CODEX_APPROVAL`.
 
 ## What Is Ready
 
 - `ResumeCrimeScene` renders vertical 1080x1920, 30fps shorts.
 - Three daily studio short exports exist in `marketing/remotion/out/`.
-- Studio voiceover assets exist for the daily shorts and long-form episode. ElevenLabs remains preferred, but the current machine-level ElevenLabs key is low-quota and the latest reviewed batch used OpenAI TTS fallback.
+- Studio voiceover assets exist for the daily shorts and long-form episode. The latest reviewed batch uses ElevenLabs `/with-timestamps` for fresh narration and caption alignment.
 - Quiet music assets exist and are used instead of harsh SFX.
 - The posting layer supports TikTok, Instagram, and YouTube through Upload-Post.
 - The posting layer has a review gate for `draft` and `review_required` entries.
 - The posting layer now requires a matching `codexApproval.fileSha256` before `--approved` can publish a review-required entry.
 - `marketing_agent/codex_video_approval.py` renders, promotes, QC's, exports, and tracks videos through Codex approval state.
-- `ResumeCrimeScene` can render word-level captions when fresh ElevenLabs timestamp metadata exists.
+- `ResumeCrimeScene` renders word-level captions when fresh ElevenLabs timestamp metadata exists.
 - The autopost dry run works and reports file hashes before publishing.
 - The Python marketing agent stack compiles.
 - The Remotion TypeScript check passes.
-- The current daily script packet passes the creative quality gate.
+- The current daily script packet passes the creative quality gate at 100/100, with repeated-opening and robotic-phrase checks enabled.
 - The studio short metadata/queue QC gate passes.
 - The audio asset QC gate passes for linked short voiceovers, music, and all 9 long-form episode segments.
 - A source-backed trend intake file exists for the current daily packet.
@@ -38,23 +38,23 @@ The current long-form YouTube lane now has a 5:19 rendered 1920x1080 episode, th
 - Automated visual safe-area QC exists for bright/saturated margin issues. It is not a full semantic visual QA system for overlap, contrast, mascot personality, or whether the video is funny.
 - No automated audio loudness/peak/LUFS check. The current audio gate validates files, codecs, duration, sample rate, bitrate, channels, and mix-volume settings, but does not measure loudness.
 - Word-level caption alignment is available only for new ElevenLabs `/with-timestamps` generations. Existing cached daily voiceovers and OpenAI fallback voiceovers use scene captions.
-- The daily content agent now validates/selects an available ElevenLabs voice instead of assuming the legacy default voice ID. It also disables further ElevenLabs calls for the current run after quota/permission failures.
+- The daily content agent now treats ElevenLabs as required when requested, uses the configured voice ID, and fails instead of silently falling back when `--require-elevenlabs` is set.
 - No automatic platform metrics ingestion from TikTok, Instagram, or YouTube.
 - No live automated trend feed from TikTok Creative Center, YouTube, Google Trends, Reddit, or LinkedIn. Current trend intake is file-based.
 - The script creative gate can overstate readiness because it grades packet text, not rendered video.
-- Long-form YouTube has a verified render/review path for this packet, but still needs subjective human watch-through before any live upload.
+- Long-form YouTube has a verified render/review path for this packet, but the active render is too short for publish approval and needs expansion before any live upload.
 - The queue still contains older ad-style clips that should be reviewed or retired before they dilute the new teardown format.
 
 ## Current Codex Review Assets
 
-The current daily batch has three shorts plus one long-form YouTube episode in `AWAITING_CODEX_APPROVAL`.
+The active daily batch has three shorts in `AWAITING_CODEX_APPROVAL`. The long-form review cut rendered, but it remains in `RENDERED` because publish QA rejected it for duration.
+Older role-specific and episode approval records from the weaker repeated batch have been marked `REVISION_REQUESTED` so they are no longer the active review set.
 
 | Run ID | Title | Mobile review URL | Approval phrase |
 | --- | --- | --- | --- |
-| `50350129efcd445e` | This marketing resume hid the actual revenue proof | `http://192.168.2.10:8765/20260704-50350129efcd445e-this-marketing-resume-hid-the-actual-revenue-proof/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4` | `APPROVE POST 50350129efcd445e` |
-| `d962d2cc75f39aab` | This sales resume forgot to say sales | `http://192.168.2.10:8765/20260704-d962d2cc75f39aab-this-sales-resume-forgot-to-say-sales/daily-this-sales-resume-forgot-to-say-sales.mp4` | `APPROVE POST d962d2cc75f39aab` |
-| `71e14e8e21715d7d` | This developer resume hides the stack | `http://192.168.2.10:8765/20260704-71e14e8e21715d7d-this-developer-resume-hides-the-stack/daily-this-developer-resume-hides-the-stack.mp4` | `APPROVE POST 71e14e8e21715d7d` |
-| `5dcdfea4778fbd65` | This Resume Looks Fine But Stays Invisible | `http://192.168.2.10:8765/20260704-5dcdfea4778fbd65-this-resume-looks-fine-but-stays-invisible-resume-teardown/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4` | `APPROVE POST 5dcdfea4778fbd65` |
+| `c7ae03f367bfb58b` | This resume sentence is quietly expensive | `http://192.168.2.10:8765/20260704-c7ae03f367bfb58b-this-resume-sentence-is-quietly-expensive/daily-this-resume-sentence-is-quietly-expensive.mp4` | `APPROVE POST c7ae03f367bfb58b` |
+| `bf5494c753f4e577` | I searched Salesforce and this resume vanished | `http://192.168.2.10:8765/20260704-bf5494c753f4e577-i-searched-salesforce-and-this-resume-vanished/daily-i-searched-salesforce-and-this-resume-vanished.mp4` | `APPROVE POST bf5494c753f4e577` |
+| `5f93f025efd50915` | The job post gave the answer key | `http://192.168.2.10:8765/20260704-5f93f025efd50915-the-job-post-gave-the-answer-key/daily-the-job-post-gave-the-answer-key.mp4` | `APPROVE POST 5f93f025efd50915` |
 
 This file is local and git-ignored. To review on mobile from the repo root, run:
 
@@ -69,21 +69,28 @@ Then open the URLs printed by `prepare-review`.
 - `marketing/remotion/out/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4`
 - `marketing/remotion/out/daily-this-sales-resume-forgot-to-say-sales.mp4`
 - `marketing/remotion/out/daily-this-developer-resume-hides-the-stack.mp4`
-- `marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4`
-- `marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--thumbnail.png`
+- `marketing/remotion/out/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-episode.mp4`
+- `marketing/remotion/out/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-thumbnail.png`
+- `marketing/remotion/out/daily-this-resume-sentence-is-quietly-expensive.mp4`
+- `marketing/remotion/out/daily-i-searched-salesforce-and-this-resume-vanished.mp4`
+- `marketing/remotion/out/daily-the-job-post-gave-the-answer-key.mp4`
+- `marketing/remotion/out/daily-recruiter-search-tests-with-real-resume-teardowns-episode.mp4` review cut only
 
-These are the assets that should be promoted for review-gated posting, not the earlier first-pass daily short.
+The three `recruiter-search-tests-with-real-resume-teardowns` shorts are the active review assets. Older role-specific assets are retained in the tree for traceability but should not be posted without a fresh review.
 
 ## Current Queue Snapshot
 
 Latest manual pipeline output:
 
-- Three improved role-specific daily shorts and one 5:19 long-form YouTube episode rendered and exported to Codex review.
+- Three improved varied-format daily shorts rendered, passed QA, and exported to Codex review.
+- One 2:07 long-form review cut rendered, but publish QA blocked it for duration; expand before review approval.
+- Older repeated/role-specific review records have been moved to `REVISION_REQUESTED`.
 - Autopost dry run confirms it is blocked until Codex approval and `--approved`.
 - Current post-grade packet: 1.
 - Render-ready and QA-passed shorts in the current daily packet: 3.
-- Render-ready and QA-passed long-form YouTube episodes in the current daily packet: 1.
-- Studio voiceover: available through OpenAI fallback for the latest review asset.
+- Render-ready and QA-passed long-form YouTube episodes in the current daily packet: 0.
+- Rendered long-form review cuts in the current daily packet: 1.
+- Studio voiceover: available through ElevenLabs `/with-timestamps` for the latest review asset.
 - Quiet music: available.
 - Source-backed trend intake: available.
 - Long-form renderer: available.
@@ -92,8 +99,8 @@ Latest manual pipeline output:
 - Studio daily queue: available.
 - Automated render QC: available.
 - Audio asset QC: available.
-- Long-form expert viral gate: passed at 100/100 for the current rendered episode.
-- Missing: valid high-quota ElevenLabs key for full daily voiceover generation, platform metrics feed, audio loudness/peak QC, full transcript/caption alignment for cached/fallback voiceovers, automated live trend API connector.
+- Long-form metadata/audio/thumbnail QC: audio and thumbnail paths exist; publish QC fails duration for the active review cut.
+- Missing: platform metrics feed, audio loudness/peak QC, full transcript/caption alignment for cached/fallback voiceovers, automated live trend API connector, and faster long-form rendering.
 
 ## Current Audio Position
 
@@ -101,9 +108,9 @@ ElevenLabs is the preferred default for voiceover and generated sound because it
 
 Current credential status:
 
-- `py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --json` can read voices and selects `George - Warm, Captivating Storyteller` (`JBFqnCBsd6RMkjVDRZzb`).
-- The current machine-level key has very limited remaining TTS quota, so full daily generation falls back to OpenAI TTS.
-- Chrome control was unavailable from Codex even though Chrome, the Codex Chrome Extension, and the native host diagnostics passed. A new ElevenLabs key still needs to be created/copied manually or after Chrome control is restored.
+- `py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --probe-elevenlabs-tts --json` passes a TTS probe using the configured voice ID.
+- The current key is restricted to Text to Speech. That is acceptable for generation, but voice-list reads can return permission errors, so do not rely on voice discovery with this key.
+- The latest current batch generated fresh ElevenLabs narration and timestamp alignment for all three shorts and the long-form episode.
 
 Recommended env values:
 
@@ -114,7 +121,7 @@ ELEVENLABS_MODEL_ID=eleven_multilingual_v2
 ELEVENLABS_WITH_TIMESTAMPS=true
 ```
 
-Verify after replacing the key:
+Verify after replacing or rotating the key:
 
 ```bat
 py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --probe-elevenlabs-tts --json

@@ -21,6 +21,7 @@ export const resumeCrimeSceneSchema = z.object({
     .enum(["resumeCrimeScene", "aiResumeRoast", "atsMythLab", "jobSearchTest", "oneBulletFix", "mascotRescue"])
     .optional(),
   visualStyle: z.enum(["neon", "comic", "terminal", "stickyNote", "highlighter"]).optional(),
+  formatArchetype: z.enum(["deskMarkup", "recruiterSearch", "splitTranslation", "redTeamAudit", "mascotAssist"]).optional(),
   pace: z.enum(["fast", "balanced", "slowBurn"]).optional(),
   seriesLabel: z.string().optional(),
   signalLines: z
@@ -50,6 +51,34 @@ export const resumeCrimeSceneSchema = z.object({
   weakBullets: z.array(z.string()),
   beforeBullet: z.string(),
   afterBullet: z.string(),
+  resumeDocument: z
+    .object({
+      name: z.string(),
+      headline: z.string(),
+      contact: z.array(z.string()),
+      summary: z.string(),
+      experience: z.array(
+        z.object({
+          company: z.string(),
+          role: z.string(),
+          dates: z.string(),
+          bullets: z.array(z.string()),
+        }),
+      ),
+      skills: z.array(z.string()),
+      education: z.string(),
+    })
+    .optional(),
+  jobDescription: z
+    .object({
+      title: z.string(),
+      company: z.string(),
+      summary: z.string(),
+      responsibilities: z.array(z.string()),
+      requirements: z.array(z.string()),
+      searchQueries: z.array(z.string()).optional(),
+    })
+    .optional(),
   beforeScore: z.number(),
   afterScore: z.number(),
   cta: z.string(),
@@ -57,6 +86,7 @@ export const resumeCrimeSceneSchema = z.object({
   musicVolume: z.number().min(0).max(1).optional(),
   voiceoverSrc: z.string().optional(),
   voiceoverVolume: z.number().min(0).max(1).optional(),
+  durationSeconds: z.number().min(20).max(60).optional(),
   captions: z
     .array(
       z.object({
@@ -89,6 +119,7 @@ export const defaultResumeCrimeSceneProps: ResumeCrimeSceneProps = {
   subhook: "The person was actually qualified.",
   creativeFormat: "resumeCrimeScene",
   visualStyle: "neon",
+  formatArchetype: "deskMarkup",
   pace: "balanced",
   seriesLabel: "Recruiter reacts",
   signalLines: {
@@ -116,6 +147,47 @@ export const defaultResumeCrimeSceneProps: ResumeCrimeSceneProps = {
   weakBullets: ["Responsible for social media.", "Helped with marketing campaigns.", "Worked with the team."],
   beforeBullet: "Helped with marketing campaigns.",
   afterBullet: "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+  resumeDocument: {
+    name: "Avery Johnson",
+    headline: "Marketing Specialist",
+    contact: ["Austin, TX", "avery.johnson@example.com", "linkedin.com/in/avery-johnson"],
+    summary: "B2B SaaS marketer supporting lifecycle campaigns, webinars, paid social launches, and HubSpot reporting for revenue teams.",
+    experience: [
+      {
+        company: "Northstar Analytics",
+        role: "Marketing Coordinator",
+        dates: "2023 - Present",
+        bullets: [
+          "Supported email and social campaigns across multiple channels.",
+          "Helped with marketing campaigns.",
+          "Pulled weekly Salesforce campaign reports for marketing and sales leadership.",
+        ],
+      },
+      {
+        company: "CedarCloud Software",
+        role: "Marketing Assistant",
+        dates: "2021 - 2023",
+        bullets: [
+          "Built event landing pages and tracked registrations through HubSpot forms.",
+          "Updated campaign calendars for product launches and customer webinars.",
+        ],
+      },
+    ],
+    skills: ["HubSpot", "Salesforce reports", "LinkedIn Ads", "Lifecycle email", "UTM tracking"],
+    education: "B.A. Marketing, University of Texas at Austin",
+  },
+  jobDescription: {
+    title: "Demand Generation Manager",
+    company: "TargetCo",
+    summary: "TargetCo needs a demand generation manager who can connect campaign execution to measurable pipeline outcomes.",
+    responsibilities: [
+      "Use HubSpot workflows and LinkedIn Ads to improve lifecycle campaigns.",
+      "Analyze CAC, MQL-to-SQL conversion, and pipeline sourced by campaign.",
+      "Partner with sales and marketing operations on reporting.",
+    ],
+    requirements: ["HubSpot workflows", "LinkedIn Ads", "CAC analysis", "MQL-to-SQL", "pipeline sourced"],
+    searchQueries: ["HubSpot", "CAC", "LinkedIn Ads", "pipeline"],
+  },
   beforeScore: 34,
   afterScore: 92,
   cta: "Paste the job description. Check your free Signal score before you apply.",
@@ -195,6 +267,33 @@ const PACE = {
     cta: [1044, 1350],
   },
 } as const;
+
+type TimingRange = readonly [number, number];
+type TimingPlan = {
+  hook: TimingRange;
+  problem: TimingRange;
+  teardown: TimingRange;
+  fix: TimingRange;
+  cta: TimingRange;
+};
+
+const buildTiming = (durationFrames: number, pace: keyof typeof PACE): TimingPlan => {
+  const usable = Math.max(29 * 30, durationFrames);
+  const profiles = {
+    fast: [0, 0.15, 0.37, 0.62, 0.84, 1],
+    balanced: [0, 0.17, 0.39, 0.64, 0.84, 1],
+    slowBurn: [0, 0.2, 0.42, 0.66, 0.84, 1],
+  } as const;
+  const profile = profiles[pace] || profiles.balanced;
+  const frameAt = (ratio: number) => Math.round(usable * ratio);
+  return {
+    hook: [frameAt(profile[0]), frameAt(profile[1])],
+    problem: [frameAt(profile[1]) + 4, frameAt(profile[2])],
+    teardown: [frameAt(profile[2]) + 4, frameAt(profile[3])],
+    fix: [frameAt(profile[3]) + 4, frameAt(profile[4])],
+    cta: [frameAt(profile[4]) + 4, frameAt(profile[5])],
+  };
+};
 
 const fadeIn = (frame: number, start: number, end: number) =>
   interpolate(frame, [start, end], [0, 1], {
@@ -300,193 +399,284 @@ const ResumeSheet: React.FC<{
   title: string;
   meta?: string[];
   bullets: string[];
+  resumeDocument?: ResumeCrimeSceneProps["resumeDocument"];
   marked?: boolean;
   rewritten?: boolean;
   beforeBullet: string;
   afterBullet: string;
   markedLabel?: string;
-}> = ({ name = "Avery Johnson", title, meta = [], bullets, marked, rewritten, beforeBullet, afterBullet, markedLabel = "Too vague" }) => (
-  <div
-    style={{
-      width: 612,
-      minHeight: 785,
-      borderRadius: 26,
-      background: "#fbfdff",
-      color: "#0f172a",
-      padding: "38px 42px",
-      boxShadow: "0 36px 110px rgba(0,0,0,0.42)",
-      border: "1px solid rgba(15,23,42,0.10)",
-      position: "relative",
-      overflow: "hidden",
-    }}
-  >
-    <div style={{ fontSize: 32, fontWeight: 950, lineHeight: 1.04 }}>{name}</div>
-    <div style={{ marginTop: 8, fontSize: 18, color: "#475569", fontWeight: 800 }}>{title}</div>
-    {meta.length ? (
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 14 }}>
-        {meta.slice(0, 3).map((item) => (
-          <div
-            key={item}
-            style={{
-              padding: "6px 9px",
-              borderRadius: 999,
-              background: "rgba(14,165,233,0.10)",
-              border: "1px solid rgba(14,165,233,0.18)",
-              color: "#0369a1",
-              fontSize: 12,
-              fontWeight: 900,
-            }}
-          >
-            {item}
+}> = ({
+  name = "Avery Johnson",
+  title,
+  meta = [],
+  bullets,
+  resumeDocument,
+  marked,
+  rewritten,
+  beforeBullet,
+  afterBullet,
+  markedLabel = "Too vague",
+}) => {
+  const fallbackExperience = [
+    {
+      company: "Northstar Analytics",
+      role: title.replace(" Resume", ""),
+      dates: "2023 - Present",
+      bullets,
+    },
+    {
+      company: "CedarCloud Software",
+      role: "Associate",
+      dates: "2021 - 2023",
+      bullets: ["Supported reporting, launch notes, and stakeholder follow-up.", "Updated documentation for team workflows."],
+    },
+  ];
+  const doc = resumeDocument || {
+    name,
+    headline: title.replace(" Resume", ""),
+    contact: ["Austin, TX", "candidate@example.com", "linkedin.com/in/candidate"],
+    summary: meta.length
+      ? `${meta.join("; ")}. Experience includes role support, reporting, stakeholder coordination, and campaign execution.`
+      : "Professional candidate with relevant role experience, stakeholder collaboration, and measurable delivery exposure.",
+    experience: fallbackExperience,
+    skills: ["Reporting", "Campaigns", "Stakeholder updates", "Documentation", "Analytics"],
+    education: "B.A. Business Administration, State University",
+  };
+
+  return (
+    <div
+      style={{
+        width: 642,
+        minHeight: 838,
+        borderRadius: 18,
+        background: "#fbfdff",
+        color: "#0f172a",
+        padding: "30px 36px",
+        boxShadow: "0 36px 110px rgba(0,0,0,0.42)",
+        border: "1px solid rgba(15,23,42,0.10)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 24, alignItems: "flex-start" }}>
+        <div>
+          <div style={{ fontSize: 31, fontWeight: 950, lineHeight: 1.02, letterSpacing: 0 }}>{doc.name}</div>
+          <div style={{ marginTop: 6, fontSize: 16, color: "#334155", fontWeight: 850 }}>{doc.headline}</div>
+        </div>
+        <div style={{ color: "#475569", fontSize: 10.5, lineHeight: 1.35, textAlign: "right", fontWeight: 750 }}>
+          {doc.contact.slice(0, 3).map((item) => (
+            <div key={item}>{item}</div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ height: 2, background: "#0f172a", margin: "18px 0 14px" }} />
+
+      <div style={{ color: "#0f172a", fontSize: 12, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.5 }}>Professional Summary</div>
+      <div style={{ marginTop: 7, color: "#334155", fontSize: 12.8, lineHeight: 1.42, fontWeight: 650 }}>{doc.summary}</div>
+
+      <div style={{ color: "#0f172a", fontSize: 12, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.5, marginTop: 17 }}>Experience</div>
+      <div style={{ display: "grid", gap: 13, marginTop: 8 }}>
+        {doc.experience.slice(0, 2).map((job) => (
+          <div key={`${job.company}-${job.role}`}>
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "baseline" }}>
+              <div style={{ fontSize: 14.2, fontWeight: 950, color: "#0f172a" }}>{job.role}</div>
+              <div style={{ fontSize: 10.8, fontWeight: 850, color: "#64748b" }}>{job.dates}</div>
+            </div>
+            <div style={{ marginTop: 2, fontSize: 12.2, fontWeight: 850, color: "#475569" }}>{job.company}</div>
+            <div style={{ display: "grid", gap: 5, marginTop: 7 }}>
+              {job.bullets.slice(0, 4).map((bullet) => {
+                const isTarget = bullet === beforeBullet;
+                const renderedBullet = rewritten && isTarget ? afterBullet : bullet;
+                return (
+                  <div
+                    key={bullet}
+                    style={{
+                      position: "relative",
+                      padding: isTarget ? "6px 8px 6px 21px" : "2px 0 2px 17px",
+                      borderRadius: 10,
+                      background: rewritten && isTarget ? "rgba(22,163,74,0.12)" : marked && isTarget ? "rgba(254,226,226,0.60)" : "transparent",
+                      border: rewritten && isTarget ? "1.5px solid rgba(22,163,74,0.38)" : marked && isTarget ? "1.5px solid rgba(220,38,38,0.34)" : "1px solid transparent",
+                      color: "#1e293b",
+                      fontSize: isTarget ? 13.1 : 12.1,
+                      lineHeight: 1.28,
+                      fontWeight: isTarget ? 820 : 650,
+                    }}
+                  >
+                    <span
+                      style={{
+                        position: "absolute",
+                        left: isTarget ? 8 : 3,
+                        top: isTarget ? 13 : 10,
+                        width: 4.5,
+                        height: 4.5,
+                        borderRadius: 99,
+                        background: rewritten && isTarget ? GREEN : "#334155",
+                      }}
+                    />
+                    {renderedBullet}
+                    {marked && isTarget ? (
+                      <>
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: -6,
+                            borderRadius: 14,
+                            border: `4px solid ${RED}`,
+                            transform: "rotate(-1.4deg)",
+                            opacity: 0.86,
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            right: 10,
+                            top: -14,
+                            padding: "2px 8px",
+                            borderRadius: 999,
+                            background: "#fbfdff",
+                            color: RED,
+                            fontSize: 15,
+                            fontWeight: 950,
+                            transform: "rotate(1.8deg)",
+                            zIndex: 3,
+                          }}
+                        >
+                          {markedLabel}
+                        </div>
+                      </>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         ))}
       </div>
-    ) : null}
-    <div style={{ height: 2, background: "#e2e8f0", margin: "28px 0" }} />
-    <div style={{ color: "#64748b", fontSize: 15, fontWeight: 950, textTransform: "uppercase" }}>Experience</div>
-    <div style={{ display: "grid", gap: 18, marginTop: 18 }}>
-      {bullets.map((bullet, index) => {
-        const isTarget = bullet === beforeBullet;
-        return (
+
+      <div style={{ color: "#0f172a", fontSize: 12, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.5, marginTop: 16 }}>Skills</div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
+        {doc.skills.slice(0, 9).map((skill) => (
           <div
-            key={bullet}
+            key={skill}
             style={{
-              position: "relative",
-              padding: "13px 14px 13px 28px",
-              borderRadius: 14,
-              background: rewritten && isTarget ? "rgba(22,163,74,0.10)" : "rgba(241,245,249,0.74)",
-              border: rewritten && isTarget ? "2px solid rgba(22,163,74,0.42)" : "1px solid rgba(100,116,139,0.14)",
-              fontSize: 23,
-              lineHeight: 1.32,
-              fontWeight: 750,
+              padding: "4px 7px",
+              borderRadius: 8,
+              background: "rgba(14,165,233,0.08)",
+              color: "#075985",
+              border: "1px solid rgba(14,165,233,0.18)",
+              fontSize: 10.5,
+              fontWeight: 850,
             }}
           >
-            <span
-              style={{
-                position: "absolute",
-                left: 11,
-                top: 24,
-                width: 7,
-                height: 7,
-                borderRadius: 99,
-                background: rewritten && isTarget ? GREEN : "#475569",
-              }}
-            />
-            {rewritten && isTarget ? afterBullet : bullet}
-            {marked && isTarget ? (
-              <>
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: -8,
-                    borderRadius: 20,
-                    border: `5px solid ${RED}`,
-                    transform: "rotate(-1.8deg)",
-                    opacity: 0.9,
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    right: 14,
-                    top: -14,
-                    padding: "2px 8px",
-                    borderRadius: 999,
-                    background: "#fbfdff",
-                    color: RED,
-                    fontSize: 22,
-                    fontWeight: 950,
-                    transform: "rotate(2deg)",
-                    zIndex: 3,
-                  }}
-                >
-                  {markedLabel}
-                </div>
-              </>
-            ) : null}
-            {marked && index === 2 ? (
-              <div
-                style={{
-                  position: "absolute",
-                  left: 22,
-                  right: 70,
-                  bottom: 9,
-                  height: 14,
-                  background: "rgba(250,204,21,0.48)",
-                  transform: "rotate(-1deg)",
-                }}
-              />
-            ) : null}
+            {skill}
           </div>
-        );
-      })}
-    </div>
-    {rewritten ? (
-      <div
-        style={{
-          position: "absolute",
-          right: 28,
-          bottom: 28,
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          color: GREEN,
-          fontSize: 18,
-          fontWeight: 950,
-          textTransform: "uppercase",
-        }}
-      >
-        <SignalMascot logoMode style={{ width: 42, height: 42 }} />
-        Real proof translated
+        ))}
       </div>
-    ) : null}
-  </div>
-);
 
-const JobDescription: React.FC<{ jobTitle: string; keywords: string[]; highlightProgress: number }> = ({
+      <div style={{ color: "#0f172a", fontSize: 12, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.5, marginTop: 14 }}>Education</div>
+      <div style={{ marginTop: 6, color: "#334155", fontSize: 11.4, fontWeight: 720 }}>{doc.education}</div>
+
+      {rewritten ? (
+        <div
+          style={{
+            position: "absolute",
+            right: 22,
+            bottom: 22,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            color: GREEN,
+            fontSize: 13,
+            fontWeight: 950,
+            textTransform: "uppercase",
+          }}
+        >
+          <SignalMascot logoMode style={{ width: 32, height: 32 }} />
+          Real proof translated
+        </div>
+      ) : null}
+    </div>
+  );
+};
+
+const JobDescription: React.FC<{
+  jobTitle: string;
+  keywords: string[];
+  highlightProgress: number;
+  jobDescription?: ResumeCrimeSceneProps["jobDescription"];
+}> = ({
   jobTitle,
   keywords,
   highlightProgress,
-}) => (
-  <div
-    style={{
-      width: 392,
-      borderRadius: 26,
-      background: "rgba(15,23,42,0.94)",
-      border: "1px solid rgba(56,213,255,0.24)",
-      padding: "28px 26px",
-      color: TEXT,
-      boxShadow: "0 26px 80px rgba(0,0,0,0.34), inset 0 0 30px rgba(56,213,255,0.045)",
-    }}
-  >
-    <div style={{ color: CYAN, fontSize: 14, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.4 }}>
-      Job description
-    </div>
-    <div style={{ marginTop: 12, fontSize: 30, lineHeight: 1.04, fontWeight: 950 }}>{jobTitle}</div>
-    <div style={{ height: 1, background: "rgba(255,255,255,0.12)", margin: "22px 0" }} />
-    <div style={{ display: "grid", gap: 13 }}>
-      {keywords.map((keyword, index) => {
-        const active = highlightProgress > index / keywords.length;
-        return (
-          <div
-            key={keyword}
-            style={{
-              padding: "13px 14px",
-              borderRadius: 15,
-              background: active ? "rgba(250,204,21,0.22)" : "rgba(255,255,255,0.045)",
-              border: active ? "1px solid rgba(250,204,21,0.52)" : "1px solid rgba(148,163,184,0.12)",
-              color: active ? "#fef9c3" : "#cbd5e1",
-              fontSize: 20,
-              fontWeight: 900,
-            }}
-          >
-            {keyword}
+  jobDescription,
+}) => {
+  const jd: NonNullable<ResumeCrimeSceneProps["jobDescription"]> = jobDescription || {
+    title: jobTitle,
+    company: "TargetCo",
+    summary: "Target role asking for specific tools, responsibilities, and measurable outcomes.",
+    responsibilities: [
+      `Use ${keywords[0] || "role tools"} and ${keywords[1] || "analytics"} to improve execution.`,
+      `Report progress against ${keywords[2] || "business outcomes"}.`,
+      "Partner across teams and communicate progress clearly.",
+    ],
+    requirements: keywords,
+    searchQueries: keywords.slice(0, 4),
+  };
+  const searchTerms: string[] = (jd.searchQueries?.length ? jd.searchQueries : jd.requirements).slice(0, 4);
+
+  return (
+    <div
+      style={{
+        width: 402,
+        borderRadius: 22,
+        background: "rgba(15,23,42,0.94)",
+        border: "1px solid rgba(56,213,255,0.24)",
+        padding: "24px 24px",
+        color: TEXT,
+        boxShadow: "0 26px 80px rgba(0,0,0,0.34), inset 0 0 30px rgba(56,213,255,0.045)",
+      }}
+    >
+      <div style={{ color: CYAN, fontSize: 13, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.4 }}>
+        Job description
+      </div>
+      <div style={{ marginTop: 10, fontSize: 28, lineHeight: 1.02, fontWeight: 950 }}>{jd.title}</div>
+      <div style={{ color: MUTED, fontSize: 13, fontWeight: 850, marginTop: 7 }}>{jd.company}</div>
+      <div style={{ color: "#cbd5e1", fontSize: 13.5, lineHeight: 1.38, marginTop: 13, fontWeight: 650 }}>{jd.summary}</div>
+      <div style={{ height: 1, background: "rgba(255,255,255,0.12)", margin: "18px 0" }} />
+      <div style={{ color: "#e2e8f0", fontSize: 13, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.1 }}>Responsibilities</div>
+      <div style={{ display: "grid", gap: 8, marginTop: 9 }}>
+        {jd.responsibilities.slice(0, 3).map((item) => (
+          <div key={item} style={{ color: "#cbd5e1", fontSize: 13.5, lineHeight: 1.28, fontWeight: 720 }}>
+            - {item}
           </div>
-        );
-      })}
+        ))}
+      </div>
+      <div style={{ color: "#e2e8f0", fontSize: 13, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.1, marginTop: 16 }}>Recruiter search terms</div>
+      <div style={{ display: "grid", gap: 9, marginTop: 10 }}>
+        {searchTerms.map((keyword, index) => {
+          const active = highlightProgress > index / Math.max(1, searchTerms.length);
+          return (
+            <div
+              key={keyword}
+              style={{
+                padding: "10px 12px",
+                borderRadius: 13,
+                background: active ? "rgba(250,204,21,0.22)" : "rgba(255,255,255,0.045)",
+                border: active ? "1px solid rgba(250,204,21,0.52)" : "1px solid rgba(148,163,184,0.12)",
+                color: active ? "#fef9c3" : "#cbd5e1",
+                fontSize: 16,
+                fontWeight: 900,
+              }}
+            >
+              {keyword}
+            </div>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const AvatarBubble: React.FC<{ src: string; label: string; opacity: number }> = ({ src, label, opacity }) => (
   <div
@@ -585,6 +775,158 @@ const CreatorBadge: React.FC<{ label: string }> = ({ label }) => (
     {label}
   </div>
 );
+
+const FormatOverlay: React.FC<{
+  archetype: NonNullable<ResumeCrimeSceneProps["formatArchetype"]>;
+  keywords: string[];
+  beforeScore: number;
+  afterScore: number;
+  beforeBullet: string;
+  opacity: number;
+  phase: "problem" | "teardown" | "fix";
+}> = ({ archetype, keywords, beforeScore, afterScore, beforeBullet, opacity, phase }) => {
+  const frame = useCurrentFrame();
+  const term = keywords[0] || "role keyword";
+  const second = keywords[1] || "proof";
+  const slide = interpolate(frame, [120, 170], [28, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+
+  if (archetype === "recruiterSearch") {
+    const found = phase === "fix";
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: 58,
+          bottom: 318,
+          width: 452,
+          padding: "18px 20px",
+          borderRadius: 22,
+          background: "rgba(2,6,23,0.92)",
+          border: "1px solid rgba(34,197,94,0.34)",
+          color: "#dcfce7",
+          opacity,
+          zIndex: 132,
+          transform: `translateY(${slide}px)`,
+          boxShadow: "0 24px 70px rgba(0,0,0,0.46), inset 0 0 24px rgba(34,197,94,0.06)",
+        }}
+      >
+        <div style={{ color: "#22c55e", fontSize: 15, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.4 }}>Recruiter search</div>
+        <div style={{ marginTop: 13, padding: "12px 14px", borderRadius: 12, background: "rgba(15,23,42,0.88)", color: "#f8fafc", fontSize: 24, fontWeight: 900 }}>
+          "{term}" + "{second}"
+        </div>
+        <div style={{ marginTop: 13, color: found ? "#bbf7d0" : "#fecaca", fontSize: 27, fontWeight: 950 }}>
+          {found ? "MATCH FOUND AFTER REWRITE" : "0 STRONG HITS IN BULLET"}
+        </div>
+      </div>
+    );
+  }
+
+  if (archetype === "splitTranslation") {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: 326,
+          top: 1038,
+          width: 428,
+          padding: "16px 18px",
+          borderRadius: 20,
+          background: "rgba(2,6,23,0.88)",
+          border: "1px solid rgba(56,213,255,0.30)",
+          opacity,
+          zIndex: 132,
+          color: "#e0f7ff",
+          textAlign: "center",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.42)",
+        }}
+      >
+        <div style={{ color: CYAN, fontSize: 14, fontWeight: 950, textTransform: "uppercase" }}>Translate the job, not the person</div>
+        <div style={{ marginTop: 8, fontSize: 24, fontWeight: 950 }}>
+          Resume proof {"->"} JD language
+        </div>
+      </div>
+    );
+  }
+
+  if (archetype === "redTeamAudit") {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          right: 54,
+          top: 203,
+          width: 346,
+          padding: "18px",
+          borderRadius: 18,
+          background: "rgba(127,29,29,0.86)",
+          border: "2px solid rgba(254,202,202,0.48)",
+          color: "#fee2e2",
+          opacity,
+          zIndex: 132,
+          transform: "rotate(1.5deg)",
+          boxShadow: "0 22px 70px rgba(127,29,29,0.34)",
+        }}
+      >
+        <div style={{ fontSize: 34, fontWeight: 950, lineHeight: 0.96 }}>RESUME AUDIT</div>
+        <div style={{ marginTop: 12, fontSize: 22, fontWeight: 900 }}>Score: {phase === "fix" ? afterScore : beforeScore}/100</div>
+        <div style={{ marginTop: 10, fontSize: 18, lineHeight: 1.18, fontWeight: 800 }}>Finding: proof exists, but the source bullet is too vague.</div>
+      </div>
+    );
+  }
+
+  if (archetype === "mascotAssist") {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: 62,
+          bottom: 302,
+          width: 390,
+          padding: "16px 18px",
+          borderRadius: 22,
+          background: "rgba(8,47,73,0.86)",
+          border: "1px solid rgba(125,223,255,0.34)",
+          color: "#e0f7ff",
+          opacity,
+          zIndex: 132,
+          boxShadow: "0 22px 70px rgba(14,165,233,0.20)",
+        }}
+      >
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          <SignalMascot expression={phase === "fix" ? "happy" : "sideEye"} gesture="pointRight" style={{ width: 72, height: 72 }} />
+          <div style={{ fontSize: 23, lineHeight: 1.04, fontWeight: 950 }}>
+            Signal found the proof buried under "{beforeBullet.slice(0, 26)}..."
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 58,
+        bottom: 318,
+        width: 422,
+        padding: "16px 18px",
+        borderRadius: 20,
+        background: "rgba(250,204,21,0.18)",
+        border: "2px solid rgba(250,204,21,0.46)",
+        color: "#fef9c3",
+        opacity,
+        zIndex: 132,
+        transform: "rotate(-2deg)",
+        boxShadow: "0 22px 70px rgba(250,204,21,0.12)",
+      }}
+    >
+      <div style={{ fontSize: 17, fontWeight: 950, textTransform: "uppercase" }}>Desk markup</div>
+      <div style={{ marginTop: 7, fontSize: 25, fontWeight: 950, lineHeight: 1.03 }}>
+        Circle one bullet. Fix one signal.
+      </div>
+    </div>
+  );
+};
 
 const SignalReaction: React.FC<{
   line?: string;
@@ -720,6 +1062,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   subhook,
   creativeFormat = "resumeCrimeScene",
   visualStyle = "neon",
+  formatArchetype = "deskMarkup",
   pace = "balanced",
   seriesLabel = "Recruiter reacts",
   signalLines = defaultResumeCrimeSceneProps.signalLines,
@@ -741,6 +1084,8 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   weakBullets,
   beforeBullet,
   afterBullet,
+  resumeDocument,
+  jobDescription,
   beforeScore,
   afterScore,
   cta,
@@ -748,6 +1093,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   musicVolume = 0.16,
   voiceoverSrc,
   voiceoverVolume = 0.94,
+  durationSeconds,
   captions,
   sfxSrc,
   sfxVolume = 0.06,
@@ -755,19 +1101,24 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   avatarLabel = "Recruiter review",
 }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, durationInFrames } = useVideoConfig();
   const styleName = visualStyle in VISUAL_STYLES ? visualStyle : "neon";
   const styleTheme = VISUAL_STYLES[styleName];
-  const timing = PACE[pace] || PACE.balanced;
-  const totalSeconds = 45;
+  const timing = buildTiming(durationInFrames, pace);
+  const totalSeconds = durationSeconds || durationInFrames / fps;
+  const hasWordCaptions = Boolean(captions?.length);
   const hookOpacity = stageOpacity(frame, timing.hook[0], timing.hook[1]);
   const problemOpacity = stageOpacity(frame, timing.problem[0], timing.problem[1]);
   const teardownOpacity = stageOpacity(frame, timing.teardown[0], timing.teardown[1]);
   const fixOpacity = stageOpacity(frame, timing.fix[0], timing.fix[1]);
   const ctaOpacity = fadeIn(frame, timing.cta[0], timing.cta[0] + 62);
-  const highlightProgress = fadeIn(frame, 170, 275);
+  const highlightProgress = fadeIn(frame, timing.problem[0] + 18, timing.problem[0] + Math.round((timing.problem[1] - timing.problem[0]) * 0.58));
   const fixSpring = spring({ frame: frame - timing.fix[0], fps, config: { damping: 18, mass: 0.9 } });
-  const scoreProgress = fadeIn(frame, 822, 920);
+  const scoreProgress = fadeIn(
+    frame,
+    timing.fix[0] + Math.round((timing.fix[1] - timing.fix[0]) * 0.44),
+    timing.fix[0] + Math.round((timing.fix[1] - timing.fix[0]) * 0.74),
+  );
 
   const animatedScore = interpolate(scoreProgress, [0, 1], [beforeScore, afterScore], {
     extrapolateLeft: "clamp",
@@ -813,19 +1164,20 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
         <div style={{ color: TEXT, fontSize: 82, lineHeight: 0.98, fontWeight: 950, marginTop: 24, maxWidth: 900 }}>{hook}</div>
         <div style={{ color: styleTheme.accent, fontSize: 46, lineHeight: 1.08, fontWeight: 950, marginTop: 26, maxWidth: 800 }}>{subhook}</div>
         <ScoreBadge score={beforeScore} tone="bad" />
-        <LowerPunchline text={punchline} tone="yellow" />
+        {!hasWordCaptions ? <LowerPunchline text={punchline} tone="yellow" /> : null}
         <SignalReaction line={signalLines?.hook} expression="surprised" gesture="wave" side="right" bottom={318} opacity={hookOpacity} />
       </AbsoluteFill>
 
       <AbsoluteFill style={{ opacity: problemOpacity }}>
         <TopCaption text="The job description says:" emphasis={jobKeywords.slice(0, 2).join(" + ")} />
-        <LowerPunchline text={problemPunchline} tone="red" />
+        {!hasWordCaptions ? <LowerPunchline text={problemPunchline} tone="red" /> : null}
         <div style={{ position: "absolute", left: 58, top: 225 }}>
           <ResumeSheet
             name={resumeName}
             title={resumeTitle}
             meta={resumeMeta}
             bullets={weakBullets}
+            resumeDocument={resumeDocument}
             marked
             beforeBullet={beforeBullet}
             afterBullet={afterBullet}
@@ -833,8 +1185,9 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           />
         </div>
         <div style={{ position: "absolute", right: 58, top: 318 }}>
-          <JobDescription jobTitle={jobTitle} keywords={jobKeywords} highlightProgress={highlightProgress} />
+          <JobDescription jobTitle={jobTitle} keywords={jobKeywords} highlightProgress={highlightProgress} jobDescription={jobDescription} />
         </div>
+        <FormatOverlay archetype={formatArchetype} keywords={jobKeywords} beforeScore={beforeScore} afterScore={afterScore} beforeBullet={beforeBullet} opacity={problemOpacity} phase="problem" />
         <div style={{ position: "absolute", right: 74, bottom: 585 }}>
           <ScoreBadge score={beforeScore} tone="bad" label="Low match" />
         </div>
@@ -843,19 +1196,21 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
 
       <AbsoluteFill style={{ opacity: teardownOpacity }}>
         <TopCaption text={teardownText} emphasis={teardownEmphasis} tone="red" />
-        <LowerPunchline text={teardownPunchline} tone="red" />
+        {!hasWordCaptions ? <LowerPunchline text={teardownPunchline} tone="red" /> : null}
         <div style={{ position: "absolute", left: 82, top: 260 }}>
           <ResumeSheet
             name={resumeName}
             title={resumeTitle}
             meta={resumeMeta}
             bullets={weakBullets}
+            resumeDocument={resumeDocument}
             marked
             beforeBullet={beforeBullet}
             afterBullet={afterBullet}
             markedLabel={markedLabel}
           />
         </div>
+        <FormatOverlay archetype={formatArchetype} keywords={jobKeywords} beforeScore={beforeScore} afterScore={afterScore} beforeBullet={beforeBullet} opacity={teardownOpacity} phase="teardown" />
         <div
           style={{
             position: "absolute",
@@ -892,7 +1247,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
 
       <AbsoluteFill style={{ opacity: fixOpacity }}>
         <TopCaption text={fixText} emphasis={fixEmphasis} tone="green" />
-        <LowerPunchline text={fixPunchline} tone="green" />
+        {!hasWordCaptions ? <LowerPunchline text={fixPunchline} tone="green" /> : null}
         <div
           style={{
             position: "absolute",
@@ -906,6 +1261,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
             title={resumeTitle}
             meta={resumeMeta}
             bullets={weakBullets}
+            resumeDocument={resumeDocument}
             rewritten
             beforeBullet={beforeBullet}
             afterBullet={afterBullet}
@@ -913,8 +1269,9 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           />
         </div>
         <div style={{ position: "absolute", right: 70, top: 348 }}>
-          <JobDescription jobTitle={jobTitle} keywords={jobKeywords} highlightProgress={1} />
+          <JobDescription jobTitle={jobTitle} keywords={jobKeywords} highlightProgress={1} jobDescription={jobDescription} />
         </div>
+        <FormatOverlay archetype={formatArchetype} keywords={jobKeywords} beforeScore={beforeScore} afterScore={afterScore} beforeBullet={beforeBullet} opacity={fixOpacity} phase="fix" />
         <div
           style={{
             position: "absolute",

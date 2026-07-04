@@ -1,0 +1,1807 @@
+{
+  "title": "Recruiter search tests with real resume teardowns | Resume Teardown",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "cta": "Paste the job description and check your free Signal score before you apply.",
+  "sections": [
+    {
+      "label": "Cold open",
+      "script": "Recruiter search tests with real resume teardowns This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
+      "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+    },
+    {
+      "label": "Open loop",
+      "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+      "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff."
+    },
+    {
+      "label": "Translate the job description",
+      "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+      "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+    },
+    {
+      "label": "Recruiter search test",
+      "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+      "visual": "Search console typing the first three job-description terms and showing weak matches."
+    },
+    {
+      "label": "Resume crime scene",
+      "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
+      "visual": "Red/yellow markups over weak bullets."
+    },
+    {
+      "label": "Why it gets missed",
+      "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+      "visual": "Zoom into the weak bullet and place missing proof labels beside it."
+    },
+    {
+      "label": "Live bullet fix",
+      "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. Same person, clearer evidence.",
+      "visual": "Before/after bullet rewrite."
+    },
+    {
+      "label": "Score reveal",
+      "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+      "visual": "Score meter jumps from low match to high match with before/after resume panels."
+    },
+    {
+      "label": "Trust and CTA",
+      "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+      "visual": "Free Signal score page, trust badges, and bundle CTA."
+    }
+  ],
+  "keywords": [
+    "HubSpot workflows",
+    "LinkedIn Ads",
+    "CAC analysis",
+    "MQL-to-SQL",
+    "pipeline sourced"
+  ],
+  "weakBullets": [
+    "Supported email and social campaigns across multiple channels.",
+    "Helped maintain HubSpot lists for webinars and nurture emails.",
+    "Coordinated paid social assets with design and sales."
+  ],
+  "beforeBullet": "Helped maintain HubSpot lists for webinars and nurture emails.",
+  "afterBullet": "Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%.",
+  "beforeScore": 34,
+  "afterScore": 92,
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.11,
+  "voiceoverVolume": 0.94,
+  "voiceover_text": "Recruiter search tests with real resume teardowns This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find. We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job. Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad. Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof. A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify. The fix is to say the real work clearly: what tool, what scope, what audience, and what result. Same person, clearer evidence. Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see. Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+  "voiceoverSegments": [
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-1-voiceover.mp3",
+      "fromFrame": 240,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-1-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Recruiter",
+          "startMs": 58,
+          "endMs": 534,
+          "timestampMs": 58,
+          "confidence": null
+        },
+        {
+          "text": "search",
+          "startMs": 592,
+          "endMs": 871,
+          "timestampMs": 592,
+          "confidence": null
+        },
+        {
+          "text": "tests",
+          "startMs": 917,
+          "endMs": 1312,
+          "timestampMs": 917,
+          "confidence": null
+        },
+        {
+          "text": "with",
+          "startMs": 1358,
+          "endMs": 1509,
+          "timestampMs": 1358,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 1579,
+          "endMs": 1800,
+          "timestampMs": 1579,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 1881,
+          "endMs": 2299,
+          "timestampMs": 1881,
+          "confidence": null
+        },
+        {
+          "text": "teardowns",
+          "startMs": 2345,
+          "endMs": 2995,
+          "timestampMs": 2345,
+          "confidence": null
+        },
+        {
+          "text": "This",
+          "startMs": 3599,
+          "endMs": 3820,
+          "timestampMs": 3599,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 3913,
+          "endMs": 4272,
+          "timestampMs": 3913,
+          "confidence": null
+        },
+        {
+          "text": "looks",
+          "startMs": 4307,
+          "endMs": 4493,
+          "timestampMs": 4307,
+          "confidence": null
+        },
+        {
+          "text": "professional,",
+          "startMs": 4528,
+          "endMs": 5236,
+          "timestampMs": 4528,
+          "confidence": null
+        },
+        {
+          "text": "which",
+          "startMs": 5317,
+          "endMs": 5503,
+          "timestampMs": 5317,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 5538,
+          "endMs": 5596,
+          "timestampMs": 5538,
+          "confidence": null
+        },
+        {
+          "text": "why",
+          "startMs": 5642,
+          "endMs": 5782,
+          "timestampMs": 5642,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5840,
+          "endMs": 5909,
+          "timestampMs": 5840,
+          "confidence": null
+        },
+        {
+          "text": "mistake",
+          "startMs": 5956,
+          "endMs": 6351,
+          "timestampMs": 5956,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 6385,
+          "endMs": 6467,
+          "timestampMs": 6385,
+          "confidence": null
+        },
+        {
+          "text": "dangerous.",
+          "startMs": 6525,
+          "endMs": 7245,
+          "timestampMs": 6525,
+          "confidence": null
+        },
+        {
+          "text": "On",
+          "startMs": 7755,
+          "endMs": 7930,
+          "timestampMs": 7755,
+          "confidence": null
+        },
+        {
+          "text": "screen,",
+          "startMs": 8010,
+          "endMs": 8429,
+          "timestampMs": 8010,
+          "confidence": null
+        },
+        {
+          "text": "it",
+          "startMs": 8475,
+          "endMs": 8591,
+          "timestampMs": 8475,
+          "confidence": null
+        },
+        {
+          "text": "feels",
+          "startMs": 8638,
+          "endMs": 8882,
+          "timestampMs": 8638,
+          "confidence": null
+        },
+        {
+          "text": "polished.",
+          "startMs": 8940,
+          "endMs": 9543,
+          "timestampMs": 8940,
+          "confidence": null
+        },
+        {
+          "text": "In",
+          "startMs": 10240,
+          "endMs": 10379,
+          "timestampMs": 10240,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 10414,
+          "endMs": 10437,
+          "timestampMs": 10414,
+          "confidence": null
+        },
+        {
+          "text": "recruiter",
+          "startMs": 10507,
+          "endMs": 10948,
+          "timestampMs": 10507,
+          "confidence": null
+        },
+        {
+          "text": "search,",
+          "startMs": 10995,
+          "endMs": 11401,
+          "timestampMs": 10995,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 11471,
+          "endMs": 11564,
+          "timestampMs": 11471,
+          "confidence": null
+        },
+        {
+          "text": "proof",
+          "startMs": 11622,
+          "endMs": 11854,
+          "timestampMs": 11622,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 11912,
+          "endMs": 11981,
+          "timestampMs": 11912,
+          "confidence": null
+        },
+        {
+          "text": "still",
+          "startMs": 12016,
+          "endMs": 12225,
+          "timestampMs": 12016,
+          "confidence": null
+        },
+        {
+          "text": "hard",
+          "startMs": 12295,
+          "endMs": 12492,
+          "timestampMs": 12295,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 12527,
+          "endMs": 12585,
+          "timestampMs": 12527,
+          "confidence": null
+        },
+        {
+          "text": "find.",
+          "startMs": 12655,
+          "endMs": 13166,
+          "timestampMs": 12655,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-2-voiceover.mp3",
+      "fromFrame": 1753,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-2-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "We",
+          "startMs": 58,
+          "endMs": 163,
+          "timestampMs": 58,
+          "confidence": null
+        },
+        {
+          "text": "are",
+          "startMs": 197,
+          "endMs": 302,
+          "timestampMs": 197,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 337,
+          "endMs": 476,
+          "timestampMs": 337,
+          "confidence": null
+        },
+        {
+          "text": "adding",
+          "startMs": 534,
+          "endMs": 848,
+          "timestampMs": 534,
+          "confidence": null
+        },
+        {
+          "text": "fake",
+          "startMs": 929,
+          "endMs": 1196,
+          "timestampMs": 929,
+          "confidence": null
+        },
+        {
+          "text": "experience.",
+          "startMs": 1231,
+          "endMs": 2020,
+          "timestampMs": 1231,
+          "confidence": null
+        },
+        {
+          "text": "We",
+          "startMs": 2229,
+          "endMs": 2357,
+          "timestampMs": 2229,
+          "confidence": null
+        },
+        {
+          "text": "are",
+          "startMs": 2392,
+          "endMs": 2473,
+          "timestampMs": 2392,
+          "confidence": null
+        },
+        {
+          "text": "checking",
+          "startMs": 2496,
+          "endMs": 2821,
+          "timestampMs": 2496,
+          "confidence": null
+        },
+        {
+          "text": "whether",
+          "startMs": 2856,
+          "endMs": 3077,
+          "timestampMs": 2856,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 3135,
+          "endMs": 3204,
+          "timestampMs": 3135,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 3274,
+          "endMs": 3669,
+          "timestampMs": 3274,
+          "confidence": null
+        },
+        {
+          "text": "explains",
+          "startMs": 3704,
+          "endMs": 4214,
+          "timestampMs": 3704,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 4272,
+          "endMs": 4342,
+          "timestampMs": 4272,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 4412,
+          "endMs": 4609,
+          "timestampMs": 4412,
+          "confidence": null
+        },
+        {
+          "text": "experience",
+          "startMs": 4667,
+          "endMs": 5271,
+          "timestampMs": 4667,
+          "confidence": null
+        },
+        {
+          "text": "in",
+          "startMs": 5317,
+          "endMs": 5410,
+          "timestampMs": 5317,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5457,
+          "endMs": 5526,
+          "timestampMs": 5457,
+          "confidence": null
+        },
+        {
+          "text": "same",
+          "startMs": 5573,
+          "endMs": 5805,
+          "timestampMs": 5573,
+          "confidence": null
+        },
+        {
+          "text": "language",
+          "startMs": 5851,
+          "endMs": 6246,
+          "timestampMs": 5851,
+          "confidence": null
+        },
+        {
+          "text": "as",
+          "startMs": 6281,
+          "endMs": 6374,
+          "timestampMs": 6281,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 6432,
+          "endMs": 6502,
+          "timestampMs": 6432,
+          "confidence": null
+        },
+        {
+          "text": "target",
+          "startMs": 6548,
+          "endMs": 6920,
+          "timestampMs": 6548,
+          "confidence": null
+        },
+        {
+          "text": "job.",
+          "startMs": 6978,
+          "endMs": 7407,
+          "timestampMs": 6978,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-3-voiceover.mp3",
+      "fromFrame": 3266,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-3-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Before",
+          "startMs": 70,
+          "endMs": 372,
+          "timestampMs": 70,
+          "confidence": null
+        },
+        {
+          "text": "touching",
+          "startMs": 418,
+          "endMs": 731,
+          "timestampMs": 418,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 778,
+          "endMs": 848,
+          "timestampMs": 778,
+          "confidence": null
+        },
+        {
+          "text": "resume,",
+          "startMs": 894,
+          "endMs": 1405,
+          "timestampMs": 894,
+          "confidence": null
+        },
+        {
+          "text": "pull",
+          "startMs": 1533,
+          "endMs": 1695,
+          "timestampMs": 1533,
+          "confidence": null
+        },
+        {
+          "text": "out",
+          "startMs": 1741,
+          "endMs": 1858,
+          "timestampMs": 1741,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1892,
+          "endMs": 1962,
+          "timestampMs": 1892,
+          "confidence": null
+        },
+        {
+          "text": "role",
+          "startMs": 2020,
+          "endMs": 2252,
+          "timestampMs": 2020,
+          "confidence": null
+        },
+        {
+          "text": "title,",
+          "startMs": 2276,
+          "endMs": 2740,
+          "timestampMs": 2276,
+          "confidence": null
+        },
+        {
+          "text": "tools,",
+          "startMs": 2821,
+          "endMs": 3332,
+          "timestampMs": 2821,
+          "confidence": null
+        },
+        {
+          "text": "responsibilities,",
+          "startMs": 3448,
+          "endMs": 4389,
+          "timestampMs": 3448,
+          "confidence": null
+        },
+        {
+          "text": "metrics,",
+          "startMs": 4505,
+          "endMs": 5004,
+          "timestampMs": 4505,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 5027,
+          "endMs": 5132,
+          "timestampMs": 5027,
+          "confidence": null
+        },
+        {
+          "text": "proof",
+          "startMs": 5190,
+          "endMs": 5399,
+          "timestampMs": 5190,
+          "confidence": null
+        },
+        {
+          "text": "signals",
+          "startMs": 5457,
+          "endMs": 5851,
+          "timestampMs": 5457,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5909,
+          "endMs": 5979,
+          "timestampMs": 5909,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 6037,
+          "endMs": 6235,
+          "timestampMs": 6037,
+          "confidence": null
+        },
+        {
+          "text": "actually",
+          "startMs": 6304,
+          "endMs": 6699,
+          "timestampMs": 6304,
+          "confidence": null
+        },
+        {
+          "text": "asks",
+          "startMs": 6769,
+          "endMs": 7105,
+          "timestampMs": 6769,
+          "confidence": null
+        },
+        {
+          "text": "for.",
+          "startMs": 7152,
+          "endMs": 7512,
+          "timestampMs": 7152,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-4-voiceover.mp3",
+      "fromFrame": 4779,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-4-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "If",
+          "startMs": 35,
+          "endMs": 151,
+          "timestampMs": 35,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 209,
+          "endMs": 232,
+          "timestampMs": 209,
+          "confidence": null
+        },
+        {
+          "text": "recruiter",
+          "startMs": 302,
+          "endMs": 755,
+          "timestampMs": 302,
+          "confidence": null
+        },
+        {
+          "text": "searches",
+          "startMs": 824,
+          "endMs": 1231,
+          "timestampMs": 824,
+          "confidence": null
+        },
+        {
+          "text": "for",
+          "startMs": 1277,
+          "endMs": 1370,
+          "timestampMs": 1277,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1405,
+          "endMs": 1474,
+          "timestampMs": 1405,
+          "confidence": null
+        },
+        {
+          "text": "first",
+          "startMs": 1544,
+          "endMs": 1834,
+          "timestampMs": 1544,
+          "confidence": null
+        },
+        {
+          "text": "three",
+          "startMs": 1881,
+          "endMs": 2113,
+          "timestampMs": 1881,
+          "confidence": null
+        },
+        {
+          "text": "important",
+          "startMs": 2148,
+          "endMs": 2612,
+          "timestampMs": 2148,
+          "confidence": null
+        },
+        {
+          "text": "terms",
+          "startMs": 2659,
+          "endMs": 3007,
+          "timestampMs": 2659,
+          "confidence": null
+        },
+        {
+          "text": "from",
+          "startMs": 3042,
+          "endMs": 3170,
+          "timestampMs": 3042,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 3216,
+          "endMs": 3286,
+          "timestampMs": 3216,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 3332,
+          "endMs": 3518,
+          "timestampMs": 3332,
+          "confidence": null
+        },
+        {
+          "text": "description,",
+          "startMs": 3576,
+          "endMs": 4214,
+          "timestampMs": 3576,
+          "confidence": null
+        },
+        {
+          "text": "this",
+          "startMs": 4540,
+          "endMs": 4714,
+          "timestampMs": 4540,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 4795,
+          "endMs": 5213,
+          "timestampMs": 4795,
+          "confidence": null
+        },
+        {
+          "text": "should",
+          "startMs": 5236,
+          "endMs": 5410,
+          "timestampMs": 5236,
+          "confidence": null
+        },
+        {
+          "text": "produce",
+          "startMs": 5445,
+          "endMs": 5793,
+          "timestampMs": 5445,
+          "confidence": null
+        },
+        {
+          "text": "useful",
+          "startMs": 5863,
+          "endMs": 6200,
+          "timestampMs": 5863,
+          "confidence": null
+        },
+        {
+          "text": "hits.",
+          "startMs": 6269,
+          "endMs": 6769,
+          "timestampMs": 6269,
+          "confidence": null
+        },
+        {
+          "text": "Right",
+          "startMs": 7210,
+          "endMs": 7430,
+          "timestampMs": 7210,
+          "confidence": null
+        },
+        {
+          "text": "now,",
+          "startMs": 7477,
+          "endMs": 7825,
+          "timestampMs": 7477,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 7872,
+          "endMs": 7988,
+          "timestampMs": 7872,
+          "confidence": null
+        },
+        {
+          "text": "source",
+          "startMs": 8034,
+          "endMs": 8290,
+          "timestampMs": 8034,
+          "confidence": null
+        },
+        {
+          "text": "bullet",
+          "startMs": 8324,
+          "endMs": 8580,
+          "timestampMs": 8324,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 8626,
+          "endMs": 8707,
+          "timestampMs": 8626,
+          "confidence": null
+        },
+        {
+          "text": "too",
+          "startMs": 8754,
+          "endMs": 8893,
+          "timestampMs": 8754,
+          "confidence": null
+        },
+        {
+          "text": "broad.",
+          "startMs": 8963,
+          "endMs": 9474,
+          "timestampMs": 8963,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-5-voiceover.mp3",
+      "fromFrame": 6292,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-5-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Now",
+          "startMs": 58,
+          "endMs": 209,
+          "timestampMs": 58,
+          "confidence": null
+        },
+        {
+          "text": "compare",
+          "startMs": 267,
+          "endMs": 604,
+          "timestampMs": 267,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 639,
+          "endMs": 708,
+          "timestampMs": 639,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 766,
+          "endMs": 1138,
+          "timestampMs": 766,
+          "confidence": null
+        },
+        {
+          "text": "line",
+          "startMs": 1196,
+          "endMs": 1428,
+          "timestampMs": 1196,
+          "confidence": null
+        },
+        {
+          "text": "by",
+          "startMs": 1463,
+          "endMs": 1591,
+          "timestampMs": 1463,
+          "confidence": null
+        },
+        {
+          "text": "line.",
+          "startMs": 1672,
+          "endMs": 2136,
+          "timestampMs": 1672,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 2380,
+          "endMs": 2485,
+          "timestampMs": 2380,
+          "confidence": null
+        },
+        {
+          "text": "weak",
+          "startMs": 2531,
+          "endMs": 2717,
+          "timestampMs": 2531,
+          "confidence": null
+        },
+        {
+          "text": "bullet",
+          "startMs": 2763,
+          "endMs": 3019,
+          "timestampMs": 2763,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 3065,
+          "endMs": 3146,
+          "timestampMs": 3065,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 3204,
+          "endMs": 3332,
+          "timestampMs": 3204,
+          "confidence": null
+        },
+        {
+          "text": "dishonest.",
+          "startMs": 3379,
+          "endMs": 4110,
+          "timestampMs": 3379,
+          "confidence": null
+        },
+        {
+          "text": "It",
+          "startMs": 4435,
+          "endMs": 4563,
+          "timestampMs": 4435,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 4609,
+          "endMs": 4690,
+          "timestampMs": 4609,
+          "confidence": null
+        },
+        {
+          "text": "just",
+          "startMs": 4748,
+          "endMs": 4934,
+          "timestampMs": 4748,
+          "confidence": null
+        },
+        {
+          "text": "too",
+          "startMs": 4981,
+          "endMs": 5166,
+          "timestampMs": 4981,
+          "confidence": null
+        },
+        {
+          "text": "vague",
+          "startMs": 5236,
+          "endMs": 5550,
+          "timestampMs": 5236,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 5584,
+          "endMs": 5631,
+          "timestampMs": 5584,
+          "confidence": null
+        },
+        {
+          "text": "carry",
+          "startMs": 5689,
+          "endMs": 5944,
+          "timestampMs": 5689,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5991,
+          "endMs": 6060,
+          "timestampMs": 5991,
+          "confidence": null
+        },
+        {
+          "text": "role-specific",
+          "startMs": 6118,
+          "endMs": 6838,
+          "timestampMs": 6118,
+          "confidence": null
+        },
+        {
+          "text": "proof.",
+          "startMs": 6896,
+          "endMs": 7372,
+          "timestampMs": 6896,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-6-voiceover.mp3",
+      "fromFrame": 7805,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-6-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "A",
+          "startMs": 46,
+          "endMs": 93,
+          "timestampMs": 46,
+          "confidence": null
+        },
+        {
+          "text": "polished",
+          "startMs": 174,
+          "endMs": 557,
+          "timestampMs": 174,
+          "confidence": null
+        },
+        {
+          "text": "sentence",
+          "startMs": 604,
+          "endMs": 1057,
+          "timestampMs": 604,
+          "confidence": null
+        },
+        {
+          "text": "can",
+          "startMs": 1091,
+          "endMs": 1219,
+          "timestampMs": 1091,
+          "confidence": null
+        },
+        {
+          "text": "still",
+          "startMs": 1265,
+          "endMs": 1498,
+          "timestampMs": 1265,
+          "confidence": null
+        },
+        {
+          "text": "hide",
+          "startMs": 1567,
+          "endMs": 1800,
+          "timestampMs": 1567,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1834,
+          "endMs": 1904,
+          "timestampMs": 1834,
+          "confidence": null
+        },
+        {
+          "text": "most",
+          "startMs": 1950,
+          "endMs": 2113,
+          "timestampMs": 1950,
+          "confidence": null
+        },
+        {
+          "text": "important",
+          "startMs": 2159,
+          "endMs": 2589,
+          "timestampMs": 2159,
+          "confidence": null
+        },
+        {
+          "text": "evidence.",
+          "startMs": 2647,
+          "endMs": 3239,
+          "timestampMs": 2647,
+          "confidence": null
+        },
+        {
+          "text": "Recruiters",
+          "startMs": 3680,
+          "endMs": 4214,
+          "timestampMs": 3680,
+          "confidence": null
+        },
+        {
+          "text": "skim",
+          "startMs": 4261,
+          "endMs": 4528,
+          "timestampMs": 4261,
+          "confidence": null
+        },
+        {
+          "text": "for",
+          "startMs": 4598,
+          "endMs": 4702,
+          "timestampMs": 4598,
+          "confidence": null
+        },
+        {
+          "text": "tools,",
+          "startMs": 4760,
+          "endMs": 5213,
+          "timestampMs": 4760,
+          "confidence": null
+        },
+        {
+          "text": "scope,",
+          "startMs": 5306,
+          "endMs": 5712,
+          "timestampMs": 5306,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 5735,
+          "endMs": 5840,
+          "timestampMs": 5735,
+          "confidence": null
+        },
+        {
+          "text": "outcomes",
+          "startMs": 5909,
+          "endMs": 6409,
+          "timestampMs": 5909,
+          "confidence": null
+        },
+        {
+          "text": "because",
+          "startMs": 6618,
+          "endMs": 6885,
+          "timestampMs": 6618,
+          "confidence": null
+        },
+        {
+          "text": "those",
+          "startMs": 6920,
+          "endMs": 7187,
+          "timestampMs": 6920,
+          "confidence": null
+        },
+        {
+          "text": "make",
+          "startMs": 7233,
+          "endMs": 7419,
+          "timestampMs": 7233,
+          "confidence": null
+        },
+        {
+          "text": "fit",
+          "startMs": 7465,
+          "endMs": 7686,
+          "timestampMs": 7465,
+          "confidence": null
+        },
+        {
+          "text": "easy",
+          "startMs": 7767,
+          "endMs": 8045,
+          "timestampMs": 7767,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 8103,
+          "endMs": 8162,
+          "timestampMs": 8103,
+          "confidence": null
+        },
+        {
+          "text": "verify.",
+          "startMs": 8231,
+          "endMs": 8905,
+          "timestampMs": 8231,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-7-voiceover.mp3",
+      "fromFrame": 9318,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-7-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "The",
+          "startMs": 70,
+          "endMs": 163,
+          "timestampMs": 70,
+          "confidence": null
+        },
+        {
+          "text": "fix",
+          "startMs": 221,
+          "endMs": 441,
+          "timestampMs": 221,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 511,
+          "endMs": 592,
+          "timestampMs": 511,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 639,
+          "endMs": 708,
+          "timestampMs": 639,
+          "confidence": null
+        },
+        {
+          "text": "say",
+          "startMs": 778,
+          "endMs": 1010,
+          "timestampMs": 778,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1068,
+          "endMs": 1138,
+          "timestampMs": 1068,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 1219,
+          "endMs": 1440,
+          "timestampMs": 1219,
+          "confidence": null
+        },
+        {
+          "text": "work",
+          "startMs": 1509,
+          "endMs": 1765,
+          "timestampMs": 1509,
+          "confidence": null
+        },
+        {
+          "text": "clearly:",
+          "startMs": 1858,
+          "endMs": 2415,
+          "timestampMs": 1858,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 2659,
+          "endMs": 2856,
+          "timestampMs": 2659,
+          "confidence": null
+        },
+        {
+          "text": "tool,",
+          "startMs": 2914,
+          "endMs": 3344,
+          "timestampMs": 2914,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 3402,
+          "endMs": 3611,
+          "timestampMs": 3402,
+          "confidence": null
+        },
+        {
+          "text": "scope,",
+          "startMs": 3669,
+          "endMs": 4133,
+          "timestampMs": 3669,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 4249,
+          "endMs": 4447,
+          "timestampMs": 4249,
+          "confidence": null
+        },
+        {
+          "text": "audience,",
+          "startMs": 4505,
+          "endMs": 4946,
+          "timestampMs": 4505,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 4969,
+          "endMs": 5085,
+          "timestampMs": 4969,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 5132,
+          "endMs": 5271,
+          "timestampMs": 5132,
+          "confidence": null
+        },
+        {
+          "text": "result.",
+          "startMs": 5329,
+          "endMs": 5886,
+          "timestampMs": 5329,
+          "confidence": null
+        },
+        {
+          "text": "Same",
+          "startMs": 6490,
+          "endMs": 6803,
+          "timestampMs": 6490,
+          "confidence": null
+        },
+        {
+          "text": "person,",
+          "startMs": 6850,
+          "endMs": 7361,
+          "timestampMs": 6850,
+          "confidence": null
+        },
+        {
+          "text": "clearer",
+          "startMs": 7477,
+          "endMs": 7837,
+          "timestampMs": 7477,
+          "confidence": null
+        },
+        {
+          "text": "evidence.",
+          "startMs": 7906,
+          "endMs": 8522,
+          "timestampMs": 7906,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-8-voiceover.mp3",
+      "fromFrame": 10831,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-8-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Once",
+          "startMs": 35,
+          "endMs": 255,
+          "timestampMs": 35,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 290,
+          "endMs": 372,
+          "timestampMs": 290,
+          "confidence": null
+        },
+        {
+          "text": "evidence",
+          "startMs": 441,
+          "endMs": 836,
+          "timestampMs": 441,
+          "confidence": null
+        },
+        {
+          "text": "matches",
+          "startMs": 894,
+          "endMs": 1242,
+          "timestampMs": 894,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1300,
+          "endMs": 1370,
+          "timestampMs": 1300,
+          "confidence": null
+        },
+        {
+          "text": "role",
+          "startMs": 1428,
+          "endMs": 1649,
+          "timestampMs": 1428,
+          "confidence": null
+        },
+        {
+          "text": "language,",
+          "startMs": 1683,
+          "endMs": 2171,
+          "timestampMs": 1683,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 2252,
+          "endMs": 2368,
+          "timestampMs": 2252,
+          "confidence": null
+        },
+        {
+          "text": "example",
+          "startMs": 2438,
+          "endMs": 2902,
+          "timestampMs": 2438,
+          "confidence": null
+        },
+        {
+          "text": "score",
+          "startMs": 2926,
+          "endMs": 3239,
+          "timestampMs": 2926,
+          "confidence": null
+        },
+        {
+          "text": "moves",
+          "startMs": 3286,
+          "endMs": 3541,
+          "timestampMs": 3286,
+          "confidence": null
+        },
+        {
+          "text": "up.",
+          "startMs": 3622,
+          "endMs": 3994,
+          "timestampMs": 3622,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 4435,
+          "endMs": 4551,
+          "timestampMs": 4435,
+          "confidence": null
+        },
+        {
+          "text": "point",
+          "startMs": 4609,
+          "endMs": 4853,
+          "timestampMs": 4609,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 4899,
+          "endMs": 4981,
+          "timestampMs": 4899,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 5050,
+          "endMs": 5178,
+          "timestampMs": 5050,
+          "confidence": null
+        },
+        {
+          "text": "gaming",
+          "startMs": 5236,
+          "endMs": 5526,
+          "timestampMs": 5236,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 5573,
+          "endMs": 5596,
+          "timestampMs": 5573,
+          "confidence": null
+        },
+        {
+          "text": "robot.",
+          "startMs": 5654,
+          "endMs": 6223,
+          "timestampMs": 5654,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 6397,
+          "endMs": 6513,
+          "timestampMs": 6397,
+          "confidence": null
+        },
+        {
+          "text": "point",
+          "startMs": 6571,
+          "endMs": 6815,
+          "timestampMs": 6571,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 6861,
+          "endMs": 6931,
+          "timestampMs": 6861,
+          "confidence": null
+        },
+        {
+          "text": "making",
+          "startMs": 7001,
+          "endMs": 7268,
+          "timestampMs": 7001,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 7349,
+          "endMs": 7558,
+          "timestampMs": 7349,
+          "confidence": null
+        },
+        {
+          "text": "fit",
+          "startMs": 7628,
+          "endMs": 7872,
+          "timestampMs": 7628,
+          "confidence": null
+        },
+        {
+          "text": "easier",
+          "startMs": 7964,
+          "endMs": 8324,
+          "timestampMs": 7964,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 8371,
+          "endMs": 8417,
+          "timestampMs": 8371,
+          "confidence": null
+        },
+        {
+          "text": "see.",
+          "startMs": 8498,
+          "endMs": 8916,
+          "timestampMs": 8498,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-9-voiceover.mp3",
+      "fromFrame": 12344,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-recruiter-search-tests-with-real-r-episode-9-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Signal",
+          "startMs": 35,
+          "endMs": 406,
+          "timestampMs": 35,
+          "confidence": null
+        },
+        {
+          "text": "automates",
+          "startMs": 476,
+          "endMs": 952,
+          "timestampMs": 476,
+          "confidence": null
+        },
+        {
+          "text": "this",
+          "startMs": 987,
+          "endMs": 1126,
+          "timestampMs": 987,
+          "confidence": null
+        },
+        {
+          "text": "comparison.",
+          "startMs": 1184,
+          "endMs": 2009,
+          "timestampMs": 1184,
+          "confidence": null
+        },
+        {
+          "text": "Paste",
+          "startMs": 2334,
+          "endMs": 2682,
+          "timestampMs": 2334,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 2728,
+          "endMs": 2810,
+          "timestampMs": 2728,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 2868,
+          "endMs": 3042,
+          "timestampMs": 2868,
+          "confidence": null
+        },
+        {
+          "text": "description,",
+          "startMs": 3100,
+          "endMs": 3796,
+          "timestampMs": 3100,
+          "confidence": null
+        },
+        {
+          "text": "upload",
+          "startMs": 3947,
+          "endMs": 4342,
+          "timestampMs": 3947,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 4377,
+          "endMs": 4447,
+          "timestampMs": 4377,
+          "confidence": null
+        },
+        {
+          "text": "resume,",
+          "startMs": 4505,
+          "endMs": 5004,
+          "timestampMs": 4505,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 5074,
+          "endMs": 5224,
+          "timestampMs": 5074,
+          "confidence": null
+        },
+        {
+          "text": "check",
+          "startMs": 5271,
+          "endMs": 5480,
+          "timestampMs": 5271,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5550,
+          "endMs": 5619,
+          "timestampMs": 5550,
+          "confidence": null
+        },
+        {
+          "text": "free",
+          "startMs": 5666,
+          "endMs": 5851,
+          "timestampMs": 5666,
+          "confidence": null
+        },
+        {
+          "text": "score",
+          "startMs": 5886,
+          "endMs": 6211,
+          "timestampMs": 5886,
+          "confidence": null
+        },
+        {
+          "text": "first.",
+          "startMs": 6269,
+          "endMs": 6838,
+          "timestampMs": 6269,
+          "confidence": null
+        },
+        {
+          "text": "If",
+          "startMs": 7279,
+          "endMs": 7430,
+          "timestampMs": 7279,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 7477,
+          "endMs": 7546,
+          "timestampMs": 7477,
+          "confidence": null
+        },
+        {
+          "text": "gap",
+          "startMs": 7593,
+          "endMs": 7790,
+          "timestampMs": 7593,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 7848,
+          "endMs": 7930,
+          "timestampMs": 7848,
+          "confidence": null
+        },
+        {
+          "text": "real,",
+          "startMs": 8010,
+          "endMs": 8371,
+          "timestampMs": 8010,
+          "confidence": null
+        },
+        {
+          "text": "then",
+          "startMs": 8452,
+          "endMs": 8603,
+          "timestampMs": 8452,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 8638,
+          "endMs": 8707,
+          "timestampMs": 8638,
+          "confidence": null
+        },
+        {
+          "text": "paid",
+          "startMs": 8754,
+          "endMs": 8986,
+          "timestampMs": 8754,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 9044,
+          "endMs": 9497,
+          "timestampMs": 9044,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 9543,
+          "endMs": 9648,
+          "timestampMs": 9543,
+          "confidence": null
+        },
+        {
+          "text": "cover",
+          "startMs": 9729,
+          "endMs": 9938,
+          "timestampMs": 9729,
+          "confidence": null
+        },
+        {
+          "text": "letter",
+          "startMs": 9985,
+          "endMs": 10194,
+          "timestampMs": 9985,
+          "confidence": null
+        },
+        {
+          "text": "package",
+          "startMs": 10240,
+          "endMs": 10623,
+          "timestampMs": 10240,
+          "confidence": null
+        },
+        {
+          "text": "makes",
+          "startMs": 10670,
+          "endMs": 10879,
+          "timestampMs": 10670,
+          "confidence": null
+        },
+        {
+          "text": "sense.",
+          "startMs": 10913,
+          "endMs": 11424,
+          "timestampMs": 10913,
+          "confidence": null
+        }
+      ]
+    }
+  ],
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "reason": "9 episode sections ready",
+    "wordLevelCaptions": true
+  }
+}

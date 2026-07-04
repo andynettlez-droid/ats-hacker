@@ -1,0 +1,733 @@
+{
+  "hook": "I searched Salesforce. Nothing.",
+  "subhook": "That is how qualified people disappear.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "terminal",
+  "formatArchetype": "recruiterSearch",
+  "pace": "balanced",
+  "seriesLabel": "Recruiter Search Test",
+  "signalLines": {
+    "hook": "Search box says no.",
+    "problem": "The proof exists. It is not findable.",
+    "teardown": "Give the search a real term.",
+    "fix": "Now it can surface.",
+    "cta": "Search-test your resume."
+  },
+  "resumeName": "Maya Torres",
+  "resumeTitle": "Account Executive Resume",
+  "resumeMeta": [
+    "4 yrs SaaS sales",
+    "Mid-market accounts",
+    "Quota-carrying role"
+  ],
+  "jobTitle": "Mid-Market Account Executive",
+  "jobKeywords": [
+    "Salesforce",
+    "pipeline generation",
+    "quota attainment",
+    "discovery calls",
+    "MEDDICC"
+  ],
+  "weakBullets": [
+    "Managed customer conversations and followed up with prospects.",
+    "Responsible for sales opportunities in assigned territory.",
+    "Worked with marketing and customer success on accounts."
+  ],
+  "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+  "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+  "resumeDocument": {
+    "name": "Maya Torres",
+    "headline": "Account Executive",
+    "contact": [
+      "Chicago, IL",
+      "maya.torres@example.com",
+      "linkedin.com/in/maya-torres"
+    ],
+    "summary": "Quota-carrying SaaS seller with 4 years across SDR and AE roles, focused on discovery, account prioritization, CRM hygiene, and mid-market pipeline creation.",
+    "experience": [
+      {
+        "company": "BrightLedger",
+        "role": "Account Executive",
+        "dates": "2024 - Present",
+        "bullets": [
+          "Managed customer conversations and followed up with prospects.",
+          "Responsible for sales opportunities in assigned territory.",
+          "Worked with marketing and customer success on accounts.",
+          "Maintained Salesforce notes, next steps, and close-date updates for active opportunities."
+        ]
+      },
+      {
+        "company": "Pinecone Workflow",
+        "role": "Sales Development Representative",
+        "dates": "2021 - 2024",
+        "bullets": [
+          "Booked discovery meetings with operations and finance leaders.",
+          "Researched account triggers and personalized outbound email sequences.",
+          "Qualified inbound leads and routed opportunities to three AE teams."
+        ]
+      }
+    ],
+    "skills": [
+      "Salesforce",
+      "MEDDICC",
+      "Discovery calls",
+      "Pipeline generation",
+      "Outbound sequencing",
+      "Forecasting",
+      "Mutual action plans"
+    ],
+    "education": "B.S. Business Administration, DePaul University"
+  },
+  "jobDescription": {
+    "title": "Mid-Market Account Executive",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Mid-Market Account Executive who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use Salesforce and pipeline generation to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to quota attainment.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "Salesforce",
+      "pipeline generation",
+      "quota attainment",
+      "discovery calls",
+      "MEDDICC"
+    ],
+    "searchQueries": [
+      "Salesforce",
+      "pipeline generation",
+      "quota attainment",
+      "discovery calls"
+    ]
+  },
+  "beforeScore": 37,
+  "afterScore": 88,
+  "markedLabel": "No quota signal",
+  "problemPunchline": "A recruiter cannot search for the thought you meant.",
+  "teardownPunchline": "This is where vague language quietly loses.",
+  "fixPunchline": "The keyword now has proof behind it.",
+  "teardownIssues": [
+    "No quota proof",
+    "No CRM signal",
+    "No pipeline number"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": null,
+    "voiceName": null,
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-i-searched-salesforce-and-this-resume-vani-2-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "Recruiter",
+      "startMs": 58,
+      "endMs": 546,
+      "timestampMs": 58,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 604,
+      "endMs": 894,
+      "timestampMs": 604,
+      "confidence": null
+    },
+    {
+      "text": "test.",
+      "startMs": 940,
+      "endMs": 1428,
+      "timestampMs": 940,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 1602,
+      "endMs": 1683,
+      "timestampMs": 1602,
+      "confidence": null
+    },
+    {
+      "text": "type",
+      "startMs": 1776,
+      "endMs": 2043,
+      "timestampMs": 1776,
+      "confidence": null
+    },
+    {
+      "text": "Salesforce.",
+      "startMs": 2078,
+      "endMs": 2926,
+      "timestampMs": 2078,
+      "confidence": null
+    },
+    {
+      "text": "Then",
+      "startMs": 3170,
+      "endMs": 3367,
+      "timestampMs": 3170,
+      "confidence": null
+    },
+    {
+      "text": "pipeline",
+      "startMs": 3448,
+      "endMs": 3913,
+      "timestampMs": 3448,
+      "confidence": null
+    },
+    {
+      "text": "generation.",
+      "startMs": 3947,
+      "endMs": 4679,
+      "timestampMs": 3947,
+      "confidence": null
+    },
+    {
+      "text": "Then",
+      "startMs": 4853,
+      "endMs": 5050,
+      "timestampMs": 4853,
+      "confidence": null
+    },
+    {
+      "text": "quota",
+      "startMs": 5132,
+      "endMs": 5468,
+      "timestampMs": 5132,
+      "confidence": null
+    },
+    {
+      "text": "attainment.",
+      "startMs": 5515,
+      "endMs": 6153,
+      "timestampMs": 5515,
+      "confidence": null
+    },
+    {
+      "text": "The",
+      "startMs": 6536,
+      "endMs": 6653,
+      "timestampMs": 6536,
+      "confidence": null
+    },
+    {
+      "text": "job",
+      "startMs": 6722,
+      "endMs": 6896,
+      "timestampMs": 6722,
+      "confidence": null
+    },
+    {
+      "text": "description",
+      "startMs": 6954,
+      "endMs": 7430,
+      "timestampMs": 6954,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 7488,
+      "endMs": 7558,
+      "timestampMs": 7488,
+      "confidence": null
+    },
+    {
+      "text": "basically",
+      "startMs": 7616,
+      "endMs": 8045,
+      "timestampMs": 7616,
+      "confidence": null
+    },
+    {
+      "text": "telling",
+      "startMs": 8092,
+      "endMs": 8348,
+      "timestampMs": 8092,
+      "confidence": null
+    },
+    {
+      "text": "us",
+      "startMs": 8394,
+      "endMs": 8464,
+      "timestampMs": 8394,
+      "confidence": null
+    },
+    {
+      "text": "what",
+      "startMs": 8510,
+      "endMs": 8649,
+      "timestampMs": 8510,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 8696,
+      "endMs": 8742,
+      "timestampMs": 8696,
+      "confidence": null
+    },
+    {
+      "text": "look",
+      "startMs": 8800,
+      "endMs": 8963,
+      "timestampMs": 8800,
+      "confidence": null
+    },
+    {
+      "text": "for.",
+      "startMs": 9009,
+      "endMs": 9392,
+      "timestampMs": 9009,
+      "confidence": null
+    },
+    {
+      "text": "But",
+      "startMs": 9776,
+      "endMs": 9927,
+      "timestampMs": 9776,
+      "confidence": null
+    },
+    {
+      "text": "this",
+      "startMs": 9961,
+      "endMs": 10101,
+      "timestampMs": 9961,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 10182,
+      "endMs": 10600,
+      "timestampMs": 10182,
+      "confidence": null
+    },
+    {
+      "text": "says,",
+      "startMs": 10646,
+      "endMs": 11076,
+      "timestampMs": 10646,
+      "confidence": null
+    },
+    {
+      "text": "Responsible",
+      "startMs": 11227,
+      "endMs": 11831,
+      "timestampMs": 11227,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 11865,
+      "endMs": 11970,
+      "timestampMs": 11865,
+      "confidence": null
+    },
+    {
+      "text": "sales",
+      "startMs": 12016,
+      "endMs": 12307,
+      "timestampMs": 12016,
+      "confidence": null
+    },
+    {
+      "text": "opportunities",
+      "startMs": 12341,
+      "endMs": 13015,
+      "timestampMs": 12341,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 13073,
+      "endMs": 13154,
+      "timestampMs": 13073,
+      "confidence": null
+    },
+    {
+      "text": "assigned",
+      "startMs": 13201,
+      "endMs": 13595,
+      "timestampMs": 13201,
+      "confidence": null
+    },
+    {
+      "text": "territory.",
+      "startMs": 13630,
+      "endMs": 14350,
+      "timestampMs": 13630,
+      "confidence": null
+    },
+    {
+      "text": "That",
+      "startMs": 14861,
+      "endMs": 15070,
+      "timestampMs": 14861,
+      "confidence": null
+    },
+    {
+      "text": "may",
+      "startMs": 15139,
+      "endMs": 15255,
+      "timestampMs": 15139,
+      "confidence": null
+    },
+    {
+      "text": "be",
+      "startMs": 15325,
+      "endMs": 15418,
+      "timestampMs": 15325,
+      "confidence": null
+    },
+    {
+      "text": "true,",
+      "startMs": 15464,
+      "endMs": 15894,
+      "timestampMs": 15464,
+      "confidence": null
+    },
+    {
+      "text": "but",
+      "startMs": 15975,
+      "endMs": 16114,
+      "timestampMs": 15975,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 16161,
+      "endMs": 16219,
+      "timestampMs": 16161,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 16277,
+      "endMs": 16358,
+      "timestampMs": 16277,
+      "confidence": null
+    },
+    {
+      "text": "job-search",
+      "startMs": 16428,
+      "endMs": 16985,
+      "timestampMs": 16428,
+      "confidence": null
+    },
+    {
+      "text": "fog",
+      "startMs": 17043,
+      "endMs": 17287,
+      "timestampMs": 17043,
+      "confidence": null
+    },
+    {
+      "text": "with",
+      "startMs": 17345,
+      "endMs": 17484,
+      "timestampMs": 17345,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 17519,
+      "endMs": 17554,
+      "timestampMs": 17519,
+      "confidence": null
+    },
+    {
+      "text": "name",
+      "startMs": 17624,
+      "endMs": 17844,
+      "timestampMs": 17624,
+      "confidence": null
+    },
+    {
+      "text": "badge.",
+      "startMs": 17879,
+      "endMs": 18436,
+      "timestampMs": 17879,
+      "confidence": null
+    },
+    {
+      "text": "It",
+      "startMs": 18878,
+      "endMs": 19005,
+      "timestampMs": 18878,
+      "confidence": null
+    },
+    {
+      "text": "gives",
+      "startMs": 19052,
+      "endMs": 19249,
+      "timestampMs": 19052,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 19296,
+      "endMs": 19365,
+      "timestampMs": 19296,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 19423,
+      "endMs": 19690,
+      "timestampMs": 19423,
+      "confidence": null
+    },
+    {
+      "text": "box",
+      "startMs": 19748,
+      "endMs": 20004,
+      "timestampMs": 19748,
+      "confidence": null
+    },
+    {
+      "text": "nothing",
+      "startMs": 20085,
+      "endMs": 20375,
+      "timestampMs": 20085,
+      "confidence": null
+    },
+    {
+      "text": "useful.",
+      "startMs": 20445,
+      "endMs": 21037,
+      "timestampMs": 20445,
+      "confidence": null
+    },
+    {
+      "text": "If",
+      "startMs": 21478,
+      "endMs": 21629,
+      "timestampMs": 21478,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 21676,
+      "endMs": 21745,
+      "timestampMs": 21676,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 21815,
+      "endMs": 22024,
+      "timestampMs": 21815,
+      "confidence": null
+    },
+    {
+      "text": "work",
+      "startMs": 22082,
+      "endMs": 22314,
+      "timestampMs": 22082,
+      "confidence": null
+    },
+    {
+      "text": "was",
+      "startMs": 22372,
+      "endMs": 22477,
+      "timestampMs": 22372,
+      "confidence": null
+    },
+    {
+      "text": "generated",
+      "startMs": 22535,
+      "endMs": 23057,
+      "timestampMs": 22535,
+      "confidence": null
+    },
+    {
+      "text": "1.8",
+      "startMs": 23127,
+      "endMs": 23673,
+      "timestampMs": 23127,
+      "confidence": null
+    },
+    {
+      "text": "million",
+      "startMs": 23742,
+      "endMs": 24032,
+      "timestampMs": 23742,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 24102,
+      "endMs": 24195,
+      "timestampMs": 24102,
+      "confidence": null
+    },
+    {
+      "text": "qualified",
+      "startMs": 24265,
+      "endMs": 24752,
+      "timestampMs": 24265,
+      "confidence": null
+    },
+    {
+      "text": "Salesforce",
+      "startMs": 24810,
+      "endMs": 25402,
+      "timestampMs": 24810,
+      "confidence": null
+    },
+    {
+      "text": "pipeline,",
+      "startMs": 25449,
+      "endMs": 26227,
+      "timestampMs": 25449,
+      "confidence": null
+    },
+    {
+      "text": "say",
+      "startMs": 26610,
+      "endMs": 26796,
+      "timestampMs": 26610,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 26842,
+      "endMs": 26993,
+      "timestampMs": 26842,
+      "confidence": null
+    },
+    {
+      "text": "plainly.",
+      "startMs": 27051,
+      "endMs": 27678,
+      "timestampMs": 27051,
+      "confidence": null
+    },
+    {
+      "text": "37",
+      "startMs": 28119,
+      "endMs": 28676,
+      "timestampMs": 28119,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 28746,
+      "endMs": 28793,
+      "timestampMs": 28746,
+      "confidence": null
+    },
+    {
+      "text": "88.",
+      "startMs": 28874,
+      "endMs": 29605,
+      "timestampMs": 28874,
+      "confidence": null
+    },
+    {
+      "text": "Same",
+      "startMs": 29849,
+      "endMs": 30151,
+      "timestampMs": 29849,
+      "confidence": null
+    },
+    {
+      "text": "work.",
+      "startMs": 30186,
+      "endMs": 30673,
+      "timestampMs": 30186,
+      "confidence": null
+    },
+    {
+      "text": "Searchable",
+      "startMs": 31056,
+      "endMs": 31556,
+      "timestampMs": 31056,
+      "confidence": null
+    },
+    {
+      "text": "signal.",
+      "startMs": 31602,
+      "endMs": 32148,
+      "timestampMs": 31602,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 32357,
+      "endMs": 32566,
+      "timestampMs": 32357,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 32612,
+      "endMs": 32682,
+      "timestampMs": 32612,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 32728,
+      "endMs": 32926,
+      "timestampMs": 32728,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 32960,
+      "endMs": 33274,
+      "timestampMs": 32960,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 33332,
+      "endMs": 33611,
+      "timestampMs": 33332,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 33657,
+      "endMs": 33924,
+      "timestampMs": 33657,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 33959,
+      "endMs": 34040,
+      "timestampMs": 33959,
+      "confidence": null
+    },
+    {
+      "text": "send",
+      "startMs": 34098,
+      "endMs": 34319,
+      "timestampMs": 34098,
+      "confidence": null
+    },
+    {
+      "text": "it.",
+      "startMs": 34389,
+      "endMs": 34644,
+      "timestampMs": 34389,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 37.844,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-04-i-searched-salesforce-and-this-resume-vani-2-voiceover.alignment.json"
+  }
+}

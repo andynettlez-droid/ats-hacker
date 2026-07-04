@@ -1,0 +1,36 @@
+{
+  "date": "2026-07-04",
+  "topic": "Recruiter search tests with real resume teardowns",
+  "status": "render_ready_review_required",
+  "episode": {
+    "composition": "TeardownEpisode",
+    "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_episode.json",
+    "output": "marketing/remotion/out/daily-recruiter-search-tests-with-real-resume-teardowns-episode.mp4",
+    "format": "1920x1080",
+    "status": "render_ready",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "reason": "9 episode sections ready",
+      "wordLevelCaptions": true
+    }
+  },
+  "thumbnail": {
+    "composition": "SignalThumbnail",
+    "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_thumbnail.json",
+    "output": "marketing/remotion/out/daily-recruiter-search-tests-with-real-resume-teardowns-thumbnail.png",
+    "format": "1280x720",
+    "status": "render_ready"
+  },
+  "reviewGate": {
+    "required": true,
+    "checks": [
+      "Render the episode and thumbnail.",
+      "Verify the hook is visible in the opening seconds.",
+      "Verify resume, job description, score movement, and Signal mascot are visible.",
+      "Verify audio is studio-quality and music stays quiet.",
+      "Verify no unsupported ATS, guarantee, or fake-experience claims."
+    ]
+  }
+}

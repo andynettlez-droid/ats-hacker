@@ -696,17 +696,24 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
-        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_1.json",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-real-resumes-against-real-job-descriptions_short_1.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
-            "provider": "openai",
+            "provider": "elevenlabs",
             "voiceId": null,
             "voiceName": null,
-            "reason": "ready via openai",
-            "wordLevelCaptions": false
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "73a06794756ed761",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by varied creator-native batch; needs creative rewrite before posting.",
+            "updatedAt": "2026-07-04T20:03:01.776005+00:00"
         }
     },
     {
@@ -719,17 +726,24 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
-        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_2.json",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-real-resumes-against-real-job-descriptions_short_2.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
-            "provider": "openai",
+            "provider": "elevenlabs",
             "voiceId": null,
             "voiceName": null,
-            "reason": "ready via openai",
-            "wordLevelCaptions": false
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "608db7518987339b",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by varied creator-native batch; needs creative rewrite before posting.",
+            "updatedAt": "2026-07-04T20:03:01.633814+00:00"
         }
     },
     {
@@ -742,17 +756,24 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
-        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_3.json",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-real-resumes-against-real-job-descriptions_short_3.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
-            "provider": "openai",
+            "provider": "elevenlabs",
             "voiceId": null,
             "voiceName": null,
-            "reason": "ready via openai",
-            "wordLevelCaptions": false
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "71e14e8e21715d7d",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by varied creator-native batch; needs creative rewrite before posting.",
+            "updatedAt": "2026-07-04T20:03:02.071384+00:00"
         }
     },
     {
@@ -771,7 +792,7 @@
         "thumbnail": "marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--thumbnail.png",
         "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_thumbnail.json",
         "renderStatus": "rendered_review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "TeardownEpisode",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_episode.json",
         "audioReadiness": {
@@ -812,6 +833,207 @@
             "claims reviewed",
             "exact YouTube title and description reviewed",
             "status remains review_required until approval"
+        ],
+        "codexReviewDecision": {
+            "runId": "5dcdfea4778fbd65",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by varied creator-native batch; needs creative rewrite before posting.",
+            "updatedAt": "2026-07-04T20:03:01.928395+00:00"
+        }
+    },
+    {
+        "title": "Recruiter reacts to real resumes against real job descriptions | Resume Teardown | Signal by ATS",
+        "caption": "Recruiter reacts to real resumes against real job descriptions | Resume Teardown. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
+        "file": "videos/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-episode.mp4",
+        "platforms": [
+            "youtube"
+        ],
+        "status": "review_required",
+        "contentType": "youtube_long_form",
+        "youtubeKind": "long_form",
+        "target": "daily long-form YouTube",
+        "youtubeTitle": "Recruiter reacts to real resumes against real job descriptions | Resume Teardown | Signal by ATS",
+        "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+        "thumbnail": "marketing/remotion/out/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-thumbnail.png",
+        "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-real-resumes-against-real-job-descriptions_thumbnail.json",
+        "renderStatus": "rendered_review_required",
+        "reviewStatus": "revision_requested",
+        "composition": "TeardownEpisode",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-real-resumes-against-real-job-descriptions_episode.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "reason": "9 episode sections ready",
+            "wordLevelCaptions": true
+        },
+        "qaGate": {
+            "required": true,
+            "passed": false,
+            "status": "requires_render_review",
+            "minExpertViralScore": 94,
+            "checks": [
+                "Rendered MP4 exists in marketing/autopost/videos.",
+                "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+                "Opening hook is visible in the first 5 seconds.",
+                "Signal mascot or brand mark is visible.",
+                "No old human presenter appears unless explicitly approved.",
+                "Audio is present, balanced, and not dominated by music or effects.",
+                "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+                "Thumbnail exists or is intentionally deferred.",
+                "Human reviewer approved exact file, title, description, thumbnail, and platform target."
+            ]
+        },
+        "expertViralGate": {
+            "required": true,
+            "minScore": 94,
+            "score": null,
+            "passed": false,
+            "status": "requires_expert_viral_review"
+        },
+        "reviewChecklist": [
+            "long-form render reviewed",
+            "thumbnail reviewed",
+            "audio present and balanced",
+            "claims reviewed",
+            "exact YouTube title and description reviewed",
+            "status remains review_required until approval"
+        ],
+        "codexReviewDecision": {
+            "runId": "070958dd422076d7",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by varied creator-native batch; needs creative rewrite before posting.",
+            "updatedAt": "2026-07-04T20:03:01.338455+00:00"
+        }
+    },
+    {
+        "title": "Recruiter search tests with real resume teardowns | Resume Teardown | Signal by ATSHacker",
+        "caption": "Recruiter search tests with real resume teardowns | Resume Teardown. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
+        "file": "videos/daily-recruiter-search-tests-with-real-resume-teardowns-episode.mp4",
+        "platforms": [
+            "youtube"
+        ],
+        "status": "review_required",
+        "contentType": "youtube_long_form",
+        "youtubeKind": "long_form",
+        "target": "daily long-form YouTube",
+        "youtubeTitle": "Recruiter search tests with real resume teardowns | Resume Teardown | Signal by ATSHacker",
+        "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+        "thumbnail": "marketing/remotion/out/daily-recruiter-search-tests-with-real-resume-teardowns-thumbnail.png",
+        "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_thumbnail.json",
+        "renderStatus": "rendered_review_required",
+        "reviewStatus": "review_required",
+        "composition": "TeardownEpisode",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_episode.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "reason": "9 episode sections ready",
+            "wordLevelCaptions": true
+        },
+        "qaGate": {
+            "required": true,
+            "passed": false,
+            "status": "requires_render_review",
+            "minExpertViralScore": 94,
+            "checks": [
+                "Rendered MP4 exists in marketing/autopost/videos.",
+                "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+                "Opening hook is visible in the first 5 seconds.",
+                "Signal mascot or brand mark is visible.",
+                "No old human presenter appears unless explicitly approved.",
+                "Audio is present, balanced, and not dominated by music or effects.",
+                "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+                "Thumbnail exists or is intentionally deferred.",
+                "Human reviewer approved exact file, title, description, thumbnail, and platform target."
+            ]
+        },
+        "expertViralGate": {
+            "required": true,
+            "minScore": 94,
+            "score": null,
+            "passed": false,
+            "status": "requires_expert_viral_review"
+        },
+        "reviewChecklist": [
+            "long-form render reviewed",
+            "thumbnail reviewed",
+            "audio present and balanced",
+            "claims reviewed",
+            "exact YouTube title and description reviewed",
+            "status remains review_required until approval"
         ]
+    },
+    {
+        "title": "This resume sentence is quietly expensive",
+        "caption": "This resume sentence is quietly expensive. This bullet is expensive. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-this-resume-sentence-is-quietly-expensive.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_1.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": null,
+            "voiceName": null,
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        }
+    },
+    {
+        "title": "I searched Salesforce and this resume vanished",
+        "caption": "I searched Salesforce and this resume vanished. I searched Salesforce. Nothing. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-i-searched-salesforce-and-this-resume-vanished.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_2.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": null,
+            "voiceName": null,
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        }
+    },
+    {
+        "title": "The job post gave the answer key",
+        "caption": "The job post gave the answer key. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-the-job-post-gave-the-answer-key.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_3.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": null,
+            "voiceName": null,
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        }
     }
 ]

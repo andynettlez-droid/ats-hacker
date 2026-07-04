@@ -40,6 +40,18 @@ export const teardownEpisodeSchema = z.object({
         src: z.string(),
         fromFrame: z.number(),
         volume: z.number().min(0).max(1).optional(),
+        alignmentRef: z.string().nullable().optional(),
+        captions: z
+          .array(
+            z.object({
+              text: z.string(),
+              startMs: z.number(),
+              endMs: z.number(),
+              timestampMs: z.number().nullable().optional(),
+              confidence: z.number().nullable().optional(),
+            }),
+          )
+          .optional(),
       }),
     )
     .optional(),

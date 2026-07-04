@@ -222,6 +222,24 @@ const checkProps = (draft, postsEntry, checks) => {
   );
   addCheck(checks, props.audioReadiness?.studioVoiceover === true, "studio voiceover marked ready", props.audioReadiness?.reason || "");
   addCheck(checks, props.audioReadiness?.quietMusic === true, "quiet music marked ready", props.audioReadiness?.reason || "");
+  addCheck(
+    checks,
+    props.audioReadiness?.provider === "elevenlabs",
+    "ElevenLabs is the approved narration provider",
+    props.audioReadiness?.provider || "missing provider",
+  );
+  addCheck(
+    checks,
+    props.audioReadiness?.wordLevelCaptions === true || segments.some((segment) => Array.isArray(segment.captions) && segment.captions.length > 0),
+    "ElevenLabs timestamp captions are present",
+    props.audioReadiness?.reason || "",
+  );
+  addCheck(
+    checks,
+    segments.every((segment) => !segment.alignmentRef || String(segment.alignmentRef).endsWith(".alignment.json")),
+    "voiceover segment alignment refs are normalized",
+    segments.map((segment) => segment.alignmentRef).filter(Boolean).join(", "),
+  );
   addCheck(checks, claimIssues.length === 0, "claim safety text scan", claimIssues.join(" "));
 
   return props;

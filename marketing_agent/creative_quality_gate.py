@@ -62,6 +62,9 @@ POSITIVE_MARKERS = {
         "roast",
         "mind-reading",
         "yap",
+        "shrug",
+        "fog",
+        "name badge",
     ],
 }
 
@@ -116,6 +119,13 @@ GENERIC_OR_WEAK = [
     "results-driven team player",
     "helped with marketing campaigns",
     "worked with cross-functional teams",
+]
+
+ROBOTIC_OR_REPEATED = [
+    "target:",
+    "jd asks for",
+    "real, but buried",
+    "same person, clearer proof",
 ]
 
 
@@ -185,6 +195,35 @@ def has_repeatable_series(blob: str) -> bool:
     return any(series in low for series in SERIES_FORMATS)
 
 
+def opening_signature(short: dict) -> str:
+    props = short.get("props") if isinstance(short.get("props"), dict) else {}
+    text = str(short.get("script") or props.get("voiceover_text") or short.get("hook") or "")
+    words = re.findall(r"[a-z][a-z']+", text.lower())
+    filler = {"this", "that", "your", "resume", "bullet", "the", "job", "description", "signal"}
+    meaningful = [word for word in words if word not in filler]
+    return " ".join(meaningful[:5])
+
+
+def repeated_openings(shorts: list[dict]) -> list[str]:
+    signatures: dict[str, int] = {}
+    for short in shorts:
+        sig = opening_signature(short)
+        if sig:
+            signatures[sig] = signatures.get(sig, 0) + 1
+    return [sig for sig, count in signatures.items() if count > 1]
+
+
+def unique_short_formats(shorts: list[dict]) -> set[str]:
+    formats: set[str] = set()
+    for short in shorts:
+        props = short.get("props") if isinstance(short.get("props"), dict) else {}
+        for key in ("playbookId", "formatArchetype", "creativeFormat", "visualStyle"):
+            value = props.get(key)
+            if value:
+                formats.add(f"{key}:{value}")
+    return formats
+
+
 def score_short(short: dict) -> dict:
     props = short.get("props") if isinstance(short.get("props"), dict) else {}
     blob = "\n".join(
@@ -202,6 +241,9 @@ def score_short(short: dict) -> dict:
             props.get("jobTitle", ""),
             props.get("beforeBullet", ""),
             props.get("afterBullet", ""),
+            props.get("voiceover_text", ""),
+            props.get("playbookId", ""),
+            props.get("formatArchetype", ""),
             props.get("beforeScore", ""),
             props.get("afterScore", ""),
             *(props.get("resumeMeta", []) or []),
@@ -266,6 +308,9 @@ def score_short(short: dict) -> dict:
     if any(term in low for term in GENERIC_OR_WEAK):
         score -= 12
         notes.append("Replace generic or overly goofy phrasing with a sharper teardown line.")
+    if any(term in low for term in ROBOTIC_OR_REPEATED):
+        score -= 10
+        notes.append("Replace robotic template phrasing with a more natural creator read.")
 
     return {
         "title": short.get("title", "Untitled"),
@@ -323,6 +368,17 @@ def score_packet(packet: dict) -> dict:
     else:
         notes.append("Needs at least three short-form cutdowns.")
 
+    shorts = [short for short in packet.get("shorts", []) or [] if isinstance(short, dict)]
+    if len(unique_short_formats(shorts[:3])) >= 7:
+        score += 8
+    else:
+        notes.append("Daily shorts need visibly different playbooks, archetypes, and visual styles.")
+
+    repeated = repeated_openings(shorts[:3])
+    if repeated:
+        score -= 18
+        notes.append(f"Repeated script openings detected: {', '.join(repeated)}.")
+
     if has_repeatable_series(blob):
         score += 4
     else:
@@ -338,8 +394,11 @@ def score_packet(packet: dict) -> dict:
     if any(term in low for term in GENERIC_OR_WEAK):
         score -= 10
         notes.append("Contains weak/generic creator phrasing that should be replaced before production.")
+    if any(term in low for term in ROBOTIC_OR_REPEATED):
+        score -= 12
+        notes.append("Contains repeated robotic script phrasing from an older template.")
 
-    short_scores = [score_short(short) for short in packet.get("shorts", []) or [] if isinstance(short, dict)]
+    short_scores = [score_short(short) for short in shorts]
     if short_scores and not all(item["passed"] for item in short_scores[:3]):
         notes.append("One or more shorts failed the professional creator gate.")
 

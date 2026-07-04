@@ -233,6 +233,29 @@ const scanSafeArea = (png) => {
 const collectShortDrafts = (drafts) =>
   drafts.filter((draft) => draft.composition === "ResumeCrimeScene");
 
+const durationFramesFromProps = (props) => {
+  const fps = 30;
+  if (Number.isFinite(Number(props.durationSeconds))) {
+    return Math.max(1, Math.round(Number(props.durationSeconds) * fps));
+  }
+  const captions = Array.isArray(props.captions) ? props.captions : [];
+  const lastEndMs = Math.max(0, ...captions.map((caption) => Number(caption.endMs || 0)));
+  if (lastEndMs > 0) {
+    return Math.max(1, Math.round((lastEndMs / 1000 + 3.2) * fps));
+  }
+  return 45 * fps;
+};
+
+const framesForProps = (props, requestedFrames) => {
+  const durationFrames = durationFramesFromProps(props);
+  const maxFrame = Math.max(0, durationFrames - 1);
+  const percentages = [0.08, 0.32, 0.62, 0.9];
+  const defaultFrames = percentages.map((pct) => Math.min(maxFrame, Math.max(0, Math.round(maxFrame * pct))));
+  const rawFrames = requestedFrames === DEFAULT_FRAMES ? defaultFrames : requestedFrames;
+  return [...new Set(rawFrames.map((frame) => Math.min(maxFrame, Math.max(0, Number(frame)))))]
+    .filter(Number.isFinite);
+};
+
 const main = () => {
   const options = parseArgs();
   mkdirSync(outDir, { recursive: true });
@@ -262,7 +285,8 @@ const main = () => {
       continue;
     }
 
-    for (const frame of options.frames) {
+    const props = readJson(propsPath);
+    for (const frame of framesForProps(props, options.frames)) {
       const outputPath = path.join(outDir, `visual-safe-area-${safeSlug(draft.title || draft.file)}-${frame}.png`);
       if (options.render || !existsSync(outputPath)) {
         renderStill({ propsPath, outputPath, frame });

@@ -55,9 +55,9 @@ npm run render:daily:short3:studio
 
 Outputs:
 
-- `out/daily-your-ai-resume-has-linkedin-breath-studio.mp4`
-- `out/daily-one-bullet-fix-studio.mp4`
-- `out/daily-ats-myth-lab-studio.mp4`
+- `out/daily-this-resume-sentence-is-quietly-expensive.mp4`
+- `out/daily-i-searched-salesforce-and-this-resume-vanished.mp4`
+- `out/daily-the-job-post-gave-the-answer-key.mp4`
 
 ## Render The Daily Episode
 
@@ -65,7 +65,7 @@ Outputs:
 npm run render:episode:review
 ```
 
-Use the review cut before spending time on the full long-form render. The full episode render is:
+Use the script-only `longform_voiceover.md` artifact before rendering the full long-form episode; it keeps the narration timing pass from parsing creator notes, SEO sections, or storyboard prose. The full episode render is:
 
 ```bat
 npm run render:episode
@@ -95,7 +95,7 @@ npm run voiceover:episode
 
 Short-form voiceover is handled by the daily content agent and stored in `public/audio/`. Use studio narration plus the quiet music bed. Avoid harsh whooshes, cartoon impacts, or repetitive SFX.
 
-When ElevenLabs is configured, the daily content agent now tries the `/with-timestamps` endpoint first and stores character-derived word captions in `public/audio/*.alignment.json`. `ResumeCrimeScene` can render those word-level captions when present. Cached or fallback voiceovers still use the scene captions built into the template.
+When ElevenLabs is configured, the daily content agent now tries the `/with-timestamps` endpoint first and stores character-derived word captions in `public/audio/*.alignment.json`. `ResumeCrimeScene` renders those word-level captions when present. Cached or fallback voiceovers still use the scene captions built into the template.
 
 ElevenLabs health check from the repo root:
 
@@ -109,7 +109,7 @@ After replacing or creating a key with TTS quota, run a tiny timestamped probe:
 py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --probe-elevenlabs-tts --json
 ```
 
-The current preferred voice is `George - Warm, Captivating Storyteller` (`JBFqnCBsd6RMkjVDRZzb`). The generator will auto-select an available voice if the configured ID is missing, then fall back to OpenAI TTS if ElevenLabs quota or permissions block generation.
+The current configured voice is `JBFqnCBsd6RMkjVDRZzb`. The active key is restricted to Text to Speech, so voice-list reads may be denied; use the configured voice ID as authoritative. For production review batches, pass `--require-elevenlabs` so the run fails instead of silently falling back.
 
 ## Review Gate
 
@@ -134,7 +134,8 @@ py -3 marketing_agent\codex_video_approval.py prepare-review --limit 1
 For the current improved daily packet:
 
 ```bat
-py -3 marketing_agent\codex_video_approval.py prepare-review --drafts marketing\daily_content\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description-\autopost_drafts.json --limit 3
+py -3 marketing_agent\codex_video_approval.py prepare-review --drafts marketing\daily_content\2026-07-04-recruiter-search-tests-with-real-resume-teardowns\autopost_drafts.json --limit 3
+py -3 marketing_agent\codex_video_approval.py prepare-review --drafts marketing\daily_content\2026-07-04-recruiter-search-tests-with-real-resume-teardowns\autopost_drafts.json --include-longform --limit 1
 ```
 
 This command renders the latest daily shorts if needed, promotes the exact MP4 files to `marketing/autopost/videos/`, runs studio metadata QC, audio QC, and visual safe-area QC, copies exact files to `marketing/codex_reviews/`, and writes local SQLite state rows in `marketing/video_pipeline_state.sqlite`.
@@ -158,10 +159,11 @@ Current review assets:
 
 | Run ID | Title | Mobile review URL | Approval phrase |
 | --- | --- | --- | --- |
-| `50350129efcd445e` | This marketing resume hid the actual revenue proof | `http://192.168.2.10:8765/20260704-50350129efcd445e-this-marketing-resume-hid-the-actual-revenue-proof/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4` | `APPROVE POST 50350129efcd445e` |
-| `d962d2cc75f39aab` | This sales resume forgot to say sales | `http://192.168.2.10:8765/20260704-d962d2cc75f39aab-this-sales-resume-forgot-to-say-sales/daily-this-sales-resume-forgot-to-say-sales.mp4` | `APPROVE POST d962d2cc75f39aab` |
-| `71e14e8e21715d7d` | This developer resume hides the stack | `http://192.168.2.10:8765/20260704-71e14e8e21715d7d-this-developer-resume-hides-the-stack/daily-this-developer-resume-hides-the-stack.mp4` | `APPROVE POST 71e14e8e21715d7d` |
-| `5dcdfea4778fbd65` | This Resume Looks Fine But Stays Invisible | `http://192.168.2.10:8765/20260704-5dcdfea4778fbd65-this-resume-looks-fine-but-stays-invisible-resume-teardown/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4` | `APPROVE POST 5dcdfea4778fbd65` |
+| `c7ae03f367bfb58b` | This resume sentence is quietly expensive | `http://192.168.2.10:8765/20260704-c7ae03f367bfb58b-this-resume-sentence-is-quietly-expensive/daily-this-resume-sentence-is-quietly-expensive.mp4` | `APPROVE POST c7ae03f367bfb58b` |
+| `bf5494c753f4e577` | I searched Salesforce and this resume vanished | `http://192.168.2.10:8765/20260704-bf5494c753f4e577-i-searched-salesforce-and-this-resume-vanished/daily-i-searched-salesforce-and-this-resume-vanished.mp4` | `APPROVE POST bf5494c753f4e577` |
+| `5f93f025efd50915` | The job post gave the answer key | `http://192.168.2.10:8765/20260704-5f93f025efd50915-the-job-post-gave-the-answer-key/daily-the-job-post-gave-the-answer-key.mp4` | `APPROVE POST 5f93f025efd50915` |
+
+The current long-form review cut is `marketing/remotion/out/daily-recruiter-search-tests-with-real-resume-teardowns-episode.mp4`. It rendered successfully but remains blocked from publish approval until expanded beyond the long-form duration gate.
 
 Only approve after reviewing the exact video:
 
@@ -194,7 +196,7 @@ The gate verifies the rendered and promoted files both exist, the autopost entri
 
 The audio gate verifies linked voiceover/music/SFX assets, codec metadata, duration, sample rate, channels, bitrate, and restrained mix volume settings. It does not measure LUFS or true peak yet.
 
-The visual safe-area gate renders short stills at representative frames and scans the outer margins for bright or saturated UI pixels. This catches clipped captions, labels, badges, and CTAs before posting.
+The visual safe-area gate renders short stills at representative percentage-based frames and scans the outer margins for bright or saturated UI pixels. This catches clipped captions, labels, badges, and CTAs before posting, including dynamic-duration shorts driven by ElevenLabs timestamp alignment.
 
 For a new daily packet, pass the packet-specific drafts and manifest to audio QC:
 

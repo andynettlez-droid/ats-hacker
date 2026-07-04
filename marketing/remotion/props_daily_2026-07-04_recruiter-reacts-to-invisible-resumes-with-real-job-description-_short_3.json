@@ -1,0 +1,66 @@
+{
+  "hook": "This developer resume says frontend. The job searches React.",
+  "subhook": "The problem is vague proof, not fake experience.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "stickyNote",
+  "pace": "slowBurn",
+  "seriesLabel": "Recruiter search test",
+  "signalLines": {
+    "hook": "Would this show up?",
+    "problem": "The JD is giving clues.",
+    "teardown": "The resume ignores them.",
+    "fix": "Translate, do not fabricate.",
+    "cta": "Paste the JD."
+  },
+  "resumeName": "Avery Patel",
+  "resumeTitle": "Frontend Engineer Resume",
+  "resumeMeta": [
+    "5 yrs product UI",
+    "React/TypeScript",
+    "Accessibility fixes"
+  ],
+  "jobTitle": "Frontend Software Engineer",
+  "jobKeywords": [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "accessibility",
+    "performance"
+  ],
+  "weakBullets": [
+    "Worked on frontend features for internal and customer-facing tools.",
+    "Collaborated with designers and backend engineers.",
+    "Helped improve application performance and user experience."
+  ],
+  "beforeBullet": "Worked on frontend features for internal and customer-facing tools.",
+  "afterBullet": "Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues.",
+  "beforeScore": 41,
+  "afterScore": 90,
+  "markedLabel": "Too broad",
+  "problemPunchline": "Engineering resumes need proof of stack plus outcome.",
+  "teardownIssues": [
+    "Stack is vague",
+    "No shipped feature",
+    "No performance result"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "openai",
+    "voiceId": null,
+    "voiceName": null,
+    "reason": "ready via openai",
+    "wordLevelCaptions": false
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-this-developer-resume-hides-the-stack-3-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captionReadiness": {
+    "wordLevel": false,
+    "provider": "openai",
+    "reason": "Scene captions are present; word-level TTS alignment was unavailable or cached without metadata."
+  }
+}

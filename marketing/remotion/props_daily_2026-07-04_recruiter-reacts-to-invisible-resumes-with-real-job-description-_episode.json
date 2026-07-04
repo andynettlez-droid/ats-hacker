@@ -1,0 +1,102 @@
+{
+  "title": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "cta": "Paste the job description and check your free Signal score before you apply.",
+  "sections": [
+    {
+      "label": "Cold open",
+      "script": "Recruiter reacts to invisible resumes with real job-description proof Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on.",
+      "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+    },
+    {
+      "label": "The real problem",
+      "script": "Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit.",
+      "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+    },
+    {
+      "label": "Translate the job",
+      "script": "Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+      "visual": "Keyword extraction board."
+    },
+    {
+      "label": "Teardown",
+      "script": "Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes.",
+      "visual": "Red/yellow markups over weak bullets."
+    },
+    {
+      "label": "Fix one bullet",
+      "script": "The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result.",
+      "visual": "Before/after bullet rewrite."
+    },
+    {
+      "label": "Product bridge",
+      "script": "Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+      "visual": "Free Signal score page, trust badges, and bundle CTA."
+    }
+  ],
+  "keywords": [
+    "HubSpot workflows",
+    "LinkedIn Ads",
+    "CAC analysis",
+    "MQL-to-SQL",
+    "pipeline sourced"
+  ],
+  "weakBullets": [
+    "Supported email and social campaigns across multiple channels.",
+    "Helped maintain HubSpot lists for webinars and nurture emails.",
+    "Coordinated paid social assets with design and sales."
+  ],
+  "beforeBullet": "Helped maintain HubSpot lists for webinars and nurture emails.",
+  "afterBullet": "Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%.",
+  "beforeScore": 34,
+  "afterScore": 92,
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.11,
+  "voiceoverVolume": 0.94,
+  "voiceover_text": "Recruiter reacts to invisible resumes with real job-description proof Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on. Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit. Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes. The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result. Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+  "voiceoverSegments": [
+    {
+      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-1-voiceover.mp3",
+      "fromFrame": 240,
+      "volume": 0.94,
+      "provider": "openai"
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-2-voiceover.mp3",
+      "fromFrame": 2510,
+      "volume": 0.94,
+      "provider": "openai"
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-3-voiceover.mp3",
+      "fromFrame": 4780,
+      "volume": 0.94,
+      "provider": "openai"
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-4-voiceover.mp3",
+      "fromFrame": 7050,
+      "volume": 0.94,
+      "provider": "openai"
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-5-voiceover.mp3",
+      "fromFrame": 9320,
+      "volume": 0.94,
+      "provider": "openai"
+    },
+    {
+      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-6-voiceover.mp3",
+      "fromFrame": 11590,
+      "volume": 0.94,
+      "provider": "openai"
+    }
+  ],
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "openai",
+    "reason": "6 episode sections ready",
+    "wordLevelCaptions": false
+  }
+}

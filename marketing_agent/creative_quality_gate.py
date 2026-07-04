@@ -25,6 +25,12 @@ POSITIVE_MARKERS = {
         "HubSpot",
         "CAC",
         "LinkedIn Ads",
+        "Salesforce",
+        "React",
+        "TypeScript",
+        "Jira",
+        "Epic",
+        "Gainsight",
         "pipeline",
         "lifecycle",
         "score",
@@ -105,6 +111,11 @@ GENERIC_OR_WEAK = [
     "training their resumes like puppies",
     "glossy ai resumes",
     "misfits and clashing design",
+    "ai-polished resume",
+    "target job description",
+    "results-driven team player",
+    "helped with marketing campaigns",
+    "worked with cross-functional teams",
 ]
 
 
@@ -127,15 +138,22 @@ def text_blob(packet: dict) -> str:
     for short in packet.get("shorts", []) or []:
         if isinstance(short, dict):
             props = short.get("props") if isinstance(short.get("props"), dict) else {}
-            parts.extend([short.get("title", ""), short.get("hook", ""), short.get("script", "")])
+            parts.extend([short.get("series", ""), short.get("title", ""), short.get("hook", ""), short.get("script", "")])
             parts.extend([
                 props.get("hook1", ""),
                 props.get("hook2", ""),
                 props.get("subline", ""),
                 props.get("cta", ""),
+                props.get("resumeTitle", ""),
+                props.get("jobTitle", ""),
+                props.get("beforeBullet", ""),
+                props.get("afterBullet", ""),
                 props.get("beforeScore", ""),
                 props.get("afterScore", ""),
             ])
+            parts.extend(props.get("resumeMeta", []) or [])
+            parts.extend(props.get("weakBullets", []) or [])
+            parts.extend(props.get("jobKeywords", []) or [])
             parts.extend(props.get("missing", []) or [])
             parts.extend(short.get("storyboard", []) or [])
     return "\n".join(str(part) for part in parts)
@@ -180,8 +198,15 @@ def score_short(short: dict) -> dict:
             props.get("hook2", ""),
             props.get("subline", ""),
             props.get("cta", ""),
+            props.get("resumeTitle", ""),
+            props.get("jobTitle", ""),
+            props.get("beforeBullet", ""),
+            props.get("afterBullet", ""),
             props.get("beforeScore", ""),
             props.get("afterScore", ""),
+            *(props.get("resumeMeta", []) or []),
+            *(props.get("weakBullets", []) or []),
+            *(props.get("jobKeywords", []) or []),
             *(props.get("missing", []) or []),
             *(short.get("storyboard", []) or []),
         ]

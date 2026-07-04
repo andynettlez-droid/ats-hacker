@@ -25,6 +25,10 @@ REMOTION_PUBLIC_DIR = REMOTION_DIR / "public"
 REMOTION_AUDIO_DIR = REMOTION_PUBLIC_DIR / "audio"
 CALENDAR_PATH = MARKETING_DIR / "content_calendar.json"
 TREND_INTAKE_PATH = MARKETING_DIR / "content_research" / "trend_intake_latest.json"
+DEFAULT_ELEVENLABS_VOICE_ID = "JBFqnCBsd6RMkjVDRZzb"
+LEGACY_ELEVENLABS_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"
+ELEVENLABS_VOICE_CACHE: dict | None = None
+ELEVENLABS_DISABLED_REASON: str | None = None
 
 
 TREND_SEEDS = [
@@ -215,6 +219,186 @@ WEAK_GENERATED_PHRASES = [
     "don't worry, it",
 ]
 
+TEARDOWN_CASES = [
+    {
+        "id": "demand_gen_marketing",
+        "resumeName": "Jordan Lee",
+        "resumeTitle": "Marketing Coordinator -> Demand Gen Candidate",
+        "resumeMeta": ["3 yrs B2B SaaS", "HubSpot admin", "Paid social support"],
+        "jobTitle": "Demand Generation Manager",
+        "jobKeywords": ["HubSpot workflows", "LinkedIn Ads", "CAC analysis", "MQL-to-SQL", "pipeline sourced"],
+        "weakBullets": [
+            "Supported email and social campaigns across multiple channels.",
+            "Helped maintain HubSpot lists for webinars and nurture emails.",
+            "Coordinated paid social assets with design and sales.",
+        ],
+        "beforeBullet": "Helped maintain HubSpot lists for webinars and nurture emails.",
+        "afterBullet": "Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%.",
+        "beforeScore": 34,
+        "afterScore": 92,
+        "markedLabel": "Buried proof",
+        "shortTitle": "This marketing resume hid the actual revenue proof",
+        "hook": "This marketing resume sounds busy. Recruiters need revenue proof.",
+        "subhook": "The job asks for tools, metrics, and pipeline impact.",
+        "problemPunchline": "A recruiter cannot search for proof you buried.",
+        "teardownIssues": ["Tool is hidden", "No CAC result", "No pipeline language"],
+    },
+    {
+        "id": "sales_account_exec",
+        "resumeName": "Maya Torres",
+        "resumeTitle": "Account Executive Resume",
+        "resumeMeta": ["4 yrs SaaS sales", "Mid-market accounts", "Quota-carrying role"],
+        "jobTitle": "Mid-Market Account Executive",
+        "jobKeywords": ["Salesforce", "pipeline generation", "quota attainment", "discovery calls", "MEDDICC"],
+        "weakBullets": [
+            "Managed customer conversations and followed up with prospects.",
+            "Responsible for sales opportunities in assigned territory.",
+            "Worked with marketing and customer success on accounts.",
+        ],
+        "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+        "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+        "beforeScore": 37,
+        "afterScore": 88,
+        "markedLabel": "No quota signal",
+        "shortTitle": "This sales resume forgot to say sales",
+        "hook": "This sales resume has conversations. The job needs pipeline.",
+        "subhook": "Salesforce, discovery, quota, and MEDDICC are missing on screen.",
+        "problemPunchline": "Sales resumes need numbers faster than adjectives.",
+        "teardownIssues": ["No quota proof", "No CRM signal", "No pipeline number"],
+    },
+    {
+        "id": "frontend_engineer",
+        "resumeName": "Avery Patel",
+        "resumeTitle": "Frontend Engineer Resume",
+        "resumeMeta": ["5 yrs product UI", "React/TypeScript", "Accessibility fixes"],
+        "jobTitle": "Frontend Software Engineer",
+        "jobKeywords": ["React", "TypeScript", "Next.js", "accessibility", "performance"],
+        "weakBullets": [
+            "Worked on frontend features for internal and customer-facing tools.",
+            "Collaborated with designers and backend engineers.",
+            "Helped improve application performance and user experience.",
+        ],
+        "beforeBullet": "Worked on frontend features for internal and customer-facing tools.",
+        "afterBullet": "Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues.",
+        "beforeScore": 41,
+        "afterScore": 90,
+        "markedLabel": "Too broad",
+        "shortTitle": "This developer resume hides the stack",
+        "hook": "This developer resume says frontend. The job searches React.",
+        "subhook": "The stack and impact are the search signal.",
+        "problemPunchline": "Engineering resumes need proof of stack plus outcome.",
+        "teardownIssues": ["Stack is vague", "No shipped feature", "No performance result"],
+    },
+    {
+        "id": "project_manager",
+        "resumeName": "Chris Morgan",
+        "resumeTitle": "Project Manager Resume",
+        "resumeMeta": ["7 yrs operations", "Agile delivery", "Cross-functional rollout"],
+        "jobTitle": "Technical Project Manager",
+        "jobKeywords": ["Jira roadmap", "risk register", "stakeholder updates", "budget variance", "Agile delivery"],
+        "weakBullets": [
+            "Managed project timelines and coordinated team priorities.",
+            "Led meetings with stakeholders and tracked action items.",
+            "Helped deliver projects on time and within scope.",
+        ],
+        "beforeBullet": "Managed project timelines and coordinated team priorities.",
+        "afterBullet": "Owned Jira roadmap and weekly risk register for a 9-person rollout, reducing schedule variance from 18% to 6%.",
+        "beforeScore": 39,
+        "afterScore": 87,
+        "markedLabel": "No delivery proof",
+        "shortTitle": "This PM resume is organized but not searchable",
+        "hook": "This project manager resume looks organized. It still misses the job.",
+        "subhook": "Jira, risk, stakeholders, and variance need to show up.",
+        "problemPunchline": "PM bullets should prove delivery, not just calendar ownership.",
+        "teardownIssues": ["No Jira signal", "No risk language", "No variance result"],
+    },
+    {
+        "id": "customer_success",
+        "resumeName": "Sam Rivera",
+        "resumeTitle": "Customer Success Manager Resume",
+        "resumeMeta": ["6 yrs B2B accounts", "Renewal risk", "QBR owner"],
+        "jobTitle": "Customer Success Manager",
+        "jobKeywords": ["Gainsight", "renewal risk", "QBRs", "NPS", "net revenue retention"],
+        "weakBullets": [
+            "Helped customers with product questions and account needs.",
+            "Built relationships with customers to improve satisfaction.",
+            "Partnered with sales on renewals and expansion opportunities.",
+        ],
+        "beforeBullet": "Helped customers with product questions and account needs.",
+        "afterBullet": "Flagged renewal risk in Gainsight and ran QBR follow-ups that protected $420K ARR across 18 customer accounts.",
+        "beforeScore": 36,
+        "afterScore": 89,
+        "markedLabel": "No retention proof",
+        "shortTitle": "This customer success resume forgot the renewal story",
+        "hook": "This CSM resume sounds helpful. The job needs retention proof.",
+        "subhook": "Gainsight, QBRs, NPS, and renewal risk are the clues.",
+        "problemPunchline": "Helpful is nice. Retention proof gets searched.",
+        "teardownIssues": ["No renewal metric", "No platform signal", "No account scope"],
+    },
+    {
+        "id": "healthcare_rn",
+        "resumeName": "Taylor Brooks",
+        "resumeTitle": "Registered Nurse Resume",
+        "resumeMeta": ["5 yrs acute care", "Epic documentation", "Discharge planning"],
+        "jobTitle": "Clinical Care Coordinator",
+        "jobKeywords": ["Epic", "patient education", "care coordination", "discharge planning", "HCAHPS"],
+        "weakBullets": [
+            "Provided patient care and supported daily clinical operations.",
+            "Communicated with families and members of the care team.",
+            "Assisted with discharge paperwork and patient instructions.",
+        ],
+        "beforeBullet": "Assisted with discharge paperwork and patient instructions.",
+        "afterBullet": "Coordinated Epic discharge plans and patient education for a 24-bed unit, reducing avoidable follow-up calls 21%.",
+        "beforeScore": 40,
+        "afterScore": 86,
+        "markedLabel": "Too generic",
+        "shortTitle": "This nursing resume buries care coordination",
+        "hook": "This nursing resume says patient care. The role asks coordination.",
+        "subhook": "Epic, discharge planning, and education need to be visible.",
+        "problemPunchline": "Clinical proof has to be specific and careful.",
+        "teardownIssues": ["No Epic signal", "No discharge scope", "No patient education result"],
+    },
+]
+
+
+GENERIC_RESUME_TERMS = {
+    "ai-polished resume",
+    "target job description",
+    "results-driven team player",
+    "helped with marketing campaigns",
+    "worked with cross-functional teams",
+    "role language",
+    "tools",
+    "metrics",
+}
+
+CASE_SERIES_ROTATION = [
+    "Resume Crime Scene",
+    "Recruiter Search Test",
+    "Job Description Translation",
+    "One Bullet Fix",
+    "ATS Myth Lab",
+    "Resume Crime Scene",
+]
+
+CASE_HUMOR_LINES = {
+    "demand_gen_marketing": "Corporate weather report: high synergy, zero proof.",
+    "sales_account_exec": "Pipeline proof is hiding under a hoodie.",
+    "frontend_engineer": "The tech stack is wearing a fake mustache.",
+    "project_manager": "The calendar is talking. Proof is in airplane mode.",
+    "customer_success": "Helpful-sounding customer success yap.",
+    "healthcare_rn": "Clinical proof is doing mind-reading homework.",
+}
+
+CASE_SPOKEN_REWRITES = {
+    "demand_gen_marketing": "built lead scoring and retargeting that cut CAC 32 percent",
+    "sales_account_exec": "generated 1.8 million in qualified Salesforce pipeline",
+    "frontend_engineer": "shipped React and TypeScript checkout work that reduced drop-off 14 percent",
+    "project_manager": "owned the Jira roadmap and cut schedule variance to 6 percent",
+    "customer_success": "flagged renewal risk and protected 420 thousand in ARR",
+    "healthcare_rn": "coordinated Epic discharge plans and reduced avoidable follow-up calls",
+}
+
 
 def safe_slug(value: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
@@ -254,7 +438,7 @@ def load_elevenlabs_config() -> dict:
         key = ""
     return {
         "apiKey": key,
-        "voiceId": os.getenv("ELEVENLABS_VOICE_ID", "21m00Tcm4TlvDq8ikWAM"),
+        "voiceId": os.getenv("ELEVENLABS_VOICE_ID", DEFAULT_ELEVENLABS_VOICE_ID),
         "modelId": os.getenv("ELEVENLABS_MODEL_ID", "eleven_multilingual_v2"),
     }
 
@@ -278,6 +462,145 @@ def has_elevenlabs_config() -> bool:
 
 def has_any_tts_config() -> bool:
     return bool(load_elevenlabs_config()["apiKey"] or load_openai_tts_config()["apiKey"])
+
+
+def elevenlabs_error_text(error: Exception) -> str:
+    response = getattr(error, "response", None)
+    if response is None:
+        return str(error)
+    try:
+        return response.text[:500]
+    except Exception:
+        return str(error)
+
+
+def should_skip_elevenlabs_plain_retry(error: Exception) -> bool:
+    text = elevenlabs_error_text(error).lower()
+    return any(marker in text for marker in ["quota_exceeded", "missing_permissions", "unauthorized", "permission"])
+
+
+def list_elevenlabs_voices(config: dict) -> list[dict]:
+    response = requests.get(
+        "https://api.elevenlabs.io/v1/voices",
+        headers={
+            "xi-api-key": config["apiKey"],
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        timeout=30,
+    )
+    response.raise_for_status()
+    data = response.json()
+    voices = data.get("voices", [])
+    return voices if isinstance(voices, list) else []
+
+
+def resolve_elevenlabs_voice(config: dict) -> dict:
+    global ELEVENLABS_VOICE_CACHE
+    if ELEVENLABS_VOICE_CACHE:
+        return ELEVENLABS_VOICE_CACHE
+
+    configured = str(config.get("voiceId") or DEFAULT_ELEVENLABS_VOICE_ID)
+    fallback = {"voiceId": configured, "name": "configured voice", "source": "configured"}
+    if not config.get("apiKey"):
+        ELEVENLABS_VOICE_CACHE = fallback
+        return fallback
+
+    try:
+        voices = list_elevenlabs_voices(config)
+    except Exception as error:
+        print(f"[!] ElevenLabs voice list unavailable; using configured voice id: {elevenlabs_error_text(error)}")
+        ELEVENLABS_VOICE_CACHE = fallback
+        return fallback
+
+    if not voices:
+        ELEVENLABS_VOICE_CACHE = fallback
+        return fallback
+
+    by_id = {str(voice.get("voice_id")): voice for voice in voices if voice.get("voice_id")}
+    if configured in by_id and configured != LEGACY_ELEVENLABS_VOICE_ID:
+        voice = by_id[configured]
+        ELEVENLABS_VOICE_CACHE = {
+            "voiceId": configured,
+            "name": str(voice.get("name") or "configured voice"),
+            "source": "configured",
+        }
+        return ELEVENLABS_VOICE_CACHE
+
+    preferred_ids = [DEFAULT_ELEVENLABS_VOICE_ID, "CwhRBWXzGAHq8TQ4Fs17", "IKne3meq5aSn9XLyUdCD", "EXAVITQu4vr4xnSDxMaL"]
+    selected = None
+    for voice_id in preferred_ids:
+        if voice_id in by_id:
+            selected = by_id[voice_id]
+            break
+    if selected is None:
+        selected = voices[0]
+
+    selected_id = str(selected.get("voice_id") or configured)
+    selected_name = str(selected.get("name") or "available voice")
+    if selected_id != configured:
+        print(f"[i] ElevenLabs voice {configured} is not available to this key; using {selected_name} ({selected_id}).")
+    ELEVENLABS_VOICE_CACHE = {
+        "voiceId": selected_id,
+        "name": selected_name,
+        "source": "auto-selected",
+    }
+    return ELEVENLABS_VOICE_CACHE
+
+
+def check_elevenlabs_health(probe_tts: bool = False) -> dict:
+    config = load_elevenlabs_config()
+    health = {
+        "configured": bool(config.get("apiKey")),
+        "voiceId": config.get("voiceId"),
+        "modelId": config.get("modelId"),
+        "voicesReadable": False,
+        "selectedVoice": None,
+        "ttsProbe": None,
+        "issues": [],
+    }
+    if not config.get("apiKey"):
+        health["issues"].append("ELEVENLABS_API_KEY is not configured.")
+        return health
+
+    try:
+        selected = resolve_elevenlabs_voice(config)
+        health["voicesReadable"] = True
+        health["selectedVoice"] = selected
+    except Exception as error:
+        health["issues"].append(f"Voice lookup failed: {elevenlabs_error_text(error)}")
+        return health
+
+    if probe_tts:
+        try:
+            voice_id = health["selectedVoice"]["voiceId"]
+            response = requests.post(
+                f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps",
+                headers={
+                    "xi-api-key": config["apiKey"],
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                json={
+                    "text": "Signal audio probe.",
+                    "model_id": config["modelId"],
+                    "voice_settings": {
+                        "stability": 0.48,
+                        "similarity_boost": 0.82,
+                        "style": 0.28,
+                        "use_speaker_boost": True,
+                    },
+                },
+                timeout=60,
+            )
+            health["ttsProbe"] = {"status": response.status_code, "ok": response.ok}
+            if not response.ok:
+                health["issues"].append(response.text[:500])
+        except Exception as error:
+            health["ttsProbe"] = {"status": "error", "ok": False}
+            health["issues"].append(elevenlabs_error_text(error))
+
+    return health
 
 
 def read_json(path: Path, fallback):
@@ -357,6 +680,8 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
     if not config["apiKey"]:
         return {"src": None, "provider": "none", "captions": []}
 
+    voice = resolve_elevenlabs_voice(config)
+    voice_id = voice["voiceId"]
     dest_path = REMOTION_AUDIO_DIR / dest_name
     payload = {
         "text": text,
@@ -372,7 +697,7 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
     if os.getenv("ELEVENLABS_WITH_TIMESTAMPS", "true").lower() != "false":
         try:
             response = requests.post(
-                f"https://api.elevenlabs.io/v1/text-to-speech/{config['voiceId']}/with-timestamps",
+                f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps",
                 headers={
                     "xi-api-key": config["apiKey"],
                     "Content-Type": "application/json",
@@ -392,13 +717,19 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
             return {
                 "src": f"audio/{dest_name}",
                 "provider": "elevenlabs",
+                "voiceId": voice_id,
+                "voiceName": voice.get("name"),
                 **write_alignment_metadata(dest_name, data),
             }
+        except requests.HTTPError as error:
+            if should_skip_elevenlabs_plain_retry(error):
+                raise
+            print(f"[!] ElevenLabs timestamp voiceover unavailable, falling back to plain TTS: {error}")
         except Exception as error:
             print(f"[!] ElevenLabs timestamp voiceover unavailable, falling back to plain TTS: {error}")
 
     response = requests.post(
-        f"https://api.elevenlabs.io/v1/text-to-speech/{config['voiceId']}",
+        f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}",
         headers={
             "xi-api-key": config["apiKey"],
             "Content-Type": "application/json",
@@ -411,7 +742,14 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
     dest_path.write_bytes(response.content)
     if dest_path.stat().st_size < 1024:
         raise RuntimeError(f"ElevenLabs voiceover is too small: {dest_path}")
-    return {"src": f"audio/{dest_name}", "provider": "elevenlabs", "withTimestamps": False, "captions": []}
+    return {
+        "src": f"audio/{dest_name}",
+        "provider": "elevenlabs",
+        "voiceId": voice_id,
+        "voiceName": voice.get("name"),
+        "withTimestamps": False,
+        "captions": [],
+    }
 
 
 def generate_openai_voiceover(text: str, dest_name: str) -> dict:
@@ -443,11 +781,21 @@ def generate_openai_voiceover(text: str, dest_name: str) -> dict:
 
 
 def generate_voiceover(text: str, dest_name: str) -> dict:
+    global ELEVENLABS_DISABLED_REASON
     if has_elevenlabs_config():
-        try:
-            return generate_elevenlabs_voiceover(text, dest_name)
-        except requests.HTTPError as error:
-            print(f"[!] ElevenLabs voiceover unavailable, falling back when possible: {error}")
+        if ELEVENLABS_DISABLED_REASON:
+            print(f"[i] ElevenLabs skipped for this run: {ELEVENLABS_DISABLED_REASON}")
+        else:
+            try:
+                return generate_elevenlabs_voiceover(text, dest_name)
+            except requests.HTTPError as error:
+                detail = elevenlabs_error_text(error)
+                if should_skip_elevenlabs_plain_retry(error):
+                    ELEVENLABS_DISABLED_REASON = detail
+                print(f"[!] ElevenLabs voiceover unavailable, falling back when possible: {detail}")
+            except Exception as error:
+                detail = elevenlabs_error_text(error)
+                print(f"[!] ElevenLabs voiceover unavailable, falling back when possible: {detail}")
     if load_openai_tts_config()["apiKey"]:
         return generate_openai_voiceover(text, dest_name)
     return {"src": None, "provider": "none", "withTimestamps": False, "captions": []}
@@ -518,6 +866,8 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
             "studioVoiceover": True,
             "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
             "provider": provider,
+            "voiceId": voice_result.get("voiceId"),
+            "voiceName": voice_result.get("voiceName"),
             "reason": f"ready via {provider}",
             "wordLevelCaptions": bool(voice_result.get("captions")),
         }
@@ -642,7 +992,7 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
                 "beforeScore": 38,
                 "afterScore": 91,
                 "missing": ["HubSpot", "CAC", "LinkedIn Ads", "pipeline"],
-                "cta": "Check your free match score.",
+                "cta": "Check your free Signal score.",
                 "voiceover_text": (
                     "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, "
                     "because helped with campaigns could mean almost anything. The job description asks for HubSpot, CAC, "
@@ -724,6 +1074,99 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
     }
 
 
+def select_teardown_case(index: int, short: dict | None = None, props: dict | None = None) -> dict:
+    text_parts = []
+    if isinstance(short, dict):
+        text_parts.extend([
+            short.get("series", ""),
+            short.get("title", ""),
+            short.get("hook", ""),
+            short.get("script", ""),
+        ])
+    if isinstance(props, dict):
+        text_parts.extend([
+            props.get("resumeTitle", ""),
+            props.get("jobTitle", ""),
+            props.get("beforeBullet", ""),
+            props.get("afterBullet", ""),
+            " ".join(str(item) for item in props.get("missing", []) or []),
+            " ".join(str(item) for item in props.get("jobKeywords", []) or []),
+        ])
+    blob = " ".join(str(part).lower() for part in text_parts)
+
+    role_markers = {
+        "demand_gen_marketing": ["hubspot", "linkedin ads", "cac", "demand", "marketing"],
+        "sales_account_exec": ["salesforce", "quota", "sales", "account executive", "meddicc"],
+        "frontend_engineer": ["react", "typescript", "next.js", "developer", "frontend", "software"],
+        "project_manager": ["jira", "project manager", "stakeholder", "agile", "risk register"],
+        "customer_success": ["gainsight", "customer success", "renewal", "qbr", "nps"],
+        "healthcare_rn": ["nurse", "clinical", "patient", "epic", "discharge"],
+    }
+    scores = []
+    for case in TEARDOWN_CASES:
+        score = sum(1 for marker in role_markers.get(case["id"], []) if marker in blob)
+        scores.append((score, case))
+
+    best_score, best_case = max(scores, key=lambda item: item[0])
+    generic_markers = sum(1 for marker in ["hubspot", "cac", "linkedin ads"] if marker in blob)
+    if best_score >= 2 and generic_markers < 3:
+        return best_case
+    return TEARDOWN_CASES[(index - 1) % len(TEARDOWN_CASES)]
+
+
+def build_case_voiceover(case: dict) -> str:
+    keywords = case["jobKeywords"]
+    humor_line = CASE_HUMOR_LINES.get(case["id"], "Right now the bullet is professional yap: polite, busy, and allergic to numbers.")
+    spoken_rewrite = CASE_SPOKEN_REWRITES.get(case["id"], case["afterBullet"])
+    return (
+        f"{case['hook']} Target: {case['jobTitle']}. "
+        f"JD asks for {keywords[0]}, {keywords[1]}, {keywords[2]}. "
+        f"{humor_line} Resume says: {case['beforeBullet']} "
+        f"Real, but buried. Better: {spoken_rewrite}. "
+        f"Same person, clearer proof. {case['beforeScore']} to {case['afterScore']}. "
+        "Check your free Signal score before you apply."
+    )
+
+
+def build_case_storyboard(case: dict) -> list[str]:
+    return [
+        f"Open on the weak {case['resumeTitle']} with the score at {case['beforeScore']}/100.",
+        f"Show the target role: {case['jobTitle']}.",
+        f"Highlight missing terms: {', '.join(case['jobKeywords'][:3])}.",
+        f"Circle the weak bullet: {case['beforeBullet']}",
+        "Signal points at the missing proof instead of taking over the scene.",
+        f"Reveal the rewrite: {case['afterBullet']}",
+        f"Score jumps to {case['afterScore']}/100.",
+        "End on the free Signal score CTA with UTM-ready posting metadata.",
+    ]
+
+
+def apply_teardown_case(short: dict, title: str, hook: str, script: str, storyboard: list, props: dict, index: int) -> tuple[str, str, str, list, dict]:
+    case = select_teardown_case(index, short, props)
+    case_voiceover = build_case_voiceover(case)
+    case_storyboard = build_case_storyboard(case)
+    props.update({
+        "teardownCaseId": case["id"],
+        "seriesOverride": CASE_SERIES_ROTATION[(index - 1) % len(CASE_SERIES_ROTATION)],
+        "resumeName": case["resumeName"],
+        "resumeTitle": case["resumeTitle"],
+        "resumeMeta": case["resumeMeta"],
+        "jobTitle": case["jobTitle"],
+        "jobKeywords": case["jobKeywords"],
+        "weakBullets": case["weakBullets"],
+        "beforeBullet": case["beforeBullet"],
+        "afterBullet": case["afterBullet"],
+        "beforeScore": case["beforeScore"],
+        "afterScore": case["afterScore"],
+        "missing": case["jobKeywords"],
+        "markedLabel": case["markedLabel"],
+        "problemPunchline": case["problemPunchline"],
+        "teardownIssues": case["teardownIssues"],
+        "voiceover_text": case_voiceover,
+    })
+    return case["shortTitle"], case["hook"], case_voiceover, case_storyboard, props
+
+
 def normalize_short(short: dict, fallback: dict, index: int) -> dict:
     if not isinstance(short, dict):
         short = {}
@@ -774,9 +1217,10 @@ def normalize_short(short: dict, fallback: dict, index: int) -> dict:
     props.setdefault("missing", ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"])
     props.setdefault("cta", "Check your free Signal score.")
     props.setdefault("voiceover_text", str(script)[:650])
+    title, hook, script, storyboard, props = apply_teardown_case(short, str(title), str(hook), str(script), storyboard, props, index)
 
     return {
-        "series": short.get("series") or fallback.get("series") or "Daily Short",
+        "series": str(props.get("seriesOverride") or short.get("series") or fallback.get("series") or "Daily Short"),
         "title": str(title),
         "hook": str(hook),
         "script": str(script),
@@ -813,10 +1257,17 @@ def normalize_packet(packet: dict, seed: dict, publish_date: str) -> dict:
     script_sections = youtube.get("scriptSections")
     generated_script = youtube.get("script")
     if (not isinstance(chapters, list) or not chapters) and isinstance(generated_script, list):
-        chapters = [
-            f"{item.get('duration', '').split(' - ')[0] if isinstance(item, dict) else ''} {item.get('chapter', 'Section') if isinstance(item, dict) else 'Section'}".strip()
-            for item in generated_script
-        ]
+        chapters = []
+        for item in generated_script:
+            if not isinstance(item, dict):
+                chapters.append("Section")
+                continue
+            duration = item.get("duration") or item.get("time") or ""
+            if isinstance(duration, dict):
+                duration = duration.get("start") or duration.get("from") or ""
+            start_time = str(duration).split(" - ")[0].strip()
+            label = str(item.get("chapter") or item.get("title") or "Section")
+            chapters.append(f"{start_time} {label}".strip())
     if not isinstance(chapters, list) or not chapters:
         chapters = fallback_youtube["chapters"]
     youtube["chapters"] = [str(item) for item in chapters]
@@ -1090,7 +1541,7 @@ def build_episode_props(packet: dict) -> dict:
         if isinstance(section, dict)
     ]
     props = first_short_props(packet)
-    keywords = [str(item) for item in props.get("missing", []) if str(item).strip()][:5]
+    keywords = [str(item) for item in (props.get("jobKeywords") or props.get("missing", [])) if str(item).strip()][:5]
     if len(keywords) < 3:
         keywords = ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"]
 
@@ -1105,13 +1556,13 @@ def build_episode_props(packet: dict) -> dict:
         "cta": str(youtube.get("cta") or "Paste the job description and check your free Signal score before you apply."),
         "sections": sections or build_fallback_packet({"topic": packet.get("topic", "Daily resume teardown"), "series": packet.get("series", "Daily"), "thesis": "", "hook": "", "keywords": keywords, "source_notes": []}, packet.get("publishDate", "daily"))["youtube"]["scriptSections"],
         "keywords": keywords,
-        "weakBullets": [
-            "Results-driven team player.",
-            "Helped with marketing campaigns.",
-            "Worked with cross-functional teams.",
+        "weakBullets": props.get("weakBullets") or [
+            "Supported cross-functional work without naming tools, scope, or outcome.",
+            "Helped with projects related to the target role.",
+            "Worked with teams to improve business results.",
         ],
-        "beforeBullet": "Helped with marketing campaigns.",
-        "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+        "beforeBullet": props.get("beforeBullet", "Helped with projects related to the target role."),
+        "afterBullet": props.get("afterBullet", "Translated the same real work into role-specific tools, scope, and measurable proof."),
         "beforeScore": int(props.get("beforeScore", 34) or 34),
         "afterScore": int(props.get("afterScore", 92) or 92),
         "musicSrc": "audio/signal-quiet-orbit.wav",
@@ -1270,6 +1721,14 @@ def style_for_short(index: int, short: dict) -> dict:
     return SHORT_STYLE_ROTATION[(index - 1) % len(SHORT_STYLE_ROTATION)]
 
 
+def normalize_signal_cta(value: object) -> str:
+    cta = str(value or "").strip()
+    lower_cta = cta.lower()
+    if "free" in lower_cta and "signal" in lower_cta:
+        return cta
+    return "Check your free Signal score."
+
+
 def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: bool, force_audio: bool) -> list[dict]:
     written = []
     date_slug = packet["publishDate"]
@@ -1287,7 +1746,13 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
         props.setdefault("missing", ["role language", "tools", "metrics"])
         props.setdefault("cta", "Check your free Signal score.")
         props.setdefault("voiceover_text", short.get("script", "")[:650])
-        job_keywords = [str(item) for item in props.get("missing", ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"])][:4]
+        if not props.get("teardownCaseId"):
+            _, _, _, _, props = apply_teardown_case(short, str(short.get("title", "")), str(short.get("hook", "")), str(short.get("script", "")), short.get("storyboard", []), props, idx)
+        props["cta"] = normalize_signal_cta(props.get("cta"))
+        job_keywords = [
+            str(item)
+            for item in (props.get("jobKeywords") or props.get("missing", ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"]))
+        ][:5]
         if sum(1 for item in job_keywords if item.lower() in {"role language", "tools", "proof", "metrics"}) >= 2:
             job_keywords = ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"]
         style = style_for_short(idx, short)
@@ -1299,19 +1764,24 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
             "pace": style["pace"],
             "seriesLabel": style["seriesLabel"],
             "signalLines": style["signalLines"],
-            "resumeTitle": "AI-Polished Resume",
-            "jobTitle": "Target Job Description",
+            "resumeName": props.get("resumeName", "Avery Johnson"),
+            "resumeTitle": props.get("resumeTitle", "Role-Specific Resume"),
+            "resumeMeta": props.get("resumeMeta", []),
+            "jobTitle": props.get("jobTitle", "Target Role"),
             "jobKeywords": job_keywords,
-            "weakBullets": [
-                "Results-driven team player.",
-                "Helped with marketing campaigns.",
-                "Worked with cross-functional teams.",
+            "weakBullets": props.get("weakBullets") or [
+                "Supported cross-functional work without naming tools, scope, or outcome.",
+                "Helped with projects related to the target role.",
+                "Worked with teams to improve business results.",
             ],
-            "beforeBullet": "Helped with marketing campaigns.",
-            "afterBullet": "Cut CAC by 32% through LinkedIn Ads audience segmentation and HubSpot lead scoring.",
+            "beforeBullet": props.get("beforeBullet", "Helped with projects related to the target role."),
+            "afterBullet": props.get("afterBullet", "Translated the same real work into role-specific tools, scope, and measurable proof."),
             "beforeScore": int(props.get("beforeScore", 38)),
             "afterScore": int(props.get("afterScore", 88)),
-            "cta": props.get("cta", "Check your free Signal score."),
+            "markedLabel": props.get("markedLabel", "Too vague"),
+            "problemPunchline": props.get("problemPunchline", "Recruiters search for proof, not vibes."),
+            "teardownIssues": props.get("teardownIssues", ["No role language", "No tools", "No measurable proof"]),
+            "cta": normalize_signal_cta(props.get("cta")),
             "musicSrc": "audio/signal-quiet-orbit.wav",
             "musicVolume": 0.16,
             "avatarLabel": "Recruiter review",
@@ -1590,9 +2060,24 @@ def main() -> None:
     parser.add_argument("--json", action="store_true", help="Print machine-readable output.")
     parser.add_argument("--prepare-audio", action="store_true", help="Generate ElevenLabs voiceover files when credentials are configured.")
     parser.add_argument("--force-audio", action="store_true", help="Regenerate daily voiceover files even if cached files exist.")
+    parser.add_argument("--check-elevenlabs", action="store_true", help="Validate ElevenLabs key, voice access, and optional TTS probe.")
+    parser.add_argument("--probe-elevenlabs-tts", action="store_true", help="With --check-elevenlabs, run a tiny timestamped TTS request.")
     args = parser.parse_args()
 
     ensure_dirs()
+    if args.check_elevenlabs:
+        health = check_elevenlabs_health(args.probe_elevenlabs_tts)
+        if args.json:
+            print(json.dumps(health, indent=2))
+        else:
+            print("ElevenLabs configured:", health["configured"])
+            print("Voices readable:", health["voicesReadable"])
+            print("Selected voice:", health.get("selectedVoice"))
+            print("TTS probe:", health.get("ttsProbe"))
+            for issue in health.get("issues", []):
+                print("Issue:", issue)
+        return
+
     seed = choose_seed(args.topic)
     packet = normalize_packet(maybe_generate_with_openai(seed, args.date), seed, args.date)
     topic_slug = safe_slug(packet.get("topic", seed["topic"]))

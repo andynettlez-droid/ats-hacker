@@ -188,5 +188,112 @@
       ]
     },
     "reviewStatus": "needs_render_and_review"
+  },
+  {
+    "date": "2026-07-04",
+    "topic": "Recruiter reacts to invisible resumes with real job-description proof",
+    "series": "Daily Research Packet",
+    "packet": "marketing\\daily_content\\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description-",
+    "youtube": {
+      "title": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown",
+      "status": "render_ready_review_required",
+      "target": "daily long-form YouTube",
+      "manifest": "marketing\\daily_content\\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description-\\channel_manifest.json",
+      "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_episode.json",
+      "output": "marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4",
+      "autopostDraft": "marketing\\daily_content\\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description-\\autopost_drafts.json",
+      "qaGate": {
+        "required": true,
+        "passed": false,
+        "status": "requires_render_review"
+      }
+    },
+    "thumbnail": {
+      "composition": "SignalThumbnail",
+      "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_thumbnail.json",
+      "output": "marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--thumbnail.png",
+      "format": "1280x720",
+      "status": "render_ready"
+    },
+    "shorts": [
+      {
+        "title": "This marketing resume hid the actual revenue proof",
+        "brief": "marketing\\video_briefs\\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description--short-1.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_1.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "openai",
+          "voiceId": null,
+          "voiceName": null,
+          "reason": "ready via openai",
+          "wordLevelCaptions": false
+        }
+      },
+      {
+        "title": "This sales resume forgot to say sales",
+        "brief": "marketing\\video_briefs\\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description--short-2.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_2.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "openai",
+          "voiceId": null,
+          "voiceName": null,
+          "reason": "ready via openai",
+          "wordLevelCaptions": false
+        }
+      },
+      {
+        "title": "This developer resume hides the stack",
+        "brief": "marketing\\video_briefs\\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description--short-3.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_3.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "openai",
+          "voiceId": null,
+          "voiceName": null,
+          "reason": "ready via openai",
+          "wordLevelCaptions": false
+        }
+      }
+    ],
+    "creativeQuality": {
+      "overallScore": 100,
+      "passed": true,
+      "verdict": "post_grade_script_packet",
+      "notes": [],
+      "blockers": [],
+      "shorts": [
+        {
+          "title": "This marketing resume hid the actual revenue proof",
+          "score": 88,
+          "passed": true,
+          "notes": [
+            "Add one job-search-safe joke or visual gag."
+          ],
+          "blockers": []
+        },
+        {
+          "title": "This sales resume forgot to say sales",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "This developer resume hides the stack",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        }
+      ]
+    },
+    "reviewStatus": "needs_render_and_review"
   }
 ]

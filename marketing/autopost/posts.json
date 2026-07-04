@@ -685,5 +685,74 @@
             "provider": "cached",
             "reason": "ready via cached"
         }
+    },
+    {
+        "title": "This marketing resume hid the actual revenue proof",
+        "caption": "This marketing resume hid the actual revenue proof. This marketing resume sounds busy. Recruiters need revenue proof. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_1.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "openai",
+            "voiceId": null,
+            "voiceName": null,
+            "reason": "ready via openai",
+            "wordLevelCaptions": false
+        }
+    },
+    {
+        "title": "This sales resume forgot to say sales",
+        "caption": "This sales resume forgot to say sales. This sales resume has conversations. The job needs pipeline. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-this-sales-resume-forgot-to-say-sales.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_2.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "openai",
+            "voiceId": null,
+            "voiceName": null,
+            "reason": "ready via openai",
+            "wordLevelCaptions": false
+        }
+    },
+    {
+        "title": "This developer resume hides the stack",
+        "caption": "This developer resume hides the stack. This developer resume says frontend. The job searches React. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-this-developer-resume-hides-the-stack.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_3.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "openai",
+            "voiceId": null,
+            "voiceName": null,
+            "reason": "ready via openai",
+            "wordLevelCaptions": false
+        }
     }
 ]

@@ -187,6 +187,73 @@ def upsert_run(conn: sqlite3.Connection, run: dict) -> None:
     conn.commit()
 
 
+def row_to_run(row: sqlite3.Row | tuple) -> dict:
+    keys = [
+        "id",
+        "packet_dir",
+        "drafts_path",
+        "draft_file",
+        "title",
+        "caption",
+        "platforms_json",
+        "composition",
+        "render_props",
+        "output_path",
+        "queue_path",
+        "review_dir",
+        "review_video_path",
+        "state",
+        "qa_json",
+        "post_metadata_json",
+        "file_sha256",
+        "approval_json",
+        "created_at",
+        "updated_at",
+    ]
+    data = dict(zip(keys, row))
+    for key in ("platforms_json", "qa_json", "post_metadata_json", "approval_json"):
+        raw = data.get(key)
+        if raw:
+            try:
+                data[key.replace("_json", "")] = json.loads(raw)
+            except json.JSONDecodeError:
+                data[key.replace("_json", "")] = raw
+    return data
+
+
+def list_runs(state: str | None = None, limit: int = 20) -> list[dict]:
+    conn = connect_db()
+    if state:
+        rows = conn.execute(
+            "SELECT * FROM video_runs WHERE state = ? ORDER BY updated_at DESC LIMIT ?",
+            (state, limit),
+        ).fetchall()
+    else:
+        rows = conn.execute("SELECT * FROM video_runs ORDER BY updated_at DESC LIMIT ?", (limit,)).fetchall()
+    return [row_to_run(row) for row in rows]
+
+
+def get_run(run_id: str) -> dict:
+    conn = connect_db()
+    row = conn.execute("SELECT * FROM video_runs WHERE id = ?", (run_id,)).fetchone()
+    if not row:
+        raise ValueError(f"No video run found for {run_id}")
+    run = row_to_run(row)
+    events = conn.execute(
+        "SELECT state, details_json, created_at FROM video_run_events WHERE run_id = ? ORDER BY id ASC",
+        (run_id,),
+    ).fetchall()
+    run["events"] = [
+        {
+            "state": state,
+            "details": json.loads(details or "{}"),
+            "createdAt": created_at,
+        }
+        for state, details, created_at in events
+    ]
+    return run
+
+
 def resolve_root_ref(ref: str) -> Path:
     return ROOT / str(ref).replace("\\", "/")
 
@@ -524,6 +591,45 @@ def approve_run(run_id: str, reviewer: str, note: str = "") -> dict:
     return approval
 
 
+def transition_run(run_id: str, state: str, reviewer: str, note: str = "") -> dict:
+    if state not in {"REJECTED", "REVISION_REQUESTED"}:
+        raise ValueError("transition_run only supports REJECTED or REVISION_REQUESTED")
+    conn = connect_db()
+    row = conn.execute("SELECT id, draft_file FROM video_runs WHERE id = ?", (run_id,)).fetchone()
+    if not row:
+        raise ValueError(f"No video run found for {run_id}")
+    payload = {
+        "runId": run_id,
+        "state": state,
+        "reviewer": reviewer,
+        "note": note,
+        "updatedAt": utc_now(),
+    }
+    conn.execute(
+        "UPDATE video_runs SET state = ?, approval_json = NULL, updated_at = ? WHERE id = ?",
+        (state, utc_now(), run_id),
+    )
+    conn.commit()
+    record_event(conn, run_id, state, payload)
+    update_posts_with_review_state(row[1], state, payload)
+    return payload
+
+
+def update_posts_with_review_state(file_ref: str, state: str, payload: dict) -> None:
+    posts = read_json(POSTS_PATH, [])
+    changed = False
+    for post in posts:
+        if post.get("file") == file_ref:
+            post.pop("codexApproval", None)
+            post["reviewStatus"] = state.lower()
+            post["status"] = "review_required"
+            post["codexReviewDecision"] = payload
+            changed = True
+    if not changed:
+        raise ValueError(f"No post queue entry found for {file_ref}")
+    POSTS_PATH.write_text(json.dumps(posts, indent=4) + "\n", encoding="utf-8")
+
+
 def update_posts_with_codex_approval(file_ref: str, approval: dict, metadata: dict) -> None:
     posts = read_json(POSTS_PATH, [])
     changed = False
@@ -560,6 +666,41 @@ def print_review(manifest: dict, json_output: bool) -> None:
     print(f"Approval phrase: {manifest['approvalPhrase']}")
 
 
+def print_run_list(runs: list[dict], json_output: bool) -> None:
+    if json_output:
+        print(json.dumps(runs, indent=2))
+        return
+    if not runs:
+        print("No video runs found.")
+        return
+    for run in runs:
+        print(f"{run['id']} [{run['state']}] {run['title']}")
+        print(f"  file: {run['draft_file']}")
+        if run.get("review_video_path"):
+            print(f"  review: {ROOT / run['review_video_path']}")
+        if run.get("post_metadata", {}).get("landingUrl"):
+            print(f"  landing: {run['post_metadata']['landingUrl']}")
+
+
+def print_run_status(run: dict, json_output: bool) -> None:
+    if json_output:
+        print(json.dumps(run, indent=2))
+        return
+    print(f"Run ID: {run['id']}")
+    print(f"State: {run['state']}")
+    print(f"Title: {run['title']}")
+    print(f"File: {run['draft_file']}")
+    print(f"Review video: {ROOT / run['review_video_path'] if run.get('review_video_path') else 'none'}")
+    qa = run.get("qa") if isinstance(run.get("qa"), dict) else {}
+    if qa:
+        print(f"QA passed: {qa.get('passed')}")
+        for name, passed in qa.get("requiredChecks", {}).items():
+            print(f"  {name}: {passed}")
+    print("Events:")
+    for event in run.get("events", []):
+        print(f"  {event['createdAt']} {event['state']}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Prepare, QA, and approve Signal videos through Codex chat.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -578,9 +719,32 @@ def main() -> None:
     approve.add_argument("--note", default="")
     approve.add_argument("--json", action="store_true")
 
+    list_cmd = sub.add_parser("list", help="List tracked video runs.")
+    list_cmd.add_argument("--state", choices=PIPELINE_STATES, default=None)
+    list_cmd.add_argument("--limit", type=int, default=20)
+    list_cmd.add_argument("--json", action="store_true")
+
+    status_cmd = sub.add_parser("status", help="Show one video run and its state transition events.")
+    status_cmd.add_argument("run_id")
+    status_cmd.add_argument("--json", action="store_true")
+
+    reject = sub.add_parser("reject", help="Reject an exact rendered video after Codex review.")
+    reject.add_argument("run_id")
+    reject.add_argument("--reviewer", default="codex-chat")
+    reject.add_argument("--note", default="")
+    reject.add_argument("--json", action="store_true")
+
+    revise = sub.add_parser("request-revision", help="Mark a run as requiring revision after Codex review.")
+    revise.add_argument("run_id")
+    revise.add_argument("--reviewer", default="codex-chat")
+    revise.add_argument("--note", default="")
+    revise.add_argument("--json", action="store_true")
+
     args = parser.parse_args()
     if args.command == "prepare-review":
         drafts_path = args.drafts or latest_drafts_path()
+        if not drafts_path.is_absolute():
+            drafts_path = (ROOT / drafts_path).resolve()
         drafts = select_drafts(drafts_path, args.only, args.include_longform, args.limit)
         if not drafts:
             raise SystemExit("No matching drafts found.")
@@ -599,6 +763,24 @@ def main() -> None:
             print(f"Codex approval stored for {args.run_id}")
             print(f"Reviewer: {approval['reviewer']}")
             print(f"File hash: {approval['fileSha256']}")
+    elif args.command == "list":
+        print_run_list(list_runs(args.state, args.limit), args.json)
+    elif args.command == "status":
+        print_run_status(get_run(args.run_id), args.json)
+    elif args.command == "reject":
+        result = transition_run(args.run_id, "REJECTED", args.reviewer, args.note)
+        if args.json:
+            print(json.dumps(result, indent=2))
+        else:
+            print(f"Run {args.run_id} rejected.")
+            print(f"Note: {args.note}")
+    elif args.command == "request-revision":
+        result = transition_run(args.run_id, "REVISION_REQUESTED", args.reviewer, args.note)
+        if args.json:
+            print(json.dumps(result, indent=2))
+        else:
+            print(f"Run {args.run_id} marked REVISION_REQUESTED.")
+            print(f"Note: {args.note}")
 
 
 if __name__ == "__main__":

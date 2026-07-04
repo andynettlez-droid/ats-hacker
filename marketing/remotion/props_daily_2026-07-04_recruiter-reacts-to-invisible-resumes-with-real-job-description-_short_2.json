@@ -1,0 +1,66 @@
+{
+  "hook": "This sales resume has conversations. The job needs pipeline.",
+  "subhook": "The problem is vague proof, not fake experience.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "stickyNote",
+  "pace": "slowBurn",
+  "seriesLabel": "Recruiter search test",
+  "signalLines": {
+    "hook": "Would this show up?",
+    "problem": "The JD is giving clues.",
+    "teardown": "The resume ignores them.",
+    "fix": "Translate, do not fabricate.",
+    "cta": "Paste the JD."
+  },
+  "resumeName": "Maya Torres",
+  "resumeTitle": "Account Executive Resume",
+  "resumeMeta": [
+    "4 yrs SaaS sales",
+    "Mid-market accounts",
+    "Quota-carrying role"
+  ],
+  "jobTitle": "Mid-Market Account Executive",
+  "jobKeywords": [
+    "Salesforce",
+    "pipeline generation",
+    "quota attainment",
+    "discovery calls",
+    "MEDDICC"
+  ],
+  "weakBullets": [
+    "Managed customer conversations and followed up with prospects.",
+    "Responsible for sales opportunities in assigned territory.",
+    "Worked with marketing and customer success on accounts."
+  ],
+  "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+  "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+  "beforeScore": 37,
+  "afterScore": 88,
+  "markedLabel": "No quota signal",
+  "problemPunchline": "Sales resumes need numbers faster than adjectives.",
+  "teardownIssues": [
+    "No quota proof",
+    "No CRM signal",
+    "No pipeline number"
+  ],
+  "cta": "Run your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "openai",
+    "voiceId": null,
+    "voiceName": null,
+    "reason": "ready via openai",
+    "wordLevelCaptions": false
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-this-sales-resume-forgot-to-say-sales-2-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captionReadiness": {
+    "wordLevel": false,
+    "provider": "openai",
+    "reason": "Scene captions are present; word-level TTS alignment was unavailable or cached without metadata."
+  }
+}

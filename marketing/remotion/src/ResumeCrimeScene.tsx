@@ -42,7 +42,9 @@ export const resumeCrimeSceneSchema = z.object({
   fixText: z.string().optional(),
   fixEmphasis: z.string().optional(),
   fixPunchline: z.string().optional(),
+  resumeName: z.string().optional(),
   resumeTitle: z.string(),
+  resumeMeta: z.array(z.string()).optional(),
   jobTitle: z.string(),
   jobKeywords: z.array(z.string()),
   weakBullets: z.array(z.string()),
@@ -106,7 +108,9 @@ export const defaultResumeCrimeSceneProps: ResumeCrimeSceneProps = {
   fixText: "Same experience.",
   fixEmphasis: "Better signal.",
   fixPunchline: "No fake experience. Just clearer evidence.",
+  resumeName: "Avery Johnson",
   resumeTitle: "Marketing Specialist Resume",
+  resumeMeta: ["3 yrs B2B SaaS", "HubSpot admin", "Paid social support"],
   jobTitle: "Demand Generation Manager",
   jobKeywords: ["Demand Gen", "LinkedIn Ads", "HubSpot", "CAC analysis"],
   weakBullets: ["Responsible for social media.", "Helped with marketing campaigns.", "Worked with the team."],
@@ -292,14 +296,16 @@ const ScoreBadge: React.FC<{ score: number; tone: "bad" | "good"; label?: string
 );
 
 const ResumeSheet: React.FC<{
+  name?: string;
   title: string;
+  meta?: string[];
   bullets: string[];
   marked?: boolean;
   rewritten?: boolean;
   beforeBullet: string;
   afterBullet: string;
   markedLabel?: string;
-}> = ({ title, bullets, marked, rewritten, beforeBullet, afterBullet, markedLabel = "Too vague" }) => (
+}> = ({ name = "Avery Johnson", title, meta = [], bullets, marked, rewritten, beforeBullet, afterBullet, markedLabel = "Too vague" }) => (
   <div
     style={{
       width: 612,
@@ -314,8 +320,28 @@ const ResumeSheet: React.FC<{
       overflow: "hidden",
     }}
   >
-    <div style={{ fontSize: 32, fontWeight: 950, lineHeight: 1.04 }}>Avery Johnson</div>
+    <div style={{ fontSize: 32, fontWeight: 950, lineHeight: 1.04 }}>{name}</div>
     <div style={{ marginTop: 8, fontSize: 18, color: "#475569", fontWeight: 800 }}>{title}</div>
+    {meta.length ? (
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 14 }}>
+        {meta.slice(0, 3).map((item) => (
+          <div
+            key={item}
+            style={{
+              padding: "6px 9px",
+              borderRadius: 999,
+              background: "rgba(14,165,233,0.10)",
+              border: "1px solid rgba(14,165,233,0.18)",
+              color: "#0369a1",
+              fontSize: 12,
+              fontWeight: 900,
+            }}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    ) : null}
     <div style={{ height: 2, background: "#e2e8f0", margin: "28px 0" }} />
     <div style={{ color: "#64748b", fontSize: 15, fontWeight: 950, textTransform: "uppercase" }}>Experience</div>
     <div style={{ display: "grid", gap: 18, marginTop: 18 }}>
@@ -707,7 +733,9 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   fixText = "Same experience.",
   fixEmphasis = "Better signal.",
   fixPunchline = "No fake experience. Just clearer evidence.",
+  resumeName,
   resumeTitle,
+  resumeMeta = [],
   jobTitle,
   jobKeywords,
   weakBullets,
@@ -794,7 +822,9 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
         <LowerPunchline text={problemPunchline} tone="red" />
         <div style={{ position: "absolute", left: 58, top: 225 }}>
           <ResumeSheet
+            name={resumeName}
             title={resumeTitle}
+            meta={resumeMeta}
             bullets={weakBullets}
             marked
             beforeBullet={beforeBullet}
@@ -816,7 +846,9 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
         <LowerPunchline text={teardownPunchline} tone="red" />
         <div style={{ position: "absolute", left: 82, top: 260 }}>
           <ResumeSheet
+            name={resumeName}
             title={resumeTitle}
+            meta={resumeMeta}
             bullets={weakBullets}
             marked
             beforeBullet={beforeBullet}
@@ -870,7 +902,9 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           }}
         >
           <ResumeSheet
+            name={resumeName}
             title={resumeTitle}
+            meta={resumeMeta}
             bullets={weakBullets}
             rewritten
             beforeBullet={beforeBullet}

@@ -16,7 +16,7 @@ The long-form YouTube lane is render-ready but not publish-ready. It has a sourc
 
 - `ResumeCrimeScene` renders vertical 1080x1920, 30fps shorts.
 - Three daily studio short exports exist in `marketing/remotion/out/`.
-- ElevenLabs voiceover assets exist for the daily shorts and long-form episode.
+- Studio voiceover assets exist for the daily shorts and long-form episode. ElevenLabs remains preferred, but the current machine-level ElevenLabs key is low-quota and the latest reviewed short used OpenAI TTS fallback.
 - Quiet music assets exist and are used instead of harsh SFX.
 - The posting layer supports TikTok, Instagram, and YouTube through Upload-Post.
 - The posting layer has a review gate for `draft` and `review_required` entries.
@@ -38,6 +38,7 @@ The long-form YouTube lane is render-ready but not publish-ready. It has a sourc
 - Automated visual safe-area QC exists for bright/saturated margin issues. It is not a full semantic visual QA system for overlap, contrast, mascot personality, or whether the video is funny.
 - No automated audio loudness/peak/LUFS check. The current audio gate validates files, codecs, duration, sample rate, bitrate, channels, and mix-volume settings, but does not measure loudness.
 - Word-level caption alignment is available only for new ElevenLabs `/with-timestamps` generations. Existing cached daily voiceovers and OpenAI fallback voiceovers use scene captions.
+- The daily content agent now validates/selects an available ElevenLabs voice instead of assuming the legacy default voice ID. It also disables further ElevenLabs calls for the current run after quota/permission failures.
 - No automatic platform metrics ingestion from TikTok, Instagram, or YouTube.
 - No live automated trend feed from TikTok Creative Center, YouTube, Google Trends, Reddit, or LinkedIn. Current trend intake is file-based.
 - The script creative gate can overstate readiness because it grades packet text, not rendered video.
@@ -45,12 +46,15 @@ The long-form YouTube lane is render-ready but not publish-ready. It has a sourc
 - The current long-form packet scored 83/100 on the expert viral gate and is blocked from publish-ready status until the full episode is strengthened and rendered QA passes.
 - The queue still contains older ad-style clips that should be reviewed or retired before they dilute the new teardown format.
 
-## Current Codex Review Asset
+## Current Codex Review Assets
 
-- `marketing/codex_reviews/20260704-1d88e2aa73b70b86-corporate-weather-report-resume/daily-corporate-weather-report-resume.mp4`
-- State: `AWAITING_CODEX_APPROVAL`
-- QA: script gate passed, studio metadata QC passed, audio asset QC passed, visual safe-area QC passed.
-- Approval phrase: `APPROVE POST 1d88e2aa73b70b86`
+All three current daily shorts are in `AWAITING_CODEX_APPROVAL` and passed script, studio metadata, audio asset, and visual safe-area QC.
+
+| Run ID | Title | Mobile review URL | Approval phrase |
+| --- | --- | --- | --- |
+| `50350129efcd445e` | This marketing resume hid the actual revenue proof | `http://192.168.2.10:8765/20260704-50350129efcd445e-this-marketing-resume-hid-the-actual-revenue-proof/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4` | `APPROVE POST 50350129efcd445e` |
+| `d962d2cc75f39aab` | This sales resume forgot to say sales | `http://192.168.2.10:8765/20260704-d962d2cc75f39aab-this-sales-resume-forgot-to-say-sales/daily-this-sales-resume-forgot-to-say-sales.mp4` | `APPROVE POST d962d2cc75f39aab` |
+| `71e14e8e21715d7d` | This developer resume hides the stack | `http://192.168.2.10:8765/20260704-71e14e8e21715d7d-this-developer-resume-hides-the-stack/daily-this-developer-resume-hides-the-stack.mp4` | `APPROVE POST 71e14e8e21715d7d` |
 
 This file is local and git-ignored. To review on mobile from the repo root, run:
 
@@ -58,14 +62,13 @@ This file is local and git-ignored. To review on mobile from the repo root, run:
 py -3 -m http.server 8765 --directory marketing/codex_reviews
 ```
 
-Then open the URL printed by `prepare-review`.
+Then open the URLs printed by `prepare-review`.
 
 ## Current Studio Short Assets
 
-- `marketing/remotion/out/daily-corporate-weather-report-resume.mp4`
-- `marketing/remotion/out/daily-your-ai-resume-has-linkedin-breath-studio.mp4`
-- `marketing/remotion/out/daily-one-bullet-fix-studio.mp4`
-- `marketing/remotion/out/daily-ats-myth-lab-studio.mp4`
+- `marketing/remotion/out/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4`
+- `marketing/remotion/out/daily-this-sales-resume-forgot-to-say-sales.mp4`
+- `marketing/remotion/out/daily-this-developer-resume-hides-the-stack.mp4`
 
 These are the assets that should be promoted for review-gated posting, not the earlier first-pass daily short.
 
@@ -73,11 +76,11 @@ These are the assets that should be promoted for review-gated posting, not the e
 
 Latest manual pipeline output:
 
-- First current daily short rendered and exported to Codex review.
+- Three improved role-specific daily shorts rendered and exported to Codex review.
 - Autopost dry run confirms it is blocked until Codex approval and `--approved`.
 - Current post-grade packet: 1.
-- Render-ready shorts in the current daily packet: 3.
-- Studio voiceover: available.
+- Render-ready and QA-passed shorts in the current daily packet: 3.
+- Studio voiceover: available through OpenAI fallback for the latest review asset.
 - Quiet music: available.
 - Source-backed trend intake: available.
 - Long-form renderer: available.
@@ -87,11 +90,32 @@ Latest manual pipeline output:
 - Automated render QC: available.
 - Audio asset QC: available.
 - Long-form expert viral gate: available; current episode score is 83/100 and not publish-ready.
-- Missing: platform metrics feed, audio loudness/peak QC, full transcript/caption alignment for cached voiceovers, automated live trend API connector.
+- Missing: valid high-quota ElevenLabs key for full daily voiceover generation, platform metrics feed, audio loudness/peak QC, full transcript/caption alignment for cached/fallback voiceovers, automated live trend API connector.
 
 ## Current Audio Position
 
-ElevenLabs is the current default for voiceover and generated sound because it gives us repeatable studio narration and brand-consistent audio assets in one workflow. It is the right default for now because the repo already has ElevenLabs voiceover assets for shorts and the episode, and the Remotion templates expect linked audio files.
+ElevenLabs is the preferred default for voiceover and generated sound because it can provide repeatable studio narration, brand-consistent audio assets, and timestamp alignment in one workflow.
+
+Current credential status:
+
+- `py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --json` can read voices and selects `George - Warm, Captivating Storyteller` (`JBFqnCBsd6RMkjVDRZzb`).
+- The current machine-level key has very limited remaining TTS quota, so full daily generation falls back to OpenAI TTS.
+- Chrome control was unavailable from Codex even though Chrome, the Codex Chrome Extension, and the native host diagnostics passed. A new ElevenLabs key still needs to be created/copied manually or after Chrome control is restored.
+
+Recommended env values:
+
+```env
+ELEVENLABS_API_KEY=sk_...
+ELEVENLABS_VOICE_ID=JBFqnCBsd6RMkjVDRZzb
+ELEVENLABS_MODEL_ID=eleven_multilingual_v2
+ELEVENLABS_WITH_TIMESTAMPS=true
+```
+
+Verify after replacing the key:
+
+```bat
+py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --probe-elevenlabs-tts --json
+```
 
 Do not treat this as finished audio engineering yet. The next quality jump is not another sound-effect pass; it is:
 

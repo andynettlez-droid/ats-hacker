@@ -97,6 +97,20 @@ Short-form voiceover is handled by the daily content agent and stored in `public
 
 When ElevenLabs is configured, the daily content agent now tries the `/with-timestamps` endpoint first and stores character-derived word captions in `public/audio/*.alignment.json`. `ResumeCrimeScene` can render those word-level captions when present. Cached or fallback voiceovers still use the scene captions built into the template.
 
+ElevenLabs health check from the repo root:
+
+```bat
+py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --json
+```
+
+After replacing or creating a key with TTS quota, run a tiny timestamped probe:
+
+```bat
+py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --probe-elevenlabs-tts --json
+```
+
+The current preferred voice is `George - Warm, Captivating Storyteller` (`JBFqnCBsd6RMkjVDRZzb`). The generator will auto-select an available voice if the configured ID is missing, then fall back to OpenAI TTS if ElevenLabs quota or permissions block generation.
+
 ## Review Gate
 
 Before promoting or posting:
@@ -117,7 +131,13 @@ Use Codex approval instead of Telegram. From the repo root:
 py -3 marketing_agent\codex_video_approval.py prepare-review --limit 1
 ```
 
-This command renders the latest daily short if needed, promotes the exact MP4 to `marketing/autopost/videos/`, runs studio metadata QC, audio QC, and visual safe-area QC against that one draft, copies the exact file to `marketing/codex_reviews/`, and writes a local SQLite state row in `marketing/video_pipeline_state.sqlite`.
+For the current improved daily packet:
+
+```bat
+py -3 marketing_agent\codex_video_approval.py prepare-review --drafts marketing\daily_content\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description-\autopost_drafts.json --limit 3
+```
+
+This command renders the latest daily shorts if needed, promotes the exact MP4 files to `marketing/autopost/videos/`, runs studio metadata QC, audio QC, and visual safe-area QC, copies exact files to `marketing/codex_reviews/`, and writes local SQLite state rows in `marketing/video_pipeline_state.sqlite`.
 
 The command prints:
 
@@ -133,6 +153,14 @@ For mobile review from the repo root:
 ```bat
 py -3 -m http.server 8765 --directory marketing/codex_reviews
 ```
+
+Current review assets:
+
+| Run ID | Title | Mobile review URL | Approval phrase |
+| --- | --- | --- | --- |
+| `50350129efcd445e` | This marketing resume hid the actual revenue proof | `http://192.168.2.10:8765/20260704-50350129efcd445e-this-marketing-resume-hid-the-actual-revenue-proof/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4` | `APPROVE POST 50350129efcd445e` |
+| `d962d2cc75f39aab` | This sales resume forgot to say sales | `http://192.168.2.10:8765/20260704-d962d2cc75f39aab-this-sales-resume-forgot-to-say-sales/daily-this-sales-resume-forgot-to-say-sales.mp4` | `APPROVE POST d962d2cc75f39aab` |
+| `71e14e8e21715d7d` | This developer resume hides the stack | `http://192.168.2.10:8765/20260704-71e14e8e21715d7d-this-developer-resume-hides-the-stack/daily-this-developer-resume-hides-the-stack.mp4` | `APPROVE POST 71e14e8e21715d7d` |
 
 Only approve after reviewing the exact video:
 

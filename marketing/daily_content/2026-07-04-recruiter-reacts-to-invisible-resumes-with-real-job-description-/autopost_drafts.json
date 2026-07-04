@@ -1,0 +1,131 @@
+[
+  {
+    "title": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown with Sig",
+    "caption": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
+    "file": "videos/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4",
+    "platforms": [
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "contentType": "youtube_long_form",
+    "youtubeKind": "long_form",
+    "target": "daily long-form YouTube",
+    "youtubeTitle": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown with Sig",
+    "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "composition": "TeardownEpisode",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_episode.json",
+    "thumbnail": "marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--thumbnail.png",
+    "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_thumbnail.json",
+    "renderStatus": "render_required",
+    "reviewStatus": "review_required",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "openai",
+      "reason": "6 episode sections ready",
+      "wordLevelCaptions": false
+    },
+    "qaGate": {
+      "required": true,
+      "passed": false,
+      "status": "requires_render_review",
+      "minExpertViralScore": 94,
+      "checks": [
+        "Rendered MP4 exists in marketing/autopost/videos.",
+        "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+        "Opening hook is visible in the first 5 seconds.",
+        "Signal mascot or brand mark is visible.",
+        "No old human presenter appears unless explicitly approved.",
+        "Audio is present, balanced, and not dominated by music or effects.",
+        "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+        "Thumbnail exists or is intentionally deferred.",
+        "Human reviewer approved exact file, title, description, thumbnail, and platform target."
+      ]
+    },
+    "expertViralGate": {
+      "required": true,
+      "minScore": 94,
+      "score": null,
+      "passed": false,
+      "status": "requires_expert_viral_review"
+    },
+    "reviewChecklist": [
+      "long-form render reviewed",
+      "thumbnail reviewed",
+      "audio present and balanced",
+      "claims reviewed",
+      "exact YouTube title and description reviewed",
+      "status remains review_required until approval"
+    ]
+  },
+  {
+    "title": "This marketing resume hid the actual revenue proof",
+    "caption": "This marketing resume hid the actual revenue proof. This marketing resume sounds busy. Recruiters need revenue proof. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_1.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "openai",
+      "voiceId": null,
+      "voiceName": null,
+      "reason": "ready via openai",
+      "wordLevelCaptions": false
+    }
+  },
+  {
+    "title": "This sales resume forgot to say sales",
+    "caption": "This sales resume forgot to say sales. This sales resume has conversations. The job needs pipeline. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-this-sales-resume-forgot-to-say-sales.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_2.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "openai",
+      "voiceId": null,
+      "voiceName": null,
+      "reason": "ready via openai",
+      "wordLevelCaptions": false
+    }
+  },
+  {
+    "title": "This developer resume hides the stack",
+    "caption": "This developer resume hides the stack. This developer resume says frontend. The job searches React. Check your free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-this-developer-resume-hides-the-stack.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_short_3.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "openai",
+      "voiceId": null,
+      "voiceName": null,
+      "reason": "ready via openai",
+      "wordLevelCaptions": false
+    }
+  }
+]

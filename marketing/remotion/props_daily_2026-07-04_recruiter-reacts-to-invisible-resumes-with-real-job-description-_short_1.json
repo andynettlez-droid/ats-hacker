@@ -1,0 +1,66 @@
+{
+  "hook": "This marketing resume sounds busy. Recruiters need revenue proof.",
+  "subhook": "The problem is vague proof, not fake experience.",
+  "creativeFormat": "resumeCrimeScene",
+  "visualStyle": "highlighter",
+  "pace": "fast",
+  "seriesLabel": "Resume crime scene",
+  "signalLines": {
+    "hook": "I found the evidence.",
+    "problem": "This bullet is hiding the proof.",
+    "teardown": "Circle the vague part.",
+    "fix": "Now the result is visible.",
+    "cta": "Run the score first."
+  },
+  "resumeName": "Jordan Lee",
+  "resumeTitle": "Marketing Coordinator -> Demand Gen Candidate",
+  "resumeMeta": [
+    "3 yrs B2B SaaS",
+    "HubSpot admin",
+    "Paid social support"
+  ],
+  "jobTitle": "Demand Generation Manager",
+  "jobKeywords": [
+    "HubSpot workflows",
+    "LinkedIn Ads",
+    "CAC analysis",
+    "MQL-to-SQL",
+    "pipeline sourced"
+  ],
+  "weakBullets": [
+    "Supported email and social campaigns across multiple channels.",
+    "Helped maintain HubSpot lists for webinars and nurture emails.",
+    "Coordinated paid social assets with design and sales."
+  ],
+  "beforeBullet": "Helped maintain HubSpot lists for webinars and nurture emails.",
+  "afterBullet": "Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%.",
+  "beforeScore": 34,
+  "afterScore": 92,
+  "markedLabel": "Buried proof",
+  "problemPunchline": "A recruiter cannot search for proof you buried.",
+  "teardownIssues": [
+    "Tool is hidden",
+    "No CAC result",
+    "No pipeline language"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "openai",
+    "voiceId": null,
+    "voiceName": null,
+    "reason": "ready via openai",
+    "wordLevelCaptions": false
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-this-marketing-resume-hid-the-actual-reven-1-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captionReadiness": {
+    "wordLevel": false,
+    "provider": "openai",
+    "reason": "Scene captions are present; word-level TTS alignment was unavailable or cached without metadata."
+  }
+}

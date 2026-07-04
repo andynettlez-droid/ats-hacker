@@ -148,6 +148,47 @@ const checkProps = (draft, postsEntry, checks) => {
     "job keywords are concrete",
     Array.isArray(props.jobKeywords) ? props.jobKeywords.join(", ") : "",
   );
+  const roleSpecificText = [
+    props.resumeName,
+    props.resumeTitle,
+    props.jobTitle,
+    props.beforeBullet,
+    props.afterBullet,
+    ...(Array.isArray(props.resumeMeta) ? props.resumeMeta : []),
+    ...(Array.isArray(props.weakBullets) ? props.weakBullets : []),
+    ...(Array.isArray(props.jobKeywords) ? props.jobKeywords : []),
+  ]
+    .join("\n")
+    .toLowerCase();
+  const genericPlaceholders = [
+    "ai-polished resume",
+    "target job description",
+    "results-driven team player",
+    "helped with marketing campaigns",
+    "worked with cross-functional teams",
+    "role language",
+    "metrics",
+  ].filter((term) => roleSpecificText.includes(term));
+  addCheck(
+    checks,
+    genericPlaceholders.length === 0,
+    "resume and JD artifact are role-specific",
+    genericPlaceholders.length ? `generic placeholders: ${genericPlaceholders.join(", ")}` : `${props.resumeTitle || ""} -> ${props.jobTitle || ""}`,
+  );
+  addCheck(
+    checks,
+    Array.isArray(props.weakBullets) &&
+      props.weakBullets.length >= 3 &&
+      props.weakBullets.includes(props.beforeBullet),
+    "weak resume includes the marked source bullet",
+    props.beforeBullet || "",
+  );
+  addCheck(
+    checks,
+    Array.isArray(props.resumeMeta) && props.resumeMeta.length >= 2,
+    "resume has believable role context",
+    Array.isArray(props.resumeMeta) ? props.resumeMeta.join(", ") : "",
+  );
   addCheck(
     checks,
     props.audioReadiness?.studioVoiceover === true,

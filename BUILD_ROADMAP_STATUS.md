@@ -39,7 +39,7 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 | Admin/revenue visibility | Implemented basic | Admin login and Stripe-backed stats route exist. Needs fuller source-channel revenue dashboard and support recovery workflow. |
 | Analytics | Partial | Vercel Analytics events exist for score completion, checkout start, paid fulfillment, post-purchase score lift, downloads, demo start, cover-letter copy, and score share. Needs UTM-to-revenue reporting and platform metrics ingestion. |
 | Test coverage | Thin | Lint passes with warnings. Need checkout/rewrite/success tests and a smoke script for the main conversion flow. |
-| Video growth engine | In progress, supervised | Daily packets, Remotion shorts, audio QC, visual safe-area QC, Upload-Post queue, and Codex approval state exist. One current daily short reached `AWAITING_CODEX_APPROVAL`. Needs full metrics loop, audio loudness QC, and long-form publish hardening. |
+| Video growth engine | In progress, supervised | Daily packets, role-specific synthetic resume cases, Remotion shorts, audio QC, visual safe-area QC, Upload-Post queue, and Codex approval state exist. Three improved role-specific daily shorts reached `AWAITING_CODEX_APPROVAL`. Needs a valid high-quota ElevenLabs key, full metrics loop, audio loudness QC, and long-form publish hardening. |
 
 ## What Is Done
 
@@ -56,6 +56,9 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 - 35 role SEO pages exist.
 - Social/video pipeline is connected to the product CTA: "check your free Signal score."
 - Codex video approval now blocks live posting until the exact QA-passed file hash is approved.
+- Video scripts now rotate believable synthetic resume/job cases instead of repeating generic "AI-polished resume" placeholders.
+- `ResumeCrimeScene` now shows resume identity and role-context chips, so the on-screen resume artifact feels more specific.
+- ElevenLabs voice selection now validates available account voices and fails over cleanly when quota/permission issues block production audio.
 
 ## Highest-Leverage Next Product Work
 
@@ -137,6 +140,7 @@ Status: Started.
 - The score and rewrite flows depend on OpenAI availability and should expose better retry/fallback states.
 - Analytics does not yet prove which video/SEO/social source creates purchases.
 - The media pipeline can create and queue strong supervised shorts, but it should not be fully autonomous posting yet.
+- The current machine-level ElevenLabs key can read voices but lacks enough generation quota for full daily production. Latest reviewed audio used OpenAI fallback.
 - The media publisher now requires Codex approval for review-required posts, but older queued ad-style clips should still be retired or rewritten before broad posting.
 - Older ad-style queued videos still exist and may dilute the sharper teardown positioning if posted without review.
 
@@ -146,9 +150,9 @@ Latest checks run during this review:
 
 - Web lint: passed with 7 existing `next/no-img-element` warnings.
 - Remotion typecheck: passed.
-- Studio short QC: passed for the current Codex-reviewed daily short.
+- Studio short QC: passed for the current three Codex-reviewed role-specific daily shorts.
 - Audio asset QC: passed for daily shorts and episode audio assets.
-- Visual safe-area QC: passed for the current Codex-reviewed daily short.
+- Visual safe-area QC: passed for the current three Codex-reviewed role-specific daily shorts.
 - Long-form YouTube expert viral gate: available; current daily episode scored 83/100 and is blocked from publish-ready status until render QA and content upgrades pass.
 - Marketing agent compile check: passed.
 - Autopost dry run: passed; review-gated videos remain blocked from live posting unless Codex approval exists for the exact file hash and the poster is run with `--approved`.

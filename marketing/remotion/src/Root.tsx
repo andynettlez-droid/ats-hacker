@@ -32,7 +32,7 @@ const AVATAR_REVEAL_DURATION = 17; // 17 seconds @ 30 FPS = 510 frames
 const ATS_REVEAL_DURATION = 74; // 74 seconds @ 30 FPS = 2220 frames
 const SIGNAL_VIRAL_DURATION = 30;
 const SIGNAL_BREAKTHROUGH_DURATION = 30;
-const RESUME_CRIME_SCENE_DURATION = 45;
+const RESUME_CRIME_SCENE_DURATION = 28;
 const TEARDOWN_EPISODE_DURATION = 8 * 60;
 const TEARDOWN_REVIEW_CUT_DURATION = 2 * 60;
 
@@ -52,11 +52,11 @@ const resumeCrimeSceneMetadata: CalculateMetadataFunction<ResumeCrimeSceneProps>
     0,
     ...((props.captions || []).map((caption) => Number(caption.endMs || 0))),
   );
-  const fromCaptions = captionEndMs > 0 ? Math.ceil((captionEndMs / 1000 + 3.2) * FPS) : 0;
+  const fromCaptions = captionEndMs > 0 ? Math.ceil((captionEndMs / 1000 + 2.2) * FPS) : 0;
   const fromProps = props.durationSeconds ? Math.ceil(props.durationSeconds * FPS) : 0;
   const desired = fromProps || fromCaptions || RESUME_CRIME_SCENE_DURATION * FPS;
   return {
-    durationInFrames: Math.max(29 * FPS, Math.min(52 * FPS, desired)),
+    durationInFrames: Math.max(18 * FPS, Math.min(32 * FPS, desired)),
   };
 };
 

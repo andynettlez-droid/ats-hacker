@@ -81,12 +81,21 @@ export const resumeCrimeSceneSchema = z.object({
     .optional(),
   beforeScore: z.number(),
   afterScore: z.number(),
+  scoreBasis: z
+    .array(
+      z.object({
+        label: z.string(),
+        before: z.string(),
+        after: z.string(),
+      }),
+    )
+    .optional(),
   cta: z.string(),
   musicSrc: z.string().optional(),
   musicVolume: z.number().min(0).max(1).optional(),
   voiceoverSrc: z.string().optional(),
   voiceoverVolume: z.number().min(0).max(1).optional(),
-  durationSeconds: z.number().min(20).max(60).optional(),
+  durationSeconds: z.number().min(18).max(36).optional(),
   captions: z
     .array(
       z.object({
@@ -190,6 +199,11 @@ export const defaultResumeCrimeSceneProps: ResumeCrimeSceneProps = {
   },
   beforeScore: 34,
   afterScore: 92,
+  scoreBasis: [
+    { label: "Keyword match", before: "1/5", after: "5/5" },
+    { label: "Metric proof", before: "missing", after: "CAC -32%" },
+    { label: "Outcome", before: "vague", after: "MQL +18%" },
+  ],
   cta: "Paste the job description. Check your free Signal score before you apply.",
   musicSrc: "audio/signal-quiet-orbit.wav",
   musicVolume: 0.16,
@@ -216,9 +230,9 @@ const VISUAL_STYLES = {
   },
   comic: {
     background:
-      "radial-gradient(circle at 18% 12%, rgba(250,204,21,0.18), transparent 28rem), radial-gradient(circle at 82% 18%, rgba(244,63,94,0.16), transparent 32rem), linear-gradient(180deg, #111827 0%, #020617 100%)",
-    accent: "#facc15",
-    warning: "#f43f5e",
+      "radial-gradient(circle at 20% 12%, rgba(239,68,68,0.15), transparent 26rem), radial-gradient(circle at 86% 20%, rgba(250,204,21,0.18), transparent 30rem), linear-gradient(180deg, #fff7ed 0%, #fee2e2 48%, #111827 100%)",
+    accent: "#b91c1c",
+    warning: "#dc2626",
     texture: "dots",
   },
   terminal: {
@@ -237,9 +251,9 @@ const VISUAL_STYLES = {
   },
   highlighter: {
     background:
-      "radial-gradient(circle at 14% 12%, rgba(45,212,191,0.17), transparent 28rem), radial-gradient(circle at 86% 18%, rgba(250,204,21,0.16), transparent 32rem), linear-gradient(180deg, #07111f 0%, #020617 100%)",
-    accent: "#2dd4bf",
-    warning: "#f97316",
+      "radial-gradient(circle at 14% 12%, rgba(45,212,191,0.18), transparent 28rem), radial-gradient(circle at 86% 18%, rgba(250,204,21,0.22), transparent 32rem), linear-gradient(180deg, #ecfeff 0%, #fef9c3 42%, #0f172a 100%)",
+    accent: "#0f766e",
+    warning: "#ca8a04",
     texture: "highlighter",
   },
 } as const;
@@ -278,7 +292,7 @@ type TimingPlan = {
 };
 
 const buildTiming = (durationFrames: number, pace: keyof typeof PACE): TimingPlan => {
-  const usable = Math.max(29 * 30, durationFrames);
+  const usable = Math.max(18 * 30, durationFrames);
   const profiles = {
     fast: [0, 0.15, 0.37, 0.62, 0.84, 1],
     balanced: [0, 0.17, 0.39, 0.64, 0.84, 1],
@@ -393,6 +407,76 @@ const ScoreBadge: React.FC<{ score: number; tone: "bad" | "good"; label?: string
     <div style={{ color: TEXT, fontSize: 54, fontWeight: 950, lineHeight: 1, marginTop: 5 }}>{score}/100</div>
   </div>
 );
+
+const ScoreReceipt: React.FC<{
+  basis?: ResumeCrimeSceneProps["scoreBasis"];
+  beforeScore: number;
+  afterScore: number;
+  phase: "before" | "after";
+  accent: string;
+}> = ({ basis = [], beforeScore, afterScore, phase, accent }) => {
+  const rows = basis.length
+    ? basis
+    : [
+        { label: "Keyword match", before: "weak", after: "strong" },
+        { label: "Metric proof", before: "missing", after: "visible" },
+        { label: "Outcome", before: "vague", after: "clear" },
+      ];
+  const isAfter = phase === "after";
+  return (
+    <div
+      style={{
+        width: 392,
+        padding: "16px 18px",
+        borderRadius: 22,
+        background: "rgba(2,6,23,0.90)",
+        border: `2px solid ${isAfter ? "rgba(22,163,74,0.38)" : "rgba(220,38,38,0.34)"}`,
+        boxShadow: "0 24px 70px rgba(0,0,0,0.42)",
+        color: TEXT,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 16 }}>
+        <div style={{ color: accent, fontSize: 14, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.3 }}>
+          Score receipt
+        </div>
+        <div style={{ color: isAfter ? "#bbf7d0" : "#fecaca", fontSize: 24, fontWeight: 950 }}>
+          {isAfter ? afterScore : beforeScore}/100
+        </div>
+      </div>
+      <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
+        {rows.slice(0, 3).map((row) => (
+          <div
+            key={row.label}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr auto",
+              gap: 10,
+              alignItems: "center",
+              padding: "9px 10px",
+              borderRadius: 13,
+              background: isAfter ? "rgba(22,163,74,0.11)" : "rgba(220,38,38,0.10)",
+              border: isAfter ? "1px solid rgba(22,163,74,0.20)" : "1px solid rgba(220,38,38,0.18)",
+            }}
+          >
+            <div style={{ color: "#e2e8f0", fontSize: 15, lineHeight: 1.05, fontWeight: 900 }}>{row.label}</div>
+            <div
+              style={{
+                color: isAfter ? "#bbf7d0" : "#fecaca",
+                fontSize: 14,
+                lineHeight: 1.05,
+                fontWeight: 950,
+                textAlign: "right",
+                maxWidth: 154,
+              }}
+            >
+              {isAfter ? row.after : row.before}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const ResumeSheet: React.FC<{
   name?: string;
@@ -754,7 +838,7 @@ const CreatorBadge: React.FC<{ label: string }> = ({ label }) => (
     style={{
       position: "absolute",
       left: 44,
-      top: 26,
+      top: 42,
       zIndex: 145,
       display: "flex",
       alignItems: "center",
@@ -1088,6 +1172,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   jobDescription,
   beforeScore,
   afterScore,
+  scoreBasis = defaultResumeCrimeSceneProps.scoreBasis,
   cta,
   musicSrc,
   musicVolume = 0.16,
@@ -1158,12 +1243,22 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
       <CreatorBadge label={seriesLabel || creativeFormat} />
 
       <AbsoluteFill style={{ opacity: hookOpacity, alignItems: "center", justifyContent: "center", padding: 70, textAlign: "center" }}>
-        <div style={{ color: styleTheme.warning, fontSize: 28, fontWeight: 950, textTransform: "uppercase", letterSpacing: 2.4 }}>
-          {creativeFormat.replace(/([A-Z])/g, " $1").trim()}
+        <div
+          style={{
+            maxWidth: 910,
+            padding: "34px 42px",
+            borderRadius: 34,
+            background: "rgba(2,6,23,0.88)",
+            border: "2px solid rgba(56,213,255,0.24)",
+            boxShadow: "0 30px 100px rgba(0,0,0,0.46)",
+          }}
+        >
+          <div style={{ color: styleTheme.warning, fontSize: 26, fontWeight: 950, textTransform: "uppercase", letterSpacing: 2.4 }}>
+            {creativeFormat.replace(/([A-Z])/g, " $1").trim()}
+          </div>
+          <div style={{ color: TEXT, fontSize: 76, lineHeight: 0.98, fontWeight: 950, marginTop: 20 }}>{hook}</div>
+          <div style={{ color: styleTheme.accent, fontSize: 39, lineHeight: 1.08, fontWeight: 950, marginTop: 22 }}>{subhook}</div>
         </div>
-        <div style={{ color: TEXT, fontSize: 82, lineHeight: 0.98, fontWeight: 950, marginTop: 24, maxWidth: 900 }}>{hook}</div>
-        <div style={{ color: styleTheme.accent, fontSize: 46, lineHeight: 1.08, fontWeight: 950, marginTop: 26, maxWidth: 800 }}>{subhook}</div>
-        <ScoreBadge score={beforeScore} tone="bad" />
         {!hasWordCaptions ? <LowerPunchline text={punchline} tone="yellow" /> : null}
         <SignalReaction line={signalLines?.hook} expression="surprised" gesture="wave" side="right" bottom={318} opacity={hookOpacity} />
       </AbsoluteFill>
@@ -1188,8 +1283,8 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           <JobDescription jobTitle={jobTitle} keywords={jobKeywords} highlightProgress={highlightProgress} jobDescription={jobDescription} />
         </div>
         <FormatOverlay archetype={formatArchetype} keywords={jobKeywords} beforeScore={beforeScore} afterScore={afterScore} beforeBullet={beforeBullet} opacity={problemOpacity} phase="problem" />
-        <div style={{ position: "absolute", right: 74, bottom: 585 }}>
-          <ScoreBadge score={beforeScore} tone="bad" label="Low match" />
+        <div style={{ position: "absolute", right: 74, bottom: 548 }}>
+          <ScoreReceipt basis={scoreBasis} beforeScore={beforeScore} afterScore={afterScore} phase="before" accent={styleTheme.accent} />
         </div>
         <SignalReaction line={signalLines?.problem} expression="sideEye" gesture="pointLeft" side="right" bottom={402} opacity={problemOpacity} />
       </AbsoluteFill>
@@ -1276,14 +1371,14 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           style={{
             position: "absolute",
             right: 86,
-            bottom: 360,
+            bottom: 315,
             display: "flex",
             alignItems: "center",
             gap: 16,
           }}
         >
           <SignalMascot expression="happy" gesture="pointLeft" style={{ width: 120, height: 120 }} />
-          <ScoreBadge score={Math.round(animatedScore)} tone={scoreProgress > 0.7 ? "good" : "bad"} label={scoreProgress > 0.7 ? "Optimized" : "Improving"} />
+          <ScoreReceipt basis={scoreBasis} beforeScore={beforeScore} afterScore={Math.round(animatedScore)} phase={scoreProgress > 0.72 ? "after" : "before"} accent={styleTheme.accent} />
         </div>
         <SignalReaction line={signalLines?.fix} expression="happy" gesture="pointLeft" side="right" bottom={210} opacity={fixOpacity} />
       </AbsoluteFill>
@@ -1291,7 +1386,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
       <AbsoluteFill style={{ opacity: ctaOpacity, alignItems: "center", justifyContent: "center", textAlign: "center", padding: 78 }}>
         <SignalMascot expression="wink" gesture="wave" speaking style={{ width: 250, height: 250 }} />
         <div style={{ color: TEXT, fontSize: 84, fontWeight: 950, lineHeight: 0.96, marginTop: 34 }}>
-          {beforeScore}/100 to {afterScore}/100
+          Score receipt: {beforeScore} {"->"} {afterScore}
         </div>
         <div style={{ color: styleTheme.accent, fontSize: 38, fontWeight: 950, lineHeight: 1.16, marginTop: 26, maxWidth: 790 }}>{cta}</div>
         <div

@@ -192,6 +192,9 @@ NARRATIVE_BEAT_GROUPS = {
         "match score",
         "jumps",
         "moves from",
+        "starts at",
+        "lands at",
+        "reaches",
         "to 92",
         "to 90",
         "to 88",
@@ -236,6 +239,9 @@ def text_blob(packet: dict) -> str:
             parts.extend(props.get("weakBullets", []) or [])
             parts.extend(props.get("jobKeywords", []) or [])
             parts.extend(props.get("missing", []) or [])
+            for row in props.get("scoreBasis", []) or []:
+                if isinstance(row, dict):
+                    parts.extend([row.get("label", ""), row.get("before", ""), row.get("after", "")])
             parts.extend(short.get("storyboard", []) or [])
     return "\n".join(str(part) for part in parts)
 
@@ -254,6 +260,35 @@ def has_score_props(short: dict) -> bool:
     before = props.get("beforeScore")
     after = props.get("afterScore")
     return isinstance(before, (int, float)) and isinstance(after, (int, float)) and after > before
+
+
+def has_score_basis(short: dict) -> bool:
+    props = short.get("props") if isinstance(short.get("props"), dict) else {}
+    basis = props.get("scoreBasis")
+    if not isinstance(basis, list) or len(basis) < 3:
+        return False
+    valid = 0
+    for row in basis:
+        if isinstance(row, dict) and row.get("label") and row.get("before") and row.get("after"):
+            valid += 1
+    return valid >= 3
+
+
+def explains_starting_score(blob: str) -> bool:
+    low = blob.lower()
+    score_reason_markers = [
+        "starts at",
+        "starting score",
+        "low score",
+        "because",
+        "weak terms",
+        "missing",
+        "no metric",
+        "no outcome",
+        "no result",
+        "score receipt",
+    ]
+    return sum(1 for marker in score_reason_markers if marker in low) >= 3
 
 
 def has_visible_artifact(blob: str) -> bool:
@@ -332,6 +367,11 @@ def score_short(short: dict) -> dict:
             props.get("formatArchetype", ""),
             props.get("beforeScore", ""),
             props.get("afterScore", ""),
+            *[
+                f"{row.get('label', '')} {row.get('before', '')} {row.get('after', '')}"
+                for row in (props.get("scoreBasis", []) or [])
+                if isinstance(row, dict)
+            ],
             *(props.get("resumeMeta", []) or []),
             *(props.get("weakBullets", []) or []),
             *(props.get("jobKeywords", []) or []),
@@ -379,10 +419,10 @@ def score_short(short: dict) -> dict:
         blockers.append(f"Script lacks a complete viral story spine; found beats: {', '.join(sorted(beats)) or 'none'}.")
 
     words = script_word_count(short)
-    if 70 <= words <= 115:
+    if 38 <= words <= 82:
         score += 7
     else:
-        blockers.append(f"Voiceover should be a tight 70-115 words; current estimate is {words}.")
+        blockers.append(f"Voiceover should be a tight 38-82 words for 18-32s Shorts; current estimate is {words}.")
 
     if has_visible_artifact(blob):
         score += 5
@@ -393,6 +433,11 @@ def score_short(short: dict) -> dict:
         score += 10
     else:
         notes.append("Include a clear score jump or numeric proof payoff.")
+
+    if has_score_basis(short) and explains_starting_score(blob):
+        score += 10
+    else:
+        blockers.append("Score reveal needs a visible rationale: scoreBasis plus script language explaining why the start score is low.")
 
     if has_repeatable_series(blob):
         score += 5
@@ -428,6 +473,7 @@ def score_packet(packet: dict) -> dict:
     score = 0
     notes: list[str] = []
     blockers: list[str] = []
+    shorts = [short for short in packet.get("shorts", []) or [] if isinstance(short, dict)]
 
     if count_markers(blob, POSITIVE_MARKERS["hook"]) >= 3:
         score += 16
@@ -470,6 +516,16 @@ def score_packet(packet: dict) -> dict:
     else:
         notes.append("Needs a numeric before/after payoff.")
 
+    if shorts and all(has_score_basis(short) and explains_starting_score("\n".join(str(part) for part in [
+        short.get("title", ""),
+        short.get("hook", ""),
+        short.get("script", ""),
+        short.get("props", {}).get("voiceover_text", "") if isinstance(short.get("props"), dict) else "",
+    ])) for short in shorts[:3]):
+        score += 10
+    else:
+        blockers.append("Each short needs scoreBasis plus an explained low-score reason before the score jump.")
+
     if "free signal score" in low or "free score" in low:
         score += 10
     else:
@@ -480,11 +536,10 @@ def score_packet(packet: dict) -> dict:
     else:
         notes.append("Needs at least three short-form cutdowns.")
 
-    shorts = [short for short in packet.get("shorts", []) or [] if isinstance(short, dict)]
-    if len(unique_short_formats(shorts[:3])) >= 7:
+    if len(unique_short_formats(shorts[:3])) >= 9:
         score += 8
     else:
-        notes.append("Daily shorts need visibly different playbooks, archetypes, and visual styles.")
+        blockers.append("Daily shorts need distinct playbooks, archetypes, and visual styles.")
 
     repeated = repeated_openings(shorts[:3])
     if repeated:

@@ -1,0 +1,1800 @@
+{
+  "title": "Viral recruiter teardown score receipt clips | Resume Teardown",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "cta": "Paste the job description and check your free Signal score before you apply.",
+  "sections": [
+    {
+      "label": "Cold open",
+      "script": "Viral recruiter teardown score receipt clips This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
+      "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+    },
+    {
+      "label": "Open loop",
+      "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+      "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff."
+    },
+    {
+      "label": "Translate the job description",
+      "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+      "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+    },
+    {
+      "label": "Recruiter search test",
+      "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+      "visual": "Search console typing the first three job-description terms and showing weak matches."
+    },
+    {
+      "label": "Resume crime scene",
+      "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
+      "visual": "Red/yellow markups over weak bullets."
+    },
+    {
+      "label": "Why it gets missed",
+      "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+      "visual": "Zoom into the weak bullet and place missing proof labels beside it."
+    },
+    {
+      "label": "Live bullet fix",
+      "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. Same person, clearer evidence.",
+      "visual": "Before/after bullet rewrite."
+    },
+    {
+      "label": "Score reveal",
+      "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+      "visual": "Score meter jumps from low match to high match with before/after resume panels."
+    },
+    {
+      "label": "Trust and CTA",
+      "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+      "visual": "Free Signal score page, trust badges, and bundle CTA."
+    }
+  ],
+  "keywords": [
+    "HubSpot workflows",
+    "LinkedIn Ads",
+    "CAC analysis",
+    "MQL-to-SQL",
+    "pipeline sourced"
+  ],
+  "weakBullets": [
+    "Supported email and social campaigns across multiple channels.",
+    "Helped maintain HubSpot lists for webinars and nurture emails.",
+    "Coordinated paid social assets with design and sales."
+  ],
+  "beforeBullet": "Helped maintain HubSpot lists for webinars and nurture emails.",
+  "afterBullet": "Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%.",
+  "beforeScore": 34,
+  "afterScore": 92,
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.11,
+  "voiceoverVolume": 0.94,
+  "voiceover_text": "Viral recruiter teardown score receipt clips This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find. We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job. Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad. Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof. A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify. The fix is to say the real work clearly: what tool, what scope, what audience, and what result. Same person, clearer evidence. Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see. Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+  "voiceoverSegments": [
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-1-voiceover.mp3",
+      "fromFrame": 240,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-1-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Viral",
+          "startMs": 35,
+          "endMs": 453,
+          "timestampMs": 35,
+          "confidence": null
+        },
+        {
+          "text": "recruiter",
+          "startMs": 522,
+          "endMs": 1010,
+          "timestampMs": 522,
+          "confidence": null
+        },
+        {
+          "text": "teardown",
+          "startMs": 1080,
+          "endMs": 1579,
+          "timestampMs": 1080,
+          "confidence": null
+        },
+        {
+          "text": "score",
+          "startMs": 1660,
+          "endMs": 1997,
+          "timestampMs": 1660,
+          "confidence": null
+        },
+        {
+          "text": "receipt",
+          "startMs": 2043,
+          "endMs": 2415,
+          "timestampMs": 2043,
+          "confidence": null
+        },
+        {
+          "text": "clips",
+          "startMs": 2473,
+          "endMs": 2856,
+          "timestampMs": 2473,
+          "confidence": null
+        },
+        {
+          "text": "This",
+          "startMs": 3460,
+          "endMs": 3715,
+          "timestampMs": 3460,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 3808,
+          "endMs": 4249,
+          "timestampMs": 3808,
+          "confidence": null
+        },
+        {
+          "text": "looks",
+          "startMs": 4272,
+          "endMs": 4458,
+          "timestampMs": 4272,
+          "confidence": null
+        },
+        {
+          "text": "professional,",
+          "startMs": 4505,
+          "endMs": 5201,
+          "timestampMs": 4505,
+          "confidence": null
+        },
+        {
+          "text": "which",
+          "startMs": 5317,
+          "endMs": 5503,
+          "timestampMs": 5317,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 5538,
+          "endMs": 5608,
+          "timestampMs": 5538,
+          "confidence": null
+        },
+        {
+          "text": "why",
+          "startMs": 5654,
+          "endMs": 5805,
+          "timestampMs": 5654,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5875,
+          "endMs": 5944,
+          "timestampMs": 5875,
+          "confidence": null
+        },
+        {
+          "text": "mistake",
+          "startMs": 5991,
+          "endMs": 6362,
+          "timestampMs": 5991,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 6397,
+          "endMs": 6467,
+          "timestampMs": 6397,
+          "confidence": null
+        },
+        {
+          "text": "dangerous.",
+          "startMs": 6525,
+          "endMs": 7221,
+          "timestampMs": 6525,
+          "confidence": null
+        },
+        {
+          "text": "On",
+          "startMs": 7732,
+          "endMs": 7906,
+          "timestampMs": 7732,
+          "confidence": null
+        },
+        {
+          "text": "screen,",
+          "startMs": 7976,
+          "endMs": 8464,
+          "timestampMs": 7976,
+          "confidence": null
+        },
+        {
+          "text": "it",
+          "startMs": 8522,
+          "endMs": 8649,
+          "timestampMs": 8522,
+          "confidence": null
+        },
+        {
+          "text": "feels",
+          "startMs": 8696,
+          "endMs": 8940,
+          "timestampMs": 8696,
+          "confidence": null
+        },
+        {
+          "text": "polished.",
+          "startMs": 8998,
+          "endMs": 9567,
+          "timestampMs": 8998,
+          "confidence": null
+        },
+        {
+          "text": "In",
+          "startMs": 10008,
+          "endMs": 10136,
+          "timestampMs": 10008,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 10182,
+          "endMs": 10205,
+          "timestampMs": 10182,
+          "confidence": null
+        },
+        {
+          "text": "recruiter",
+          "startMs": 10263,
+          "endMs": 10693,
+          "timestampMs": 10263,
+          "confidence": null
+        },
+        {
+          "text": "search,",
+          "startMs": 10739,
+          "endMs": 11146,
+          "timestampMs": 10739,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 11215,
+          "endMs": 11320,
+          "timestampMs": 11215,
+          "confidence": null
+        },
+        {
+          "text": "proof",
+          "startMs": 11378,
+          "endMs": 11598,
+          "timestampMs": 11378,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 11656,
+          "endMs": 11726,
+          "timestampMs": 11656,
+          "confidence": null
+        },
+        {
+          "text": "still",
+          "startMs": 11773,
+          "endMs": 12005,
+          "timestampMs": 11773,
+          "confidence": null
+        },
+        {
+          "text": "hard",
+          "startMs": 12074,
+          "endMs": 12272,
+          "timestampMs": 12074,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 12307,
+          "endMs": 12365,
+          "timestampMs": 12307,
+          "confidence": null
+        },
+        {
+          "text": "find.",
+          "startMs": 12434,
+          "endMs": 12899,
+          "timestampMs": 12434,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-2-voiceover.mp3",
+      "fromFrame": 1753,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-2-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "We",
+          "startMs": 58,
+          "endMs": 163,
+          "timestampMs": 58,
+          "confidence": null
+        },
+        {
+          "text": "are",
+          "startMs": 209,
+          "endMs": 313,
+          "timestampMs": 209,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 348,
+          "endMs": 488,
+          "timestampMs": 348,
+          "confidence": null
+        },
+        {
+          "text": "adding",
+          "startMs": 546,
+          "endMs": 859,
+          "timestampMs": 546,
+          "confidence": null
+        },
+        {
+          "text": "fake",
+          "startMs": 952,
+          "endMs": 1242,
+          "timestampMs": 952,
+          "confidence": null
+        },
+        {
+          "text": "experience.",
+          "startMs": 1277,
+          "endMs": 2113,
+          "timestampMs": 1277,
+          "confidence": null
+        },
+        {
+          "text": "We",
+          "startMs": 2496,
+          "endMs": 2624,
+          "timestampMs": 2496,
+          "confidence": null
+        },
+        {
+          "text": "are",
+          "startMs": 2670,
+          "endMs": 2763,
+          "timestampMs": 2670,
+          "confidence": null
+        },
+        {
+          "text": "checking",
+          "startMs": 2798,
+          "endMs": 3123,
+          "timestampMs": 2798,
+          "confidence": null
+        },
+        {
+          "text": "whether",
+          "startMs": 3170,
+          "endMs": 3379,
+          "timestampMs": 3170,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 3425,
+          "endMs": 3495,
+          "timestampMs": 3425,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 3553,
+          "endMs": 3959,
+          "timestampMs": 3553,
+          "confidence": null
+        },
+        {
+          "text": "explains",
+          "startMs": 4005,
+          "endMs": 4505,
+          "timestampMs": 4005,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 4563,
+          "endMs": 4632,
+          "timestampMs": 4563,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 4702,
+          "endMs": 4888,
+          "timestampMs": 4702,
+          "confidence": null
+        },
+        {
+          "text": "experience",
+          "startMs": 4946,
+          "endMs": 5700,
+          "timestampMs": 4946,
+          "confidence": null
+        },
+        {
+          "text": "in",
+          "startMs": 5828,
+          "endMs": 5956,
+          "timestampMs": 5828,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5991,
+          "endMs": 6060,
+          "timestampMs": 5991,
+          "confidence": null
+        },
+        {
+          "text": "same",
+          "startMs": 6107,
+          "endMs": 6339,
+          "timestampMs": 6107,
+          "confidence": null
+        },
+        {
+          "text": "language",
+          "startMs": 6385,
+          "endMs": 6745,
+          "timestampMs": 6385,
+          "confidence": null
+        },
+        {
+          "text": "as",
+          "startMs": 6780,
+          "endMs": 6873,
+          "timestampMs": 6780,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 6931,
+          "endMs": 7001,
+          "timestampMs": 6931,
+          "confidence": null
+        },
+        {
+          "text": "target",
+          "startMs": 7047,
+          "endMs": 7407,
+          "timestampMs": 7047,
+          "confidence": null
+        },
+        {
+          "text": "job.",
+          "startMs": 7465,
+          "endMs": 7895,
+          "timestampMs": 7465,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-3-voiceover.mp3",
+      "fromFrame": 3266,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-3-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Before",
+          "startMs": 58,
+          "endMs": 360,
+          "timestampMs": 58,
+          "confidence": null
+        },
+        {
+          "text": "touching",
+          "startMs": 406,
+          "endMs": 720,
+          "timestampMs": 406,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 778,
+          "endMs": 848,
+          "timestampMs": 778,
+          "confidence": null
+        },
+        {
+          "text": "resume,",
+          "startMs": 894,
+          "endMs": 1393,
+          "timestampMs": 894,
+          "confidence": null
+        },
+        {
+          "text": "pull",
+          "startMs": 1544,
+          "endMs": 1718,
+          "timestampMs": 1544,
+          "confidence": null
+        },
+        {
+          "text": "out",
+          "startMs": 1765,
+          "endMs": 1869,
+          "timestampMs": 1765,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1904,
+          "endMs": 1974,
+          "timestampMs": 1904,
+          "confidence": null
+        },
+        {
+          "text": "role",
+          "startMs": 2043,
+          "endMs": 2276,
+          "timestampMs": 2043,
+          "confidence": null
+        },
+        {
+          "text": "title,",
+          "startMs": 2299,
+          "endMs": 2786,
+          "timestampMs": 2299,
+          "confidence": null
+        },
+        {
+          "text": "tools,",
+          "startMs": 2879,
+          "endMs": 3367,
+          "timestampMs": 2879,
+          "confidence": null
+        },
+        {
+          "text": "responsibilities,",
+          "startMs": 3448,
+          "endMs": 4435,
+          "timestampMs": 3448,
+          "confidence": null
+        },
+        {
+          "text": "metrics,",
+          "startMs": 4551,
+          "endMs": 5050,
+          "timestampMs": 4551,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 5074,
+          "endMs": 5190,
+          "timestampMs": 5074,
+          "confidence": null
+        },
+        {
+          "text": "proof",
+          "startMs": 5248,
+          "endMs": 5480,
+          "timestampMs": 5248,
+          "confidence": null
+        },
+        {
+          "text": "signals",
+          "startMs": 5526,
+          "endMs": 5979,
+          "timestampMs": 5526,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 6095,
+          "endMs": 6200,
+          "timestampMs": 6095,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 6258,
+          "endMs": 6455,
+          "timestampMs": 6258,
+          "confidence": null
+        },
+        {
+          "text": "actually",
+          "startMs": 6525,
+          "endMs": 6896,
+          "timestampMs": 6525,
+          "confidence": null
+        },
+        {
+          "text": "asks",
+          "startMs": 6954,
+          "endMs": 7279,
+          "timestampMs": 6954,
+          "confidence": null
+        },
+        {
+          "text": "for.",
+          "startMs": 7326,
+          "endMs": 7663,
+          "timestampMs": 7326,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-4-voiceover.mp3",
+      "fromFrame": 4779,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-4-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "If",
+          "startMs": 35,
+          "endMs": 151,
+          "timestampMs": 35,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 209,
+          "endMs": 232,
+          "timestampMs": 209,
+          "confidence": null
+        },
+        {
+          "text": "recruiter",
+          "startMs": 302,
+          "endMs": 731,
+          "timestampMs": 302,
+          "confidence": null
+        },
+        {
+          "text": "searches",
+          "startMs": 801,
+          "endMs": 1219,
+          "timestampMs": 801,
+          "confidence": null
+        },
+        {
+          "text": "for",
+          "startMs": 1265,
+          "endMs": 1358,
+          "timestampMs": 1265,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1393,
+          "endMs": 1463,
+          "timestampMs": 1393,
+          "confidence": null
+        },
+        {
+          "text": "first",
+          "startMs": 1521,
+          "endMs": 1788,
+          "timestampMs": 1521,
+          "confidence": null
+        },
+        {
+          "text": "three",
+          "startMs": 1834,
+          "endMs": 2067,
+          "timestampMs": 1834,
+          "confidence": null
+        },
+        {
+          "text": "important",
+          "startMs": 2101,
+          "endMs": 2543,
+          "timestampMs": 2101,
+          "confidence": null
+        },
+        {
+          "text": "terms",
+          "startMs": 2589,
+          "endMs": 2926,
+          "timestampMs": 2589,
+          "confidence": null
+        },
+        {
+          "text": "from",
+          "startMs": 2972,
+          "endMs": 3088,
+          "timestampMs": 2972,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 3135,
+          "endMs": 3204,
+          "timestampMs": 3135,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 3251,
+          "endMs": 3425,
+          "timestampMs": 3251,
+          "confidence": null
+        },
+        {
+          "text": "description,",
+          "startMs": 3483,
+          "endMs": 4145,
+          "timestampMs": 3483,
+          "confidence": null
+        },
+        {
+          "text": "this",
+          "startMs": 4389,
+          "endMs": 4563,
+          "timestampMs": 4389,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 4644,
+          "endMs": 5050,
+          "timestampMs": 4644,
+          "confidence": null
+        },
+        {
+          "text": "should",
+          "startMs": 5074,
+          "endMs": 5248,
+          "timestampMs": 5074,
+          "confidence": null
+        },
+        {
+          "text": "produce",
+          "startMs": 5283,
+          "endMs": 5631,
+          "timestampMs": 5283,
+          "confidence": null
+        },
+        {
+          "text": "useful",
+          "startMs": 5689,
+          "endMs": 6002,
+          "timestampMs": 5689,
+          "confidence": null
+        },
+        {
+          "text": "hits.",
+          "startMs": 6084,
+          "endMs": 6536,
+          "timestampMs": 6084,
+          "confidence": null
+        },
+        {
+          "text": "Right",
+          "startMs": 6978,
+          "endMs": 7198,
+          "timestampMs": 6978,
+          "confidence": null
+        },
+        {
+          "text": "now,",
+          "startMs": 7245,
+          "endMs": 7558,
+          "timestampMs": 7245,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 7605,
+          "endMs": 7709,
+          "timestampMs": 7605,
+          "confidence": null
+        },
+        {
+          "text": "source",
+          "startMs": 7767,
+          "endMs": 8034,
+          "timestampMs": 7767,
+          "confidence": null
+        },
+        {
+          "text": "bullet",
+          "startMs": 8057,
+          "endMs": 8324,
+          "timestampMs": 8057,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 8359,
+          "endMs": 8440,
+          "timestampMs": 8359,
+          "confidence": null
+        },
+        {
+          "text": "too",
+          "startMs": 8487,
+          "endMs": 8638,
+          "timestampMs": 8487,
+          "confidence": null
+        },
+        {
+          "text": "broad.",
+          "startMs": 8696,
+          "endMs": 9160,
+          "timestampMs": 8696,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-5-voiceover.mp3",
+      "fromFrame": 6292,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-5-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Now",
+          "startMs": 70,
+          "endMs": 221,
+          "timestampMs": 70,
+          "confidence": null
+        },
+        {
+          "text": "compare",
+          "startMs": 290,
+          "endMs": 708,
+          "timestampMs": 290,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 743,
+          "endMs": 813,
+          "timestampMs": 743,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 882,
+          "endMs": 1265,
+          "timestampMs": 882,
+          "confidence": null
+        },
+        {
+          "text": "line",
+          "startMs": 1324,
+          "endMs": 1602,
+          "timestampMs": 1324,
+          "confidence": null
+        },
+        {
+          "text": "by",
+          "startMs": 1637,
+          "endMs": 1765,
+          "timestampMs": 1637,
+          "confidence": null
+        },
+        {
+          "text": "line.",
+          "startMs": 1846,
+          "endMs": 2287,
+          "timestampMs": 1846,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 2566,
+          "endMs": 2670,
+          "timestampMs": 2566,
+          "confidence": null
+        },
+        {
+          "text": "weak",
+          "startMs": 2728,
+          "endMs": 2914,
+          "timestampMs": 2728,
+          "confidence": null
+        },
+        {
+          "text": "bullet",
+          "startMs": 2972,
+          "endMs": 3251,
+          "timestampMs": 2972,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 3309,
+          "endMs": 3379,
+          "timestampMs": 3309,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 3448,
+          "endMs": 3576,
+          "timestampMs": 3448,
+          "confidence": null
+        },
+        {
+          "text": "dishonest.",
+          "startMs": 3622,
+          "endMs": 4331,
+          "timestampMs": 3622,
+          "confidence": null
+        },
+        {
+          "text": "It",
+          "startMs": 4481,
+          "endMs": 4609,
+          "timestampMs": 4481,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 4656,
+          "endMs": 4737,
+          "timestampMs": 4656,
+          "confidence": null
+        },
+        {
+          "text": "just",
+          "startMs": 4783,
+          "endMs": 4946,
+          "timestampMs": 4783,
+          "confidence": null
+        },
+        {
+          "text": "too",
+          "startMs": 4981,
+          "endMs": 5155,
+          "timestampMs": 4981,
+          "confidence": null
+        },
+        {
+          "text": "vague",
+          "startMs": 5236,
+          "endMs": 5584,
+          "timestampMs": 5236,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 5619,
+          "endMs": 5677,
+          "timestampMs": 5619,
+          "confidence": null
+        },
+        {
+          "text": "carry",
+          "startMs": 5747,
+          "endMs": 6002,
+          "timestampMs": 5747,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 6049,
+          "endMs": 6118,
+          "timestampMs": 6049,
+          "confidence": null
+        },
+        {
+          "text": "role-specific",
+          "startMs": 6177,
+          "endMs": 6873,
+          "timestampMs": 6177,
+          "confidence": null
+        },
+        {
+          "text": "proof.",
+          "startMs": 6943,
+          "endMs": 7465,
+          "timestampMs": 6943,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-6-voiceover.mp3",
+      "fromFrame": 7805,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-6-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "A",
+          "startMs": 46,
+          "endMs": 93,
+          "timestampMs": 46,
+          "confidence": null
+        },
+        {
+          "text": "polished",
+          "startMs": 174,
+          "endMs": 546,
+          "timestampMs": 174,
+          "confidence": null
+        },
+        {
+          "text": "sentence",
+          "startMs": 604,
+          "endMs": 1207,
+          "timestampMs": 604,
+          "confidence": null
+        },
+        {
+          "text": "can",
+          "startMs": 1254,
+          "endMs": 1416,
+          "timestampMs": 1254,
+          "confidence": null
+        },
+        {
+          "text": "still",
+          "startMs": 1474,
+          "endMs": 1707,
+          "timestampMs": 1474,
+          "confidence": null
+        },
+        {
+          "text": "hide",
+          "startMs": 1776,
+          "endMs": 2020,
+          "timestampMs": 1776,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 2055,
+          "endMs": 2125,
+          "timestampMs": 2055,
+          "confidence": null
+        },
+        {
+          "text": "most",
+          "startMs": 2171,
+          "endMs": 2334,
+          "timestampMs": 2171,
+          "confidence": null
+        },
+        {
+          "text": "important",
+          "startMs": 2380,
+          "endMs": 2821,
+          "timestampMs": 2380,
+          "confidence": null
+        },
+        {
+          "text": "evidence.",
+          "startMs": 2891,
+          "endMs": 3553,
+          "timestampMs": 2891,
+          "confidence": null
+        },
+        {
+          "text": "Recruiters",
+          "startMs": 4249,
+          "endMs": 4807,
+          "timestampMs": 4249,
+          "confidence": null
+        },
+        {
+          "text": "skim",
+          "startMs": 4865,
+          "endMs": 5166,
+          "timestampMs": 4865,
+          "confidence": null
+        },
+        {
+          "text": "for",
+          "startMs": 5248,
+          "endMs": 5352,
+          "timestampMs": 5248,
+          "confidence": null
+        },
+        {
+          "text": "tools,",
+          "startMs": 5410,
+          "endMs": 5886,
+          "timestampMs": 5410,
+          "confidence": null
+        },
+        {
+          "text": "scope,",
+          "startMs": 6002,
+          "endMs": 6432,
+          "timestampMs": 6002,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 6455,
+          "endMs": 6571,
+          "timestampMs": 6455,
+          "confidence": null
+        },
+        {
+          "text": "outcomes",
+          "startMs": 6641,
+          "endMs": 7175,
+          "timestampMs": 6641,
+          "confidence": null
+        },
+        {
+          "text": "because",
+          "startMs": 7419,
+          "endMs": 7709,
+          "timestampMs": 7419,
+          "confidence": null
+        },
+        {
+          "text": "those",
+          "startMs": 7744,
+          "endMs": 7999,
+          "timestampMs": 7744,
+          "confidence": null
+        },
+        {
+          "text": "make",
+          "startMs": 8045,
+          "endMs": 8220,
+          "timestampMs": 8045,
+          "confidence": null
+        },
+        {
+          "text": "fit",
+          "startMs": 8266,
+          "endMs": 8499,
+          "timestampMs": 8266,
+          "confidence": null
+        },
+        {
+          "text": "easy",
+          "startMs": 8568,
+          "endMs": 8835,
+          "timestampMs": 8568,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 8882,
+          "endMs": 8940,
+          "timestampMs": 8882,
+          "confidence": null
+        },
+        {
+          "text": "verify.",
+          "startMs": 9009,
+          "endMs": 9729,
+          "timestampMs": 9009,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-7-voiceover.mp3",
+      "fromFrame": 9318,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-7-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "The",
+          "startMs": 70,
+          "endMs": 163,
+          "timestampMs": 70,
+          "confidence": null
+        },
+        {
+          "text": "fix",
+          "startMs": 232,
+          "endMs": 464,
+          "timestampMs": 232,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 522,
+          "endMs": 604,
+          "timestampMs": 522,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 650,
+          "endMs": 708,
+          "timestampMs": 650,
+          "confidence": null
+        },
+        {
+          "text": "say",
+          "startMs": 778,
+          "endMs": 952,
+          "timestampMs": 778,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1010,
+          "endMs": 1080,
+          "timestampMs": 1010,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 1149,
+          "endMs": 1382,
+          "timestampMs": 1149,
+          "confidence": null
+        },
+        {
+          "text": "work",
+          "startMs": 1451,
+          "endMs": 1683,
+          "timestampMs": 1451,
+          "confidence": null
+        },
+        {
+          "text": "clearly:",
+          "startMs": 1765,
+          "endMs": 2299,
+          "timestampMs": 1765,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 2508,
+          "endMs": 2728,
+          "timestampMs": 2508,
+          "confidence": null
+        },
+        {
+          "text": "tool,",
+          "startMs": 2786,
+          "endMs": 3193,
+          "timestampMs": 2786,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 3262,
+          "endMs": 3471,
+          "timestampMs": 3262,
+          "confidence": null
+        },
+        {
+          "text": "scope,",
+          "startMs": 3529,
+          "endMs": 4029,
+          "timestampMs": 3529,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 4180,
+          "endMs": 4400,
+          "timestampMs": 4180,
+          "confidence": null
+        },
+        {
+          "text": "audience,",
+          "startMs": 4458,
+          "endMs": 4981,
+          "timestampMs": 4458,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 5016,
+          "endMs": 5143,
+          "timestampMs": 5016,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 5213,
+          "endMs": 5352,
+          "timestampMs": 5213,
+          "confidence": null
+        },
+        {
+          "text": "result.",
+          "startMs": 5422,
+          "endMs": 6002,
+          "timestampMs": 5422,
+          "confidence": null
+        },
+        {
+          "text": "Same",
+          "startMs": 6444,
+          "endMs": 6757,
+          "timestampMs": 6444,
+          "confidence": null
+        },
+        {
+          "text": "person,",
+          "startMs": 6803,
+          "endMs": 7303,
+          "timestampMs": 6803,
+          "confidence": null
+        },
+        {
+          "text": "clearer",
+          "startMs": 7430,
+          "endMs": 7802,
+          "timestampMs": 7430,
+          "confidence": null
+        },
+        {
+          "text": "evidence.",
+          "startMs": 7872,
+          "endMs": 8464,
+          "timestampMs": 7872,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-8-voiceover.mp3",
+      "fromFrame": 10831,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-8-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Once",
+          "startMs": 23,
+          "endMs": 232,
+          "timestampMs": 23,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 279,
+          "endMs": 360,
+          "timestampMs": 279,
+          "confidence": null
+        },
+        {
+          "text": "evidence",
+          "startMs": 441,
+          "endMs": 813,
+          "timestampMs": 441,
+          "confidence": null
+        },
+        {
+          "text": "matches",
+          "startMs": 871,
+          "endMs": 1231,
+          "timestampMs": 871,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1277,
+          "endMs": 1347,
+          "timestampMs": 1277,
+          "confidence": null
+        },
+        {
+          "text": "role",
+          "startMs": 1405,
+          "endMs": 1614,
+          "timestampMs": 1405,
+          "confidence": null
+        },
+        {
+          "text": "language,",
+          "startMs": 1649,
+          "endMs": 2148,
+          "timestampMs": 1649,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 2299,
+          "endMs": 2392,
+          "timestampMs": 2299,
+          "confidence": null
+        },
+        {
+          "text": "example",
+          "startMs": 2461,
+          "endMs": 2891,
+          "timestampMs": 2461,
+          "confidence": null
+        },
+        {
+          "text": "score",
+          "startMs": 2926,
+          "endMs": 3228,
+          "timestampMs": 2926,
+          "confidence": null
+        },
+        {
+          "text": "moves",
+          "startMs": 3286,
+          "endMs": 3541,
+          "timestampMs": 3286,
+          "confidence": null
+        },
+        {
+          "text": "up.",
+          "startMs": 3622,
+          "endMs": 3982,
+          "timestampMs": 3622,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 4423,
+          "endMs": 4528,
+          "timestampMs": 4423,
+          "confidence": null
+        },
+        {
+          "text": "point",
+          "startMs": 4586,
+          "endMs": 4795,
+          "timestampMs": 4586,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 4841,
+          "endMs": 4923,
+          "timestampMs": 4841,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 4992,
+          "endMs": 5120,
+          "timestampMs": 4992,
+          "confidence": null
+        },
+        {
+          "text": "gaming",
+          "startMs": 5178,
+          "endMs": 5492,
+          "timestampMs": 5178,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 5538,
+          "endMs": 5561,
+          "timestampMs": 5538,
+          "confidence": null
+        },
+        {
+          "text": "robot.",
+          "startMs": 5619,
+          "endMs": 6211,
+          "timestampMs": 5619,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 6490,
+          "endMs": 6606,
+          "timestampMs": 6490,
+          "confidence": null
+        },
+        {
+          "text": "point",
+          "startMs": 6653,
+          "endMs": 6850,
+          "timestampMs": 6653,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 6896,
+          "endMs": 6966,
+          "timestampMs": 6896,
+          "confidence": null
+        },
+        {
+          "text": "making",
+          "startMs": 7024,
+          "endMs": 7291,
+          "timestampMs": 7024,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 7372,
+          "endMs": 7581,
+          "timestampMs": 7372,
+          "confidence": null
+        },
+        {
+          "text": "fit",
+          "startMs": 7663,
+          "endMs": 7941,
+          "timestampMs": 7663,
+          "confidence": null
+        },
+        {
+          "text": "easier",
+          "startMs": 8057,
+          "endMs": 8452,
+          "timestampMs": 8057,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 8499,
+          "endMs": 8557,
+          "timestampMs": 8499,
+          "confidence": null
+        },
+        {
+          "text": "see.",
+          "startMs": 8626,
+          "endMs": 9056,
+          "timestampMs": 8626,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-9-voiceover.mp3",
+      "fromFrame": 12344,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-viral-recruiter-teardown-score-rec-episode-9-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Signal",
+          "startMs": 46,
+          "endMs": 406,
+          "timestampMs": 46,
+          "confidence": null
+        },
+        {
+          "text": "automates",
+          "startMs": 476,
+          "endMs": 975,
+          "timestampMs": 476,
+          "confidence": null
+        },
+        {
+          "text": "this",
+          "startMs": 1022,
+          "endMs": 1173,
+          "timestampMs": 1022,
+          "confidence": null
+        },
+        {
+          "text": "comparison.",
+          "startMs": 1231,
+          "endMs": 1985,
+          "timestampMs": 1231,
+          "confidence": null
+        },
+        {
+          "text": "Paste",
+          "startMs": 2229,
+          "endMs": 2577,
+          "timestampMs": 2229,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 2612,
+          "endMs": 2682,
+          "timestampMs": 2612,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 2740,
+          "endMs": 2914,
+          "timestampMs": 2740,
+          "confidence": null
+        },
+        {
+          "text": "description,",
+          "startMs": 2972,
+          "endMs": 3634,
+          "timestampMs": 2972,
+          "confidence": null
+        },
+        {
+          "text": "upload",
+          "startMs": 3808,
+          "endMs": 4180,
+          "timestampMs": 3808,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 4214,
+          "endMs": 4284,
+          "timestampMs": 4214,
+          "confidence": null
+        },
+        {
+          "text": "resume,",
+          "startMs": 4342,
+          "endMs": 4853,
+          "timestampMs": 4342,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 4911,
+          "endMs": 5050,
+          "timestampMs": 4911,
+          "confidence": null
+        },
+        {
+          "text": "check",
+          "startMs": 5097,
+          "endMs": 5306,
+          "timestampMs": 5097,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5364,
+          "endMs": 5433,
+          "timestampMs": 5364,
+          "confidence": null
+        },
+        {
+          "text": "free",
+          "startMs": 5492,
+          "endMs": 5689,
+          "timestampMs": 5492,
+          "confidence": null
+        },
+        {
+          "text": "score",
+          "startMs": 5712,
+          "endMs": 6037,
+          "timestampMs": 5712,
+          "confidence": null
+        },
+        {
+          "text": "first.",
+          "startMs": 6095,
+          "endMs": 6653,
+          "timestampMs": 6095,
+          "confidence": null
+        },
+        {
+          "text": "If",
+          "startMs": 7094,
+          "endMs": 7221,
+          "timestampMs": 7094,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 7268,
+          "endMs": 7338,
+          "timestampMs": 7268,
+          "confidence": null
+        },
+        {
+          "text": "gap",
+          "startMs": 7384,
+          "endMs": 7570,
+          "timestampMs": 7384,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 7628,
+          "endMs": 7709,
+          "timestampMs": 7628,
+          "confidence": null
+        },
+        {
+          "text": "real,",
+          "startMs": 7790,
+          "endMs": 8173,
+          "timestampMs": 7790,
+          "confidence": null
+        },
+        {
+          "text": "then",
+          "startMs": 8266,
+          "endMs": 8417,
+          "timestampMs": 8266,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 8452,
+          "endMs": 8522,
+          "timestampMs": 8452,
+          "confidence": null
+        },
+        {
+          "text": "paid",
+          "startMs": 8568,
+          "endMs": 8800,
+          "timestampMs": 8568,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 8858,
+          "endMs": 9195,
+          "timestampMs": 8858,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 9230,
+          "endMs": 9300,
+          "timestampMs": 9230,
+          "confidence": null
+        },
+        {
+          "text": "cover",
+          "startMs": 9369,
+          "endMs": 9590,
+          "timestampMs": 9369,
+          "confidence": null
+        },
+        {
+          "text": "letter",
+          "startMs": 9636,
+          "endMs": 9845,
+          "timestampMs": 9636,
+          "confidence": null
+        },
+        {
+          "text": "package",
+          "startMs": 9892,
+          "endMs": 10275,
+          "timestampMs": 9892,
+          "confidence": null
+        },
+        {
+          "text": "makes",
+          "startMs": 10321,
+          "endMs": 10542,
+          "timestampMs": 10321,
+          "confidence": null
+        },
+        {
+          "text": "sense.",
+          "startMs": 10577,
+          "endMs": 11053,
+          "timestampMs": 10577,
+          "confidence": null
+        }
+      ]
+    }
+  ],
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "reason": "9 episode sections ready",
+    "wordLevelCaptions": true
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "overallScore": 100,
+  "passed": true,
+  "verdict": "post_grade_script_packet",
+  "notes": [
+    "Needs more safe humor that punches at vague resume language or job-search friction."
+  ],
+  "blockers": [],
+  "shorts": [
+    {
+      "title": "This resume sentence is quietly expensive",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "I searched Salesforce and this resume vanished",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "This resume failed an open-book test",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    }
+  ]
+}

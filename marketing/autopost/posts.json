@@ -976,7 +976,7 @@
     },
     {
         "title": "This resume sentence is quietly expensive",
-        "caption": "This resume looked qualified, but the proof was buried in one dull HubSpot bullet. Same experience, clearer proof: 34->92. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "caption": "This resume sentence is quietly expensive. This line is costing interviews. Score receipt: HubSpot workflows, LinkedIn Ads, CAC analysis. Rewrite adds the missing tool, metric, and outcome: 34->92. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
         "file": "videos/daily-this-resume-sentence-is-quietly-expensive.mp4",
         "platforms": [
             "tiktok",
@@ -986,7 +986,7 @@
         "status": "review_required",
         "reviewStatus": "review_required",
         "composition": "ResumeCrimeScene",
-        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_1.json",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_1.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
@@ -995,11 +995,18 @@
             "voiceName": "configured voice",
             "reason": "ready via elevenlabs",
             "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "5d54c3d83a7b6221",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by corrected caption metadata review package.",
+            "updatedAt": "2026-07-04T22:32:38.770756+00:00"
         }
     },
     {
         "title": "I searched Salesforce and this resume vanished",
-        "caption": "Recruiter search test: Salesforce, pipeline generation, quota attainment. The resume had the work, but not the searchable proof. 37->88. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "caption": "I searched Salesforce and this resume vanished. I searched Salesforce. Nothing. Search miss: Salesforce, pipeline generation, quota attainment. Rewrite adds visible proof, so the score can move: 37->88. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
         "file": "videos/daily-i-searched-salesforce-and-this-resume-vanished.mp4",
         "platforms": [
             "tiktok",
@@ -1009,7 +1016,7 @@
         "status": "review_required",
         "reviewStatus": "review_required",
         "composition": "ResumeCrimeScene",
-        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_2.json",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_2.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
@@ -1018,6 +1025,13 @@
             "voiceName": "configured voice",
             "reason": "ready via elevenlabs",
             "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "32234e8005070a01",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by corrected caption metadata review package.",
+            "updatedAt": "2026-07-04T22:32:38.803213+00:00"
         }
     },
     {
@@ -1052,7 +1066,7 @@
     },
     {
         "title": "This resume failed an open-book test",
-        "caption": "The job post gave the answer key: React, TypeScript, Next.js. The resume answered with vague frontend work. Same skills, clearer proof: 41->90. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "caption": "This resume failed an open-book test. Answer-key miss: React, TypeScript, Next.js. Rewrite puts stack, metric, and outcome on screen: 41->90. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
         "file": "videos/daily-this-resume-failed-an-open-book-test.mp4",
         "platforms": [
             "tiktok",
@@ -1062,7 +1076,7 @@
         "status": "review_required",
         "reviewStatus": "review_required",
         "composition": "ResumeCrimeScene",
-        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-search-tests-with-real-resume-teardowns_short_3.json",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_3.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
@@ -1071,6 +1085,13 @@
             "voiceName": "configured voice",
             "reason": "ready via elevenlabs",
             "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "26205df308a7c5d2",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by corrected caption metadata review package.",
+            "updatedAt": "2026-07-04T22:32:38.877735+00:00"
         }
     }
 ]

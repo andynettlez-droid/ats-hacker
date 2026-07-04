@@ -195,7 +195,13 @@ const parsePng = (filePath) => {
   return { width, height, pixels };
 };
 
-const isAttentionPixel = (pixels, index) => {
+const lumaAt = (pixels, index) => {
+  return (pixels[index] * 0.2126) + (pixels[index + 1] * 0.7152) + (pixels[index + 2] * 0.0722);
+};
+
+const isAttentionPixel = (png, x, y) => {
+  const { width, height, pixels } = png;
+  const index = (y * width + x) * 4;
   const alpha = pixels[index + 3];
   if (alpha < 24) return false;
   const red = pixels[index];
@@ -205,7 +211,24 @@ const isAttentionPixel = (pixels, index) => {
   const min = Math.min(red, green, blue);
   const brightness = (red + green + blue) / 3;
   const saturation = max - min;
-  return brightness > 112 || saturation > 82 || (red > 120 && green < 95 && blue < 120);
+  const luma = lumaAt(pixels, index);
+  const samples = [
+    [Math.max(0, x - 6), y],
+    [Math.min(width - 1, x + 6), y],
+    [x, Math.max(0, y - 6)],
+    [x, Math.min(height - 1, y + 6)],
+  ];
+  const contrast = Math.max(
+    ...samples.map(([sampleX, sampleY]) => {
+      const sampleIndex = (sampleY * width + sampleX) * 4;
+      return Math.abs(luma - lumaAt(pixels, sampleIndex));
+    }),
+  );
+  const redAlert = red > 130 && green < 120 && blue < 130;
+  const vividAccent = saturation > 82;
+  const textLikeContrast = contrast > 42 && (brightness > 205 || brightness < 90);
+  const accentLikeContrast = contrast > 28 && (vividAccent || redAlert);
+  return textLikeContrast || accentLikeContrast;
 };
 
 const scanSafeArea = (png) => {
@@ -218,8 +241,7 @@ const scanSafeArea = (png) => {
 
   for (let y = 0; y < png.height; y += 1) {
     for (let x = 0; x < png.width; x += 1) {
-      const index = (y * png.width + x) * 4;
-      if (!isAttentionPixel(png.pixels, index)) continue;
+      if (!isAttentionPixel(png, x, y)) continue;
       if (x < SAFE_MARGIN) edges.left += 1;
       if (x >= png.width - SAFE_MARGIN) edges.right += 1;
       if (y < SAFE_MARGIN) edges.top += 1;

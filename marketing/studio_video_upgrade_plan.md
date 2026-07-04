@@ -28,13 +28,14 @@ HeyGen should be optional face-cam authority, not the whole video. Signal mascot
 Use a two-lane content system.
 
 Shorts lane:
-- Length: 22-45 seconds.
+- Length: 18-32 seconds.
 - Format: vertical 1080x1920.
 - Hook: readable in the first second.
 - Avatar: optional face-cam bubble for 2-4 seconds, then resume/job description takes over.
 - Audio: ElevenLabs voice at high clarity, music under 22% volume, SFX under 10%.
 - Captions: every major claim appears on-screen.
 - Claim rules: no job guarantees, no unsupported callback multipliers, no "ATS auto-rejected you" claims.
+- Score rule: show a visible score receipt before any score jump.
 
 Serious YouTube lane:
 - Length: 6-12 minutes.
@@ -119,6 +120,7 @@ Visual sequence:
 ## Next Upgrades
 
 - Add ElevenLabs timing metadata or forced alignment for word-perfect captions.
+- Add LUFS and true-peak audio measurement. Current QC checks codec, duration, sample rate, volume settings, and rendered audio presence.
 - Generate HeyGen avatar from the same ElevenLabs audio once the exact HeyGen audio-upload endpoint is wired, so lip sync matches the final studio voice.
 - Add A/B export presets for three hook variants per video.
 - Add a weekly topic agent that outputs one serious YouTube episode and five Shorts from the same research packet.

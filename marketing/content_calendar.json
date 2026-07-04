@@ -512,6 +512,113 @@
   },
   {
     "date": "2026-07-04",
+    "topic": "Viral recruiter teardown score receipt clips",
+    "series": "Daily Research Packet",
+    "packet": "marketing\\daily_content\\2026-07-04-viral-recruiter-teardown-score-receipt-clips",
+    "youtube": {
+      "title": "Viral recruiter teardown score receipt clips | Resume Teardown",
+      "status": "render_ready_review_required",
+      "target": "daily long-form YouTube",
+      "manifest": "marketing\\daily_content\\2026-07-04-viral-recruiter-teardown-score-receipt-clips\\channel_manifest.json",
+      "props": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_episode.json",
+      "output": "marketing/remotion/out/daily-viral-recruiter-teardown-score-receipt-clips-episode.mp4",
+      "autopostDraft": "marketing\\daily_content\\2026-07-04-viral-recruiter-teardown-score-receipt-clips\\autopost_drafts.json",
+      "qaGate": {
+        "required": true,
+        "passed": false,
+        "status": "requires_render_review"
+      }
+    },
+    "thumbnail": {
+      "composition": "SignalThumbnail",
+      "props": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_thumbnail.json",
+      "output": "marketing/remotion/out/daily-viral-recruiter-teardown-score-receipt-clips-thumbnail.png",
+      "format": "1280x720",
+      "status": "render_ready"
+    },
+    "shorts": [
+      {
+        "title": "This resume sentence is quietly expensive",
+        "brief": "marketing\\video_briefs\\2026-07-04-viral-recruiter-teardown-score-receipt-clips-short-1.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_1.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      },
+      {
+        "title": "I searched Salesforce and this resume vanished",
+        "brief": "marketing\\video_briefs\\2026-07-04-viral-recruiter-teardown-score-receipt-clips-short-2.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_2.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      },
+      {
+        "title": "This resume failed an open-book test",
+        "brief": "marketing\\video_briefs\\2026-07-04-viral-recruiter-teardown-score-receipt-clips-short-3.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_3.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      }
+    ],
+    "creativeQuality": {
+      "overallScore": 100,
+      "passed": true,
+      "verdict": "post_grade_script_packet",
+      "notes": [
+        "Needs more safe humor that punches at vague resume language or job-search friction."
+      ],
+      "blockers": [],
+      "shorts": [
+        {
+          "title": "This resume sentence is quietly expensive",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "I searched Salesforce and this resume vanished",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "This resume failed an open-book test",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        }
+      ]
+    },
+    "reviewStatus": "needs_render_and_review"
+  },
+  {
+    "date": "2026-07-04",
     "topic": "{'topic': 'Recruiter reacts to real resumes against real job descriptions', 'series': 'Daily Research Packet', 'thesis': 'Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.', 'hook': 'Recruiter reacts to real resumes against real job descriptions', 'keywords': ['resume', 'job description', 'Signal score', 'job search']}",
     "series": "Daily Research Packet",
     "packet": "marketing\\daily_content\\2026-07-04-topic-recruiter-reacts-to-real-resumes-against-real-job-descript",

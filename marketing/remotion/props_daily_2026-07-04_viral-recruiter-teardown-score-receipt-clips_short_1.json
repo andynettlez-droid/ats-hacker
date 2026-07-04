@@ -1,0 +1,624 @@
+{
+  "hook": "This line is costing interviews.",
+  "subhook": "The resume has proof. The bullet hides it.",
+  "creativeFormat": "aiResumeRoast",
+  "visualStyle": "comic",
+  "formatArchetype": "redTeamAudit",
+  "pace": "fast",
+  "seriesLabel": "Resume Crime Scene",
+  "signalLines": {
+    "hook": "Interview tax.",
+    "problem": "The score starts here for a reason.",
+    "teardown": "Roast the bullet, rescue the person.",
+    "fix": "Now the score has receipts.",
+    "cta": "Test yours before sending."
+  },
+  "resumeName": "Jordan Lee",
+  "resumeTitle": "Marketing Coordinator -> Demand Gen Candidate",
+  "resumeMeta": [
+    "3 yrs B2B SaaS",
+    "HubSpot admin",
+    "Paid social support"
+  ],
+  "jobTitle": "Demand Generation Manager",
+  "jobKeywords": [
+    "HubSpot workflows",
+    "LinkedIn Ads",
+    "CAC analysis",
+    "MQL-to-SQL",
+    "pipeline sourced"
+  ],
+  "weakBullets": [
+    "Supported email and social campaigns across multiple channels.",
+    "Helped maintain HubSpot lists for webinars and nurture emails.",
+    "Coordinated paid social assets with design and sales."
+  ],
+  "beforeBullet": "Helped maintain HubSpot lists for webinars and nurture emails.",
+  "afterBullet": "Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%.",
+  "resumeDocument": {
+    "name": "Jordan Lee",
+    "headline": "Marketing Coordinator -> Demand Gen Candidate",
+    "contact": [
+      "Austin, TX",
+      "jordan.lee@example.com",
+      "linkedin.com/in/jordan-lee"
+    ],
+    "summary": "B2B SaaS marketer with 3 years supporting lifecycle campaigns, webinar operations, paid social launches, and HubSpot reporting for revenue teams.",
+    "experience": [
+      {
+        "company": "Northstar Analytics",
+        "role": "Marketing Coordinator",
+        "dates": "2023 - Present",
+        "bullets": [
+          "Supported email and social campaigns across multiple channels.",
+          "Helped maintain HubSpot lists for webinars and nurture emails.",
+          "Coordinated paid social assets with design and sales.",
+          "Pulled weekly Salesforce campaign reports for marketing and sales leadership."
+        ]
+      },
+      {
+        "company": "CedarCloud Software",
+        "role": "Marketing Assistant",
+        "dates": "2021 - 2023",
+        "bullets": [
+          "Built event landing pages and tracked registrations through HubSpot forms.",
+          "Updated campaign calendars for product launches and customer webinars.",
+          "Partnered with sales operations to clean 8,400 duplicate lead records."
+        ]
+      }
+    ],
+    "skills": [
+      "HubSpot",
+      "Salesforce reports",
+      "LinkedIn Ads",
+      "Lifecycle email",
+      "Webinars",
+      "UTM tracking",
+      "CAC analysis"
+    ],
+    "education": "B.A. Marketing, University of Texas at Austin"
+  },
+  "jobDescription": {
+    "title": "Demand Generation Manager",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Demand Generation Manager who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use HubSpot workflows and LinkedIn Ads to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to CAC analysis.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "HubSpot workflows",
+      "LinkedIn Ads",
+      "CAC analysis",
+      "MQL-to-SQL",
+      "pipeline sourced"
+    ],
+    "searchQueries": [
+      "HubSpot workflows",
+      "LinkedIn Ads",
+      "CAC analysis",
+      "MQL-to-SQL"
+    ]
+  },
+  "beforeScore": 34,
+  "afterScore": 92,
+  "scoreBasis": [
+    {
+      "label": "JD terms visible",
+      "before": "1/5",
+      "after": "5/5"
+    },
+    {
+      "label": "Metric proof",
+      "before": "missing",
+      "after": "CAC -32%"
+    },
+    {
+      "label": "Outcome",
+      "before": "vague",
+      "after": "MQL +18%"
+    }
+  ],
+  "markedLabel": "Buried proof",
+  "problemPunchline": "The job has clues. The resume is whispering.",
+  "teardownPunchline": "Low score reason: weak terms, no metric, no outcome.",
+  "fixPunchline": "Specific proof beats generic polish.",
+  "teardownIssues": [
+    "Tool is hidden",
+    "No CAC result",
+    "No pipeline language"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "voiceName": "configured voice",
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-this-resume-sentence-is-quietly-expensive-1-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "Stop",
+      "startMs": 58,
+      "endMs": 313,
+      "timestampMs": 58,
+      "confidence": null
+    },
+    {
+      "text": "on",
+      "startMs": 372,
+      "endMs": 441,
+      "timestampMs": 372,
+      "confidence": null
+    },
+    {
+      "text": "this",
+      "startMs": 488,
+      "endMs": 627,
+      "timestampMs": 488,
+      "confidence": null
+    },
+    {
+      "text": "line.",
+      "startMs": 697,
+      "endMs": 1103,
+      "timestampMs": 697,
+      "confidence": null
+    },
+    {
+      "text": "Job",
+      "startMs": 1347,
+      "endMs": 1614,
+      "timestampMs": 1347,
+      "confidence": null
+    },
+    {
+      "text": "asks",
+      "startMs": 1695,
+      "endMs": 2043,
+      "timestampMs": 1695,
+      "confidence": null
+    },
+    {
+      "text": "HubSpot",
+      "startMs": 2113,
+      "endMs": 2566,
+      "timestampMs": 2113,
+      "confidence": null
+    },
+    {
+      "text": "workflows,",
+      "startMs": 2635,
+      "endMs": 3320,
+      "timestampMs": 2635,
+      "confidence": null
+    },
+    {
+      "text": "LinkedIn",
+      "startMs": 3448,
+      "endMs": 3878,
+      "timestampMs": 3448,
+      "confidence": null
+    },
+    {
+      "text": "Ads,",
+      "startMs": 3959,
+      "endMs": 4331,
+      "timestampMs": 3959,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 4423,
+      "endMs": 4598,
+      "timestampMs": 4423,
+      "confidence": null
+    },
+    {
+      "text": "CAC",
+      "startMs": 4714,
+      "endMs": 5132,
+      "timestampMs": 4714,
+      "confidence": null
+    },
+    {
+      "text": "analysis.",
+      "startMs": 5283,
+      "endMs": 6026,
+      "timestampMs": 5283,
+      "confidence": null
+    },
+    {
+      "text": "Resume",
+      "startMs": 6536,
+      "endMs": 6954,
+      "timestampMs": 6536,
+      "confidence": null
+    },
+    {
+      "text": "says:",
+      "startMs": 7001,
+      "endMs": 7407,
+      "timestampMs": 7001,
+      "confidence": null
+    },
+    {
+      "text": "Helped",
+      "startMs": 7581,
+      "endMs": 7872,
+      "timestampMs": 7581,
+      "confidence": null
+    },
+    {
+      "text": "maintain",
+      "startMs": 7941,
+      "endMs": 8406,
+      "timestampMs": 7941,
+      "confidence": null
+    },
+    {
+      "text": "HubSpot",
+      "startMs": 8475,
+      "endMs": 8928,
+      "timestampMs": 8475,
+      "confidence": null
+    },
+    {
+      "text": "lists",
+      "startMs": 8986,
+      "endMs": 9265,
+      "timestampMs": 8986,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 9311,
+      "endMs": 9416,
+      "timestampMs": 9311,
+      "confidence": null
+    },
+    {
+      "text": "webinars",
+      "startMs": 9462,
+      "endMs": 9927,
+      "timestampMs": 9462,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 9985,
+      "endMs": 10112,
+      "timestampMs": 9985,
+      "confidence": null
+    },
+    {
+      "text": "nurture",
+      "startMs": 10182,
+      "endMs": 10519,
+      "timestampMs": 10182,
+      "confidence": null
+    },
+    {
+      "text": "emails.",
+      "startMs": 10565,
+      "endMs": 11169,
+      "timestampMs": 10565,
+      "confidence": null
+    },
+    {
+      "text": "Starts",
+      "startMs": 11610,
+      "endMs": 11993,
+      "timestampMs": 11610,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 12028,
+      "endMs": 12098,
+      "timestampMs": 12028,
+      "confidence": null
+    },
+    {
+      "text": "34",
+      "startMs": 12156,
+      "endMs": 12771,
+      "timestampMs": 12156,
+      "confidence": null
+    },
+    {
+      "text": "because",
+      "startMs": 12841,
+      "endMs": 13108,
+      "timestampMs": 12841,
+      "confidence": null
+    },
+    {
+      "text": "one",
+      "startMs": 13154,
+      "endMs": 13351,
+      "timestampMs": 13154,
+      "confidence": null
+    },
+    {
+      "text": "job",
+      "startMs": 13410,
+      "endMs": 13607,
+      "timestampMs": 13410,
+      "confidence": null
+    },
+    {
+      "text": "term",
+      "startMs": 13665,
+      "endMs": 13874,
+      "timestampMs": 13665,
+      "confidence": null
+    },
+    {
+      "text": "appears,",
+      "startMs": 13909,
+      "endMs": 14443,
+      "timestampMs": 13909,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 14617,
+      "endMs": 14756,
+      "timestampMs": 14617,
+      "confidence": null
+    },
+    {
+      "text": "metric,",
+      "startMs": 14838,
+      "endMs": 15383,
+      "timestampMs": 14838,
+      "confidence": null
+    },
+    {
+      "text": "hidden",
+      "startMs": 15464,
+      "endMs": 15732,
+      "timestampMs": 15464,
+      "confidence": null
+    },
+    {
+      "text": "outcome.",
+      "startMs": 15801,
+      "endMs": 16370,
+      "timestampMs": 15801,
+      "confidence": null
+    },
+    {
+      "text": "Rewrite",
+      "startMs": 16811,
+      "endMs": 17264,
+      "timestampMs": 16811,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 17287,
+      "endMs": 17357,
+      "timestampMs": 17287,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 17415,
+      "endMs": 17612,
+      "timestampMs": 17415,
+      "confidence": null
+    },
+    {
+      "text": "work:",
+      "startMs": 17682,
+      "endMs": 18123,
+      "timestampMs": 17682,
+      "confidence": null
+    },
+    {
+      "text": "built",
+      "startMs": 18367,
+      "endMs": 18622,
+      "timestampMs": 18367,
+      "confidence": null
+    },
+    {
+      "text": "lead",
+      "startMs": 18692,
+      "endMs": 18913,
+      "timestampMs": 18692,
+      "confidence": null
+    },
+    {
+      "text": "scoring",
+      "startMs": 18971,
+      "endMs": 19412,
+      "timestampMs": 18971,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 19470,
+      "endMs": 19563,
+      "timestampMs": 19470,
+      "confidence": null
+    },
+    {
+      "text": "retargeting",
+      "startMs": 19632,
+      "endMs": 20248,
+      "timestampMs": 19632,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 20294,
+      "endMs": 20422,
+      "timestampMs": 20294,
+      "confidence": null
+    },
+    {
+      "text": "cut",
+      "startMs": 20492,
+      "endMs": 20793,
+      "timestampMs": 20492,
+      "confidence": null
+    },
+    {
+      "text": "CAC",
+      "startMs": 20910,
+      "endMs": 21362,
+      "timestampMs": 20910,
+      "confidence": null
+    },
+    {
+      "text": "32",
+      "startMs": 21536,
+      "endMs": 22036,
+      "timestampMs": 21536,
+      "confidence": null
+    },
+    {
+      "text": "percent.",
+      "startMs": 22117,
+      "endMs": 22767,
+      "timestampMs": 22117,
+      "confidence": null
+    },
+    {
+      "text": "Receipt",
+      "startMs": 23278,
+      "endMs": 23650,
+      "timestampMs": 23278,
+      "confidence": null
+    },
+    {
+      "text": "fills:",
+      "startMs": 23708,
+      "endMs": 24265,
+      "timestampMs": 23708,
+      "confidence": null
+    },
+    {
+      "text": "terms,",
+      "startMs": 24439,
+      "endMs": 25043,
+      "timestampMs": 24439,
+      "confidence": null
+    },
+    {
+      "text": "tool,",
+      "startMs": 25101,
+      "endMs": 25600,
+      "timestampMs": 25101,
+      "confidence": null
+    },
+    {
+      "text": "result.",
+      "startMs": 25716,
+      "endMs": 26343,
+      "timestampMs": 25716,
+      "confidence": null
+    },
+    {
+      "text": "Score",
+      "startMs": 26726,
+      "endMs": 27063,
+      "timestampMs": 26726,
+      "confidence": null
+    },
+    {
+      "text": "lands",
+      "startMs": 27098,
+      "endMs": 27400,
+      "timestampMs": 27098,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 27434,
+      "endMs": 27516,
+      "timestampMs": 27434,
+      "confidence": null
+    },
+    {
+      "text": "92.",
+      "startMs": 27585,
+      "endMs": 28398,
+      "timestampMs": 27585,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 28839,
+      "endMs": 29060,
+      "timestampMs": 28839,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 29118,
+      "endMs": 29187,
+      "timestampMs": 29118,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 29246,
+      "endMs": 29454,
+      "timestampMs": 29246,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 29501,
+      "endMs": 29814,
+      "timestampMs": 29501,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 29884,
+      "endMs": 30163,
+      "timestampMs": 29884,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 30209,
+      "endMs": 30499,
+      "timestampMs": 30209,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 30534,
+      "endMs": 30615,
+      "timestampMs": 30534,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 30674,
+      "endMs": 31300,
+      "timestampMs": 30674,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 31.4,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-04-this-resume-sentence-is-quietly-expensive-1-voiceover.alignment.json"
+  }
+}

@@ -35,8 +35,8 @@ const EXPECTED = {
   width: 1080,
   height: 1920,
   fps: 30,
-  minDurationInSeconds: 29,
-  maxDurationInSeconds: 52,
+  minDurationInSeconds: 18,
+  maxDurationInSeconds: 32,
   minBytes: 1_000_000,
   minAudioSampleRate: 44_100,
 };
@@ -142,6 +142,23 @@ const checkProps = (draft, postsEntry, checks) => {
       props.afterScore > props.beforeScore,
     "score moves upward",
     `${props.beforeScore} -> ${props.afterScore}`,
+  );
+  if (Number.isFinite(Number(props.durationSeconds))) {
+    addCheck(
+      checks,
+      Number(props.durationSeconds) >= EXPECTED.minDurationInSeconds &&
+        Number(props.durationSeconds) <= EXPECTED.maxDurationInSeconds,
+      "duration prop is in viral short range",
+      `${props.durationSeconds}s`,
+    );
+  }
+  const scoreBasis = Array.isArray(props.scoreBasis) ? props.scoreBasis : [];
+  addCheck(
+    checks,
+    scoreBasis.length >= 3 &&
+      scoreBasis.every((row) => row && row.label && row.before && row.after),
+    "visible score rationale receipt exists",
+    `${scoreBasis.length} rows`,
   );
   addCheck(
     checks,

@@ -265,6 +265,14 @@ def props_for(draft: dict) -> dict:
     return read_json(resolve_root_ref(props_ref), {})
 
 
+def is_youtube_longform(draft: dict) -> bool:
+    return (
+        draft.get("contentType") == "youtube_long_form"
+        or draft.get("youtubeKind") == "long_form"
+        or draft.get("composition") == "TeardownEpisode"
+    )
+
+
 def post_metadata_for(draft: dict, run_id: str) -> dict:
     platform = "youtube" if draft.get("platforms") == ["youtube"] else "shorts"
     return {
@@ -313,6 +321,18 @@ def render_draft(draft: dict, force: bool = False) -> Path:
     props_arg = str(props_path.relative_to(REMOTION_DIR)).replace("\\", "/")
     composition = draft.get("composition") or "ResumeCrimeScene"
     run_command(["npx.cmd", "remotion", "render", composition, f"out/{filename}", f"--props={props_arg}"], REMOTION_DIR)
+
+    thumbnail_ref = draft.get("thumbnail")
+    thumbnail_props_ref = draft.get("thumbnailProps")
+    if thumbnail_ref and thumbnail_props_ref:
+        thumbnail_path = resolve_root_ref(str(thumbnail_ref))
+        thumbnail_props_path = resolve_root_ref(str(thumbnail_props_ref))
+        if not thumbnail_props_path.exists():
+            raise FileNotFoundError(f"Thumbnail props not found: {thumbnail_props_path}")
+        if force or not thumbnail_path.exists():
+            thumbnail_arg = str(thumbnail_props_path.relative_to(REMOTION_DIR)).replace("\\", "/")
+            thumbnail_out = str(thumbnail_path.relative_to(REMOTION_DIR)).replace("\\", "/")
+            run_command(["npx.cmd", "remotion", "still", "SignalThumbnail", thumbnail_out, f"--props={thumbnail_arg}"], REMOTION_DIR)
     return output_path
 
 
@@ -322,29 +342,50 @@ def write_single_draft(review_dir: Path, draft: dict) -> Path:
     return path
 
 
-def run_qc_gates(drafts_path: Path, single_draft_path: Path, review_dir: Path) -> dict:
+def run_qc_gates(drafts_path: Path, single_draft_path: Path, review_dir: Path, draft: dict) -> dict:
     reports = {
         "studio": review_dir / "studio-qc.json",
         "audio": review_dir / "audio-qc.json",
         "visual": review_dir / "visual-qc.json",
     }
     manifest = manifest_path_for_drafts(drafts_path)
-    commands = [
-        ["node", "scripts/qc_daily_studio_shorts.mjs", "--drafts", str(single_draft_path), "--report", str(reports["studio"])],
-        [
-            "node",
-            "scripts/qc_daily_audio_assets.mjs",
-            "--drafts",
-            str(single_draft_path),
-            "--manifest",
-            str(manifest),
-            "--report",
-            str(reports["audio"]),
-        ],
-        ["node", "scripts/qc_daily_visual_safe_area.mjs", "--drafts", str(single_draft_path), "--report", str(reports["visual"])],
-    ]
+    if is_youtube_longform(draft):
+        commands = [
+            ["studio", ["node", "scripts/qc_youtube_longform.mjs", "--drafts", str(single_draft_path), "--report", str(reports["studio"])]],
+            [
+                "audio",
+                [
+                    "node",
+                    "scripts/qc_daily_audio_assets.mjs",
+                    "--drafts",
+                    str(single_draft_path),
+                    "--manifest",
+                    str(manifest),
+                    "--report",
+                    str(reports["audio"]),
+                ],
+            ],
+        ]
+    else:
+        commands = [
+            ["studio", ["node", "scripts/qc_daily_studio_shorts.mjs", "--drafts", str(single_draft_path), "--report", str(reports["studio"])]],
+            [
+                "audio",
+                [
+                    "node",
+                    "scripts/qc_daily_audio_assets.mjs",
+                    "--drafts",
+                    str(single_draft_path),
+                    "--manifest",
+                    str(manifest),
+                    "--report",
+                    str(reports["audio"]),
+                ],
+            ],
+            ["visual", ["node", "scripts/qc_daily_visual_safe_area.mjs", "--drafts", str(single_draft_path), "--report", str(reports["visual"])]],
+        ]
     results = {}
-    for name, command in zip(reports.keys(), commands):
+    for name, command in commands:
         try:
             run_command(command, REMOTION_DIR)
             results[name] = read_json(reports[name], {"passed": False, "error": "missing report"})
@@ -354,6 +395,11 @@ def run_qc_gates(drafts_path: Path, single_draft_path: Path, review_dir: Path) -
                 "error": f"QC command failed with exit code {error.returncode}",
                 "report": rel(reports[name]) if reports[name].exists() else None,
             }
+    if is_youtube_longform(draft):
+        results["visual"] = {
+            "passed": bool(results.get("studio", {}).get("passed")),
+            "note": "Long-form visual checks are covered by 16:9 metadata, thumbnail, sections, and artifact checks.",
+        }
     results["passed"] = all(isinstance(result, dict) and result.get("passed") for result in results.values())
     return results
 
@@ -374,6 +420,37 @@ def quality_summary(draft: dict, qc: dict, script_gate: dict, output_path: Path)
     props = props_for(draft)
     caption_ready = props.get("captionReadiness") if isinstance(props.get("captionReadiness"), dict) else {}
     audio_ready = props.get("audioReadiness") if isinstance(props.get("audioReadiness"), dict) else {}
+    if is_youtube_longform(draft):
+        sections = props.get("sections") if isinstance(props.get("sections"), list) else []
+        voiceover_segments = props.get("voiceoverSegments") if isinstance(props.get("voiceoverSegments"), list) else []
+        thumbnail_path = resolve_root_ref(str(draft.get("thumbnail", ""))) if draft.get("thumbnail") else None
+        required_checks = {
+            "scriptClaimSafety": script_gate.get("passed") is True,
+            "renderedMp4Exists": output_path.exists(),
+            "longFormMetadataQc": qc.get("studio", {}).get("passed") is True,
+            "audioAssetQc": qc.get("audio", {}).get("passed") is True,
+            "thumbnailRendered": bool(thumbnail_path and thumbnail_path.exists()),
+            "sectionsPresent": len(sections) >= 8,
+            "voiceoverSegmentsPresent": len(voiceover_segments) >= min(8, len(sections)),
+            "ctaLeadsToFreeSignalScore": "free" in str(props.get("cta", draft.get("caption", ""))).lower()
+            and "signal" in str(props.get("cta", draft.get("caption", ""))).lower(),
+            "scoreMovesUp": int(props.get("afterScore", 0) or 0) > int(props.get("beforeScore", 0) or 0),
+        }
+        return {
+            "passed": all(required_checks.values()),
+            "requiredChecks": required_checks,
+            "scriptGate": script_gate,
+            "qcReports": {
+                "longForm": qc.get("studio", {}).get("passed"),
+                "audio": qc.get("audio", {}).get("passed"),
+                "visual": qc.get("visual", {}).get("passed"),
+            },
+            "captionReadiness": {
+                "wordLevel": False,
+                "reason": "Long-form uses section narration; word-level karaoke captions are not required for review cut.",
+            },
+            "audioReadiness": audio_ready,
+        }
     required_checks = {
         "scriptClaimSafety": script_gate.get("passed") is True,
         "renderedMp4Exists": output_path.exists(),
@@ -443,9 +520,29 @@ def prepare_review(drafts_path: Path, draft: dict, force_render: bool = False) -
         raise RuntimeError(f"Promotion failed; missing renders: {promote_result['missing']}")
 
     single_draft_path = write_single_draft(review_dir, draft)
-    qc = run_qc_gates(drafts_path, single_draft_path, review_dir)
+    qc = run_qc_gates(drafts_path, single_draft_path, review_dir, draft)
     script_gate = validate_script_gate(drafts_path)
     summary = quality_summary(draft, qc, script_gate, output_path)
+    if is_youtube_longform(draft):
+        manifest_path = manifest_path_for_drafts(drafts_path)
+        manifest = read_json(manifest_path, {})
+        manifest.setdefault("episode", {})
+        manifest["episode"]["renderReview"] = {
+            "passed": summary["passed"],
+            "runId": run_id,
+            "output": rel(output_path),
+            "studioQcReport": rel(review_dir / "studio-qc.json"),
+            "audioQcReport": rel(review_dir / "audio-qc.json"),
+        }
+        manifest["episode"]["qaGate"] = {
+            "required": True,
+            "passed": summary["passed"],
+            "status": "rendered_review_required" if summary["passed"] else "rendered_needs_revision",
+            "checks": summary["requiredChecks"],
+        }
+        manifest["episode"]["status"] = "rendered_review_required" if summary["passed"] else "rendered_needs_revision"
+        manifest["status"] = "rendered_review_required" if summary["passed"] else "rendered_needs_revision"
+        write_json(manifest_path, manifest)
     if not summary["passed"]:
         state = "RENDERED"
     else:

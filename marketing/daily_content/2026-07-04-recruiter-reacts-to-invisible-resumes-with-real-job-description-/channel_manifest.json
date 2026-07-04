@@ -1,19 +1,114 @@
 {
   "date": "2026-07-04",
   "topic": "Recruiter reacts to invisible resumes with real job-description proof",
-  "status": "render_ready_review_required",
+  "status": "publish_ready_review_required",
   "episode": {
     "composition": "TeardownEpisode",
     "props": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_episode.json",
     "output": "marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4",
     "format": "1920x1080",
-    "status": "render_ready",
+    "status": "publish_ready_review_required",
     "audioReadiness": {
       "studioVoiceover": true,
       "quietMusic": true,
       "provider": "openai",
-      "reason": "6 episode sections ready",
-      "wordLevelCaptions": false
+      "reason": "9 episode voiceover sections ready via openai"
+    },
+    "expertViralGate": {
+      "minScore": 94,
+      "score": 100,
+      "passed": true,
+      "verdict": "publish_ready_expert_viral_pass",
+      "report": "marketing/daily_content/2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description-/youtube_viral_quality_report.json"
+    },
+    "voiceoverSegments": [
+      {
+        "label": "Cold open",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-1-cold-open.mp3",
+        "fromFrame": 240,
+        "durationInSeconds": 15.768,
+        "provider": "openai"
+      },
+      {
+        "label": "Open loop",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-2-open-loop.mp3",
+        "fromFrame": 759,
+        "durationInSeconds": 29.808,
+        "provider": "openai"
+      },
+      {
+        "label": "Translate the job description",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-3-translate-the-job-description.mp3",
+        "fromFrame": 1699,
+        "durationInSeconds": 37.416,
+        "provider": "openai"
+      },
+      {
+        "label": "Recruiter search test",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-4-recruiter-search-test.mp3",
+        "fromFrame": 2867,
+        "durationInSeconds": 30.312,
+        "provider": "openai"
+      },
+      {
+        "label": "Resume crime scene",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-5-resume-crime-scene.mp3",
+        "fromFrame": 3822,
+        "durationInSeconds": 32.256,
+        "provider": "openai"
+      },
+      {
+        "label": "Why it gets missed",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-6-why-it-gets-missed.mp3",
+        "fromFrame": 4835,
+        "durationInSeconds": 32.256,
+        "provider": "openai"
+      },
+      {
+        "label": "Live bullet fix",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-7-live-bullet-fix.mp3",
+        "fromFrame": 5848,
+        "durationInSeconds": 37.848,
+        "provider": "openai"
+      },
+      {
+        "label": "Score reveal",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-8-score-reveal.mp3",
+        "fromFrame": 7029,
+        "durationInSeconds": 32.208,
+        "provider": "openai"
+      },
+      {
+        "label": "Trust and CTA",
+        "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-9-trust-and-cta.mp3",
+        "fromFrame": 8041,
+        "durationInSeconds": 31.32,
+        "provider": "openai"
+      }
+    ],
+    "durationInFrames": 9570,
+    "renderReview": {
+      "passed": true,
+      "runId": "5dcdfea4778fbd65",
+      "output": "marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4",
+      "studioQcReport": "marketing/codex_reviews/20260704-5dcdfea4778fbd65-this-resume-looks-fine-but-stays-invisible-resume-teardown/studio-qc.json",
+      "audioQcReport": "marketing/codex_reviews/20260704-5dcdfea4778fbd65-this-resume-looks-fine-but-stays-invisible-resume-teardown/audio-qc.json"
+    },
+    "qaGate": {
+      "required": true,
+      "passed": true,
+      "status": "rendered_review_required",
+      "checks": {
+        "scriptClaimSafety": true,
+        "renderedMp4Exists": true,
+        "longFormMetadataQc": true,
+        "audioAssetQc": true,
+        "thumbnailRendered": true,
+        "sectionsPresent": true,
+        "voiceoverSegmentsPresent": true,
+        "ctaLeadsToFreeSignalScore": true,
+        "scoreMovesUp": true
+      }
     }
   },
   "thumbnail": {

@@ -1,45 +1,61 @@
 {
-  "title": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown",
-  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "title": "This Resume Looks Fine But Stays Invisible",
+  "thesis": "A recruiter-style teardown showing why qualified experience becomes invisible when a resume misses job-description proof.",
   "cta": "Paste the job description and check your free Signal score before you apply.",
   "sections": [
     {
       "label": "Cold open",
-      "script": "Recruiter reacts to invisible resumes with real job-description proof Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on.",
-      "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+      "script": "This resume looks professional, and that is the trap. The job description screams HubSpot, CAC, LinkedIn Ads, and lifecycle marketing. The resume whispers helped with campaigns. That is invisible experience.",
+      "visual": "Open on polished resume beside job description; red stamp says professional fog, then Signal points at the missing terms."
     },
     {
-      "label": "The real problem",
-      "script": "Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit.",
-      "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+      "label": "Open loop",
+      "script": "In the next few minutes, we are going to do this like a recruiter would actually see it. First, I will pull the clues out of the job description. Then I will run the resume through a simple search test. Then we will find the mistake that makes a qualified person look generic. Finally, we will fix one bullet live and watch the Signal score move from 34 to 92. The point is not to make the candidate sound louder. The point is to make the existing proof easier to find.",
+      "visual": "Timeline cards: mistake, search test, fix, score reveal; keep the resume/JD split screen visible."
     },
     {
-      "label": "Translate the job",
-      "script": "Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
-      "visual": "Keyword extraction board."
+      "label": "Translate the job description",
+      "script": "Start with the job description, not the resume. A Demand Generation Manager posting is usually not asking for vague marketing energy. It is asking for pipeline sourced, HubSpot workflows, LinkedIn Ads, CAC analysis, lifecycle marketing, and MQL-to-SQL conversion. Those are not magic keywords. They are clues about what the hiring team wants to see quickly. If your resume has the experience but calls everything campaigns, support, and coordination, you are making the reviewer translate your background for you. Reviewers are not mind readers, and they are usually moving fast.",
+      "visual": "Keyword extraction board pulls terms from the JD into bright proof chips."
     },
     {
-      "label": "Teardown",
-      "script": "Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes.",
-      "visual": "Red/yellow markups over weak bullets."
+      "label": "Recruiter search test",
+      "script": "Now pretend I am searching resumes. I type HubSpot. I type CAC. I type LinkedIn Ads. I type pipeline. If this candidate has done that work, the resume should give me a clean match. Right now, it barely does. That does not mean the person is bad. It means the resume is asking me to infer too much. This is where a lot of job seekers lose attention. They think the resume is being humble and professional. To a recruiter, it can read like polite fog.",
+      "visual": "Recruiter search box types each keyword; weak resume returns partial or empty matches."
     },
     {
-      "label": "Fix one bullet",
-      "script": "The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result.",
-      "visual": "Before/after bullet rewrite."
+      "label": "Resume crime scene",
+      "script": "Here is the resume crime scene: helped maintain HubSpot lists for webinars and nurture emails. That is not bad experience. It is just under-labeled experience. The bullet has HubSpot, which is useful, but it hides scope, audience, and business result. What kind of lists? For what campaigns? What happened because of the work? The evidence is wearing camouflage. A stronger resume does not need to brag. It needs to remove the camouflage so the proof is visible in a six-second skim.",
+      "visual": "Circle the weak bullet; Signal drops a red evidence marker beside it."
     },
     {
-      "label": "Product bridge",
-      "script": "Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
-      "visual": "Free Signal score page, trust badges, and bundle CTA."
+      "label": "Why it gets missed",
+      "script": "This is not about tricking software. The ATS is not a wizard sitting in a basement rejecting good people for sport. The practical problem is simpler: resumes get stored, searched, skimmed, compared, and forgotten. When the job description says CAC analysis and your resume says helped with campaigns, the strongest version of your experience is not on the page yet. It is stuck in your memory. A hiring team should not have to interview you just to discover the basic proof that belonged in the bullet.",
+      "visual": "Before bullet fades under fog overlay while JD terms stay sharp on the right."
+    },
+    {
+      "label": "Live bullet fix",
+      "script": "Now we translate, not fabricate. The weak bullet says: helped maintain HubSpot lists for webinars and nurture emails. A stronger version says: built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%. Same work category. Same candidate. Much clearer proof. Notice what changed. We added the tool, the channel, the business metric, and the result. We did not add a fake job, a fake degree, or a fake skill. That is the line Signal has to protect.",
+      "visual": "Before bullet slides out; after bullet locks in with HubSpot, LinkedIn Ads, CAC, and 32% highlighted."
+    },
+    {
+      "label": "Score reveal",
+      "script": "Now the score jump makes sense. Before, the resume was sitting at 34 out of 100 because the job description language and the resume proof were not connected. After the rewrite, the example moves to 92 out of 100 because the same experience is mapped to HubSpot workflows, LinkedIn Ads, CAC analysis, lifecycle marketing, pipeline, and conversion proof. The value is not the number by itself. The value is knowing exactly what changed, and why the new version is easier for a human to understand.",
+      "visual": "Score meter animates 34 to 92; missing keyword chips flip from red to green."
+    },
+    {
+      "label": "Trust and CTA",
+      "script": "That is the whole Signal promise. Find the real proof already in your work. Make it match the job description. Keep it honest. No fake jobs, no fake tools, no guaranteed outcomes, and no panic about mythical resume robots. If you are about to apply, paste the job description first and check your free Signal score. If the gap is real, then paying for a targeted resume and cover letter package makes sense. If the gap is not real, you just learned that before spending money.",
+      "visual": "Signal score page, trust badges, no fake experience note, and free score CTA."
     }
   ],
   "keywords": [
     "HubSpot workflows",
     "LinkedIn Ads",
     "CAC analysis",
-    "MQL-to-SQL",
-    "pipeline sourced"
+    "lifecycle marketing",
+    "pipeline sourced",
+    "MQL-to-SQL"
   ],
   "weakBullets": [
     "Supported email and social campaigns across multiple channels.",
@@ -53,50 +69,59 @@
   "musicSrc": "audio/signal-quiet-orbit.wav",
   "musicVolume": 0.11,
   "voiceoverVolume": 0.94,
-  "voiceover_text": "Recruiter reacts to invisible resumes with real job-description proof Today we are lovingly roasting a resume that looks professional but has the job-description equivalent of airplane mode turned on. Most resumes are not failing because the person is unqualified. They fail because the resume says 'helped with stuff' while the job description is asking for a specific toolkit. Before rewriting anything, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. Now compare the resume line by line. Vague bullets like 'helped with campaigns' do not give recruiters the same signal as specific tools, scope, and outcomes. The fix is not to invent experience. The fix is to say the real work clearly: what tool, what scope, what audience, what result. Signal automates this comparison. Paste the job description, upload the resume, and see the free score first. If the gap is real, then the paid resume and cover letter bundle makes sense.",
+  "voiceover_text": "This resume looks professional, and that is the trap. The job description screams HubSpot, CAC, LinkedIn Ads, and lifecycle marketing. The resume whispers helped with campaigns. That is invisible experience. In the next few minutes, we are going to do this like a recruiter would actually see it. First, I will pull the clues out of the job description. Then I will run the resume through a simple search test. Then we will find the mistake that makes a qualified person look generic. Finally, we will fix one bullet live and watch the Signal score move from 34 to 92. The point is not to make the candidate sound louder. The point is to make the existing proof easier to find. Start with the job description, not the resume. A Demand Generation Manager posting is usually not asking for vague marketing energy. It is asking for pipeline sourced, HubSpot workflows, LinkedIn Ads, CAC analysis, lifecycle marketing, and MQL-to-SQL conversion. Those are not magic keywords. They are clues about what the hiring team wants to see quickly. If your resume has the experience but calls everything campaigns, support, and coordination, you are making the reviewer translate your background for you. Reviewers are not mind readers, and they are usually moving fast. Now pretend I am searching resumes. I type HubSpot. I type CAC. I type LinkedIn Ads. I type pipeline. If this candidate has done that work, the resume should give me a clean match. Right now, it barely does. That does not mean the person is bad. It means the resume is asking me to infer too much. This is where a lot of job seekers lose attention. They think the resume is being humble and professional. To a recruiter, it can read like polite fog. Here is the resume crime scene: helped maintain HubSpot lists for webinars and nurture emails. That is not bad experience. It is just under-labeled experience. The bullet has HubSpot, which is useful, but it hides scope, audience, and business result. What kind of lists? For what campaigns? What happened because of the work? The evidence is wearing camouflage. A stronger resume does not need to brag. It needs to remove the camouflage so the proof is visible in a six-second skim. This is not about tricking software. The ATS is not a wizard sitting in a basement rejecting good people for sport. The practical problem is simpler: resumes get stored, searched, skimmed, compared, and forgotten. When the job description says CAC analysis and your resume says helped with campaigns, the strongest version of your experience is not on the page yet. It is stuck in your memory. A hiring team should not have to interview you just to discover the basic proof that belonged in the bullet. Now we translate, not fabricate. The weak bullet says: helped maintain HubSpot lists for webinars and nurture emails. A stronger version says: built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%. Same work category. Same candidate. Much clearer proof. Notice what changed. We added the tool, the channel, the business metric, and the result. We did not add a fake job, a fake degree, or a fake skill. That is the line Signal has to protect. Now the score jump makes sense. Before, the resume was sitting at 34 out of 100 because the job description language and the resume proof were not connected. After the rewrite, the example moves to 92 out of 100 because the same experience is mapped to HubSpot workflows, LinkedIn Ads, CAC analysis, lifecycle marketing, pipeline, and conversion proof. The value is not the number by itself. The value is knowing exactly what changed, and why the new version is easier for a human to understand. That is the whole Signal promise. Find the real proof already in your work. Make it match the job description. Keep it honest. No fake jobs, no fake tools, no guaranteed outcomes, and no panic about mythical resume robots. If you are about to apply, paste the job description first and check your free Signal score. If the gap is real, then paying for a targeted resume and cover letter package makes sense. If the gap is not real, you just learned that before spending money.",
   "voiceoverSegments": [
     {
-      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-1-voiceover.mp3",
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-1-cold-open.mp3",
       "fromFrame": 240,
-      "volume": 0.94,
-      "provider": "openai"
+      "volume": 0.94
     },
     {
-      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-2-voiceover.mp3",
-      "fromFrame": 2510,
-      "volume": 0.94,
-      "provider": "openai"
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-2-open-loop.mp3",
+      "fromFrame": 759,
+      "volume": 0.94
     },
     {
-      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-3-voiceover.mp3",
-      "fromFrame": 4780,
-      "volume": 0.94,
-      "provider": "openai"
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-3-translate-the-job-description.mp3",
+      "fromFrame": 1699,
+      "volume": 0.94
     },
     {
-      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-4-voiceover.mp3",
-      "fromFrame": 7050,
-      "volume": 0.94,
-      "provider": "openai"
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-4-recruiter-search-test.mp3",
+      "fromFrame": 2867,
+      "volume": 0.94
     },
     {
-      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-5-voiceover.mp3",
-      "fromFrame": 9320,
-      "volume": 0.94,
-      "provider": "openai"
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-5-resume-crime-scene.mp3",
+      "fromFrame": 3822,
+      "volume": 0.94
     },
     {
-      "src": "audio/daily-2026-07-04-recruiter-reacts-to-invisible-resu-episode-6-voiceover.mp3",
-      "fromFrame": 11590,
-      "volume": 0.94,
-      "provider": "openai"
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-6-why-it-gets-missed.mp3",
+      "fromFrame": 4835,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-7-live-bullet-fix.mp3",
+      "fromFrame": 5848,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-8-score-reveal.mp3",
+      "fromFrame": 7029,
+      "volume": 0.94
+    },
+    {
+      "src": "audio/daily-this-resume-looks-fine-but-stays-invisible-episode-9-trust-and-cta.mp3",
+      "fromFrame": 8041,
+      "volume": 0.94
     }
   ],
   "audioReadiness": {
     "studioVoiceover": true,
     "quietMusic": true,
     "provider": "openai",
-    "reason": "6 episode sections ready",
-    "wordLevelCaptions": false
-  }
+    "reason": "9 episode voiceover sections ready via openai"
+  },
+  "durationInFrames": 9570
 }

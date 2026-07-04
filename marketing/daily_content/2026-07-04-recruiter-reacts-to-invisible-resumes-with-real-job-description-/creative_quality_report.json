@@ -1,8 +1,10 @@
 {
-  "overallScore": 100,
+  "overallScore": 94,
   "passed": true,
   "verdict": "post_grade_script_packet",
-  "notes": [],
+  "notes": [
+    "Needs more safe humor that punches at vague resume language or job-search friction."
+  ],
   "blockers": [],
   "shorts": [
     {

@@ -1,7 +1,7 @@
 [
   {
-    "title": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown with Sig",
-    "caption": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
+    "title": "This Resume Looks Fine But Stays Invisible | Resume Teardown",
+    "caption": "This Resume Looks Fine But Stays Invisible. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
     "file": "videos/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4",
     "platforms": [
       "youtube"
@@ -11,8 +11,8 @@
     "contentType": "youtube_long_form",
     "youtubeKind": "long_form",
     "target": "daily long-form YouTube",
-    "youtubeTitle": "Recruiter reacts to invisible resumes with real job-description proof | Resume Teardown with Sig",
-    "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "youtubeTitle": "This Resume Looks Fine But Stays Invisible | Resume Teardown",
+    "youtubeDescription": "A recruiter-style resume teardown showing how a qualified demand generation resume can stay invisible when it misses job-description proof, then fixing one bullet without adding fake experience.",
     "composition": "TeardownEpisode",
     "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_episode.json",
     "thumbnail": "marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--thumbnail.png",
@@ -28,8 +28,8 @@
     },
     "qaGate": {
       "required": true,
-      "passed": false,
-      "status": "requires_render_review",
+      "passed": true,
+      "status": "rendered_review_required",
       "minExpertViralScore": 94,
       "checks": [
         "Rendered MP4 exists in marketing/autopost/videos.",
@@ -46,9 +46,9 @@
     "expertViralGate": {
       "required": true,
       "minScore": 94,
-      "score": null,
-      "passed": false,
-      "status": "requires_expert_viral_review"
+      "score": 100,
+      "passed": true,
+      "status": "rendered_review_required"
     },
     "reviewChecklist": [
       "long-form render reviewed",

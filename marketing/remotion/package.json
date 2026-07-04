@@ -22,6 +22,7 @@
     "qc:daily:shorts": "node scripts/qc_daily_studio_shorts.mjs",
     "qc:daily:audio": "node scripts/qc_daily_audio_assets.mjs",
     "qc:daily:visual": "node scripts/qc_daily_visual_safe_area.mjs",
+    "qc:youtube:longform": "node scripts/qc_youtube_longform.mjs",
     "voiceover:episode": "node scripts/generate_episode_voiceover.mjs",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"

@@ -161,6 +161,7 @@ Current review assets:
 | `50350129efcd445e` | This marketing resume hid the actual revenue proof | `http://192.168.2.10:8765/20260704-50350129efcd445e-this-marketing-resume-hid-the-actual-revenue-proof/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4` | `APPROVE POST 50350129efcd445e` |
 | `d962d2cc75f39aab` | This sales resume forgot to say sales | `http://192.168.2.10:8765/20260704-d962d2cc75f39aab-this-sales-resume-forgot-to-say-sales/daily-this-sales-resume-forgot-to-say-sales.mp4` | `APPROVE POST d962d2cc75f39aab` |
 | `71e14e8e21715d7d` | This developer resume hides the stack | `http://192.168.2.10:8765/20260704-71e14e8e21715d7d-this-developer-resume-hides-the-stack/daily-this-developer-resume-hides-the-stack.mp4` | `APPROVE POST 71e14e8e21715d7d` |
+| `5dcdfea4778fbd65` | This Resume Looks Fine But Stays Invisible | `http://192.168.2.10:8765/20260704-5dcdfea4778fbd65-this-resume-looks-fine-but-stays-invisible-resume-teardown/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4` | `APPROVE POST 5dcdfea4778fbd65` |
 
 Only approve after reviewing the exact video:
 
@@ -186,6 +187,7 @@ After promotion, run the studio QC gate:
 npm run qc:daily:shorts
 npm run qc:daily:audio
 npm run qc:daily:visual -- --render
+npm run qc:youtube:longform -- --drafts ..\daily_content\YYYY-MM-DD-topic\autopost_drafts.json
 ```
 
 The gate verifies the rendered and promoted files both exist, the autopost entries are still `review_required`, the videos are 1080x1920 MP4/H.264/AAC at 30fps, audio tracks exist, linked props and audio assets exist, the score moves upward, the CTA points to the free Signal score, and unsafe claim patterns are absent.

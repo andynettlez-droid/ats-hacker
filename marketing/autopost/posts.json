@@ -754,5 +754,64 @@
             "reason": "ready via openai",
             "wordLevelCaptions": false
         }
+    },
+    {
+        "title": "This Resume Looks Fine But Stays Invisible | Resume Teardown",
+        "caption": "This Resume Looks Fine But Stays Invisible. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
+        "file": "videos/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4",
+        "platforms": [
+            "youtube"
+        ],
+        "status": "review_required",
+        "contentType": "youtube_long_form",
+        "youtubeKind": "long_form",
+        "target": "daily long-form YouTube",
+        "youtubeTitle": "This Resume Looks Fine But Stays Invisible | Resume Teardown",
+        "youtubeDescription": "A recruiter-style resume teardown showing how a qualified demand generation resume can stay invisible when it misses job-description proof, then fixing one bullet without adding fake experience.",
+        "thumbnail": "marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--thumbnail.png",
+        "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_thumbnail.json",
+        "renderStatus": "rendered_review_required",
+        "reviewStatus": "review_required",
+        "composition": "TeardownEpisode",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_recruiter-reacts-to-invisible-resumes-with-real-job-description-_episode.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "openai",
+            "reason": "6 episode sections ready",
+            "wordLevelCaptions": false
+        },
+        "qaGate": {
+            "required": true,
+            "passed": true,
+            "status": "rendered_review_required",
+            "minExpertViralScore": 94,
+            "checks": [
+                "Rendered MP4 exists in marketing/autopost/videos.",
+                "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+                "Opening hook is visible in the first 5 seconds.",
+                "Signal mascot or brand mark is visible.",
+                "No old human presenter appears unless explicitly approved.",
+                "Audio is present, balanced, and not dominated by music or effects.",
+                "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+                "Thumbnail exists or is intentionally deferred.",
+                "Human reviewer approved exact file, title, description, thumbnail, and platform target."
+            ]
+        },
+        "expertViralGate": {
+            "required": true,
+            "minScore": 94,
+            "score": 100,
+            "passed": true,
+            "status": "rendered_review_required"
+        },
+        "reviewChecklist": [
+            "long-form render reviewed",
+            "thumbnail reviewed",
+            "audio present and balanced",
+            "claims reviewed",
+            "exact YouTube title and description reviewed",
+            "status remains review_required until approval"
+        ]
     }
 ]

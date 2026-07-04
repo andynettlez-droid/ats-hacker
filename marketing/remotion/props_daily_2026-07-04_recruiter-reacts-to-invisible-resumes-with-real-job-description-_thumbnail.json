@@ -1,15 +1,14 @@
 {
   "title": "Qualified but invisible",
-  "badge": "Daily Research Packet",
+  "badge": "Resume teardown",
   "beforeScore": 34,
   "afterScore": 92,
   "leftLabel": "Vague resume",
   "rightLabel": "Job-match proof",
   "keywords": [
-    "HubSpot workflows",
+    "HubSpot",
+    "CAC",
     "LinkedIn Ads",
-    "CAC analysis",
-    "MQL-to-SQL",
-    "pipeline sourced"
+    "Pipeline"
   ]
 }

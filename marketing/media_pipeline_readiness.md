@@ -4,19 +4,19 @@ Reviewed: 2026-07-04
 
 ## Verdict
 
-The short-form pipeline is ready for supervised studio production and Codex review-gated posting. It is not yet ready for fully unattended daily channel production.
+The short-form pipeline and the current long-form YouTube episode are ready for supervised Codex review-gated posting. The system is not yet ready for fully unattended daily channel production.
 
 The current `ResumeCrimeScene` shorts are materially stronger than the first mascot/product-demo cuts: the resume is the main character, the humor is more native to job-search audiences, the Signal mascot is present without taking over, the CTA is clearer, and the audio direction is quieter and more premium.
 
 The new Codex approval layer now wraps the existing daily packet, Remotion render, QC, promotion, and posting queue. Videos move through a durable local SQLite state machine and stop at `AWAITING_CODEX_APPROVAL` until the exact reviewed file is approved in Codex.
 
-The long-form YouTube lane is render-ready but not publish-ready. It has a source packet, props, segmented ElevenLabs voiceover, thumbnail composition, a long-form Remotion renderer, and a review-cut path. It still needs a final full render review, retention edit, thumbnail QA, description/chapters/pinned comment, and metrics plan before it should be treated as a daily YouTube factory.
+The current long-form YouTube lane now has a 5:19 rendered 1920x1080 episode, thumbnail, segmented voiceover, long-form metadata QC, audio QC, and a 100/100 expert viral gate. It still requires human review of the exact MP4 before live posting.
 
 ## What Is Ready
 
 - `ResumeCrimeScene` renders vertical 1080x1920, 30fps shorts.
 - Three daily studio short exports exist in `marketing/remotion/out/`.
-- Studio voiceover assets exist for the daily shorts and long-form episode. ElevenLabs remains preferred, but the current machine-level ElevenLabs key is low-quota and the latest reviewed short used OpenAI TTS fallback.
+- Studio voiceover assets exist for the daily shorts and long-form episode. ElevenLabs remains preferred, but the current machine-level ElevenLabs key is low-quota and the latest reviewed batch used OpenAI TTS fallback.
 - Quiet music assets exist and are used instead of harsh SFX.
 - The posting layer supports TikTok, Instagram, and YouTube through Upload-Post.
 - The posting layer has a review gate for `draft` and `review_required` entries.
@@ -28,7 +28,7 @@ The long-form YouTube lane is render-ready but not publish-ready. It has a sourc
 - The Remotion TypeScript check passes.
 - The current daily script packet passes the creative quality gate.
 - The studio short metadata/queue QC gate passes.
-- The audio asset QC gate passes for linked voiceover, music, and episode segments.
+- The audio asset QC gate passes for linked short voiceovers, music, and all 9 long-form episode segments.
 - A source-backed trend intake file exists for the current daily packet.
 - Thumbnail and long-form renderer components exist.
 - A long-form YouTube quality gate now scores title, hook, retention architecture, proof density, visual plan, claim safety, creator voice, product bridge, audio readiness, and render QA.
@@ -42,19 +42,19 @@ The long-form YouTube lane is render-ready but not publish-ready. It has a sourc
 - No automatic platform metrics ingestion from TikTok, Instagram, or YouTube.
 - No live automated trend feed from TikTok Creative Center, YouTube, Google Trends, Reddit, or LinkedIn. Current trend intake is file-based.
 - The script creative gate can overstate readiness because it grades packet text, not rendered video.
-- Long-form YouTube has a renderer and review path, but not a fully verified final episode workflow.
-- The current long-form packet scored 83/100 on the expert viral gate and is blocked from publish-ready status until the full episode is strengthened and rendered QA passes.
+- Long-form YouTube has a verified render/review path for this packet, but still needs subjective human watch-through before any live upload.
 - The queue still contains older ad-style clips that should be reviewed or retired before they dilute the new teardown format.
 
 ## Current Codex Review Assets
 
-All three current daily shorts are in `AWAITING_CODEX_APPROVAL` and passed script, studio metadata, audio asset, and visual safe-area QC.
+The current daily batch has three shorts plus one long-form YouTube episode in `AWAITING_CODEX_APPROVAL`.
 
 | Run ID | Title | Mobile review URL | Approval phrase |
 | --- | --- | --- | --- |
 | `50350129efcd445e` | This marketing resume hid the actual revenue proof | `http://192.168.2.10:8765/20260704-50350129efcd445e-this-marketing-resume-hid-the-actual-revenue-proof/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4` | `APPROVE POST 50350129efcd445e` |
 | `d962d2cc75f39aab` | This sales resume forgot to say sales | `http://192.168.2.10:8765/20260704-d962d2cc75f39aab-this-sales-resume-forgot-to-say-sales/daily-this-sales-resume-forgot-to-say-sales.mp4` | `APPROVE POST d962d2cc75f39aab` |
 | `71e14e8e21715d7d` | This developer resume hides the stack | `http://192.168.2.10:8765/20260704-71e14e8e21715d7d-this-developer-resume-hides-the-stack/daily-this-developer-resume-hides-the-stack.mp4` | `APPROVE POST 71e14e8e21715d7d` |
+| `5dcdfea4778fbd65` | This Resume Looks Fine But Stays Invisible | `http://192.168.2.10:8765/20260704-5dcdfea4778fbd65-this-resume-looks-fine-but-stays-invisible-resume-teardown/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4` | `APPROVE POST 5dcdfea4778fbd65` |
 
 This file is local and git-ignored. To review on mobile from the repo root, run:
 
@@ -69,6 +69,8 @@ Then open the URLs printed by `prepare-review`.
 - `marketing/remotion/out/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4`
 - `marketing/remotion/out/daily-this-sales-resume-forgot-to-say-sales.mp4`
 - `marketing/remotion/out/daily-this-developer-resume-hides-the-stack.mp4`
+- `marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--episode.mp4`
+- `marketing/remotion/out/daily-recruiter-reacts-to-invisible-resumes-with-real-job-description--thumbnail.png`
 
 These are the assets that should be promoted for review-gated posting, not the earlier first-pass daily short.
 
@@ -76,10 +78,11 @@ These are the assets that should be promoted for review-gated posting, not the e
 
 Latest manual pipeline output:
 
-- Three improved role-specific daily shorts rendered and exported to Codex review.
+- Three improved role-specific daily shorts and one 5:19 long-form YouTube episode rendered and exported to Codex review.
 - Autopost dry run confirms it is blocked until Codex approval and `--approved`.
 - Current post-grade packet: 1.
 - Render-ready and QA-passed shorts in the current daily packet: 3.
+- Render-ready and QA-passed long-form YouTube episodes in the current daily packet: 1.
 - Studio voiceover: available through OpenAI fallback for the latest review asset.
 - Quiet music: available.
 - Source-backed trend intake: available.
@@ -89,7 +92,7 @@ Latest manual pipeline output:
 - Studio daily queue: available.
 - Automated render QC: available.
 - Audio asset QC: available.
-- Long-form expert viral gate: available; current episode score is 83/100 and not publish-ready.
+- Long-form expert viral gate: passed at 100/100 for the current rendered episode.
 - Missing: valid high-quota ElevenLabs key for full daily voiceover generation, platform metrics feed, audio loudness/peak QC, full transcript/caption alignment for cached/fallback voiceovers, automated live trend API connector.
 
 ## Current Audio Position
@@ -132,8 +135,8 @@ Do not treat this as finished audio engineering yet. The next quality jump is no
 3. Add audio loudness/peak QC with ffmpeg/ffprobe or PCM sample analysis.
 4. Add full caption/transcript alignment checks for cached and fallback voiceovers.
 5. Add metrics ingestion from the posting provider and platform dashboards.
-6. Rewrite the current long-form episode into 8-10 retention-focused sections and rerun the expert viral gate to 94+.
-7. Build the long-form publish package: final render, thumbnail, title, description, chapters, pinned comment, and score-page UTM.
+6. Add a pinned-comment template and platform-specific long-form description checklist.
+7. Add long-form transcript/caption generation from the final rendered audio.
 8. Convert live trend intake from file-based source notes into API-backed connectors.
 
 ## Production Recommendation

@@ -39,7 +39,7 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 | Admin/revenue visibility | Implemented basic | Admin login and Stripe-backed stats route exist. Needs fuller source-channel revenue dashboard and support recovery workflow. |
 | Analytics | Partial | Vercel Analytics events exist for score completion, checkout start, paid fulfillment, post-purchase score lift, downloads, demo start, cover-letter copy, and score share. Needs UTM-to-revenue reporting and platform metrics ingestion. |
 | Test coverage | Thin | Lint passes with warnings. Need checkout/rewrite/success tests and a smoke script for the main conversion flow. |
-| Video growth engine | In progress, supervised | Daily packets, role-specific synthetic resume cases, Remotion shorts, audio QC, visual safe-area QC, Upload-Post queue, and Codex approval state exist. Three improved role-specific daily shorts reached `AWAITING_CODEX_APPROVAL`. Needs a valid high-quota ElevenLabs key, full metrics loop, audio loudness QC, and long-form publish hardening. |
+| Video growth engine | In progress, supervised | Daily packets, role-specific synthetic resume cases, Remotion shorts, long-form YouTube episode rendering, audio QC, visual safe-area QC, Upload-Post queue, and Codex approval state exist. Three improved role-specific daily shorts plus one 5:19 long-form episode reached `AWAITING_CODEX_APPROVAL`. Needs a valid high-quota ElevenLabs key, full metrics loop, audio loudness QC, and publish analytics hardening. |
 
 ## What Is Done
 
@@ -58,6 +58,7 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 - Codex video approval now blocks live posting until the exact QA-passed file hash is approved.
 - Video scripts now rotate believable synthetic resume/job cases instead of repeating generic "AI-polished resume" placeholders.
 - `ResumeCrimeScene` now shows resume identity and role-context chips, so the on-screen resume artifact feels more specific.
+- The current long-form YouTube episode was strengthened to 9 retention sections, rendered at 1920x1080, and passed the expert viral gate at 100/100.
 - ElevenLabs voice selection now validates available account voices and fails over cleanly when quota/permission issues block production audio.
 
 ## Highest-Leverage Next Product Work
@@ -153,7 +154,7 @@ Latest checks run during this review:
 - Studio short QC: passed for the current three Codex-reviewed role-specific daily shorts.
 - Audio asset QC: passed for daily shorts and episode audio assets.
 - Visual safe-area QC: passed for the current three Codex-reviewed role-specific daily shorts.
-- Long-form YouTube expert viral gate: available; current daily episode scored 83/100 and is blocked from publish-ready status until render QA and content upgrades pass.
+- Long-form YouTube expert viral gate: passed at 100/100 for the current rendered daily episode.
 - Marketing agent compile check: passed.
 - Autopost dry run: passed; review-gated videos remain blocked from live posting unless Codex approval exists for the exact file hash and the poster is run with `--approved`.
 

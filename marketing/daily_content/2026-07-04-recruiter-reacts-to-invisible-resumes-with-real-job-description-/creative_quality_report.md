@@ -1,12 +1,12 @@
 # Creative Quality Gate
 
 Verdict: post_grade_script_packet
-Score: 100/100
+Score: 94/100
 Passed: True
 
 ## Notes
 
-- No revision notes.
+- Needs more safe humor that punches at vague resume language or job-search friction.
 
 ## Blockers
 

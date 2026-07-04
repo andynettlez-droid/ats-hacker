@@ -35,6 +35,10 @@ const POSTED_STATUSES = new Set(['posted']);
 
 const sha256File = (filePath) => createHash('sha256').update(readFileSync(filePath)).digest('hex');
 const isYoutubeLongForm = (post) => post.contentType === 'youtube_long_form' || post.youtubeKind === 'long_form';
+const hasCodexApproval = (post) =>
+  post.codexApproval?.approved === true &&
+  typeof post.codexApproval?.fileSha256 === 'string' &&
+  post.codexApproval.fileSha256 === post.__fileHash;
 const hasPassedQaGate = (post) => post.qaGate?.passed === true || post.renderReview?.passed === true;
 const hasExpertViralScore = (post) => {
   if (!isYoutubeLongForm(post)) return true;
@@ -172,7 +176,11 @@ if (bad) {
 if (DRY_RUN) {
   for (const [index, post] of posts.entries()) {
     const status = post.status ? ` [${post.status}]` : '';
-    const gate = post.__reviewRequired ? ' - live posting blocked until --approved' : '';
+    const gate = post.__reviewRequired
+      ? hasCodexApproval(post)
+        ? ' - Codex approved; live posting still requires --approved'
+        : ' - live posting blocked until Codex approval and --approved'
+      : '';
     const qaGate = post.__youtubeLongForm && !post.__qaPassed ? ' - long-form QA pass required' : '';
     const expertGate = post.__youtubeLongForm && !post.__expertViralPassed ? ' - expert viral score required' : '';
     const postedGate = post.__alreadyPosted ? ' - skipped unless --include-posted' : '';
@@ -205,6 +213,11 @@ for (const [index, post] of posts.entries()) {
   const tag = `#${index + 1} "${(post.caption || '').slice(0, 40)}..."`;
   if (post.__reviewRequired && !APPROVED_REVIEW) {
     console.log(`SKIP ${tag} - status=${post.status}; rerun with --approved after human review.`);
+    skipped++;
+    continue;
+  }
+  if (post.__reviewRequired && APPROVED_REVIEW && !hasCodexApproval(post)) {
+    console.log(`SKIP ${tag} - status=${post.status}; missing Codex approval for this exact file hash.`);
     skipped++;
     continue;
   }

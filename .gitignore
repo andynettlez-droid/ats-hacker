@@ -18,6 +18,9 @@ __pycache__/
 .venv/
 venv/
 marketing_agent/runs/
+marketing/video_pipeline_state.sqlite
+marketing/video_pipeline_state.sqlite-*
+marketing/codex_reviews/
 
 # OS / editor
 .DS_Store

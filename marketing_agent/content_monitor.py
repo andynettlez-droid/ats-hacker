@@ -18,6 +18,7 @@ TREND_INTAKE_PATH = MARKETING_DIR / "content_research" / "trend_intake_latest.js
 REMOTION_SRC_DIR = MARKETING_DIR / "remotion" / "src"
 DAILY_CONTENT_DIR = MARKETING_DIR / "daily_content"
 LONGFORM_GATE_PATH = ROOT / "marketing_agent" / "youtube_longform_quality_gate.mjs"
+CODEX_APPROVAL_PATH = ROOT / "marketing_agent" / "codex_video_approval.py"
 
 
 def read_json(path: Path, fallback):
@@ -153,6 +154,7 @@ def build_report() -> dict:
     has_audio_loudness_qc = any(REMOTION_SCRIPTS_DIR.glob("*loudness*.mjs")) or any(REMOTION_SCRIPTS_DIR.glob("*peak*.mjs"))
     has_caption_alignment_gate = any(REMOTION_SCRIPTS_DIR.glob("*caption*.mjs")) or any(REMOTION_SCRIPTS_DIR.glob("*transcript*.mjs"))
     has_longform_expert_gate = LONGFORM_GATE_PATH.exists()
+    has_codex_approval_gate = CODEX_APPROVAL_PATH.exists()
     longform_gate_reports = sorted(DAILY_CONTENT_DIR.glob("*/youtube_viral_quality_report.json"))
 
     queue_counts = {}
@@ -192,6 +194,7 @@ def build_report() -> dict:
             "hasAudioLoudnessQc": has_audio_loudness_qc,
             "hasCaptionAlignmentGate": has_caption_alignment_gate,
             "hasLongFormExpertGate": has_longform_expert_gate,
+            "hasCodexApprovalGate": has_codex_approval_gate,
             "longFormGateReports": [str(path.relative_to(ROOT)) for path in longform_gate_reports],
             "channelManifests": [str(path.relative_to(ROOT)) for path in channel_manifests],
             "needsFullRenderReview": any(entry.get("reviewStatus") == "needs_render_and_review" for entry in calendar),
@@ -214,6 +217,7 @@ def build_report() -> dict:
             "hasAudioLoudnessQc": has_audio_loudness_qc,
             "hasCaptionAlignmentGate": has_caption_alignment_gate,
             "hasLongFormExpertGate": has_longform_expert_gate,
+            "hasCodexApprovalGate": has_codex_approval_gate,
             "missing": [
                 item
                 for item, ok in [
@@ -227,6 +231,7 @@ def build_report() -> dict:
                     ("audio loudness/peak QC", has_audio_loudness_qc),
                     ("caption/transcript alignment gate", has_caption_alignment_gate),
                     ("long-form expert viral gate", has_longform_expert_gate),
+                    ("Codex approval gate", has_codex_approval_gate),
                     ("source-backed trend intake", has_source_backed_trend_intake),
                     ("automated live trend API connector", False),
                 ]
@@ -267,6 +272,7 @@ def write_markdown(report: dict, path: Path) -> None:
         f"- Audio loudness QC available: {readiness['hasAudioLoudnessQc']}",
         f"- Caption alignment gate available: {readiness['hasCaptionAlignmentGate']}",
         f"- Long-form expert gate available: {readiness['hasLongFormExpertGate']}",
+        f"- Codex approval gate available: {readiness['hasCodexApprovalGate']}",
         "",
         "Missing:",
     ])
@@ -288,6 +294,7 @@ def write_markdown(report: dict, path: Path) -> None:
         f"- Audio loudness QC: {creative['hasAudioLoudnessQc']}",
         f"- Caption alignment gate: {creative['hasCaptionAlignmentGate']}",
         f"- Long-form expert gate: {creative['hasLongFormExpertGate']}",
+        f"- Codex approval gate: {creative['hasCodexApprovalGate']}",
         f"- Needs full render review: {creative['needsFullRenderReview']}",
     ])
     lines.extend(["", "## Daily Packets", ""])

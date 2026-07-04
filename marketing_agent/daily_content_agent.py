@@ -1,4 +1,5 @@
 import argparse
+import base64
 import json
 import os
 import re
@@ -288,12 +289,114 @@ def read_json(path: Path, fallback):
         return fallback
 
 
-def generate_elevenlabs_voiceover(text: str, dest_name: str) -> str | None:
+def normalize_alignment_to_captions(alignment: dict) -> list[dict]:
+    characters = alignment.get("characters") or []
+    starts = alignment.get("character_start_times_seconds") or []
+    ends = alignment.get("character_end_times_seconds") or []
+    captions = []
+    word = ""
+    word_start = None
+    word_end = None
+
+    for index, character in enumerate(characters):
+        char = str(character)
+        start = float(starts[index]) if index < len(starts) and starts[index] is not None else None
+        end = float(ends[index]) if index < len(ends) and ends[index] is not None else start
+        if char.isspace():
+            if word:
+                captions.append({
+                    "text": word,
+                    "startMs": int((word_start or 0) * 1000),
+                    "endMs": int((word_end or word_start or 0) * 1000),
+                    "timestampMs": int((word_start or 0) * 1000),
+                    "confidence": None,
+                })
+            word = ""
+            word_start = None
+            word_end = None
+            continue
+
+        if word_start is None:
+            word_start = start if start is not None else 0
+        word += char
+        word_end = end if end is not None else word_start
+
+    if word:
+        captions.append({
+            "text": word,
+            "startMs": int((word_start or 0) * 1000),
+            "endMs": int((word_end or word_start or 0) * 1000),
+            "timestampMs": int((word_start or 0) * 1000),
+            "confidence": None,
+        })
+
+    return captions
+
+
+def write_alignment_metadata(dest_name: str, payload: dict) -> dict:
+    alignment = payload.get("normalized_alignment") or payload.get("alignment") or {}
+    captions = normalize_alignment_to_captions(alignment if isinstance(alignment, dict) else {})
+    meta_name = dest_name.rsplit(".", 1)[0] + ".alignment.json"
+    meta_path = REMOTION_AUDIO_DIR / meta_name
+    metadata = {
+        "provider": "elevenlabs",
+        "withTimestamps": True,
+        "captions": captions,
+        "alignment": alignment,
+    }
+    meta_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+    return {
+        "alignmentRef": f"audio/{meta_name}",
+        "captions": captions,
+        "withTimestamps": True,
+    }
+
+
+def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
     config = load_elevenlabs_config()
     if not config["apiKey"]:
-        return None
+        return {"src": None, "provider": "none", "captions": []}
 
     dest_path = REMOTION_AUDIO_DIR / dest_name
+    payload = {
+        "text": text,
+        "model_id": config["modelId"],
+        "voice_settings": {
+            "stability": 0.48,
+            "similarity_boost": 0.82,
+            "style": 0.28,
+            "use_speaker_boost": True,
+        },
+    }
+
+    if os.getenv("ELEVENLABS_WITH_TIMESTAMPS", "true").lower() != "false":
+        try:
+            response = requests.post(
+                f"https://api.elevenlabs.io/v1/text-to-speech/{config['voiceId']}/with-timestamps",
+                headers={
+                    "xi-api-key": config["apiKey"],
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                json=payload,
+                timeout=90,
+            )
+            response.raise_for_status()
+            data = response.json()
+            audio_b64 = data.get("audio_base64")
+            if not audio_b64:
+                raise RuntimeError("ElevenLabs timestamp response did not include audio_base64")
+            dest_path.write_bytes(base64.b64decode(audio_b64))
+            if dest_path.stat().st_size < 1024:
+                raise RuntimeError(f"ElevenLabs voiceover is too small: {dest_path}")
+            return {
+                "src": f"audio/{dest_name}",
+                "provider": "elevenlabs",
+                **write_alignment_metadata(dest_name, data),
+            }
+        except Exception as error:
+            print(f"[!] ElevenLabs timestamp voiceover unavailable, falling back to plain TTS: {error}")
+
     response = requests.post(
         f"https://api.elevenlabs.io/v1/text-to-speech/{config['voiceId']}",
         headers={
@@ -301,29 +404,20 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> str | None:
             "Content-Type": "application/json",
             "Accept": "audio/mpeg",
         },
-        json={
-            "text": text,
-            "model_id": config["modelId"],
-            "voice_settings": {
-                "stability": 0.48,
-                "similarity_boost": 0.82,
-                "style": 0.28,
-                "use_speaker_boost": True,
-            },
-        },
+        json=payload,
         timeout=90,
     )
     response.raise_for_status()
     dest_path.write_bytes(response.content)
     if dest_path.stat().st_size < 1024:
         raise RuntimeError(f"ElevenLabs voiceover is too small: {dest_path}")
-    return f"audio/{dest_name}"
+    return {"src": f"audio/{dest_name}", "provider": "elevenlabs", "withTimestamps": False, "captions": []}
 
 
-def generate_openai_voiceover(text: str, dest_name: str) -> str | None:
+def generate_openai_voiceover(text: str, dest_name: str) -> dict:
     config = load_openai_tts_config()
     if not config["apiKey"]:
-        return None
+        return {"src": None, "provider": "none", "captions": []}
 
     dest_path = REMOTION_AUDIO_DIR / dest_name
     response = requests.post(
@@ -345,18 +439,18 @@ def generate_openai_voiceover(text: str, dest_name: str) -> str | None:
     dest_path.write_bytes(response.content)
     if dest_path.stat().st_size < 1024:
         raise RuntimeError(f"OpenAI voiceover is too small: {dest_path}")
-    return f"audio/{dest_name}"
+    return {"src": f"audio/{dest_name}", "provider": "openai", "withTimestamps": False, "captions": []}
 
 
-def generate_voiceover(text: str, dest_name: str) -> tuple[str | None, str]:
+def generate_voiceover(text: str, dest_name: str) -> dict:
     if has_elevenlabs_config():
         try:
-            return generate_elevenlabs_voiceover(text, dest_name), "elevenlabs"
+            return generate_elevenlabs_voiceover(text, dest_name)
         except requests.HTTPError as error:
             print(f"[!] ElevenLabs voiceover unavailable, falling back when possible: {error}")
     if load_openai_tts_config()["apiKey"]:
-        return generate_openai_voiceover(text, dest_name), "openai"
-    return None, "none"
+        return generate_openai_voiceover(text, dest_name)
+    return {"src": None, "provider": "none", "withTimestamps": False, "captions": []}
 
 
 def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, prepare_audio: bool, force_audio: bool) -> dict:
@@ -386,18 +480,46 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
     voice_name = f"daily-{short_slug}-voiceover.mp3"
     voice_ref = f"audio/{voice_name}"
     provider = "cached"
+    voice_result = {"src": voice_ref, "provider": provider, "withTimestamps": False, "captions": []}
     if force_audio or not public_asset_exists(voice_ref):
-        generated_ref, provider = generate_voiceover(voiceover_text, voice_name)
-        voice_ref = generated_ref or voice_ref
+        voice_result = generate_voiceover(voiceover_text, voice_name)
+        provider = voice_result.get("provider", "unknown")
+        voice_ref = voice_result.get("src") or voice_ref
+    else:
+        alignment_ref = f"audio/{voice_name.rsplit('.', 1)[0]}.alignment.json"
+        alignment_path = REMOTION_AUDIO_DIR / Path(alignment_ref).name
+        if alignment_path.exists():
+            alignment = read_json(alignment_path, {})
+            voice_result = {
+                "src": voice_ref,
+                "provider": provider,
+                "withTimestamps": bool(alignment.get("withTimestamps")),
+                "captions": alignment.get("captions", []),
+                "alignmentRef": alignment_ref,
+            }
 
     if public_asset_exists(voice_ref):
         crime_scene_props["voiceoverSrc"] = voice_ref
         crime_scene_props["voiceoverVolume"] = 0.94
+        if voice_result.get("captions"):
+            crime_scene_props["captions"] = voice_result["captions"]
+            crime_scene_props["captionReadiness"] = {
+                "wordLevel": True,
+                "provider": voice_result.get("provider", provider),
+                "alignmentRef": voice_result.get("alignmentRef"),
+            }
+        else:
+            crime_scene_props["captionReadiness"] = {
+                "wordLevel": False,
+                "provider": provider,
+                "reason": "Scene captions are present; word-level TTS alignment was unavailable or cached without metadata.",
+            }
         crime_scene_props["audioReadiness"] = {
             "studioVoiceover": True,
             "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
             "provider": provider,
             "reason": f"ready via {provider}",
+            "wordLevelCaptions": bool(voice_result.get("captions")),
         }
     return crime_scene_props
 
@@ -1051,16 +1173,23 @@ def write_episode_thumbnail_and_manifest(packet: dict, packet_dir: Path, prepare
                 voice_name = f"daily-{date_slug}-{topic_slug[:34]}-episode-{idx}-voiceover.mp3"
                 voice_ref = f"audio/{voice_name}"
                 provider = "cached"
+                voice_result = {"src": voice_ref, "provider": provider, "captions": []}
                 if force_audio or not public_asset_exists(voice_ref):
-                    generated_ref, provider = generate_voiceover(narration[:2800], voice_name)
-                    voice_ref = generated_ref or voice_ref
+                    voice_result = generate_voiceover(narration[:2800], voice_name)
+                    provider = voice_result.get("provider", "unknown")
+                    voice_ref = voice_result.get("src") or voice_ref
                 if public_asset_exists(voice_ref):
-                    voiceover_segments.append({
+                    segment = {
                         "src": voice_ref,
                         "fromFrame": intro_frames + (idx - 1) * section_frames,
                         "volume": 0.94,
                         "provider": provider,
-                    })
+                    }
+                    if voice_result.get("alignmentRef"):
+                        segment["alignmentRef"] = voice_result["alignmentRef"]
+                    if voice_result.get("captions"):
+                        segment["captions"] = voice_result["captions"]
+                    voiceover_segments.append(segment)
             if voiceover_segments:
                 episode_props["voiceoverSegments"] = voiceover_segments
                 episode_props["audioReadiness"] = {
@@ -1068,6 +1197,7 @@ def write_episode_thumbnail_and_manifest(packet: dict, packet_dir: Path, prepare
                     "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
                     "provider": voiceover_segments[0].get("provider", "unknown"),
                     "reason": f"{len(voiceover_segments)} episode sections ready",
+                    "wordLevelCaptions": any(segment.get("captions") for segment in voiceover_segments),
                 }
         else:
             episode_props["audioReadiness"]["reason"] = "No TTS provider is configured"

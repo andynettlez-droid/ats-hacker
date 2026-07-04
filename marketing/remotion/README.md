@@ -95,6 +95,8 @@ npm run voiceover:episode
 
 Short-form voiceover is handled by the daily content agent and stored in `public/audio/`. Use studio narration plus the quiet music bed. Avoid harsh whooshes, cartoon impacts, or repetitive SFX.
 
+When ElevenLabs is configured, the daily content agent now tries the `/with-timestamps` endpoint first and stores character-derived word captions in `public/audio/*.alignment.json`. `ResumeCrimeScene` can render those word-level captions when present. Cached or fallback voiceovers still use the scene captions built into the template.
+
 ## Review Gate
 
 Before promoting or posting:
@@ -106,6 +108,39 @@ Before promoting or posting:
 - Confirm the CTA leads with the free Signal score.
 - Confirm claims avoid guarantees, fake experience, "beat the ATS," and unsupported auto-reject language.
 - Confirm voiceover is clean and music stays quiet under narration.
+
+## Codex Approval Workflow
+
+Use Codex approval instead of Telegram. From the repo root:
+
+```bat
+py -3 marketing_agent\codex_video_approval.py prepare-review --limit 1
+```
+
+This command renders the latest daily short if needed, promotes the exact MP4 to `marketing/autopost/videos/`, runs studio metadata QC, audio QC, and visual safe-area QC against that one draft, copies the exact file to `marketing/codex_reviews/`, and writes a local SQLite state row in `marketing/video_pipeline_state.sqlite`.
+
+The command prints:
+
+- review video path;
+- optional mobile URL;
+- serve command;
+- title, caption, platforms, and UTM landing URL;
+- QA summary;
+- approval phrase.
+
+For mobile review from the repo root:
+
+```bat
+py -3 -m http.server 8765 --directory marketing/codex_reviews
+```
+
+Only approve after reviewing the exact video:
+
+```bat
+py -3 marketing_agent\codex_video_approval.py approve RUN_ID --reviewer codex-chat
+```
+
+The approval command writes `codexApproval` to the matching `marketing/autopost/posts.json` entry with the exact reviewed file hash. Live posting is blocked unless that hash matches.
 
 ## Promote To Posting Queue
 
@@ -144,7 +179,10 @@ Dry-run posting from `marketing/autopost`:
 npm run dry
 ```
 
-Live posting remains blocked for `draft` and `review_required` entries unless the poster is run with `--approved`.
+Live posting remains blocked for `draft` and `review_required` entries unless both are true:
+
+- `codexApproval.approved=true` exists and its hash matches the exact MP4;
+- the poster is run with `--approved`.
 
 ## Files To Know
 
@@ -155,6 +193,8 @@ Live posting remains blocked for `draft` and `review_required` entries unless th
 - `marketing/remotion/public/audio/`: voiceover and music assets.
 - `marketing/remotion/out/`: rendered outputs, git-ignored.
 - `marketing/autopost/videos/`: publishable videos, git-ignored.
+- `marketing/codex_reviews/`: local review exports, git-ignored.
+- `marketing/video_pipeline_state.sqlite`: local state machine DB, git-ignored.
 - `marketing/remotion/out/daily-studio-shorts-qc.json`: latest studio short QC report, git-ignored.
 - `marketing/remotion/out/daily-audio-assets-qc.json`: latest audio asset QC report, git-ignored.
 
@@ -164,6 +204,6 @@ The pipeline can make strong supervised shorts now. It is not fully autonomous s
 
 - Automated semantic overlap checks beyond the current rendered safe-area margin scan.
 - Automated audio loudness/peak checks.
-- Word-level transcript caption alignment.
+- Word-level transcript caption alignment is implemented only for fresh ElevenLabs timestamped voiceovers; cached and fallback voiceovers still use scene captions.
 - Automatic platform metrics ingestion.
 - A live trend API connector feeding the daily content agent.

@@ -27,7 +27,8 @@ const UNSAFE_PATTERNS = [
   [/\bbeat(?:ing)?\s+(?:the\s+)?(?:bots?|ats)\b/i, "Avoid adversarial beat-the-ATS framing."],
   [/\bguarantee[ds]?\b|\bwill\s+land\b|\bland\s+your\s+dream\b/i, "Avoid outcome guarantees."],
   [/\b100%\s+(?:ats\s+)?compatible\b/i, "Avoid absolute compatibility claims."],
-  [/\b(fake|invent(?:ed)?|made up)\s+(?:experience|job|skill|credential)/i, "Avoid fake-experience language."],
+  [/\b(?:add|adds|adding|claim|claims|claiming|create|creates|creating)\s+fake\s+(?:experience|job|skill|credential)/i, "Avoid fake-experience language."],
+  [/\b(?:invent(?:ed|ing)?|made up)\s+(?:experience|job|skill|credential)/i, "Avoid fake-experience language."],
 ];
 
 const EXPECTED = {
@@ -267,7 +268,9 @@ const main = async () => {
   const options = parseArgs();
   const drafts = readJson(options.drafts);
   const posts = readJson(postsPath);
-  const studioDrafts = drafts.filter((draft) => String(draft.file || "").endsWith("-studio.mp4"));
+  const studioDrafts = drafts.filter(
+    (draft) => draft.composition === "ResumeCrimeScene" || String(draft.file || "").endsWith("-studio.mp4"),
+  );
 
   const report = {
     generatedAt: new Date().toISOString(),

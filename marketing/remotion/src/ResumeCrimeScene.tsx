@@ -55,6 +55,25 @@ export const resumeCrimeSceneSchema = z.object({
   musicVolume: z.number().min(0).max(1).optional(),
   voiceoverSrc: z.string().optional(),
   voiceoverVolume: z.number().min(0).max(1).optional(),
+  captions: z
+    .array(
+      z.object({
+        text: z.string(),
+        startMs: z.number(),
+        endMs: z.number(),
+        timestampMs: z.number().nullable().optional(),
+        confidence: z.number().nullable().optional(),
+      }),
+    )
+    .optional(),
+  captionReadiness: z
+    .object({
+      wordLevel: z.boolean().optional(),
+      provider: z.string().optional(),
+      alignmentRef: z.string().optional(),
+      reason: z.string().optional(),
+    })
+    .optional(),
   sfxSrc: z.string().optional(),
   sfxVolume: z.number().min(0).max(1).optional(),
   avatarVideoUrl: z.string().optional(),
@@ -614,6 +633,62 @@ const LowerPunchline: React.FC<{ text: string; tone?: "red" | "green" | "yellow"
   );
 };
 
+type WordCaption = NonNullable<ResumeCrimeSceneProps["captions"]>[number];
+
+const WordCaptionLayer: React.FC<{ captions?: WordCaption[] }> = ({ captions = [] }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  if (!captions.length) return null;
+
+  const nowMs = (frame / fps) * 1000;
+  const activeIndex = captions.findIndex((caption) => nowMs >= caption.startMs - 80 && nowMs <= caption.endMs + 160);
+  if (activeIndex < 0) return null;
+  const page = captions.slice(Math.max(0, activeIndex - 2), activeIndex + 5);
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 80,
+        right: 80,
+        bottom: 132,
+        minHeight: 104,
+        zIndex: 160,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        gap: "0 14px",
+        padding: "18px 30px",
+        borderRadius: 24,
+        background: "rgba(2,6,23,0.78)",
+        border: "2px solid rgba(56,213,255,0.28)",
+        boxShadow: "0 18px 46px rgba(0,0,0,0.48), inset 0 0 26px rgba(56,213,255,0.06)",
+      }}
+    >
+      {page.map((caption, index) => {
+        const active = nowMs >= caption.startMs && nowMs <= caption.endMs + 80;
+        return (
+          <span
+            key={`${caption.startMs}-${caption.text}-${index}`}
+            style={{
+              color: active ? CYAN : "#ffffff",
+              fontSize: active ? 43 : 37,
+              lineHeight: 1.12,
+              fontWeight: active ? 980 : 860,
+              textTransform: "uppercase",
+              textShadow: active ? "0 0 18px rgba(56,213,255,0.8), 0 4px 12px rgba(0,0,0,0.8)" : "0 4px 12px rgba(0,0,0,0.8)",
+              transform: active ? "translateY(-2px)" : "translateY(0)",
+            }}
+          >
+            {caption.text}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
 export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   hook,
   subhook,
@@ -645,6 +720,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
   musicVolume = 0.16,
   voiceoverSrc,
   voiceoverVolume = 0.94,
+  captions,
   sfxSrc,
   sfxVolume = 0.06,
   avatarVideoUrl,
@@ -889,6 +965,7 @@ export const ResumeCrimeScene: React.FC<ResumeCrimeSceneProps> = ({
           }}
         />
       </div>
+      <WordCaptionLayer captions={captions} />
     </AbsoluteFill>
   );
 };

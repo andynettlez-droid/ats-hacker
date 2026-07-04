@@ -32,7 +32,21 @@ Queue entries can use:
 - `"status": "review_required"`
 - `"status": "draft"`
 
-Those entries are visible in dry runs, but live posting is blocked unless `--approved` is passed. This keeps the pipeline fast without accidentally posting an unreviewed creative.
+Those entries are visible in dry runs, but live posting is blocked unless the exact file has a Codex approval hash and `--approved` is passed. This keeps the pipeline fast without accidentally posting an unreviewed creative.
+
+Prepare a video for Codex review from the repo root:
+
+```bat
+py -3 marketing_agent\codex_video_approval.py prepare-review --limit 1
+```
+
+After reviewing the exported file in Codex, approve that exact run:
+
+```bat
+py -3 marketing_agent\codex_video_approval.py approve RUN_ID --reviewer codex-chat
+```
+
+The approval command writes `codexApproval.fileSha256` to the matching `posts.json` entry. `post.mjs --approved` verifies that hash against the current file before uploading.
 
 Entries with `"status": "posted"` are skipped by default. Use `--include-posted` only for an intentional repost.
 
@@ -55,6 +69,7 @@ The poster blocks live upload for long-form entries until render QA passes and t
 - `platforms`: any connected target platforms, normally `tiktok`, `instagram`, and `youtube`.
 - `scheduleDate`: `null` to post now, or a UTC time like `"2026-06-26T15:00:00Z"`.
 - `status`: optional workflow state. Use `review_required` until approval, then `posted` after the API confirms publication.
+- `codexApproval`: exact-file approval written by `marketing_agent/codex_video_approval.py approve`.
 
 ## Operating Notes
 

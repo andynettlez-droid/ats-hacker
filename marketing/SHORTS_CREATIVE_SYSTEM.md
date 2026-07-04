@@ -23,6 +23,7 @@ Each day should produce three distinct short concepts:
 - Avoid using the same palette in two consecutive shorts when possible.
 - Avoid overlapping full resume boards during scene transitions.
 - Keep bottom-third reaction bubbles clear of the CTA and score badge.
+- Run visual safe-area QC after rendering stills so edge-clipped labels and CTA collisions fail before posting.
 - Music stays quiet; no harsh repetitive sound effects.
 
 ## Narration Rules
@@ -51,5 +52,6 @@ Rendered review pilot:
 - Current refreshed packet scores 94/100 and all three short concepts pass the creator gate.
 - Short/audio generation supports ElevenLabs first, then OpenAI TTS fallback.
 - Audio QC supports provider-specific TTS sample rates and checks final rendered audio.
+- Visual QC renders representative short frames and scans safe margins for clipped high-attention UI.
 - Remotion typecheck passes after mascot/personality changes.
 - New pilots should remain review-only until viewed end to end for pacing, humor, text safe areas, and Signal personality.

@@ -21,6 +21,7 @@
     "render:daily:shorts:studio": "npm run render:daily:short1:studio && npm run render:daily:short2:studio && npm run render:daily:short3:studio",
     "qc:daily:shorts": "node scripts/qc_daily_studio_shorts.mjs",
     "qc:daily:audio": "node scripts/qc_daily_audio_assets.mjs",
+    "qc:daily:visual": "node scripts/qc_daily_visual_safe_area.mjs",
     "voiceover:episode": "node scripts/generate_episode_voiceover.mjs",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"

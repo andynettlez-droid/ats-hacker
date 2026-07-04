@@ -122,16 +122,20 @@ After promotion, run the studio QC gate:
 ```bat
 npm run qc:daily:shorts
 npm run qc:daily:audio
+npm run qc:daily:visual -- --render
 ```
 
 The gate verifies the rendered and promoted files both exist, the autopost entries are still `review_required`, the videos are 1080x1920 MP4/H.264/AAC at 30fps, audio tracks exist, linked props and audio assets exist, the score moves upward, the CTA points to the free Signal score, and unsafe claim patterns are absent.
 
 The audio gate verifies linked voiceover/music/SFX assets, codec metadata, duration, sample rate, channels, bitrate, and restrained mix volume settings. It does not measure LUFS or true peak yet.
 
+The visual safe-area gate renders short stills at representative frames and scans the outer margins for bright or saturated UI pixels. This catches clipped captions, labels, badges, and CTAs before posting.
+
 For a new daily packet, pass the packet-specific drafts and manifest to audio QC:
 
 ```bat
 npm run qc:daily:audio -- --drafts ..\daily_content\YYYY-MM-DD-topic\autopost_drafts.json --manifest ..\daily_content\YYYY-MM-DD-topic\channel_manifest.json
+npm run qc:daily:visual -- --drafts ..\daily_content\YYYY-MM-DD-topic\autopost_drafts.json --render
 ```
 
 Dry-run posting from `marketing/autopost`:
@@ -158,7 +162,7 @@ Live posting remains blocked for `draft` and `review_required` entries unless th
 
 The pipeline can make strong supervised shorts now. It is not fully autonomous studio QA yet because it still needs:
 
-- Automated frame-level overlap/safe-area checks beyond metadata/queue QC.
+- Automated semantic overlap checks beyond the current rendered safe-area margin scan.
 - Automated audio loudness/peak checks.
 - Word-level transcript caption alignment.
 - Automatic platform metrics ingestion.

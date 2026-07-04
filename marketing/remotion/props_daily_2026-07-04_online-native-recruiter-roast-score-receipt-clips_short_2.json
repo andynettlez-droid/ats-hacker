@@ -1,0 +1,659 @@
+{
+  "hook": "I hit Ctrl+F. Bad news.",
+  "subhook": "The resume made the recruiter do detective work.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "terminal",
+  "formatArchetype": "recruiterSearch",
+  "pace": "fast",
+  "seriesLabel": "Recruiter Search Test",
+  "signalLines": {
+    "hook": "Ctrl+F said nope.",
+    "problem": "Detective work is not a strategy.",
+    "teardown": "Give the search a real term.",
+    "fix": "Now proof is findable.",
+    "cta": "Search-test your resume."
+  },
+  "resumeName": "Jordan Lee",
+  "resumeTitle": "Data Analyst Resume",
+  "resumeMeta": [
+    "3 yrs analytics",
+    "SQL + dashboards",
+    "Customer churn reporting"
+  ],
+  "jobTitle": "Product Data Analyst",
+  "jobKeywords": [
+    "SQL",
+    "Tableau",
+    "cohort analysis",
+    "churn dashboard",
+    "stakeholder insights"
+  ],
+  "weakBullets": [
+    "Created reports for business teams and leadership.",
+    "Worked with data to help teams understand customer trends.",
+    "Helped maintain dashboards for weekly performance meetings."
+  ],
+  "beforeBullet": "Created reports for business teams and leadership.",
+  "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+  "resumeDocument": {
+    "name": "Jordan Lee",
+    "headline": "Data Analyst",
+    "contact": [
+      "Austin, TX",
+      "jordan.lee@example.com",
+      "linkedin.com/in/jordan-lee"
+    ],
+    "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+    "experience": [
+      {
+        "company": "Northstar Analytics",
+        "role": "Data Analyst",
+        "dates": "2023 - Present",
+        "bullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings.",
+          "Cleaned product usage exports and sent weekly insights to customer success."
+        ]
+      },
+      {
+        "company": "CedarCloud Software",
+        "role": "Junior Operations Analyst",
+        "dates": "2021 - 2023",
+        "bullets": [
+          "Updated Excel trackers for sales, onboarding, and support activity.",
+          "Partnered with product managers to validate monthly account health data.",
+          "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+        ]
+      }
+    ],
+    "skills": [
+      "SQL",
+      "Tableau",
+      "Excel",
+      "Customer churn",
+      "Cohort analysis",
+      "Data cleaning",
+      "Stakeholder reporting"
+    ],
+    "education": "B.S. Business Analytics, University of Texas at Austin"
+  },
+  "jobDescription": {
+    "title": "Product Data Analyst",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use SQL and Tableau to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to cohort analysis.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "SQL",
+      "Tableau",
+      "cohort analysis",
+      "churn dashboard",
+      "stakeholder insights"
+    ],
+    "searchQueries": [
+      "SQL",
+      "Tableau",
+      "cohort analysis",
+      "churn dashboard"
+    ]
+  },
+  "beforeScore": 32,
+  "afterScore": 89,
+  "scoreBasis": [
+    {
+      "label": "Search terms",
+      "before": "reports",
+      "after": "SQL + Tableau"
+    },
+    {
+      "label": "Metric proof",
+      "before": "missing",
+      "after": "6 hrs saved"
+    },
+    {
+      "label": "Business result",
+      "before": "vague",
+      "after": "18 risks found"
+    }
+  ],
+  "markedLabel": "Resume oatmeal",
+  "problemPunchline": "A recruiter cannot search for the thought you meant.",
+  "teardownPunchline": "This is where vague language quietly loses.",
+  "fixPunchline": "Now the search term has proof behind it.",
+  "teardownIssues": [
+    "No SQL signal",
+    "No dashboard tool",
+    "No business result"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "voiceName": "configured voice",
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-recruiter-ctrl-f-found-absolutely-nothing-2-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "Recruiter",
+      "startMs": 58,
+      "endMs": 546,
+      "timestampMs": 58,
+      "confidence": null
+    },
+    {
+      "text": "Ctrl",
+      "startMs": 615,
+      "endMs": 917,
+      "timestampMs": 615,
+      "confidence": null
+    },
+    {
+      "text": "F",
+      "startMs": 987,
+      "endMs": 1138,
+      "timestampMs": 987,
+      "confidence": null
+    },
+    {
+      "text": "test.",
+      "startMs": 1196,
+      "endMs": 1741,
+      "timestampMs": 1196,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 2067,
+      "endMs": 2125,
+      "timestampMs": 2067,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 2241,
+      "endMs": 2554,
+      "timestampMs": 2241,
+      "confidence": null
+    },
+    {
+      "text": "SQL:",
+      "startMs": 2624,
+      "endMs": 3425,
+      "timestampMs": 2624,
+      "confidence": null
+    },
+    {
+      "text": "nothing.",
+      "startMs": 3599,
+      "endMs": 4156,
+      "timestampMs": 3599,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 4853,
+      "endMs": 4911,
+      "timestampMs": 4853,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 5027,
+      "endMs": 5317,
+      "timestampMs": 5027,
+      "confidence": null
+    },
+    {
+      "text": "Tableau:",
+      "startMs": 5375,
+      "endMs": 5991,
+      "timestampMs": 5375,
+      "confidence": null
+    },
+    {
+      "text": "still",
+      "startMs": 6142,
+      "endMs": 6409,
+      "timestampMs": 6142,
+      "confidence": null
+    },
+    {
+      "text": "dusty.",
+      "startMs": 6478,
+      "endMs": 7105,
+      "timestampMs": 6478,
+      "confidence": null
+    },
+    {
+      "text": "Then",
+      "startMs": 7314,
+      "endMs": 7488,
+      "timestampMs": 7314,
+      "confidence": null
+    },
+    {
+      "text": "this",
+      "startMs": 7535,
+      "endMs": 7663,
+      "timestampMs": 7535,
+      "confidence": null
+    },
+    {
+      "text": "bullet",
+      "startMs": 7709,
+      "endMs": 7976,
+      "timestampMs": 7709,
+      "confidence": null
+    },
+    {
+      "text": "shows",
+      "startMs": 8022,
+      "endMs": 8266,
+      "timestampMs": 8022,
+      "confidence": null
+    },
+    {
+      "text": "up:",
+      "startMs": 8324,
+      "endMs": 8661,
+      "timestampMs": 8324,
+      "confidence": null
+    },
+    {
+      "text": "Created",
+      "startMs": 8835,
+      "endMs": 9265,
+      "timestampMs": 8835,
+      "confidence": null
+    },
+    {
+      "text": "reports",
+      "startMs": 9323,
+      "endMs": 9752,
+      "timestampMs": 9323,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 9787,
+      "endMs": 9892,
+      "timestampMs": 9787,
+      "confidence": null
+    },
+    {
+      "text": "business",
+      "startMs": 9938,
+      "endMs": 10286,
+      "timestampMs": 9938,
+      "confidence": null
+    },
+    {
+      "text": "teams",
+      "startMs": 10333,
+      "endMs": 10658,
+      "timestampMs": 10333,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 10704,
+      "endMs": 10786,
+      "timestampMs": 10704,
+      "confidence": null
+    },
+    {
+      "text": "leadership.",
+      "startMs": 10855,
+      "endMs": 11540,
+      "timestampMs": 10855,
+      "confidence": null
+    },
+    {
+      "text": "Beige",
+      "startMs": 11923,
+      "endMs": 12272,
+      "timestampMs": 11923,
+      "confidence": null
+    },
+    {
+      "text": "wall",
+      "startMs": 12330,
+      "endMs": 12574,
+      "timestampMs": 12330,
+      "confidence": null
+    },
+    {
+      "text": "with",
+      "startMs": 12632,
+      "endMs": 12759,
+      "timestampMs": 12632,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 12794,
+      "endMs": 12817,
+      "timestampMs": 12794,
+      "confidence": null
+    },
+    {
+      "text": "name",
+      "startMs": 12875,
+      "endMs": 13084,
+      "timestampMs": 12875,
+      "confidence": null
+    },
+    {
+      "text": "tag.",
+      "startMs": 13119,
+      "endMs": 13549,
+      "timestampMs": 13119,
+      "confidence": null
+    },
+    {
+      "text": "Score",
+      "startMs": 13827,
+      "endMs": 14176,
+      "timestampMs": 13827,
+      "confidence": null
+    },
+    {
+      "text": "starts",
+      "startMs": 14211,
+      "endMs": 14524,
+      "timestampMs": 14211,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 14559,
+      "endMs": 14629,
+      "timestampMs": 14559,
+      "confidence": null
+    },
+    {
+      "text": "32:",
+      "startMs": 14687,
+      "endMs": 15523,
+      "timestampMs": 14687,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 15732,
+      "endMs": 15882,
+      "timestampMs": 15732,
+      "confidence": null
+    },
+    {
+      "text": "tool,",
+      "startMs": 15952,
+      "endMs": 16335,
+      "timestampMs": 15952,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 16451,
+      "endMs": 16579,
+      "timestampMs": 16451,
+      "confidence": null
+    },
+    {
+      "text": "number,",
+      "startMs": 16649,
+      "endMs": 17125,
+      "timestampMs": 16649,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 17241,
+      "endMs": 17357,
+      "timestampMs": 17241,
+      "confidence": null
+    },
+    {
+      "text": "result.",
+      "startMs": 17427,
+      "endMs": 18019,
+      "timestampMs": 17427,
+      "confidence": null
+    },
+    {
+      "text": "Rewrite:",
+      "startMs": 18460,
+      "endMs": 19052,
+      "timestampMs": 18460,
+      "confidence": null
+    },
+    {
+      "text": "built",
+      "startMs": 19168,
+      "endMs": 19424,
+      "timestampMs": 19168,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 19470,
+      "endMs": 19493,
+      "timestampMs": 19470,
+      "confidence": null
+    },
+    {
+      "text": "SQL",
+      "startMs": 19575,
+      "endMs": 20085,
+      "timestampMs": 19575,
+      "confidence": null
+    },
+    {
+      "text": "churn",
+      "startMs": 20155,
+      "endMs": 20445,
+      "timestampMs": 20155,
+      "confidence": null
+    },
+    {
+      "text": "dashboard",
+      "startMs": 20503,
+      "endMs": 21130,
+      "timestampMs": 20503,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 21304,
+      "endMs": 21490,
+      "timestampMs": 21304,
+      "confidence": null
+    },
+    {
+      "text": "saved",
+      "startMs": 21548,
+      "endMs": 21850,
+      "timestampMs": 21548,
+      "confidence": null
+    },
+    {
+      "text": "six",
+      "startMs": 21897,
+      "endMs": 22106,
+      "timestampMs": 21897,
+      "confidence": null
+    },
+    {
+      "text": "hours",
+      "startMs": 22152,
+      "endMs": 22396,
+      "timestampMs": 22152,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 22442,
+      "endMs": 22477,
+      "timestampMs": 22442,
+      "confidence": null
+    },
+    {
+      "text": "week",
+      "startMs": 22523,
+      "endMs": 22756,
+      "timestampMs": 22523,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 22814,
+      "endMs": 22941,
+      "timestampMs": 22814,
+      "confidence": null
+    },
+    {
+      "text": "flagged",
+      "startMs": 22999,
+      "endMs": 23301,
+      "timestampMs": 22999,
+      "confidence": null
+    },
+    {
+      "text": "18",
+      "startMs": 23359,
+      "endMs": 23766,
+      "timestampMs": 23359,
+      "confidence": null
+    },
+    {
+      "text": "at-risk",
+      "startMs": 23847,
+      "endMs": 24265,
+      "timestampMs": 23847,
+      "confidence": null
+    },
+    {
+      "text": "accounts.",
+      "startMs": 24300,
+      "endMs": 24962,
+      "timestampMs": 24300,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 25565,
+      "endMs": 25751,
+      "timestampMs": 25565,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 25832,
+      "endMs": 26181,
+      "timestampMs": 25832,
+      "confidence": null
+    },
+    {
+      "text": "finds",
+      "startMs": 26250,
+      "endMs": 26564,
+      "timestampMs": 26250,
+      "confidence": null
+    },
+    {
+      "text": "proof:",
+      "startMs": 26622,
+      "endMs": 27133,
+      "timestampMs": 26622,
+      "confidence": null
+    },
+    {
+      "text": "89.",
+      "startMs": 27458,
+      "endMs": 28189,
+      "timestampMs": 27458,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 28398,
+      "endMs": 28607,
+      "timestampMs": 28398,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 28654,
+      "endMs": 28723,
+      "timestampMs": 28654,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 28770,
+      "endMs": 28979,
+      "timestampMs": 28770,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 29013,
+      "endMs": 29315,
+      "timestampMs": 29013,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 29373,
+      "endMs": 29722,
+      "timestampMs": 29373,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 29768,
+      "endMs": 30070,
+      "timestampMs": 29768,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 30105,
+      "endMs": 30186,
+      "timestampMs": 30105,
+      "confidence": null
+    },
+    {
+      "text": "send",
+      "startMs": 30244,
+      "endMs": 30441,
+      "timestampMs": 30244,
+      "confidence": null
+    },
+    {
+      "text": "yours.",
+      "startMs": 30500,
+      "endMs": 30987,
+      "timestampMs": 30500,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 31.4,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-04-recruiter-ctrl-f-found-absolutely-nothing-2-voiceover.alignment.json"
+  }
+}

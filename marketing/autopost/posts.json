@@ -984,7 +984,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_1.json",
         "audioReadiness": {
@@ -1000,8 +1000,8 @@
             "runId": "5d54c3d83a7b6221",
             "state": "REVISION_REQUESTED",
             "reviewer": "codex-chat",
-            "note": "Superseded by corrected caption metadata review package.",
-            "updatedAt": "2026-07-04T22:32:38.770756+00:00"
+            "note": "Superseded by online-native script pass with data analyst receipts.",
+            "updatedAt": "2026-07-04T23:10:11.586391+00:00"
         }
     },
     {
@@ -1014,7 +1014,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_2.json",
         "audioReadiness": {
@@ -1030,8 +1030,8 @@
             "runId": "32234e8005070a01",
             "state": "REVISION_REQUESTED",
             "reviewer": "codex-chat",
-            "note": "Superseded by corrected caption metadata review package.",
-            "updatedAt": "2026-07-04T22:32:38.803213+00:00"
+            "note": "Superseded by online-native script pass with data analyst receipts.",
+            "updatedAt": "2026-07-04T23:10:11.631879+00:00"
         }
     },
     {
@@ -1066,7 +1066,7 @@
     },
     {
         "title": "This resume failed an open-book test",
-        "caption": "This resume failed an open-book test. Answer-key miss: React, TypeScript, Next.js. Rewrite puts stack, metric, and outcome on screen: 41->90. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "caption": "This resume failed an open-book test. Score receipt first, score jump second. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
         "file": "videos/daily-this-resume-failed-an-open-book-test.mp4",
         "platforms": [
             "tiktok",
@@ -1076,7 +1076,7 @@
         "status": "review_required",
         "reviewStatus": "review_required",
         "composition": "ResumeCrimeScene",
-        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_viral-recruiter-teardown-score-receipt-clips_short_3.json",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_3.json",
         "audioReadiness": {
             "studioVoiceover": true,
             "quietMusic": true,
@@ -1090,8 +1090,54 @@
             "runId": "26205df308a7c5d2",
             "state": "REVISION_REQUESTED",
             "reviewer": "codex-chat",
-            "note": "Superseded by corrected caption metadata review package.",
-            "updatedAt": "2026-07-04T22:32:38.877735+00:00"
+            "note": "Superseded by online-native script pass with data analyst receipts.",
+            "updatedAt": "2026-07-04T23:10:11.613655+00:00"
+        }
+    },
+    {
+        "title": "This data bullet has NPC energy",
+        "caption": "This data bullet has NPC energy. Score receipt: SQL, Tableau, cohort analysis. Rewrite adds the missing tool, metric, and outcome: 32->89. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-this-data-bullet-has-npc-energy.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_1.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+            "voiceName": "configured voice",
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        }
+    },
+    {
+        "title": "Recruiter Ctrl+F found absolutely nothing",
+        "caption": "Recruiter Ctrl+F found absolutely nothing. I hit Ctrl+F. Bad news. Search miss: SQL, Tableau, cohort analysis. Rewrite adds visible proof, so the score can move: 32->89. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-recruiter-ctrl-f-found-absolutely-nothing.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeCrimeScene",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_2.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+            "voiceName": "configured voice",
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
         }
     }
 ]

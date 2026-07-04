@@ -1,0 +1,638 @@
+{
+  "hook": "This bullet has NPC energy.",
+  "subhook": "It says work happened. It does not say why anyone should care.",
+  "creativeFormat": "aiResumeRoast",
+  "visualStyle": "comic",
+  "formatArchetype": "redTeamAudit",
+  "pace": "fast",
+  "seriesLabel": "Resume Crime Scene",
+  "signalLines": {
+    "hook": "NPC bullet.",
+    "problem": "No proof, no party.",
+    "teardown": "Roast the bullet, rescue the person.",
+    "fix": "Now it has a receipt.",
+    "cta": "Test yours before sending."
+  },
+  "resumeName": "Jordan Lee",
+  "resumeTitle": "Data Analyst Resume",
+  "resumeMeta": [
+    "3 yrs analytics",
+    "SQL + dashboards",
+    "Customer churn reporting"
+  ],
+  "jobTitle": "Product Data Analyst",
+  "jobKeywords": [
+    "SQL",
+    "Tableau",
+    "cohort analysis",
+    "churn dashboard",
+    "stakeholder insights"
+  ],
+  "weakBullets": [
+    "Created reports for business teams and leadership.",
+    "Worked with data to help teams understand customer trends.",
+    "Helped maintain dashboards for weekly performance meetings."
+  ],
+  "beforeBullet": "Created reports for business teams and leadership.",
+  "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+  "resumeDocument": {
+    "name": "Jordan Lee",
+    "headline": "Data Analyst",
+    "contact": [
+      "Austin, TX",
+      "jordan.lee@example.com",
+      "linkedin.com/in/jordan-lee"
+    ],
+    "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+    "experience": [
+      {
+        "company": "Northstar Analytics",
+        "role": "Data Analyst",
+        "dates": "2023 - Present",
+        "bullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings.",
+          "Cleaned product usage exports and sent weekly insights to customer success."
+        ]
+      },
+      {
+        "company": "CedarCloud Software",
+        "role": "Junior Operations Analyst",
+        "dates": "2021 - 2023",
+        "bullets": [
+          "Updated Excel trackers for sales, onboarding, and support activity.",
+          "Partnered with product managers to validate monthly account health data.",
+          "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+        ]
+      }
+    ],
+    "skills": [
+      "SQL",
+      "Tableau",
+      "Excel",
+      "Customer churn",
+      "Cohort analysis",
+      "Data cleaning",
+      "Stakeholder reporting"
+    ],
+    "education": "B.S. Business Analytics, University of Texas at Austin"
+  },
+  "jobDescription": {
+    "title": "Product Data Analyst",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use SQL and Tableau to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to cohort analysis.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "SQL",
+      "Tableau",
+      "cohort analysis",
+      "churn dashboard",
+      "stakeholder insights"
+    ],
+    "searchQueries": [
+      "SQL",
+      "Tableau",
+      "cohort analysis",
+      "churn dashboard"
+    ]
+  },
+  "beforeScore": 32,
+  "afterScore": 89,
+  "scoreBasis": [
+    {
+      "label": "Search terms",
+      "before": "reports",
+      "after": "SQL + Tableau"
+    },
+    {
+      "label": "Metric proof",
+      "before": "missing",
+      "after": "6 hrs saved"
+    },
+    {
+      "label": "Business result",
+      "before": "vague",
+      "after": "18 risks found"
+    }
+  ],
+  "markedLabel": "Resume oatmeal",
+  "problemPunchline": "Activity is not proof.",
+  "teardownPunchline": "Low score reason: no tool, no number, no outcome.",
+  "fixPunchline": "Specific proof beats generic polish.",
+  "teardownIssues": [
+    "No SQL signal",
+    "No dashboard tool",
+    "No business result"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "voiceName": "configured voice",
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-this-data-bullet-has-npc-energy-1-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "Pause.",
+      "startMs": 70,
+      "endMs": 592,
+      "timestampMs": 70,
+      "confidence": null
+    },
+    {
+      "text": "This",
+      "startMs": 766,
+      "endMs": 964,
+      "timestampMs": 766,
+      "confidence": null
+    },
+    {
+      "text": "bullet",
+      "startMs": 1033,
+      "endMs": 1300,
+      "timestampMs": 1033,
+      "confidence": null
+    },
+    {
+      "text": "says:",
+      "startMs": 1347,
+      "endMs": 1753,
+      "timestampMs": 1347,
+      "confidence": null
+    },
+    {
+      "text": "Created",
+      "startMs": 1881,
+      "endMs": 2310,
+      "timestampMs": 1881,
+      "confidence": null
+    },
+    {
+      "text": "reports",
+      "startMs": 2380,
+      "endMs": 2775,
+      "timestampMs": 2380,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 2798,
+      "endMs": 2902,
+      "timestampMs": 2798,
+      "confidence": null
+    },
+    {
+      "text": "business",
+      "startMs": 2961,
+      "endMs": 3309,
+      "timestampMs": 2961,
+      "confidence": null
+    },
+    {
+      "text": "teams",
+      "startMs": 3344,
+      "endMs": 3657,
+      "timestampMs": 3344,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 3715,
+      "endMs": 3843,
+      "timestampMs": 3715,
+      "confidence": null
+    },
+    {
+      "text": "leadership.",
+      "startMs": 3924,
+      "endMs": 4551,
+      "timestampMs": 3924,
+      "confidence": null
+    },
+    {
+      "text": "That",
+      "startMs": 4830,
+      "endMs": 5097,
+      "timestampMs": 4830,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 5166,
+      "endMs": 5259,
+      "timestampMs": 5166,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 5341,
+      "endMs": 5770,
+      "timestampMs": 5341,
+      "confidence": null
+    },
+    {
+      "text": "oatmeal.",
+      "startMs": 5828,
+      "endMs": 6444,
+      "timestampMs": 5828,
+      "confidence": null
+    },
+    {
+      "text": "The",
+      "startMs": 6687,
+      "endMs": 6792,
+      "timestampMs": 6687,
+      "confidence": null
+    },
+    {
+      "text": "role",
+      "startMs": 6861,
+      "endMs": 7094,
+      "timestampMs": 6861,
+      "confidence": null
+    },
+    {
+      "text": "needs",
+      "startMs": 7129,
+      "endMs": 7419,
+      "timestampMs": 7129,
+      "confidence": null
+    },
+    {
+      "text": "SQL,",
+      "startMs": 7512,
+      "endMs": 8185,
+      "timestampMs": 7512,
+      "confidence": null
+    },
+    {
+      "text": "Tableau,",
+      "startMs": 8255,
+      "endMs": 8754,
+      "timestampMs": 8255,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 8777,
+      "endMs": 8893,
+      "timestampMs": 8777,
+      "confidence": null
+    },
+    {
+      "text": "cohort",
+      "startMs": 8975,
+      "endMs": 9358,
+      "timestampMs": 8975,
+      "confidence": null
+    },
+    {
+      "text": "analysis.",
+      "startMs": 9404,
+      "endMs": 10159,
+      "timestampMs": 9404,
+      "confidence": null
+    },
+    {
+      "text": "Score",
+      "startMs": 10600,
+      "endMs": 10971,
+      "timestampMs": 10600,
+      "confidence": null
+    },
+    {
+      "text": "starts",
+      "startMs": 11006,
+      "endMs": 11297,
+      "timestampMs": 11006,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 11331,
+      "endMs": 11401,
+      "timestampMs": 11331,
+      "confidence": null
+    },
+    {
+      "text": "32:",
+      "startMs": 11447,
+      "endMs": 12214,
+      "timestampMs": 11447,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 12388,
+      "endMs": 12539,
+      "timestampMs": 12388,
+      "confidence": null
+    },
+    {
+      "text": "tool,",
+      "startMs": 12620,
+      "endMs": 12980,
+      "timestampMs": 12620,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 13061,
+      "endMs": 13177,
+      "timestampMs": 13061,
+      "confidence": null
+    },
+    {
+      "text": "metric,",
+      "startMs": 13247,
+      "endMs": 13769,
+      "timestampMs": 13247,
+      "confidence": null
+    },
+    {
+      "text": "zero",
+      "startMs": 13886,
+      "endMs": 14222,
+      "timestampMs": 13886,
+      "confidence": null
+    },
+    {
+      "text": "proof.",
+      "startMs": 14292,
+      "endMs": 14814,
+      "timestampMs": 14292,
+      "confidence": null
+    },
+    {
+      "text": "Rewrite",
+      "startMs": 15256,
+      "endMs": 15673,
+      "timestampMs": 15256,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 15708,
+      "endMs": 15778,
+      "timestampMs": 15708,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 15859,
+      "endMs": 16079,
+      "timestampMs": 15859,
+      "confidence": null
+    },
+    {
+      "text": "work:",
+      "startMs": 16149,
+      "endMs": 16603,
+      "timestampMs": 16149,
+      "confidence": null
+    },
+    {
+      "text": "built",
+      "startMs": 16777,
+      "endMs": 17044,
+      "timestampMs": 16777,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 17079,
+      "endMs": 17102,
+      "timestampMs": 17079,
+      "confidence": null
+    },
+    {
+      "text": "SQL",
+      "startMs": 17183,
+      "endMs": 17566,
+      "timestampMs": 17183,
+      "confidence": null
+    },
+    {
+      "text": "churn",
+      "startMs": 17648,
+      "endMs": 17926,
+      "timestampMs": 17648,
+      "confidence": null
+    },
+    {
+      "text": "dashboard",
+      "startMs": 17973,
+      "endMs": 18449,
+      "timestampMs": 17973,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 18484,
+      "endMs": 18611,
+      "timestampMs": 18484,
+      "confidence": null
+    },
+    {
+      "text": "saved",
+      "startMs": 18669,
+      "endMs": 18971,
+      "timestampMs": 18669,
+      "confidence": null
+    },
+    {
+      "text": "six",
+      "startMs": 19018,
+      "endMs": 19227,
+      "timestampMs": 19018,
+      "confidence": null
+    },
+    {
+      "text": "hours",
+      "startMs": 19285,
+      "endMs": 19528,
+      "timestampMs": 19285,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 19563,
+      "endMs": 19598,
+      "timestampMs": 19563,
+      "confidence": null
+    },
+    {
+      "text": "week",
+      "startMs": 19656,
+      "endMs": 19888,
+      "timestampMs": 19656,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 19981,
+      "endMs": 20155,
+      "timestampMs": 19981,
+      "confidence": null
+    },
+    {
+      "text": "flagged",
+      "startMs": 20213,
+      "endMs": 20515,
+      "timestampMs": 20213,
+      "confidence": null
+    },
+    {
+      "text": "18",
+      "startMs": 20562,
+      "endMs": 20956,
+      "timestampMs": 20562,
+      "confidence": null
+    },
+    {
+      "text": "at-risk",
+      "startMs": 21038,
+      "endMs": 21491,
+      "timestampMs": 21038,
+      "confidence": null
+    },
+    {
+      "text": "accounts.",
+      "startMs": 21537,
+      "endMs": 22141,
+      "timestampMs": 21537,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 22582,
+      "endMs": 22779,
+      "timestampMs": 22582,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 22837,
+      "endMs": 22907,
+      "timestampMs": 22837,
+      "confidence": null
+    },
+    {
+      "text": "receipt",
+      "startMs": 22977,
+      "endMs": 23325,
+      "timestampMs": 22977,
+      "confidence": null
+    },
+    {
+      "text": "has",
+      "startMs": 23383,
+      "endMs": 23534,
+      "timestampMs": 23383,
+      "confidence": null
+    },
+    {
+      "text": "tool,",
+      "startMs": 23604,
+      "endMs": 24068,
+      "timestampMs": 23604,
+      "confidence": null
+    },
+    {
+      "text": "metric,",
+      "startMs": 24184,
+      "endMs": 24695,
+      "timestampMs": 24184,
+      "confidence": null
+    },
+    {
+      "text": "outcome:",
+      "startMs": 24730,
+      "endMs": 25345,
+      "timestampMs": 24730,
+      "confidence": null
+    },
+    {
+      "text": "89.",
+      "startMs": 25519,
+      "endMs": 26285,
+      "timestampMs": 25519,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 26889,
+      "endMs": 27098,
+      "timestampMs": 26889,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 27145,
+      "endMs": 27214,
+      "timestampMs": 27145,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 27272,
+      "endMs": 27481,
+      "timestampMs": 27272,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 27516,
+      "endMs": 27830,
+      "timestampMs": 27516,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 27888,
+      "endMs": 28178,
+      "timestampMs": 27888,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 28213,
+      "endMs": 28480,
+      "timestampMs": 28213,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 28515,
+      "endMs": 28596,
+      "timestampMs": 28515,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 28654,
+      "endMs": 29269,
+      "timestampMs": 28654,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 30.469,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-04-this-data-bullet-has-npc-energy-1-voiceover.alignment.json"
+  }
+}

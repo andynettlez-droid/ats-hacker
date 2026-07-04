@@ -1,0 +1,666 @@
+{
+  "hook": "The answers were literally on the page.",
+  "subhook": "The resume still turned in a shrug.",
+  "creativeFormat": "oneBulletFix",
+  "visualStyle": "highlighter",
+  "formatArchetype": "splitTranslation",
+  "pace": "fast",
+  "seriesLabel": "Job Description Translation",
+  "signalLines": {
+    "hook": "Open-book test.",
+    "problem": "Business casual shrug.",
+    "teardown": "Translate. Do not exaggerate.",
+    "fix": "Now the answer key matches.",
+    "cta": "Paste the job first."
+  },
+  "resumeName": "Jordan Lee",
+  "resumeTitle": "Data Analyst Resume",
+  "resumeMeta": [
+    "3 yrs analytics",
+    "SQL + dashboards",
+    "Customer churn reporting"
+  ],
+  "jobTitle": "Product Data Analyst",
+  "jobKeywords": [
+    "SQL",
+    "Tableau",
+    "cohort analysis",
+    "churn dashboard",
+    "stakeholder insights"
+  ],
+  "weakBullets": [
+    "Created reports for business teams and leadership.",
+    "Worked with data to help teams understand customer trends.",
+    "Helped maintain dashboards for weekly performance meetings."
+  ],
+  "beforeBullet": "Created reports for business teams and leadership.",
+  "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+  "resumeDocument": {
+    "name": "Jordan Lee",
+    "headline": "Data Analyst",
+    "contact": [
+      "Austin, TX",
+      "jordan.lee@example.com",
+      "linkedin.com/in/jordan-lee"
+    ],
+    "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+    "experience": [
+      {
+        "company": "Northstar Analytics",
+        "role": "Data Analyst",
+        "dates": "2023 - Present",
+        "bullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings.",
+          "Cleaned product usage exports and sent weekly insights to customer success."
+        ]
+      },
+      {
+        "company": "CedarCloud Software",
+        "role": "Junior Operations Analyst",
+        "dates": "2021 - 2023",
+        "bullets": [
+          "Updated Excel trackers for sales, onboarding, and support activity.",
+          "Partnered with product managers to validate monthly account health data.",
+          "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+        ]
+      }
+    ],
+    "skills": [
+      "SQL",
+      "Tableau",
+      "Excel",
+      "Customer churn",
+      "Cohort analysis",
+      "Data cleaning",
+      "Stakeholder reporting"
+    ],
+    "education": "B.S. Business Analytics, University of Texas at Austin"
+  },
+  "jobDescription": {
+    "title": "Product Data Analyst",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use SQL and Tableau to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to cohort analysis.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "SQL",
+      "Tableau",
+      "cohort analysis",
+      "churn dashboard",
+      "stakeholder insights"
+    ],
+    "searchQueries": [
+      "SQL",
+      "Tableau",
+      "cohort analysis",
+      "churn dashboard"
+    ]
+  },
+  "beforeScore": 32,
+  "afterScore": 89,
+  "scoreBasis": [
+    {
+      "label": "Search terms",
+      "before": "reports",
+      "after": "SQL + Tableau"
+    },
+    {
+      "label": "Metric proof",
+      "before": "missing",
+      "after": "6 hrs saved"
+    },
+    {
+      "label": "Business result",
+      "before": "vague",
+      "after": "18 risks found"
+    }
+  ],
+  "markedLabel": "Resume oatmeal",
+  "problemPunchline": "The posting handed over the vocabulary.",
+  "teardownPunchline": "Low score reason: broad work, missing stack, no result.",
+  "fixPunchline": "Relevant proof first.",
+  "teardownIssues": [
+    "No SQL signal",
+    "No dashboard tool",
+    "No business result"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "voiceName": "configured voice",
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-this-resume-failed-an-open-book-test-3-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "The",
+      "startMs": 70,
+      "endMs": 163,
+      "timestampMs": 70,
+      "confidence": null
+    },
+    {
+      "text": "job",
+      "startMs": 232,
+      "endMs": 430,
+      "timestampMs": 232,
+      "confidence": null
+    },
+    {
+      "text": "post",
+      "startMs": 488,
+      "endMs": 801,
+      "timestampMs": 488,
+      "confidence": null
+    },
+    {
+      "text": "gave",
+      "startMs": 917,
+      "endMs": 1149,
+      "timestampMs": 917,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 1184,
+      "endMs": 1254,
+      "timestampMs": 1184,
+      "confidence": null
+    },
+    {
+      "text": "answer",
+      "startMs": 1300,
+      "endMs": 1567,
+      "timestampMs": 1300,
+      "confidence": null
+    },
+    {
+      "text": "key:",
+      "startMs": 1614,
+      "endMs": 2078,
+      "timestampMs": 1614,
+      "confidence": null
+    },
+    {
+      "text": "SQL,",
+      "startMs": 2682,
+      "endMs": 3460,
+      "timestampMs": 2682,
+      "confidence": null
+    },
+    {
+      "text": "Tableau,",
+      "startMs": 3529,
+      "endMs": 4238,
+      "timestampMs": 3529,
+      "confidence": null
+    },
+    {
+      "text": "cohort",
+      "startMs": 4389,
+      "endMs": 4830,
+      "timestampMs": 4389,
+      "confidence": null
+    },
+    {
+      "text": "analysis.",
+      "startMs": 4876,
+      "endMs": 5654,
+      "timestampMs": 4876,
+      "confidence": null
+    },
+    {
+      "text": "Your",
+      "startMs": 6037,
+      "endMs": 6235,
+      "timestampMs": 6037,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 6281,
+      "endMs": 6676,
+      "timestampMs": 6281,
+      "confidence": null
+    },
+    {
+      "text": "answered:",
+      "startMs": 6722,
+      "endMs": 7291,
+      "timestampMs": 6722,
+      "confidence": null
+    },
+    {
+      "text": "Created",
+      "startMs": 7465,
+      "endMs": 7930,
+      "timestampMs": 7465,
+      "confidence": null
+    },
+    {
+      "text": "reports",
+      "startMs": 7999,
+      "endMs": 8406,
+      "timestampMs": 7999,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 8440,
+      "endMs": 8545,
+      "timestampMs": 8440,
+      "confidence": null
+    },
+    {
+      "text": "business",
+      "startMs": 8603,
+      "endMs": 8951,
+      "timestampMs": 8603,
+      "confidence": null
+    },
+    {
+      "text": "teams",
+      "startMs": 8998,
+      "endMs": 9323,
+      "timestampMs": 8998,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 9369,
+      "endMs": 9485,
+      "timestampMs": 9369,
+      "confidence": null
+    },
+    {
+      "text": "leadership.",
+      "startMs": 9555,
+      "endMs": 10240,
+      "timestampMs": 9555,
+      "confidence": null
+    },
+    {
+      "text": "That",
+      "startMs": 10623,
+      "endMs": 10820,
+      "timestampMs": 10623,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 10867,
+      "endMs": 10948,
+      "timestampMs": 10867,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 11006,
+      "endMs": 11041,
+      "timestampMs": 11006,
+      "confidence": null
+    },
+    {
+      "text": "shrug",
+      "startMs": 11099,
+      "endMs": 11401,
+      "timestampMs": 11099,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 11471,
+      "endMs": 11564,
+      "timestampMs": 11471,
+      "confidence": null
+    },
+    {
+      "text": "business",
+      "startMs": 11633,
+      "endMs": 11981,
+      "timestampMs": 11633,
+      "confidence": null
+    },
+    {
+      "text": "casual.",
+      "startMs": 12028,
+      "endMs": 12597,
+      "timestampMs": 12028,
+      "confidence": null
+    },
+    {
+      "text": "Score",
+      "startMs": 13108,
+      "endMs": 13479,
+      "timestampMs": 13108,
+      "confidence": null
+    },
+    {
+      "text": "starts",
+      "startMs": 13514,
+      "endMs": 13839,
+      "timestampMs": 13514,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 13874,
+      "endMs": 13955,
+      "timestampMs": 13874,
+      "confidence": null
+    },
+    {
+      "text": "32:",
+      "startMs": 14013,
+      "endMs": 14721,
+      "timestampMs": 14013,
+      "confidence": null
+    },
+    {
+      "text": "missing",
+      "startMs": 14896,
+      "endMs": 15232,
+      "timestampMs": 14896,
+      "confidence": null
+    },
+    {
+      "text": "language,",
+      "startMs": 15290,
+      "endMs": 15917,
+      "timestampMs": 15290,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 16033,
+      "endMs": 16172,
+      "timestampMs": 16033,
+      "confidence": null
+    },
+    {
+      "text": "metric,",
+      "startMs": 16242,
+      "endMs": 16742,
+      "timestampMs": 16242,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 16858,
+      "endMs": 16997,
+      "timestampMs": 16858,
+      "confidence": null
+    },
+    {
+      "text": "outcome.",
+      "startMs": 17090,
+      "endMs": 17694,
+      "timestampMs": 17090,
+      "confidence": null
+    },
+    {
+      "text": "Rewrite",
+      "startMs": 18135,
+      "endMs": 18611,
+      "timestampMs": 18135,
+      "confidence": null
+    },
+    {
+      "text": "with",
+      "startMs": 18646,
+      "endMs": 18785,
+      "timestampMs": 18646,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 18855,
+      "endMs": 19075,
+      "timestampMs": 18855,
+      "confidence": null
+    },
+    {
+      "text": "proof:",
+      "startMs": 19145,
+      "endMs": 19632,
+      "timestampMs": 19145,
+      "confidence": null
+    },
+    {
+      "text": "built",
+      "startMs": 20074,
+      "endMs": 20317,
+      "timestampMs": 20074,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 20364,
+      "endMs": 20399,
+      "timestampMs": 20364,
+      "confidence": null
+    },
+    {
+      "text": "SQL",
+      "startMs": 20468,
+      "endMs": 20898,
+      "timestampMs": 20468,
+      "confidence": null
+    },
+    {
+      "text": "churn",
+      "startMs": 20979,
+      "endMs": 21246,
+      "timestampMs": 20979,
+      "confidence": null
+    },
+    {
+      "text": "dashboard",
+      "startMs": 21316,
+      "endMs": 21896,
+      "timestampMs": 21316,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 22047,
+      "endMs": 22233,
+      "timestampMs": 22047,
+      "confidence": null
+    },
+    {
+      "text": "saved",
+      "startMs": 22280,
+      "endMs": 22570,
+      "timestampMs": 22280,
+      "confidence": null
+    },
+    {
+      "text": "six",
+      "startMs": 22628,
+      "endMs": 22848,
+      "timestampMs": 22628,
+      "confidence": null
+    },
+    {
+      "text": "hours",
+      "startMs": 22918,
+      "endMs": 23127,
+      "timestampMs": 22918,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 23162,
+      "endMs": 23197,
+      "timestampMs": 23162,
+      "confidence": null
+    },
+    {
+      "text": "week",
+      "startMs": 23243,
+      "endMs": 23499,
+      "timestampMs": 23243,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 23650,
+      "endMs": 23824,
+      "timestampMs": 23650,
+      "confidence": null
+    },
+    {
+      "text": "flagged",
+      "startMs": 23882,
+      "endMs": 24218,
+      "timestampMs": 23882,
+      "confidence": null
+    },
+    {
+      "text": "18",
+      "startMs": 24276,
+      "endMs": 24729,
+      "timestampMs": 24276,
+      "confidence": null
+    },
+    {
+      "text": "at-risk",
+      "startMs": 24799,
+      "endMs": 25252,
+      "timestampMs": 24799,
+      "confidence": null
+    },
+    {
+      "text": "accounts.",
+      "startMs": 25287,
+      "endMs": 25902,
+      "timestampMs": 25287,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 26343,
+      "endMs": 26529,
+      "timestampMs": 26343,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 26598,
+      "endMs": 26668,
+      "timestampMs": 26598,
+      "confidence": null
+    },
+    {
+      "text": "matches",
+      "startMs": 26715,
+      "endMs": 27040,
+      "timestampMs": 26715,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 27086,
+      "endMs": 27167,
+      "timestampMs": 27086,
+      "confidence": null
+    },
+    {
+      "text": "answer",
+      "startMs": 27225,
+      "endMs": 27504,
+      "timestampMs": 27225,
+      "confidence": null
+    },
+    {
+      "text": "key:",
+      "startMs": 27550,
+      "endMs": 27980,
+      "timestampMs": 27550,
+      "confidence": null
+    },
+    {
+      "text": "89.",
+      "startMs": 28305,
+      "endMs": 29037,
+      "timestampMs": 28305,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 29246,
+      "endMs": 29455,
+      "timestampMs": 29246,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 29501,
+      "endMs": 29571,
+      "timestampMs": 29501,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 29617,
+      "endMs": 29814,
+      "timestampMs": 29617,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 29861,
+      "endMs": 30174,
+      "timestampMs": 29861,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 30232,
+      "endMs": 30534,
+      "timestampMs": 30232,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 30581,
+      "endMs": 30871,
+      "timestampMs": 30581,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 30906,
+      "endMs": 30987,
+      "timestampMs": 30906,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 31045,
+      "endMs": 31660,
+      "timestampMs": 31045,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 31.4,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-04-this-resume-failed-an-open-book-test-3-voiceover.alignment.json"
+  }
+}

@@ -1,0 +1,608 @@
+{
+  "publishDate": "2026-07-04",
+  "topic": "Online-native recruiter roast score receipt clips",
+  "series": "Daily Research Packet",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "sourceNotes": [
+    {
+      "title": "YouTube Partner Program eligibility",
+      "url": "https://support.google.com/youtube/answer/72851",
+      "note": "Use YouTube as a monetization target, but optimize first for site conversions."
+    },
+    {
+      "title": "Pew Research Center Social Media Fact Sheet",
+      "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/",
+      "note": "YouTube, Instagram, and TikTok are large discovery channels for job-search education."
+    }
+  ],
+  "youtube": {
+    "script": "Welcome to Signal by ATSHacker! Today, we dive into the world of resumes and job descriptions that confuse and frustrate job hunters. Picture this: a job seeker, armed with a strong skill set, submits a resume full of vague phrases that just get auto-rejected. Let\u2019s roast some of these epic fails! Our Signal mascot is here to guide us as we navigate the 'resume crime scenes.' A perfect example is the phrase 'responsible for'\u2014seriously, what does that even mean? (cut to a funny clip of someone dramatically gesturing like a job responsibilities sign waver). Before we get into the depths of despair\u2014make sure you grab your free Signal score to see if your resume is riddled with mistakes. Let\u2019s dive in! Segment 1: Resume Crime Scene (show funny candidates\u2019 resumes on screen). Segment 2: The Recruiter Roast! Tough love time, consultants! Each bullet point gets the roast it deserves! (quick jokes about unrealistic expectations). Segment 3: Rescue the Resume! We\u2019ll fix these cringe-worthy lines for better impact. By the end, you\u2019ll know how to create a killer resume that wins over recruiters. Always remember, humor is just a step away from clarity! Stick around for our short clips too, you won\u2019t want to miss them!",
+    "title": "Online-native recruiter roast score receipt clips | Resume Teardown",
+    "seoTitle": "Online-native recruiter roast score receipt clips | Resume Teardown | Signal by ATSHacker",
+    "description": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "cta": "Paste the job description and check your free Signal score before you apply.",
+    "chapters": [
+      "0:00 Cold open",
+      "0:20 The open loop",
+      "0:55 Translate the job description",
+      "1:40 Recruiter search test",
+      "2:25 Resume crime scene",
+      "3:15 Why it gets missed",
+      "4:05 Live bullet fix",
+      "5:00 Score reveal",
+      "5:35 Trust check and CTA"
+    ],
+    "scriptSections": [
+      {
+        "label": "Cold open",
+        "script": "Online-native recruiter roast score receipt clips This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
+        "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+      },
+      {
+        "label": "Open loop",
+        "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+        "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff."
+      },
+      {
+        "label": "Translate the job description",
+        "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+        "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+      },
+      {
+        "label": "Recruiter search test",
+        "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+        "visual": "Search console typing the first three job-description terms and showing weak matches."
+      },
+      {
+        "label": "Resume crime scene",
+        "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
+        "visual": "Red/yellow markups over weak bullets."
+      },
+      {
+        "label": "Why it gets missed",
+        "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+        "visual": "Zoom into the weak bullet and place missing proof labels beside it."
+      },
+      {
+        "label": "Live bullet fix",
+        "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. No fake claims, just usable evidence.",
+        "visual": "Before/after bullet rewrite."
+      },
+      {
+        "label": "Score reveal",
+        "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+        "visual": "Score meter jumps from low match to high match with before/after resume panels."
+      },
+      {
+        "label": "Trust and CTA",
+        "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+        "visual": "Free Signal score page, trust badges, and bundle CTA."
+      }
+    ]
+  },
+  "shorts": [
+    {
+      "series": "Resume Crime Scene",
+      "title": "This data bullet has NPC energy",
+      "hook": "This bullet has NPC energy.",
+      "script": "Pause. This bullet says: Created reports for business teams and leadership. That is resume oatmeal. The role needs SQL, Tableau, and cohort analysis. Score starts at 32: no tool, no metric, zero proof. Rewrite the real work: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts. Now the receipt has tool, metric, outcome: 89. Run the free Signal score before you apply.",
+      "storyboard": [
+        "Case: Data Analyst Resume against Product Data Analyst.",
+        "Cold open: slap an NPC ENERGY stamp on the weak bullet.",
+        "Signal side-eyes the bullet while a tiny receipt drawer opens.",
+        "Cut to role clues: SQL, Tableau, cohort analysis.",
+        "Show the low score because the bullet has activity but no proof.",
+        "Rewrite the line and fill the receipt before revealing the score.",
+        "End with a free Signal score CTA, not a hard product pitch."
+      ],
+      "props": {
+        "hook1": "This bullet has a high chance of synergy and zero proof",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 32,
+        "afterScore": 89,
+        "missing": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "Pause. This bullet says: Created reports for business teams and leadership. That is resume oatmeal. The role needs SQL, Tableau, and cohort analysis. Score starts at 32: no tool, no metric, zero proof. Rewrite the real work: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts. Now the receipt has tool, metric, outcome: 89. Run the free Signal score before you apply.",
+        "teardownCaseId": "data_analyst",
+        "playbookId": "recruiter_roast",
+        "seriesOverride": "Resume Crime Scene",
+        "creativeFormat": "aiResumeRoast",
+        "visualStyle": "comic",
+        "formatArchetype": "redTeamAudit",
+        "pace": "fast",
+        "subhook": "It says work happened. It does not say why anyone should care.",
+        "signalLines": {
+          "hook": "NPC bullet.",
+          "problem": "No proof, no party.",
+          "teardown": "Roast the bullet, rescue the person.",
+          "fix": "Now it has a receipt.",
+          "cta": "Test yours before sending."
+        },
+        "resumeName": "Jordan Lee",
+        "resumeTitle": "Data Analyst Resume",
+        "resumeMeta": [
+          "3 yrs analytics",
+          "SQL + dashboards",
+          "Customer churn reporting"
+        ],
+        "jobTitle": "Product Data Analyst",
+        "jobKeywords": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "weakBullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings."
+        ],
+        "beforeBullet": "Created reports for business teams and leadership.",
+        "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+        "scoreBasis": [
+          {
+            "label": "Search terms",
+            "before": "reports",
+            "after": "SQL + Tableau"
+          },
+          {
+            "label": "Metric proof",
+            "before": "missing",
+            "after": "6 hrs saved"
+          },
+          {
+            "label": "Business result",
+            "before": "vague",
+            "after": "18 risks found"
+          }
+        ],
+        "markedLabel": "Resume oatmeal",
+        "problemPunchline": "Activity is not proof.",
+        "teardownPunchline": "Low score reason: no tool, no number, no outcome.",
+        "fixPunchline": "Specific proof beats generic polish.",
+        "teardownIssues": [
+          "No SQL signal",
+          "No dashboard tool",
+          "No business result"
+        ],
+        "resumeDocument": {
+          "name": "Jordan Lee",
+          "headline": "Data Analyst",
+          "contact": [
+            "Austin, TX",
+            "jordan.lee@example.com",
+            "linkedin.com/in/jordan-lee"
+          ],
+          "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+          "experience": [
+            {
+              "company": "Northstar Analytics",
+              "role": "Data Analyst",
+              "dates": "2023 - Present",
+              "bullets": [
+                "Created reports for business teams and leadership.",
+                "Worked with data to help teams understand customer trends.",
+                "Helped maintain dashboards for weekly performance meetings.",
+                "Cleaned product usage exports and sent weekly insights to customer success."
+              ]
+            },
+            {
+              "company": "CedarCloud Software",
+              "role": "Junior Operations Analyst",
+              "dates": "2021 - 2023",
+              "bullets": [
+                "Updated Excel trackers for sales, onboarding, and support activity.",
+                "Partnered with product managers to validate monthly account health data.",
+                "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+              ]
+            }
+          ],
+          "skills": [
+            "SQL",
+            "Tableau",
+            "Excel",
+            "Customer churn",
+            "Cohort analysis",
+            "Data cleaning",
+            "Stakeholder reporting"
+          ],
+          "education": "B.S. Business Analytics, University of Texas at Austin"
+        },
+        "jobDescription": {
+          "title": "Product Data Analyst",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use SQL and Tableau to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to cohort analysis.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard",
+            "stakeholder insights"
+          ],
+          "searchQueries": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard"
+          ]
+        }
+      }
+    },
+    {
+      "series": "Recruiter Search Test",
+      "title": "Recruiter Ctrl+F found absolutely nothing",
+      "hook": "I hit Ctrl+F. Bad news.",
+      "script": "Recruiter Ctrl F test. I search SQL: nothing. I search Tableau: still dusty. Then this bullet shows up: Created reports for business teams and leadership. Beige wall with a name tag. Score starts at 32: no tool, no number, no result. Rewrite: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts. Now search finds proof: 89. Run the free Signal score before you send yours.",
+      "storyboard": [
+        "Case: Data Analyst Resume against Product Data Analyst.",
+        "Open with a giant Ctrl+F search for SQL; show zero hits immediately.",
+        "Rapid-cut Tableau and show the second miss as a dry search console.",
+        "Reveal the resume bullet as the reason the search failed.",
+        "Stamp BEIGE WALL on the weak line and show the score receipt.",
+        "Rewrite the bullet and rerun the search with a clear match.",
+        "Close with the score jump and free score CTA."
+      ],
+      "props": {
+        "hook1": "If I search SQL, does your resume even show up?",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 32,
+        "afterScore": 89,
+        "missing": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "Recruiter Ctrl F test. I search SQL: nothing. I search Tableau: still dusty. Then this bullet shows up: Created reports for business teams and leadership. Beige wall with a name tag. Score starts at 32: no tool, no number, no result. Rewrite: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts. Now search finds proof: 89. Run the free Signal score before you send yours.",
+        "teardownCaseId": "data_analyst",
+        "playbookId": "search_console",
+        "seriesOverride": "Recruiter Search Test",
+        "creativeFormat": "jobSearchTest",
+        "visualStyle": "terminal",
+        "formatArchetype": "recruiterSearch",
+        "pace": "fast",
+        "subhook": "The resume made the recruiter do detective work.",
+        "signalLines": {
+          "hook": "Ctrl+F said nope.",
+          "problem": "Detective work is not a strategy.",
+          "teardown": "Give the search a real term.",
+          "fix": "Now proof is findable.",
+          "cta": "Search-test your resume."
+        },
+        "resumeName": "Jordan Lee",
+        "resumeTitle": "Data Analyst Resume",
+        "resumeMeta": [
+          "3 yrs analytics",
+          "SQL + dashboards",
+          "Customer churn reporting"
+        ],
+        "jobTitle": "Product Data Analyst",
+        "jobKeywords": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "weakBullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings."
+        ],
+        "beforeBullet": "Created reports for business teams and leadership.",
+        "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+        "scoreBasis": [
+          {
+            "label": "Search terms",
+            "before": "reports",
+            "after": "SQL + Tableau"
+          },
+          {
+            "label": "Metric proof",
+            "before": "missing",
+            "after": "6 hrs saved"
+          },
+          {
+            "label": "Business result",
+            "before": "vague",
+            "after": "18 risks found"
+          }
+        ],
+        "markedLabel": "Resume oatmeal",
+        "problemPunchline": "A recruiter cannot search for the thought you meant.",
+        "teardownPunchline": "This is where vague language quietly loses.",
+        "fixPunchline": "Now the search term has proof behind it.",
+        "teardownIssues": [
+          "No SQL signal",
+          "No dashboard tool",
+          "No business result"
+        ],
+        "resumeDocument": {
+          "name": "Jordan Lee",
+          "headline": "Data Analyst",
+          "contact": [
+            "Austin, TX",
+            "jordan.lee@example.com",
+            "linkedin.com/in/jordan-lee"
+          ],
+          "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+          "experience": [
+            {
+              "company": "Northstar Analytics",
+              "role": "Data Analyst",
+              "dates": "2023 - Present",
+              "bullets": [
+                "Created reports for business teams and leadership.",
+                "Worked with data to help teams understand customer trends.",
+                "Helped maintain dashboards for weekly performance meetings.",
+                "Cleaned product usage exports and sent weekly insights to customer success."
+              ]
+            },
+            {
+              "company": "CedarCloud Software",
+              "role": "Junior Operations Analyst",
+              "dates": "2021 - 2023",
+              "bullets": [
+                "Updated Excel trackers for sales, onboarding, and support activity.",
+                "Partnered with product managers to validate monthly account health data.",
+                "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+              ]
+            }
+          ],
+          "skills": [
+            "SQL",
+            "Tableau",
+            "Excel",
+            "Customer churn",
+            "Cohort analysis",
+            "Data cleaning",
+            "Stakeholder reporting"
+          ],
+          "education": "B.S. Business Analytics, University of Texas at Austin"
+        },
+        "jobDescription": {
+          "title": "Product Data Analyst",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use SQL and Tableau to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to cohort analysis.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard",
+            "stakeholder insights"
+          ],
+          "searchQueries": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard"
+          ]
+        }
+      }
+    },
+    {
+      "series": "Job Description Translation",
+      "title": "This resume failed an open-book test",
+      "hook": "The answers were literally on the page.",
+      "script": "The job post gave the answer key: SQL, Tableau, cohort analysis. Your resume answered: Created reports for business teams and leadership. That is a shrug in business casual. Score starts at 32: missing language, no metric, no outcome. Rewrite with real proof: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts. Now it matches the answer key: 89. Run the free Signal score before you apply.",
+      "storyboard": [
+        "Case: Data Analyst Resume against Product Data Analyst.",
+        "Open on an answer-key board with SQL, Tableau, cohort analysis already highlighted.",
+        "Slide the resume beside it with a SHRUG IN BUSINESS CASUAL stamp.",
+        "Show a score receipt: missing stack, missing metric, missing result.",
+        "Signal translates hidden proof into job-description language.",
+        "Reveal the rewritten bullet, then fill the score checklist.",
+        "End with the score jump and free Signal score CTA."
+      ],
+      "props": {
+        "hook1": "This resume is invisible because the best bullet is bur",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "beforeScore": 32,
+        "afterScore": 89,
+        "missing": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "cta": "Check your free Signal score.",
+        "voiceover_text": "The job post gave the answer key: SQL, Tableau, cohort analysis. Your resume answered: Created reports for business teams and leadership. That is a shrug in business casual. Score starts at 32: missing language, no metric, no outcome. Rewrite with real proof: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts. Now it matches the answer key: 89. Run the free Signal score before you apply.",
+        "teardownCaseId": "data_analyst",
+        "playbookId": "answer_key",
+        "seriesOverride": "Job Description Translation",
+        "creativeFormat": "oneBulletFix",
+        "visualStyle": "highlighter",
+        "formatArchetype": "splitTranslation",
+        "pace": "fast",
+        "subhook": "The resume still turned in a shrug.",
+        "signalLines": {
+          "hook": "Open-book test.",
+          "problem": "Business casual shrug.",
+          "teardown": "Translate. Do not exaggerate.",
+          "fix": "Now the answer key matches.",
+          "cta": "Paste the job first."
+        },
+        "resumeName": "Jordan Lee",
+        "resumeTitle": "Data Analyst Resume",
+        "resumeMeta": [
+          "3 yrs analytics",
+          "SQL + dashboards",
+          "Customer churn reporting"
+        ],
+        "jobTitle": "Product Data Analyst",
+        "jobKeywords": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "weakBullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings."
+        ],
+        "beforeBullet": "Created reports for business teams and leadership.",
+        "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+        "scoreBasis": [
+          {
+            "label": "Search terms",
+            "before": "reports",
+            "after": "SQL + Tableau"
+          },
+          {
+            "label": "Metric proof",
+            "before": "missing",
+            "after": "6 hrs saved"
+          },
+          {
+            "label": "Business result",
+            "before": "vague",
+            "after": "18 risks found"
+          }
+        ],
+        "markedLabel": "Resume oatmeal",
+        "problemPunchline": "The posting handed over the vocabulary.",
+        "teardownPunchline": "Low score reason: broad work, missing stack, no result.",
+        "fixPunchline": "Relevant proof first.",
+        "teardownIssues": [
+          "No SQL signal",
+          "No dashboard tool",
+          "No business result"
+        ],
+        "resumeDocument": {
+          "name": "Jordan Lee",
+          "headline": "Data Analyst",
+          "contact": [
+            "Austin, TX",
+            "jordan.lee@example.com",
+            "linkedin.com/in/jordan-lee"
+          ],
+          "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+          "experience": [
+            {
+              "company": "Northstar Analytics",
+              "role": "Data Analyst",
+              "dates": "2023 - Present",
+              "bullets": [
+                "Created reports for business teams and leadership.",
+                "Worked with data to help teams understand customer trends.",
+                "Helped maintain dashboards for weekly performance meetings.",
+                "Cleaned product usage exports and sent weekly insights to customer success."
+              ]
+            },
+            {
+              "company": "CedarCloud Software",
+              "role": "Junior Operations Analyst",
+              "dates": "2021 - 2023",
+              "bullets": [
+                "Updated Excel trackers for sales, onboarding, and support activity.",
+                "Partnered with product managers to validate monthly account health data.",
+                "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+              ]
+            }
+          ],
+          "skills": [
+            "SQL",
+            "Tableau",
+            "Excel",
+            "Customer churn",
+            "Cohort analysis",
+            "Data cleaning",
+            "Stakeholder reporting"
+          ],
+          "education": "B.S. Business Analytics, University of Texas at Austin"
+        },
+        "jobDescription": {
+          "title": "Product Data Analyst",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use SQL and Tableau to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to cohort analysis.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard",
+            "stakeholder insights"
+          ],
+          "searchQueries": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard"
+          ]
+        }
+      }
+    }
+  ],
+  "monetization": {
+    "primaryGoal": "Aim to promote YouTube monetization through educational content while optimizing for lead generation to the Signal score.",
+    "cta": "Free Signal score -> $9.99 resume or $14.99 bundle.",
+    "tracking": [
+      "utm_source=youtube",
+      "utm_medium=video",
+      "utm_campaign=daily_packet"
+    ],
+    "upsell": "Make the $14.99 bundle the default value offer after score completion."
+  },
+  "viewerCustomerReview": "Engaging and funny yet educational! It turns a painful experience into insights with humor - a must-watch for any job seeker!",
+  "creativeQualityGate": {
+    "overallScore": 100,
+    "passed": false,
+    "verdict": "needs_revision_before_posting",
+    "notes": [],
+    "blockers": [
+      "Each short needs a complete conflict -> evidence -> consequence -> fix -> payoff spine."
+    ],
+    "shorts": [
+      {
+        "title": "This data bullet has NPC energy",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "Recruiter Ctrl+F found absolutely nothing",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "This resume failed an open-book test",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      }
+    ]
+  }
+}

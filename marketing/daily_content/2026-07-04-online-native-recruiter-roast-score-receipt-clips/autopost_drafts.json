@@ -1,0 +1,131 @@
+[
+  {
+    "title": "Online-native recruiter roast score receipt clips | Resume Teardown | Signal by ATSHacker",
+    "caption": "Online-native recruiter roast score receipt clips | Resume Teardown. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
+    "file": "videos/daily-online-native-recruiter-roast-score-receipt-clips-episode.mp4",
+    "platforms": [
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "contentType": "youtube_long_form",
+    "youtubeKind": "long_form",
+    "target": "daily long-form YouTube",
+    "youtubeTitle": "Online-native recruiter roast score receipt clips | Resume Teardown | Signal by ATSHacker",
+    "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "composition": "TeardownEpisode",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_episode.json",
+    "thumbnail": "marketing/remotion/out/daily-online-native-recruiter-roast-score-receipt-clips-thumbnail.png",
+    "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_thumbnail.json",
+    "renderStatus": "render_required",
+    "reviewStatus": "review_required",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "reason": "9 episode sections ready",
+      "wordLevelCaptions": true
+    },
+    "qaGate": {
+      "required": true,
+      "passed": false,
+      "status": "requires_render_review",
+      "minExpertViralScore": 94,
+      "checks": [
+        "Rendered MP4 exists in marketing/autopost/videos.",
+        "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+        "Opening hook is visible in the first 5 seconds.",
+        "Signal mascot or brand mark is visible.",
+        "No old human presenter appears unless explicitly approved.",
+        "Audio is present, balanced, and not dominated by music or effects.",
+        "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+        "Thumbnail exists or is intentionally deferred.",
+        "Human reviewer approved exact file, title, description, thumbnail, and platform target."
+      ]
+    },
+    "expertViralGate": {
+      "required": true,
+      "minScore": 94,
+      "score": null,
+      "passed": false,
+      "status": "requires_expert_viral_review"
+    },
+    "reviewChecklist": [
+      "long-form render reviewed",
+      "thumbnail reviewed",
+      "audio present and balanced",
+      "claims reviewed",
+      "exact YouTube title and description reviewed",
+      "status remains review_required until approval"
+    ]
+  },
+  {
+    "title": "This data bullet has NPC energy",
+    "caption": "This data bullet has NPC energy. Score receipt: SQL, Tableau, cohort analysis. Rewrite adds the missing tool, metric, and outcome: 32->89. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-this-data-bullet-has-npc-energy.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_1.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true
+    }
+  },
+  {
+    "title": "Recruiter Ctrl+F found absolutely nothing",
+    "caption": "Recruiter Ctrl+F found absolutely nothing. I hit Ctrl+F. Bad news. Search miss: SQL, Tableau, cohort analysis. Rewrite adds visible proof, so the score can move: 32->89. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-recruiter-ctrl-f-found-absolutely-nothing.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_2.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true
+    }
+  },
+  {
+    "title": "This resume failed an open-book test",
+    "caption": "This resume failed an open-book test. Score receipt first, score jump second. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-this-resume-failed-an-open-book-test.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_3.json",
+    "composition": "ResumeCrimeScene",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true
+    }
+  }
+]

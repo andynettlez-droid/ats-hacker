@@ -12,6 +12,9 @@ Status: active research input for short-form generation.
 ## Hook Patterns To Copy
 
 - Authority search: "I searched Salesforce. Nothing."
+- Ctrl+F conflict: "I hit Ctrl+F. Bad news."
+- Internet-native roast: "This bullet has NPC energy."
+- Relatable diagnosis: "This is resume oatmeal."
 - Mistake reveal: "This line is costing interviews."
 - Open-book test: "The job post gave you the answer key."
 - Time pressure: "You have 7 seconds. This bullet wastes 5."
@@ -50,6 +53,7 @@ Status: active research input for short-form generation.
 - Slightly amused recruiter, fast but clear.
 - Short pauses after punchlines.
 - Less corporate polish, more "I review resumes for a living."
+- Use online-native phrasing sparingly: "NPC energy", "beige wall", "business casual shrug", "detective work".
 - Avoid monotone educational reads.
 
 ## Why The Pattern Works
@@ -73,6 +77,8 @@ Status: active research input for short-form generation.
 - AI SaaS demo pacing.
 - Generic ATS fearmongering.
 - Repeating "same person, better signal."
+- HubSpot/CAC default scripts unless the actual resume is a marketing teardown.
+- Product-demo wording like "same experience, clearer proof."
 - Showing 34->92 without a visible reason.
 - One dark neon visual language across every short.
 - Long setup before the resume appears.

@@ -39,6 +39,8 @@ Each day should produce three distinct short concepts:
 - Make one useful teaching point before the CTA, but make it feel discovered through the teardown rather than explained as a tip.
 - End with the free Signal score, not an aggressive paid pitch.
 - Avoid template narration. Banned recurring reads include "JD asks for," "real, but buried," and "same person, clearer proof."
+- Also ban default HubSpot/CAC examples unless the selected case is explicitly a marketing role.
+- Prefer online-native recruiter phrasing when it fits the artifact: Ctrl+F, NPC bullet, resume oatmeal, answer key, business casual shrug.
 - The score reveal must be earned. Show the score receipt first: keyword match, tool match, metric proof, and/or outcome clarity.
 
 ## Viral Script Spine

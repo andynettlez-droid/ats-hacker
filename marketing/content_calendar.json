@@ -191,6 +191,113 @@
   },
   {
     "date": "2026-07-04",
+    "topic": "Online-native recruiter roast score receipt clips",
+    "series": "Daily Research Packet",
+    "packet": "marketing\\daily_content\\2026-07-04-online-native-recruiter-roast-score-receipt-clips",
+    "youtube": {
+      "title": "Online-native recruiter roast score receipt clips | Resume Teardown",
+      "status": "render_ready_review_required",
+      "target": "daily long-form YouTube",
+      "manifest": "marketing\\daily_content\\2026-07-04-online-native-recruiter-roast-score-receipt-clips\\channel_manifest.json",
+      "props": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_episode.json",
+      "output": "marketing/remotion/out/daily-online-native-recruiter-roast-score-receipt-clips-episode.mp4",
+      "autopostDraft": "marketing\\daily_content\\2026-07-04-online-native-recruiter-roast-score-receipt-clips\\autopost_drafts.json",
+      "qaGate": {
+        "required": true,
+        "passed": false,
+        "status": "requires_render_review"
+      }
+    },
+    "thumbnail": {
+      "composition": "SignalThumbnail",
+      "props": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_thumbnail.json",
+      "output": "marketing/remotion/out/daily-online-native-recruiter-roast-score-receipt-clips-thumbnail.png",
+      "format": "1280x720",
+      "status": "render_ready"
+    },
+    "shorts": [
+      {
+        "title": "This data bullet has NPC energy",
+        "brief": "marketing\\video_briefs\\2026-07-04-online-native-recruiter-roast-score-receipt-clips-short-1.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_1.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      },
+      {
+        "title": "Recruiter Ctrl+F found absolutely nothing",
+        "brief": "marketing\\video_briefs\\2026-07-04-online-native-recruiter-roast-score-receipt-clips-short-2.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_2.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      },
+      {
+        "title": "This resume failed an open-book test",
+        "brief": "marketing\\video_briefs\\2026-07-04-online-native-recruiter-roast-score-receipt-clips-short-3.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_3.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      }
+    ],
+    "creativeQuality": {
+      "overallScore": 100,
+      "passed": false,
+      "verdict": "needs_revision_before_posting",
+      "notes": [],
+      "blockers": [
+        "Each short needs a complete conflict -> evidence -> consequence -> fix -> payoff spine."
+      ],
+      "shorts": [
+        {
+          "title": "This data bullet has NPC energy",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "Recruiter Ctrl+F found absolutely nothing",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "This resume failed an open-book test",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        }
+      ]
+    },
+    "reviewStatus": "needs_creator_revision_before_render"
+  },
+  {
+    "date": "2026-07-04",
     "topic": "Recruiter reacts to invisible resumes with real job-description proof",
     "series": "Daily Research Packet",
     "packet": "marketing\\daily_content\\2026-07-04-recruiter-reacts-to-invisible-resumes-with-real-job-description-",

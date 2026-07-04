@@ -23,11 +23,14 @@ POSITIVE_MARKERS = {
         "ghosted",
         "open-book",
         "failed",
+        "npc",
+        "ctrl+f",
+        "answer key",
     ],
     "proof": [
-        "HubSpot",
-        "CAC",
-        "LinkedIn Ads",
+        "SQL",
+        "Tableau",
+        "cohort analysis",
         "Salesforce",
         "React",
         "TypeScript",
@@ -58,6 +61,11 @@ POSITIVE_MARKERS = {
     "humor": [
         "beige",
         "fake mustache",
+        "npc",
+        "oatmeal",
+        "ctrl+f",
+        "beige wall",
+        "bestie",
         "rude",
         "side-eye",
         "airport",
@@ -73,6 +81,8 @@ POSITIVE_MARKERS = {
         "computer stuff",
         "ghosted",
         "open-book",
+        "shrug",
+        "business casual",
     ],
 }
 
@@ -127,6 +137,10 @@ GENERIC_OR_WEAK = [
     "results-driven team player",
     "helped with marketing campaigns",
     "worked with cross-functional teams",
+    "hubspot",
+    "cac",
+    "demand gen",
+    "linkedin ads",
 ]
 
 ROBOTIC_OR_REPEATED = [
@@ -134,6 +148,9 @@ ROBOTIC_OR_REPEATED = [
     "jd asks for",
     "real, but buried",
     "same person, clearer proof",
+    "same person",
+    "better signal",
+    "same experience, clearer proof",
 ]
 
 
@@ -147,23 +164,34 @@ NARRATIVE_BEAT_GROUPS = {
         "failed",
         "why this resume",
         "why this bullet",
+        "npc",
+        "zero proof",
+        "skipped",
     ],
     "target_evidence": [
         "job is asking",
         "job asks",
+        "role needs",
         "job post",
         "job description",
         "i search",
+        "ctrl f",
+        "ctrl+f",
         "search clues",
         "recruiter search",
+        "answer key",
     ],
     "source_line": [
         "resume says",
         "bullet says",
         "resume replies",
+        "resume answered",
+        "your resume answered",
         "look at the resume",
         "their bullet",
         "this resume answers",
+        "this bullet says",
+        "this bullet shows up",
     ],
     "consequence": [
         "recruiters do not guess",
@@ -176,6 +204,11 @@ NARRATIVE_BEAT_GROUPS = {
         "generic",
         "weak",
         "nothing useful",
+        "zero proof",
+        "detective work",
+        "no tool",
+        "no number",
+        "no result",
     ],
     "fix": [
         "rewrite",
@@ -286,6 +319,9 @@ def explains_starting_score(blob: str) -> bool:
         "no metric",
         "no outcome",
         "no result",
+        "zero proof",
+        "no tool",
+        "no number",
         "score receipt",
     ]
     return sum(1 for marker in score_reason_markers if marker in low) >= 3
@@ -494,7 +530,11 @@ def score_packet(packet: dict) -> dict:
         short.get("title", ""),
         short.get("hook", ""),
         short.get("script", ""),
+        "\n".join(short.get("storyboard", []) or []),
         short.get("props", {}).get("voiceover_text", "") if isinstance(short.get("props"), dict) else "",
+        short.get("props", {}).get("problemPunchline", "") if isinstance(short.get("props"), dict) else "",
+        short.get("props", {}).get("teardownPunchline", "") if isinstance(short.get("props"), dict) else "",
+        short.get("props", {}).get("fixPunchline", "") if isinstance(short.get("props"), dict) else "",
     ])) for short in [s for s in packet.get("shorts", []) or [] if isinstance(s, dict)]]
     if beat_sets and all(len(beats) >= 6 for beats in beat_sets[:3]):
         score += 10
@@ -520,7 +560,11 @@ def score_packet(packet: dict) -> dict:
         short.get("title", ""),
         short.get("hook", ""),
         short.get("script", ""),
+        "\n".join(short.get("storyboard", []) or []),
         short.get("props", {}).get("voiceover_text", "") if isinstance(short.get("props"), dict) else "",
+        short.get("props", {}).get("problemPunchline", "") if isinstance(short.get("props"), dict) else "",
+        short.get("props", {}).get("teardownPunchline", "") if isinstance(short.get("props"), dict) else "",
+        short.get("props", {}).get("fixPunchline", "") if isinstance(short.get("props"), dict) else "",
     ])) for short in shorts[:3]):
         score += 10
     else:

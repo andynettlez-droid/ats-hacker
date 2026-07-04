@@ -217,36 +217,39 @@ WEAK_GENERATED_PHRASES = [
     "with a twist of comedy",
     "messy office interactions",
     "don't worry, it",
+    "same person",
+    "better signal",
+    "same experience, clearer proof",
 ]
 
 TEARDOWN_CASES = [
     {
-        "id": "demand_gen_marketing",
+        "id": "data_analyst",
         "resumeName": "Jordan Lee",
-        "resumeTitle": "Marketing Coordinator -> Demand Gen Candidate",
-        "resumeMeta": ["3 yrs B2B SaaS", "HubSpot admin", "Paid social support"],
-        "jobTitle": "Demand Generation Manager",
-        "jobKeywords": ["HubSpot workflows", "LinkedIn Ads", "CAC analysis", "MQL-to-SQL", "pipeline sourced"],
+        "resumeTitle": "Data Analyst Resume",
+        "resumeMeta": ["3 yrs analytics", "SQL + dashboards", "Customer churn reporting"],
+        "jobTitle": "Product Data Analyst",
+        "jobKeywords": ["SQL", "Tableau", "cohort analysis", "churn dashboard", "stakeholder insights"],
         "weakBullets": [
-            "Supported email and social campaigns across multiple channels.",
-            "Helped maintain HubSpot lists for webinars and nurture emails.",
-            "Coordinated paid social assets with design and sales.",
+            "Created reports for business teams and leadership.",
+            "Worked with data to help teams understand customer trends.",
+            "Helped maintain dashboards for weekly performance meetings.",
         ],
-        "beforeBullet": "Helped maintain HubSpot lists for webinars and nurture emails.",
-        "afterBullet": "Built HubSpot lead-scoring and LinkedIn retargeting segments that cut CAC 32% and lifted MQL-to-SQL conversion 18%.",
-        "beforeScore": 34,
-        "afterScore": 92,
-        "markedLabel": "Buried proof",
+        "beforeBullet": "Created reports for business teams and leadership.",
+        "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+        "beforeScore": 32,
+        "afterScore": 89,
+        "markedLabel": "Resume oatmeal",
         "scoreBasis": [
-            {"label": "JD terms visible", "before": "1/5", "after": "5/5"},
-            {"label": "Metric proof", "before": "missing", "after": "CAC -32%"},
-            {"label": "Outcome", "before": "vague", "after": "MQL +18%"},
+            {"label": "Search terms", "before": "reports", "after": "SQL + Tableau"},
+            {"label": "Metric proof", "before": "missing", "after": "6 hrs saved"},
+            {"label": "Business result", "before": "vague", "after": "18 risks found"},
         ],
-        "shortTitle": "This marketing resume hid the actual revenue proof",
-        "hook": "This marketing resume sounds busy. Recruiters need revenue proof.",
-        "subhook": "The job asks for tools, metrics, and pipeline impact.",
-        "problemPunchline": "A recruiter cannot search for proof you buried.",
-        "teardownIssues": ["Tool is hidden", "No CAC result", "No pipeline language"],
+        "shortTitle": "This data resume wrote a bedtime story",
+        "hook": "This data bullet has NPC energy.",
+        "subhook": "The job needs SQL proof, not report-flavored fog.",
+        "problemPunchline": "Reports is a folder name, not a selling point.",
+        "teardownIssues": ["No SQL signal", "No dashboard tool", "No business result"],
     },
     {
         "id": "sales_account_exec",
@@ -412,7 +415,7 @@ CASE_SERIES_ROTATION = [
 ]
 
 CASE_HUMOR_LINES = {
-    "demand_gen_marketing": "Corporate weather report: high synergy, zero proof.",
+    "data_analyst": "Resume oatmeal: warm, beige, and nobody asked for it.",
     "sales_account_exec": "Pipeline proof is hiding under a hoodie.",
     "frontend_engineer": "The tech stack is wearing a fake mustache.",
     "project_manager": "The calendar is talking. Proof is in airplane mode.",
@@ -421,7 +424,7 @@ CASE_HUMOR_LINES = {
 }
 
 CASE_SPOKEN_REWRITES = {
-    "demand_gen_marketing": "built lead scoring and retargeting that cut CAC 32 percent",
+    "data_analyst": "built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts",
     "sales_account_exec": "generated 1.8 million in qualified Salesforce pipeline",
     "frontend_engineer": "shipped React and TypeScript checkout work that reduced drop-off 14 percent",
     "project_manager": "owned the Jira roadmap and cut schedule variance to 6 percent",
@@ -437,35 +440,35 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "visualStyle": "comic",
         "formatArchetype": "redTeamAudit",
         "pace": "fast",
-        "title": "This resume sentence is quietly expensive",
-        "hook": "This line is costing interviews.",
-        "subhook": "The resume has proof. The bullet hides it.",
+        "title": "This data bullet has NPC energy",
+        "hook": "This bullet has NPC energy.",
+        "subhook": "It says work happened. It does not say why anyone should care.",
         "voiceover": (
-            "Stop on this line. "
-            "Job asks {kw1}, {kw2}, and {kw3}. "
-            "Resume says: {beforeBullet} "
-            "Starts at {beforeScore} because one job term appears, no metric, hidden outcome. "
+            "Pause. This bullet says: {beforeBullet} "
+            "That is resume oatmeal. "
+            "The role needs {kw1}, {kw2}, and {kw3}. "
+            "Score starts at {beforeScore}: no tool, no metric, zero proof. "
             "Rewrite the real work: {spokenRewrite}. "
-            "Receipt fills: terms, tool, result. Score lands at {afterScore}. "
+            "Now the receipt has tool, metric, outcome: {afterScore}. "
             "Run the free Signal score before you apply."
         ),
         "storyboard": [
-            "Cold open: show the weak bullet with an INTERVIEW TAX stamp.",
-            "Cut to a three-item score receipt: {kw1}, {kw2}, {kw3}.",
-            "Show why the starting score is low before the rewrite.",
-            "Signal drags the real proof into a receipt-style rewrite.",
-            "Reveal the improved score only after the checklist fills.",
+            "Cold open: slap an NPC ENERGY stamp on the weak bullet.",
+            "Signal side-eyes the bullet while a tiny receipt drawer opens.",
+            "Cut to role clues: {kw1}, {kw2}, {kw3}.",
+            "Show the low score because the bullet has activity but no proof.",
+            "Rewrite the line and fill the receipt before revealing the score.",
             "End with a free Signal score CTA, not a hard product pitch.",
         ],
         "signalLines": {
-            "hook": "Interview tax.",
-            "problem": "The score starts here for a reason.",
+            "hook": "NPC bullet.",
+            "problem": "No proof, no party.",
             "teardown": "Roast the bullet, rescue the person.",
-            "fix": "Now the score has receipts.",
+            "fix": "Now it has a receipt.",
             "cta": "Test yours before sending.",
         },
-        "problemPunchline": "The job has clues. The resume is whispering.",
-        "teardownPunchline": "Low score reason: weak terms, no metric, no outcome.",
+        "problemPunchline": "Activity is not proof.",
+        "teardownPunchline": "Low score reason: no tool, no number, no outcome.",
         "fixPunchline": "Specific proof beats generic polish.",
     },
     {
@@ -475,31 +478,32 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "visualStyle": "terminal",
         "formatArchetype": "recruiterSearch",
         "pace": "fast",
-        "title": "I searched {kw1} and this resume vanished",
-        "hook": "I searched {kw1}. Nothing.",
-        "subhook": "Recruiters do not guess what you meant.",
+        "title": "Recruiter Ctrl+F found absolutely nothing",
+        "hook": "I hit Ctrl+F. Bad news.",
+        "subhook": "The resume made the recruiter do detective work.",
         "voiceover": (
-            "Recruiter search test. I search {kw1}. The search box ghosted it. "
-            "I try {kw2}; still nothing useful. "
-            "Resume says: {beforeBullet} "
-            "Starts at {beforeScore} because: missing tool, missing pipeline proof. "
-            "Rewrite it: {spokenRewrite}. "
-            "Now {kw1} has a receipt. Score lands at {afterScore}. "
+            "Recruiter Ctrl F test. I search {kw1}: nothing. "
+            "I search {kw2}: still dusty. "
+            "Then this bullet shows up: {beforeBullet} "
+            "Beige wall with a name tag. "
+            "Score starts at {beforeScore}: no tool, no number, no result. "
+            "Rewrite: {spokenRewrite}. "
+            "Now search finds proof: {afterScore}. "
             "Run the free Signal score before you send yours."
         ),
         "storyboard": [
-            "Open with a big search box typing {kw1}; show the miss immediately.",
-            "Rapid-cut {kw2} and show the second miss.",
+            "Open with a giant Ctrl+F search for {kw1}; show zero hits immediately.",
+            "Rapid-cut {kw2} and show the second miss as a dry search console.",
             "Reveal the resume bullet as the reason the search failed.",
-            "Show a score receipt explaining the low start.",
+            "Stamp BEIGE WALL on the weak line and show the score receipt.",
             "Rewrite the bullet and rerun the search with a clear match.",
             "Close with the score jump and free score CTA.",
         ],
         "signalLines": {
-            "hook": "Search box says no.",
-            "problem": "This is why the score is low.",
+            "hook": "Ctrl+F said nope.",
+            "problem": "Detective work is not a strategy.",
             "teardown": "Give the search a real term.",
-            "fix": "Now the score is earned.",
+            "fix": "Now proof is findable.",
             "cta": "Search-test your resume.",
         },
         "problemPunchline": "A recruiter cannot search for the thought you meant.",
@@ -514,27 +518,28 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "formatArchetype": "splitTranslation",
         "pace": "fast",
         "title": "This resume failed an open-book test",
-        "hook": "This failed an open-book test.",
-        "subhook": "Your resume ignored it.",
+        "hook": "The answers were literally on the page.",
+        "subhook": "The resume still turned in a shrug.",
         "voiceover": (
-            "Job post gave the answer key: {kw1}, {kw2}, {kw3}. "
-            "Resume says: {beforeBullet} "
-            "Starts at {beforeScore} because the stack and metric are missing, and the result is hidden. "
+            "The job post gave the answer key: {kw1}, {kw2}, {kw3}. "
+            "Your resume answered: {beforeBullet} "
+            "That is a shrug in business casual. "
+            "Score starts at {beforeScore}: missing language, no metric, no outcome. "
             "Rewrite with real proof: {spokenRewrite}. "
-            "Now keywords and outcome match. Score reaches {afterScore}. "
+            "Now it matches the answer key: {afterScore}. "
             "Run the free Signal score before you apply."
         ),
         "storyboard": [
-            "Open on an answer-key board: {kw1}, {kw2}, {kw3}.",
-            "Slide the resume beside it and show the weak mismatch immediately.",
+            "Open on an answer-key board with {kw1}, {kw2}, {kw3} already highlighted.",
+            "Slide the resume beside it with a SHRUG IN BUSINESS CASUAL stamp.",
             "Show a score receipt: missing stack, missing metric, missing result.",
             "Signal translates hidden proof into job-description language.",
             "Reveal the rewritten bullet, then fill the score checklist.",
             "End with the score jump and free Signal score CTA.",
         ],
         "signalLines": {
-            "hook": "The clues are right there.",
-            "problem": "The score starts low because the stack is hidden.",
+            "hook": "Open-book test.",
+            "problem": "Business casual shrug.",
             "teardown": "Translate. Do not exaggerate.",
             "fix": "Now the answer key matches.",
             "cta": "Paste the job first.",
@@ -546,31 +551,31 @@ CREATOR_FORMAT_PLAYBOOKS = [
 ]
 
 CASE_RESUME_DETAILS = {
-    "demand_gen_marketing": {
+    "data_analyst": {
         "contact": ["Austin, TX", "jordan.lee@example.com", "linkedin.com/in/jordan-lee"],
-        "summary": "B2B SaaS marketer with 3 years supporting lifecycle campaigns, webinar operations, paid social launches, and HubSpot reporting for revenue teams.",
-        "skills": ["HubSpot", "Salesforce reports", "LinkedIn Ads", "Lifecycle email", "Webinars", "UTM tracking", "CAC analysis"],
-        "education": "B.A. Marketing, University of Texas at Austin",
+        "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+        "skills": ["SQL", "Tableau", "Excel", "Customer churn", "Cohort analysis", "Data cleaning", "Stakeholder reporting"],
+        "education": "B.S. Business Analytics, University of Texas at Austin",
         "experience": [
             {
                 "company": "Northstar Analytics",
-                "role": "Marketing Coordinator",
+                "role": "Data Analyst",
                 "dates": "2023 - Present",
                 "bullets": [
-                    "Supported email and social campaigns across multiple channels.",
-                    "Helped maintain HubSpot lists for webinars and nurture emails.",
-                    "Coordinated paid social assets with design and sales.",
-                    "Pulled weekly Salesforce campaign reports for marketing and sales leadership.",
+                    "Created reports for business teams and leadership.",
+                    "Worked with data to help teams understand customer trends.",
+                    "Helped maintain dashboards for weekly performance meetings.",
+                    "Cleaned product usage exports and sent weekly insights to customer success.",
                 ],
             },
             {
                 "company": "CedarCloud Software",
-                "role": "Marketing Assistant",
+                "role": "Junior Operations Analyst",
                 "dates": "2021 - 2023",
                 "bullets": [
-                    "Built event landing pages and tracked registrations through HubSpot forms.",
-                    "Updated campaign calendars for product launches and customer webinars.",
-                    "Partnered with sales operations to clean 8,400 duplicate lead records.",
+                    "Updated Excel trackers for sales, onboarding, and support activity.",
+                    "Partnered with product managers to validate monthly account health data.",
+                    "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup.",
                 ],
             },
         ],
@@ -952,9 +957,9 @@ def check_elevenlabs_health(probe_tts: bool = False) -> dict:
                     "text": "Signal audio probe.",
                     "model_id": config["modelId"],
                     "voice_settings": {
-                        "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.42")),
-                        "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.84")),
-                        "style": float(os.getenv("ELEVENLABS_STYLE", "0.48")),
+                        "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.34")),
+                        "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.82")),
+                        "style": float(os.getenv("ELEVENLABS_STYLE", "0.72")),
                         "use_speaker_boost": True,
                     },
                 },
@@ -1055,9 +1060,9 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
         "model_id": config["modelId"],
         "output_format": "mp3_44100_128",
         "voice_settings": {
-            "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.42")),
-            "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.84")),
-            "style": float(os.getenv("ELEVENLABS_STYLE", "0.48")),
+            "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.34")),
+            "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.82")),
+            "style": float(os.getenv("ELEVENLABS_STYLE", "0.72")),
             "use_speaker_boost": True,
         },
     }
@@ -1309,8 +1314,8 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
             "hook": "This bullet has a high chance of synergy and zero proof.",
             "script": (
                 "This bullet has a high chance of synergy and zero proof. It says vague team-player wording, "
-                "which sounds expensive and tells me almost nothing. The job asks for HubSpot, CAC, LinkedIn Ads, "
-                "and pipeline impact. Signal pulls the real proof out of the corporate weather report before you apply."
+                "which sounds busy and tells me almost nothing. The role needs SQL, Tableau, cohort analysis, "
+                "and a business result. Signal pulls the real proof out of the resume oatmeal before you apply."
             ),
             "storyboard": [
                 "Open with a fake weather alert: 'High chance of synergy.'",
@@ -1325,26 +1330,26 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
                 "subline": "AI polish can hide the actual evidence.",
                 "beforeScore": 31,
                 "afterScore": 86,
-                "missing": ["HubSpot", "CAC", "LinkedIn Ads", "pipeline"],
+                "missing": ["SQL", "Tableau", "cohort analysis", "business result"],
                 "cta": "Check your free Signal score.",
                 "voiceover_text": (
                     "This bullet has a high chance of synergy and zero proof. It says vague team-player wording, "
-                    "which sounds expensive and tells me almost nothing. The job asks for HubSpot, CAC, LinkedIn Ads, "
-                    "and pipeline impact. Signal pulls the real proof out of the corporate weather report before you apply."
+                    "which sounds busy and tells me almost nothing. The role needs SQL, Tableau, cohort analysis, "
+                    "and a business result. Signal pulls the real proof out of the resume oatmeal before you apply."
                 ),
             },
         },
         {
             "series": "Recruiter Search Test",
-            "title": "Would your resume appear in search?",
-            "hook": "If I search HubSpot, does your resume even show up?",
+            "title": "Would your resume survive Ctrl+F?",
+            "hook": "If I search SQL, does your resume even show up?",
             "script": (
-                "If I search HubSpot, does your resume even show up? The job description says HubSpot, CAC, "
-                "LinkedIn Ads, and lifecycle marketing. Your resume says helped with campaigns. That might be true, "
-                "but it is not searchable enough. Signal translates the real work into role language."
+                "If I search SQL, does your resume even show up? The job description says SQL, Tableau, "
+                "cohort analysis, and churn dashboard. Your resume says created reports. That might be true, "
+                "but it makes the recruiter do detective work. Signal translates the real work into role language."
             ),
             "storyboard": [
-                "Show a recruiter search box typing HubSpot.",
+                "Show a recruiter search box typing SQL.",
                 "Resume returns no match and Signal looks concerned.",
                 "Paste the job description next to the resume.",
                 "Highlight the missing role terms.",
@@ -1357,12 +1362,12 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
                 "subline": "Recruiters search for role language and proof.",
                 "beforeScore": 34,
                 "afterScore": 92,
-                "missing": ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"],
+                "missing": ["SQL", "Tableau", "cohort analysis", "churn dashboard"],
                 "cta": "Run your free Signal score.",
                 "voiceover_text": (
-                    "If I search HubSpot, does your resume even show up? The job description says HubSpot, CAC, "
-                    "LinkedIn Ads, and lifecycle marketing. Your resume says helped with campaigns. That might be true, "
-                    "but it is not searchable enough. Signal translates the real work into role language."
+                    "If I search SQL, does your resume even show up? The job description says SQL, Tableau, "
+                    "cohort analysis, and churn dashboard. Your resume says created reports. That might be true, "
+                    "but it makes the recruiter do detective work. Signal translates the real work into role language."
                 ),
             },
         },
@@ -1372,14 +1377,14 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
             "hook": "This resume is invisible because the best bullet is buried.",
             "script": (
                 "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, "
-                "because helped with campaigns could mean almost anything. The job description asks for HubSpot, CAC, "
-                "LinkedIn Ads, and pipeline impact. So we turn the same real experience into: cut CAC by thirty two percent "
-                "through LinkedIn Ads audience segmentation and HubSpot lead scoring. Same person. Better signal."
+                "because created reports could mean almost anything. The job description asks for SQL, Tableau, "
+                "cohort analysis, and churn dashboard. So we turn the real experience into: built a SQL churn dashboard "
+                "that saved six hours a week and flagged 18 at-risk accounts."
             ),
             "storyboard": [
                 "Open with a Resume Crime Scene tape over the weak bullet.",
-                "Signal side-eyes 'helped with campaigns' and waves a tiny red flag.",
-                "Pin the job description clues: HubSpot, CAC, LinkedIn Ads, pipeline.",
+                "Signal side-eyes 'created reports' and waves a tiny red flag.",
+                "Pin the job description clues: SQL, Tableau, cohort analysis, churn dashboard.",
                 "Signal points from the vague bullet to the corrected proof bullet.",
                 "Score jumps from 38/100 to 91/100 while Signal celebrates.",
                 "CTA to the free Signal score.",
@@ -1390,13 +1395,13 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
                 "subline": "The fix is translation, not fabrication.",
                 "beforeScore": 38,
                 "afterScore": 91,
-                "missing": ["HubSpot", "CAC", "LinkedIn Ads", "pipeline"],
+                "missing": ["SQL", "Tableau", "cohort analysis", "churn dashboard"],
                 "cta": "Check your free Signal score.",
                 "voiceover_text": (
                     "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, "
-                    "because helped with campaigns could mean almost anything. The job description asks for HubSpot, CAC, "
-                    "LinkedIn Ads, and pipeline impact. So we turn the same real experience into: cut CAC by thirty two percent "
-                    "through LinkedIn Ads audience segmentation and HubSpot lead scoring. Same person. Better signal."
+                    "because created reports could mean almost anything. The job description asks for SQL, Tableau, "
+                    "cohort analysis, and churn dashboard. So we turn the real experience into: built a SQL churn dashboard "
+                    "that saved six hours a week and flagged 18 at-risk accounts."
                 ),
             },
         },
@@ -1459,7 +1464,7 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
                 },
                 {
                     "label": "Live bullet fix",
-                    "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. Same person, clearer evidence.",
+                    "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. No fake claims, just usable evidence.",
                     "visual": "Before/after bullet rewrite.",
                 },
                 {
@@ -1511,7 +1516,7 @@ def select_teardown_case(index: int, short: dict | None = None, props: dict | No
     blob = " ".join(str(part).lower() for part in text_parts)
 
     role_markers = {
-        "demand_gen_marketing": ["hubspot", "linkedin ads", "cac", "demand", "marketing"],
+        "data_analyst": ["sql", "tableau", "cohort", "churn", "data analyst", "dashboard"],
         "sales_account_exec": ["salesforce", "quota", "sales", "account executive", "meddicc"],
         "frontend_engineer": ["react", "typescript", "next.js", "developer", "frontend", "software"],
         "project_manager": ["jira", "project manager", "stakeholder", "agile", "risk register"],
@@ -1524,8 +1529,7 @@ def select_teardown_case(index: int, short: dict | None = None, props: dict | No
         scores.append((score, case))
 
     best_score, best_case = max(scores, key=lambda item: item[0])
-    generic_markers = sum(1 for marker in ["hubspot", "cac", "linkedin ads"] if marker in blob)
-    if best_score >= 2 and generic_markers < 3:
+    if best_score >= 2:
         return best_case
     return TEARDOWN_CASES[(index - 1) % len(TEARDOWN_CASES)]
 
@@ -1617,7 +1621,7 @@ def normalize_short(short: dict, fallback: dict, index: int) -> dict:
     script = text_from_topic(short.get("script") or short.get("content") or fallback.get("script"), hook)
     entertainment_text = f"{title} {hook} {script}".lower()
     used_fallback = False
-    proof_markers = ["hubspot", "cac", "linkedin ads", "pipeline", "lifecycle", "34/100", "92/100", "keyword", "score"]
+    proof_markers = ["sql", "tableau", "salesforce", "react", "pipeline", "dashboard", "32/100", "89/100", "keyword", "score"]
     has_concrete_proof = sum(1 for marker in proof_markers if marker in entertainment_text) >= 2
     weak_generated = any(marker in entertainment_text for marker in WEAK_GENERATED_PHRASES)
     script_too_thin = len(script.split()) < 18
@@ -1655,7 +1659,7 @@ def normalize_short(short: dict, fallback: dict, index: int) -> dict:
     props.setdefault("subline", "Signal compares resume language to the target job.")
     props.setdefault("beforeScore", 38 + index)
     props.setdefault("afterScore", 86 + index)
-    props.setdefault("missing", ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"])
+    props.setdefault("missing", ["SQL", "Tableau", "cohort analysis", "churn dashboard"])
     props.setdefault("cta", "Check your free Signal score.")
     props.setdefault("voiceover_text", str(script)[:650])
     title, hook, script, storyboard, props = apply_teardown_case(short, str(title), str(hook), str(script), storyboard, props, index)
@@ -1733,7 +1737,7 @@ def normalize_packet(packet: dict, seed: dict, publish_date: str) -> dict:
     labels = [str(section.get("label", "")).lower() for section in script_sections if isinstance(section, dict)]
     concrete_longform_markers = sum(
         1
-        for marker in ["hubspot", "cac", "linkedin ads", "score", "bullet", "before/after", "weak bullets"]
+        for marker in ["sql", "tableau", "salesforce", "react", "score", "bullet", "before/after", "weak bullets"]
         if marker in script_blob
     )
     generic_section_labels = labels and sum(1 for label in labels if label.startswith("section")) >= min(4, len(labels))
@@ -1998,7 +2002,7 @@ def build_episode_props(packet: dict) -> dict:
     props = first_short_props(packet)
     keywords = [str(item) for item in (props.get("jobKeywords") or props.get("missing", [])) if str(item).strip()][:5]
     if len(keywords) < 3:
-        keywords = ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"]
+        keywords = ["SQL", "Tableau", "cohort analysis", "churn dashboard"]
 
     voiceover_text = " ".join(
         str(section.get("script", ""))
@@ -2032,7 +2036,7 @@ def build_thumbnail_props(packet: dict) -> dict:
     props = first_short_props(packet)
     keywords = [str(item) for item in props.get("missing", []) if str(item).strip()][:5]
     if len(keywords) < 3:
-        keywords = ["HubSpot", "CAC", "LinkedIn Ads"]
+        keywords = ["SQL", "Tableau", "cohort analysis"]
     return {
         "title": "Qualified but invisible",
         "badge": str(packet.get("series") or "Resume teardown")[:32],
@@ -2222,10 +2226,10 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
         props["cta"] = normalize_signal_cta(props.get("cta"))
         job_keywords = [
             str(item)
-            for item in (props.get("jobKeywords") or props.get("missing", ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"]))
+            for item in (props.get("jobKeywords") or props.get("missing", ["SQL", "Tableau", "cohort analysis", "churn dashboard"]))
         ][:5]
         if sum(1 for item in job_keywords if item.lower() in {"role language", "tools", "proof", "metrics"}) >= 2:
-            job_keywords = ["HubSpot", "CAC", "LinkedIn Ads", "lifecycle marketing"]
+            job_keywords = ["SQL", "Tableau", "cohort analysis", "churn dashboard"]
         style = style_for_short(idx, short)
         crime_scene_props = {
             "hook": short.get("hook", "This resume looks fine.")[:72],

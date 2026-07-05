@@ -237,7 +237,7 @@
   "humanReadBeats": [
     {
       "beat": "setup",
-      "text": "Here's Jordan applying for a network administrator role at a healthcare group."
+      "text": "Here's Jordan applying for a network admin role at a healthcare group."
     },
     {
       "beat": "roast",
@@ -261,7 +261,7 @@
     },
     {
       "beat": "cta",
-      "text": "Run the free Signal score before you apply."
+      "text": "Need your resume fixed? Upload it to Signal before you apply."
     }
   ],
   "voiceDirector": {
@@ -275,592 +275,578 @@
     "previous_text": "Let's take a look at a real resume and roast it a little.",
     "next_text": "Then show the polished version and the quick CTA."
   },
-  "voiceover_text": "Here's Jordan. He's applying for a network administrator role at a healthcare group. The resume is not awful. It's just written like a help desk ticket. The first bullet says responsible for IT support and fixing network issues. The job wants VLANs, Cisco switching, VPN, and incident response. Jordan has the proof lower down. Signal pulls it up: resolved a VLAN issue across 11 clinic workstations and cut repeat tickets 42%. That's a real network admin bullet. Free Signal score before you apply.",
-  "voiceoverPlaybackRate": 1.12,
-  "cta": "Free Signal score before you apply.",
+  "voiceover_text": "Here's Jordan. He's applying for a network admin role at a healthcare group. Resume's not awful. It's written like a help desk ticket. First bullet: responsible for IT support and fixing network issues. The job wants VLANs, Cisco switching, VPN, incident response. Jordan has proof lower down. Signal pulls it up: resolved a VLAN issue across 11 clinic workstations and cut repeat tickets 42%. That's a real network admin bullet. Need your resume fixed? Upload it to Signal before you apply.",
+  "voiceoverPlaybackRate": 1.18,
+  "cta": "Need your resume fixed? Upload it to Signal before you apply.",
   "musicVolume": 0,
   "voiceoverVolume": 0.96,
-  "durationSeconds": 31.89,
+  "durationSeconds": 31.8,
   "captions": [
     {
       "text": "Here's",
-      "startMs": 41,
-      "endMs": 279,
-      "timestampMs": 41,
+      "startMs": 39,
+      "endMs": 354,
+      "timestampMs": 39,
       "confidence": null
     },
     {
       "text": "Jordan.",
-      "startMs": 332,
-      "endMs": 736,
-      "timestampMs": 332,
+      "startMs": 423,
+      "endMs": 925,
+      "timestampMs": 423,
       "confidence": null
     },
     {
       "text": "He's",
-      "startMs": 1192,
-      "endMs": 1369,
-      "timestampMs": 1192,
+      "startMs": 1102,
+      "endMs": 1289,
+      "timestampMs": 1102,
       "confidence": null
     },
     {
       "text": "applying",
-      "startMs": 1389,
-      "endMs": 1741,
-      "timestampMs": 1389,
+      "startMs": 1319,
+      "endMs": 1633,
+      "timestampMs": 1319,
       "confidence": null
     },
     {
       "text": "for",
-      "startMs": 1794,
-      "endMs": 1876,
-      "timestampMs": 1794,
+      "startMs": 1673,
+      "endMs": 1761,
+      "timestampMs": 1673,
       "confidence": null
     },
     {
       "text": "a",
-      "startMs": 1918,
-      "endMs": 1938,
-      "timestampMs": 1918,
+      "startMs": 1801,
+      "endMs": 1820,
+      "timestampMs": 1801,
       "confidence": null
     },
     {
       "text": "network",
-      "startMs": 1980,
-      "endMs": 2271,
-      "timestampMs": 1980,
-      "confidence": null
-    },
-    {
-      "text": "administrator",
-      "startMs": 2332,
-      "endMs": 2892,
-      "timestampMs": 2332,
-      "confidence": null
-    },
-    {
-      "text": "role",
-      "startMs": 2934,
-      "endMs": 3172,
-      "timestampMs": 2934,
-      "confidence": null
-    },
-    {
-      "text": "at",
-      "startMs": 3213,
-      "endMs": 3307,
-      "timestampMs": 3213,
-      "confidence": null
-    },
-    {
-      "text": "a",
-      "startMs": 3328,
-      "endMs": 3348,
-      "timestampMs": 3328,
-      "confidence": null
-    },
-    {
-      "text": "healthcare",
-      "startMs": 3389,
-      "endMs": 3711,
-      "timestampMs": 3389,
-      "confidence": null
-    },
-    {
-      "text": "group.",
-      "startMs": 3732,
-      "endMs": 4115,
-      "timestampMs": 3732,
-      "confidence": null
-    },
-    {
-      "text": "The",
-      "startMs": 4738,
-      "endMs": 4841,
-      "timestampMs": 4738,
-      "confidence": null
-    },
-    {
-      "text": "resume",
-      "startMs": 4893,
-      "endMs": 5329,
-      "timestampMs": 4893,
-      "confidence": null
-    },
-    {
-      "text": "is",
-      "startMs": 5390,
-      "endMs": 5484,
-      "timestampMs": 5390,
-      "confidence": null
-    },
-    {
-      "text": "not",
-      "startMs": 5556,
-      "endMs": 5743,
-      "timestampMs": 5556,
-      "confidence": null
-    },
-    {
-      "text": "awful.",
-      "startMs": 5784,
-      "endMs": 6344,
-      "timestampMs": 5784,
-      "confidence": null
-    },
-    {
-      "text": "It's",
-      "startMs": 6686,
-      "endMs": 6872,
-      "timestampMs": 6686,
-      "confidence": null
-    },
-    {
-      "text": "just",
-      "startMs": 6935,
-      "endMs": 7142,
-      "timestampMs": 6935,
-      "confidence": null
-    },
-    {
-      "text": "written",
-      "startMs": 7184,
-      "endMs": 7412,
-      "timestampMs": 7184,
-      "confidence": null
-    },
-    {
-      "text": "like",
-      "startMs": 7463,
-      "endMs": 7587,
-      "timestampMs": 7463,
-      "confidence": null
-    },
-    {
-      "text": "a",
-      "startMs": 7619,
-      "endMs": 7640,
-      "timestampMs": 7619,
-      "confidence": null
-    },
-    {
-      "text": "help",
-      "startMs": 7692,
-      "endMs": 7847,
-      "timestampMs": 7692,
-      "confidence": null
-    },
-    {
-      "text": "desk",
-      "startMs": 7899,
-      "endMs": 8086,
-      "timestampMs": 7899,
-      "confidence": null
-    },
-    {
-      "text": "ticket.",
-      "startMs": 8137,
-      "endMs": 8614,
-      "timestampMs": 8137,
-      "confidence": null
-    },
-    {
-      "text": "The",
-      "startMs": 9071,
-      "endMs": 9174,
-      "timestampMs": 9071,
-      "confidence": null
-    },
-    {
-      "text": "first",
-      "startMs": 9215,
-      "endMs": 9413,
-      "timestampMs": 9215,
-      "confidence": null
-    },
-    {
-      "text": "bullet",
-      "startMs": 9454,
-      "endMs": 9703,
-      "timestampMs": 9454,
-      "confidence": null
-    },
-    {
-      "text": "says",
-      "startMs": 9744,
-      "endMs": 9910,
-      "timestampMs": 9744,
-      "confidence": null
-    },
-    {
-      "text": "responsible",
-      "startMs": 9972,
-      "endMs": 10459,
-      "timestampMs": 9972,
-      "confidence": null
-    },
-    {
-      "text": "for",
-      "startMs": 10480,
-      "endMs": 10573,
-      "timestampMs": 10480,
-      "confidence": null
-    },
-    {
-      "text": "IT",
-      "startMs": 10636,
-      "endMs": 10863,
-      "timestampMs": 10636,
-      "confidence": null
-    },
-    {
-      "text": "support",
-      "startMs": 10998,
-      "endMs": 11382,
-      "timestampMs": 10998,
-      "confidence": null
-    },
-    {
-      "text": "and",
-      "startMs": 11569,
-      "endMs": 11776,
-      "timestampMs": 11569,
-      "confidence": null
-    },
-    {
-      "text": "fixing",
-      "startMs": 11828,
-      "endMs": 12107,
-      "timestampMs": 11828,
-      "confidence": null
-    },
-    {
-      "text": "network",
-      "startMs": 12159,
-      "endMs": 12439,
-      "timestampMs": 12159,
-      "confidence": null
-    },
-    {
-      "text": "issues.",
-      "startMs": 12491,
-      "endMs": 13009,
-      "timestampMs": 12491,
-      "confidence": null
-    },
-    {
-      "text": "The",
-      "startMs": 13352,
-      "endMs": 13445,
-      "timestampMs": 13352,
-      "confidence": null
-    },
-    {
-      "text": "job",
-      "startMs": 13496,
-      "endMs": 13683,
-      "timestampMs": 13496,
-      "confidence": null
-    },
-    {
-      "text": "wants",
-      "startMs": 13735,
-      "endMs": 13911,
-      "timestampMs": 13735,
-      "confidence": null
-    },
-    {
-      "text": "VLANs,",
-      "startMs": 13963,
-      "endMs": 14596,
-      "timestampMs": 13963,
-      "confidence": null
-    },
-    {
-      "text": "Cisco",
-      "startMs": 14668,
-      "endMs": 14979,
-      "timestampMs": 14668,
-      "confidence": null
-    },
-    {
-      "text": "switching,",
-      "startMs": 15021,
-      "endMs": 15446,
-      "timestampMs": 15021,
-      "confidence": null
-    },
-    {
-      "text": "VPN,",
-      "startMs": 15477,
-      "endMs": 16036,
-      "timestampMs": 15477,
-      "confidence": null
-    },
-    {
-      "text": "and",
-      "startMs": 16067,
-      "endMs": 16161,
-      "timestampMs": 16067,
-      "confidence": null
-    },
-    {
-      "text": "incident",
-      "startMs": 16222,
-      "endMs": 16534,
-      "timestampMs": 16222,
-      "confidence": null
-    },
-    {
-      "text": "response.",
-      "startMs": 16575,
-      "endMs": 17135,
-      "timestampMs": 16575,
-      "confidence": null
-    },
-    {
-      "text": "Jordan",
-      "startMs": 17529,
-      "endMs": 17850,
-      "timestampMs": 17529,
-      "confidence": null
-    },
-    {
-      "text": "has",
-      "startMs": 17892,
-      "endMs": 18016,
-      "timestampMs": 17892,
-      "confidence": null
-    },
-    {
-      "text": "the",
-      "startMs": 18068,
-      "endMs": 18130,
-      "timestampMs": 18068,
-      "confidence": null
-    },
-    {
-      "text": "proof",
-      "startMs": 18162,
-      "endMs": 18389,
-      "timestampMs": 18162,
-      "confidence": null
-    },
-    {
-      "text": "lower",
-      "startMs": 18493,
-      "endMs": 18721,
-      "timestampMs": 18493,
-      "confidence": null
-    },
-    {
-      "text": "down.",
-      "startMs": 18773,
-      "endMs": 19229,
-      "timestampMs": 18773,
-      "confidence": null
-    },
-    {
-      "text": "Signal",
-      "startMs": 19623,
-      "endMs": 19944,
-      "timestampMs": 19623,
-      "confidence": null
-    },
-    {
-      "text": "pulls",
-      "startMs": 19986,
-      "endMs": 20193,
-      "timestampMs": 19986,
-      "confidence": null
-    },
-    {
-      "text": "it",
-      "startMs": 20235,
-      "endMs": 20296,
-      "timestampMs": 20235,
-      "confidence": null
-    },
-    {
-      "text": "up:",
-      "startMs": 20348,
-      "endMs": 20690,
-      "timestampMs": 20348,
-      "confidence": null
-    },
-    {
-      "text": "resolved",
-      "startMs": 20939,
-      "endMs": 21323,
-      "timestampMs": 20939,
-      "confidence": null
-    },
-    {
-      "text": "a",
-      "startMs": 21354,
-      "endMs": 21375,
-      "timestampMs": 21354,
-      "confidence": null
-    },
-    {
-      "text": "VLAN",
-      "startMs": 21427,
-      "endMs": 21883,
-      "timestampMs": 21427,
-      "confidence": null
-    },
-    {
-      "text": "issue",
-      "startMs": 21945,
-      "endMs": 22214,
-      "timestampMs": 21945,
-      "confidence": null
-    },
-    {
-      "text": "across",
-      "startMs": 22235,
-      "endMs": 22515,
-      "timestampMs": 22235,
-      "confidence": null
-    },
-    {
-      "text": "11",
-      "startMs": 22556,
-      "endMs": 22961,
-      "timestampMs": 22556,
-      "confidence": null
-    },
-    {
-      "text": "clinic",
-      "startMs": 23012,
-      "endMs": 23282,
-      "timestampMs": 23012,
-      "confidence": null
-    },
-    {
-      "text": "workstations",
-      "startMs": 23323,
-      "endMs": 24008,
-      "timestampMs": 23323,
-      "confidence": null
-    },
-    {
-      "text": "and",
-      "startMs": 24195,
-      "endMs": 24422,
-      "timestampMs": 24195,
-      "confidence": null
-    },
-    {
-      "text": "cut",
-      "startMs": 24474,
-      "endMs": 24620,
-      "timestampMs": 24474,
-      "confidence": null
-    },
-    {
-      "text": "repeat",
-      "startMs": 24671,
-      "endMs": 24920,
-      "timestampMs": 24671,
-      "confidence": null
-    },
-    {
-      "text": "tickets",
-      "startMs": 24962,
-      "endMs": 25272,
-      "timestampMs": 24962,
-      "confidence": null
-    },
-    {
-      "text": "42%.",
-      "startMs": 25355,
-      "endMs": 26257,
-      "timestampMs": 25355,
-      "confidence": null
-    },
-    {
-      "text": "That's",
-      "startMs": 26506,
-      "endMs": 26734,
-      "timestampMs": 26506,
-      "confidence": null
-    },
-    {
-      "text": "a",
-      "startMs": 26765,
-      "endMs": 26786,
-      "timestampMs": 26765,
-      "confidence": null
-    },
-    {
-      "text": "real",
-      "startMs": 26900,
-      "endMs": 27170,
-      "timestampMs": 26900,
-      "confidence": null
-    },
-    {
-      "text": "network",
-      "startMs": 27273,
-      "endMs": 27636,
-      "timestampMs": 27273,
+      "startMs": 1899,
+      "endMs": 2233,
+      "timestampMs": 1899,
       "confidence": null
     },
     {
       "text": "admin",
-      "startMs": 27698,
-      "endMs": 28020,
-      "timestampMs": 27698,
+      "startMs": 2303,
+      "endMs": 2627,
+      "timestampMs": 2303,
       "confidence": null
     },
     {
-      "text": "bullet.",
-      "startMs": 28071,
-      "endMs": 28423,
-      "timestampMs": 28071,
+      "text": "role",
+      "startMs": 2686,
+      "endMs": 2903,
+      "timestampMs": 2686,
       "confidence": null
     },
     {
-      "text": "Free",
-      "startMs": 28672,
-      "endMs": 28870,
-      "timestampMs": 28672,
+      "text": "at",
+      "startMs": 2942,
+      "endMs": 3020,
+      "timestampMs": 2942,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 3050,
+      "endMs": 3080,
+      "timestampMs": 3050,
+      "confidence": null
+    },
+    {
+      "text": "healthcare",
+      "startMs": 3119,
+      "endMs": 3493,
+      "timestampMs": 3119,
+      "confidence": null
+    },
+    {
+      "text": "group.",
+      "startMs": 3522,
+      "endMs": 3897,
+      "timestampMs": 3522,
+      "confidence": null
+    },
+    {
+      "text": "Resume's",
+      "startMs": 4329,
+      "endMs": 4851,
+      "timestampMs": 4329,
+      "confidence": null
+    },
+    {
+      "text": "not",
+      "startMs": 4979,
+      "endMs": 5353,
+      "timestampMs": 4979,
+      "confidence": null
+    },
+    {
+      "text": "awful.",
+      "startMs": 5500,
+      "endMs": 6130,
+      "timestampMs": 5500,
+      "confidence": null
+    },
+    {
+      "text": "It's",
+      "startMs": 6454,
+      "endMs": 6622,
+      "timestampMs": 6454,
+      "confidence": null
+    },
+    {
+      "text": "written",
+      "startMs": 6671,
+      "endMs": 6887,
+      "timestampMs": 6671,
+      "confidence": null
+    },
+    {
+      "text": "like",
+      "startMs": 6926,
+      "endMs": 7054,
+      "timestampMs": 6926,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 7084,
+      "endMs": 7103,
+      "timestampMs": 7084,
+      "confidence": null
+    },
+    {
+      "text": "help",
+      "startMs": 7173,
+      "endMs": 7350,
+      "timestampMs": 7173,
+      "confidence": null
+    },
+    {
+      "text": "desk",
+      "startMs": 7408,
+      "endMs": 7625,
+      "timestampMs": 7408,
+      "confidence": null
+    },
+    {
+      "text": "ticket.",
+      "startMs": 7684,
+      "endMs": 8176,
+      "timestampMs": 7684,
+      "confidence": null
+    },
+    {
+      "text": "First",
+      "startMs": 8550,
+      "endMs": 8796,
+      "timestampMs": 8550,
+      "confidence": null
+    },
+    {
+      "text": "bullet:",
+      "startMs": 8845,
+      "endMs": 9239,
+      "timestampMs": 8845,
+      "confidence": null
+    },
+    {
+      "text": "responsible",
+      "startMs": 9367,
+      "endMs": 9849,
+      "timestampMs": 9367,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 9878,
+      "endMs": 9957,
+      "timestampMs": 9878,
+      "confidence": null
+    },
+    {
+      "text": "IT",
+      "startMs": 10026,
+      "endMs": 10242,
+      "timestampMs": 10026,
+      "confidence": null
+    },
+    {
+      "text": "support",
+      "startMs": 10370,
+      "endMs": 10705,
+      "timestampMs": 10370,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 10744,
+      "endMs": 10833,
+      "timestampMs": 10744,
+      "confidence": null
+    },
+    {
+      "text": "fixing",
+      "startMs": 10882,
+      "endMs": 11158,
+      "timestampMs": 10882,
+      "confidence": null
+    },
+    {
+      "text": "network",
+      "startMs": 11217,
+      "endMs": 11492,
+      "timestampMs": 11217,
+      "confidence": null
+    },
+    {
+      "text": "issues.",
+      "startMs": 11542,
+      "endMs": 12053,
+      "timestampMs": 11542,
+      "confidence": null
+    },
+    {
+      "text": "The",
+      "startMs": 12329,
+      "endMs": 12417,
+      "timestampMs": 12329,
+      "confidence": null
+    },
+    {
+      "text": "job",
+      "startMs": 12466,
+      "endMs": 12643,
+      "timestampMs": 12466,
+      "confidence": null
+    },
+    {
+      "text": "wants",
+      "startMs": 12692,
+      "endMs": 12859,
+      "timestampMs": 12692,
+      "confidence": null
+    },
+    {
+      "text": "VLANs,",
+      "startMs": 12919,
+      "endMs": 13667,
+      "timestampMs": 12919,
+      "confidence": null
+    },
+    {
+      "text": "Cisco",
+      "startMs": 13765,
+      "endMs": 14090,
+      "timestampMs": 13765,
+      "confidence": null
+    },
+    {
+      "text": "switching,",
+      "startMs": 14139,
+      "endMs": 14660,
+      "timestampMs": 14139,
+      "confidence": null
+    },
+    {
+      "text": "VPN,",
+      "startMs": 14769,
+      "endMs": 15516,
+      "timestampMs": 14769,
+      "confidence": null
+    },
+    {
+      "text": "incident",
+      "startMs": 15644,
+      "endMs": 15998,
+      "timestampMs": 15644,
+      "confidence": null
+    },
+    {
+      "text": "response.",
+      "startMs": 16028,
+      "endMs": 16618,
+      "timestampMs": 16028,
+      "confidence": null
+    },
+    {
+      "text": "Jordan",
+      "startMs": 16894,
+      "endMs": 17179,
+      "timestampMs": 16894,
+      "confidence": null
+    },
+    {
+      "text": "has",
+      "startMs": 17219,
+      "endMs": 17326,
+      "timestampMs": 17219,
+      "confidence": null
+    },
+    {
+      "text": "proof",
+      "startMs": 17386,
+      "endMs": 17631,
+      "timestampMs": 17386,
+      "confidence": null
+    },
+    {
+      "text": "lower",
+      "startMs": 17779,
+      "endMs": 18006,
+      "timestampMs": 17779,
+      "confidence": null
+    },
+    {
+      "text": "down.",
+      "startMs": 18055,
+      "endMs": 18517,
+      "timestampMs": 18055,
       "confidence": null
     },
     {
       "text": "Signal",
-      "startMs": 28911,
-      "endMs": 29170,
-      "timestampMs": 28911,
+      "startMs": 18842,
+      "endMs": 19127,
+      "timestampMs": 18842,
       "confidence": null
     },
     {
-      "text": "score",
-      "startMs": 29212,
-      "endMs": 29419,
-      "timestampMs": 29212,
+      "text": "pulls",
+      "startMs": 19166,
+      "endMs": 19343,
+      "timestampMs": 19166,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 19383,
+      "endMs": 19432,
+      "timestampMs": 19383,
+      "confidence": null
+    },
+    {
+      "text": "up:",
+      "startMs": 19492,
+      "endMs": 19797,
+      "timestampMs": 19492,
+      "confidence": null
+    },
+    {
+      "text": "resolved",
+      "startMs": 20121,
+      "endMs": 20446,
+      "timestampMs": 20121,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 20465,
+      "endMs": 20485,
+      "timestampMs": 20465,
+      "confidence": null
+    },
+    {
+      "text": "VLAN",
+      "startMs": 20534,
+      "endMs": 20928,
+      "timestampMs": 20534,
+      "confidence": null
+    },
+    {
+      "text": "issue",
+      "startMs": 20997,
+      "endMs": 21282,
+      "timestampMs": 20997,
+      "confidence": null
+    },
+    {
+      "text": "across",
+      "startMs": 21321,
+      "endMs": 21587,
+      "timestampMs": 21321,
+      "confidence": null
+    },
+    {
+      "text": "11",
+      "startMs": 21636,
+      "endMs": 21991,
+      "timestampMs": 21636,
+      "confidence": null
+    },
+    {
+      "text": "clinic",
+      "startMs": 22030,
+      "endMs": 22266,
+      "timestampMs": 22030,
+      "confidence": null
+    },
+    {
+      "text": "workstations",
+      "startMs": 22305,
+      "endMs": 22925,
+      "timestampMs": 22305,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 23102,
+      "endMs": 23279,
+      "timestampMs": 23102,
+      "confidence": null
+    },
+    {
+      "text": "cut",
+      "startMs": 23338,
+      "endMs": 23515,
+      "timestampMs": 23338,
+      "confidence": null
+    },
+    {
+      "text": "repeat",
+      "startMs": 23575,
+      "endMs": 23850,
+      "timestampMs": 23575,
+      "confidence": null
+    },
+    {
+      "text": "tickets",
+      "startMs": 23889,
+      "endMs": 24283,
+      "timestampMs": 23889,
+      "confidence": null
+    },
+    {
+      "text": "42%.",
+      "startMs": 24519,
+      "endMs": 25523,
+      "timestampMs": 24519,
+      "confidence": null
+    },
+    {
+      "text": "That's",
+      "startMs": 25729,
+      "endMs": 25926,
+      "timestampMs": 25729,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 25955,
+      "endMs": 25975,
+      "timestampMs": 25955,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 26074,
+      "endMs": 26299,
+      "timestampMs": 26074,
+      "confidence": null
+    },
+    {
+      "text": "network",
+      "startMs": 26358,
+      "endMs": 26674,
+      "timestampMs": 26358,
+      "confidence": null
+    },
+    {
+      "text": "admin",
+      "startMs": 26723,
+      "endMs": 26988,
+      "timestampMs": 26723,
+      "confidence": null
+    },
+    {
+      "text": "bullet.",
+      "startMs": 27037,
+      "endMs": 27441,
+      "timestampMs": 27037,
+      "confidence": null
+    },
+    {
+      "text": "Need",
+      "startMs": 27677,
+      "endMs": 27844,
+      "timestampMs": 27677,
+      "confidence": null
+    },
+    {
+      "text": "your",
+      "startMs": 27874,
+      "endMs": 27963,
+      "timestampMs": 27874,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 28002,
+      "endMs": 28287,
+      "timestampMs": 28002,
+      "confidence": null
+    },
+    {
+      "text": "fixed?",
+      "startMs": 28336,
+      "endMs": 28740,
+      "timestampMs": 28336,
+      "confidence": null
+    },
+    {
+      "text": "Upload",
+      "startMs": 28847,
+      "endMs": 29143,
+      "timestampMs": 28847,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 29173,
+      "endMs": 29231,
+      "timestampMs": 29173,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 29251,
+      "endMs": 29300,
+      "timestampMs": 29251,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 29350,
+      "endMs": 29596,
+      "timestampMs": 29350,
       "confidence": null
     },
     {
       "text": "before",
-      "startMs": 29450,
-      "endMs": 29657,
-      "timestampMs": 29450,
+      "startMs": 29645,
+      "endMs": 29852,
+      "timestampMs": 29645,
       "confidence": null
     },
     {
       "text": "you",
-      "startMs": 29688,
-      "endMs": 29751,
-      "timestampMs": 29688,
+      "startMs": 29881,
+      "endMs": 29950,
+      "timestampMs": 29881,
       "confidence": null
     },
     {
       "text": "apply.",
-      "startMs": 29812,
-      "endMs": 30300,
-      "timestampMs": 29812,
+      "startMs": 30008,
+      "endMs": 30511,
+      "timestampMs": 30008,
       "confidence": null
     }
   ],
@@ -876,7 +862,7 @@
     "quietMusic": false,
     "musicPolicy": "music_omitted_no_sfx",
     "provider": "elevenlabs",
-    "reason": "Single-take creator-style ElevenLabs read, rendered at 1.12x for short-form pacing.",
+    "reason": "Single-take creator-style ElevenLabs read, rendered at 1.18x for short-form pacing.",
     "wordLevelCaptions": true,
     "withTimestamps": true
   }

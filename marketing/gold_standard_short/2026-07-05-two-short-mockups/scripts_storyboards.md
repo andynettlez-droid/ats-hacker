@@ -10,7 +10,7 @@ Format: Vertical 9:16, recruiter-style teardown.
 
 ### Script
 
-Here's Jordan. He's applying for a network administrator role at a healthcare group. The resume is not awful. It's just written like a help desk ticket. The first bullet says responsible for IT support and fixing network issues. The job wants VLANs, Cisco switching, VPN, and incident response. Jordan has the proof lower down. Signal pulls it up: resolved a VLAN issue across 11 clinic workstations and cut repeat tickets 42%. That's a real network admin bullet. Free Signal score before you apply.
+Here's Jordan. He's applying for a network admin role at a healthcare group. Resume's not awful. It's written like a help desk ticket. First bullet: responsible for IT support and fixing network issues. The job wants VLANs, Cisco switching, VPN, incident response. Jordan has proof lower down. Signal pulls it up: resolved a VLAN issue across 11 clinic workstations and cut repeat tickets 42%. That's a real network admin bullet. Need your resume fixed? Upload it to Signal before you apply.
 
 ### Storyboard
 
@@ -24,7 +24,7 @@ Here's Jordan. He's applying for a network administrator role at a healthcare gr
    Visual: Green rewrite replaces the generic bullet with VLAN, Cisco, 11 clinic workstations, and 42% fewer repeat tickets.
 5. Reveal: 31/100 becomes 82/100.
    Visual: Before and after score cards plus "what changed" proof ledger.
-6. CTA: "Free Signal score before you apply."
+6. CTA: "Need your resume fixed? Upload it to Signal before you apply."
    Visual: Signal mascot and quick end card.
 
 ### Animation Direction

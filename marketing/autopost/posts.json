@@ -1486,5 +1486,37 @@
         "renderProps": "marketing/remotion/props_signal_ai_gets_you_seen_video.json",
         "reviewRequired": true,
         "notes": "Horizontal 16:9 brand video based on the supplied Signal journey image. Do not publish without Codex chat approval."
+    },
+    {
+        "title": "Shawn Wants Google With This?",
+        "caption": "Shawn is targeting a Network Engineer role at Google, but the good proof is buried under generic resume language. Signal pulls the real BGP, Python, incident, and metric proof up top. Run the free Signal score before you apply. #resumehelp #jobsearch #careeradvice #networkengineer",
+        "file": "videos/gold-shawn-google-network.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "review_required",
+        "composition": "ResumeDeskReview",
+        "renderProps": "marketing/remotion/props_gold_shawn_google_network.json",
+        "reviewRequired": true,
+        "notes": "Resume teardown and fix style. Do not publish without explicit Codex chat approval."
+    },
+    {
+        "title": "Signal Breaks Through The Filters",
+        "caption": "Signal grabs the resume, breaks through the filters, and phases the real proof onto the hiring manager screen. No fake experience. Just a clearer job match. Run the free Signal score before you apply. #resumehelp #jobsearch #careertok #airesume",
+        "file": "videos/gold-signal-filter-breakthrough.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "review_required",
+        "composition": "SignalBreakthroughAd",
+        "renderProps": "marketing/remotion/props_gold_signal_filter_breakthrough.json",
+        "reviewRequired": true,
+        "notes": "Animated Signal journey based on the supplied three-panel image as storyboard direction. Do not publish without explicit Codex chat approval."
     }
 ]

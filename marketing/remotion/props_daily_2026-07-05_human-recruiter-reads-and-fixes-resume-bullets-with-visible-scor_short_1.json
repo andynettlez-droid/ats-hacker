@@ -1,0 +1,892 @@
+{
+  "hook": "I would circle this line first.",
+  "subhook": "The line sounds normal until you compare it to the job.",
+  "creativeFormat": "resumeCrimeScene",
+  "visualStyle": "stickyNote",
+  "formatArchetype": "deskMarkup",
+  "pace": "fast",
+  "seriesLabel": "Live Resume Review",
+  "signalLines": {
+    "hook": "Circle this.",
+    "problem": "The proof is hidden.",
+    "teardown": "Name the work clearly.",
+    "fix": "Now I can read it.",
+    "cta": "Check before sending."
+  },
+  "resumeName": "Jordan Lee",
+  "resumeTitle": "Data Analyst Resume",
+  "resumeMeta": [
+    "3 yrs analytics",
+    "SQL + dashboards",
+    "Customer churn reporting"
+  ],
+  "jobTitle": "Product Data Analyst",
+  "jobKeywords": [
+    "SQL",
+    "Tableau",
+    "cohort analysis",
+    "churn dashboard",
+    "stakeholder insights"
+  ],
+  "weakBullets": [
+    "Created reports for business teams and leadership.",
+    "Worked with data to help teams understand customer trends.",
+    "Helped maintain dashboards for weekly performance meetings."
+  ],
+  "beforeBullet": "Created reports for business teams and leadership.",
+  "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+  "resumeDocument": {
+    "name": "Jordan Lee",
+    "headline": "Data Analyst",
+    "contact": [
+      "Austin, TX",
+      "jordan.lee@example.com",
+      "linkedin.com/in/jordan-lee"
+    ],
+    "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+    "experience": [
+      {
+        "company": "Northstar Analytics",
+        "role": "Data Analyst",
+        "dates": "2023 - Present",
+        "bullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings.",
+          "Cleaned product usage exports and sent weekly insights to customer success."
+        ]
+      },
+      {
+        "company": "CedarCloud Software",
+        "role": "Junior Operations Analyst",
+        "dates": "2021 - 2023",
+        "bullets": [
+          "Updated Excel trackers for sales, onboarding, and support activity.",
+          "Partnered with product managers to validate monthly account health data.",
+          "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+        ]
+      }
+    ],
+    "skills": [
+      "SQL",
+      "Tableau",
+      "Excel",
+      "Customer churn",
+      "Cohort analysis",
+      "Data cleaning",
+      "Stakeholder reporting"
+    ],
+    "education": "B.S. Business Analytics, University of Texas at Austin"
+  },
+  "jobDescription": {
+    "title": "Product Data Analyst",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use SQL and Tableau to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to cohort analysis.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "SQL",
+      "Tableau",
+      "cohort analysis",
+      "churn dashboard",
+      "stakeholder insights"
+    ],
+    "searchQueries": [
+      "SQL",
+      "Tableau",
+      "cohort analysis",
+      "churn dashboard"
+    ]
+  },
+  "beforeScore": 32,
+  "afterScore": 89,
+  "scoreBasis": [
+    {
+      "label": "Job keyword/tool match",
+      "before": "Only says reports",
+      "after": "SQL and Tableau are explicit"
+    },
+    {
+      "label": "Measurable proof",
+      "before": "No number",
+      "after": "6 hours saved"
+    },
+    {
+      "label": "Outcome clarity",
+      "before": "Leadership benefit is vague",
+      "after": "18 at-risk accounts flagged"
+    },
+    {
+      "label": "Scope/context",
+      "before": "Audience only",
+      "after": "Churn dashboard scope"
+    }
+  ],
+  "score_rubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 32,
+    "afterTotal": 89,
+    "rows": [
+      {
+        "criterion": "Job keyword/tool match",
+        "label": "Job keyword/tool match",
+        "max": 25,
+        "before": 8,
+        "after": 23,
+        "beforeReason": "Only says reports",
+        "afterReason": "SQL and Tableau are explicit"
+      },
+      {
+        "criterion": "Measurable proof",
+        "label": "Measurable proof",
+        "max": 20,
+        "before": 2,
+        "after": 18,
+        "beforeReason": "No number",
+        "afterReason": "6 hours saved"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 4,
+        "after": 17,
+        "beforeReason": "Leadership benefit is vague",
+        "afterReason": "18 at-risk accounts flagged"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 7,
+        "after": 13,
+        "beforeReason": "Audience only",
+        "afterReason": "Churn dashboard scope"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 8,
+        "after": 14,
+        "beforeReason": "Analytics implied",
+        "afterReason": "Product analytics fit"
+      },
+      {
+        "criterion": "Formatting/readability",
+        "label": "Formatting/readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Readable but generic",
+        "afterReason": "Readable and specific"
+      }
+    ],
+    "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+    "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+  },
+  "scoreRubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 32,
+    "afterTotal": 89,
+    "rows": [
+      {
+        "criterion": "Job keyword/tool match",
+        "label": "Job keyword/tool match",
+        "max": 25,
+        "before": 8,
+        "after": 23,
+        "beforeReason": "Only says reports",
+        "afterReason": "SQL and Tableau are explicit"
+      },
+      {
+        "criterion": "Measurable proof",
+        "label": "Measurable proof",
+        "max": 20,
+        "before": 2,
+        "after": 18,
+        "beforeReason": "No number",
+        "afterReason": "6 hours saved"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 4,
+        "after": 17,
+        "beforeReason": "Leadership benefit is vague",
+        "afterReason": "18 at-risk accounts flagged"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 7,
+        "after": 13,
+        "beforeReason": "Audience only",
+        "afterReason": "Churn dashboard scope"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 8,
+        "after": 14,
+        "beforeReason": "Analytics implied",
+        "afterReason": "Product analytics fit"
+      },
+      {
+        "criterion": "Formatting/readability",
+        "label": "Formatting/readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Readable but generic",
+        "afterReason": "Readable and specific"
+      }
+    ],
+    "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+    "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+  },
+  "scoreLabel": "Signal Fit Score",
+  "humanReadBeats": [
+    {
+      "beat": "read_line",
+      "text": "Read the exact resume line: Created reports for business teams and leadership."
+    },
+    {
+      "beat": "natural_reaction",
+      "text": "I believe the work happened; I just cannot see the proof yet."
+    },
+    {
+      "beat": "job_requirement",
+      "text": "Compare it to the job requirement: SQL, Tableau, cohort analysis."
+    },
+    {
+      "beat": "score_reason",
+      "text": "Explain the visible rubric before the score: 32/100."
+    },
+    {
+      "beat": "rewrite",
+      "text": "Rewrite only the same experience: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts."
+    },
+    {
+      "beat": "score_improvement",
+      "text": "Explain what improved before showing 89/100."
+    }
+  ],
+  "markedLabel": "Too vague",
+  "problemPunchline": "The work may be real. The evidence is not readable.",
+  "teardownPunchline": "Low score reason: the rubric cannot find tool, metric, or result.",
+  "fixPunchline": "A recruiter should not have to infer the proof.",
+  "teardownIssues": [
+    "No SQL signal",
+    "No dashboard tool",
+    "No business result"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "voiceDirector": {
+    "mode": "human_review_read",
+    "preferredProvider": "elevenlabs_speech_to_speech",
+    "fallbackProvider": "elevenlabs_tts_multitake",
+    "takeCount": 3,
+    "delivery": [
+      "Sounds like a recruiter reading the resume live.",
+      "Conversational, slightly amused, direct, helpful.",
+      "Short pause after the weak bullet and before the score reason.",
+      "No corporate polish, no trailer voice, no product-demo cadence."
+    ],
+    "scratchReadSrc": null,
+    "humanReadBeats": [
+      {
+        "beat": "read_line",
+        "text": "Read the exact resume line: Created reports for business teams and leadership."
+      },
+      {
+        "beat": "natural_reaction",
+        "text": "I believe the work happened; I just cannot see the proof yet."
+      },
+      {
+        "beat": "job_requirement",
+        "text": "Compare it to the job requirement: SQL, Tableau, cohort analysis."
+      },
+      {
+        "beat": "score_reason",
+        "text": "Explain the visible rubric before the score: 32/100."
+      },
+      {
+        "beat": "rewrite",
+        "text": "Rewrite only the same experience: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts."
+      },
+      {
+        "beat": "score_improvement",
+        "text": "Explain what improved before showing 89/100."
+      }
+    ],
+    "scriptSource": "human_read_pass"
+  },
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "voiceName": "configured voice",
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true,
+    "voiceDirector": {
+      "mode": "human_review_read",
+      "preferredProvider": "elevenlabs_speech_to_speech",
+      "fallbackProvider": "elevenlabs_tts_multitake",
+      "takeCount": 3,
+      "delivery": [
+        "Sounds like a recruiter reading the resume live.",
+        "Conversational, slightly amused, direct, helpful.",
+        "Short pause after the weak bullet and before the score reason.",
+        "No corporate polish, no trailer voice, no product-demo cadence."
+      ],
+      "scratchReadSrc": null,
+      "humanReadBeats": [
+        {
+          "beat": "read_line",
+          "text": "Read the exact resume line: Created reports for business teams and leadership."
+        },
+        {
+          "beat": "natural_reaction",
+          "text": "I believe the work happened; I just cannot see the proof yet."
+        },
+        {
+          "beat": "job_requirement",
+          "text": "Compare it to the job requirement: SQL, Tableau, cohort analysis."
+        },
+        {
+          "beat": "score_reason",
+          "text": "Explain the visible rubric before the score: 32/100."
+        },
+        {
+          "beat": "rewrite",
+          "text": "Rewrite only the same experience: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts."
+        },
+        {
+          "beat": "score_improvement",
+          "text": "Explain what improved before showing 89/100."
+        }
+      ],
+      "scriptSource": "human_read_pass"
+    }
+  },
+  "voiceoverSrc": "audio/daily-2026-07-05-i-would-circle-this-line-first-1-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "Okay,",
+      "startMs": 35,
+      "endMs": 580,
+      "timestampMs": 35,
+      "confidence": null
+    },
+    {
+      "text": "circle",
+      "startMs": 673,
+      "endMs": 1033,
+      "timestampMs": 673,
+      "confidence": null
+    },
+    {
+      "text": "this",
+      "startMs": 1068,
+      "endMs": 1207,
+      "timestampMs": 1068,
+      "confidence": null
+    },
+    {
+      "text": "line:",
+      "startMs": 1277,
+      "endMs": 1695,
+      "timestampMs": 1277,
+      "confidence": null
+    },
+    {
+      "text": "Created",
+      "startMs": 1869,
+      "endMs": 2322,
+      "timestampMs": 1869,
+      "confidence": null
+    },
+    {
+      "text": "reports",
+      "startMs": 2392,
+      "endMs": 2775,
+      "timestampMs": 2392,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 2810,
+      "endMs": 2914,
+      "timestampMs": 2810,
+      "confidence": null
+    },
+    {
+      "text": "business",
+      "startMs": 2961,
+      "endMs": 3286,
+      "timestampMs": 2961,
+      "confidence": null
+    },
+    {
+      "text": "teams",
+      "startMs": 3332,
+      "endMs": 3634,
+      "timestampMs": 3332,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 3692,
+      "endMs": 3855,
+      "timestampMs": 3692,
+      "confidence": null
+    },
+    {
+      "text": "leadership.",
+      "startMs": 3924,
+      "endMs": 4598,
+      "timestampMs": 3924,
+      "confidence": null
+    },
+    {
+      "text": "Normal",
+      "startMs": 5108,
+      "endMs": 5457,
+      "timestampMs": 5108,
+      "confidence": null
+    },
+    {
+      "text": "sentence,",
+      "startMs": 5515,
+      "endMs": 6060,
+      "timestampMs": 5515,
+      "confidence": null
+    },
+    {
+      "text": "but",
+      "startMs": 6107,
+      "endMs": 6246,
+      "timestampMs": 6107,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 6281,
+      "endMs": 6304,
+      "timestampMs": 6281,
+      "confidence": null
+    },
+    {
+      "text": "cannot",
+      "startMs": 6362,
+      "endMs": 6629,
+      "timestampMs": 6362,
+      "confidence": null
+    },
+    {
+      "text": "see",
+      "startMs": 6676,
+      "endMs": 6873,
+      "timestampMs": 6676,
+      "confidence": null
+    },
+    {
+      "text": "SQL,",
+      "startMs": 6943,
+      "endMs": 7721,
+      "timestampMs": 6943,
+      "confidence": null
+    },
+    {
+      "text": "Tableau,",
+      "startMs": 7837,
+      "endMs": 8359,
+      "timestampMs": 7837,
+      "confidence": null
+    },
+    {
+      "text": "or",
+      "startMs": 8406,
+      "endMs": 8615,
+      "timestampMs": 8406,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 8673,
+      "endMs": 8696,
+      "timestampMs": 8673,
+      "confidence": null
+    },
+    {
+      "text": "result.",
+      "startMs": 8766,
+      "endMs": 9381,
+      "timestampMs": 8766,
+      "confidence": null
+    },
+    {
+      "text": "So",
+      "startMs": 9822,
+      "endMs": 9950,
+      "timestampMs": 9822,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 10008,
+      "endMs": 10077,
+      "timestampMs": 10008,
+      "confidence": null
+    },
+    {
+      "text": "rubric",
+      "startMs": 10124,
+      "endMs": 10495,
+      "timestampMs": 10124,
+      "confidence": null
+    },
+    {
+      "text": "gives",
+      "startMs": 10588,
+      "endMs": 10786,
+      "timestampMs": 10588,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 10832,
+      "endMs": 10902,
+      "timestampMs": 10832,
+      "confidence": null
+    },
+    {
+      "text": "32,",
+      "startMs": 10948,
+      "endMs": 11656,
+      "timestampMs": 10948,
+      "confidence": null
+    },
+    {
+      "text": "not",
+      "startMs": 11831,
+      "endMs": 11993,
+      "timestampMs": 11831,
+      "confidence": null
+    },
+    {
+      "text": "89.",
+      "startMs": 12040,
+      "endMs": 12817,
+      "timestampMs": 12040,
+      "confidence": null
+    },
+    {
+      "text": "Rewrite",
+      "startMs": 13259,
+      "endMs": 13723,
+      "timestampMs": 13259,
+      "confidence": null
+    },
+    {
+      "text": "it:",
+      "startMs": 13758,
+      "endMs": 14013,
+      "timestampMs": 13758,
+      "confidence": null
+    },
+    {
+      "text": "built",
+      "startMs": 14187,
+      "endMs": 14443,
+      "timestampMs": 14187,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 14501,
+      "endMs": 14524,
+      "timestampMs": 14501,
+      "confidence": null
+    },
+    {
+      "text": "SQL",
+      "startMs": 14605,
+      "endMs": 15093,
+      "timestampMs": 14605,
+      "confidence": null
+    },
+    {
+      "text": "churn",
+      "startMs": 15163,
+      "endMs": 15488,
+      "timestampMs": 15163,
+      "confidence": null
+    },
+    {
+      "text": "dashboard",
+      "startMs": 15546,
+      "endMs": 16056,
+      "timestampMs": 15546,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 16091,
+      "endMs": 16219,
+      "timestampMs": 16091,
+      "confidence": null
+    },
+    {
+      "text": "saved",
+      "startMs": 16277,
+      "endMs": 16567,
+      "timestampMs": 16277,
+      "confidence": null
+    },
+    {
+      "text": "six",
+      "startMs": 16602,
+      "endMs": 16811,
+      "timestampMs": 16602,
+      "confidence": null
+    },
+    {
+      "text": "hours",
+      "startMs": 16869,
+      "endMs": 17101,
+      "timestampMs": 16869,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 17136,
+      "endMs": 17159,
+      "timestampMs": 17136,
+      "confidence": null
+    },
+    {
+      "text": "week",
+      "startMs": 17217,
+      "endMs": 17450,
+      "timestampMs": 17217,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 17600,
+      "endMs": 17763,
+      "timestampMs": 17600,
+      "confidence": null
+    },
+    {
+      "text": "flagged",
+      "startMs": 17821,
+      "endMs": 18123,
+      "timestampMs": 17821,
+      "confidence": null
+    },
+    {
+      "text": "18",
+      "startMs": 18181,
+      "endMs": 18564,
+      "timestampMs": 18181,
+      "confidence": null
+    },
+    {
+      "text": "at-risk",
+      "startMs": 18645,
+      "endMs": 19098,
+      "timestampMs": 18645,
+      "confidence": null
+    },
+    {
+      "text": "accounts.",
+      "startMs": 19145,
+      "endMs": 19725,
+      "timestampMs": 19145,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 20050,
+      "endMs": 20248,
+      "timestampMs": 20050,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 20317,
+      "endMs": 20340,
+      "timestampMs": 20317,
+      "confidence": null
+    },
+    {
+      "text": "see",
+      "startMs": 20422,
+      "endMs": 20573,
+      "timestampMs": 20422,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 20619,
+      "endMs": 20689,
+      "timestampMs": 20619,
+      "confidence": null
+    },
+    {
+      "text": "tool,",
+      "startMs": 20747,
+      "endMs": 21165,
+      "timestampMs": 20747,
+      "confidence": null
+    },
+    {
+      "text": "scope,",
+      "startMs": 21246,
+      "endMs": 21664,
+      "timestampMs": 21246,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 21687,
+      "endMs": 21803,
+      "timestampMs": 21687,
+      "confidence": null
+    },
+    {
+      "text": "outcome.",
+      "startMs": 21861,
+      "endMs": 22430,
+      "timestampMs": 21861,
+      "confidence": null
+    },
+    {
+      "text": "That",
+      "startMs": 22755,
+      "endMs": 22929,
+      "timestampMs": 22755,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 22976,
+      "endMs": 23034,
+      "timestampMs": 22976,
+      "confidence": null
+    },
+    {
+      "text": "why",
+      "startMs": 23080,
+      "endMs": 23196,
+      "timestampMs": 23080,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 23243,
+      "endMs": 23301,
+      "timestampMs": 23243,
+      "confidence": null
+    },
+    {
+      "text": "moves",
+      "startMs": 23347,
+      "endMs": 23556,
+      "timestampMs": 23347,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 23591,
+      "endMs": 23638,
+      "timestampMs": 23591,
+      "confidence": null
+    },
+    {
+      "text": "89.",
+      "startMs": 23707,
+      "endMs": 24392,
+      "timestampMs": 23707,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 24833,
+      "endMs": 25042,
+      "timestampMs": 24833,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 25089,
+      "endMs": 25159,
+      "timestampMs": 25089,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 25205,
+      "endMs": 25402,
+      "timestampMs": 25205,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 25437,
+      "endMs": 25727,
+      "timestampMs": 25437,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 25786,
+      "endMs": 26076,
+      "timestampMs": 25786,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 26122,
+      "endMs": 26412,
+      "timestampMs": 26122,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 26447,
+      "endMs": 26529,
+      "timestampMs": 26447,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 26575,
+      "endMs": 27121,
+      "timestampMs": 26575,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 28.321,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-05-i-would-circle-this-line-first-1-voiceover.alignment.json"
+  }
+}

@@ -1,0 +1,251 @@
+[
+  {
+    "title": "Human recruiter reads and fixes resume bullets with visible score rubric | Resume Teardown with ",
+    "caption": "Human recruiter reads and fixes resume bullets with visible score rubric | Resume Teardown. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
+    "file": "videos/daily-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor-episode.mp4",
+    "platforms": [
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "contentType": "youtube_long_form",
+    "youtubeKind": "long_form",
+    "target": "daily long-form YouTube",
+    "youtubeTitle": "Human recruiter reads and fixes resume bullets with visible score rubric | Resume Teardown with ",
+    "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "composition": "TeardownEpisode",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_episode.json",
+    "thumbnail": "marketing/remotion/out/daily-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor-thumbnail.png",
+    "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_thumbnail.json",
+    "renderStatus": "render_required",
+    "reviewStatus": "review_required",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "reason": "9 episode sections ready",
+      "wordLevelCaptions": true
+    },
+    "qaGate": {
+      "required": true,
+      "passed": false,
+      "status": "requires_render_review",
+      "minExpertViralScore": 94,
+      "checks": [
+        "Rendered MP4 exists in marketing/autopost/videos.",
+        "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+        "Opening hook is visible in the first 5 seconds.",
+        "Signal mascot or brand mark is visible.",
+        "No old human presenter appears unless explicitly approved.",
+        "Audio is present, balanced, and not dominated by music or effects.",
+        "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+        "Thumbnail exists or is intentionally deferred.",
+        "Human reviewer approved exact file, title, description, thumbnail, and platform target."
+      ]
+    },
+    "expertViralGate": {
+      "required": true,
+      "minScore": 94,
+      "score": null,
+      "passed": false,
+      "status": "requires_expert_viral_review"
+    },
+    "reviewChecklist": [
+      "long-form render reviewed",
+      "thumbnail reviewed",
+      "audio present and balanced",
+      "claims reviewed",
+      "exact YouTube title and description reviewed",
+      "status remains review_required until approval"
+    ]
+  },
+  {
+    "title": "I would circle this line first",
+    "caption": "I would circle this line first. Why it starts low: SQL, Tableau, cohort analysis. Rewrite adds the missing tool, metric, and outcome: 32->89. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-i-would-circle-this-line-first.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_1.json",
+    "composition": "ResumeDeskReview",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true,
+      "voiceDirector": {
+        "mode": "human_review_read",
+        "preferredProvider": "elevenlabs_speech_to_speech",
+        "fallbackProvider": "elevenlabs_tts_multitake",
+        "takeCount": 3,
+        "delivery": [
+          "Sounds like a recruiter reading the resume live.",
+          "Conversational, slightly amused, direct, helpful.",
+          "Short pause after the weak bullet and before the score reason.",
+          "No corporate polish, no trailer voice, no product-demo cadence."
+        ],
+        "scratchReadSrc": null,
+        "humanReadBeats": [
+          {
+            "beat": "read_line",
+            "text": "Read the exact resume line: Created reports for business teams and leadership."
+          },
+          {
+            "beat": "natural_reaction",
+            "text": "I believe the work happened; I just cannot see the proof yet."
+          },
+          {
+            "beat": "job_requirement",
+            "text": "Compare it to the job requirement: SQL, Tableau, cohort analysis."
+          },
+          {
+            "beat": "score_reason",
+            "text": "Explain the visible rubric before the score: 32/100."
+          },
+          {
+            "beat": "rewrite",
+            "text": "Rewrite only the same experience: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts."
+          },
+          {
+            "beat": "score_improvement",
+            "text": "Explain what improved before showing 89/100."
+          }
+        ],
+        "scriptSource": "human_read_pass"
+      }
+    }
+  },
+  {
+    "title": "I searched the resume. Bad news.",
+    "caption": "I searched the resume. Bad news. Search miss: Salesforce, pipeline generation, quota attainment. Rewrite adds visible proof, so the score can move: 37->88. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-i-searched-the-resume-bad-news.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_2.json",
+    "composition": "ResumeDeskReview",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true,
+      "voiceDirector": {
+        "mode": "human_review_read",
+        "preferredProvider": "elevenlabs_speech_to_speech",
+        "fallbackProvider": "elevenlabs_tts_multitake",
+        "takeCount": 3,
+        "delivery": [
+          "Sounds like a recruiter reading the resume live.",
+          "Conversational, slightly amused, direct, helpful.",
+          "Short pause after the weak bullet and before the score reason.",
+          "No corporate polish, no trailer voice, no product-demo cadence."
+        ],
+        "scratchReadSrc": null,
+        "humanReadBeats": [
+          {
+            "beat": "read_line",
+            "text": "Read the exact resume line: Responsible for sales opportunities in assigned territory."
+          },
+          {
+            "beat": "natural_reaction",
+            "text": "The sales work may be there; the pipeline proof is not."
+          },
+          {
+            "beat": "job_requirement",
+            "text": "Compare it to the job requirement: Salesforce, pipeline generation, quota attainment."
+          },
+          {
+            "beat": "score_reason",
+            "text": "Explain the visible rubric before the score: 37/100."
+          },
+          {
+            "beat": "rewrite",
+            "text": "Rewrite only the same experience: generated 1.8 million in qualified Salesforce pipeline."
+          },
+          {
+            "beat": "score_improvement",
+            "text": "Explain what improved before showing 88/100."
+          }
+        ],
+        "scriptSource": "human_read_pass"
+      }
+    }
+  },
+  {
+    "title": "The job post gave the answer key",
+    "caption": "The job post gave the answer key. Answer-key miss: React, TypeScript, Next.js. Rewrite puts stack, metric, and outcome on screen: 41->90. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-the-job-post-gave-the-answer-key.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_3.json",
+    "composition": "ResumeDeskReview",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "voiceName": "configured voice",
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true,
+      "voiceDirector": {
+        "mode": "human_review_read",
+        "preferredProvider": "elevenlabs_speech_to_speech",
+        "fallbackProvider": "elevenlabs_tts_multitake",
+        "takeCount": 3,
+        "delivery": [
+          "Sounds like a recruiter reading the resume live.",
+          "Conversational, slightly amused, direct, helpful.",
+          "Short pause after the weak bullet and before the score reason.",
+          "No corporate polish, no trailer voice, no product-demo cadence."
+        ],
+        "scratchReadSrc": null,
+        "humanReadBeats": [
+          {
+            "beat": "read_line",
+            "text": "Read the exact resume line: Worked on frontend features for internal and customer-facing tools."
+          },
+          {
+            "beat": "natural_reaction",
+            "text": "The stack is probably real, but the bullet makes me hunt for it."
+          },
+          {
+            "beat": "job_requirement",
+            "text": "Compare it to the job requirement: React, TypeScript, Next.js."
+          },
+          {
+            "beat": "score_reason",
+            "text": "Explain the visible rubric before the score: 41/100."
+          },
+          {
+            "beat": "rewrite",
+            "text": "Rewrite only the same experience: shipped React and TypeScript checkout work that reduced drop-off 14 percent."
+          },
+          {
+            "beat": "score_improvement",
+            "text": "Explain what improved before showing 90/100."
+          }
+        ],
+        "scriptSource": "human_read_pass"
+      }
+    }
+  }
+]

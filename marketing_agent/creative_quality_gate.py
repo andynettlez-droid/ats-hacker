@@ -14,6 +14,8 @@ POSITIVE_MARKERS = {
         "92/100",
         "i would circle",
         "i searched",
+        "i search",
+        "here is my ctrl",
         "i am reading",
         "i'm reading",
         "job post already told you",
@@ -65,9 +67,14 @@ POSITIVE_MARKERS = {
         "i would write",
         "i would rewrite",
         "makes me guess",
+        "okay, this is",
+        "bad news",
+        "see the gap",
+        "not giving it",
         "cannot see",
         "ctrl+f",
         "the job post already told you",
+        "the job post gave",
         "qualified people look weaker",
         "do not fake anything",
         "name the actual work",
@@ -174,6 +181,7 @@ NARRATIVE_BEAT_GROUPS = {
         "job post",
         "job description",
         "i search",
+        "here is my ctrl",
         "ctrl f",
         "ctrl+f",
         "search clues",
@@ -185,7 +193,10 @@ NARRATIVE_BEAT_GROUPS = {
         "bullet says",
         "line says",
         "resume line",
+        "then i read",
         "this is the line",
+        "read this line",
+        "this is the line i would circle",
         "now here is the resume line",
         "resume replies",
         "resume answered",
@@ -209,6 +220,9 @@ NARRATIVE_BEAT_GROUPS = {
         "generic",
         "weak",
         "nothing useful",
+        "guessing",
+        "gap",
+        "missed it",
         "zero proof",
         "detective work",
         "no tool",
@@ -240,6 +254,8 @@ NARRATIVE_BEAT_GROUPS = {
         "to 90",
         "to 88",
         "free signal score",
+        "moves to",
+        "not giving it an",
     ],
 }
 
@@ -252,13 +268,21 @@ HUMAN_REVIEW_MARKERS = [
     "i would write",
     "i'd write",
     "i would rewrite",
+    "i search",
+    "here is my ctrl",
     "if i am screening",
     "if i'm screening",
-    "here is the job post",
-    "now here is the resume line",
-    "line says",
-    "cannot see",
-    "makes me guess",
+        "here is the job post",
+        "look at the job post",
+        "now here is the resume line",
+        "line says",
+    "read this line",
+    "then i read",
+    "this is the line",
+        "cannot see",
+        "makes me guess",
+        "see the gap",
+        "not giving it",
 ]
 
 
@@ -301,6 +325,29 @@ def text_blob(packet: dict) -> str:
             for row in props.get("scoreBasis", []) or []:
                 if isinstance(row, dict):
                     parts.extend([row.get("label", ""), row.get("before", ""), row.get("after", "")])
+            score_rubric = props.get("score_rubric") or props.get("scoreRubric") or {}
+            if isinstance(score_rubric, dict):
+                parts.extend([
+                    score_rubric.get("label", ""),
+                    score_rubric.get("beforeTotal", ""),
+                    score_rubric.get("afterTotal", ""),
+                    score_rubric.get("beforeExplanation", ""),
+                    score_rubric.get("afterExplanation", ""),
+                ])
+                for row in score_rubric.get("rows", []) or []:
+                    if isinstance(row, dict):
+                        parts.extend([
+                            row.get("criterion", ""),
+                            row.get("label", ""),
+                            row.get("max", ""),
+                            row.get("before", ""),
+                            row.get("after", ""),
+                            row.get("beforeReason", ""),
+                            row.get("afterReason", ""),
+                        ])
+            for beat in props.get("humanReadBeats", []) or []:
+                if isinstance(beat, dict):
+                    parts.extend([beat.get("beat", ""), beat.get("text", "")])
             parts.extend(short.get("storyboard", []) or [])
     return "\n".join(str(part) for part in parts)
 
@@ -333,10 +380,51 @@ def has_score_basis(short: dict) -> bool:
     return valid >= 3
 
 
+def score_rubric_rows(short: dict) -> list[dict]:
+    props = short.get("props") if isinstance(short.get("props"), dict) else {}
+    rubric = props.get("score_rubric") or props.get("scoreRubric")
+    if not isinstance(rubric, dict):
+        return []
+    rows = rubric.get("rows")
+    return rows if isinstance(rows, list) else []
+
+
+def has_score_rubric(short: dict) -> bool:
+    props = short.get("props") if isinstance(short.get("props"), dict) else {}
+    before_score = props.get("beforeScore")
+    after_score = props.get("afterScore")
+    rows = score_rubric_rows(short)
+    if not isinstance(before_score, (int, float)) or not isinstance(after_score, (int, float)):
+        return False
+    if len(rows) < 6:
+        return False
+    before_total = 0
+    after_total = 0
+    valid = 0
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        if not row.get("criterion") and not row.get("label"):
+            continue
+        if not isinstance(row.get("max"), (int, float)):
+            continue
+        if not isinstance(row.get("before"), (int, float)) or not isinstance(row.get("after"), (int, float)):
+            continue
+        if not row.get("beforeReason") or not row.get("afterReason"):
+            continue
+        before_total += int(row["before"])
+        after_total += int(row["after"])
+        valid += 1
+    return valid >= 6 and before_total == int(before_score) and after_total == int(after_score) and after_total > before_total
+
+
 def explains_starting_score(blob: str) -> bool:
     low = blob.lower()
     score_reason_markers = [
         "starts at",
+        "starts here",
+        "that is why this starts",
+        "why the score starts",
         "starting score",
         "low score",
         "because",
@@ -348,7 +436,8 @@ def explains_starting_score(blob: str) -> bool:
         "zero proof",
         "no tool",
         "no number",
-        "score receipt",
+        "signal fit score",
+        "rubric",
     ]
     return sum(1 for marker in score_reason_markers if marker in low) >= 3
 
@@ -439,6 +528,16 @@ def score_short(short: dict) -> dict:
                 for row in (props.get("scoreBasis", []) or [])
                 if isinstance(row, dict)
             ],
+            *[
+                " ".join(str(row.get(key, "")) for key in ("criterion", "label", "max", "before", "after", "beforeReason", "afterReason"))
+                for row in score_rubric_rows(short)
+                if isinstance(row, dict)
+            ],
+            *[
+                f"{beat.get('beat', '')} {beat.get('text', '')}"
+                for beat in (props.get("humanReadBeats", []) or [])
+                if isinstance(beat, dict)
+            ],
             *(props.get("resumeMeta", []) or []),
             *(props.get("weakBullets", []) or []),
             *(props.get("jobKeywords", []) or []),
@@ -506,10 +605,10 @@ def score_short(short: dict) -> dict:
     else:
         notes.append("Include a clear score jump or numeric proof payoff.")
 
-    if has_score_basis(short) and explains_starting_score(blob):
+    if has_score_basis(short) and has_score_rubric(short) and explains_starting_score(blob):
         score += 10
     else:
-        blockers.append("Score reveal needs a visible rationale: scoreBasis plus script language explaining why the start score is low.")
+        blockers.append("Score reveal needs scoreBasis, a six-row score_rubric with matching totals, and script language explaining why the start score is low.")
 
     if has_repeatable_series(blob):
         score += 5
@@ -571,6 +670,11 @@ def score_packet(packet: dict) -> dict:
         short.get("props", {}).get("problemPunchline", "") if isinstance(short.get("props"), dict) else "",
         short.get("props", {}).get("teardownPunchline", "") if isinstance(short.get("props"), dict) else "",
         short.get("props", {}).get("fixPunchline", "") if isinstance(short.get("props"), dict) else "",
+        "\n".join(
+            f"{beat.get('beat', '')} {beat.get('text', '')}"
+            for beat in (short.get("props", {}).get("humanReadBeats", []) if isinstance(short.get("props"), dict) else [])
+            if isinstance(beat, dict)
+        ),
     ])) for short in [s for s in packet.get("shorts", []) or [] if isinstance(s, dict)]]
     if beat_sets and all(len(beats) >= 6 for beats in beat_sets[:3]):
         score += 10
@@ -593,6 +697,11 @@ def score_packet(packet: dict) -> dict:
         short.get("script", ""),
         "\n".join(short.get("storyboard", []) or []),
         short.get("props", {}).get("voiceover_text", "") if isinstance(short.get("props"), dict) else "",
+        "\n".join(
+            f"{beat.get('beat', '')} {beat.get('text', '')}"
+            for beat in (short.get("props", {}).get("humanReadBeats", []) if isinstance(short.get("props"), dict) else [])
+            if isinstance(beat, dict)
+        ),
     ])) >= 2 for short in shorts[:3]):
         score += 10
     else:
@@ -603,7 +712,7 @@ def score_packet(packet: dict) -> dict:
     else:
         notes.append("Needs a numeric before/after payoff.")
 
-    if shorts and all(has_score_basis(short) and explains_starting_score("\n".join(str(part) for part in [
+    if shorts and all(has_score_basis(short) and has_score_rubric(short) and explains_starting_score("\n".join(str(part) for part in [
         short.get("title", ""),
         short.get("hook", ""),
         short.get("script", ""),
@@ -615,7 +724,7 @@ def score_packet(packet: dict) -> dict:
     ])) for short in shorts[:3]):
         score += 10
     else:
-        blockers.append("Each short needs scoreBasis plus an explained low-score reason before the score jump.")
+        blockers.append("Each short needs scoreBasis, a six-row score_rubric with matching totals, and an explained low-score reason before the score jump.")
 
     if "free signal score" in low or "free score" in low:
         score += 10

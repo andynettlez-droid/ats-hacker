@@ -1,0 +1,30 @@
+{
+  "overallScore": 100,
+  "passed": true,
+  "verdict": "post_grade_script_packet",
+  "notes": [],
+  "blockers": [],
+  "shorts": [
+    {
+      "title": "I would circle this line first",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "I searched the resume. Bad news.",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "The job post gave the answer key",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 # Signal Media Pipeline Readiness Review
 
-Reviewed: 2026-07-04
+Reviewed: 2026-07-05
 
 ## Verdict
 
 The short-form pipeline is ready for supervised Codex review-gated posting. The current long-form YouTube render is a review cut only; it is not publish-ready because it fails the minimum long-form duration gate. The system is not yet ready for fully unattended daily channel production.
 
-The current `ResumeDeskReview` shorts are materially stronger than the rejected mascot/product-demo and repeated dashboard cuts: the resume is the main character, the job description is visible, the weak bullet is grounded in a professional resume artifact, the narration uses first-person reviewer language, and the score reveal is preceded by visible low-score rationale. The latest batch also avoids the prior robotic repetition by rotating three distinct roles: Product Data Analyst, Mid-Market Account Executive, and Frontend Software Engineer.
+The current `ResumeDeskReview` shorts are materially stronger than the rejected mascot/product-demo and repeated dashboard cuts: the resume is the main character, the job description is visible, the weak bullet is grounded in a professional resume artifact, the narration uses first-person reviewer language, and the score reveal is preceded by a visible six-part Signal Fit Score rubric. The latest batch also avoids the prior robotic repetition by rotating three distinct roles: Product Data Analyst, Mid-Market Account Executive, and Frontend Software Engineer.
 
 The new Codex approval layer now wraps the existing daily packet, Remotion render, QC, promotion, and posting queue. Videos move through a durable local SQLite state machine and stop at `AWAITING_CODEX_APPROVAL` until the exact reviewed file is approved in Codex.
 
@@ -26,7 +26,7 @@ The current long-form YouTube lane has a rendered 1920x1080 review cut, thumbnai
 - The autopost dry run works and reports file hashes before publishing.
 - The Python marketing agent stack compiles.
 - The Remotion TypeScript check passes.
-- The current daily script packet passes the creative quality gate at 100/100, with repeated-opening, robotic-phrase, first-person reviewer, and role-rotation checks enabled.
+- The current daily script packet passes the creative quality gate at 100/100, with repeated-opening, robotic-phrase, first-person reviewer, score-rubric, and role-rotation checks enabled.
 - The studio short metadata/queue QC gate passes.
 - The audio asset QC gate passes for linked short voiceovers, music, and all 9 long-form episode segments.
 - A source-backed trend intake file exists for the current daily packet.
@@ -37,7 +37,7 @@ The current long-form YouTube lane has a rendered 1920x1080 review cut, thumbnai
 
 - Automated visual safe-area QC exists for bright/saturated margin issues and now supports `ResumeDeskReview`. It is not a full semantic visual QA system for overlap, contrast, mascot personality, or whether the video is funny.
 - No automated audio loudness/peak/LUFS check. The current audio gate validates files, codecs, duration, sample rate, bitrate, channels, and mix-volume settings, but does not measure loudness.
-- Word-level caption alignment is available only for new ElevenLabs `/with-timestamps` generations. Existing cached daily voiceovers and OpenAI fallback voiceovers use scene captions.
+- Word-level caption alignment is available for new ElevenLabs `/with-timestamps` generations. Existing cached daily voiceovers and OpenAI fallback voiceovers use scene captions.
 - The daily content agent now treats ElevenLabs as required when requested, uses the configured voice ID, and fails instead of silently falling back when `--require-elevenlabs` is set.
 - No automatic platform metrics ingestion from TikTok, Instagram, or YouTube.
 - No live automated trend feed from TikTok Creative Center, YouTube, Google Trends, Reddit, or LinkedIn. Current trend intake is file-based.
@@ -47,13 +47,13 @@ The current long-form YouTube lane has a rendered 1920x1080 review cut, thumbnai
 
 ## Current Codex Review Assets
 
-The active daily batch has three `ResumeDeskReview` shorts in `AWAITING_CODEX_APPROVAL`. The long-form episode for this packet has generated narration and render props, but it has not been rendered or promoted in this pass. Older approval records from the weaker repeated batch have been marked `REVISION_REQUESTED` so they are no longer the active review set.
+The active daily batch has three `ResumeDeskReview` shorts in `AWAITING_CODEX_APPROVAL`. The long-form episode for this packet has generated narration and render props, but it has not been rendered or promoted in this pass. Older approval records from the weaker repeated batch should remain `REVISION_REQUESTED` or be ignored so they do not dilute the new direction.
 
 | Run ID | Title | Mobile review URL | Approval phrase |
 | --- | --- | --- | --- |
-| `99bb86ba61d0ca1c` | I would rewrite this bullet immediately | `http://192.168.2.10:8765/20260705-99bb86ba61d0ca1c-i-would-rewrite-this-bullet-immediately/daily-i-would-rewrite-this-bullet-immediately.mp4` | `APPROVE POST 99bb86ba61d0ca1c` |
-| `b40eb88cf2c39668` | The Ctrl+F test this resume fails | `http://192.168.2.10:8765/20260705-b40eb88cf2c39668-the-ctrl-f-test-this-resume-fails/daily-the-ctrl-f-test-this-resume-fails.mp4` | `APPROVE POST b40eb88cf2c39668` |
-| `a389a69ed7d879e3` | This resume missed the job posting | `http://192.168.2.10:8765/20260705-a389a69ed7d879e3-this-resume-missed-the-job-posting/daily-this-resume-missed-the-job-posting.mp4` | `APPROVE POST a389a69ed7d879e3` |
+| `405962b7592c8e26` | I would circle this line first | `http://192.168.2.10:8765/20260705-405962b7592c8e26-i-would-circle-this-line-first/daily-i-would-circle-this-line-first.mp4` | `APPROVE POST 405962b7592c8e26` |
+| `553ac4f944fb4202` | I searched the resume. Bad news. | `http://192.168.2.10:8765/20260705-553ac4f944fb4202-i-searched-the-resume-bad-news/daily-i-searched-the-resume-bad-news.mp4` | `APPROVE POST 553ac4f944fb4202` |
+| `1233c94bb025a999` | The job post gave the answer key | `http://192.168.2.10:8765/20260705-1233c94bb025a999-the-job-post-gave-the-answer-key/daily-the-job-post-gave-the-answer-key.mp4` | `APPROVE POST 1233c94bb025a999` |
 
 This file is local and git-ignored. To review on mobile from the repo root, run:
 
@@ -65,19 +65,18 @@ Then open the URLs printed by `prepare-review`.
 
 ## Current Studio Short Assets
 
-- `marketing/remotion/out/daily-i-would-rewrite-this-bullet-immediately.mp4`
-- `marketing/remotion/out/daily-the-ctrl-f-test-this-resume-fails.mp4`
-- `marketing/remotion/out/daily-this-resume-missed-the-job-posting.mp4`
+- `marketing/remotion/out/daily-i-would-circle-this-line-first.mp4`
+- `marketing/remotion/out/daily-i-searched-the-resume-bad-news.mp4`
+- `marketing/remotion/out/daily-the-job-post-gave-the-answer-key.mp4`
 
-The three `human-desk-resume-review-inspired-by-gohar-khan-resume-tips` shorts are the active review assets. Older role-specific assets are retained in the tree for traceability but should not be posted without a fresh review.
+The three `human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor` shorts are the active review assets. Older role-specific assets are retained in the tree for traceability but should not be posted without a fresh review.
 
 ## Current Queue Snapshot
 
 Latest manual pipeline output:
 
-- Three human desk-review daily shorts rendered, passed QA, and exported to Codex review.
+- Three human-read resume-review daily shorts rendered, passed QA, and exported to Codex review.
 - The long-form packet has generated voiceover segments and props, but the episode MP4 was not rendered in this pass; expand and render before review approval.
-- Older repeated/role-specific review records have been moved to `REVISION_REQUESTED`.
 - Autopost dry run confirms it is blocked until Codex approval and `--approved`.
 - Current post-grade packet: 1.
 - Render-ready and QA-passed shorts in the current daily packet: 3.
@@ -92,6 +91,7 @@ Latest manual pipeline output:
 - Studio daily queue: available.
 - Automated render QC: available.
 - Audio asset QC: available.
+- Score-rubric QA report: `marketing/daily_content/2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor/score_rubric_qa_report.md`.
 - Long-form metadata/audio/thumbnail QC: audio and thumbnail paths exist; publish QC fails duration for the active review cut.
 - Missing: platform metrics feed, audio loudness/peak QC, full transcript/caption alignment for cached/fallback voiceovers, automated live trend API connector, and faster long-form rendering.
 

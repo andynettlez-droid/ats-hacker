@@ -90,6 +90,38 @@ export const resumeCrimeSceneSchema = z.object({
       }),
     )
     .optional(),
+  score_rubric: z
+    .object({
+      label: z.string().optional(),
+      scale: z.number().optional(),
+      beforeTotal: z.number(),
+      afterTotal: z.number(),
+      beforeExplanation: z.string().optional(),
+      afterExplanation: z.string().optional(),
+      rows: z.array(
+        z.object({
+          criterion: z.string().optional(),
+          label: z.string().optional(),
+          max: z.number(),
+          before: z.number(),
+          after: z.number(),
+          beforeReason: z.string(),
+          afterReason: z.string(),
+        }),
+      ),
+    })
+    .optional(),
+  scoreRubric: z.any().optional(),
+  scoreLabel: z.string().optional(),
+  humanReadBeats: z
+    .array(
+      z.object({
+        beat: z.string(),
+        text: z.string(),
+      }),
+    )
+    .optional(),
+  voiceDirector: z.any().optional(),
   cta: z.string(),
   musicSrc: z.string().optional(),
   musicVolume: z.number().min(0).max(1).optional(),

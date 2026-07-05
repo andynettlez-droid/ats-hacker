@@ -1,0 +1,906 @@
+{
+  "hook": "I searched the resume. Bad news.",
+  "subhook": "This is the search test most vague bullets fail.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "terminal",
+  "formatArchetype": "recruiterSearch",
+  "pace": "fast",
+  "seriesLabel": "Recruiter Search Test",
+  "signalLines": {
+    "hook": "Search missed it.",
+    "problem": "Do not make them guess.",
+    "teardown": "Use the real term.",
+    "fix": "Now it is findable.",
+    "cta": "Search-test it first."
+  },
+  "resumeName": "Maya Torres",
+  "resumeTitle": "Account Executive Resume",
+  "resumeMeta": [
+    "4 yrs SaaS sales",
+    "Mid-market accounts",
+    "Quota-carrying role"
+  ],
+  "jobTitle": "Mid-Market Account Executive",
+  "jobKeywords": [
+    "Salesforce",
+    "pipeline generation",
+    "quota attainment",
+    "discovery calls",
+    "MEDDICC"
+  ],
+  "weakBullets": [
+    "Managed customer conversations and followed up with prospects.",
+    "Responsible for sales opportunities in assigned territory.",
+    "Worked with marketing and customer success on accounts."
+  ],
+  "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+  "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+  "resumeDocument": {
+    "name": "Maya Torres",
+    "headline": "Account Executive",
+    "contact": [
+      "Chicago, IL",
+      "maya.torres@example.com",
+      "linkedin.com/in/maya-torres"
+    ],
+    "summary": "Quota-carrying SaaS seller with 4 years across SDR and AE roles, focused on discovery, account prioritization, CRM hygiene, and mid-market pipeline creation.",
+    "experience": [
+      {
+        "company": "BrightLedger",
+        "role": "Account Executive",
+        "dates": "2024 - Present",
+        "bullets": [
+          "Managed customer conversations and followed up with prospects.",
+          "Responsible for sales opportunities in assigned territory.",
+          "Worked with marketing and customer success on accounts.",
+          "Maintained Salesforce notes, next steps, and close-date updates for active opportunities."
+        ]
+      },
+      {
+        "company": "Pinecone Workflow",
+        "role": "Sales Development Representative",
+        "dates": "2021 - 2024",
+        "bullets": [
+          "Booked discovery meetings with operations and finance leaders.",
+          "Researched account triggers and personalized outbound email sequences.",
+          "Qualified inbound leads and routed opportunities to three AE teams."
+        ]
+      }
+    ],
+    "skills": [
+      "Salesforce",
+      "MEDDICC",
+      "Discovery calls",
+      "Pipeline generation",
+      "Outbound sequencing",
+      "Forecasting",
+      "Mutual action plans"
+    ],
+    "education": "B.S. Business Administration, DePaul University"
+  },
+  "jobDescription": {
+    "title": "Mid-Market Account Executive",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Mid-Market Account Executive who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use Salesforce and pipeline generation to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to quota attainment.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "Salesforce",
+      "pipeline generation",
+      "quota attainment",
+      "discovery calls",
+      "MEDDICC"
+    ],
+    "searchQueries": [
+      "Salesforce",
+      "pipeline generation",
+      "quota attainment",
+      "discovery calls"
+    ]
+  },
+  "beforeScore": 37,
+  "afterScore": 88,
+  "scoreBasis": [
+    {
+      "label": "Job keyword/tool match",
+      "before": "No Salesforce or MEDDICC",
+      "after": "Salesforce and MEDDICC appear"
+    },
+    {
+      "label": "Measurable proof",
+      "before": "No quota or dollars",
+      "after": "$1.8M pipeline"
+    },
+    {
+      "label": "Outcome clarity",
+      "before": "Sales result unclear",
+      "after": "Qualified pipeline result"
+    },
+    {
+      "label": "Scope/context",
+      "before": "Territory only",
+      "after": "42 monthly discovery calls"
+    }
+  ],
+  "score_rubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 37,
+    "afterTotal": 88,
+    "rows": [
+      {
+        "criterion": "Job keyword/tool match",
+        "label": "Job keyword/tool match",
+        "max": 25,
+        "before": 7,
+        "after": 23,
+        "beforeReason": "No Salesforce or MEDDICC",
+        "afterReason": "Salesforce and MEDDICC appear"
+      },
+      {
+        "criterion": "Measurable proof",
+        "label": "Measurable proof",
+        "max": 20,
+        "before": 3,
+        "after": 18,
+        "beforeReason": "No quota or dollars",
+        "afterReason": "$1.8M pipeline"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 5,
+        "after": 17,
+        "beforeReason": "Sales result unclear",
+        "afterReason": "Qualified pipeline result"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 8,
+        "after": 13,
+        "beforeReason": "Territory only",
+        "afterReason": "42 monthly discovery calls"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 11,
+        "after": 13,
+        "beforeReason": "Sales role is visible",
+        "afterReason": "Mid-market AE signal"
+      },
+      {
+        "criterion": "Formatting/readability",
+        "label": "Formatting/readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Readable but thin",
+        "afterReason": "Readable and specific"
+      }
+    ],
+    "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+    "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+  },
+  "scoreRubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 37,
+    "afterTotal": 88,
+    "rows": [
+      {
+        "criterion": "Job keyword/tool match",
+        "label": "Job keyword/tool match",
+        "max": 25,
+        "before": 7,
+        "after": 23,
+        "beforeReason": "No Salesforce or MEDDICC",
+        "afterReason": "Salesforce and MEDDICC appear"
+      },
+      {
+        "criterion": "Measurable proof",
+        "label": "Measurable proof",
+        "max": 20,
+        "before": 3,
+        "after": 18,
+        "beforeReason": "No quota or dollars",
+        "afterReason": "$1.8M pipeline"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 5,
+        "after": 17,
+        "beforeReason": "Sales result unclear",
+        "afterReason": "Qualified pipeline result"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 8,
+        "after": 13,
+        "beforeReason": "Territory only",
+        "afterReason": "42 monthly discovery calls"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 11,
+        "after": 13,
+        "beforeReason": "Sales role is visible",
+        "afterReason": "Mid-market AE signal"
+      },
+      {
+        "criterion": "Formatting/readability",
+        "label": "Formatting/readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Readable but thin",
+        "afterReason": "Readable and specific"
+      }
+    ],
+    "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+    "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+  },
+  "scoreLabel": "Signal Fit Score",
+  "humanReadBeats": [
+    {
+      "beat": "read_line",
+      "text": "Read the exact resume line: Responsible for sales opportunities in assigned territory."
+    },
+    {
+      "beat": "natural_reaction",
+      "text": "The sales work may be there; the pipeline proof is not."
+    },
+    {
+      "beat": "job_requirement",
+      "text": "Compare it to the job requirement: Salesforce, pipeline generation, quota attainment."
+    },
+    {
+      "beat": "score_reason",
+      "text": "Explain the visible rubric before the score: 37/100."
+    },
+    {
+      "beat": "rewrite",
+      "text": "Rewrite only the same experience: generated 1.8 million in qualified Salesforce pipeline."
+    },
+    {
+      "beat": "score_improvement",
+      "text": "Explain what improved before showing 88/100."
+    }
+  ],
+  "markedLabel": "Missing proof",
+  "problemPunchline": "A reviewer cannot search for what you meant to say.",
+  "teardownPunchline": "The low score is from hidden tool and result proof in the rubric.",
+  "fixPunchline": "Now the search term points to real evidence.",
+  "teardownIssues": [
+    "No quota proof",
+    "No CRM signal",
+    "No pipeline number"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "voiceDirector": {
+    "mode": "human_review_read",
+    "preferredProvider": "elevenlabs_speech_to_speech",
+    "fallbackProvider": "elevenlabs_tts_multitake",
+    "takeCount": 3,
+    "delivery": [
+      "Sounds like a recruiter reading the resume live.",
+      "Conversational, slightly amused, direct, helpful.",
+      "Short pause after the weak bullet and before the score reason.",
+      "No corporate polish, no trailer voice, no product-demo cadence."
+    ],
+    "scratchReadSrc": null,
+    "humanReadBeats": [
+      {
+        "beat": "read_line",
+        "text": "Read the exact resume line: Responsible for sales opportunities in assigned territory."
+      },
+      {
+        "beat": "natural_reaction",
+        "text": "The sales work may be there; the pipeline proof is not."
+      },
+      {
+        "beat": "job_requirement",
+        "text": "Compare it to the job requirement: Salesforce, pipeline generation, quota attainment."
+      },
+      {
+        "beat": "score_reason",
+        "text": "Explain the visible rubric before the score: 37/100."
+      },
+      {
+        "beat": "rewrite",
+        "text": "Rewrite only the same experience: generated 1.8 million in qualified Salesforce pipeline."
+      },
+      {
+        "beat": "score_improvement",
+        "text": "Explain what improved before showing 88/100."
+      }
+    ],
+    "scriptSource": "human_read_pass"
+  },
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+    "voiceName": "configured voice",
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true,
+    "voiceDirector": {
+      "mode": "human_review_read",
+      "preferredProvider": "elevenlabs_speech_to_speech",
+      "fallbackProvider": "elevenlabs_tts_multitake",
+      "takeCount": 3,
+      "delivery": [
+        "Sounds like a recruiter reading the resume live.",
+        "Conversational, slightly amused, direct, helpful.",
+        "Short pause after the weak bullet and before the score reason.",
+        "No corporate polish, no trailer voice, no product-demo cadence."
+      ],
+      "scratchReadSrc": null,
+      "humanReadBeats": [
+        {
+          "beat": "read_line",
+          "text": "Read the exact resume line: Responsible for sales opportunities in assigned territory."
+        },
+        {
+          "beat": "natural_reaction",
+          "text": "The sales work may be there; the pipeline proof is not."
+        },
+        {
+          "beat": "job_requirement",
+          "text": "Compare it to the job requirement: Salesforce, pipeline generation, quota attainment."
+        },
+        {
+          "beat": "score_reason",
+          "text": "Explain the visible rubric before the score: 37/100."
+        },
+        {
+          "beat": "rewrite",
+          "text": "Rewrite only the same experience: generated 1.8 million in qualified Salesforce pipeline."
+        },
+        {
+          "beat": "score_improvement",
+          "text": "Explain what improved before showing 88/100."
+        }
+      ],
+      "scriptSource": "human_read_pass"
+    }
+  },
+  "voiceoverSrc": "audio/daily-2026-07-05-i-searched-the-resume-bad-news-2-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "Here",
+      "startMs": 46,
+      "endMs": 232,
+      "timestampMs": 46,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 267,
+      "endMs": 337,
+      "timestampMs": 267,
+      "confidence": null
+    },
+    {
+      "text": "my",
+      "startMs": 395,
+      "endMs": 488,
+      "timestampMs": 395,
+      "confidence": null
+    },
+    {
+      "text": "Ctrl",
+      "startMs": 580,
+      "endMs": 848,
+      "timestampMs": 580,
+      "confidence": null
+    },
+    {
+      "text": "F",
+      "startMs": 917,
+      "endMs": 1033,
+      "timestampMs": 917,
+      "confidence": null
+    },
+    {
+      "text": "test.",
+      "startMs": 1091,
+      "endMs": 1556,
+      "timestampMs": 1091,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 1730,
+      "endMs": 1788,
+      "timestampMs": 1730,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 1904,
+      "endMs": 2194,
+      "timestampMs": 1904,
+      "confidence": null
+    },
+    {
+      "text": "Salesforce.",
+      "startMs": 2241,
+      "endMs": 3053,
+      "timestampMs": 2241,
+      "confidence": null
+    },
+    {
+      "text": "Nothing",
+      "startMs": 3204,
+      "endMs": 3506,
+      "timestampMs": 3204,
+      "confidence": null
+    },
+    {
+      "text": "useful.",
+      "startMs": 3564,
+      "endMs": 4133,
+      "timestampMs": 3564,
+      "confidence": null
+    },
+    {
+      "text": "pipeline",
+      "startMs": 4574,
+      "endMs": 5039,
+      "timestampMs": 4574,
+      "confidence": null
+    },
+    {
+      "text": "generation?",
+      "startMs": 5074,
+      "endMs": 5770,
+      "timestampMs": 5074,
+      "confidence": null
+    },
+    {
+      "text": "Still",
+      "startMs": 5886,
+      "endMs": 6153,
+      "timestampMs": 5886,
+      "confidence": null
+    },
+    {
+      "text": "thin.",
+      "startMs": 6223,
+      "endMs": 6699,
+      "timestampMs": 6223,
+      "confidence": null
+    },
+    {
+      "text": "Then",
+      "startMs": 7210,
+      "endMs": 7396,
+      "timestampMs": 7210,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 7454,
+      "endMs": 7477,
+      "timestampMs": 7454,
+      "confidence": null
+    },
+    {
+      "text": "read:",
+      "startMs": 7593,
+      "endMs": 8034,
+      "timestampMs": 7593,
+      "confidence": null
+    },
+    {
+      "text": "Responsible",
+      "startMs": 8475,
+      "endMs": 9056,
+      "timestampMs": 8475,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 9079,
+      "endMs": 9172,
+      "timestampMs": 9079,
+      "confidence": null
+    },
+    {
+      "text": "sales",
+      "startMs": 9230,
+      "endMs": 9509,
+      "timestampMs": 9230,
+      "confidence": null
+    },
+    {
+      "text": "opportunities",
+      "startMs": 9543,
+      "endMs": 10182,
+      "timestampMs": 9543,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 10228,
+      "endMs": 10298,
+      "timestampMs": 10228,
+      "confidence": null
+    },
+    {
+      "text": "assigned",
+      "startMs": 10344,
+      "endMs": 10716,
+      "timestampMs": 10344,
+      "confidence": null
+    },
+    {
+      "text": "territory.",
+      "startMs": 10751,
+      "endMs": 11413,
+      "timestampMs": 10751,
+      "confidence": null
+    },
+    {
+      "text": "Real",
+      "startMs": 11656,
+      "endMs": 11935,
+      "timestampMs": 11656,
+      "confidence": null
+    },
+    {
+      "text": "work,",
+      "startMs": 12005,
+      "endMs": 12399,
+      "timestampMs": 12005,
+      "confidence": null
+    },
+    {
+      "text": "but",
+      "startMs": 12434,
+      "endMs": 12574,
+      "timestampMs": 12434,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 12620,
+      "endMs": 12643,
+      "timestampMs": 12620,
+      "confidence": null
+    },
+    {
+      "text": "am",
+      "startMs": 12701,
+      "endMs": 12794,
+      "timestampMs": 12701,
+      "confidence": null
+    },
+    {
+      "text": "guessing.",
+      "startMs": 12852,
+      "endMs": 13363,
+      "timestampMs": 12852,
+      "confidence": null
+    },
+    {
+      "text": "So",
+      "startMs": 13874,
+      "endMs": 14002,
+      "timestampMs": 13874,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 14048,
+      "endMs": 14118,
+      "timestampMs": 14048,
+      "confidence": null
+    },
+    {
+      "text": "rubric",
+      "startMs": 14164,
+      "endMs": 14501,
+      "timestampMs": 14164,
+      "confidence": null
+    },
+    {
+      "text": "starts",
+      "startMs": 14559,
+      "endMs": 14884,
+      "timestampMs": 14559,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 14919,
+      "endMs": 14988,
+      "timestampMs": 14919,
+      "confidence": null
+    },
+    {
+      "text": "37.",
+      "startMs": 15035,
+      "endMs": 15824,
+      "timestampMs": 15035,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 15999,
+      "endMs": 16045,
+      "timestampMs": 15999,
+      "confidence": null
+    },
+    {
+      "text": "would",
+      "startMs": 16114,
+      "endMs": 16254,
+      "timestampMs": 16114,
+      "confidence": null
+    },
+    {
+      "text": "rewrite",
+      "startMs": 16289,
+      "endMs": 16684,
+      "timestampMs": 16289,
+      "confidence": null
+    },
+    {
+      "text": "it:",
+      "startMs": 16719,
+      "endMs": 17021,
+      "timestampMs": 16719,
+      "confidence": null
+    },
+    {
+      "text": "generated",
+      "startMs": 17462,
+      "endMs": 17996,
+      "timestampMs": 17462,
+      "confidence": null
+    },
+    {
+      "text": "1.8",
+      "startMs": 18054,
+      "endMs": 18669,
+      "timestampMs": 18054,
+      "confidence": null
+    },
+    {
+      "text": "million",
+      "startMs": 18727,
+      "endMs": 19029,
+      "timestampMs": 18727,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 19099,
+      "endMs": 19180,
+      "timestampMs": 19099,
+      "confidence": null
+    },
+    {
+      "text": "qualified",
+      "startMs": 19250,
+      "endMs": 19691,
+      "timestampMs": 19250,
+      "confidence": null
+    },
+    {
+      "text": "Salesforce",
+      "startMs": 19726,
+      "endMs": 20237,
+      "timestampMs": 19726,
+      "confidence": null
+    },
+    {
+      "text": "pipeline.",
+      "startMs": 20271,
+      "endMs": 20945,
+      "timestampMs": 20271,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 21386,
+      "endMs": 21560,
+      "timestampMs": 21386,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 21618,
+      "endMs": 21699,
+      "timestampMs": 21618,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 21758,
+      "endMs": 22036,
+      "timestampMs": 21758,
+      "confidence": null
+    },
+    {
+      "text": "terms",
+      "startMs": 22083,
+      "endMs": 22361,
+      "timestampMs": 22083,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 22396,
+      "endMs": 22466,
+      "timestampMs": 22396,
+      "confidence": null
+    },
+    {
+      "text": "proof",
+      "startMs": 22535,
+      "endMs": 22814,
+      "timestampMs": 22535,
+      "confidence": null
+    },
+    {
+      "text": "are",
+      "startMs": 22872,
+      "endMs": 22977,
+      "timestampMs": 22872,
+      "confidence": null
+    },
+    {
+      "text": "on",
+      "startMs": 23011,
+      "endMs": 23081,
+      "timestampMs": 23011,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 23128,
+      "endMs": 23197,
+      "timestampMs": 23128,
+      "confidence": null
+    },
+    {
+      "text": "page.",
+      "startMs": 23244,
+      "endMs": 23813,
+      "timestampMs": 23244,
+      "confidence": null
+    },
+    {
+      "text": "That",
+      "startMs": 24254,
+      "endMs": 24451,
+      "timestampMs": 24254,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 24497,
+      "endMs": 24567,
+      "timestampMs": 24497,
+      "confidence": null
+    },
+    {
+      "text": "why",
+      "startMs": 24602,
+      "endMs": 24741,
+      "timestampMs": 24602,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 24799,
+      "endMs": 24857,
+      "timestampMs": 24799,
+      "confidence": null
+    },
+    {
+      "text": "moves",
+      "startMs": 24915,
+      "endMs": 25136,
+      "timestampMs": 24915,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 25171,
+      "endMs": 25229,
+      "timestampMs": 25171,
+      "confidence": null
+    },
+    {
+      "text": "88.",
+      "startMs": 25310,
+      "endMs": 25972,
+      "timestampMs": 25310,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 26413,
+      "endMs": 26622,
+      "timestampMs": 26413,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 26669,
+      "endMs": 26738,
+      "timestampMs": 26669,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 26773,
+      "endMs": 26970,
+      "timestampMs": 26773,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 27005,
+      "endMs": 27319,
+      "timestampMs": 27005,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 27377,
+      "endMs": 27655,
+      "timestampMs": 27377,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 27690,
+      "endMs": 27957,
+      "timestampMs": 27690,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 27992,
+      "endMs": 28062,
+      "timestampMs": 27992,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 28120,
+      "endMs": 28700,
+      "timestampMs": 28120,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 29.9,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-05-i-searched-the-resume-bad-news-2-voiceover.alignment.json"
+  }
+}

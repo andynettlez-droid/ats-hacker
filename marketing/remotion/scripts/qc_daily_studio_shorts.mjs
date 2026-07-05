@@ -160,6 +160,46 @@ const checkProps = (draft, postsEntry, checks) => {
     "visible score rationale receipt exists",
     `${scoreBasis.length} rows`,
   );
+  const scoreRubric = props.score_rubric || props.scoreRubric || {};
+  const scoreRows = Array.isArray(scoreRubric.rows) ? scoreRubric.rows : [];
+  const beforeRubricTotal = scoreRows.reduce((sum, row) => sum + Number(row?.before || 0), 0);
+  const afterRubricTotal = scoreRows.reduce((sum, row) => sum + Number(row?.after || 0), 0);
+  addCheck(
+    checks,
+    scoreRows.length >= 6 &&
+      scoreRows.every(
+        (row) =>
+          row &&
+          (row.criterion || row.label) &&
+          Number.isFinite(Number(row.max)) &&
+          Number.isFinite(Number(row.before)) &&
+          Number.isFinite(Number(row.after)) &&
+          row.beforeReason &&
+          row.afterReason,
+      ),
+    "six-part score rubric exists",
+    `${scoreRows.length} rows`,
+  );
+  addCheck(
+    checks,
+    beforeRubricTotal === Number(props.beforeScore) &&
+      afterRubricTotal === Number(props.afterScore) &&
+      afterRubricTotal > beforeRubricTotal,
+    "score rubric totals match score reveal",
+    `${beforeRubricTotal} -> ${afterRubricTotal}; props ${props.beforeScore} -> ${props.afterScore}`,
+  );
+  addCheck(
+    checks,
+    Array.isArray(props.humanReadBeats) && props.humanReadBeats.length >= 6,
+    "human read beat plan exists",
+    Array.isArray(props.humanReadBeats) ? `${props.humanReadBeats.length} beats` : "missing",
+  );
+  addCheck(
+    checks,
+    props.voiceDirector?.mode === "human_review_read",
+    "voice director requires human review read",
+    props.voiceDirector?.mode || "missing",
+  );
   addCheck(
     checks,
     Array.isArray(props.jobKeywords) && props.jobKeywords.length >= 3,

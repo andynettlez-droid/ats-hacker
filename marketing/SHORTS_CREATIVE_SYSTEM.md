@@ -66,36 +66,43 @@ Before script generation, update or review `marketing/viral_swipe_file.md`. The 
 - Creative director gate: hook, visible artifact, weak bullet, visible consequence, honest rewrite, score receipt, CTA.
 - Visual diversity gate: the first three daily shorts must use different format archetypes and palettes.
 - Duration gate: 18-32 seconds for short-form outputs.
-- Score-rationale gate: no score jump without visible factors on screen.
-- Voice-quality gate: ElevenLabs must be used when available, with faster creator-style settings and timestamp captions.
+- Score-rationale gate: no score jump without the six-part `score_rubric` totals matching the visible score reveal.
+- Human-read gate: reviewer reads one exact resume line, reacts naturally, compares it to one job requirement, then rewrites only that experience.
+- Voice-quality gate: ElevenLabs must be used when available, with faster creator-style settings, multiple TTS takes or speech-to-speech, and timestamp captions.
 - Codex approval gate: all promoted files stay `review_required`; no live post without explicit chat approval.
 
 ## Current Pilot Batch
 
-Packet: `marketing/daily_content/2026-07-04-human-desk-resume-review-inspired-by-gohar-khan-resume-tips`
+Packet: `marketing/daily_content/2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor`
 
 Pilots:
 
-- `I would rewrite this bullet immediately`: human desk review of a Product Data Analyst resume.
-- `The Ctrl+F test this resume fails`: recruiter search test for a Mid-Market Account Executive resume.
-- `This resume missed the job posting`: job-description answer-key review for a Frontend Software Engineer resume.
+- `I would circle this line first`: live markup review of a Product Data Analyst resume.
+- `I searched the resume. Bad news.`: recruiter search test for a Mid-Market Account Executive resume.
+- `The job post gave the answer key`: job-description answer-key review for a Frontend Software Engineer resume.
 
 Rendered review pilot:
 
-- `marketing/remotion/out/daily-i-would-rewrite-this-bullet-immediately.mp4`
-- `marketing/remotion/out/daily-the-ctrl-f-test-this-resume-fails.mp4`
-- `marketing/remotion/out/daily-this-resume-missed-the-job-posting.mp4`
+- `marketing/remotion/out/daily-i-would-circle-this-line-first.mp4`
+- `marketing/remotion/out/daily-i-searched-the-resume-bad-news.mp4`
+- `marketing/remotion/out/daily-the-job-post-gave-the-answer-key.mp4`
 
 ## Current Gate Status
 
 - Current refreshed packet scores 100/100 and all three short concepts pass the stricter creator gate.
 - The current preferred render baseline is `ResumeDeskReview` for resume teardown shorts. It should be used before dashboard-style layouts unless the premise explicitly needs a software/search console.
-- Short/audio generation supports ElevenLabs first, then OpenAI TTS fallback.
+- Short/audio generation supports ElevenLabs multi-take voiceover first, with speech-to-speech preferred when a scratch read is supplied.
 - Audio QC supports provider-specific TTS sample rates and checks final rendered audio.
 - ElevenLabs synthesis works with the configured voice ID, but the current key cannot list voices because it lacks `voices_read`; keep this documented until the key permission is corrected.
 - Visual QC renders representative short frames and scans safe margins for clipped high-attention UI.
 - Remotion typecheck passes after mascot/personality changes.
 - Current post candidates remain review-only until viewed end to end for pacing, humor, text safe areas, and Signal personality.
+
+Supporting docs:
+
+- `marketing/voice_director.md`
+- `marketing/script_human_review_gate.md`
+- `marketing/daily_content/2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor/score_rubric_qa_report.md`
 
 ## Lead Creative Benchmark
 

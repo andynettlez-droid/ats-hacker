@@ -3,6 +3,7 @@ import base64
 import json
 import os
 import re
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -432,6 +433,128 @@ CASE_SPOKEN_REWRITES = {
     "healthcare_rn": "coordinated Epic discharge plans and reduced avoidable follow-up calls",
 }
 
+CASE_SCORE_RUBRICS = {
+    "data_analyst": [
+        ("Job keyword/tool match", 25, 8, 23, "Only says reports", "SQL and Tableau are explicit"),
+        ("Measurable proof", 20, 2, 18, "No number", "6 hours saved"),
+        ("Outcome clarity", 20, 4, 17, "Leadership benefit is vague", "18 at-risk accounts flagged"),
+        ("Scope/context", 15, 7, 13, "Audience only", "Churn dashboard scope"),
+        ("Role alignment", 15, 8, 14, "Analytics implied", "Product analytics fit"),
+        ("Formatting/readability", 5, 3, 4, "Readable but generic", "Readable and specific"),
+    ],
+    "sales_account_exec": [
+        ("Job keyword/tool match", 25, 7, 23, "No Salesforce or MEDDICC", "Salesforce and MEDDICC appear"),
+        ("Measurable proof", 20, 3, 18, "No quota or dollars", "$1.8M pipeline"),
+        ("Outcome clarity", 20, 5, 17, "Sales result unclear", "Qualified pipeline result"),
+        ("Scope/context", 15, 8, 13, "Territory only", "42 monthly discovery calls"),
+        ("Role alignment", 15, 11, 13, "Sales role is visible", "Mid-market AE signal"),
+        ("Formatting/readability", 5, 3, 4, "Readable but thin", "Readable and specific"),
+    ],
+    "frontend_engineer": [
+        ("Job keyword/tool match", 25, 9, 24, "Frontend only", "React, TypeScript, Next.js"),
+        ("Measurable proof", 20, 4, 18, "No metric", "14 percent drop-off reduction"),
+        ("Outcome clarity", 20, 7, 18, "Feature work is broad", "Checkout impact is clear"),
+        ("Scope/context", 15, 8, 13, "Internal/customer tools", "Checkout components"),
+        ("Role alignment", 15, 10, 13, "Engineer fit implied", "Frontend role match"),
+        ("Formatting/readability", 5, 3, 4, "Readable but generic", "Readable and specific"),
+    ],
+    "project_manager": [
+        ("Job keyword/tool match", 25, 8, 22, "No Jira or risk terms", "Jira roadmap and risk register"),
+        ("Measurable proof", 20, 3, 17, "No delivery metric", "Variance 18 to 6 percent"),
+        ("Outcome clarity", 20, 6, 17, "Coordination only", "Schedule variance improved"),
+        ("Scope/context", 15, 8, 13, "Team context missing", "9-person rollout"),
+        ("Role alignment", 15, 11, 14, "PM fit is visible", "Technical PM fit"),
+        ("Formatting/readability", 5, 3, 4, "Readable but generic", "Readable and specific"),
+    ],
+    "customer_success": [
+        ("Job keyword/tool match", 25, 7, 23, "No Gainsight or QBR", "Gainsight and QBR follow-up"),
+        ("Measurable proof", 20, 3, 18, "No ARR number", "$420K ARR protected"),
+        ("Outcome clarity", 20, 5, 17, "Satisfaction is vague", "Renewal risk protected"),
+        ("Scope/context", 15, 7, 13, "Customers are generic", "18 customer accounts"),
+        ("Role alignment", 15, 11, 14, "CSM fit implied", "Retention role fit"),
+        ("Formatting/readability", 5, 3, 4, "Readable but generic", "Readable and specific"),
+    ],
+    "healthcare_rn": [
+        ("Job keyword/tool match", 25, 8, 22, "No Epic or coordination", "Epic and discharge planning"),
+        ("Measurable proof", 20, 4, 17, "No care metric", "Calls reduced 21 percent"),
+        ("Outcome clarity", 20, 6, 16, "Paperwork only", "Follow-up burden reduced"),
+        ("Scope/context", 15, 8, 13, "Instructions only", "24-bed unit"),
+        ("Role alignment", 15, 11, 14, "Clinical fit is visible", "Care coordinator fit"),
+        ("Formatting/readability", 5, 3, 4, "Readable but generic", "Readable and specific"),
+    ],
+}
+
+def build_score_rubric(case: dict) -> dict:
+    rows = [
+        {
+            "criterion": criterion,
+            "label": criterion,
+            "max": max_score,
+            "before": before,
+            "after": after,
+            "beforeReason": before_reason,
+            "afterReason": after_reason,
+        }
+        for criterion, max_score, before, after, before_reason, after_reason in CASE_SCORE_RUBRICS.get(case["id"], [])
+    ]
+    before_total = sum(int(row["before"]) for row in rows)
+    after_total = sum(int(row["after"]) for row in rows)
+    return {
+        "label": "Signal Fit Score",
+        "scale": 100,
+        "beforeTotal": before_total,
+        "afterTotal": after_total,
+        "rows": rows,
+        "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+        "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page.",
+    }
+
+
+def score_basis_from_rubric(score_rubric: dict) -> list[dict]:
+    rows = score_rubric.get("rows") if isinstance(score_rubric, dict) else []
+    basis = []
+    for row in rows[:4]:
+        if isinstance(row, dict):
+            basis.append({
+                "label": str(row.get("criterion") or row.get("label") or ""),
+                "before": str(row.get("beforeReason") or row.get("before") or ""),
+                "after": str(row.get("afterReason") or row.get("after") or ""),
+            })
+    return basis
+
+
+def build_human_read_beats(case: dict, playbook: dict, score_rubric: dict) -> list[dict]:
+    context = case_template_context(case)
+    before_total = score_rubric.get("beforeTotal", case["beforeScore"])
+    after_total = score_rubric.get("afterTotal", case["afterScore"])
+    return [
+        {
+            "beat": "read_line",
+            "text": f"Read the exact resume line: {context['beforeBullet']}",
+        },
+        {
+            "beat": "natural_reaction",
+            "text": CASE_HUMOR_LINES.get(case["id"], "I believe the work happened; I cannot see the proof yet."),
+        },
+        {
+            "beat": "job_requirement",
+            "text": f"Compare it to the job requirement: {context['kw1']}, {context['kw2']}, {context['kw3']}.",
+        },
+        {
+            "beat": "score_reason",
+            "text": f"Explain the visible rubric before the score: {before_total}/100.",
+        },
+        {
+            "beat": "rewrite",
+            "text": f"Rewrite only the same experience: {context['spokenRewrite']}.",
+        },
+        {
+            "beat": "score_improvement",
+            "text": f"Explain what improved before showing {after_total}/100.",
+        },
+    ]
+
+
 CREATOR_FORMAT_PLAYBOOKS = [
     {
         "id": "recruiter_roast",
@@ -441,23 +564,22 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "visualStyle": "stickyNote",
         "formatArchetype": "deskMarkup",
         "pace": "fast",
-        "title": "I would rewrite this bullet immediately",
-        "hook": "I would circle this bullet first.",
-        "subhook": "The work may be real, but the proof is not visible yet.",
+        "title": "I would circle this line first",
+        "hook": "I would circle this line first.",
+        "subhook": "The line sounds normal until you compare it to the job.",
         "voiceover": (
-            "I am reading this {role} resume. "
-            "This line says: {beforeBullet} "
-            "I believe it. I cannot see {kw1}, {kw2}, or a result. "
-            "That starts at {beforeScore}: missing tool, missing metric. "
-            "I would write: {spokenRewrite}. "
-            "Now the proof is visible: {afterScore}. "
+            "Okay, circle this line: {beforeBullet} "
+            "Normal sentence, but I cannot see {kw1}, {kw2}, or a result. "
+            "So the rubric gives it {beforeScore}, not {afterScore}. "
+            "Rewrite it: {spokenRewrite}. "
+            "Now I see the tool, scope, and outcome. That is why it moves to {afterScore}. "
             "Run the free Signal score before you apply."
         ),
         "storyboard": [
             "Open on the resume as if a reviewer is reading it at a desk.",
             "Circle the exact weak line: {beforeBullet}",
             "Place the job description beside it with {kw1}, {kw2}, and {kw3} highlighted.",
-            "Show the low score because the reviewer cannot see the tool, metric, or result.",
+            "Show the Signal Fit Score rubric before the score reveal.",
             "Rewrite the line in-place using only the real work.",
             "Reveal the score after the low-score rationale is visible.",
         ],
@@ -469,7 +591,7 @@ CREATOR_FORMAT_PLAYBOOKS = [
             "cta": "Check before sending.",
         },
         "problemPunchline": "The work may be real. The evidence is not readable.",
-        "teardownPunchline": "Low score reason: no visible tool, metric, or result.",
+        "teardownPunchline": "Low score reason: the rubric cannot find tool, metric, or result.",
         "fixPunchline": "A recruiter should not have to infer the proof.",
     },
     {
@@ -480,23 +602,23 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "visualStyle": "terminal",
         "formatArchetype": "recruiterSearch",
         "pace": "fast",
-        "title": "The Ctrl+F test this resume fails",
-        "hook": "I searched the resume. Nothing.",
-        "subhook": "This is how a real screening miss happens.",
+        "title": "I searched the resume. Bad news.",
+        "hook": "I searched the resume. Bad news.",
+        "subhook": "This is the search test most vague bullets fail.",
         "voiceover": (
-            "If I am screening this resume, I search first. "
-            "{kw1}: missing here. {kw2}: missing too. "
-            "The line says: {beforeBullet} "
-            "That makes me guess, so the match starts at {beforeScore}: missing term, missing proof. "
-            "I would write: {spokenRewrite}. "
-            "Now the search terms and proof are visible: {afterScore}. "
+            "Here is my Ctrl F test. I search {kw1}. Nothing useful. "
+            "{kw2}? Still thin. "
+            "Then I read: {beforeBullet} "
+            "Real work, but I am guessing. So the rubric starts at {beforeScore}. "
+            "I would rewrite it: {spokenRewrite}. "
+            "Now the search terms and proof are on the page. That is why it moves to {afterScore}. "
             "Run the free Signal score before you apply."
         ),
         "storyboard": [
             "Open on a reviewer search box over the resume, searching for {kw1}.",
             "Show the weak bullet that does not include the searched language.",
             "Search {kw2} and show the miss again.",
-            "Explain that the low score comes from hidden tool and result proof.",
+            "Show the Signal Fit Score rubric before the score reveal.",
             "Rewrite the bullet and rerun the search with a visible match.",
             "Close after the low-score rationale explains the jump.",
         ],
@@ -508,7 +630,7 @@ CREATOR_FORMAT_PLAYBOOKS = [
             "cta": "Search-test it first.",
         },
         "problemPunchline": "A reviewer cannot search for what you meant to say.",
-        "teardownPunchline": "The low score is from hidden tool and result proof.",
+        "teardownPunchline": "The low score is from hidden tool and result proof in the rubric.",
         "fixPunchline": "Now the search term points to real evidence.",
     },
     {
@@ -519,21 +641,21 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "visualStyle": "highlighter",
         "formatArchetype": "splitTranslation",
         "pace": "fast",
-        "title": "This resume missed the job posting",
-        "hook": "The job post already told you.",
+        "title": "The job post gave the answer key",
+        "hook": "The job post gave the answer key.",
         "subhook": "The resume just did not answer it clearly.",
         "voiceover": (
-            "Here is the job post: {kw1}, {kw2}, and {kw3}. "
-            "Now here is the resume line: {beforeBullet} "
-            "That mismatch starts at {beforeScore}: missing tool, missing metric. "
-            "Do not fake anything. I would write: {spokenRewrite}. "
-            "Now the tool, metric, and outcome are visible: {afterScore}. "
+            "Job post: {kw1}, {kw2}, {kw3}. "
+            "Resume line: {beforeBullet} "
+            "See the gap? The answer key is right there. The resume missed it, so it starts at {beforeScore}. "
+            "I would write: {spokenRewrite}. "
+            "Now the tool, metric, and outcome are visible. That is why it moves to {afterScore}. "
             "Run the free Signal score before you apply."
         ),
         "storyboard": [
             "Open on the job post with {kw1}, {kw2}, and {kw3} highlighted.",
             "Slide to the resume line and circle the mismatch.",
-            "Show the low-score rationale: missing tool, missing metric, missing outcome.",
+            "Show the Signal Fit Score rubric before the score reveal.",
             "Rewrite the line without inventing anything.",
             "Reveal the rewritten bullet and then the score movement.",
             "End with the free Signal score CTA.",
@@ -1029,13 +1151,15 @@ def normalize_alignment_to_captions(alignment: dict) -> list[dict]:
     return captions
 
 
-def write_alignment_metadata(dest_name: str, payload: dict) -> dict:
+def write_alignment_metadata(dest_name: str, payload: dict, voice: dict | None = None) -> dict:
     alignment = payload.get("normalized_alignment") or payload.get("alignment") or {}
     captions = normalize_alignment_to_captions(alignment if isinstance(alignment, dict) else {})
     meta_name = dest_name.rsplit(".", 1)[0] + ".alignment.json"
     meta_path = REMOTION_AUDIO_DIR / meta_name
     metadata = {
         "provider": "elevenlabs",
+        "voiceId": voice.get("voiceId") if isinstance(voice, dict) else None,
+        "voiceName": voice.get("name") if isinstance(voice, dict) else None,
         "withTimestamps": True,
         "captions": captions,
         "alignment": alignment,
@@ -1048,7 +1172,38 @@ def write_alignment_metadata(dest_name: str, payload: dict) -> dict:
     }
 
 
-def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
+def voiceover_duration_seconds(result: dict) -> float:
+    captions = result.get("captions") if isinstance(result, dict) else []
+    if not isinstance(captions, list):
+        return 0.0
+    return max((float(caption.get("endMs") or 0) for caption in captions if isinstance(caption, dict)), default=0) / 1000
+
+
+def score_voiceover_take(text: str, result: dict) -> float:
+    duration = voiceover_duration_seconds(result)
+    words = max(1, len(re.findall(r"[A-Za-z0-9']+", text)))
+    if duration <= 0:
+        return 0
+    wpm = words / duration * 60
+    target = 168
+    pacing_penalty = abs(wpm - target)
+    caption_bonus = 20 if result.get("captions") else 0
+    provider_bonus = 15 if result.get("provider") == "elevenlabs" else 0
+    return 100 + caption_bonus + provider_bonus - pacing_penalty
+
+
+def selected_take_settings(index: int) -> dict:
+    presets = [
+        {"stability": 0.42, "similarity_boost": 0.72, "style": 0.20, "use_speaker_boost": True},
+        {"stability": 0.36, "similarity_boost": 0.70, "style": 0.28, "use_speaker_boost": True},
+        {"stability": 0.48, "similarity_boost": 0.76, "style": 0.16, "use_speaker_boost": True},
+        {"stability": 0.32, "similarity_boost": 0.68, "style": 0.34, "use_speaker_boost": True},
+        {"stability": 0.54, "similarity_boost": 0.78, "style": 0.10, "use_speaker_boost": True},
+    ]
+    return presets[(index - 1) % len(presets)]
+
+
+def generate_elevenlabs_voiceover_once(text: str, dest_name: str, voice_settings: dict | None = None) -> dict:
     config = load_elevenlabs_config()
     if not config["apiKey"]:
         return {"src": None, "provider": "none", "captions": []}
@@ -1060,7 +1215,7 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
         "text": text,
         "model_id": config["modelId"],
         "output_format": "mp3_44100_128",
-        "voice_settings": {
+        "voice_settings": voice_settings or {
             "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.52")),
             "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.76")),
             "style": float(os.getenv("ELEVENLABS_STYLE", "0.12")),
@@ -1093,7 +1248,7 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
                 "provider": "elevenlabs",
                 "voiceId": voice_id,
                 "voiceName": voice.get("name"),
-                **write_alignment_metadata(dest_name, data),
+                **write_alignment_metadata(dest_name, data, voice),
             }
         except requests.HTTPError as error:
             if should_skip_elevenlabs_plain_retry(error):
@@ -1124,6 +1279,80 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
         "withTimestamps": False,
         "captions": [],
     }
+
+
+def copy_selected_take(selected: dict, selected_name: str, dest_name: str, take_results: list[dict]) -> dict:
+    selected_audio = REMOTION_AUDIO_DIR / selected_name
+    dest_audio = REMOTION_AUDIO_DIR / dest_name
+    shutil.copyfile(selected_audio, dest_audio)
+
+    selected_alignment_name = selected_name.rsplit(".", 1)[0] + ".alignment.json"
+    dest_alignment_name = dest_name.rsplit(".", 1)[0] + ".alignment.json"
+    selected_alignment_path = REMOTION_AUDIO_DIR / selected_alignment_name
+    dest_alignment_path = REMOTION_AUDIO_DIR / dest_alignment_name
+    alignment_meta = read_json(selected_alignment_path, {}) if selected_alignment_path.exists() else {}
+    alignment_meta["selectedTake"] = selected.get("take")
+    alignment_meta["takeCount"] = len(take_results)
+    alignment_meta["takeScores"] = [
+        {
+            "take": item.get("take"),
+            "score": round(float(item.get("takeScore", 0)), 3),
+            "durationSeconds": round(float(item.get("durationSeconds", 0)), 3),
+        }
+        for item in take_results
+    ]
+    dest_alignment_path.write_text(json.dumps(alignment_meta, indent=2), encoding="utf-8")
+
+    for item in take_results:
+        take_name = item.get("destName")
+        if not take_name:
+            continue
+        for suffix in ("", ".alignment.json"):
+            candidate = REMOTION_AUDIO_DIR / (take_name if not suffix else take_name.rsplit(".", 1)[0] + suffix)
+            if candidate.exists():
+                try:
+                    candidate.unlink()
+                except OSError:
+                    pass
+
+    return {
+        "src": f"audio/{dest_name}",
+        "provider": selected.get("provider", "elevenlabs"),
+        "voiceId": selected.get("voiceId"),
+        "voiceName": selected.get("voiceName"),
+        "alignmentRef": f"audio/{dest_alignment_name}",
+        "captions": alignment_meta.get("captions", selected.get("captions", [])),
+        "withTimestamps": bool(alignment_meta.get("withTimestamps", selected.get("withTimestamps"))),
+        "selectedTake": selected.get("take"),
+        "takeCount": len(take_results),
+    }
+
+
+def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
+    take_count = max(1, min(5, int(os.getenv("ELEVENLABS_TAKE_COUNT", "3") or "3")))
+    if take_count <= 1:
+        return generate_elevenlabs_voiceover_once(text, dest_name)
+
+    stem, ext = dest_name.rsplit(".", 1)
+    take_results = []
+    errors = []
+    for take in range(1, take_count + 1):
+        take_name = f"{stem}-take-{take}.{ext}"
+        try:
+            result = generate_elevenlabs_voiceover_once(text, take_name, selected_take_settings(take))
+            result["take"] = take
+            result["destName"] = take_name
+            result["durationSeconds"] = voiceover_duration_seconds(result)
+            result["takeScore"] = score_voiceover_take(text, result)
+            take_results.append(result)
+        except Exception as error:
+            errors.append(str(error))
+
+    if not take_results:
+        raise RuntimeError(f"ElevenLabs multi-take voiceover failed: {' | '.join(errors)}")
+
+    selected = max(take_results, key=lambda item: float(item.get("takeScore", 0)))
+    return copy_selected_take(selected, str(selected["destName"]), dest_name, take_results)
 
 
 def generate_openai_voiceover(text: str, dest_name: str) -> dict:
@@ -1183,6 +1412,24 @@ def generate_voiceover(text: str, dest_name: str) -> dict:
     return {"src": None, "provider": "none", "withTimestamps": False, "captions": []}
 
 
+def voice_director_contract(short: dict, props: dict) -> dict:
+    return {
+        "mode": "human_review_read",
+        "preferredProvider": "elevenlabs_speech_to_speech",
+        "fallbackProvider": "elevenlabs_tts_multitake",
+        "takeCount": int(os.getenv("ELEVENLABS_TAKE_COUNT", "3") or "3"),
+        "delivery": [
+            "Sounds like a recruiter reading the resume live.",
+            "Conversational, slightly amused, direct, helpful.",
+            "Short pause after the weak bullet and before the score reason.",
+            "No corporate polish, no trailer voice, no product-demo cadence.",
+        ],
+        "scratchReadSrc": props.get("scratchReadSrc"),
+        "humanReadBeats": props.get("humanReadBeats", []),
+        "scriptSource": "human_read_pass",
+    }
+
+
 def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, prepare_audio: bool, force_audio: bool) -> dict:
     voiceover_text = str(
         short.get("props", {}).get("voiceover_text")
@@ -1224,6 +1471,8 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
             voice_result = {
                 "src": voice_ref,
                 "provider": cached_provider,
+                "voiceId": alignment.get("voiceId"),
+                "voiceName": alignment.get("voiceName"),
                 "withTimestamps": bool(alignment.get("withTimestamps")),
                 "captions": alignment.get("captions", []),
                 "alignmentRef": alignment_ref,
@@ -1260,6 +1509,7 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
             "voiceName": voice_result.get("voiceName"),
             "reason": f"ready via {provider}",
             "wordLevelCaptions": bool(voice_result.get("captions")),
+            "voiceDirector": crime_scene_props.get("voiceDirector"),
         }
     return crime_scene_props
 
@@ -1538,6 +1788,9 @@ def select_teardown_case(index: int, short: dict | None = None, props: dict | No
 def case_template_context(case: dict) -> dict:
     keywords = case["jobKeywords"]
     spoken_rewrite = CASE_SPOKEN_REWRITES.get(case["id"], case["afterBullet"])
+    score_rubric = build_score_rubric(case)
+    before_score = int(score_rubric.get("beforeTotal") or case["beforeScore"])
+    after_score = int(score_rubric.get("afterTotal") or case["afterScore"])
     return {
         "resumeTitle": case["resumeTitle"].replace(" Resume", ""),
         "role": case["jobTitle"],
@@ -1547,8 +1800,8 @@ def case_template_context(case: dict) -> dict:
         "beforeBullet": case["beforeBullet"].rstrip(".") + ".",
         "afterBullet": case["afterBullet"].rstrip(".") + ".",
         "spokenRewrite": spoken_rewrite,
-        "beforeScore": case["beforeScore"],
-        "afterScore": case["afterScore"],
+        "beforeScore": before_score,
+        "afterScore": after_score,
         "humorLine": CASE_HUMOR_LINES.get(case["id"], "The bullet sounds busy and allergic to numbers."),
     }
 
@@ -1574,6 +1827,13 @@ def build_case_storyboard(case: dict, playbook: dict) -> list[str]:
 def apply_teardown_case(short: dict, title: str, hook: str, script: str, storyboard: list, props: dict, index: int) -> tuple[str, str, str, list, dict]:
     case = select_teardown_case(index, short, props)
     playbook = playbook_for_short(index)
+    score_rubric = build_score_rubric(case)
+    if score_rubric["beforeTotal"] != case["beforeScore"] or score_rubric["afterTotal"] != case["afterScore"]:
+        raise ValueError(
+            f"Score rubric mismatch for {case['id']}: "
+            f"{score_rubric['beforeTotal']}->{score_rubric['afterTotal']} vs "
+            f"{case['beforeScore']}->{case['afterScore']}"
+        )
     case_voiceover = build_case_voiceover(case, playbook)
     case_storyboard = build_case_storyboard(case, playbook)
     case_title = render_case_template(playbook["title"], case)
@@ -1598,9 +1858,13 @@ def apply_teardown_case(short: dict, title: str, hook: str, script: str, storybo
         "weakBullets": case["weakBullets"],
         "beforeBullet": case["beforeBullet"],
         "afterBullet": case["afterBullet"],
-        "beforeScore": case["beforeScore"],
-        "afterScore": case["afterScore"],
-        "scoreBasis": case.get("scoreBasis", []),
+        "beforeScore": score_rubric["beforeTotal"],
+        "afterScore": score_rubric["afterTotal"],
+        "scoreBasis": score_basis_from_rubric(score_rubric),
+        "score_rubric": score_rubric,
+        "scoreRubric": score_rubric,
+        "scoreLabel": "Signal Fit Score",
+        "humanReadBeats": build_human_read_beats(case, playbook, score_rubric),
         "missing": case["jobKeywords"],
         "markedLabel": case["markedLabel"],
         "problemPunchline": playbook["problemPunchline"],
@@ -2260,6 +2524,10 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
             "beforeScore": int(props.get("beforeScore", 38)),
             "afterScore": int(props.get("afterScore", 88)),
             "scoreBasis": props.get("scoreBasis", []),
+            "score_rubric": props.get("score_rubric") or props.get("scoreRubric"),
+            "scoreRubric": props.get("scoreRubric") or props.get("score_rubric"),
+            "scoreLabel": props.get("scoreLabel", "Signal Fit Score"),
+            "humanReadBeats": props.get("humanReadBeats", []),
             "markedLabel": props.get("markedLabel", "Too vague"),
             "problemPunchline": props.get("problemPunchline", "Recruiters search for proof, not vibes."),
             "teardownPunchline": props.get("teardownPunchline", "This is the part costing you interviews."),
@@ -2270,6 +2538,7 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
             "musicVolume": 0.16,
             "avatarLabel": "Recruiter review",
         }
+        crime_scene_props["voiceDirector"] = voice_director_contract(short, props)
         lower_text = f"{short.get('title', '')} {short.get('hook', '')}".lower()
         if "linkedin breath" in lower_text or "airport" in lower_text:
             crime_scene_props["hook"] = "Your AI resume has LinkedIn breath."

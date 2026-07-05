@@ -66,6 +66,32 @@ const clampWords = (text: string, max = 8) => {
   return `${words.slice(0, max).join(" ")}...`;
 };
 
+const getScoreRubric = (props: ResumeCrimeSceneProps) => props.score_rubric || props.scoreRubric;
+
+const scoreRows = (props: ResumeCrimeSceneProps) => {
+  const rubric = getScoreRubric(props);
+  if (rubric && Array.isArray(rubric.rows) && rubric.rows.length) {
+    return rubric.rows.slice(0, 4).map((row: any) => ({
+      label: row.criterion || row.label || "Score item",
+      before: `${row.before}/${row.max}`,
+      after: `${row.after}/${row.max}`,
+      beforeReason: row.beforeReason,
+      afterReason: row.afterReason,
+    }));
+  }
+  return (props.scoreBasis?.slice(0, 4) || [
+    { label: "Tool match", before: "missing", after: "visible" },
+    { label: "Metric proof", before: "missing", after: "visible" },
+    { label: "Outcome", before: "vague", after: "clear" },
+  ]).map((row) => ({
+    label: row.label,
+    before: row.before,
+    after: row.after,
+    beforeReason: row.before,
+    afterReason: row.after,
+  }));
+};
+
 const stageOpacity = (frame: number, start: number, end: number) => {
   const fadeIn = interpolate(frame, [start, start + 12], [0, 1], {
     extrapolateLeft: "clamp",
@@ -346,18 +372,15 @@ const StickyScore: React.FC<{
 );
 
 const ReasonCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof palettes)[VisualStyle] }> = ({ props, palette }) => {
-  const rows = props.scoreBasis?.slice(0, 3) || [
-    { label: "Tool match", before: "missing", after: "visible" },
-    { label: "Metric proof", before: "missing", after: "visible" },
-    { label: "Outcome", before: "vague", after: "clear" },
-  ];
+  const rubric = getScoreRubric(props);
+  const rows = scoreRows(props);
   return (
     <div
       style={{
         position: "absolute",
         left: 74,
         top: 1118,
-        width: 470,
+        width: 510,
         padding: 18,
         borderRadius: 18,
         background: "rgba(255,255,255,0.93)",
@@ -368,13 +391,14 @@ const ReasonCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof pale
       }}
     >
       <div style={{ fontSize: 15, fontWeight: 950, color: RED, textTransform: "uppercase", letterSpacing: 1.2 }}>
-        Why the score starts low
+        Why {rubric?.beforeTotal ?? props.beforeScore}/100
       </div>
       <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
-        {rows.map((row) => (
-          <div key={row.label} style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 12, alignItems: "center", fontSize: 15 }}>
-            <span style={{ fontWeight: 900 }}>{row.label}</span>
+        {rows.map((row: { label: string; before: string; beforeReason: string }) => (
+          <div key={row.label} style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 12, alignItems: "center", fontSize: 14 }}>
+            <span style={{ fontWeight: 950 }}>{row.label}</span>
             <span style={{ color: RED, fontWeight: 950 }}>{row.before}</span>
+            <span style={{ gridColumn: "1 / -1", color: MUTED_INK, fontSize: 12, fontWeight: 800 }}>{row.beforeReason}</span>
           </div>
         ))}
       </div>
@@ -383,7 +407,8 @@ const ReasonCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof pale
 };
 
 const RewriteCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof palettes)[VisualStyle] }> = ({ props, palette }) => {
-  const rows = props.scoreBasis?.slice(0, 3) || [];
+  const rubric = getScoreRubric(props);
+  const rows = scoreRows(props);
   return (
     <div
       style={{
@@ -401,13 +426,13 @@ const RewriteCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof pal
       }}
     >
       <div style={{ fontSize: 15, fontWeight: 950, color: GREEN, textTransform: "uppercase", letterSpacing: 1.2 }}>
-        After the rewrite
+        Why {rubric?.afterTotal ?? props.afterScore}/100
       </div>
       <div style={{ marginTop: 10, fontSize: 20, lineHeight: 1.22, fontWeight: 900 }}>{props.afterBullet}</div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 13 }}>
-        {rows.map((row) => (
+        {rows.map((row: { label: string; after: string }) => (
           <span key={row.label} style={{ background: palette.note, color: GREEN, borderRadius: 999, padding: "6px 10px", fontSize: 12, fontWeight: 950 }}>
-            {row.after}
+            {row.label}: {row.after}
           </span>
         ))}
       </div>
@@ -538,13 +563,13 @@ export const ResumeDeskReview: React.FC<ResumeCrimeSceneProps> = (props) => {
 
       <div style={{ opacity: reasonVisible }}>
         <ReasonCard props={props} palette={palette} />
-        <StickyScore label="Starts here" value={`${props.beforeScore}/100`} top={792} left={752} palette={palette} />
+        <StickyScore label={props.scoreLabel || "Signal Fit"} value={`${props.beforeScore}/100`} top={792} left={752} palette={palette} />
       </div>
 
       <div style={{ opacity: fixVisible }}>
         <RewriteCard props={props} palette={palette} />
         <StickyScore
-          label="After rewrite"
+          label="After proof"
           value={`${props.afterScore}/100`}
           tone="good"
           top={780}

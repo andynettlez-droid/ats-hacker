@@ -935,5 +935,230 @@
       ]
     },
     "reviewStatus": "needs_render_and_review"
+  },
+  {
+    "date": "2026-07-05",
+    "topic": "Human recruiter reads and fixes resume bullets with visible score rubric",
+    "series": "Daily Research Packet",
+    "packet": "marketing\\daily_content\\2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor",
+    "youtube": {
+      "title": "Human recruiter reads and fixes resume bullets with visible score rubric | Resume Teardown",
+      "status": "render_ready_review_required",
+      "target": "daily long-form YouTube",
+      "manifest": "marketing\\daily_content\\2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor\\channel_manifest.json",
+      "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_episode.json",
+      "output": "marketing/remotion/out/daily-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor-episode.mp4",
+      "autopostDraft": "marketing\\daily_content\\2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor\\autopost_drafts.json",
+      "qaGate": {
+        "required": true,
+        "passed": false,
+        "status": "requires_render_review"
+      }
+    },
+    "thumbnail": {
+      "composition": "SignalThumbnail",
+      "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_thumbnail.json",
+      "output": "marketing/remotion/out/daily-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor-thumbnail.png",
+      "format": "1280x720",
+      "status": "render_ready"
+    },
+    "shorts": [
+      {
+        "title": "I would circle this line first",
+        "brief": "marketing\\video_briefs\\2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor-short-1.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_1.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true,
+          "voiceDirector": {
+            "mode": "human_review_read",
+            "preferredProvider": "elevenlabs_speech_to_speech",
+            "fallbackProvider": "elevenlabs_tts_multitake",
+            "takeCount": 3,
+            "delivery": [
+              "Sounds like a recruiter reading the resume live.",
+              "Conversational, slightly amused, direct, helpful.",
+              "Short pause after the weak bullet and before the score reason.",
+              "No corporate polish, no trailer voice, no product-demo cadence."
+            ],
+            "scratchReadSrc": null,
+            "humanReadBeats": [
+              {
+                "beat": "read_line",
+                "text": "Read the exact resume line: Created reports for business teams and leadership."
+              },
+              {
+                "beat": "natural_reaction",
+                "text": "I believe the work happened; I just cannot see the proof yet."
+              },
+              {
+                "beat": "job_requirement",
+                "text": "Compare it to the job requirement: SQL, Tableau, cohort analysis."
+              },
+              {
+                "beat": "score_reason",
+                "text": "Explain the visible rubric before the score: 32/100."
+              },
+              {
+                "beat": "rewrite",
+                "text": "Rewrite only the same experience: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts."
+              },
+              {
+                "beat": "score_improvement",
+                "text": "Explain what improved before showing 89/100."
+              }
+            ],
+            "scriptSource": "human_read_pass"
+          }
+        }
+      },
+      {
+        "title": "I searched the resume. Bad news.",
+        "brief": "marketing\\video_briefs\\2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor-short-2.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_2.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true,
+          "voiceDirector": {
+            "mode": "human_review_read",
+            "preferredProvider": "elevenlabs_speech_to_speech",
+            "fallbackProvider": "elevenlabs_tts_multitake",
+            "takeCount": 3,
+            "delivery": [
+              "Sounds like a recruiter reading the resume live.",
+              "Conversational, slightly amused, direct, helpful.",
+              "Short pause after the weak bullet and before the score reason.",
+              "No corporate polish, no trailer voice, no product-demo cadence."
+            ],
+            "scratchReadSrc": null,
+            "humanReadBeats": [
+              {
+                "beat": "read_line",
+                "text": "Read the exact resume line: Responsible for sales opportunities in assigned territory."
+              },
+              {
+                "beat": "natural_reaction",
+                "text": "The sales work may be there; the pipeline proof is not."
+              },
+              {
+                "beat": "job_requirement",
+                "text": "Compare it to the job requirement: Salesforce, pipeline generation, quota attainment."
+              },
+              {
+                "beat": "score_reason",
+                "text": "Explain the visible rubric before the score: 37/100."
+              },
+              {
+                "beat": "rewrite",
+                "text": "Rewrite only the same experience: generated 1.8 million in qualified Salesforce pipeline."
+              },
+              {
+                "beat": "score_improvement",
+                "text": "Explain what improved before showing 88/100."
+              }
+            ],
+            "scriptSource": "human_read_pass"
+          }
+        }
+      },
+      {
+        "title": "The job post gave the answer key",
+        "brief": "marketing\\video_briefs\\2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor-short-3.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_3.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+          "voiceName": "configured voice",
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true,
+          "voiceDirector": {
+            "mode": "human_review_read",
+            "preferredProvider": "elevenlabs_speech_to_speech",
+            "fallbackProvider": "elevenlabs_tts_multitake",
+            "takeCount": 3,
+            "delivery": [
+              "Sounds like a recruiter reading the resume live.",
+              "Conversational, slightly amused, direct, helpful.",
+              "Short pause after the weak bullet and before the score reason.",
+              "No corporate polish, no trailer voice, no product-demo cadence."
+            ],
+            "scratchReadSrc": null,
+            "humanReadBeats": [
+              {
+                "beat": "read_line",
+                "text": "Read the exact resume line: Worked on frontend features for internal and customer-facing tools."
+              },
+              {
+                "beat": "natural_reaction",
+                "text": "The stack is probably real, but the bullet makes me hunt for it."
+              },
+              {
+                "beat": "job_requirement",
+                "text": "Compare it to the job requirement: React, TypeScript, Next.js."
+              },
+              {
+                "beat": "score_reason",
+                "text": "Explain the visible rubric before the score: 41/100."
+              },
+              {
+                "beat": "rewrite",
+                "text": "Rewrite only the same experience: shipped React and TypeScript checkout work that reduced drop-off 14 percent."
+              },
+              {
+                "beat": "score_improvement",
+                "text": "Explain what improved before showing 90/100."
+              }
+            ],
+            "scriptSource": "human_read_pass"
+          }
+        }
+      }
+    ],
+    "creativeQuality": {
+      "overallScore": 100,
+      "passed": true,
+      "verdict": "post_grade_script_packet",
+      "notes": [],
+      "blockers": [],
+      "shorts": [
+        {
+          "title": "I would circle this line first",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "I searched the resume. Bad news.",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "The job post gave the answer key",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        }
+      ]
+    },
+    "reviewStatus": "needs_render_and_review"
   }
 ]

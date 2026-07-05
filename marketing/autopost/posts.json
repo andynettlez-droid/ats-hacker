@@ -1472,5 +1472,19 @@
             "note": "Current gold-standard candidate. Daily posting remains paused until Andrew approves this exact file.",
             "updatedAt": "2026-07-05T15:05:00Z"
         }
+    },
+    {
+        "title": "Signal - The AI That Gets You Seen",
+        "caption": "Signal turns a buried resume into a clearer story: pass the filters, strengthen the resume, and get the right proof in front of the hiring manager. Run the free Signal score before you apply. #resumehelp #jobsearch #careeradvice #Signal",
+        "file": "videos/signal-ai-gets-you-seen-video.mp4",
+        "platforms": [
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "review_required",
+        "composition": "SignalJourneyImageVideo",
+        "renderProps": "marketing/remotion/props_signal_ai_gets_you_seen_video.json",
+        "reviewRequired": true,
+        "notes": "Horizontal 16:9 brand video based on the supplied Signal journey image. Do not publish without Codex chat approval."
     }
 ]

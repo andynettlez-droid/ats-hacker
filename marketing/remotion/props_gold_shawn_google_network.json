@@ -1,0 +1,743 @@
+{
+  "slug": "gold-shawn-google-network",
+  "title": "Shawn's network engineer resume is a mess",
+  "hook": "Shawn wants Google with this?",
+  "subhook": "Okay, let's fix the mess.",
+  "creativeFormat": "resumeCrimeScene",
+  "visualStyle": "comic",
+  "formatArchetype": "deskMarkup",
+  "pace": "fast",
+  "seriesLabel": "Resume Roast",
+  "signalLines": {
+    "hook": "Oof. Shawn.",
+    "problem": "Generic network soup.",
+    "teardown": "Google is not hunting for clues.",
+    "fix": "Feed the proof to Signal.",
+    "cta": "Fix before sending."
+  },
+  "punchline": "Google is not doing a scavenger hunt.",
+  "problemPunchline": "The good network proof is buried under generic support language.",
+  "markedLabel": "Generic",
+  "teardownText": "This is not a network engineer bullet.",
+  "teardownEmphasis": "This is beige oatmeal.",
+  "teardownPunchline": "No BGP, no automation, no incident result.",
+  "teardownIssues": [
+    "Two pages",
+    "Generic styling",
+    "Missing BGP/Python"
+  ],
+  "fixText": "Signal pulls out the proof Google actually needs.",
+  "fixEmphasis": "BGP. Python. Incidents.",
+  "fixPunchline": "Still Shawn's experience. Just readable.",
+  "resumeName": "Shawn Carter",
+  "resumeTitle": "Network Engineer Resume",
+  "resumeMeta": [
+    "5 yrs network support",
+    "Cisco + Linux",
+    "Cloud networking"
+  ],
+  "resumeWarnings": [
+    "2 pages",
+    "generic",
+    "weak styling",
+    "missing keywords"
+  ],
+  "jobTitle": "Network Engineer at Google",
+  "jobKeywords": [
+    "BGP",
+    "Python",
+    "Linux",
+    "incident response",
+    "network automation"
+  ],
+  "weakBullets": [
+    "Responsible for network support and troubleshooting.",
+    "Worked with routers and switches.",
+    "Helped maintain network uptime."
+  ],
+  "beforeBullet": "Responsible for network support and troubleshooting.",
+  "afterBullet": "Automated BGP and VLAN health checks with Python, cutting outage triage time by 37% across 42 network devices.",
+  "resumeDocument": {
+    "name": "Shawn Carter",
+    "headline": "Network Support Specialist",
+    "contact": [
+      "Atlanta, GA",
+      "shawn.carter@example.com",
+      "linkedin.com/in/shawn-carter"
+    ],
+    "summary": "Network support specialist with experience helping teams troubleshoot connectivity, routing, switching, and cloud access issues across enterprise environments.",
+    "experience": [
+      {
+        "company": "Fictional Telecom Services",
+        "role": "Network Support Specialist",
+        "dates": "2021 - Present",
+        "bullets": [
+          "Responsible for network support and troubleshooting.",
+          "Worked with routers and switches.",
+          "Helped maintain network uptime.",
+          "Automated BGP and VLAN health checks with Python, cutting outage triage time by 37% across 42 network devices.",
+          "Resolved Linux DNS and firewall incidents for internal engineering teams."
+        ]
+      },
+      {
+        "company": "Fictional Cloud Hosting",
+        "role": "Junior Network Technician",
+        "dates": "2019 - 2021",
+        "bullets": [
+          "Monitored network alerts and escalated routing issues to senior engineers.",
+          "Documented OSPF adjacency failures and switchport configuration changes.",
+          "Supported after-hours incident response for customer connectivity outages."
+        ]
+      }
+    ],
+    "skills": [
+      "Cisco",
+      "Linux",
+      "TCP/IP",
+      "DNS",
+      "Firewall support",
+      "Cloud networking"
+    ],
+    "education": "A.A.S. Network Systems Technology"
+  },
+  "jobDescription": {
+    "title": "Network Engineer",
+    "company": "Google",
+    "summary": "Google is hiring a Network Engineer to support large-scale routing, Linux systems, network automation, and incident response.",
+    "responsibilities": [
+      "Troubleshoot routing and switching issues across large-scale networks.",
+      "Use Python or similar scripting to automate network checks.",
+      "Partner with engineering teams during production incidents."
+    ],
+    "requirements": [
+      "BGP",
+      "Python",
+      "Linux",
+      "incident response",
+      "network automation"
+    ],
+    "searchQueries": [
+      "BGP",
+      "Python",
+      "Linux",
+      "incident response"
+    ]
+  },
+  "beforeScore": 28,
+  "afterScore": 87,
+  "scoreLabel": "Before fix",
+  "scoreBasis": [
+    {
+      "label": "Keywords",
+      "before": "generic",
+      "after": "BGP/Python"
+    },
+    {
+      "label": "Proof",
+      "before": "none",
+      "after": "37%"
+    },
+    {
+      "label": "Scope",
+      "before": "unknown",
+      "after": "42 devices"
+    },
+    {
+      "label": "Styling",
+      "before": "messy",
+      "after": "clean"
+    }
+  ],
+  "score_rubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 28,
+    "afterTotal": 87,
+    "beforeExplanation": "The original resume hides network engineering proof behind generic support language and styling problems.",
+    "afterExplanation": "The rewrite moves the exact tools, scope, and result into the visible bullet.",
+    "rows": [
+      {
+        "criterion": "Tool match",
+        "label": "Tool match",
+        "max": 25,
+        "before": 5,
+        "after": 22,
+        "beforeReason": "No BGP or Python",
+        "afterReason": "BGP and Python are visible"
+      },
+      {
+        "criterion": "Metric proof",
+        "label": "Metric proof",
+        "max": 20,
+        "before": 1,
+        "after": 18,
+        "beforeReason": "No measurable result",
+        "afterReason": "37% faster triage"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 4,
+        "after": 16,
+        "beforeReason": "Troubleshooting is vague",
+        "afterReason": "Outage triage result is clear"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 6,
+        "after": 13,
+        "beforeReason": "No environment size",
+        "afterReason": "42 network devices"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 8,
+        "after": 14,
+        "beforeReason": "Support role only",
+        "afterReason": "Network engineering work"
+      },
+      {
+        "criterion": "Readability",
+        "label": "Readability",
+        "max": 5,
+        "before": 4,
+        "after": 4,
+        "beforeReason": "Readable but generic",
+        "afterReason": "Readable and specific"
+      }
+    ]
+  },
+  "evidenceLedger": {
+    "sourceLocation": "Same resume, fourth bullet under current role",
+    "proofLine": "Automated BGP and VLAN health checks with Python, cutting outage triage time by 37% across 42 network devices.",
+    "visibleFacts": [
+      {
+        "fact": "BGP and VLAN health checks",
+        "source": "existing resume bullet"
+      },
+      {
+        "fact": "Python",
+        "source": "existing resume bullet"
+      },
+      {
+        "fact": "37%",
+        "source": "existing resume bullet"
+      },
+      {
+        "fact": "42 network devices",
+        "source": "existing resume bullet"
+      }
+    ]
+  },
+  "humanReadBeats": [
+    {
+      "beat": "setup",
+      "text": "Let's look at Shawn's resume for Google network engineer."
+    },
+    {
+      "beat": "roast",
+      "text": "It's two pages, generic, and the styling is doing him zero favors."
+    },
+    {
+      "beat": "missing_keywords",
+      "text": "The first bullet says network support. Google asked for BGP, Python, Linux, incidents."
+    },
+    {
+      "beat": "why_low_score",
+      "text": "The score starts low because the searchable proof is buried."
+    },
+    {
+      "beat": "fix",
+      "text": "Signal pulls the real proof up front."
+    },
+    {
+      "beat": "why_score_moves",
+      "text": "Now the bullet shows the tools, scope, and outcome."
+    },
+    {
+      "beat": "cta",
+      "text": "Run the free Signal score before you apply."
+    }
+  ],
+  "voiceDirector": {
+    "mode": "human_review_read",
+    "provider": "elevenlabs",
+    "delivery": "funny resume reviewer; blunt, casual, not corporate; like a creator roasting a bad resume but helping",
+    "stability": 0.31,
+    "similarity_boost": 0.78,
+    "style": 0.55,
+    "use_speaker_boost": true,
+    "previous_text": "Let's take a look at a real resume and roast it a little.",
+    "next_text": "Then show the polished version and the quick CTA."
+  },
+  "voiceover_text": "Let's look at Shawn's resume. He's targeting network engineer at Google, and he's sending two pages of beige oatmeal. Generic styling, no BGP, no Python, no incident numbers. Google is not doing a scavenger hunt. Feed this thing to Signal, pull the real proof up top, and now a hiring team can actually understand what he did. Free Signal score before you apply.",
+  "voiceoverPlaybackRate": 1.1,
+  "cta": "Free Signal score before you apply.",
+  "musicVolume": 0,
+  "voiceoverVolume": 0.96,
+  "durationSeconds": 23.78,
+  "captions": [
+    {
+      "text": "Let's",
+      "startMs": 21,
+      "endMs": 211,
+      "timestampMs": 21,
+      "confidence": null
+    },
+    {
+      "text": "look",
+      "startMs": 243,
+      "endMs": 348,
+      "timestampMs": 243,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 380,
+      "endMs": 422,
+      "timestampMs": 380,
+      "confidence": null
+    },
+    {
+      "text": "Shawn's",
+      "startMs": 475,
+      "endMs": 739,
+      "timestampMs": 475,
+      "confidence": null
+    },
+    {
+      "text": "resume.",
+      "startMs": 781,
+      "endMs": 1309,
+      "timestampMs": 781,
+      "confidence": null
+    },
+    {
+      "text": "He's",
+      "startMs": 1710,
+      "endMs": 1889,
+      "timestampMs": 1710,
+      "confidence": null
+    },
+    {
+      "text": "targeting",
+      "startMs": 1932,
+      "endMs": 2280,
+      "timestampMs": 1932,
+      "confidence": null
+    },
+    {
+      "text": "network",
+      "startMs": 2333,
+      "endMs": 2607,
+      "timestampMs": 2333,
+      "confidence": null
+    },
+    {
+      "text": "engineer",
+      "startMs": 2660,
+      "endMs": 2965,
+      "timestampMs": 2660,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 3008,
+      "endMs": 3061,
+      "timestampMs": 3008,
+      "confidence": null
+    },
+    {
+      "text": "Google,",
+      "startMs": 3114,
+      "endMs": 3483,
+      "timestampMs": 3114,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 3505,
+      "endMs": 3610,
+      "timestampMs": 3505,
+      "confidence": null
+    },
+    {
+      "text": "he's",
+      "startMs": 3663,
+      "endMs": 3778,
+      "timestampMs": 3663,
+      "confidence": null
+    },
+    {
+      "text": "sending",
+      "startMs": 3800,
+      "endMs": 4053,
+      "timestampMs": 3800,
+      "confidence": null
+    },
+    {
+      "text": "two",
+      "startMs": 4105,
+      "endMs": 4254,
+      "timestampMs": 4105,
+      "confidence": null
+    },
+    {
+      "text": "pages",
+      "startMs": 4306,
+      "endMs": 4655,
+      "timestampMs": 4306,
+      "confidence": null
+    },
+    {
+      "text": "of",
+      "startMs": 4728,
+      "endMs": 4803,
+      "timestampMs": 4728,
+      "confidence": null
+    },
+    {
+      "text": "beige",
+      "startMs": 4908,
+      "endMs": 5214,
+      "timestampMs": 4908,
+      "confidence": null
+    },
+    {
+      "text": "oatmeal.",
+      "startMs": 5266,
+      "endMs": 5795,
+      "timestampMs": 5266,
+      "confidence": null
+    },
+    {
+      "text": "Generic",
+      "startMs": 6048,
+      "endMs": 6417,
+      "timestampMs": 6048,
+      "confidence": null
+    },
+    {
+      "text": "styling,",
+      "startMs": 6470,
+      "endMs": 6955,
+      "timestampMs": 6470,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 7093,
+      "endMs": 7209,
+      "timestampMs": 7093,
+      "confidence": null
+    },
+    {
+      "text": "BGP,",
+      "startMs": 7272,
+      "endMs": 7863,
+      "timestampMs": 7272,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 8022,
+      "endMs": 8137,
+      "timestampMs": 8022,
+      "confidence": null
+    },
+    {
+      "text": "Python,",
+      "startMs": 8201,
+      "endMs": 8771,
+      "timestampMs": 8201,
+      "confidence": null
+    },
+    {
+      "text": "no",
+      "startMs": 8929,
+      "endMs": 9140,
+      "timestampMs": 8929,
+      "confidence": null
+    },
+    {
+      "text": "incident",
+      "startMs": 9245,
+      "endMs": 9594,
+      "timestampMs": 9245,
+      "confidence": null
+    },
+    {
+      "text": "numbers.",
+      "startMs": 9625,
+      "endMs": 10122,
+      "timestampMs": 9625,
+      "confidence": null
+    },
+    {
+      "text": "Google",
+      "startMs": 10344,
+      "endMs": 10755,
+      "timestampMs": 10344,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 10797,
+      "endMs": 10893,
+      "timestampMs": 10797,
+      "confidence": null
+    },
+    {
+      "text": "not",
+      "startMs": 10945,
+      "endMs": 11072,
+      "timestampMs": 10945,
+      "confidence": null
+    },
+    {
+      "text": "doing",
+      "startMs": 11115,
+      "endMs": 11305,
+      "timestampMs": 11115,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 11336,
+      "endMs": 11357,
+      "timestampMs": 11336,
+      "confidence": null
+    },
+    {
+      "text": "scavenger",
+      "startMs": 11399,
+      "endMs": 11779,
+      "timestampMs": 11399,
+      "confidence": null
+    },
+    {
+      "text": "hunt.",
+      "startMs": 11832,
+      "endMs": 12159,
+      "timestampMs": 11832,
+      "confidence": null
+    },
+    {
+      "text": "Feed",
+      "startMs": 12455,
+      "endMs": 12687,
+      "timestampMs": 12455,
+      "confidence": null
+    },
+    {
+      "text": "this",
+      "startMs": 12729,
+      "endMs": 12866,
+      "timestampMs": 12729,
+      "confidence": null
+    },
+    {
+      "text": "thing",
+      "startMs": 12919,
+      "endMs": 13077,
+      "timestampMs": 12919,
+      "confidence": null
+    },
+    {
+      "text": "to",
+      "startMs": 13130,
+      "endMs": 13183,
+      "timestampMs": 13130,
+      "confidence": null
+    },
+    {
+      "text": "Signal,",
+      "startMs": 13235,
+      "endMs": 13690,
+      "timestampMs": 13235,
+      "confidence": null
+    },
+    {
+      "text": "pull",
+      "startMs": 13848,
+      "endMs": 14027,
+      "timestampMs": 13848,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 14080,
+      "endMs": 14144,
+      "timestampMs": 14080,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 14196,
+      "endMs": 14375,
+      "timestampMs": 14196,
+      "confidence": null
+    },
+    {
+      "text": "proof",
+      "startMs": 14439,
+      "endMs": 14661,
+      "timestampMs": 14439,
+      "confidence": null
+    },
+    {
+      "text": "up",
+      "startMs": 14766,
+      "endMs": 14904,
+      "timestampMs": 14766,
+      "confidence": null
+    },
+    {
+      "text": "top,",
+      "startMs": 14956,
+      "endMs": 15378,
+      "timestampMs": 14956,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 15484,
+      "endMs": 15642,
+      "timestampMs": 15484,
+      "confidence": null
+    },
+    {
+      "text": "now",
+      "startMs": 15716,
+      "endMs": 15895,
+      "timestampMs": 15716,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 15969,
+      "endMs": 16001,
+      "timestampMs": 15969,
+      "confidence": null
+    },
+    {
+      "text": "hiring",
+      "startMs": 16106,
+      "endMs": 16507,
+      "timestampMs": 16106,
+      "confidence": null
+    },
+    {
+      "text": "team",
+      "startMs": 16561,
+      "endMs": 16761,
+      "timestampMs": 16561,
+      "confidence": null
+    },
+    {
+      "text": "can",
+      "startMs": 16814,
+      "endMs": 16930,
+      "timestampMs": 16814,
+      "confidence": null
+    },
+    {
+      "text": "actually",
+      "startMs": 17004,
+      "endMs": 17468,
+      "timestampMs": 17004,
+      "confidence": null
+    },
+    {
+      "text": "understand",
+      "startMs": 17542,
+      "endMs": 18059,
+      "timestampMs": 17542,
+      "confidence": null
+    },
+    {
+      "text": "what",
+      "startMs": 18144,
+      "endMs": 18323,
+      "timestampMs": 18144,
+      "confidence": null
+    },
+    {
+      "text": "he",
+      "startMs": 18375,
+      "endMs": 18439,
+      "timestampMs": 18375,
+      "confidence": null
+    },
+    {
+      "text": "did.",
+      "startMs": 18503,
+      "endMs": 18893,
+      "timestampMs": 18503,
+      "confidence": null
+    },
+    {
+      "text": "Free",
+      "startMs": 19295,
+      "endMs": 19558,
+      "timestampMs": 19295,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 19611,
+      "endMs": 19927,
+      "timestampMs": 19611,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 19991,
+      "endMs": 20371,
+      "timestampMs": 19991,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 20413,
+      "endMs": 20983,
+      "timestampMs": 20413,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 21141,
+      "endMs": 21363,
+      "timestampMs": 21141,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 21521,
+      "endMs": 22144,
+      "timestampMs": 21521,
+      "confidence": null
+    }
+  ],
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/gold-shawn-google-network-voiceover.alignment.json",
+    "reason": "ElevenLabs with-timestamps word captions mapped into Remotion captions."
+  },
+  "voiceoverSrc": "audio/gold-shawn-google-network-voiceover.mp3",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": false,
+    "musicPolicy": "music_omitted_no_sfx",
+    "provider": "elevenlabs",
+    "reason": "Single-take creator-style ElevenLabs read, rendered at 1.1x for short-form pacing.",
+    "wordLevelCaptions": true,
+    "withTimestamps": true
+  }
+}

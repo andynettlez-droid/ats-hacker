@@ -1,0 +1,358 @@
+{
+  "slug": "gold-signal-filter-breakthrough",
+  "hook1": "Signal just hit the resume filters.",
+  "hook2": "Now the proof gets seen.",
+  "subline": "A generic network resume becomes a clear story: BGP, Python, incidents, results.",
+  "missing": [
+    "BGP",
+    "Python",
+    "Linux",
+    "incident response"
+  ],
+  "beforeScore": 28,
+  "afterScore": 87,
+  "cta": "Free Signal score before you apply.",
+  "resumeName": "SHAWN CARTER",
+  "resumeHeadline": "Network Engineer Target",
+  "resumeSummary": "Network support specialist with routing, switching, Linux incident response, and cloud connectivity experience.",
+  "resumeBeforeLines": [
+    "Responsible for network support and troubleshooting.",
+    "Worked with routers and switches."
+  ],
+  "resumeAfterLines": [
+    "Automated BGP and VLAN health checks with Python, cutting outage triage time by 37%.",
+    "Resolved Linux DNS and firewall incidents across 42 network devices."
+  ],
+  "roleLanguage": [
+    "BGP",
+    "Python",
+    "Linux",
+    "Incidents"
+  ],
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.12,
+  "voiceoverVolume": 0.94,
+  "voiceoverPlaybackRate": 1.08,
+  "sfxVolume": 0,
+  "avatarStartFrame": 0,
+  "avatarEndFrame": 0,
+  "avatarLabel": "Signal",
+  "voiceDirector": {
+    "mode": "cinematic_mascot_read",
+    "provider": "elevenlabs",
+    "delivery": "fast creator voice, amused but controlled; make the mascot feel like a helpful troublemaker, not a corporate demo",
+    "stability": 0.33,
+    "similarity_boost": 0.78,
+    "style": 0.56,
+    "use_speaker_boost": true,
+    "previous_text": "Now show Signal moving through the resume filters.",
+    "next_text": "End with the score receipt and the free-score CTA."
+  },
+  "voiceover_text": "Signal grabs Shawn's resume, smashes through the keyword filters, throws out the generic junk, and drops the real proof on the hiring manager's screen. BGP. Python. Incidents. Actual numbers. That's the version people can read. Free Signal score before you apply.",
+  "voiceoverSrc": "audio/gold-signal-filter-breakthrough-voiceover.mp3",
+  "captions": [
+    {
+      "text": "Signal",
+      "startMs": 11,
+      "endMs": 344,
+      "timestampMs": 11,
+      "confidence": null
+    },
+    {
+      "text": "grabs",
+      "startMs": 387,
+      "endMs": 667,
+      "timestampMs": 387,
+      "confidence": null
+    },
+    {
+      "text": "Shawn's",
+      "startMs": 688,
+      "endMs": 1000,
+      "timestampMs": 688,
+      "confidence": null
+    },
+    {
+      "text": "resume,",
+      "startMs": 1043,
+      "endMs": 1656,
+      "timestampMs": 1043,
+      "confidence": null
+    },
+    {
+      "text": "smashes",
+      "startMs": 1881,
+      "endMs": 2311,
+      "timestampMs": 1881,
+      "confidence": null
+    },
+    {
+      "text": "through",
+      "startMs": 2355,
+      "endMs": 2537,
+      "timestampMs": 2355,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 2569,
+      "endMs": 2633,
+      "timestampMs": 2569,
+      "confidence": null
+    },
+    {
+      "text": "keyword",
+      "startMs": 2666,
+      "endMs": 2999,
+      "timestampMs": 2666,
+      "confidence": null
+    },
+    {
+      "text": "filters,",
+      "startMs": 3031,
+      "endMs": 3666,
+      "timestampMs": 3031,
+      "confidence": null
+    },
+    {
+      "text": "throws",
+      "startMs": 3859,
+      "endMs": 4181,
+      "timestampMs": 3859,
+      "confidence": null
+    },
+    {
+      "text": "out",
+      "startMs": 4225,
+      "endMs": 4343,
+      "timestampMs": 4225,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 4386,
+      "endMs": 4451,
+      "timestampMs": 4386,
+      "confidence": null
+    },
+    {
+      "text": "generic",
+      "startMs": 4494,
+      "endMs": 4859,
+      "timestampMs": 4494,
+      "confidence": null
+    },
+    {
+      "text": "junk,",
+      "startMs": 4923,
+      "endMs": 5407,
+      "timestampMs": 4923,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 5633,
+      "endMs": 5783,
+      "timestampMs": 5633,
+      "confidence": null
+    },
+    {
+      "text": "drops",
+      "startMs": 5837,
+      "endMs": 6149,
+      "timestampMs": 5837,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 6203,
+      "endMs": 6278,
+      "timestampMs": 6203,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 6385,
+      "endMs": 6622,
+      "timestampMs": 6385,
+      "confidence": null
+    },
+    {
+      "text": "proof",
+      "startMs": 6697,
+      "endMs": 6977,
+      "timestampMs": 6697,
+      "confidence": null
+    },
+    {
+      "text": "on",
+      "startMs": 7052,
+      "endMs": 7149,
+      "timestampMs": 7052,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 7181,
+      "endMs": 7245,
+      "timestampMs": 7181,
+      "confidence": null
+    },
+    {
+      "text": "hiring",
+      "startMs": 7278,
+      "endMs": 7590,
+      "timestampMs": 7278,
+      "confidence": null
+    },
+    {
+      "text": "manager's",
+      "startMs": 7632,
+      "endMs": 8019,
+      "timestampMs": 7632,
+      "confidence": null
+    },
+    {
+      "text": "screen.",
+      "startMs": 8052,
+      "endMs": 8621,
+      "timestampMs": 8052,
+      "confidence": null
+    },
+    {
+      "text": "BGP.",
+      "startMs": 9030,
+      "endMs": 9944,
+      "timestampMs": 9030,
+      "confidence": null
+    },
+    {
+      "text": "Python.",
+      "startMs": 10137,
+      "endMs": 10857,
+      "timestampMs": 10137,
+      "confidence": null
+    },
+    {
+      "text": "Incidents.",
+      "startMs": 11158,
+      "endMs": 11932,
+      "timestampMs": 11158,
+      "confidence": null
+    },
+    {
+      "text": "Actual",
+      "startMs": 12233,
+      "endMs": 12674,
+      "timestampMs": 12233,
+      "confidence": null
+    },
+    {
+      "text": "numbers.",
+      "startMs": 12749,
+      "endMs": 13372,
+      "timestampMs": 12749,
+      "confidence": null
+    },
+    {
+      "text": "That's",
+      "startMs": 14018,
+      "endMs": 14458,
+      "timestampMs": 14018,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 14652,
+      "endMs": 14781,
+      "timestampMs": 14652,
+      "confidence": null
+    },
+    {
+      "text": "version",
+      "startMs": 14834,
+      "endMs": 15244,
+      "timestampMs": 14834,
+      "confidence": null
+    },
+    {
+      "text": "people",
+      "startMs": 15405,
+      "endMs": 15684,
+      "timestampMs": 15405,
+      "confidence": null
+    },
+    {
+      "text": "can",
+      "startMs": 15716,
+      "endMs": 15824,
+      "timestampMs": 15716,
+      "confidence": null
+    },
+    {
+      "text": "read.",
+      "startMs": 15878,
+      "endMs": 16189,
+      "timestampMs": 15878,
+      "confidence": null
+    },
+    {
+      "text": "Free",
+      "startMs": 16447,
+      "endMs": 16662,
+      "timestampMs": 16447,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 16694,
+      "endMs": 16953,
+      "timestampMs": 16694,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 16984,
+      "endMs": 17307,
+      "timestampMs": 16984,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 17371,
+      "endMs": 17651,
+      "timestampMs": 17371,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 17683,
+      "endMs": 17748,
+      "timestampMs": 17683,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 17802,
+      "endMs": 18296,
+      "timestampMs": 17802,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 19.97,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/gold-signal-filter-breakthrough-voiceover.alignment.json",
+    "reason": "ElevenLabs with-timestamps word captions mapped into Remotion captions."
+  },
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "musicPolicy": "quiet_music_ready",
+    "provider": "elevenlabs",
+    "reason": "Single-take creator-style ElevenLabs read, rendered at 1.08x for short-form pacing.",
+    "wordLevelCaptions": true,
+    "withTimestamps": true
+  }
+}

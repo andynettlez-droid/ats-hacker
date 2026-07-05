@@ -46,6 +46,7 @@ export const resumeCrimeSceneSchema = z.object({
   resumeName: z.string().optional(),
   resumeTitle: z.string(),
   resumeMeta: z.array(z.string()).optional(),
+  resumeWarnings: z.array(z.string()).optional(),
   jobTitle: z.string(),
   jobKeywords: z.array(z.string()),
   weakBullets: z.array(z.string()),

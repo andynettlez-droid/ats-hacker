@@ -240,6 +240,28 @@ const ResumePaper: React.FC<{
     <>
       <div style={{ fontSize: 33, fontWeight: 950, lineHeight: 1, letterSpacing: 0 }}>{doc?.name || props.resumeName}</div>
       <div style={{ marginTop: 7, color: MUTED_INK, fontSize: 16, fontWeight: 850 }}>{doc?.headline || props.resumeTitle}</div>
+      {Array.isArray(props.resumeWarnings) && props.resumeWarnings.length ? (
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 11 }}>
+          {props.resumeWarnings.slice(0, 4).map((warning) => (
+            <span
+              key={warning}
+              style={{
+                padding: "5px 8px",
+                borderRadius: 8,
+                background: "rgba(254,226,226,0.95)",
+                color: RED,
+                border: "1px solid rgba(217,45,32,0.22)",
+                fontSize: 10,
+                fontWeight: 950,
+                textTransform: "uppercase",
+                letterSpacing: 0.6,
+              }}
+            >
+              {warning}
+            </span>
+          ))}
+        </div>
+      ) : null}
       <div style={{ height: 2, background: INK, margin: "19px 0 14px" }} />
       <div style={{ fontSize: 12, fontWeight: 950, textTransform: "uppercase", letterSpacing: 1.5 }}>Experience</div>
       <div style={{ marginTop: 9, display: "grid", gap: 10 }}>

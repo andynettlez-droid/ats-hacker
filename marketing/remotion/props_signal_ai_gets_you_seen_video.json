@@ -1,0 +1,483 @@
+{
+  "slug": "signal-ai-gets-you-seen-video",
+  "title": "Signal - The AI that gets you seen",
+  "subtitle": "Pass the ATS. Strengthen the resume. Impress the hiring manager.",
+  "imageSrc": "assets/signal-ai-gets-you-seen-reference.jpg",
+  "cta": "Run the free Signal score before you apply.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.1,
+  "voiceoverVolume": 0.95,
+  "voiceoverPlaybackRate": 1.06,
+  "voiceDirector": {
+    "mode": "cinematic_brand_explainer",
+    "provider": "elevenlabs",
+    "delivery": "confident creator read; energetic but not salesy; make it feel like the mascot is guiding the resume through the system",
+    "stability": 0.36,
+    "similarity_boost": 0.8,
+    "style": 0.5,
+    "use_speaker_boost": true,
+    "previous_text": "Show the Signal journey as a premium animated brand video.",
+    "next_text": "End with the free resume score call to action."
+  },
+  "voiceover_text": "This is Signal. First, it drags your resume through the ATS filter: formatting, keywords, experience, relevance. Then it pulls the strongest proof into the resume: results, impact, real numbers. Last step, it phases that cleaner story onto the hiring manager's screen, where a person can actually read it. No fake experience. Just a stronger signal. Run the free Signal score before you apply.",
+  "voiceoverSrc": "audio/signal-ai-gets-you-seen-video-voiceover.mp3",
+  "captions": [
+    {
+      "text": "This",
+      "startMs": 11,
+      "endMs": 361,
+      "timestampMs": 11,
+      "confidence": null
+    },
+    {
+      "text": "is",
+      "startMs": 525,
+      "endMs": 679,
+      "timestampMs": 525,
+      "confidence": null
+    },
+    {
+      "text": "Signal.",
+      "startMs": 744,
+      "endMs": 1249,
+      "timestampMs": 744,
+      "confidence": null
+    },
+    {
+      "text": "First,",
+      "startMs": 1610,
+      "endMs": 2103,
+      "timestampMs": 1610,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 2147,
+      "endMs": 2278,
+      "timestampMs": 2147,
+      "confidence": null
+    },
+    {
+      "text": "drags",
+      "startMs": 2322,
+      "endMs": 2683,
+      "timestampMs": 2322,
+      "confidence": null
+    },
+    {
+      "text": "your",
+      "startMs": 2716,
+      "endMs": 2825,
+      "timestampMs": 2716,
+      "confidence": null
+    },
+    {
+      "text": "resume",
+      "startMs": 2870,
+      "endMs": 3242,
+      "timestampMs": 2870,
+      "confidence": null
+    },
+    {
+      "text": "through",
+      "startMs": 3286,
+      "endMs": 3483,
+      "timestampMs": 3286,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 3516,
+      "endMs": 3581,
+      "timestampMs": 3516,
+      "confidence": null
+    },
+    {
+      "text": "ATS",
+      "startMs": 3647,
+      "endMs": 4129,
+      "timestampMs": 3647,
+      "confidence": null
+    },
+    {
+      "text": "filter:",
+      "startMs": 4206,
+      "endMs": 4699,
+      "timestampMs": 4206,
+      "confidence": null
+    },
+    {
+      "text": "formatting,",
+      "startMs": 4896,
+      "endMs": 5608,
+      "timestampMs": 4896,
+      "confidence": null
+    },
+    {
+      "text": "keywords,",
+      "startMs": 5750,
+      "endMs": 6451,
+      "timestampMs": 5750,
+      "confidence": null
+    },
+    {
+      "text": "experience,",
+      "startMs": 6560,
+      "endMs": 7458,
+      "timestampMs": 6560,
+      "confidence": null
+    },
+    {
+      "text": "relevance.",
+      "startMs": 7656,
+      "endMs": 8313,
+      "timestampMs": 7656,
+      "confidence": null
+    },
+    {
+      "text": "Then",
+      "startMs": 8576,
+      "endMs": 8751,
+      "timestampMs": 8576,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 8795,
+      "endMs": 8860,
+      "timestampMs": 8795,
+      "confidence": null
+    },
+    {
+      "text": "pulls",
+      "startMs": 8905,
+      "endMs": 9178,
+      "timestampMs": 8905,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 9233,
+      "endMs": 9299,
+      "timestampMs": 9233,
+      "confidence": null
+    },
+    {
+      "text": "strongest",
+      "startMs": 9354,
+      "endMs": 9792,
+      "timestampMs": 9354,
+      "confidence": null
+    },
+    {
+      "text": "proof",
+      "startMs": 9836,
+      "endMs": 10088,
+      "timestampMs": 9836,
+      "confidence": null
+    },
+    {
+      "text": "into",
+      "startMs": 10164,
+      "endMs": 10340,
+      "timestampMs": 10164,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 10394,
+      "endMs": 10460,
+      "timestampMs": 10394,
+      "confidence": null
+    },
+    {
+      "text": "resume:",
+      "startMs": 10504,
+      "endMs": 11107,
+      "timestampMs": 10504,
+      "confidence": null
+    },
+    {
+      "text": "results,",
+      "startMs": 11271,
+      "endMs": 11949,
+      "timestampMs": 11271,
+      "confidence": null
+    },
+    {
+      "text": "impact,",
+      "startMs": 12114,
+      "endMs": 12892,
+      "timestampMs": 12114,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 13089,
+      "endMs": 13351,
+      "timestampMs": 13089,
+      "confidence": null
+    },
+    {
+      "text": "numbers.",
+      "startMs": 13428,
+      "endMs": 14030,
+      "timestampMs": 13428,
+      "confidence": null
+    },
+    {
+      "text": "Last",
+      "startMs": 14392,
+      "endMs": 14698,
+      "timestampMs": 14392,
+      "confidence": null
+    },
+    {
+      "text": "step,",
+      "startMs": 14731,
+      "endMs": 15203,
+      "timestampMs": 14731,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 15432,
+      "endMs": 15564,
+      "timestampMs": 15432,
+      "confidence": null
+    },
+    {
+      "text": "phases",
+      "startMs": 15608,
+      "endMs": 15991,
+      "timestampMs": 15608,
+      "confidence": null
+    },
+    {
+      "text": "that",
+      "startMs": 16045,
+      "endMs": 16188,
+      "timestampMs": 16045,
+      "confidence": null
+    },
+    {
+      "text": "cleaner",
+      "startMs": 16254,
+      "endMs": 16605,
+      "timestampMs": 16254,
+      "confidence": null
+    },
+    {
+      "text": "story",
+      "startMs": 16659,
+      "endMs": 17054,
+      "timestampMs": 16659,
+      "confidence": null
+    },
+    {
+      "text": "onto",
+      "startMs": 17163,
+      "endMs": 17382,
+      "timestampMs": 17163,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 17425,
+      "endMs": 17492,
+      "timestampMs": 17425,
+      "confidence": null
+    },
+    {
+      "text": "hiring",
+      "startMs": 17535,
+      "endMs": 17875,
+      "timestampMs": 17535,
+      "confidence": null
+    },
+    {
+      "text": "manager's",
+      "startMs": 17919,
+      "endMs": 18313,
+      "timestampMs": 17919,
+      "confidence": null
+    },
+    {
+      "text": "screen,",
+      "startMs": 18346,
+      "endMs": 18806,
+      "timestampMs": 18346,
+      "confidence": null
+    },
+    {
+      "text": "where",
+      "startMs": 18915,
+      "endMs": 19112,
+      "timestampMs": 18915,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 19145,
+      "endMs": 19167,
+      "timestampMs": 19145,
+      "confidence": null
+    },
+    {
+      "text": "person",
+      "startMs": 19222,
+      "endMs": 19518,
+      "timestampMs": 19222,
+      "confidence": null
+    },
+    {
+      "text": "can",
+      "startMs": 19561,
+      "endMs": 19682,
+      "timestampMs": 19561,
+      "confidence": null
+    },
+    {
+      "text": "actually",
+      "startMs": 19758,
+      "endMs": 20219,
+      "timestampMs": 19758,
+      "confidence": null
+    },
+    {
+      "text": "read",
+      "startMs": 20285,
+      "endMs": 20459,
+      "timestampMs": 20285,
+      "confidence": null
+    },
+    {
+      "text": "it.",
+      "startMs": 20504,
+      "endMs": 20744,
+      "timestampMs": 20504,
+      "confidence": null
+    },
+    {
+      "text": "No",
+      "startMs": 21106,
+      "endMs": 21445,
+      "timestampMs": 21106,
+      "confidence": null
+    },
+    {
+      "text": "fake",
+      "startMs": 21642,
+      "endMs": 22092,
+      "timestampMs": 21642,
+      "confidence": null
+    },
+    {
+      "text": "experience.",
+      "startMs": 22125,
+      "endMs": 23110,
+      "timestampMs": 22125,
+      "confidence": null
+    },
+    {
+      "text": "Just",
+      "startMs": 23341,
+      "endMs": 23680,
+      "timestampMs": 23341,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 23768,
+      "endMs": 23844,
+      "timestampMs": 23768,
+      "confidence": null
+    },
+    {
+      "text": "stronger",
+      "startMs": 23954,
+      "endMs": 24491,
+      "timestampMs": 23954,
+      "confidence": null
+    },
+    {
+      "text": "signal.",
+      "startMs": 24688,
+      "endMs": 25279,
+      "timestampMs": 24688,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 26330,
+      "endMs": 26560,
+      "timestampMs": 26330,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 26605,
+      "endMs": 26670,
+      "timestampMs": 26605,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 26714,
+      "endMs": 26889,
+      "timestampMs": 26714,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 26933,
+      "endMs": 27218,
+      "timestampMs": 26933,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 27261,
+      "endMs": 27623,
+      "timestampMs": 27261,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 27677,
+      "endMs": 28378,
+      "timestampMs": 27677,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 28542,
+      "endMs": 28696,
+      "timestampMs": 28542,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 28860,
+      "endMs": 29518,
+      "timestampMs": 28860,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 31.24,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/signal-ai-gets-you-seen-video-voiceover.alignment.json",
+    "reason": "ElevenLabs with-timestamps word captions mapped into Remotion captions."
+  },
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "musicPolicy": "quiet_music_ready",
+    "provider": "elevenlabs",
+    "reason": "Single-take creator-style ElevenLabs read, rendered at 1.06x for short-form pacing.",
+    "wordLevelCaptions": true,
+    "withTimestamps": true
+  }
+}

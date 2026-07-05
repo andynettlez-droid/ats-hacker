@@ -22,10 +22,21 @@ export const signalBreakthroughAdSchema = z.object({
   beforeScore: z.number(),
   afterScore: z.number(),
   cta: z.string(),
+  resumeName: z.string().optional(),
+  resumeHeadline: z.string().optional(),
+  resumeSummary: z.string().optional(),
+  resumeBeforeLines: z.array(z.string()).optional(),
+  resumeAfterLines: z.array(z.string()).optional(),
+  roleLanguage: z.array(z.string()).optional(),
   musicSrc: z.string().optional(),
   musicVolume: z.number().min(0).max(1).optional(),
   voiceoverSrc: z.string().optional(),
   voiceoverVolume: z.number().min(0).max(1).optional(),
+  voiceoverPlaybackRate: z.number().min(0.5).max(1.5).optional(),
+  voiceover_text: z.string().optional(),
+  captions: z.array(z.any()).optional(),
+  captionReadiness: z.any().optional(),
+  audioReadiness: z.any().optional(),
   sfxSrc: z.string().optional(),
   sfxVolume: z.number().min(0).max(1).optional(),
   avatarVideoUrl: z.string().optional(),
@@ -117,7 +128,30 @@ const Caption: React.FC<{ children: React.ReactNode; emphasis?: string; top?: nu
   </div>
 );
 
-const ResumeDoc: React.FC<{ progress: number; compact?: boolean }> = ({ progress, compact = false }) => {
+type BreakthroughResumeDocProps = {
+  progress: number;
+  compact?: boolean;
+  resumeName?: string;
+  resumeHeadline?: string;
+  resumeSummary?: string;
+  resumeBeforeLines?: string[];
+  resumeAfterLines?: string[];
+  roleLanguage?: string[];
+};
+
+const ResumeDoc: React.FC<BreakthroughResumeDocProps> = ({
+  progress,
+  compact = false,
+  resumeName = "ALEXANDER CHEN",
+  resumeHeadline = "Cloud Infrastructure Engineer",
+  resumeSummary = "Infrastructure engineer with 6+ years designing scalable systems, automation, and cloud delivery pipelines.",
+  resumeBeforeLines = ["Helped improve team workflow.", "Worked on dashboards and deployments."],
+  resumeAfterLines = [
+    "Automated weekly stakeholder reporting and reduced manual tracking time by 35%.",
+    "Built SQL dashboards for leadership metrics and deployment visibility.",
+  ],
+  roleLanguage = ["SQL", "Automation", "Metrics", "Stakeholders"],
+}) => {
   const glow = interpolate(progress, [0, 1], [0.15, 0.9], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -167,7 +201,7 @@ const ResumeDoc: React.FC<{ progress: number; compact?: boolean }> = ({ progress
         <div style={{ display: "flex", justifyContent: "space-between", gap: 22 }}>
           <div>
             <div style={{ color: TEXT, fontSize: compact ? 31 : 40, fontWeight: 950, lineHeight: 1 }}>
-              ALEXANDER CHEN
+              {resumeName}
             </div>
             <div
               style={{
@@ -178,7 +212,7 @@ const ResumeDoc: React.FC<{ progress: number; compact?: boolean }> = ({ progress
                 textTransform: "uppercase",
               }}
             >
-              Cloud Infrastructure Engineer
+              {resumeHeadline}
             </div>
           </div>
           <SignalMascot logoMode style={{ width: compact ? 56 : 68, height: compact ? 56 : 68 }} />
@@ -187,17 +221,17 @@ const ResumeDoc: React.FC<{ progress: number; compact?: boolean }> = ({ progress
         <div style={{ height: 1, background: "rgba(255,255,255,0.12)", margin: compact ? "24px 0" : "32px 0" }} />
 
         <DocSection title="Professional Summary" compact={compact}>
-          Infrastructure engineer with 6+ years designing scalable systems, automation, and cloud delivery pipelines.
+          {resumeSummary}
         </DocSection>
 
         <div style={{ height: compact ? 24 : 34 }} />
         <DocSection title="Experience" compact={compact}>
           <span style={{ color: lineColor }}>
-            {progress > 0.45 ? "Automated weekly stakeholder reporting and reduced manual tracking time by 35%." : "Helped improve team workflow."}
+            {progress > 0.45 ? resumeAfterLines[0] : resumeBeforeLines[0]}
           </span>
           <br />
           <span style={{ color: lineColor }}>
-            {progress > 0.72 ? "Built SQL dashboards for leadership metrics and deployment visibility." : "Worked on dashboards and deployments."}
+            {progress > 0.72 ? resumeAfterLines[1] : resumeBeforeLines[1]}
           </span>
         </DocSection>
 
@@ -206,7 +240,7 @@ const ResumeDoc: React.FC<{ progress: number; compact?: boolean }> = ({ progress
           Role Language
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12 }}>
-          {["SQL", "Automation", "Metrics", "Stakeholders"].map((skill, index) => {
+          {roleLanguage.map((skill, index) => {
             const active = progress > 0.35 + index * 0.12;
             return (
               <span
@@ -571,12 +605,19 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
   musicVolume = 0.28,
   voiceoverSrc,
   voiceoverVolume = 0.92,
+  voiceoverPlaybackRate = 1,
   sfxSrc,
   sfxVolume = 0.1,
   avatarVideoUrl,
   avatarStartFrame = 0,
   avatarEndFrame = 132,
   avatarLabel = "Career coach",
+  resumeName,
+  resumeHeadline,
+  resumeSummary,
+  resumeBeforeLines,
+  resumeAfterLines,
+  roleLanguage,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -610,6 +651,7 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+  const resumeY = interpolate(travel, [0, 1], [1105, 770]);
   const resumeScale = interpolate(travel, [0, 1], [0.93, 0.62], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -619,6 +661,12 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
     extrapolateRight: "clamp",
   });
   const scoreProgress = clampFade(frame, 680, 755);
+  const mascotScreenX = 540 + mascotX;
+  const mascotScreenY = 744 + mascotY;
+  const resumeScreenX = 540 + resumeX;
+  const resumeScreenY = resumeY;
+  const grabOpacity = clampFade(frame, 212, 244) * exitFade(frame, 430, 485);
+  const grabPulse = 0.65 + Math.sin(frame * 0.22) * 0.18;
 
   return (
     <AbsoluteFill
@@ -643,6 +691,7 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
       {voiceoverSrc ? (
         <Audio
           src={staticFile(voiceoverSrc)}
+          playbackRate={voiceoverPlaybackRate}
           volume={(audioFrame) =>
             interpolate(audioFrame, [0, 10, 27 * fps, 30 * fps], [0, voiceoverVolume, voiceoverVolume, 0], {
               extrapolateLeft: "clamp",
@@ -751,17 +800,55 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
           <SignalMascot expression={frame > 310 ? "happy" : "focused"} style={{ width: 260, height: 260 }} />
         </div>
 
+        <svg
+          width="1080"
+          height="1920"
+          viewBox="0 0 1080 1920"
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 42,
+            opacity: grabOpacity,
+            pointerEvents: "none",
+          }}
+        >
+          <path
+            d={`M ${mascotScreenX - 84} ${mascotScreenY + 58} C ${mascotScreenX - 260} ${mascotScreenY + 90}, ${resumeScreenX + 270} ${resumeScreenY - 300}, ${resumeScreenX + 150} ${resumeScreenY - 170}`}
+            fill="none"
+            stroke={`rgba(56,213,255,${grabPulse})`}
+            strokeWidth="8"
+            strokeLinecap="round"
+            strokeDasharray="20 18"
+          />
+          <path
+            d={`M ${mascotScreenX - 72} ${mascotScreenY + 72} C ${mascotScreenX - 224} ${mascotScreenY + 115}, ${resumeScreenX + 230} ${resumeScreenY - 245}, ${resumeScreenX + 118} ${resumeScreenY - 128}`}
+            fill="none"
+            stroke={`rgba(52,211,153,${grabPulse * 0.78})`}
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeDasharray="12 14"
+          />
+        </svg>
+
         <div
           style={{
             position: "absolute",
             left: `calc(50% + ${resumeX}px)`,
-            top: interpolate(travel, [0, 1], [1105, 770]),
+            top: resumeY,
             transform: `translate(-50%, -50%) scale(${resumeScale}) rotate(${interpolate(travel, [0, 1], [-4, 1])}deg)`,
             zIndex: 35,
             opacity: frame > 212 ? 1 : 0,
           }}
         >
-          <ResumeDoc progress={resumeProgress} />
+          <ResumeDoc
+            progress={resumeProgress}
+            resumeName={resumeName}
+            resumeHeadline={resumeHeadline}
+            resumeSummary={resumeSummary}
+            resumeBeforeLines={resumeBeforeLines}
+            resumeAfterLines={resumeAfterLines}
+            roleLanguage={roleLanguage}
+          />
         </div>
 
         <div
@@ -783,7 +870,8 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
           <HiringManager reveal={managerReveal} />
         </div>
 
-        {frame >= 145 && frame < 345 ? <Caption emphasis="company filters">Signal breaks through</Caption> : null}
+        {frame >= 145 && frame < 245 ? <Caption emphasis="the resume">Signal grabs</Caption> : null}
+        {frame >= 245 && frame < 345 ? <Caption emphasis="company filters">Then breaks through</Caption> : null}
         {frame >= 345 && frame < 515 ? <Caption emphasis="real proof">Then rebuilds your</Caption> : null}
         {frame >= 515 && frame < 665 ? <Caption emphasis="the hiring manager screen">And phases it into</Caption> : null}
       </AbsoluteFill>
@@ -791,10 +879,10 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
       <AbsoluteFill style={{ opacity: scoreOpacity, alignItems: "center", justifyContent: "center", textAlign: "center" }}>
         <SignalMascot expression="happy" style={{ width: 210, height: 210, marginBottom: 18 }} />
         <div style={{ display: "flex", alignItems: "center", gap: 48 }}>
-          <div style={{ opacity: exitFade(frame, 705, 758), transform: "scale(0.86)" }}>
+          <div style={{ opacity: 0.72, transform: "scale(0.86)" }}>
             <ScoreRing score={beforeScore} progress={1} />
           </div>
-          <div style={{ color: CYAN, fontSize: 62, fontWeight: 950 }}>to</div>
+          <div style={{ color: CYAN, fontSize: 50, fontWeight: 950, textTransform: "uppercase" }}>to</div>
           <ScoreRing score={afterScore} progress={scoreProgress} startScore={beforeScore} />
         </div>
         <div style={{ color: TEXT, fontSize: 62, fontWeight: 950, marginTop: 30 }}>No fake experience.</div>

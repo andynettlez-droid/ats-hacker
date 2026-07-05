@@ -1,0 +1,34 @@
+{
+  "date": "2026-07-05",
+  "topic": "Human recruiter live resume teardown rebuilt from viral trend research",
+  "status": "render_ready_review_required",
+  "episode": {
+    "composition": "TeardownEpisode",
+    "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re_episode.json",
+    "output": "marketing/remotion/out/daily-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re-episode.mp4",
+    "format": "1920x1080",
+    "status": "render_ready",
+    "audioReadiness": {
+      "studioVoiceover": false,
+      "quietMusic": true,
+      "reason": "studio episode voiceover not requested"
+    }
+  },
+  "thumbnail": {
+    "composition": "SignalThumbnail",
+    "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re_thumbnail.json",
+    "output": "marketing/remotion/out/daily-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re-thumbnail.png",
+    "format": "1280x720",
+    "status": "render_ready"
+  },
+  "reviewGate": {
+    "required": true,
+    "checks": [
+      "Render the episode and thumbnail.",
+      "Verify the hook is visible in the opening seconds.",
+      "Verify resume, job description, score movement, and Signal mascot are visible.",
+      "Verify audio is studio-quality and music stays quiet.",
+      "Verify no unsupported ATS, guarantee, or fake-experience claims."
+    ]
+  }
+}

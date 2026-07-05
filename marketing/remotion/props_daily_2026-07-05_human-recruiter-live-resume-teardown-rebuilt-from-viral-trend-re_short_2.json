@@ -1,0 +1,377 @@
+{
+  "hook": "I searched the resume. Bad news.",
+  "subhook": "This is the search test most vague bullets fail.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "terminal",
+  "formatArchetype": "recruiterSearch",
+  "pace": "fast",
+  "seriesLabel": "Recruiter Search Test",
+  "signalLines": {
+    "hook": "Search missed it.",
+    "problem": "Do not make them guess.",
+    "teardown": "Use the real term.",
+    "fix": "Now it is findable.",
+    "cta": "Search-test it first."
+  },
+  "resumeName": "Maya Torres",
+  "resumeTitle": "Account Executive Resume",
+  "resumeMeta": [
+    "4 yrs SaaS sales",
+    "Mid-market accounts",
+    "Quota-carrying role"
+  ],
+  "jobTitle": "Mid-Market Account Executive",
+  "jobKeywords": [
+    "Salesforce",
+    "pipeline generation",
+    "quota attainment",
+    "discovery calls",
+    "MEDDICC"
+  ],
+  "weakBullets": [
+    "Managed customer conversations and followed up with prospects.",
+    "Responsible for sales opportunities in assigned territory.",
+    "Worked with marketing and customer success on accounts."
+  ],
+  "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+  "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+  "resumeDocument": {
+    "name": "Maya Torres",
+    "headline": "Account Executive",
+    "contact": [
+      "Chicago, IL",
+      "maya.torres@example.com",
+      "linkedin.com/in/maya-torres"
+    ],
+    "summary": "Quota-carrying SaaS seller with 4 years across SDR and AE roles, focused on discovery, account prioritization, CRM hygiene, and mid-market pipeline creation.",
+    "experience": [
+      {
+        "company": "BrightLedger",
+        "role": "Account Executive",
+        "dates": "2024 - Present",
+        "bullets": [
+          "Managed customer conversations and followed up with prospects.",
+          "Responsible for sales opportunities in assigned territory.",
+          "Worked with marketing and customer success on accounts.",
+          "Maintained Salesforce notes, next steps, and close-date updates for active opportunities.",
+          "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes."
+        ]
+      },
+      {
+        "company": "Pinecone Workflow",
+        "role": "Sales Development Representative",
+        "dates": "2021 - 2024",
+        "bullets": [
+          "Booked discovery meetings with operations and finance leaders.",
+          "Researched account triggers and personalized outbound email sequences.",
+          "Qualified inbound leads and routed opportunities to three AE teams."
+        ]
+      }
+    ],
+    "skills": [
+      "Salesforce",
+      "MEDDICC",
+      "Discovery calls",
+      "Pipeline generation",
+      "Outbound sequencing",
+      "Forecasting",
+      "Mutual action plans"
+    ],
+    "education": "B.S. Business Administration, DePaul University"
+  },
+  "jobDescription": {
+    "title": "Mid-Market Account Executive",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Mid-Market Account Executive who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use Salesforce and pipeline generation to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to quota attainment.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "Salesforce",
+      "pipeline generation",
+      "quota attainment",
+      "discovery calls",
+      "MEDDICC"
+    ],
+    "searchQueries": [
+      "Salesforce",
+      "pipeline generation",
+      "quota attainment",
+      "discovery calls"
+    ]
+  },
+  "beforeScore": 37,
+  "afterScore": 88,
+  "scoreBasis": [
+    {
+      "label": "Job keyword/tool match",
+      "before": "No Salesforce or MEDDICC",
+      "after": "Salesforce and MEDDICC appear"
+    },
+    {
+      "label": "Measurable proof",
+      "before": "No quota or dollars",
+      "after": "$1.8M pipeline"
+    },
+    {
+      "label": "Outcome clarity",
+      "before": "Sales result unclear",
+      "after": "Qualified pipeline result"
+    },
+    {
+      "label": "Scope/context",
+      "before": "Territory only",
+      "after": "42 monthly discovery calls"
+    }
+  ],
+  "score_rubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 37,
+    "afterTotal": 88,
+    "rows": [
+      {
+        "criterion": "Job keyword/tool match",
+        "label": "Job keyword/tool match",
+        "max": 25,
+        "before": 7,
+        "after": 23,
+        "beforeReason": "No Salesforce or MEDDICC",
+        "afterReason": "Salesforce and MEDDICC appear"
+      },
+      {
+        "criterion": "Measurable proof",
+        "label": "Measurable proof",
+        "max": 20,
+        "before": 3,
+        "after": 18,
+        "beforeReason": "No quota or dollars",
+        "afterReason": "$1.8M pipeline"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 5,
+        "after": 17,
+        "beforeReason": "Sales result unclear",
+        "afterReason": "Qualified pipeline result"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 8,
+        "after": 13,
+        "beforeReason": "Territory only",
+        "afterReason": "42 monthly discovery calls"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 11,
+        "after": 13,
+        "beforeReason": "Sales role is visible",
+        "afterReason": "Mid-market AE signal"
+      },
+      {
+        "criterion": "Formatting/readability",
+        "label": "Formatting/readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Readable but thin",
+        "afterReason": "Readable and specific"
+      }
+    ],
+    "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+    "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+  },
+  "scoreRubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 37,
+    "afterTotal": 88,
+    "rows": [
+      {
+        "criterion": "Job keyword/tool match",
+        "label": "Job keyword/tool match",
+        "max": 25,
+        "before": 7,
+        "after": 23,
+        "beforeReason": "No Salesforce or MEDDICC",
+        "afterReason": "Salesforce and MEDDICC appear"
+      },
+      {
+        "criterion": "Measurable proof",
+        "label": "Measurable proof",
+        "max": 20,
+        "before": 3,
+        "after": 18,
+        "beforeReason": "No quota or dollars",
+        "afterReason": "$1.8M pipeline"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 5,
+        "after": 17,
+        "beforeReason": "Sales result unclear",
+        "afterReason": "Qualified pipeline result"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 8,
+        "after": 13,
+        "beforeReason": "Territory only",
+        "afterReason": "42 monthly discovery calls"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 11,
+        "after": 13,
+        "beforeReason": "Sales role is visible",
+        "afterReason": "Mid-market AE signal"
+      },
+      {
+        "criterion": "Formatting/readability",
+        "label": "Formatting/readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Readable but thin",
+        "afterReason": "Readable and specific"
+      }
+    ],
+    "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+    "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+  },
+  "scoreLabel": "Signal Fit Score",
+  "evidenceLedger": {
+    "sourceLocation": "BrightLedger experience, later pipeline bullet",
+    "proofLine": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes.",
+    "visibleFacts": [
+      {
+        "fact": "Salesforce",
+        "source": "skills section and later pipeline bullet"
+      },
+      {
+        "fact": "$1.8M qualified pipeline",
+        "source": "later pipeline bullet"
+      },
+      {
+        "fact": "42 monthly discovery calls",
+        "source": "later pipeline bullet"
+      },
+      {
+        "fact": "MEDDICC",
+        "source": "skills section and later pipeline bullet"
+      },
+      {
+        "fact": "pipeline generation",
+        "source": "skills section"
+      }
+    ]
+  },
+  "humanReadBeats": [
+    {
+      "beat": "read_line",
+      "text": "Read the exact resume line: Responsible for sales opportunities in assigned territory."
+    },
+    {
+      "beat": "natural_reaction",
+      "text": "The sales work may be there; the pipeline proof is not."
+    },
+    {
+      "beat": "source_evidence",
+      "text": "Point to the visible source evidence in BrightLedger experience, later pipeline bullet: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes."
+    },
+    {
+      "beat": "job_requirement",
+      "text": "Compare it to the job requirement: Salesforce, pipeline generation, quota attainment."
+    },
+    {
+      "beat": "score_reason",
+      "text": "Explain the visible rubric before the score: 37/100."
+    },
+    {
+      "beat": "rewrite",
+      "text": "Rewrite only the same experience: generated 1.8 million in qualified Salesforce pipeline."
+    },
+    {
+      "beat": "score_improvement",
+      "text": "Explain what improved before showing 88/100."
+    }
+  ],
+  "markedLabel": "Missing proof",
+  "problemPunchline": "A reviewer cannot search for what you meant to say.",
+  "teardownPunchline": "The low score is from hidden tool and result proof in the rubric.",
+  "fixPunchline": "Now the search term points to real evidence.",
+  "teardownIssues": [
+    "No quota proof",
+    "No CRM signal",
+    "No pipeline number"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "voiceDirector": {
+    "mode": "human_review_read",
+    "preferredProvider": "elevenlabs_speech_to_speech",
+    "fallbackProvider": "elevenlabs_tts_multitake",
+    "takeCount": 3,
+    "delivery": [
+      "Sounds like a recruiter reading the resume live.",
+      "Conversational, slightly amused, direct, helpful.",
+      "Short pause after the weak bullet and before the score reason.",
+      "No corporate polish, no trailer voice, no product-demo cadence."
+    ],
+    "scratchReadSrc": null,
+    "humanReadBeats": [
+      {
+        "beat": "read_line",
+        "text": "Read the exact resume line: Responsible for sales opportunities in assigned territory."
+      },
+      {
+        "beat": "natural_reaction",
+        "text": "The sales work may be there; the pipeline proof is not."
+      },
+      {
+        "beat": "source_evidence",
+        "text": "Point to the visible source evidence in BrightLedger experience, later pipeline bullet: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes."
+      },
+      {
+        "beat": "job_requirement",
+        "text": "Compare it to the job requirement: Salesforce, pipeline generation, quota attainment."
+      },
+      {
+        "beat": "score_reason",
+        "text": "Explain the visible rubric before the score: 37/100."
+      },
+      {
+        "beat": "rewrite",
+        "text": "Rewrite only the same experience: generated 1.8 million in qualified Salesforce pipeline."
+      },
+      {
+        "beat": "score_improvement",
+        "text": "Explain what improved before showing 88/100."
+      }
+    ],
+    "scriptSource": "human_read_pass"
+  },
+  "voiceover_text": "Here is the search test. I search Salesforce and pipeline generation. Then I read: Responsible for sales opportunities in assigned territory. That line makes me guess. Lower on the page, I found the proof: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes. So I would probably score that around 37. Rewrite it as: generated 1.8 million in qualified Salesforce pipeline. Now the search terms, metric, and result sit together, so 88 makes sense. Run the free Signal score before you apply.",
+  "audioReadiness": {
+    "studioVoiceover": false,
+    "quietMusic": true,
+    "reason": "studio voiceover not requested"
+  }
+}

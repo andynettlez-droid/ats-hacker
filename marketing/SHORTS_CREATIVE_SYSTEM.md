@@ -59,7 +59,16 @@ Every short must answer these in order:
 
 ## Viral Research Stage
 
-Before script generation, update or review `marketing/viral_swipe_file.md`. The script generator should copy niche-specific patterns only: recruiter reacts, resume teardown, search test, job-description translation, and resume roast. Generic social-media best practices are not enough to pass the creative gate.
+Before script generation, update or review `marketing/viral_swipe_file.md` and the latest dated research brief under `marketing/content_research/`. The script generator should copy niche-specific patterns only: recruiter reacts, resume teardown, search test, job-description translation, and resume roast. Generic social-media best practices are not enough to pass the creative gate.
+
+Every packet now needs a `trendResearch` object:
+
+- `humanPremise`: the real-feeling situation in the first frame.
+- `platformPattern`: the short-form pattern being copied.
+- `copyFromResearch`: which researched mechanic the clip borrows.
+- `avoid`: which previous failure mode the clip refuses to repeat.
+
+If the clip starts as a product demo instead of a human review situation, it fails before rendering.
 
 ## Required Gates
 
@@ -68,35 +77,29 @@ Before script generation, update or review `marketing/viral_swipe_file.md`. The 
 - Duration gate: 18-32 seconds for short-form outputs.
 - Score-rationale gate: no score jump without the six-part `score_rubric` totals matching the visible score reveal.
 - Human-read gate: reviewer reads one exact resume line, reacts naturally, compares it to one job requirement, then rewrites only that experience.
+- Trend gate: packet includes `trendResearch` and the script hook sounds like a human situation, not a feature pitch.
 - Voice-quality gate: ElevenLabs must be used when available, with faster creator-style settings, multiple TTS takes or speech-to-speech, and timestamp captions.
 - Codex approval gate: all promoted files stay `review_required`; no live post without explicit chat approval.
 
 ## Current Pilot Batch
 
-Packet: `marketing/daily_content/2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor`
+The previous rendered pilot batch is now treated as failed creative QA. It proved the technical pipeline, but the scripts still sounded generated when read aloud and the score movement did not feel earned enough.
 
-Pilots:
+Current rebuild baseline:
 
-- `I would circle this line first`: live markup review of a Product Data Analyst resume.
-- `I searched the resume. Bad news.`: recruiter search test for a Mid-Market Account Executive resume.
-- `The job post gave the answer key`: job-description answer-key review for a Frontend Software Engineer resume.
-
-Rendered review pilot:
-
-- `marketing/remotion/out/daily-i-would-circle-this-line-first.mp4`
-- `marketing/remotion/out/daily-i-searched-the-resume-bad-news.mp4`
-- `marketing/remotion/out/daily-the-job-post-gave-the-answer-key.mp4`
+- Script-only packet: `marketing/daily_content/2026-07-05-evidence-ledger-human-resume-review-script-rebuild`
+- Research brief: `marketing/content_research/resume_video_trends_2026-07-05.md`
+- No new video should render until the script layer passes the trend gate, human-read gate, score-rationale gate, and voice plan gate.
 
 ## Current Gate Status
 
-- Current refreshed packet scores 100/100 and all three short concepts pass the stricter creator gate.
-- The current preferred render baseline is `ResumeDeskReview` for resume teardown shorts. It should be used before dashboard-style layouts unless the premise explicitly needs a software/search console.
+- Current preferred render baseline is `ResumeDeskReview` for resume teardown shorts. It should be used before dashboard-style layouts unless the premise explicitly needs a software/search console.
 - Short/audio generation supports ElevenLabs multi-take voiceover first, with speech-to-speech preferred when a scratch read is supplied.
 - Audio QC supports provider-specific TTS sample rates and checks final rendered audio.
 - ElevenLabs synthesis works with the configured voice ID, but the current key cannot list voices because it lacks `voices_read`; keep this documented until the key permission is corrected.
 - Visual QC renders representative short frames and scans safe margins for clipped high-attention UI.
 - Remotion typecheck passes after mascot/personality changes.
-- Current post candidates remain review-only until viewed end to end for pacing, humor, text safe areas, and Signal personality.
+- Current post candidates remain review-only until viewed end to end for pacing, humor, text safe areas, Signal personality, and human voice believability.
 
 Supporting docs:
 

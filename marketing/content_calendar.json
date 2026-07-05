@@ -1031,6 +1031,99 @@
   },
   {
     "date": "2026-07-05",
+    "topic": "Human recruiter live resume teardown rebuilt from viral trend research",
+    "series": "Daily Research Packet",
+    "packet": "marketing\\daily_content\\2026-07-05-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re",
+    "youtube": {
+      "title": "Human recruiter live resume teardown rebuilt from viral trend research | Resume Teardown",
+      "status": "render_ready_review_required",
+      "target": "daily long-form YouTube",
+      "manifest": "marketing\\daily_content\\2026-07-05-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re\\channel_manifest.json",
+      "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re_episode.json",
+      "output": "marketing/remotion/out/daily-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re-episode.mp4",
+      "autopostDraft": "marketing\\daily_content\\2026-07-05-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re\\autopost_drafts.json",
+      "qaGate": {
+        "required": true,
+        "passed": false,
+        "status": "requires_render_review"
+      }
+    },
+    "thumbnail": {
+      "composition": "SignalThumbnail",
+      "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re_thumbnail.json",
+      "output": "marketing/remotion/out/daily-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re-thumbnail.png",
+      "format": "1280x720",
+      "status": "render_ready"
+    },
+    "shorts": [
+      {
+        "title": "I would circle this line first",
+        "brief": "marketing\\video_briefs\\2026-07-05-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re-short-1.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re_short_1.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": false,
+          "quietMusic": true,
+          "reason": "studio voiceover not requested"
+        }
+      },
+      {
+        "title": "I searched the resume. Bad news.",
+        "brief": "marketing\\video_briefs\\2026-07-05-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re-short-2.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re_short_2.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": false,
+          "quietMusic": true,
+          "reason": "studio voiceover not requested"
+        }
+      },
+      {
+        "title": "The job post gave the answer key",
+        "brief": "marketing\\video_briefs\\2026-07-05-human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re-short-3.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re_short_3.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": false,
+          "quietMusic": true,
+          "reason": "studio voiceover not requested"
+        }
+      }
+    ],
+    "creativeQuality": {
+      "overallScore": 100,
+      "passed": true,
+      "verdict": "post_grade_script_packet",
+      "notes": [],
+      "blockers": [],
+      "shorts": [
+        {
+          "title": "I would circle this line first",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "I searched the resume. Bad news.",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "The job post gave the answer key",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        }
+      ]
+    },
+    "reviewStatus": "needs_render_and_review"
+  },
+  {
+    "date": "2026-07-05",
     "topic": "Human recruiter reads and fixes resume bullets with visible score rubric",
     "series": "Daily Research Packet",
     "packet": "marketing\\daily_content\\2026-07-05-human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor",

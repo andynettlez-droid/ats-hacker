@@ -161,8 +161,26 @@ ROBOTIC_OR_REPEATED = [
     "score receipt",
     "rubric gives",
     "so the rubric",
+    "the rubric starts",
+    "the visible line starts at",
     "here is the score receipt",
     "now i see the tool",
+]
+
+HUMAN_SITUATION_MARKERS = [
+    "i am screening",
+    "i'm screening",
+    "i would circle",
+    "i'd circle",
+    "i searched",
+    "i search",
+    "here is the search test",
+    "the job post gave",
+    "read this line",
+    "the resume line says",
+    "okay, this line says",
+    "if i am screening",
+    "if i'm screening",
 ]
 
 
@@ -314,6 +332,13 @@ def text_blob(packet: dict) -> str:
         packet.get("series", ""),
         packet.get("thesis", ""),
     ]
+    trend = packet.get("trendResearch") if isinstance(packet.get("trendResearch"), dict) else {}
+    parts.extend([
+        trend.get("humanPremise", ""),
+        trend.get("platformPattern", ""),
+        trend.get("copyFromResearch", ""),
+        trend.get("avoid", ""),
+    ])
     youtube = packet.get("youtube", {})
     if isinstance(youtube, dict):
         parts.extend([youtube.get("title", ""), youtube.get("description", ""), youtube.get("cta", "")])
@@ -381,6 +406,22 @@ def text_blob(packet: dict) -> str:
 def count_markers(blob: str, markers: list[str]) -> int:
     low = blob.lower()
     return sum(1 for marker in markers if marker.lower() in low)
+
+
+def trend_research_contract(packet: dict) -> dict:
+    trend = packet.get("trendResearch")
+    return trend if isinstance(trend, dict) else {}
+
+
+def has_trend_research_contract(packet: dict) -> bool:
+    trend = trend_research_contract(packet)
+    required = ["humanPremise", "platformPattern", "copyFromResearch", "avoid"]
+    return all(str(trend.get(key) or "").strip() for key in required)
+
+
+def has_human_situation(blob: str) -> bool:
+    low = blob.lower()
+    return any(marker in low for marker in HUMAN_SITUATION_MARKERS)
 
 
 def has_numbered_payoff(blob: str) -> bool:
@@ -523,6 +564,12 @@ def explains_starting_score(blob: str) -> bool:
         "no number",
         "signal fit score",
         "rubric",
+        "i would score",
+        "i'd score",
+        "score it low",
+        "score this low",
+        "score the visible line",
+        "makes me guess",
     ]
     return sum(1 for marker in score_reason_markers if marker in low) >= 3
 
@@ -655,6 +702,11 @@ def score_short(short: dict) -> dict:
     else:
         blockers.append("Script needs first-person human review language, e.g. 'I would circle...' and 'I would write...'.")
 
+    if has_human_situation(blob):
+        score += 6
+    else:
+        blockers.append("Opening needs a human review situation, not a product-demo premise.")
+
     if count_markers(blob, POSITIVE_MARKERS["proof"]) >= 3:
         score += 18
     else:
@@ -718,7 +770,7 @@ def score_short(short: dict) -> dict:
     if any(term in low for term in ROBOTIC_OR_REPEATED):
         score -= 10
         notes.append("Replace robotic template phrasing with a more natural creator read.")
-    if "rubric gives" in low or "so the rubric" in low:
+    if "rubric gives" in low or "so the rubric" in low or "the rubric starts" in low:
         blockers.append("Do not narrate the rubric as if software is talking; explain the human-visible evidence instead.")
 
     return {
@@ -737,6 +789,16 @@ def score_packet(packet: dict) -> dict:
     notes: list[str] = []
     blockers: list[str] = []
     shorts = [short for short in packet.get("shorts", []) or [] if isinstance(short, dict)]
+
+    if has_trend_research_contract(packet):
+        score += 8
+    else:
+        blockers.append("Packet needs trendResearch with humanPremise, platformPattern, copyFromResearch, and avoid.")
+
+    if has_human_situation(blob):
+        score += 8
+    else:
+        blockers.append("Packet needs an opening human situation before any product/demo language.")
 
     if count_markers(blob, POSITIVE_MARKERS["hook"]) >= 3:
         score += 16
@@ -872,7 +934,7 @@ def score_packet(packet: dict) -> dict:
     if any(term in low for term in ROBOTIC_OR_REPEATED):
         score -= 12
         notes.append("Contains repeated robotic script phrasing from an older template.")
-    if "rubric gives" in low or "so the rubric" in low:
+    if "rubric gives" in low or "so the rubric" in low or "the rubric starts" in low:
         blockers.append("Rubric-first narration is banned; explain source evidence like a human reviewer.")
 
     short_scores = [score_short(short) for short in shorts]

@@ -12,7 +12,7 @@ Signal shorts should sound like a real reviewer reading a resume live, not like 
 
 ## Preferred Audio Path
 
-Use ElevenLabs Speech-to-Speech when a scratch read exists. A rough human read is better than clean raw TTS because it carries timing, hesitation, emphasis, and natural sentence stress.
+Use ElevenLabs Speech-to-Speech when a scratch read exists. A rough human read is better than clean raw TTS because it carries timing, hesitation, emphasis, and natural sentence stress. The target is "creator reviewing a resume aloud," not "polished explainer."
 
 Scratch-read requirements:
 
@@ -29,6 +29,8 @@ When no scratch read exists, use ElevenLabs TTS multi-take mode.
 - Prefer the take closest to conversational pacing.
 - Preserve ElevenLabs timestamp alignment for captions.
 - Reject takes that are too slow, too polished, or missing word-level alignment when another take has it.
+- Split long reads into performance beats when needed: weak line, reaction, job requirement, proof source, rewrite, payoff.
+- Do not narrate score rubrics mechanically. Use natural language: "I would score this low because..." and "now I can actually see..."
 
 ## Pass/Fail
 
@@ -44,5 +46,7 @@ Fails:
 - "Recruiters search for role language."
 - "Same person. Better signal."
 - "The ATS will reject this."
+- "The rubric gives it 41."
+- Any read where the score appears before the listener understands the visible reason.
 
 The viewer should believe a person is reviewing a resume, not that software is narrating itself.

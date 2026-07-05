@@ -1,0 +1,78 @@
+{
+  "title": "Human recruiter live resume teardown rebuilt from viral trend research | Resume Teardown",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "cta": "Paste the job description and check your free Signal score before you apply.",
+  "sections": [
+    {
+      "label": "Cold open",
+      "script": "Human recruiter live resume teardown rebuilt from viral trend research This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
+      "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+    },
+    {
+      "label": "Open loop",
+      "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+      "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff."
+    },
+    {
+      "label": "Translate the job description",
+      "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+      "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+    },
+    {
+      "label": "Recruiter search test",
+      "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+      "visual": "Search console typing the first three job-description terms and showing weak matches."
+    },
+    {
+      "label": "Resume crime scene",
+      "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
+      "visual": "Red/yellow markups over weak bullets."
+    },
+    {
+      "label": "Why it gets missed",
+      "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+      "visual": "Zoom into the weak bullet and place missing proof labels beside it."
+    },
+    {
+      "label": "Live bullet fix",
+      "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. No fake claims, just usable evidence.",
+      "visual": "Before/after bullet rewrite."
+    },
+    {
+      "label": "Score reveal",
+      "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+      "visual": "Score meter jumps from low match to high match with before/after resume panels."
+    },
+    {
+      "label": "Trust and CTA",
+      "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+      "visual": "Free Signal score page, trust badges, and bundle CTA."
+    }
+  ],
+  "keywords": [
+    "SQL",
+    "Tableau",
+    "cohort analysis",
+    "churn dashboard",
+    "stakeholder insights"
+  ],
+  "weakBullets": [
+    "Created reports for business teams and leadership.",
+    "Worked with data to help teams understand customer trends.",
+    "Helped maintain dashboards for weekly performance meetings."
+  ],
+  "beforeBullet": "Created reports for business teams and leadership.",
+  "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+  "beforeScore": 32,
+  "afterScore": 89,
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.11,
+  "voiceoverVolume": 0.94,
+  "voiceover_text": "Human recruiter live resume teardown rebuilt from viral trend research This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find. We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job. Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad. Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof. A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify. The fix is to say the real work clearly: what tool, what scope, what audience, and what result. No fake claims, just usable evidence. Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see. Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+  "voiceoverSegments": [],
+  "audioReadiness": {
+    "studioVoiceover": false,
+    "quietMusic": true,
+    "reason": "studio episode voiceover not requested"
+  }
+}

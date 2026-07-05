@@ -5,7 +5,7 @@ Every short must feel like a real human reviewer is looking at the resume and im
 ## Required Structure
 
 1. Show the resume immediately.
-2. Hook within 1.5 seconds.
+2. Hook within 1.5 seconds with a human situation, not a product claim.
 3. Read one exact weak resume line.
 4. React naturally.
 5. Compare it to one visible job requirement.
@@ -30,6 +30,29 @@ The rewritten bullet cannot use a number, tool, platform, or outcome unless that
 - "The right evidence is in the wrong place..."
 
 The gate fails if a score rubric exists but the rewrite appears to invent proof.
+
+## Trend Research Gate
+
+Every packet must include `trendResearch`:
+
+- `humanPremise`: what the human reviewer is doing in the first frame.
+- `platformPattern`: recruiter reacts, resume roast, search test, job-description translation, or one-bullet fix.
+- `copyFromResearch`: the researched short-form mechanic being copied.
+- `avoid`: the previous creative failure mode this script is avoiding.
+
+The script must sound like a person entering a situation:
+
+- "I am screening this for a frontend role..."
+- "I searched the resume for React..."
+- "This is the line I would circle..."
+- "The job post gave the answer key..."
+
+It fails if it starts as:
+
+- "Signal helps..."
+- "This resume lacks role-specific keywords..."
+- "Here is the score receipt..."
+- "In today's competitive market..."
 
 ## Score Rubric
 
@@ -60,6 +83,8 @@ The score reveal cannot appear before the low-score reason is visible.
 - "Here is the score receipt."
 - "Same person. Better signal."
 - "The ATS will reject this."
+- "The rubric gives it 41."
+- "This resume is invisible." when used without a specific visible reason.
 
 ## Automatic Failure Conditions
 
@@ -71,3 +96,6 @@ The score reveal cannot appear before the low-score reason is visible.
 - The clip takes more than 3 seconds to show the problem.
 - The script repeats a prior opening.
 - The script jumps from weak line to improved score without explaining the visible source evidence.
+- The packet lacks `trendResearch`.
+- The opening could be used for any resume without changing a visible line.
+- The narrator sounds like software scoring a resume instead of a person reading it.

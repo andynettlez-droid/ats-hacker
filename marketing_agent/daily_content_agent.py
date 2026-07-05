@@ -26,10 +26,60 @@ REMOTION_PUBLIC_DIR = REMOTION_DIR / "public"
 REMOTION_AUDIO_DIR = REMOTION_PUBLIC_DIR / "audio"
 CALENDAR_PATH = MARKETING_DIR / "content_calendar.json"
 TREND_INTAKE_PATH = MARKETING_DIR / "content_research" / "trend_intake_latest.json"
+TREND_RESEARCH_BRIEF_PATH = MARKETING_DIR / "content_research" / "resume_video_trends_2026-07-05.md"
 DEFAULT_ELEVENLABS_VOICE_ID = "JBFqnCBsd6RMkjVDRZzb"
 LEGACY_ELEVENLABS_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"
 ELEVENLABS_VOICE_CACHE: dict | None = None
 ELEVENLABS_DISABLED_REASON: str | None = None
+
+
+TREND_RESEARCH_CONTRACT = {
+    "humanPremise": "A recruiter-style reviewer is reading one resume line against one visible job requirement in real time.",
+    "platformPattern": "recruiter reacts / resume teardown / search test",
+    "copyFromResearch": (
+        "Open on the resume or job post immediately; use first-person reviewer language; "
+        "show one weak line, one visible source of proof, and one honest rewrite."
+    ),
+    "avoid": (
+        "AI SaaS demo pacing, generic ATS fear, old marketing-tool defaults, rubric-first narration, "
+        "and score jumps that appear before the viewer sees why."
+    ),
+    "researchBrief": str(TREND_RESEARCH_BRIEF_PATH.relative_to(ROOT)),
+}
+
+
+TREND_RESEARCH_SOURCE_NOTES = [
+    {
+        "title": "Resume video trend research brief",
+        "url": "marketing/content_research/resume_video_trends_2026-07-05.md",
+        "note": "Local swipe-file synthesis for human-first resume teardown, recruiter reacts, search-test, and voice/art-direction rules.",
+    },
+    {
+        "title": "YouTube Shorts official guide",
+        "url": "https://blog.youtube/creator-and-artist-stories/your-guide-to-getting-started-with-youtube-shorts/",
+        "note": "Use vertical video, capture attention in the first few seconds, keep clips short, and iterate through analytics.",
+    },
+    {
+        "title": "TikTok Resumes / CareerTok reference",
+        "url": "https://newsroom.tiktok.com/find-a-job-with-tiktok-resumes?lang=en",
+        "note": "Career/job content works when short videos are creative, authentic, and useful.",
+    },
+    {
+        "title": "Former recruiter creator advice",
+        "url": "https://www.businessinsider.com/former-recruiter-shares-advice-resumes-networking-strategies-2026-6",
+        "note": "Recruiter-led creator authority works when the advice sounds like candidate coaching, not a product pitch.",
+    },
+    {
+        "title": "2026 resume template advice",
+        "url": "https://www.businessinsider.com/career-expert-shares-resume-template-for-ai-era-2026-6",
+        "note": "Resumes should act like marketing documents with value, measurable outcomes, and context, not career-history dumps.",
+    },
+    {
+        "title": "Gen Z social job-search trend",
+        "url": "https://www.theguardian.com/money/2026/may/28/gen-z-using-social-media-in-struggling-job-market",
+        "note": "Bold, funny, personal social content travels because job seekers feel brutal market pressure and want human specificity.",
+    },
+]
 
 
 TREND_SEEDS = [
@@ -39,18 +89,7 @@ TREND_SEEDS = [
         "thesis": "AI-written resumes can look polished while still missing the exact role language and proof recruiters search for.",
         "hook": "Your AI resume sounds professional. That might be the problem.",
         "keywords": ["AI resume", "recruiter search", "proof points", "job description"],
-        "source_notes": [
-            {
-                "title": "YouTube Partner Program eligibility",
-                "url": "https://support.google.com/youtube/answer/72851",
-                "note": "Use YouTube as a monetization target, but optimize first for site conversions.",
-            },
-            {
-                "title": "Pew Research Center Social Media Fact Sheet",
-                "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/",
-                "note": "YouTube, Instagram, and TikTok are large discovery channels for job-search education.",
-            },
-        ],
+        "source_notes": TREND_RESEARCH_SOURCE_NOTES,
     },
     {
         "topic": "Same resume, different job, totally different Signal score",
@@ -98,11 +137,12 @@ TREND_SEEDS = [
 
 
 ENTERTAINMENT_RULES = [
-    "Open with a frustrated job-hunter joke or painfully relatable line in the first 2 seconds.",
-    "Make the viewer laugh before teaching: rage scrolling, spreadsheet of applications, 'professional yap' bullets, or AI resume sameness.",
+    "Open with a visible human review situation in the first 1.5 seconds: a resume line, job post, search box, or reviewer markup.",
+    "Make the viewer feel a real person is reading the resume before Signal appears.",
     "Keep the resume/job description on screen as the main character; Signal mascot is the mischievous guide, not a corporate presenter.",
-    "Use blunt recruiter-reacts energy: roast the bullet, then rescue the person.",
+    "Use blunt recruiter-reacts energy: read the weak line, explain the miss, then rescue the person.",
     "Every joke must punch at the broken job-search process or vague resume language, never at unemployed people.",
+    "Explain the score with visible factors before showing the score jump.",
     "End with a calm paid bridge: free score first, bundle only after the gap is obvious.",
 ]
 
@@ -188,17 +228,18 @@ SHORT_STYLE_ROTATION = [
 ]
 
 ENTERTAINMENT_MARKERS = [
-    "rude",
-    "beige",
-    "fake mustache",
-    "airport",
-    "airplane mode",
-    "yap",
-    "rage",
-    "hoodie",
-    "roast",
-    "side-eye",
-    "mind-reading",
+    "screening",
+    "i would circle",
+    "i searched",
+    "i search",
+    "read this line",
+    "makes me guess",
+    "not mad",
+    "proof is lower",
+    "answer key",
+    "ctrl",
+    "score this low",
+    "now i can see",
 ]
 
 
@@ -246,8 +287,8 @@ TEARDOWN_CASES = [
             {"label": "Metric proof", "before": "missing", "after": "6 hrs saved"},
             {"label": "Business result", "before": "vague", "after": "18 risks found"},
         ],
-        "shortTitle": "This data resume wrote a bedtime story",
-        "hook": "This data bullet has NPC energy.",
+        "shortTitle": "This data resume makes the recruiter guess",
+        "hook": "This data bullet makes me do detective work.",
         "subhook": "The job needs SQL proof, not report-flavored fog.",
         "problemPunchline": "Reports is a folder name, not a selling point.",
         "teardownIssues": ["No SQL signal", "No dashboard tool", "No business result"],
@@ -694,9 +735,9 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "voiceover": (
             "Okay, circle this line: {beforeBullet} "
             "Normal sentence, but I cannot see {kw1}, {kw2}, or a result. "
-            "So the rubric gives it {beforeScore}, not {afterScore}. "
+            "I would score that low because it makes me guess. "
             "Rewrite it: {spokenRewrite}. "
-            "Now I see the tool, scope, and outcome. That is why it moves to {afterScore}. "
+            "Now I can see the tool, scope, and outcome. That is why the score can move to {afterScore}. "
             "Run the free Signal score before you apply."
         ),
         "storyboard": [
@@ -733,7 +774,7 @@ CREATOR_FORMAT_PLAYBOOKS = [
             "Here is my Ctrl F test. I search {kw1}. Nothing useful. "
             "{kw2}? Still thin. "
             "Then I read: {beforeBullet} "
-            "Real work, but I am guessing. So the rubric starts at {beforeScore}. "
+            "Real work, but I am guessing, so I would score it low. "
             "I would rewrite it: {spokenRewrite}. "
             "Now the search terms and proof are on the page. That is why it moves to {afterScore}. "
             "Run the free Signal score before you apply."
@@ -771,7 +812,7 @@ CREATOR_FORMAT_PLAYBOOKS = [
         "voiceover": (
             "Job post: {kw1}, {kw2}, {kw3}. "
             "Resume line: {beforeBullet} "
-            "See the gap? The answer key is right there. The resume missed it, so it starts at {beforeScore}. "
+            "See the gap? The answer key is right there, but the resume answered too vaguely. "
             "I would write: {spokenRewrite}. "
             "Now the tool, metric, and outcome are visible. That is why it moves to {afterScore}. "
             "Run the free Signal score before you apply."
@@ -1691,99 +1732,92 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
     episode_title = f"{hook} | Resume Teardown"
     shorts = [
         {
-            "series": "AI Resume Roast",
-            "title": "Corporate weather report resume",
-            "hook": "This bullet has a high chance of synergy and zero proof.",
+            "series": "Live Resume Review",
+            "title": "I would circle this line first",
+            "hook": "I would circle this line first.",
             "script": (
-                "This bullet has a high chance of synergy and zero proof. It says vague team-player wording, "
-                "which sounds busy and tells me almost nothing. The role needs SQL, Tableau, cohort analysis, "
-                "and a business result. Signal pulls the real proof out of the resume oatmeal before you apply."
+                "Okay, this line sounds normal until I compare it to the job. I am looking for tools, scope, "
+                "and a result. The proof is lower on the resume, so I would move it into this bullet before applying."
             ),
             "storyboard": [
-                "Open with a fake weather alert: 'High chance of synergy.'",
-                "Signal side-eyes a polished but empty resume bullet.",
-                "Job description terms pop in like warning labels.",
-                "Signal points to the missing proof chips.",
-                "Reveal free Signal score and CTA.",
+                "Open on a realistic one-page resume at a desk.",
+                "Reviewer circle lands on one weak bullet.",
+                "Job description sits beside it with three terms highlighted.",
+                "Source proof lower on the resume gets boxed.",
+                "Rewrite moves the proof into the circled bullet.",
+                "Score appears only after the reason is visible.",
             ],
             "props": {
-                "hook1": "Corporate weather report.",
-                "hook2": "Zero proof.",
-                "subline": "AI polish can hide the actual evidence.",
+                "hook1": "Circle this line.",
+                "hook2": "It makes me guess.",
+                "subline": "The proof is real, but it is in the wrong place.",
                 "beforeScore": 31,
                 "afterScore": 86,
                 "missing": ["SQL", "Tableau", "cohort analysis", "business result"],
                 "cta": "Check your free Signal score.",
                 "voiceover_text": (
-                    "This bullet has a high chance of synergy and zero proof. It says vague team-player wording, "
-                    "which sounds busy and tells me almost nothing. The role needs SQL, Tableau, cohort analysis, "
-                    "and a business result. Signal pulls the real proof out of the resume oatmeal before you apply."
+                    "Okay, this line sounds normal until I compare it to the job. I am looking for tools, scope, "
+                    "and a result. The proof is lower on the resume, so I would move it into this bullet before applying."
                 ),
             },
         },
         {
             "series": "Recruiter Search Test",
-            "title": "Would your resume survive Ctrl+F?",
-            "hook": "If I search SQL, does your resume even show up?",
+            "title": "I searched the resume. Bad news.",
+            "hook": "I searched the resume. Bad news.",
             "script": (
-                "If I search SQL, does your resume even show up? The job description says SQL, Tableau, "
-                "cohort analysis, and churn dashboard. Your resume says created reports. That might be true, "
-                "but it makes the recruiter do detective work. Signal translates the real work into role language."
+                "Here is the search test. I search the job's first two terms, then I read the resume line. "
+                "The work may be real, but this sentence makes me guess. The fix is to move the visible proof onto the line."
             ),
             "storyboard": [
                 "Show a recruiter search box typing SQL.",
-                "Resume returns no match and Signal looks concerned.",
+                "Resume returns no useful match and Signal points at the weak line.",
                 "Paste the job description next to the resume.",
                 "Highlight the missing role terms.",
-                "Rewrite the bullet and rerun the search.",
-                "CTA to free score.",
+                "Rewrite the bullet and rerun the search after the reason is clear.",
+                "CTA to the free Signal score.",
             ],
             "props": {
-                "hook1": "Search box test.",
-                "hook2": "No match found.",
-                "subline": "Recruiters search for role language and proof.",
+                "hook1": "Search test.",
+                "hook2": "Bad news.",
+                "subline": "A reviewer cannot search for what you meant to say.",
                 "beforeScore": 34,
                 "afterScore": 92,
                 "missing": ["SQL", "Tableau", "cohort analysis", "churn dashboard"],
                 "cta": "Run your free Signal score.",
                 "voiceover_text": (
-                    "If I search SQL, does your resume even show up? The job description says SQL, Tableau, "
-                    "cohort analysis, and churn dashboard. Your resume says created reports. That might be true, "
-                    "but it makes the recruiter do detective work. Signal translates the real work into role language."
+                    "Here is the search test. I search the job's first two terms, then I read the resume line. "
+                    "The work may be real, but this sentence makes me guess. The fix is to move the visible proof onto the line."
                 ),
             },
         },
         {
-            "series": "Resume Crime Scene",
-            "title": "Resume Crime Scene: Hidden Proof",
-            "hook": "This resume is invisible because the best bullet is buried.",
+            "series": "Job Description Review",
+            "title": "The job post gave the answer key",
+            "hook": "The job post gave the answer key.",
             "script": (
-                "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, "
-                "because created reports could mean almost anything. The job description asks for SQL, Tableau, "
-                "cohort analysis, and churn dashboard. So we turn the real experience into: built a SQL churn dashboard "
-                "that saved six hours a week and flagged 18 at-risk accounts."
+                "The job post gave the answer key, but the resume answered too vaguely. I would read the weak line, "
+                "pull the proof from lower on the page, and rewrite the bullet so the tool, metric, and outcome are visible."
             ),
             "storyboard": [
-                "Open with a Resume Crime Scene tape over the weak bullet.",
-                "Signal side-eyes 'created reports' and waves a tiny red flag.",
-                "Pin the job description clues: SQL, Tableau, cohort analysis, churn dashboard.",
-                "Signal points from the vague bullet to the corrected proof bullet.",
-                "Score jumps from 38/100 to 91/100 while Signal celebrates.",
+                "Open on the job post with three highlighted requirements.",
+                "Slide to the resume line and circle the mismatch.",
+                "Show source proof lower on the resume.",
+                "Rewrite the line without inventing anything.",
+                "Reveal score movement only after the reason is visible.",
                 "CTA to the free Signal score.",
             ],
             "props": {
-                "hook1": "Resume Crime Scene.",
-                "hook2": "Hidden proof.",
-                "subline": "The fix is translation, not fabrication.",
+                "hook1": "Answer key.",
+                "hook2": "Too vague.",
+                "subline": "Use the job language only when the resume already supports it.",
                 "beforeScore": 38,
                 "afterScore": 91,
                 "missing": ["SQL", "Tableau", "cohort analysis", "churn dashboard"],
                 "cta": "Check your free Signal score.",
                 "voiceover_text": (
-                    "This resume is invisible because the best bullet is buried. Signal is giving it dramatic side-eye, "
-                    "because created reports could mean almost anything. The job description asks for SQL, Tableau, "
-                    "cohort analysis, and churn dashboard. So we turn the real experience into: built a SQL churn dashboard "
-                    "that saved six hours a week and flagged 18 at-risk accounts."
+                    "The job post gave the answer key, but the resume answered too vaguely. I would read the weak line, "
+                    "pull the proof from lower on the page, and rewrite the bullet so the tool, metric, and outcome are visible."
                 ),
             },
         },
@@ -1795,6 +1829,7 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
         "series": seed["series"],
         "thesis": seed["thesis"],
         "sourceNotes": seed["source_notes"],
+        "trendResearch": TREND_RESEARCH_CONTRACT,
         "youtube": {
             "title": episode_title,
             "seoTitle": f"{hook} | Resume Teardown with Signal by ATSHacker",
@@ -1959,31 +1994,31 @@ def build_human_review_transcript(case: dict, playbook: dict, score_rubric: dict
         return (
             f"Here is the search test. I search {context['kw1']} and {context['kw2']}. "
             f"Then I read: {context['beforeBullet']} "
-            f"I would circle that because the proof is buried lower down: {proof_line} "
-            f"So the visible line starts at {before_score}. "
-            f"Rewrite it: {context['afterBullet']} "
-            f"Now the search terms and result are together: {after_score}. "
+            f"That line makes me guess. Lower on the page, I found the proof: {proof_line} "
+            f"So I would probably score that around {before_score}. "
+            f"Rewrite it as: {context['spokenRewrite']}. "
+            f"Now the search terms, metric, and result sit together, so {after_score} makes sense. "
             "Run the free Signal score before you apply."
         )
 
     if playbook["id"] == "answer_key":
         return (
-            f"The job post gives the answer key: {context['kw1']}, {context['kw2']}, {context['kw3']}. "
-            f"The resume line says: {context['beforeBullet']} "
-            f"I would circle that because the proof is buried lower down: {proof_line} "
-            f"So it starts at {before_score}. "
-            f"Rewrite it: {context['afterBullet']} "
-            f"Now the evidence matches the job: {after_score}. "
+            f"Job post answer key: {context['kw1']}, {context['kw2']}, {context['kw3']}. "
+            f"Resume line: {context['beforeBullet']} "
+            f"I would circle that because it answers too vaguely. Proof lower down: {proof_line} "
+            f"I would score it around {before_score}. "
+            f"I would write: {context['spokenRewrite']}. "
+            f"Now the evidence matches, so {after_score} makes sense. "
             "Run the free Signal score before you apply."
         )
 
     return (
         f"Okay, this line says: {context['beforeBullet']} "
-        "I would circle it. Not because proof is missing; it is buried lower down. "
+        "I would circle it because the proof is lower on the page: "
         f"{proof_line} "
-        f"The job wants {context['kw1']}, {context['kw2']}, and {context['kw3']}, so this line starts at {before_score}. "
-        f"Rewrite it: {context['afterBullet']} "
-        f"Now the proof is on the right line: {after_score}. "
+        f"The job wants {context['kw1']}, {context['kw2']}, and {context['kw3']}, so I would score it around {before_score}. "
+        f"Rewrite it as: {context['spokenRewrite']}. "
+        f"Now I can see why it scores {after_score}. "
         "Run the free Signal score before you apply."
     )
 
@@ -2132,6 +2167,19 @@ def normalize_packet(packet: dict, seed: dict, publish_date: str) -> dict:
         source_notes = seed.get("source_notes") or fallback["sourceNotes"]
     packet["sourceNotes"] = source_notes
 
+    trend_research = packet.get("trendResearch")
+    if not isinstance(trend_research, dict):
+        trend_research = {}
+    for key, value in TREND_RESEARCH_CONTRACT.items():
+        trend_research.setdefault(key, value)
+    for key in ("humanPremise", "platformPattern", "copyFromResearch", "avoid", "researchBrief"):
+        value = trend_research.get(key)
+        if isinstance(value, list):
+            trend_research[key] = "; ".join(str(item).strip() for item in value if str(item).strip())
+        elif value is not None:
+            trend_research[key] = str(value)
+    packet["trendResearch"] = trend_research
+
     youtube = packet.get("youtube")
     if not isinstance(youtube, dict):
         youtube = {}
@@ -2207,6 +2255,8 @@ def normalize_packet(packet: dict, seed: dict, publish_date: str) -> dict:
         youtube["chapters"] = fallback_youtube["chapters"]
         script_sections = fallback_youtube["scriptSections"]
     youtube["scriptSections"] = script_sections
+    youtube.pop("script", None)
+    youtube.pop("storyboard", None)
     title_low = youtube["title"].lower()
     if not any(marker in title_low for marker in ["sounds professional", "34/100", "invisible", "resume teardown"]):
         youtube["title"] = fallback_youtube["title"]
@@ -2268,16 +2318,21 @@ def maybe_generate_with_openai(seed: dict, publish_date: str) -> dict:
     prompt = {
         "task": "Create a daily Signal by ATSHacker content packet.",
         "topic": seed,
+        "trendResearchContract": TREND_RESEARCH_CONTRACT,
+        "researchBrief": str(TREND_RESEARCH_BRIEF_PATH.relative_to(ROOT)),
         "requirements": [
             "One 8-10 minute YouTube episode script with storyboard and chapters.",
-            "Three short-form cutdowns, each 22-45 seconds.",
-            "Make the content funny and entertaining for frustrated job hunters: relatable job-search pain, quick jokes, visual gags, and recruiter-reacts roasts.",
+            "Three short-form cutdowns, each 18-32 seconds.",
+            "Start every short as a human resume-review situation, not a product demo.",
+            "Make the content funny and entertaining for frustrated job hunters through real reviewer reactions, not forced slang.",
             "Humor must punch at vague resume language and the broken job-search process, not at unemployed people.",
+            "Each short must read one exact weak resume line, compare it to one job requirement, explain the low score in human language, find proof already on the resume, rewrite only that proof, then explain the score movement.",
             "Claims must avoid auto-reject, guarantees, fake outcomes, and unsupported competitor claims.",
             "CTA must send users to the free Signal score.",
             "Use recruiter-reacts / resume-teardown energy, not generic SaaS demo energy.",
+            "Include a trendResearch object with humanPremise, platformPattern, copyFromResearch, and avoid.",
             "For every short include title, series, hook, script, storyboard, and Remotion props.",
-            "Return strict JSON matching keys: publishDate, topic, series, thesis, sourceNotes, youtube, shorts, monetization, viewerCustomerReview.",
+            "Return strict JSON matching keys: publishDate, topic, series, thesis, sourceNotes, trendResearch, youtube, shorts, monetization, viewerCustomerReview.",
         ],
         "entertainmentRules": ENTERTAINMENT_RULES,
         "preferredFormats": VIRAL_FORMATS,
@@ -2309,12 +2364,20 @@ def maybe_generate_with_openai(seed: dict, publish_date: str) -> dict:
 
 def write_markdown_packet(packet: dict, packet_dir: Path) -> None:
     youtube = packet["youtube"]
+    trend = packet.get("trendResearch") if isinstance(packet.get("trendResearch"), dict) else {}
     lines = [
         f"# {youtube['title']}",
         "",
         f"Publish date: {packet['publishDate']}",
         f"Series: {packet.get('series', 'Daily')}",
         f"Thesis: {packet.get('thesis', '')}",
+        "",
+        "## Trend Research",
+        "",
+        f"Human premise: {trend.get('humanPremise', '')}",
+        f"Platform pattern: {trend.get('platformPattern', '')}",
+        f"Copy from research: {trend.get('copyFromResearch', '')}",
+        f"Avoid: {trend.get('avoid', '')}",
         "",
         "## SEO",
         "",
@@ -2357,7 +2420,17 @@ def write_markdown_packet(packet: dict, packet_dir: Path) -> None:
         voiceover_lines.extend([f"## {label}", "", script, ""])
     (packet_dir / "longform_voiceover.md").write_text("\n".join(voiceover_lines), encoding="utf-8")
 
-    short_lines = [f"# Shorts Plan: {packet['topic']}", ""]
+    short_lines = [
+        f"# Shorts Plan: {packet['topic']}",
+        "",
+        "## Trend Research",
+        "",
+        f"Human premise: {trend.get('humanPremise', '')}",
+        f"Platform pattern: {trend.get('platformPattern', '')}",
+        f"Copy from research: {trend.get('copyFromResearch', '')}",
+        f"Avoid: {trend.get('avoid', '')}",
+        "",
+    ]
     for idx, short in enumerate(packet.get("shorts", []), start=1):
         short_lines.extend([
             f"## Short {idx}: {short.get('title', 'Untitled')}",

@@ -6,6 +6,12 @@ Status: active research input for short-form generation.
 
 - TikTok creative best practices: hook/value proposition in the first 3-6 seconds, captions/overlays, transitions/graphics, direct CTA.
 - YouTube Shorts and public niche examples surfaced through search: recruiter resume review, 7-second resume test, resume formatting, resume prompt chains, recruiter search/readability videos.
+- 2026-07-05 research refresh: `marketing/content_research/resume_video_trends_2026-07-05.md`.
+- YouTube official Shorts guidance: vertical video, capture attention in the first few seconds, keep it short, use titles/descriptions/hashtags, iterate through analytics.
+- TikTok Resumes / CareerTok reference: career content works when it is creative, authentic, and useful rather than polished-product-first.
+- Former recruiter creator references: recruiter authority works when the creator sounds like they are coaching a candidate, not reading a brand script.
+- 2026 resume-market references: resumes need measurable value, role context, and clarity; job seekers respond to bold, funny, personal social content because the job market feels brutal.
+- Viral "resume reviewed in public" reference: the viral wrapper is a human situation first, public rooting interest second, resume advice third.
 - Gohar Khan reference Short, "Resume Tips You Should Use": 27.84s, physical job-application/resume POV, plain human narration, one resume mistake, captions at the top, and a tiny story around a manager reading the paper.
 - Instagram/Reels search snippets for resume-review and recruiter-scan videos: F-pattern resume scanning, "recruiters scan, not read", specific formatting and keyword advice.
 - LinkedIn resume posts from recruiters/career coaches: clear formatting, quantified bullets, tools/technologies, resume reviewed against open jobs, 6-10 second scan framing.
@@ -71,12 +77,14 @@ Status: active research input for short-form generation.
 ## What Signal Should Copy
 
 - Recruiter authority framing.
+- Human situation framing: "I am screening this", "I found this line", "watch what happens when I search".
 - Immediate visual artifact.
 - Specific weak bullet.
 - One useful fix.
 - Fast score receipt before score reveal.
 - Short CTA to free Signal score.
 - Mini-story structure from the reference: someone reads a resume, reacts to one mistake, then gives one concrete fix.
+- Product-second structure: Signal appears as the tool that verifies or automates the fix after the human teardown earns attention.
 
 ## What Signal Should Avoid
 
@@ -86,6 +94,20 @@ Status: active research input for short-form generation.
 - HubSpot/CAC default scripts unless the actual resume is a marketing teardown.
 - Forced meme slang like "NPC energy", "resume oatmeal", "LinkedIn breath", or "business casual shrug" unless a human creator would actually say it in context.
 - Product-demo wording like "same experience, clearer proof."
+- Rubric-first wording like "the rubric gives it 41".
 - Showing 34->92 without a visible reason.
+- Resume artifacts that look fake, thin, or toy-like.
+- Voiceovers that sound like an explainer ad instead of a person reading a resume.
 - One dark neon visual language across every short.
 - Long setup before the resume appears.
+
+## Mandatory Trend Research Packet Fields
+
+Every generated daily packet must include:
+
+- `trendResearch.humanPremise`
+- `trendResearch.platformPattern`
+- `trendResearch.copyFromResearch`
+- `trendResearch.avoid`
+
+These fields are not decorative. The creative gate should fail packets that do not make the opening human situation clear.

@@ -103,6 +103,22 @@ const normalizeAlignmentToCaptions = (alignment = {}) => {
   return captions;
 };
 
+const scaleCaptionsForPlaybackRate = (captions, playbackRate) => {
+  if (!Number.isFinite(playbackRate) || playbackRate <= 0 || playbackRate === 1) {
+    return captions;
+  }
+  return captions.map((caption) => {
+    const startMs = Math.round(Number(caption.startMs || 0) / playbackRate);
+    const endMs = Math.round(Number(caption.endMs || 0) / playbackRate);
+    return {
+      ...caption,
+      startMs,
+      endMs,
+      timestampMs: caption.timestampMs === null || caption.timestampMs === undefined ? caption.timestampMs : startMs,
+    };
+  });
+};
+
 const getAudioDuration = async (filePath) => {
   const metadata = await parseMedia({
     src: filePath,
@@ -180,10 +196,13 @@ const main = async () => {
   }
 
   const audioDuration = await getAudioDuration(destPath);
+  const playbackRate = Number(props.voiceoverPlaybackRate || 1);
+  const effectivePlaybackRate = Number.isFinite(playbackRate) && playbackRate > 0 ? playbackRate : 1;
+  const renderDuration = audioDuration / effectivePlaybackRate;
   props.voiceoverSrc = `audio/${basename(destPath)}`;
   props.voiceoverVolume = Number(props.voiceoverVolume ?? 0.96);
-  props.captions = captions;
-  props.durationSeconds = Math.max(18, Math.min(32, Number((audioDuration + 1.2).toFixed(2))));
+  props.captions = scaleCaptionsForPlaybackRate(captions, effectivePlaybackRate);
+  props.durationSeconds = Math.max(18, Math.min(32, Number((renderDuration + 1.2).toFixed(2))));
   props.captionReadiness = {
     wordLevel: captions.length > 0,
     provider: "elevenlabs",
@@ -197,7 +216,10 @@ const main = async () => {
     quietMusic: Boolean(props.musicSrc),
     musicPolicy: props.musicSrc ? "quiet_music_ready" : "music_omitted_no_sfx",
     provider: "elevenlabs",
-    reason: "Single-take creator-style ElevenLabs read for gold-standard Codex review candidate.",
+    reason:
+      effectivePlaybackRate === 1
+        ? "Single-take creator-style ElevenLabs read for gold-standard Codex review candidate."
+        : `Single-take creator-style ElevenLabs read, rendered at ${effectivePlaybackRate}x for short-form pacing.`,
     wordLevelCaptions: captions.length > 0,
     withTimestamps,
   };

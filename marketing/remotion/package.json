@@ -26,6 +26,7 @@
     "voiceover:episode": "node scripts/generate_episode_voiceover.mjs",
     "voiceover:short": "node scripts/generate_short_voiceover.mjs",
     "render:gold:short": "remotion render ResumeDeskReview out/gold-signal-search-test-review.mp4 --props=props_gold_signal_search_test.json",
+    "render:gold:real-reviewer": "remotion render ResumeDeskReview out/gold-real-reviewer-teardown.mp4 --props=props_gold_real_reviewer_teardown.json",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"
   },

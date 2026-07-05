@@ -1,0 +1,632 @@
+{
+  "slug": "gold-real-reviewer-teardown",
+  "title": "I don't hate this resume line",
+  "hook": "I don't hate this line.",
+  "subhook": "It just does nothing.",
+  "creativeFormat": "resumeCrimeScene",
+  "visualStyle": "stickyNote",
+  "formatArchetype": "deskMarkup",
+  "pace": "fast",
+  "seriesLabel": "Real Resume Review",
+  "signalLines": {
+    "hook": "Stop here.",
+    "problem": "This says almost nothing.",
+    "teardown": "Read the job post.",
+    "fix": "Use the real proof.",
+    "cta": "Check before sending."
+  },
+  "punchline": "Not bad. Just useless.",
+  "problemPunchline": "The useful proof is buried lower on the page.",
+  "markedLabel": "Too vague",
+  "teardownText": "I don't hate it.",
+  "teardownEmphasis": "It just does nothing.",
+  "teardownPunchline": "The job says SQL, Tableau, churn. This line says reports.",
+  "teardownIssues": [
+    "No SQL",
+    "No dashboard",
+    "No business result"
+  ],
+  "fixText": "Four lines down, the real bullet is sitting there.",
+  "fixEmphasis": "Move that up.",
+  "fixPunchline": "That is the line a reviewer can understand.",
+  "resumeName": "Jordan Lee",
+  "resumeTitle": "Data Analyst Resume",
+  "resumeMeta": [
+    "3 yrs analytics",
+    "SQL + Tableau",
+    "Customer churn reporting"
+  ],
+  "jobTitle": "Product Data Analyst",
+  "jobKeywords": [
+    "SQL",
+    "Tableau",
+    "churn",
+    "cohort analysis",
+    "stakeholder insights"
+  ],
+  "weakBullets": [
+    "Created reports for business teams and leadership.",
+    "Worked with data to help teams understand customer trends.",
+    "Helped maintain dashboards for weekly performance meetings."
+  ],
+  "beforeBullet": "Created reports for business teams and leadership.",
+  "afterBullet": "Built Tableau churn tracker that saved 6 hours a week and flagged 18 at-risk customer accounts.",
+  "resumeDocument": {
+    "name": "Jordan Lee",
+    "headline": "Data Analyst",
+    "contact": [
+      "Austin, TX",
+      "jordan.lee@example.com",
+      "linkedin.com/in/jordan-lee"
+    ],
+    "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+    "experience": [
+      {
+        "company": "Fictional SaaS Co.",
+        "role": "Data Analyst",
+        "dates": "2023 - Present",
+        "bullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings.",
+          "Built Tableau churn tracker that saved 6 hours a week and flagged 18 at-risk customer accounts.",
+          "Cleaned product usage exports and sent weekly insights to customer success."
+        ]
+      },
+      {
+        "company": "Fictional Ops Studio",
+        "role": "Junior Operations Analyst",
+        "dates": "2021 - 2023",
+        "bullets": [
+          "Updated Excel trackers for sales, onboarding, and support activity.",
+          "Partnered with product managers to validate monthly account health data.",
+          "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+        ]
+      }
+    ],
+    "skills": [
+      "SQL",
+      "Tableau",
+      "Excel",
+      "Customer churn",
+      "Cohort analysis",
+      "Data cleaning",
+      "Stakeholder reporting"
+    ],
+    "education": "B.S. Business Analytics"
+  },
+  "jobDescription": {
+    "title": "Product Data Analyst",
+    "company": "TargetCo",
+    "summary": "Hiring a Product Data Analyst who can use SQL, Tableau, and cohort analysis to explain churn and product behavior.",
+    "responsibilities": [
+      "Use SQL and Tableau to build product and churn dashboards.",
+      "Translate cohort analysis into clear stakeholder insights.",
+      "Explain measurable business outcomes to product and customer success teams."
+    ],
+    "requirements": [
+      "SQL",
+      "Tableau",
+      "churn dashboard",
+      "cohort analysis",
+      "stakeholder insights"
+    ],
+    "searchQueries": [
+      "SQL",
+      "Tableau",
+      "churn",
+      "cohort analysis"
+    ]
+  },
+  "beforeScore": 31,
+  "afterScore": 88,
+  "scoreLabel": "Weak match",
+  "scoreBasis": [
+    {
+      "label": "Tools",
+      "before": "reports",
+      "after": "Tableau"
+    },
+    {
+      "label": "Proof",
+      "before": "none",
+      "after": "6 hours"
+    },
+    {
+      "label": "Result",
+      "before": "vague",
+      "after": "18 accounts"
+    },
+    {
+      "label": "Fit",
+      "before": "buried",
+      "after": "churn"
+    }
+  ],
+  "score_rubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 31,
+    "afterTotal": 88,
+    "beforeExplanation": "The first bullet is readable, but it hides the tools, metric, and business result.",
+    "afterExplanation": "The rewrite moves existing proof into the first visible bullet.",
+    "rows": [
+      {
+        "criterion": "Tool match",
+        "label": "Tool match",
+        "max": 25,
+        "before": 7,
+        "after": 22,
+        "beforeReason": "Only says reports",
+        "afterReason": "Tableau is visible"
+      },
+      {
+        "criterion": "Metric proof",
+        "label": "Metric proof",
+        "max": 20,
+        "before": 2,
+        "after": 18,
+        "beforeReason": "No number",
+        "afterReason": "6 hours saved"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 4,
+        "after": 17,
+        "beforeReason": "No result",
+        "afterReason": "18 accounts flagged"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 7,
+        "after": 13,
+        "beforeReason": "Audience only",
+        "afterReason": "Churn tracker scope"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 8,
+        "after": 14,
+        "beforeReason": "Analyst work implied",
+        "afterReason": "Product data work is clear"
+      },
+      {
+        "criterion": "Readability",
+        "label": "Readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Clean but generic",
+        "afterReason": "Clean and specific"
+      }
+    ]
+  },
+  "evidenceLedger": {
+    "sourceLocation": "Same resume, fourth bullet under current role",
+    "proofLine": "Built Tableau churn tracker that saved 6 hours a week and flagged 18 at-risk customer accounts.",
+    "visibleFacts": [
+      {
+        "fact": "Tableau churn tracker",
+        "source": "existing resume bullet"
+      },
+      {
+        "fact": "6 hours",
+        "source": "existing resume bullet"
+      },
+      {
+        "fact": "18 at-risk customer accounts",
+        "source": "existing resume bullet"
+      }
+    ]
+  },
+  "humanReadBeats": [
+    {
+      "beat": "hook",
+      "text": "Okay, I'm stopping here."
+    },
+    {
+      "beat": "read_line",
+      "text": "Created reports for business teams and leadership."
+    },
+    {
+      "beat": "human_reaction",
+      "text": "I don't hate it. It's just useless."
+    },
+    {
+      "beat": "job_check",
+      "text": "The job says SQL, Tableau, churn."
+    },
+    {
+      "beat": "buried_proof",
+      "text": "Four lines down, the real proof is already there."
+    },
+    {
+      "beat": "fix",
+      "text": "That's the bullet."
+    }
+  ],
+  "voiceDirector": {
+    "mode": "human_review_read",
+    "provider": "elevenlabs",
+    "delivery": "casual recruiter screen-recording a resume review; blunt, amused, useful",
+    "stability": 0.36,
+    "similarity_boost": 0.82,
+    "style": 0.48,
+    "use_speaker_boost": true,
+    "previous_text": "I am doing a quick real resume review, reading one line out loud.",
+    "next_text": "Then I point to the better bullet and stop."
+  },
+  "voiceover_text": "Okay, I'm stopping here: created reports for business teams and leadership. I don't hate it. It's just useless. This job says SQL, Tableau, churn. Four lines down, they built a Tableau churn tracker, saved 6 hours, and flagged 18 accounts. That's the bullet. Free Signal score before you apply.",
+  "voiceoverPlaybackRate": 1.08,
+  "cta": "Free Signal score before you apply.",
+  "musicVolume": 0,
+  "voiceoverVolume": 0.96,
+  "durationSeconds": 22.87,
+  "captions": [
+    {
+      "text": "Okay,",
+      "startMs": 43,
+      "endMs": 559,
+      "timestampMs": 43,
+      "confidence": null
+    },
+    {
+      "text": "I'm",
+      "startMs": 623,
+      "endMs": 763,
+      "timestampMs": 623,
+      "confidence": null
+    },
+    {
+      "text": "stopping",
+      "startMs": 806,
+      "endMs": 1107,
+      "timestampMs": 806,
+      "confidence": null
+    },
+    {
+      "text": "here:",
+      "startMs": 1150,
+      "endMs": 1483,
+      "timestampMs": 1150,
+      "confidence": null
+    },
+    {
+      "text": "created",
+      "startMs": 1784,
+      "endMs": 2193,
+      "timestampMs": 1784,
+      "confidence": null
+    },
+    {
+      "text": "reports",
+      "startMs": 2236,
+      "endMs": 2569,
+      "timestampMs": 2236,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 2612,
+      "endMs": 2709,
+      "timestampMs": 2612,
+      "confidence": null
+    },
+    {
+      "text": "business",
+      "startMs": 2752,
+      "endMs": 3043,
+      "timestampMs": 2752,
+      "confidence": null
+    },
+    {
+      "text": "teams",
+      "startMs": 3074,
+      "endMs": 3386,
+      "timestampMs": 3074,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 3430,
+      "endMs": 3547,
+      "timestampMs": 3430,
+      "confidence": null
+    },
+    {
+      "text": "leadership.",
+      "startMs": 3612,
+      "endMs": 4181,
+      "timestampMs": 3612,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 4289,
+      "endMs": 4332,
+      "timestampMs": 4289,
+      "confidence": null
+    },
+    {
+      "text": "don't",
+      "startMs": 4407,
+      "endMs": 4558,
+      "timestampMs": 4407,
+      "confidence": null
+    },
+    {
+      "text": "hate",
+      "startMs": 4601,
+      "endMs": 4773,
+      "timestampMs": 4601,
+      "confidence": null
+    },
+    {
+      "text": "it.",
+      "startMs": 4806,
+      "endMs": 5063,
+      "timestampMs": 4806,
+      "confidence": null
+    },
+    {
+      "text": "It's",
+      "startMs": 5256,
+      "endMs": 5440,
+      "timestampMs": 5256,
+      "confidence": null
+    },
+    {
+      "text": "just",
+      "startMs": 5504,
+      "endMs": 5687,
+      "timestampMs": 5504,
+      "confidence": null
+    },
+    {
+      "text": "useless.",
+      "startMs": 5751,
+      "endMs": 6407,
+      "timestampMs": 5751,
+      "confidence": null
+    },
+    {
+      "text": "This",
+      "startMs": 6762,
+      "endMs": 6956,
+      "timestampMs": 6762,
+      "confidence": null
+    },
+    {
+      "text": "job",
+      "startMs": 7019,
+      "endMs": 7224,
+      "timestampMs": 7019,
+      "confidence": null
+    },
+    {
+      "text": "says",
+      "startMs": 7299,
+      "endMs": 7621,
+      "timestampMs": 7299,
+      "confidence": null
+    },
+    {
+      "text": "SQL,",
+      "startMs": 7880,
+      "endMs": 8665,
+      "timestampMs": 7880,
+      "confidence": null
+    },
+    {
+      "text": "Tableau,",
+      "startMs": 8826,
+      "endMs": 9535,
+      "timestampMs": 8826,
+      "confidence": null
+    },
+    {
+      "text": "churn.",
+      "startMs": 9729,
+      "endMs": 10244,
+      "timestampMs": 9729,
+      "confidence": null
+    },
+    {
+      "text": "Four",
+      "startMs": 10718,
+      "endMs": 10922,
+      "timestampMs": 10718,
+      "confidence": null
+    },
+    {
+      "text": "lines",
+      "startMs": 10976,
+      "endMs": 11212,
+      "timestampMs": 10976,
+      "confidence": null
+    },
+    {
+      "text": "down,",
+      "startMs": 11266,
+      "endMs": 11750,
+      "timestampMs": 11266,
+      "confidence": null
+    },
+    {
+      "text": "they",
+      "startMs": 12051,
+      "endMs": 12191,
+      "timestampMs": 12051,
+      "confidence": null
+    },
+    {
+      "text": "built",
+      "startMs": 12233,
+      "endMs": 12417,
+      "timestampMs": 12233,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 12459,
+      "endMs": 12481,
+      "timestampMs": 12459,
+      "confidence": null
+    },
+    {
+      "text": "Tableau",
+      "startMs": 12534,
+      "endMs": 12889,
+      "timestampMs": 12534,
+      "confidence": null
+    },
+    {
+      "text": "churn",
+      "startMs": 12943,
+      "endMs": 13180,
+      "timestampMs": 12943,
+      "confidence": null
+    },
+    {
+      "text": "tracker,",
+      "startMs": 13212,
+      "endMs": 13663,
+      "timestampMs": 13212,
+      "confidence": null
+    },
+    {
+      "text": "saved",
+      "startMs": 13803,
+      "endMs": 14126,
+      "timestampMs": 13803,
+      "confidence": null
+    },
+    {
+      "text": "6",
+      "startMs": 14190,
+      "endMs": 14383,
+      "timestampMs": 14190,
+      "confidence": null
+    },
+    {
+      "text": "hours,",
+      "startMs": 14437,
+      "endMs": 14824,
+      "timestampMs": 14437,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 14845,
+      "endMs": 14975,
+      "timestampMs": 14845,
+      "confidence": null
+    },
+    {
+      "text": "flagged",
+      "startMs": 15039,
+      "endMs": 15351,
+      "timestampMs": 15039,
+      "confidence": null
+    },
+    {
+      "text": "18",
+      "startMs": 15383,
+      "endMs": 15727,
+      "timestampMs": 15383,
+      "confidence": null
+    },
+    {
+      "text": "accounts.",
+      "startMs": 15770,
+      "endMs": 16372,
+      "timestampMs": 15770,
+      "confidence": null
+    },
+    {
+      "text": "That's",
+      "startMs": 16631,
+      "endMs": 16964,
+      "timestampMs": 16631,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 17028,
+      "endMs": 17104,
+      "timestampMs": 17028,
+      "confidence": null
+    },
+    {
+      "text": "bullet.",
+      "startMs": 17146,
+      "endMs": 17619,
+      "timestampMs": 17146,
+      "confidence": null
+    },
+    {
+      "text": "Free",
+      "startMs": 17974,
+      "endMs": 18264,
+      "timestampMs": 17974,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 18329,
+      "endMs": 18651,
+      "timestampMs": 18329,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 18705,
+      "endMs": 19103,
+      "timestampMs": 18705,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 19210,
+      "endMs": 19823,
+      "timestampMs": 19210,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 19984,
+      "endMs": 20210,
+      "timestampMs": 19984,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 20404,
+      "endMs": 21081,
+      "timestampMs": 20404,
+      "confidence": null
+    }
+  ],
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/gold-real-reviewer-teardown-voiceover.alignment.json",
+    "reason": "ElevenLabs with-timestamps word captions mapped into Remotion captions."
+  },
+  "voiceoverSrc": "audio/gold-real-reviewer-teardown-voiceover.mp3",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": false,
+    "musicPolicy": "music_omitted_no_sfx",
+    "provider": "elevenlabs",
+    "reason": "Single-take creator-style ElevenLabs read, rendered at 1.08x for short-form pacing.",
+    "wordLevelCaptions": true,
+    "withTimestamps": true
+  }
+}

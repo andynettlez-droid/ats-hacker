@@ -142,6 +142,7 @@ export const resumeCrimeSceneSchema = z.object({
   musicVolume: z.number().min(0).max(1).optional(),
   voiceoverSrc: z.string().optional(),
   voiceoverVolume: z.number().min(0).max(1).optional(),
+  voiceoverPlaybackRate: z.number().min(0.5).max(1.5).optional(),
   durationSeconds: z.number().min(18).max(36).optional(),
   captions: z
     .array(

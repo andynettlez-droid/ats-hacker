@@ -391,7 +391,7 @@ const ReasonCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof pale
       }}
     >
       <div style={{ fontSize: 15, fontWeight: 950, color: RED, textTransform: "uppercase", letterSpacing: 1.2 }}>
-        Score receipt before
+        What's missing
       </div>
       <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
         {rows.map((row: { label: string; before: string; beforeReason: string }) => (
@@ -426,7 +426,7 @@ const RewriteCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof pal
       }}
     >
       <div style={{ fontSize: 15, fontWeight: 950, color: GREEN, textTransform: "uppercase", letterSpacing: 1.2 }}>
-        Score receipt after
+        What changed
       </div>
       <div style={{ marginTop: 10, fontSize: 20, lineHeight: 1.22, fontWeight: 900 }}>{props.afterBullet}</div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 13 }}>
@@ -511,7 +511,13 @@ export const ResumeDeskReview: React.FC<ResumeCrimeSceneProps> = (props) => {
     <AbsoluteFill style={{ fontFamily: FONT, overflow: "hidden" }}>
       <DeskTexture palette={palette} />
       {props.musicSrc ? <Audio src={staticFile(props.musicSrc)} volume={props.musicVolume ?? 0.12} /> : null}
-      {props.voiceoverSrc ? <Audio src={staticFile(props.voiceoverSrc)} volume={props.voiceoverVolume ?? 0.94} /> : null}
+      {props.voiceoverSrc ? (
+        <Audio
+          src={staticFile(props.voiceoverSrc)}
+          volume={props.voiceoverVolume ?? 0.94}
+          playbackRate={props.voiceoverPlaybackRate ?? 1}
+        />
+      ) : null}
 
       <div
         style={{

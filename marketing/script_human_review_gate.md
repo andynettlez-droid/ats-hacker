@@ -109,9 +109,9 @@ The score reveal cannot appear before the low-score reason is visible.
 
 The current approval candidate is:
 
-- `marketing/remotion/props_gold_signal_search_test.json`
-- `marketing/remotion/out/gold-signal-search-test-review.mp4`
-- `marketing/gold_standard_short/2026-07-05-signal-search-test/packet.json`
+- `marketing/remotion/props_gold_real_reviewer_teardown.json`
+- `marketing/remotion/out/gold-real-reviewer-teardown.mp4`
+- `marketing/gold_standard_short/2026-07-05-real-reviewer-teardown/packet.json`
 
 It demonstrates the required flow:
 

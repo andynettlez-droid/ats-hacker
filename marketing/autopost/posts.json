@@ -1413,7 +1413,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "gold_standard_codex_review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeDeskReview",
         "renderProps": "marketing\\remotion\\props_gold_signal_search_test.json",
         "audioReadiness": {
@@ -1432,10 +1432,45 @@
             "content": "resume_line_first"
         },
         "codexReviewDecision": {
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Superseded by real-reviewer clone lane because script still sounded too generated.",
+            "updatedAt": "2026-07-05T15:05:00Z"
+        }
+    },
+    {
+        "title": "I don't hate this resume line",
+        "caption": "I don't hate this line. It just does nothing. Free Signal score before you apply. #resumetips #jobsearch #careertok #shorts",
+        "file": "videos/gold-real-reviewer-teardown.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "gold_standard_codex_review_required",
+        "composition": "ResumeDeskReview",
+        "renderProps": "marketing\\remotion\\props_gold_real_reviewer_teardown.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": false,
+            "musicPolicy": "music_omitted_no_sfx",
+            "provider": "elevenlabs",
+            "reason": "Single-take creator-style ElevenLabs read, rendered at 1.08x for short-form pacing.",
+            "wordLevelCaptions": true,
+            "withTimestamps": true
+        },
+        "utm": {
+            "source": "youtube_shorts",
+            "medium": "organic_short",
+            "campaign": "gold_standard_real_reviewer",
+            "content": "dont_hate_this_line"
+        },
+        "codexReviewDecision": {
             "state": "AWAITING_CODEX_APPROVAL",
             "reviewer": "codex-chat",
-            "note": "Daily posting paused until Andrew approves this exact gold-standard direction.",
-            "updatedAt": "2026-07-05T14:30:00Z"
+            "note": "Current gold-standard candidate. Daily posting remains paused until Andrew approves this exact file.",
+            "updatedAt": "2026-07-05T15:05:00Z"
         }
     }
 ]

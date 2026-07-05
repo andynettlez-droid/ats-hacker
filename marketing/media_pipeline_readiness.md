@@ -8,16 +8,16 @@ The video pipeline is paused for creative rebuild. The previous rendered shorts 
 
 The script layer has now been rebuilt first. A dated research brief, a high-view benchmark swipe file, a stricter `trendResearch` packet contract, stricter creative QA, and a gold-standard single-short approval lane are in place.
 
-The current gold-standard candidate is rendered, queued as `review_required`, and awaiting Andrew's Codex approval before any daily posting resumes:
+The previous gold-standard candidate was superseded because the script still sounded generated. The current gold-standard candidate is rendered, queued as `review_required`, and awaiting Andrew's Codex approval before any daily posting resumes:
 
-- Review MP4: `marketing/autopost/videos/gold-signal-search-test-review.mp4`
-- Render output: `marketing/remotion/out/gold-signal-search-test-review.mp4`
-- Props: `marketing/remotion/props_gold_signal_search_test.json`
-- Review packet: `marketing/gold_standard_short/2026-07-05-signal-search-test/packet.json`
-- Draft metadata: `marketing/gold_standard_short/2026-07-05-signal-search-test/autopost_drafts.json`
-- Studio QC: `marketing/remotion/out/gold-signal-search-test-studio-qc.json`
-- Audio QC: `marketing/remotion/out/gold-signal-search-test-audio-qc.json`
-- Visual safe-area QC: `marketing/remotion/out/gold-signal-search-test-visual-qc.json`
+- Review MP4: `marketing/autopost/videos/gold-real-reviewer-teardown.mp4`
+- Render output: `marketing/remotion/out/gold-real-reviewer-teardown.mp4`
+- Props: `marketing/remotion/props_gold_real_reviewer_teardown.json`
+- Review packet: `marketing/gold_standard_short/2026-07-05-real-reviewer-teardown/packet.json`
+- Draft metadata: `marketing/gold_standard_short/2026-07-05-real-reviewer-teardown/autopost_drafts.json`
+- Studio QC: `marketing/remotion/out/gold-real-reviewer-studio-qc.json`
+- Audio QC: `marketing/remotion/out/gold-real-reviewer-audio-qc.json`
+- Visual safe-area QC: `marketing/remotion/out/gold-real-reviewer-visual-qc.json`
 
 The new Codex approval layer now wraps the existing daily packet, Remotion render, QC, promotion, and posting queue. Videos move through a durable local SQLite state machine and stop at `AWAITING_CODEX_APPROVAL` until the exact reviewed file is approved in Codex.
 
@@ -92,7 +92,8 @@ The previous active daily batch should remain review-only and should not be post
 
 | Run ID | Title | Status |
 | --- | --- | --- |
-| `gold-signal-search-test` | I would rewrite this resume line first | Rendered, QC-passed, queued `review_required`, awaiting Codex approval. |
+| `gold-real-reviewer-teardown` | I don't hate this resume line | Rendered, QC-passed, queued `review_required`, awaiting Codex approval. |
+| `gold-signal-search-test` | I would rewrite this resume line first | Superseded; do not approve/post. |
 | `405962b7592c8e26` | I would circle this line first | Failed creative review; do not approve/post. |
 | `553ac4f944fb4202` | I searched the resume. Bad news. | Failed creative review; do not approve/post. |
 | `1233c94bb025a999` | The job post gave the answer key | Failed creative review; do not approve/post. |
@@ -108,8 +109,8 @@ Do not publish unless Andrew replies with an explicit approval phrase for the ex
 ## Current Studio Short Assets
 
 - Previous rendered files exist in `marketing/remotion/out/`, but they are no longer approved for posting after manual creative review.
-- The current approval candidate is `marketing/remotion/out/gold-signal-search-test-review.mp4`.
-- Current gold-standard props are `marketing/remotion/props_gold_signal_search_test.json`.
+- The current approval candidate is `marketing/remotion/out/gold-real-reviewer-teardown.mp4`.
+- Current gold-standard props are `marketing/remotion/props_gold_real_reviewer_teardown.json`.
 
 The next render pass should use this gold-standard pattern only after the candidate is reviewed and either approved or revised.
 

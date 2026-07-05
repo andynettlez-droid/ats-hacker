@@ -92,10 +92,10 @@ The previous rendered pilot batch is now treated as failed creative QA. It prove
 
 Current gold-standard baseline:
 
-- Review packet: `marketing/gold_standard_short/2026-07-05-signal-search-test/packet.json`
-- Props: `marketing/remotion/props_gold_signal_search_test.json`
-- Render: `marketing/remotion/out/gold-signal-search-test-review.mp4`
-- Queue file: `marketing/autopost/videos/gold-signal-search-test-review.mp4`
+- Review packet: `marketing/gold_standard_short/2026-07-05-real-reviewer-teardown/packet.json`
+- Props: `marketing/remotion/props_gold_real_reviewer_teardown.json`
+- Render: `marketing/remotion/out/gold-real-reviewer-teardown.mp4`
+- Queue file: `marketing/autopost/videos/gold-real-reviewer-teardown.mp4`
 - Research brief: `marketing/content_research/resume_video_trends_2026-07-05.md`
 - Status: rendered, QC-passed, `review_required`, awaiting Codex approval.
 

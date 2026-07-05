@@ -7,9 +7,9 @@ Updated: 2026-07-05.
 
 Pause daily posting until one gold-standard short is approved in Codex. The current approval candidate is rendered and queued as `review_required`:
 
-- `marketing/remotion/out/gold-signal-search-test-review.mp4`
-- `marketing/autopost/videos/gold-signal-search-test-review.mp4`
-- `marketing/gold_standard_short/2026-07-05-signal-search-test/packet.json`
+- `marketing/remotion/out/gold-real-reviewer-teardown.mp4`
+- `marketing/autopost/videos/gold-real-reviewer-teardown.mp4`
+- `marketing/gold_standard_short/2026-07-05-real-reviewer-teardown/packet.json`
 
 Do not resume daily generation until this candidate is approved or revised into a stronger baseline.
 

@@ -10,9 +10,26 @@ Every short must feel like a real human reviewer is looking at the resume and im
 4. React naturally.
 5. Compare it to one visible job requirement.
 6. Show why the starting score is low using the score rubric.
-7. Rewrite only the same real experience.
-8. Explain why the score improves.
-9. End with: "Run the free Signal score before you apply."
+7. Point to visible source evidence already on the resume.
+8. Rewrite only the same real experience from that source evidence.
+9. Explain why the score improves.
+10. End with: "Run the free Signal score before you apply."
+
+## Evidence Ledger
+
+Every generated teardown case must include `evidenceLedger` in the render props:
+
+- `sourceLocation`: where the stronger proof appears on the resume.
+- `proofLine`: the exact source line visible in the resume artifact.
+- `visibleFacts`: at least three facts with `fact` and `source`.
+
+The rewritten bullet cannot use a number, tool, platform, or outcome unless that fact appears in the evidence ledger and the full resume document. The script must say where the proof came from using human language such as:
+
+- "The proof is lower down..."
+- "I found the proof lower on the page..."
+- "The right evidence is in the wrong place..."
+
+The gate fails if a score rubric exists but the rewrite appears to invent proof.
 
 ## Score Rubric
 
@@ -50,6 +67,7 @@ The score reveal cannot appear before the low-score reason is visible.
 - The score appears before the reason is clear.
 - The reviewer does not read an actual resume line.
 - The rewrite adds fake experience.
-- The voiceover is over 78 words or under 34 words.
+- The voiceover is over 96 words or under 42 words.
 - The clip takes more than 3 seconds to show the problem.
 - The script repeats a prior opening.
+- The script jumps from weak line to improved score without explaining the visible source evidence.

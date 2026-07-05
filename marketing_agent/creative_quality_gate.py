@@ -46,6 +46,9 @@ POSITIVE_MARKERS = {
         "rewrite",
         "keyword",
         "proof",
+        "lower on the page",
+        "lower down",
+        "source evidence",
     ],
     "format": [
         "resume",
@@ -156,6 +159,10 @@ ROBOTIC_OR_REPEATED = [
     "better signal",
     "same experience, clearer proof",
     "score receipt",
+    "rubric gives",
+    "so the rubric",
+    "here is the score receipt",
+    "now i see the tool",
 ]
 
 
@@ -228,6 +235,17 @@ NARRATIVE_BEAT_GROUPS = {
         "no tool",
         "no number",
         "no result",
+    ],
+    "source_evidence": [
+        "lower on the page",
+        "lower on the resume",
+        "lower down",
+        "found the proof",
+        "proof is lower",
+        "source evidence",
+        "same proof",
+        "same evidence",
+        "wrong place",
     ],
     "fix": [
         "rewrite",
@@ -315,9 +333,17 @@ def text_blob(packet: dict) -> str:
                 props.get("jobTitle", ""),
                 props.get("beforeBullet", ""),
                 props.get("afterBullet", ""),
-                props.get("beforeScore", ""),
-                props.get("afterScore", ""),
+        props.get("beforeScore", ""),
+        props.get("afterScore", ""),
             ])
+            evidence = props.get("evidenceLedger") if isinstance(props.get("evidenceLedger"), dict) else {}
+            parts.extend([
+                evidence.get("sourceLocation", ""),
+                evidence.get("proofLine", ""),
+            ])
+            for item in evidence.get("visibleFacts", []) or []:
+                if isinstance(item, dict):
+                    parts.extend([item.get("fact", ""), item.get("source", "")])
             parts.extend(props.get("resumeMeta", []) or [])
             parts.extend(props.get("weakBullets", []) or [])
             parts.extend(props.get("jobKeywords", []) or [])
@@ -416,6 +442,65 @@ def has_score_rubric(short: dict) -> bool:
         after_total += int(row["after"])
         valid += 1
     return valid >= 6 and before_total == int(before_score) and after_total == int(after_score) and after_total > before_total
+
+
+def evidence_ledger(short: dict) -> dict:
+    props = short.get("props") if isinstance(short.get("props"), dict) else {}
+    ledger = props.get("evidenceLedger")
+    return ledger if isinstance(ledger, dict) else {}
+
+
+def has_evidence_ledger(short: dict) -> bool:
+    ledger = evidence_ledger(short)
+    facts = ledger.get("visibleFacts")
+    return bool(ledger.get("sourceLocation")) and bool(ledger.get("proofLine")) and isinstance(facts, list) and len(facts) >= 3
+
+
+def evidence_text(short: dict) -> str:
+    ledger = evidence_ledger(short)
+    facts = ledger.get("visibleFacts") if isinstance(ledger.get("visibleFacts"), list) else []
+    return " ".join([
+        str(ledger.get("sourceLocation", "")),
+        str(ledger.get("proofLine", "")),
+        " ".join(
+            " ".join(str(item.get(key, "")) for key in ("fact", "source"))
+            for item in facts
+            if isinstance(item, dict)
+        ),
+    ]).lower()
+
+
+def after_rewrite_supported_by_evidence(short: dict) -> bool:
+    props = short.get("props") if isinstance(short.get("props"), dict) else {}
+    after = str(props.get("afterBullet", "")).lower()
+    evidence = evidence_text(short)
+    if not after or not evidence:
+        return False
+    numeric_claims = re.findall(r"(?:\$?\d+(?:\.\d+)?\s?(?:m|k|%|percent)?|\d+\s?-\s?person)", after)
+    if any(claim.strip() and claim.strip() not in evidence for claim in numeric_claims):
+        return False
+    key_terms = [
+        term.lower()
+        for term in (props.get("jobKeywords") or [])
+        if isinstance(term, str) and len(term) > 2
+    ]
+    supported_terms = sum(1 for term in key_terms if term in after and term in evidence)
+    return supported_terms >= 1 and bool(numeric_claims)
+
+
+def evidence_bridge_explained(blob: str) -> bool:
+    low = blob.lower()
+    markers = [
+        "lower on the page",
+        "lower on the resume",
+        "lower down",
+        "found the proof",
+        "proof is lower",
+        "same proof",
+        "same evidence",
+        "wrong place",
+    ]
+    return sum(1 for marker in markers if marker in low) >= 1
 
 
 def explains_starting_score(blob: str) -> bool:
@@ -590,10 +675,10 @@ def score_short(short: dict) -> dict:
         blockers.append(f"Script lacks a complete viral story spine; found beats: {', '.join(sorted(beats)) or 'none'}.")
 
     words = script_word_count(short)
-    if 34 <= words <= 78:
+    if 42 <= words <= 96:
         score += 7
     else:
-        blockers.append(f"Voiceover should be a tight 34-78 words for 18-32s Shorts; current estimate is {words}.")
+        blockers.append(f"Voiceover should be a tight 42-96 words for 18-32s Shorts; current estimate is {words}.")
 
     if has_visible_artifact(blob):
         score += 5
@@ -609,6 +694,11 @@ def score_short(short: dict) -> dict:
         score += 10
     else:
         blockers.append("Score reveal needs scoreBasis, a six-row score_rubric with matching totals, and script language explaining why the start score is low.")
+
+    if has_evidence_ledger(short) and after_rewrite_supported_by_evidence(short) and evidence_bridge_explained(blob):
+        score += 12
+    else:
+        blockers.append("Rewrite needs visible source evidence: evidenceLedger, supported numeric claims, and script language explaining where the proof came from.")
 
     if has_repeatable_series(blob):
         score += 5
@@ -628,6 +718,8 @@ def score_short(short: dict) -> dict:
     if any(term in low for term in ROBOTIC_OR_REPEATED):
         score -= 10
         notes.append("Replace robotic template phrasing with a more natural creator read.")
+    if "rubric gives" in low or "so the rubric" in low:
+        blockers.append("Do not narrate the rubric as if software is talking; explain the human-visible evidence instead.")
 
     return {
         "title": short.get("title", "Untitled"),
@@ -726,6 +818,22 @@ def score_packet(packet: dict) -> dict:
     else:
         blockers.append("Each short needs scoreBasis, a six-row score_rubric with matching totals, and an explained low-score reason before the score jump.")
 
+    if shorts and all(has_evidence_ledger(short) and after_rewrite_supported_by_evidence(short) and evidence_bridge_explained("\n".join(str(part) for part in [
+        short.get("title", ""),
+        short.get("hook", ""),
+        short.get("script", ""),
+        "\n".join(short.get("storyboard", []) or []),
+        short.get("props", {}).get("voiceover_text", "") if isinstance(short.get("props"), dict) else "",
+        "\n".join(
+            f"{beat.get('beat', '')} {beat.get('text', '')}"
+            for beat in (short.get("props", {}).get("humanReadBeats", []) if isinstance(short.get("props"), dict) else [])
+            if isinstance(beat, dict)
+        ),
+    ])) for short in shorts[:3]):
+        score += 10
+    else:
+        blockers.append("Each short needs a visible evidence ledger and must explain where the stronger rewrite came from.")
+
     if "free signal score" in low or "free score" in low:
         score += 10
     else:
@@ -764,6 +872,8 @@ def score_packet(packet: dict) -> dict:
     if any(term in low for term in ROBOTIC_OR_REPEATED):
         score -= 12
         notes.append("Contains repeated robotic script phrasing from an older template.")
+    if "rubric gives" in low or "so the rubric" in low:
+        blockers.append("Rubric-first narration is banned; explain source evidence like a human reviewer.")
 
     short_scores = [score_short(short) for short in shorts]
     if short_scores and not all(item["passed"] for item in short_scores[:3]):

@@ -113,6 +113,20 @@ export const resumeCrimeSceneSchema = z.object({
     .optional(),
   scoreRubric: z.any().optional(),
   scoreLabel: z.string().optional(),
+  evidenceLedger: z
+    .object({
+      sourceLocation: z.string().optional(),
+      proofLine: z.string().optional(),
+      visibleFacts: z
+        .array(
+          z.object({
+            fact: z.string().optional(),
+            source: z.string().optional(),
+          }),
+        )
+        .optional(),
+    })
+    .optional(),
   humanReadBeats: z
     .array(
       z.object({
@@ -122,6 +136,7 @@ export const resumeCrimeSceneSchema = z.object({
     )
     .optional(),
   voiceDirector: z.any().optional(),
+  voiceover_text: z.string().optional(),
   cta: z.string(),
   musicSrc: z.string().optional(),
   musicVolume: z.number().min(0).max(1).optional(),

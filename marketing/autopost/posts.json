@@ -1044,7 +1044,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeDeskReview",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_3.json",
         "audioReadiness": {
@@ -1097,11 +1097,11 @@
             }
         },
         "codexReviewDecision": {
-            "runId": "5f93f025efd50915",
+            "runId": "1233c94bb025a999",
             "state": "REVISION_REQUESTED",
             "reviewer": "codex-chat",
-            "note": "Superseded by stronger story-spine creative pass.",
-            "updatedAt": "2026-07-04T21:04:22.338195+00:00"
+            "note": "User review: script logic does not make sense; score/rewrite feels AI-generated and unearned.",
+            "updatedAt": "2026-07-05T10:31:51.046010+00:00"
         }
     },
     {
@@ -1273,7 +1273,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeDeskReview",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_1.json",
         "audioReadiness": {
@@ -1324,6 +1324,13 @@
                 ],
                 "scriptSource": "human_read_pass"
             }
+        },
+        "codexReviewDecision": {
+            "runId": "405962b7592c8e26",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "User review: script logic does not make sense; score/rewrite feels AI-generated and unearned.",
+            "updatedAt": "2026-07-05T10:31:50.810817+00:00"
         }
     },
     {
@@ -1336,7 +1343,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeDeskReview",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-05_human-recruiter-reads-and-fixes-resume-bullets-with-visible-scor_short_2.json",
         "audioReadiness": {
@@ -1387,6 +1394,13 @@
                 ],
                 "scriptSource": "human_read_pass"
             }
+        },
+        "codexReviewDecision": {
+            "runId": "553ac4f944fb4202",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "User review: script logic does not make sense; score/rewrite feels AI-generated and unearned.",
+            "updatedAt": "2026-07-05T10:31:50.986438+00:00"
         }
     }
 ]

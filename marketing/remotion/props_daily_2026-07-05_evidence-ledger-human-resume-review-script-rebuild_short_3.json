@@ -1,0 +1,377 @@
+{
+  "hook": "The job post gave the answer key.",
+  "subhook": "The resume just did not answer it clearly.",
+  "creativeFormat": "oneBulletFix",
+  "visualStyle": "highlighter",
+  "formatArchetype": "splitTranslation",
+  "pace": "fast",
+  "seriesLabel": "Job Description Review",
+  "signalLines": {
+    "hook": "Read the posting.",
+    "problem": "The answer is vague.",
+    "teardown": "Translate. Do not exaggerate.",
+    "fix": "Now the proof matches.",
+    "cta": "Paste the job first."
+  },
+  "resumeName": "Avery Patel",
+  "resumeTitle": "Frontend Engineer Resume",
+  "resumeMeta": [
+    "5 yrs product UI",
+    "React/TypeScript",
+    "Accessibility fixes"
+  ],
+  "jobTitle": "Frontend Software Engineer",
+  "jobKeywords": [
+    "React",
+    "TypeScript",
+    "Next.js",
+    "accessibility",
+    "performance"
+  ],
+  "weakBullets": [
+    "Worked on frontend features for internal and customer-facing tools.",
+    "Collaborated with designers and backend engineers.",
+    "Helped improve application performance and user experience."
+  ],
+  "beforeBullet": "Worked on frontend features for internal and customer-facing tools.",
+  "afterBullet": "Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues.",
+  "resumeDocument": {
+    "name": "Avery Patel",
+    "headline": "Frontend Engineer",
+    "contact": [
+      "Seattle, WA",
+      "avery.patel@example.com",
+      "github.com/averypatel"
+    ],
+    "summary": "Frontend engineer with 5 years building product UI, design-system components, checkout flows, and accessibility improvements for SaaS products.",
+    "experience": [
+      {
+        "company": "MapleStack",
+        "role": "Frontend Engineer",
+        "dates": "2022 - Present",
+        "bullets": [
+          "Worked on frontend features for internal and customer-facing tools.",
+          "Collaborated with designers and backend engineers.",
+          "Helped improve application performance and user experience.",
+          "Maintained shared React components used by billing, onboarding, and account teams.",
+          "Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues."
+        ]
+      },
+      {
+        "company": "OrbitCart",
+        "role": "UI Developer",
+        "dates": "2019 - 2022",
+        "bullets": [
+          "Converted Figma designs into responsive TypeScript UI components.",
+          "Triaged customer-reported accessibility issues with QA and support.",
+          "Added Playwright regression coverage for checkout and profile flows."
+        ]
+      }
+    ],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Design systems",
+      "WCAG",
+      "Performance profiling",
+      "Playwright"
+    ],
+    "education": "B.S. Computer Science, University of Washington"
+  },
+  "jobDescription": {
+    "title": "Frontend Software Engineer",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Frontend Software Engineer who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use React and TypeScript to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to Next.js.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "accessibility",
+      "performance"
+    ],
+    "searchQueries": [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "accessibility"
+    ]
+  },
+  "beforeScore": 41,
+  "afterScore": 90,
+  "scoreBasis": [
+    {
+      "label": "Job keyword/tool match",
+      "before": "Frontend only",
+      "after": "React, TypeScript, Next.js"
+    },
+    {
+      "label": "Measurable proof",
+      "before": "No metric",
+      "after": "14 percent drop-off reduction"
+    },
+    {
+      "label": "Outcome clarity",
+      "before": "Feature work is broad",
+      "after": "Checkout impact is clear"
+    },
+    {
+      "label": "Scope/context",
+      "before": "Internal/customer tools",
+      "after": "Checkout components"
+    }
+  ],
+  "score_rubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 41,
+    "afterTotal": 90,
+    "rows": [
+      {
+        "criterion": "Job keyword/tool match",
+        "label": "Job keyword/tool match",
+        "max": 25,
+        "before": 9,
+        "after": 24,
+        "beforeReason": "Frontend only",
+        "afterReason": "React, TypeScript, Next.js"
+      },
+      {
+        "criterion": "Measurable proof",
+        "label": "Measurable proof",
+        "max": 20,
+        "before": 4,
+        "after": 18,
+        "beforeReason": "No metric",
+        "afterReason": "14 percent drop-off reduction"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 7,
+        "after": 18,
+        "beforeReason": "Feature work is broad",
+        "afterReason": "Checkout impact is clear"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 8,
+        "after": 13,
+        "beforeReason": "Internal/customer tools",
+        "afterReason": "Checkout components"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 10,
+        "after": 13,
+        "beforeReason": "Engineer fit implied",
+        "afterReason": "Frontend role match"
+      },
+      {
+        "criterion": "Formatting/readability",
+        "label": "Formatting/readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Readable but generic",
+        "afterReason": "Readable and specific"
+      }
+    ],
+    "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+    "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+  },
+  "scoreRubric": {
+    "label": "Signal Fit Score",
+    "scale": 100,
+    "beforeTotal": 41,
+    "afterTotal": 90,
+    "rows": [
+      {
+        "criterion": "Job keyword/tool match",
+        "label": "Job keyword/tool match",
+        "max": 25,
+        "before": 9,
+        "after": 24,
+        "beforeReason": "Frontend only",
+        "afterReason": "React, TypeScript, Next.js"
+      },
+      {
+        "criterion": "Measurable proof",
+        "label": "Measurable proof",
+        "max": 20,
+        "before": 4,
+        "after": 18,
+        "beforeReason": "No metric",
+        "afterReason": "14 percent drop-off reduction"
+      },
+      {
+        "criterion": "Outcome clarity",
+        "label": "Outcome clarity",
+        "max": 20,
+        "before": 7,
+        "after": 18,
+        "beforeReason": "Feature work is broad",
+        "afterReason": "Checkout impact is clear"
+      },
+      {
+        "criterion": "Scope/context",
+        "label": "Scope/context",
+        "max": 15,
+        "before": 8,
+        "after": 13,
+        "beforeReason": "Internal/customer tools",
+        "afterReason": "Checkout components"
+      },
+      {
+        "criterion": "Role alignment",
+        "label": "Role alignment",
+        "max": 15,
+        "before": 10,
+        "after": 13,
+        "beforeReason": "Engineer fit implied",
+        "afterReason": "Frontend role match"
+      },
+      {
+        "criterion": "Formatting/readability",
+        "label": "Formatting/readability",
+        "max": 5,
+        "before": 3,
+        "after": 4,
+        "beforeReason": "Readable but generic",
+        "afterReason": "Readable and specific"
+      }
+    ],
+    "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+    "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+  },
+  "scoreLabel": "Signal Fit Score",
+  "evidenceLedger": {
+    "sourceLocation": "MapleStack experience, later checkout bullet",
+    "proofLine": "Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues.",
+    "visibleFacts": [
+      {
+        "fact": "React",
+        "source": "skills section and later checkout bullet"
+      },
+      {
+        "fact": "TypeScript",
+        "source": "skills section and later checkout bullet"
+      },
+      {
+        "fact": "Next.js",
+        "source": "skills section and later checkout bullet"
+      },
+      {
+        "fact": "14% form drop-off reduction",
+        "source": "later checkout bullet"
+      },
+      {
+        "fact": "11 accessibility issues",
+        "source": "later checkout bullet"
+      }
+    ]
+  },
+  "humanReadBeats": [
+    {
+      "beat": "read_line",
+      "text": "Read the exact resume line: Worked on frontend features for internal and customer-facing tools."
+    },
+    {
+      "beat": "natural_reaction",
+      "text": "The stack is probably real, but the bullet makes me hunt for it."
+    },
+    {
+      "beat": "source_evidence",
+      "text": "Point to the visible source evidence in MapleStack experience, later checkout bullet: Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues."
+    },
+    {
+      "beat": "job_requirement",
+      "text": "Compare it to the job requirement: React, TypeScript, Next.js."
+    },
+    {
+      "beat": "score_reason",
+      "text": "Explain the visible rubric before the score: 41/100."
+    },
+    {
+      "beat": "rewrite",
+      "text": "Rewrite only the same experience: shipped React and TypeScript checkout work that reduced drop-off 14 percent."
+    },
+    {
+      "beat": "score_improvement",
+      "text": "Explain what improved before showing 90/100."
+    }
+  ],
+  "markedLabel": "Too broad",
+  "problemPunchline": "The role language is visible. The resume is not using it.",
+  "teardownPunchline": "Low score reason: broad work, missing tool, no result.",
+  "fixPunchline": "Use the job language only when the experience supports it.",
+  "teardownIssues": [
+    "Stack is vague",
+    "No shipped feature",
+    "No performance result"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "voiceDirector": {
+    "mode": "human_review_read",
+    "preferredProvider": "elevenlabs_speech_to_speech",
+    "fallbackProvider": "elevenlabs_tts_multitake",
+    "takeCount": 3,
+    "delivery": [
+      "Sounds like a recruiter reading the resume live.",
+      "Conversational, slightly amused, direct, helpful.",
+      "Short pause after the weak bullet and before the score reason.",
+      "No corporate polish, no trailer voice, no product-demo cadence."
+    ],
+    "scratchReadSrc": null,
+    "humanReadBeats": [
+      {
+        "beat": "read_line",
+        "text": "Read the exact resume line: Worked on frontend features for internal and customer-facing tools."
+      },
+      {
+        "beat": "natural_reaction",
+        "text": "The stack is probably real, but the bullet makes me hunt for it."
+      },
+      {
+        "beat": "source_evidence",
+        "text": "Point to the visible source evidence in MapleStack experience, later checkout bullet: Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues."
+      },
+      {
+        "beat": "job_requirement",
+        "text": "Compare it to the job requirement: React, TypeScript, Next.js."
+      },
+      {
+        "beat": "score_reason",
+        "text": "Explain the visible rubric before the score: 41/100."
+      },
+      {
+        "beat": "rewrite",
+        "text": "Rewrite only the same experience: shipped React and TypeScript checkout work that reduced drop-off 14 percent."
+      },
+      {
+        "beat": "score_improvement",
+        "text": "Explain what improved before showing 90/100."
+      }
+    ],
+    "scriptSource": "human_read_pass"
+  },
+  "voiceover_text": "The job post gives the answer key: React, TypeScript, Next.js. The resume line says: Worked on frontend features for internal and customer-facing tools. I would circle that because the proof is buried lower down: Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues. So it starts at 41. Rewrite it: Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues. Now the evidence matches the job: 90. Run the free Signal score before you apply.",
+  "audioReadiness": {
+    "studioVoiceover": false,
+    "quietMusic": true,
+    "reason": "studio voiceover not requested"
+  }
+}

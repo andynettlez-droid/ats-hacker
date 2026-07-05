@@ -268,6 +268,35 @@ const checkProps = (draft, postsEntry, checks) => {
     "marked source bullet appears inside full resume document",
     props.beforeBullet || "",
   );
+  const evidenceLedger = props.evidenceLedger || {};
+  const evidenceFacts = Array.isArray(evidenceLedger.visibleFacts) ? evidenceLedger.visibleFacts : [];
+  const evidenceText = [
+    evidenceLedger.sourceLocation || "",
+    evidenceLedger.proofLine || "",
+    ...evidenceFacts.flatMap((item) => [item?.fact || "", item?.source || ""]),
+  ]
+    .join("\n")
+    .toLowerCase();
+  const afterBulletText = String(props.afterBullet || "").toLowerCase();
+  const numericClaims = afterBulletText.match(/(?:\$?\d+(?:\.\d+)?\s?(?:m|k|%|percent)?|\d+\s?-\s?person)/g) || [];
+  addCheck(
+    checks,
+    Boolean(evidenceLedger.sourceLocation && evidenceLedger.proofLine) && evidenceFacts.length >= 3,
+    "visible source evidence ledger exists",
+    evidenceLedger.sourceLocation || "missing",
+  );
+  addCheck(
+    checks,
+    resumeBullets.includes(evidenceLedger.proofLine),
+    "source evidence appears inside full resume document",
+    evidenceLedger.proofLine || "",
+  );
+  addCheck(
+    checks,
+    numericClaims.length > 0 && numericClaims.every((claim) => evidenceText.includes(claim.trim())),
+    "rewrite numeric claims are supported by source evidence",
+    numericClaims.join(", ") || "no numeric claims",
+  );
   addCheck(
     checks,
     Array.isArray(resumeDocument.skills) && resumeDocument.skills.length >= 5 && Boolean(resumeDocument.education),

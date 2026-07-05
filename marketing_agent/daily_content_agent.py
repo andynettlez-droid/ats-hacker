@@ -251,6 +251,17 @@ TEARDOWN_CASES = [
         "subhook": "The job needs SQL proof, not report-flavored fog.",
         "problemPunchline": "Reports is a folder name, not a selling point.",
         "teardownIssues": ["No SQL signal", "No dashboard tool", "No business result"],
+        "evidenceLedger": {
+            "sourceLocation": "Northstar Analytics experience, later dashboard bullet",
+            "proofLine": "Built a Tableau churn tracker that saved six hours a week and flagged 18 at-risk customer accounts.",
+            "visibleFacts": [
+                {"fact": "SQL", "source": "skills section"},
+                {"fact": "Tableau", "source": "skills section and dashboard bullet"},
+                {"fact": "6 hours saved weekly", "source": "later dashboard bullet"},
+                {"fact": "18 at-risk customer accounts", "source": "later dashboard bullet"},
+                {"fact": "customer churn", "source": "skills section"},
+            ],
+        },
     },
     {
         "id": "sales_account_exec",
@@ -279,6 +290,17 @@ TEARDOWN_CASES = [
         "subhook": "Salesforce, discovery, quota, and MEDDICC are missing on screen.",
         "problemPunchline": "Sales resumes need numbers faster than adjectives.",
         "teardownIssues": ["No quota proof", "No CRM signal", "No pipeline number"],
+        "evidenceLedger": {
+            "sourceLocation": "BrightLedger experience, later pipeline bullet",
+            "proofLine": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes.",
+            "visibleFacts": [
+                {"fact": "Salesforce", "source": "skills section and later pipeline bullet"},
+                {"fact": "$1.8M qualified pipeline", "source": "later pipeline bullet"},
+                {"fact": "42 monthly discovery calls", "source": "later pipeline bullet"},
+                {"fact": "MEDDICC", "source": "skills section and later pipeline bullet"},
+                {"fact": "pipeline generation", "source": "skills section"},
+            ],
+        },
     },
     {
         "id": "frontend_engineer",
@@ -307,6 +329,17 @@ TEARDOWN_CASES = [
         "subhook": "The stack and impact are the search signal.",
         "problemPunchline": "Engineering resumes need proof of stack plus outcome.",
         "teardownIssues": ["Stack is vague", "No shipped feature", "No performance result"],
+        "evidenceLedger": {
+            "sourceLocation": "MapleStack experience, later checkout bullet",
+            "proofLine": "Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues.",
+            "visibleFacts": [
+                {"fact": "React", "source": "skills section and later checkout bullet"},
+                {"fact": "TypeScript", "source": "skills section and later checkout bullet"},
+                {"fact": "Next.js", "source": "skills section and later checkout bullet"},
+                {"fact": "14% form drop-off reduction", "source": "later checkout bullet"},
+                {"fact": "11 accessibility issues", "source": "later checkout bullet"},
+            ],
+        },
     },
     {
         "id": "project_manager",
@@ -335,6 +368,17 @@ TEARDOWN_CASES = [
         "subhook": "Jira, risk, stakeholders, and variance need to show up.",
         "problemPunchline": "PM bullets should prove delivery, not just calendar ownership.",
         "teardownIssues": ["No Jira signal", "No risk language", "No variance result"],
+        "evidenceLedger": {
+            "sourceLocation": "SummitOps experience, later rollout bullet",
+            "proofLine": "Owned a Jira roadmap and weekly risk register for a 9-person rollout, reducing schedule variance from 18% to 6%.",
+            "visibleFacts": [
+                {"fact": "Jira roadmap", "source": "skills section and later rollout bullet"},
+                {"fact": "weekly risk register", "source": "later rollout bullet"},
+                {"fact": "9-person rollout", "source": "later rollout bullet"},
+                {"fact": "18% to 6% schedule variance", "source": "later rollout bullet"},
+                {"fact": "stakeholder updates", "source": "skills section"},
+            ],
+        },
     },
     {
         "id": "customer_success",
@@ -363,6 +407,17 @@ TEARDOWN_CASES = [
         "subhook": "Gainsight, QBRs, NPS, and renewal risk are the clues.",
         "problemPunchline": "Helpful is nice. Retention proof gets searched.",
         "teardownIssues": ["No renewal metric", "No platform signal", "No account scope"],
+        "evidenceLedger": {
+            "sourceLocation": "Beaconly experience, later renewal-risk bullet",
+            "proofLine": "Flagged renewal risk in Gainsight and ran QBR follow-ups that protected $420K ARR across 18 customer accounts.",
+            "visibleFacts": [
+                {"fact": "Gainsight", "source": "skills section and later renewal-risk bullet"},
+                {"fact": "QBR follow-ups", "source": "later renewal-risk bullet"},
+                {"fact": "$420K ARR protected", "source": "later renewal-risk bullet"},
+                {"fact": "18 customer accounts", "source": "later renewal-risk bullet"},
+                {"fact": "renewal risk", "source": "skills section"},
+            ],
+        },
     },
     {
         "id": "healthcare_rn",
@@ -391,6 +446,17 @@ TEARDOWN_CASES = [
         "subhook": "Epic, discharge planning, and education need to be visible.",
         "problemPunchline": "Clinical proof has to be specific and careful.",
         "teardownIssues": ["No Epic signal", "No discharge scope", "No patient education result"],
+        "evidenceLedger": {
+            "sourceLocation": "Lakeside Medical Center experience, later discharge-planning bullet",
+            "proofLine": "Coordinated Epic discharge plans and patient education for a 24-bed unit, reducing avoidable follow-up calls 21%.",
+            "visibleFacts": [
+                {"fact": "Epic", "source": "skills section and later discharge-planning bullet"},
+                {"fact": "patient education", "source": "later discharge-planning bullet"},
+                {"fact": "24-bed unit", "source": "later discharge-planning bullet"},
+                {"fact": "21% fewer avoidable follow-up calls", "source": "later discharge-planning bullet"},
+                {"fact": "discharge planning", "source": "skills section"},
+            ],
+        },
     },
 ]
 
@@ -432,6 +498,59 @@ CASE_SPOKEN_REWRITES = {
     "customer_success": "flagged renewal risk and protected 420 thousand in ARR",
     "healthcare_rn": "coordinated Epic discharge plans and reduced avoidable follow-up calls",
 }
+
+
+def case_evidence_ledger(case: dict) -> dict:
+    ledger = case.get("evidenceLedger")
+    if isinstance(ledger, dict):
+        return ledger
+    return {
+        "sourceLocation": "resume artifact",
+        "proofLine": case.get("afterBullet", ""),
+        "visibleFacts": [],
+    }
+
+
+def evidence_blob(case: dict) -> str:
+    ledger = case_evidence_ledger(case)
+    facts = ledger.get("visibleFacts") if isinstance(ledger.get("visibleFacts"), list) else []
+    fact_text = " ".join(
+        " ".join(str(item.get(key, "")) for key in ("fact", "source"))
+        for item in facts
+        if isinstance(item, dict)
+    )
+    return " ".join([
+        str(ledger.get("sourceLocation", "")),
+        str(ledger.get("proofLine", "")),
+        fact_text,
+        " ".join(str(item) for item in case.get("jobKeywords", [])),
+    ]).lower()
+
+
+def validate_case_rewrite_evidence(case: dict) -> None:
+    ledger = case_evidence_ledger(case)
+    facts = ledger.get("visibleFacts") if isinstance(ledger.get("visibleFacts"), list) else []
+    if len(facts) < 3 or not ledger.get("proofLine") or not ledger.get("sourceLocation"):
+        raise ValueError(f"Case {case['id']} needs visible evidenceLedger facts before script generation.")
+
+    rewrite = str(case.get("afterBullet", ""))
+    evidence = evidence_blob(case)
+    numeric_claims = re.findall(r"(?:\$?\d+(?:\.\d+)?\s?(?:m|k|%|percent)?|\d+\s?-\s?person)", rewrite.lower())
+    unsupported = [claim.strip() for claim in numeric_claims if claim.strip() and claim.strip() not in evidence]
+    if unsupported:
+        raise ValueError(f"Case {case['id']} rewrite has unsupported numeric claims: {unsupported}")
+
+
+def evidence_summary(case: dict) -> str:
+    ledger = case_evidence_ledger(case)
+    facts = ledger.get("visibleFacts") if isinstance(ledger.get("visibleFacts"), list) else []
+    fact_names = [str(item.get("fact", "")).strip() for item in facts if isinstance(item, dict) and item.get("fact")]
+    return "; ".join(fact_names[:5])
+
+
+def compact_proof_line(case: dict) -> str:
+    proof = str(case_evidence_ledger(case).get("proofLine") or case.get("afterBullet", "")).strip()
+    return proof.rstrip(".") + "."
 
 CASE_SCORE_RUBRICS = {
     "data_analyst": [
@@ -527,6 +646,7 @@ def build_human_read_beats(case: dict, playbook: dict, score_rubric: dict) -> li
     context = case_template_context(case)
     before_total = score_rubric.get("beforeTotal", case["beforeScore"])
     after_total = score_rubric.get("afterTotal", case["afterScore"])
+    ledger = case_evidence_ledger(case)
     return [
         {
             "beat": "read_line",
@@ -535,6 +655,10 @@ def build_human_read_beats(case: dict, playbook: dict, score_rubric: dict) -> li
         {
             "beat": "natural_reaction",
             "text": CASE_HUMOR_LINES.get(case["id"], "I believe the work happened; I cannot see the proof yet."),
+        },
+        {
+            "beat": "source_evidence",
+            "text": f"Point to the visible source evidence in {ledger.get('sourceLocation')}: {ledger.get('proofLine')}",
         },
         {
             "beat": "job_requirement",
@@ -688,6 +812,7 @@ CASE_RESUME_DETAILS = {
                     "Created reports for business teams and leadership.",
                     "Worked with data to help teams understand customer trends.",
                     "Helped maintain dashboards for weekly performance meetings.",
+                    "Built a Tableau churn tracker that saved six hours a week and flagged 18 at-risk customer accounts.",
                     "Cleaned product usage exports and sent weekly insights to customer success.",
                 ],
             },
@@ -718,6 +843,7 @@ CASE_RESUME_DETAILS = {
                     "Responsible for sales opportunities in assigned territory.",
                     "Worked with marketing and customer success on accounts.",
                     "Maintained Salesforce notes, next steps, and close-date updates for active opportunities.",
+                    "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes.",
                 ],
             },
             {
@@ -747,6 +873,7 @@ CASE_RESUME_DETAILS = {
                     "Collaborated with designers and backend engineers.",
                     "Helped improve application performance and user experience.",
                     "Maintained shared React components used by billing, onboarding, and account teams.",
+                    "Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues.",
                 ],
             },
             {
@@ -776,6 +903,7 @@ CASE_RESUME_DETAILS = {
                     "Led meetings with stakeholders and tracked action items.",
                     "Helped deliver projects on time and within scope.",
                     "Prepared weekly Jira status summaries for engineering, product, and operations leaders.",
+                    "Owned a Jira roadmap and weekly risk register for a 9-person rollout, reducing schedule variance from 18% to 6%.",
                 ],
             },
             {
@@ -805,6 +933,7 @@ CASE_RESUME_DETAILS = {
                     "Built relationships with customers to improve satisfaction.",
                     "Partnered with sales on renewals and expansion opportunities.",
                     "Maintained Gainsight health notes and QBR follow-up tasks for strategic accounts.",
+                    "Flagged renewal risk in Gainsight and ran QBR follow-ups that protected $420K ARR across 18 customer accounts.",
                 ],
             },
             {
@@ -834,6 +963,7 @@ CASE_RESUME_DETAILS = {
                     "Communicated with families and members of the care team.",
                     "Assisted with discharge paperwork and patient instructions.",
                     "Documented care plans, medication changes, and patient education in Epic.",
+                    "Coordinated Epic discharge plans and patient education for a 24-bed unit, reducing avoidable follow-up calls 21%.",
                 ],
             },
             {
@@ -1437,6 +1567,7 @@ def attach_daily_audio(crime_scene_props: dict, short: dict, short_slug: str, pr
         or crime_scene_props.get("hook")
         or ""
     )[:900]
+    crime_scene_props["voiceover_text"] = voiceover_text
     crime_scene_props["audioReadiness"] = {
         "studioVoiceover": False,
         "quietMusic": public_asset_exists("audio/signal-quiet-orbit.wav"),
@@ -1791,6 +1922,7 @@ def case_template_context(case: dict) -> dict:
     score_rubric = build_score_rubric(case)
     before_score = int(score_rubric.get("beforeTotal") or case["beforeScore"])
     after_score = int(score_rubric.get("afterTotal") or case["afterScore"])
+    ledger = case_evidence_ledger(case)
     return {
         "resumeTitle": case["resumeTitle"].replace(" Resume", ""),
         "role": case["jobTitle"],
@@ -1803,6 +1935,9 @@ def case_template_context(case: dict) -> dict:
         "beforeScore": before_score,
         "afterScore": after_score,
         "humorLine": CASE_HUMOR_LINES.get(case["id"], "The bullet sounds busy and allergic to numbers."),
+        "proofLine": compact_proof_line(case),
+        "sourceLocation": str(ledger.get("sourceLocation", "lower on the resume")),
+        "evidenceSummary": evidence_summary(case),
     }
 
 
@@ -1814,8 +1949,48 @@ def render_case_template(template: str, case: dict) -> str:
     return template.format(**case_template_context(case))
 
 
+def build_human_review_transcript(case: dict, playbook: dict, score_rubric: dict) -> str:
+    context = case_template_context(case)
+    proof_line = compact_proof_line(case)
+    before_score = int(score_rubric.get("beforeTotal") or case["beforeScore"])
+    after_score = int(score_rubric.get("afterTotal") or case["afterScore"])
+
+    if playbook["id"] == "search_console":
+        return (
+            f"Here is the search test. I search {context['kw1']} and {context['kw2']}. "
+            f"Then I read: {context['beforeBullet']} "
+            f"I would circle that because the proof is buried lower down: {proof_line} "
+            f"So the visible line starts at {before_score}. "
+            f"Rewrite it: {context['afterBullet']} "
+            f"Now the search terms and result are together: {after_score}. "
+            "Run the free Signal score before you apply."
+        )
+
+    if playbook["id"] == "answer_key":
+        return (
+            f"The job post gives the answer key: {context['kw1']}, {context['kw2']}, {context['kw3']}. "
+            f"The resume line says: {context['beforeBullet']} "
+            f"I would circle that because the proof is buried lower down: {proof_line} "
+            f"So it starts at {before_score}. "
+            f"Rewrite it: {context['afterBullet']} "
+            f"Now the evidence matches the job: {after_score}. "
+            "Run the free Signal score before you apply."
+        )
+
+    return (
+        f"Okay, this line says: {context['beforeBullet']} "
+        "I would circle it. Not because proof is missing; it is buried lower down. "
+        f"{proof_line} "
+        f"The job wants {context['kw1']}, {context['kw2']}, and {context['kw3']}, so this line starts at {before_score}. "
+        f"Rewrite it: {context['afterBullet']} "
+        f"Now the proof is on the right line: {after_score}. "
+        "Run the free Signal score before you apply."
+    )
+
+
 def build_case_voiceover(case: dict, playbook: dict) -> str:
-    return render_case_template(playbook["voiceover"], case)
+    score_rubric = build_score_rubric(case)
+    return build_human_review_transcript(case, playbook, score_rubric)
 
 
 def build_case_storyboard(case: dict, playbook: dict) -> list[str]:
@@ -1826,6 +2001,7 @@ def build_case_storyboard(case: dict, playbook: dict) -> list[str]:
 
 def apply_teardown_case(short: dict, title: str, hook: str, script: str, storyboard: list, props: dict, index: int) -> tuple[str, str, str, list, dict]:
     case = select_teardown_case(index, short, props)
+    validate_case_rewrite_evidence(case)
     playbook = playbook_for_short(index)
     score_rubric = build_score_rubric(case)
     if score_rubric["beforeTotal"] != case["beforeScore"] or score_rubric["afterTotal"] != case["afterScore"]:
@@ -1864,6 +2040,7 @@ def apply_teardown_case(short: dict, title: str, hook: str, script: str, storybo
         "score_rubric": score_rubric,
         "scoreRubric": score_rubric,
         "scoreLabel": "Signal Fit Score",
+        "evidenceLedger": case_evidence_ledger(case),
         "humanReadBeats": build_human_read_beats(case, playbook, score_rubric),
         "missing": case["jobKeywords"],
         "markedLabel": case["markedLabel"],
@@ -2527,6 +2704,7 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
             "score_rubric": props.get("score_rubric") or props.get("scoreRubric"),
             "scoreRubric": props.get("scoreRubric") or props.get("score_rubric"),
             "scoreLabel": props.get("scoreLabel", "Signal Fit Score"),
+            "evidenceLedger": props.get("evidenceLedger", {}),
             "humanReadBeats": props.get("humanReadBeats", []),
             "markedLabel": props.get("markedLabel", "Too vague"),
             "problemPunchline": props.get("problemPunchline", "Recruiters search for proof, not vibes."),

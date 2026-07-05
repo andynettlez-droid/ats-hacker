@@ -1,0 +1,1222 @@
+{
+  "publishDate": "2026-07-05",
+  "topic": "Evidence-ledger human resume review script rebuild",
+  "series": "Daily Research Packet",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "sourceNotes": [
+    {
+      "title": "YouTube Partner Program eligibility",
+      "url": "https://support.google.com/youtube/answer/72851",
+      "note": "Use YouTube as a monetization target, but optimize first for site conversions."
+    },
+    {
+      "title": "Pew Research Center Social Media Fact Sheet",
+      "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/",
+      "note": "YouTube, Instagram, and TikTok are large discovery channels for job-search education."
+    }
+  ],
+  "youtube": {
+    "script": {
+      "title": "Resume Crime Scene: A Frustrated Job Hunter's Guide to Clarity",
+      "chapters": [
+        {
+          "time": "0:00",
+          "title": "The Hilariously Frustrating Job Hunt",
+          "line": "Ever feel like your job hunt is a horror movie? Well, grab your popcorn because we're diving into the wild world of resumes!"
+        },
+        {
+          "time": "0:45",
+          "title": "Resume Crime Scene Investigation",
+          "line": "Let\u2019s dissect this resume crime scene! What even is 'synergizing key performance indicators\u2019? I mean, seriously!"
+        },
+        {
+          "time": "2:30",
+          "title": "Job Description Translation 101",
+          "line": "How many of us have submitted our resumes only to be greeted by radio silence? Time for a 'vague language' roast session!"
+        },
+        {
+          "time": "5:00",
+          "title": "One Bullet Fix: From 'Professional Yap' to Powerful Impact",
+          "line": "Let\u2019s transform that bullet from a snooze-fest into a showstopper!"
+        },
+        {
+          "time": "7:30",
+          "title": "The Signal Score: Your Rescue Plan",
+          "line": "Before we wrap up, don\u2019t forget to grab your free Signal score \u2014 it\u2019s your best chance to revamp that resume!"
+        }
+      ],
+      "visuals": [
+        "Start with a chaotic montage of job search clips: dark rooms, endless scrolling, and frustrated faces.",
+        "Overlay funny graphics of resumes with absurd jargon highlighted.",
+        "Live-action reenactments of a 'recruiter reaction' sitting in disbelief at outrageous resume phrases.",
+        "End with upbeat music and a visual of the Signal score link on screen."
+      ]
+    },
+    "title": "Evidence-ledger human resume review script rebuild | Resume Teardown",
+    "seoTitle": "Evidence-ledger human resume review script rebuild | Resume Teardown | Signal by ATSHacker",
+    "description": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "cta": "Paste the job description and check your free Signal score before you apply.",
+    "chapters": [
+      "0:00 Cold open",
+      "0:20 The open loop",
+      "0:55 Translate the job description",
+      "1:40 Recruiter search test",
+      "2:25 Resume crime scene",
+      "3:15 Why it gets missed",
+      "4:05 Live bullet fix",
+      "5:00 Score reveal",
+      "5:35 Trust check and CTA"
+    ],
+    "scriptSections": [
+      {
+        "label": "Cold open",
+        "script": "Evidence-ledger human resume review script rebuild This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
+        "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+      },
+      {
+        "label": "Open loop",
+        "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+        "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff."
+      },
+      {
+        "label": "Translate the job description",
+        "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+        "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+      },
+      {
+        "label": "Recruiter search test",
+        "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+        "visual": "Search console typing the first three job-description terms and showing weak matches."
+      },
+      {
+        "label": "Resume crime scene",
+        "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
+        "visual": "Red/yellow markups over weak bullets."
+      },
+      {
+        "label": "Why it gets missed",
+        "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+        "visual": "Zoom into the weak bullet and place missing proof labels beside it."
+      },
+      {
+        "label": "Live bullet fix",
+        "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. No fake claims, just usable evidence.",
+        "visual": "Before/after bullet rewrite."
+      },
+      {
+        "label": "Score reveal",
+        "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+        "visual": "Score meter jumps from low match to high match with before/after resume panels."
+      },
+      {
+        "label": "Trust and CTA",
+        "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+        "visual": "Free Signal score page, trust badges, and bundle CTA."
+      }
+    ]
+  },
+  "shorts": [
+    {
+      "series": "Live Resume Review",
+      "title": "I would circle this line first",
+      "hook": "I would circle this line first.",
+      "script": "Okay, this line says: Created reports for business teams and leadership. I would circle it. Not because proof is missing; it is buried lower down. Built a Tableau churn tracker that saved six hours a week and flagged 18 at-risk customer accounts. The job wants SQL, Tableau, and cohort analysis, so this line starts at 32. Rewrite it: Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts. Now the proof is on the right line: 89. Run the free Signal score before you apply.",
+      "storyboard": [
+        "Case: Data Analyst Resume against Product Data Analyst.",
+        "Open on the resume as if a reviewer is reading it at a desk.",
+        "Circle the exact weak line: Created reports for business teams and leadership.",
+        "Place the job description beside it with SQL, Tableau, and cohort analysis highlighted.",
+        "Show the Signal Fit Score rubric before the score reveal.",
+        "Rewrite the line in-place using only the real work.",
+        "Reveal the score after the low-score rationale is visible."
+      ],
+      "props": {
+        "hook1": "This bullet has a high chance of synergy and zero proof",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "cta": "Check your free Signal score.",
+        "teardownCaseId": "data_analyst",
+        "playbookId": "recruiter_roast",
+        "seriesOverride": "Live Resume Review",
+        "creativeFormat": "resumeCrimeScene",
+        "visualStyle": "stickyNote",
+        "formatArchetype": "deskMarkup",
+        "pace": "fast",
+        "subhook": "The line sounds normal until you compare it to the job.",
+        "signalLines": {
+          "hook": "Circle this.",
+          "problem": "The proof is hidden.",
+          "teardown": "Name the work clearly.",
+          "fix": "Now I can read it.",
+          "cta": "Check before sending."
+        },
+        "renderComposition": "ResumeDeskReview",
+        "resumeName": "Jordan Lee",
+        "resumeTitle": "Data Analyst Resume",
+        "resumeMeta": [
+          "3 yrs analytics",
+          "SQL + dashboards",
+          "Customer churn reporting"
+        ],
+        "jobTitle": "Product Data Analyst",
+        "jobKeywords": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "weakBullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings."
+        ],
+        "beforeBullet": "Created reports for business teams and leadership.",
+        "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+        "beforeScore": 32,
+        "afterScore": 89,
+        "scoreBasis": [
+          {
+            "label": "Job keyword/tool match",
+            "before": "Only says reports",
+            "after": "SQL and Tableau are explicit"
+          },
+          {
+            "label": "Measurable proof",
+            "before": "No number",
+            "after": "6 hours saved"
+          },
+          {
+            "label": "Outcome clarity",
+            "before": "Leadership benefit is vague",
+            "after": "18 at-risk accounts flagged"
+          },
+          {
+            "label": "Scope/context",
+            "before": "Audience only",
+            "after": "Churn dashboard scope"
+          }
+        ],
+        "score_rubric": {
+          "label": "Signal Fit Score",
+          "scale": 100,
+          "beforeTotal": 32,
+          "afterTotal": 89,
+          "rows": [
+            {
+              "criterion": "Job keyword/tool match",
+              "label": "Job keyword/tool match",
+              "max": 25,
+              "before": 8,
+              "after": 23,
+              "beforeReason": "Only says reports",
+              "afterReason": "SQL and Tableau are explicit"
+            },
+            {
+              "criterion": "Measurable proof",
+              "label": "Measurable proof",
+              "max": 20,
+              "before": 2,
+              "after": 18,
+              "beforeReason": "No number",
+              "afterReason": "6 hours saved"
+            },
+            {
+              "criterion": "Outcome clarity",
+              "label": "Outcome clarity",
+              "max": 20,
+              "before": 4,
+              "after": 17,
+              "beforeReason": "Leadership benefit is vague",
+              "afterReason": "18 at-risk accounts flagged"
+            },
+            {
+              "criterion": "Scope/context",
+              "label": "Scope/context",
+              "max": 15,
+              "before": 7,
+              "after": 13,
+              "beforeReason": "Audience only",
+              "afterReason": "Churn dashboard scope"
+            },
+            {
+              "criterion": "Role alignment",
+              "label": "Role alignment",
+              "max": 15,
+              "before": 8,
+              "after": 14,
+              "beforeReason": "Analytics implied",
+              "afterReason": "Product analytics fit"
+            },
+            {
+              "criterion": "Formatting/readability",
+              "label": "Formatting/readability",
+              "max": 5,
+              "before": 3,
+              "after": 4,
+              "beforeReason": "Readable but generic",
+              "afterReason": "Readable and specific"
+            }
+          ],
+          "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+          "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+        },
+        "scoreRubric": {
+          "label": "Signal Fit Score",
+          "scale": 100,
+          "beforeTotal": 32,
+          "afterTotal": 89,
+          "rows": [
+            {
+              "criterion": "Job keyword/tool match",
+              "label": "Job keyword/tool match",
+              "max": 25,
+              "before": 8,
+              "after": 23,
+              "beforeReason": "Only says reports",
+              "afterReason": "SQL and Tableau are explicit"
+            },
+            {
+              "criterion": "Measurable proof",
+              "label": "Measurable proof",
+              "max": 20,
+              "before": 2,
+              "after": 18,
+              "beforeReason": "No number",
+              "afterReason": "6 hours saved"
+            },
+            {
+              "criterion": "Outcome clarity",
+              "label": "Outcome clarity",
+              "max": 20,
+              "before": 4,
+              "after": 17,
+              "beforeReason": "Leadership benefit is vague",
+              "afterReason": "18 at-risk accounts flagged"
+            },
+            {
+              "criterion": "Scope/context",
+              "label": "Scope/context",
+              "max": 15,
+              "before": 7,
+              "after": 13,
+              "beforeReason": "Audience only",
+              "afterReason": "Churn dashboard scope"
+            },
+            {
+              "criterion": "Role alignment",
+              "label": "Role alignment",
+              "max": 15,
+              "before": 8,
+              "after": 14,
+              "beforeReason": "Analytics implied",
+              "afterReason": "Product analytics fit"
+            },
+            {
+              "criterion": "Formatting/readability",
+              "label": "Formatting/readability",
+              "max": 5,
+              "before": 3,
+              "after": 4,
+              "beforeReason": "Readable but generic",
+              "afterReason": "Readable and specific"
+            }
+          ],
+          "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+          "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+        },
+        "scoreLabel": "Signal Fit Score",
+        "evidenceLedger": {
+          "sourceLocation": "Northstar Analytics experience, later dashboard bullet",
+          "proofLine": "Built a Tableau churn tracker that saved six hours a week and flagged 18 at-risk customer accounts.",
+          "visibleFacts": [
+            {
+              "fact": "SQL",
+              "source": "skills section"
+            },
+            {
+              "fact": "Tableau",
+              "source": "skills section and dashboard bullet"
+            },
+            {
+              "fact": "6 hours saved weekly",
+              "source": "later dashboard bullet"
+            },
+            {
+              "fact": "18 at-risk customer accounts",
+              "source": "later dashboard bullet"
+            },
+            {
+              "fact": "customer churn",
+              "source": "skills section"
+            }
+          ]
+        },
+        "humanReadBeats": [
+          {
+            "beat": "read_line",
+            "text": "Read the exact resume line: Created reports for business teams and leadership."
+          },
+          {
+            "beat": "natural_reaction",
+            "text": "I believe the work happened; I just cannot see the proof yet."
+          },
+          {
+            "beat": "source_evidence",
+            "text": "Point to the visible source evidence in Northstar Analytics experience, later dashboard bullet: Built a Tableau churn tracker that saved six hours a week and flagged 18 at-risk customer accounts."
+          },
+          {
+            "beat": "job_requirement",
+            "text": "Compare it to the job requirement: SQL, Tableau, cohort analysis."
+          },
+          {
+            "beat": "score_reason",
+            "text": "Explain the visible rubric before the score: 32/100."
+          },
+          {
+            "beat": "rewrite",
+            "text": "Rewrite only the same experience: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts."
+          },
+          {
+            "beat": "score_improvement",
+            "text": "Explain what improved before showing 89/100."
+          }
+        ],
+        "missing": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "markedLabel": "Too vague",
+        "problemPunchline": "The work may be real. The evidence is not readable.",
+        "teardownPunchline": "Low score reason: the rubric cannot find tool, metric, or result.",
+        "fixPunchline": "A recruiter should not have to infer the proof.",
+        "teardownIssues": [
+          "No SQL signal",
+          "No dashboard tool",
+          "No business result"
+        ],
+        "resumeDocument": {
+          "name": "Jordan Lee",
+          "headline": "Data Analyst",
+          "contact": [
+            "Austin, TX",
+            "jordan.lee@example.com",
+            "linkedin.com/in/jordan-lee"
+          ],
+          "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+          "experience": [
+            {
+              "company": "Northstar Analytics",
+              "role": "Data Analyst",
+              "dates": "2023 - Present",
+              "bullets": [
+                "Created reports for business teams and leadership.",
+                "Worked with data to help teams understand customer trends.",
+                "Helped maintain dashboards for weekly performance meetings.",
+                "Built a Tableau churn tracker that saved six hours a week and flagged 18 at-risk customer accounts.",
+                "Cleaned product usage exports and sent weekly insights to customer success."
+              ]
+            },
+            {
+              "company": "CedarCloud Software",
+              "role": "Junior Operations Analyst",
+              "dates": "2021 - 2023",
+              "bullets": [
+                "Updated Excel trackers for sales, onboarding, and support activity.",
+                "Partnered with product managers to validate monthly account health data.",
+                "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+              ]
+            }
+          ],
+          "skills": [
+            "SQL",
+            "Tableau",
+            "Excel",
+            "Customer churn",
+            "Cohort analysis",
+            "Data cleaning",
+            "Stakeholder reporting"
+          ],
+          "education": "B.S. Business Analytics, University of Texas at Austin"
+        },
+        "jobDescription": {
+          "title": "Product Data Analyst",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use SQL and Tableau to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to cohort analysis.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard",
+            "stakeholder insights"
+          ],
+          "searchQueries": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard"
+          ]
+        },
+        "voiceover_text": "Okay, this line says: Created reports for business teams and leadership. I would circle it. Not because proof is missing; it is buried lower down. Built a Tableau churn tracker that saved six hours a week and flagged 18 at-risk customer accounts. The job wants SQL, Tableau, and cohort analysis, so this line starts at 32. Rewrite it: Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts. Now the proof is on the right line: 89. Run the free Signal score before you apply."
+      }
+    },
+    {
+      "series": "Recruiter Search Test",
+      "title": "I searched the resume. Bad news.",
+      "hook": "I searched the resume. Bad news.",
+      "script": "Here is the search test. I search Salesforce and pipeline generation. Then I read: Responsible for sales opportunities in assigned territory. I would circle that because the proof is buried lower down: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes. So the visible line starts at 37. Rewrite it: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization. Now the search terms and result are together: 88. Run the free Signal score before you apply.",
+      "storyboard": [
+        "Case: Account Executive Resume against Mid-Market Account Executive.",
+        "Open on a reviewer search box over the resume, searching for Salesforce.",
+        "Show the weak bullet that does not include the searched language.",
+        "Search pipeline generation and show the miss again.",
+        "Show the Signal Fit Score rubric before the score reveal.",
+        "Rewrite the bullet and rerun the search with a visible match.",
+        "Close after the low-score rationale explains the jump."
+      ],
+      "props": {
+        "hook1": "If I search SQL, does your resume even show up?",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "cta": "Check your free Signal score.",
+        "teardownCaseId": "sales_account_exec",
+        "playbookId": "search_console",
+        "seriesOverride": "Recruiter Search Test",
+        "creativeFormat": "jobSearchTest",
+        "visualStyle": "terminal",
+        "formatArchetype": "recruiterSearch",
+        "pace": "fast",
+        "subhook": "This is the search test most vague bullets fail.",
+        "signalLines": {
+          "hook": "Search missed it.",
+          "problem": "Do not make them guess.",
+          "teardown": "Use the real term.",
+          "fix": "Now it is findable.",
+          "cta": "Search-test it first."
+        },
+        "renderComposition": "ResumeDeskReview",
+        "resumeName": "Maya Torres",
+        "resumeTitle": "Account Executive Resume",
+        "resumeMeta": [
+          "4 yrs SaaS sales",
+          "Mid-market accounts",
+          "Quota-carrying role"
+        ],
+        "jobTitle": "Mid-Market Account Executive",
+        "jobKeywords": [
+          "Salesforce",
+          "pipeline generation",
+          "quota attainment",
+          "discovery calls",
+          "MEDDICC"
+        ],
+        "weakBullets": [
+          "Managed customer conversations and followed up with prospects.",
+          "Responsible for sales opportunities in assigned territory.",
+          "Worked with marketing and customer success on accounts."
+        ],
+        "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+        "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+        "beforeScore": 37,
+        "afterScore": 88,
+        "scoreBasis": [
+          {
+            "label": "Job keyword/tool match",
+            "before": "No Salesforce or MEDDICC",
+            "after": "Salesforce and MEDDICC appear"
+          },
+          {
+            "label": "Measurable proof",
+            "before": "No quota or dollars",
+            "after": "$1.8M pipeline"
+          },
+          {
+            "label": "Outcome clarity",
+            "before": "Sales result unclear",
+            "after": "Qualified pipeline result"
+          },
+          {
+            "label": "Scope/context",
+            "before": "Territory only",
+            "after": "42 monthly discovery calls"
+          }
+        ],
+        "score_rubric": {
+          "label": "Signal Fit Score",
+          "scale": 100,
+          "beforeTotal": 37,
+          "afterTotal": 88,
+          "rows": [
+            {
+              "criterion": "Job keyword/tool match",
+              "label": "Job keyword/tool match",
+              "max": 25,
+              "before": 7,
+              "after": 23,
+              "beforeReason": "No Salesforce or MEDDICC",
+              "afterReason": "Salesforce and MEDDICC appear"
+            },
+            {
+              "criterion": "Measurable proof",
+              "label": "Measurable proof",
+              "max": 20,
+              "before": 3,
+              "after": 18,
+              "beforeReason": "No quota or dollars",
+              "afterReason": "$1.8M pipeline"
+            },
+            {
+              "criterion": "Outcome clarity",
+              "label": "Outcome clarity",
+              "max": 20,
+              "before": 5,
+              "after": 17,
+              "beforeReason": "Sales result unclear",
+              "afterReason": "Qualified pipeline result"
+            },
+            {
+              "criterion": "Scope/context",
+              "label": "Scope/context",
+              "max": 15,
+              "before": 8,
+              "after": 13,
+              "beforeReason": "Territory only",
+              "afterReason": "42 monthly discovery calls"
+            },
+            {
+              "criterion": "Role alignment",
+              "label": "Role alignment",
+              "max": 15,
+              "before": 11,
+              "after": 13,
+              "beforeReason": "Sales role is visible",
+              "afterReason": "Mid-market AE signal"
+            },
+            {
+              "criterion": "Formatting/readability",
+              "label": "Formatting/readability",
+              "max": 5,
+              "before": 3,
+              "after": 4,
+              "beforeReason": "Readable but thin",
+              "afterReason": "Readable and specific"
+            }
+          ],
+          "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+          "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+        },
+        "scoreRubric": {
+          "label": "Signal Fit Score",
+          "scale": 100,
+          "beforeTotal": 37,
+          "afterTotal": 88,
+          "rows": [
+            {
+              "criterion": "Job keyword/tool match",
+              "label": "Job keyword/tool match",
+              "max": 25,
+              "before": 7,
+              "after": 23,
+              "beforeReason": "No Salesforce or MEDDICC",
+              "afterReason": "Salesforce and MEDDICC appear"
+            },
+            {
+              "criterion": "Measurable proof",
+              "label": "Measurable proof",
+              "max": 20,
+              "before": 3,
+              "after": 18,
+              "beforeReason": "No quota or dollars",
+              "afterReason": "$1.8M pipeline"
+            },
+            {
+              "criterion": "Outcome clarity",
+              "label": "Outcome clarity",
+              "max": 20,
+              "before": 5,
+              "after": 17,
+              "beforeReason": "Sales result unclear",
+              "afterReason": "Qualified pipeline result"
+            },
+            {
+              "criterion": "Scope/context",
+              "label": "Scope/context",
+              "max": 15,
+              "before": 8,
+              "after": 13,
+              "beforeReason": "Territory only",
+              "afterReason": "42 monthly discovery calls"
+            },
+            {
+              "criterion": "Role alignment",
+              "label": "Role alignment",
+              "max": 15,
+              "before": 11,
+              "after": 13,
+              "beforeReason": "Sales role is visible",
+              "afterReason": "Mid-market AE signal"
+            },
+            {
+              "criterion": "Formatting/readability",
+              "label": "Formatting/readability",
+              "max": 5,
+              "before": 3,
+              "after": 4,
+              "beforeReason": "Readable but thin",
+              "afterReason": "Readable and specific"
+            }
+          ],
+          "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+          "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+        },
+        "scoreLabel": "Signal Fit Score",
+        "evidenceLedger": {
+          "sourceLocation": "BrightLedger experience, later pipeline bullet",
+          "proofLine": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes.",
+          "visibleFacts": [
+            {
+              "fact": "Salesforce",
+              "source": "skills section and later pipeline bullet"
+            },
+            {
+              "fact": "$1.8M qualified pipeline",
+              "source": "later pipeline bullet"
+            },
+            {
+              "fact": "42 monthly discovery calls",
+              "source": "later pipeline bullet"
+            },
+            {
+              "fact": "MEDDICC",
+              "source": "skills section and later pipeline bullet"
+            },
+            {
+              "fact": "pipeline generation",
+              "source": "skills section"
+            }
+          ]
+        },
+        "humanReadBeats": [
+          {
+            "beat": "read_line",
+            "text": "Read the exact resume line: Responsible for sales opportunities in assigned territory."
+          },
+          {
+            "beat": "natural_reaction",
+            "text": "The sales work may be there; the pipeline proof is not."
+          },
+          {
+            "beat": "source_evidence",
+            "text": "Point to the visible source evidence in BrightLedger experience, later pipeline bullet: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes."
+          },
+          {
+            "beat": "job_requirement",
+            "text": "Compare it to the job requirement: Salesforce, pipeline generation, quota attainment."
+          },
+          {
+            "beat": "score_reason",
+            "text": "Explain the visible rubric before the score: 37/100."
+          },
+          {
+            "beat": "rewrite",
+            "text": "Rewrite only the same experience: generated 1.8 million in qualified Salesforce pipeline."
+          },
+          {
+            "beat": "score_improvement",
+            "text": "Explain what improved before showing 88/100."
+          }
+        ],
+        "missing": [
+          "Salesforce",
+          "pipeline generation",
+          "quota attainment",
+          "discovery calls",
+          "MEDDICC"
+        ],
+        "markedLabel": "Missing proof",
+        "problemPunchline": "A reviewer cannot search for what you meant to say.",
+        "teardownPunchline": "The low score is from hidden tool and result proof in the rubric.",
+        "fixPunchline": "Now the search term points to real evidence.",
+        "teardownIssues": [
+          "No quota proof",
+          "No CRM signal",
+          "No pipeline number"
+        ],
+        "resumeDocument": {
+          "name": "Maya Torres",
+          "headline": "Account Executive",
+          "contact": [
+            "Chicago, IL",
+            "maya.torres@example.com",
+            "linkedin.com/in/maya-torres"
+          ],
+          "summary": "Quota-carrying SaaS seller with 4 years across SDR and AE roles, focused on discovery, account prioritization, CRM hygiene, and mid-market pipeline creation.",
+          "experience": [
+            {
+              "company": "BrightLedger",
+              "role": "Account Executive",
+              "dates": "2024 - Present",
+              "bullets": [
+                "Managed customer conversations and followed up with prospects.",
+                "Responsible for sales opportunities in assigned territory.",
+                "Worked with marketing and customer success on accounts.",
+                "Maintained Salesforce notes, next steps, and close-date updates for active opportunities.",
+                "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes."
+              ]
+            },
+            {
+              "company": "Pinecone Workflow",
+              "role": "Sales Development Representative",
+              "dates": "2021 - 2024",
+              "bullets": [
+                "Booked discovery meetings with operations and finance leaders.",
+                "Researched account triggers and personalized outbound email sequences.",
+                "Qualified inbound leads and routed opportunities to three AE teams."
+              ]
+            }
+          ],
+          "skills": [
+            "Salesforce",
+            "MEDDICC",
+            "Discovery calls",
+            "Pipeline generation",
+            "Outbound sequencing",
+            "Forecasting",
+            "Mutual action plans"
+          ],
+          "education": "B.S. Business Administration, DePaul University"
+        },
+        "jobDescription": {
+          "title": "Mid-Market Account Executive",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Mid-Market Account Executive who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use Salesforce and pipeline generation to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to quota attainment.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "Salesforce",
+            "pipeline generation",
+            "quota attainment",
+            "discovery calls",
+            "MEDDICC"
+          ],
+          "searchQueries": [
+            "Salesforce",
+            "pipeline generation",
+            "quota attainment",
+            "discovery calls"
+          ]
+        },
+        "voiceover_text": "Here is the search test. I search Salesforce and pipeline generation. Then I read: Responsible for sales opportunities in assigned territory. I would circle that because the proof is buried lower down: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC account notes. So the visible line starts at 37. Rewrite it: Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization. Now the search terms and result are together: 88. Run the free Signal score before you apply."
+      }
+    },
+    {
+      "series": "Job Description Review",
+      "title": "The job post gave the answer key",
+      "hook": "The job post gave the answer key.",
+      "script": "The job post gives the answer key: React, TypeScript, Next.js. The resume line says: Worked on frontend features for internal and customer-facing tools. I would circle that because the proof is buried lower down: Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues. So it starts at 41. Rewrite it: Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues. Now the evidence matches the job: 90. Run the free Signal score before you apply.",
+      "storyboard": [
+        "Case: Frontend Engineer Resume against Frontend Software Engineer.",
+        "Open on the job post with React, TypeScript, and Next.js highlighted.",
+        "Slide to the resume line and circle the mismatch.",
+        "Show the Signal Fit Score rubric before the score reveal.",
+        "Rewrite the line without inventing anything.",
+        "Reveal the rewritten bullet and then the score movement.",
+        "End with the free Signal score CTA."
+      ],
+      "props": {
+        "hook1": "This resume is invisible because the best bullet is bur",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "cta": "Check your free Signal score.",
+        "teardownCaseId": "frontend_engineer",
+        "playbookId": "answer_key",
+        "seriesOverride": "Job Description Review",
+        "creativeFormat": "oneBulletFix",
+        "visualStyle": "highlighter",
+        "formatArchetype": "splitTranslation",
+        "pace": "fast",
+        "subhook": "The resume just did not answer it clearly.",
+        "signalLines": {
+          "hook": "Read the posting.",
+          "problem": "The answer is vague.",
+          "teardown": "Translate. Do not exaggerate.",
+          "fix": "Now the proof matches.",
+          "cta": "Paste the job first."
+        },
+        "renderComposition": "ResumeDeskReview",
+        "resumeName": "Avery Patel",
+        "resumeTitle": "Frontend Engineer Resume",
+        "resumeMeta": [
+          "5 yrs product UI",
+          "React/TypeScript",
+          "Accessibility fixes"
+        ],
+        "jobTitle": "Frontend Software Engineer",
+        "jobKeywords": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "accessibility",
+          "performance"
+        ],
+        "weakBullets": [
+          "Worked on frontend features for internal and customer-facing tools.",
+          "Collaborated with designers and backend engineers.",
+          "Helped improve application performance and user experience."
+        ],
+        "beforeBullet": "Worked on frontend features for internal and customer-facing tools.",
+        "afterBullet": "Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues.",
+        "beforeScore": 41,
+        "afterScore": 90,
+        "scoreBasis": [
+          {
+            "label": "Job keyword/tool match",
+            "before": "Frontend only",
+            "after": "React, TypeScript, Next.js"
+          },
+          {
+            "label": "Measurable proof",
+            "before": "No metric",
+            "after": "14 percent drop-off reduction"
+          },
+          {
+            "label": "Outcome clarity",
+            "before": "Feature work is broad",
+            "after": "Checkout impact is clear"
+          },
+          {
+            "label": "Scope/context",
+            "before": "Internal/customer tools",
+            "after": "Checkout components"
+          }
+        ],
+        "score_rubric": {
+          "label": "Signal Fit Score",
+          "scale": 100,
+          "beforeTotal": 41,
+          "afterTotal": 90,
+          "rows": [
+            {
+              "criterion": "Job keyword/tool match",
+              "label": "Job keyword/tool match",
+              "max": 25,
+              "before": 9,
+              "after": 24,
+              "beforeReason": "Frontend only",
+              "afterReason": "React, TypeScript, Next.js"
+            },
+            {
+              "criterion": "Measurable proof",
+              "label": "Measurable proof",
+              "max": 20,
+              "before": 4,
+              "after": 18,
+              "beforeReason": "No metric",
+              "afterReason": "14 percent drop-off reduction"
+            },
+            {
+              "criterion": "Outcome clarity",
+              "label": "Outcome clarity",
+              "max": 20,
+              "before": 7,
+              "after": 18,
+              "beforeReason": "Feature work is broad",
+              "afterReason": "Checkout impact is clear"
+            },
+            {
+              "criterion": "Scope/context",
+              "label": "Scope/context",
+              "max": 15,
+              "before": 8,
+              "after": 13,
+              "beforeReason": "Internal/customer tools",
+              "afterReason": "Checkout components"
+            },
+            {
+              "criterion": "Role alignment",
+              "label": "Role alignment",
+              "max": 15,
+              "before": 10,
+              "after": 13,
+              "beforeReason": "Engineer fit implied",
+              "afterReason": "Frontend role match"
+            },
+            {
+              "criterion": "Formatting/readability",
+              "label": "Formatting/readability",
+              "max": 5,
+              "before": 3,
+              "after": 4,
+              "beforeReason": "Readable but generic",
+              "afterReason": "Readable and specific"
+            }
+          ],
+          "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+          "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+        },
+        "scoreRubric": {
+          "label": "Signal Fit Score",
+          "scale": 100,
+          "beforeTotal": 41,
+          "afterTotal": 90,
+          "rows": [
+            {
+              "criterion": "Job keyword/tool match",
+              "label": "Job keyword/tool match",
+              "max": 25,
+              "before": 9,
+              "after": 24,
+              "beforeReason": "Frontend only",
+              "afterReason": "React, TypeScript, Next.js"
+            },
+            {
+              "criterion": "Measurable proof",
+              "label": "Measurable proof",
+              "max": 20,
+              "before": 4,
+              "after": 18,
+              "beforeReason": "No metric",
+              "afterReason": "14 percent drop-off reduction"
+            },
+            {
+              "criterion": "Outcome clarity",
+              "label": "Outcome clarity",
+              "max": 20,
+              "before": 7,
+              "after": 18,
+              "beforeReason": "Feature work is broad",
+              "afterReason": "Checkout impact is clear"
+            },
+            {
+              "criterion": "Scope/context",
+              "label": "Scope/context",
+              "max": 15,
+              "before": 8,
+              "after": 13,
+              "beforeReason": "Internal/customer tools",
+              "afterReason": "Checkout components"
+            },
+            {
+              "criterion": "Role alignment",
+              "label": "Role alignment",
+              "max": 15,
+              "before": 10,
+              "after": 13,
+              "beforeReason": "Engineer fit implied",
+              "afterReason": "Frontend role match"
+            },
+            {
+              "criterion": "Formatting/readability",
+              "label": "Formatting/readability",
+              "max": 5,
+              "before": 3,
+              "after": 4,
+              "beforeReason": "Readable but generic",
+              "afterReason": "Readable and specific"
+            }
+          ],
+          "beforeExplanation": "The original line forces the reviewer to infer tools, scope, and outcome.",
+          "afterExplanation": "The rewrite puts the job terms, metric proof, and outcome on the page."
+        },
+        "scoreLabel": "Signal Fit Score",
+        "evidenceLedger": {
+          "sourceLocation": "MapleStack experience, later checkout bullet",
+          "proofLine": "Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues.",
+          "visibleFacts": [
+            {
+              "fact": "React",
+              "source": "skills section and later checkout bullet"
+            },
+            {
+              "fact": "TypeScript",
+              "source": "skills section and later checkout bullet"
+            },
+            {
+              "fact": "Next.js",
+              "source": "skills section and later checkout bullet"
+            },
+            {
+              "fact": "14% form drop-off reduction",
+              "source": "later checkout bullet"
+            },
+            {
+              "fact": "11 accessibility issues",
+              "source": "later checkout bullet"
+            }
+          ]
+        },
+        "humanReadBeats": [
+          {
+            "beat": "read_line",
+            "text": "Read the exact resume line: Worked on frontend features for internal and customer-facing tools."
+          },
+          {
+            "beat": "natural_reaction",
+            "text": "The stack is probably real, but the bullet makes me hunt for it."
+          },
+          {
+            "beat": "source_evidence",
+            "text": "Point to the visible source evidence in MapleStack experience, later checkout bullet: Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues."
+          },
+          {
+            "beat": "job_requirement",
+            "text": "Compare it to the job requirement: React, TypeScript, Next.js."
+          },
+          {
+            "beat": "score_reason",
+            "text": "Explain the visible rubric before the score: 41/100."
+          },
+          {
+            "beat": "rewrite",
+            "text": "Rewrite only the same experience: shipped React and TypeScript checkout work that reduced drop-off 14 percent."
+          },
+          {
+            "beat": "score_improvement",
+            "text": "Explain what improved before showing 90/100."
+          }
+        ],
+        "missing": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "accessibility",
+          "performance"
+        ],
+        "markedLabel": "Too broad",
+        "problemPunchline": "The role language is visible. The resume is not using it.",
+        "teardownPunchline": "Low score reason: broad work, missing tool, no result.",
+        "fixPunchline": "Use the job language only when the experience supports it.",
+        "teardownIssues": [
+          "Stack is vague",
+          "No shipped feature",
+          "No performance result"
+        ],
+        "resumeDocument": {
+          "name": "Avery Patel",
+          "headline": "Frontend Engineer",
+          "contact": [
+            "Seattle, WA",
+            "avery.patel@example.com",
+            "github.com/averypatel"
+          ],
+          "summary": "Frontend engineer with 5 years building product UI, design-system components, checkout flows, and accessibility improvements for SaaS products.",
+          "experience": [
+            {
+              "company": "MapleStack",
+              "role": "Frontend Engineer",
+              "dates": "2022 - Present",
+              "bullets": [
+                "Worked on frontend features for internal and customer-facing tools.",
+                "Collaborated with designers and backend engineers.",
+                "Helped improve application performance and user experience.",
+                "Maintained shared React components used by billing, onboarding, and account teams.",
+                "Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues."
+              ]
+            },
+            {
+              "company": "OrbitCart",
+              "role": "UI Developer",
+              "dates": "2019 - 2022",
+              "bullets": [
+                "Converted Figma designs into responsive TypeScript UI components.",
+                "Triaged customer-reported accessibility issues with QA and support.",
+                "Added Playwright regression coverage for checkout and profile flows."
+              ]
+            }
+          ],
+          "skills": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "Design systems",
+            "WCAG",
+            "Performance profiling",
+            "Playwright"
+          ],
+          "education": "B.S. Computer Science, University of Washington"
+        },
+        "jobDescription": {
+          "title": "Frontend Software Engineer",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Frontend Software Engineer who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use React and TypeScript to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to Next.js.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "accessibility",
+            "performance"
+          ],
+          "searchQueries": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "accessibility"
+          ]
+        },
+        "voiceover_text": "The job post gives the answer key: React, TypeScript, Next.js. The resume line says: Worked on frontend features for internal and customer-facing tools. I would circle that because the proof is buried lower down: Shipped React and TypeScript checkout components in Next.js, reduced form drop-off 14%, and closed 11 WCAG issues. So it starts at 41. Rewrite it: Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues. Now the evidence matches the job: 90. Run the free Signal score before you apply."
+      }
+    }
+  ],
+  "monetization": {
+    "goal": "Use YouTube as a monetization target, but optimize first for site conversions.",
+    "strategy": "Focus on funneling traffic into free Signal score sign-ups that can lead to paid offerings later.",
+    "primaryGoal": "Site revenue from resume / cover letter packages, not ad revenue.",
+    "cta": "Free Signal score -> $9.99 resume or $14.99 bundle.",
+    "tracking": [
+      "utm_source=youtube",
+      "utm_medium=video",
+      "utm_campaign=daily_packet"
+    ],
+    "upsell": "Promote bundle after score completion and multi-role pack after first purchase."
+  },
+  "viewerCustomerReview": {
+    "positive": "This helped me understand why my resume wasn't getting responses!",
+    "constructive": "Could use more practical examples, but loved the humor!"
+  },
+  "creativeQualityGate": {
+    "overallScore": 100,
+    "passed": true,
+    "verdict": "post_grade_script_packet",
+    "notes": [],
+    "blockers": [],
+    "shorts": [
+      {
+        "title": "I would circle this line first",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "I searched the resume. Bad news.",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "The job post gave the answer key",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      }
+    ]
+  }
+}

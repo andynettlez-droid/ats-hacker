@@ -14,6 +14,7 @@ import {
   defaultResumeCrimeSceneProps,
   type ResumeCrimeSceneProps,
 } from "./ResumeCrimeScene";
+import { ResumeDeskReview } from "./ResumeDeskReview";
 import {
   TeardownEpisode,
   teardownEpisodeSchema,
@@ -122,6 +123,21 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         schema={resumeCrimeSceneSchema}
         defaultProps={defaultResumeCrimeSceneProps}
+        calculateMetadata={resumeCrimeSceneMetadata}
+      />
+      <Composition
+        id="ResumeDeskReview"
+        component={ResumeDeskReview}
+        durationInFrames={RESUME_CRIME_SCENE_DURATION * FPS}
+        fps={FPS}
+        width={1080}
+        height={1920}
+        schema={resumeCrimeSceneSchema}
+        defaultProps={{
+          ...defaultResumeCrimeSceneProps,
+          visualStyle: "stickyNote",
+          seriesLabel: "Live resume review",
+        }}
         calculateMetadata={resumeCrimeSceneMetadata}
       />
       <Composition

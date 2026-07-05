@@ -75,11 +75,11 @@ const safeSlug = (value) =>
 
 const quoteForShell = (value) => `"${String(value).replaceAll('"', '\\"')}"`;
 
-const renderStill = ({ propsPath, outputPath, frame }) => {
+const renderStill = ({ composition, propsPath, outputPath, frame }) => {
   const args = [
     "remotion",
     "still",
-    "ResumeCrimeScene",
+    composition,
     path.relative(remotionDir, outputPath),
     `--props=${path.basename(propsPath)}`,
     `--frame=${frame}`,
@@ -253,7 +253,7 @@ const scanSafeArea = (png) => {
 };
 
 const collectShortDrafts = (drafts) =>
-  drafts.filter((draft) => draft.composition === "ResumeCrimeScene");
+  drafts.filter((draft) => draft.composition === "ResumeCrimeScene" || draft.composition === "ResumeDeskReview");
 
 const durationFramesFromProps = (props) => {
   const fps = 30;
@@ -311,7 +311,7 @@ const main = () => {
     for (const frame of framesForProps(props, options.frames)) {
       const outputPath = path.join(outDir, `visual-safe-area-${safeSlug(draft.title || draft.file)}-${frame}.png`);
       if (options.render || !existsSync(outputPath)) {
-        renderStill({ propsPath, outputPath, frame });
+        renderStill({ composition: draft.composition || "ResumeCrimeScene", propsPath, outputPath, frame });
       }
 
       const edges = scanSafeArea(parsePng(outputPath));

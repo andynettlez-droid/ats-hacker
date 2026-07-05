@@ -12,18 +12,17 @@ POSITIVE_MARKERS = {
     "hook": [
         "34/100",
         "92/100",
-        "invisible",
-        "linkedin breath",
-        "fake mustache",
-        "not a wizard",
+        "i would circle",
+        "i searched",
+        "i am reading",
+        "i'm reading",
+        "job post already told you",
         "too vague",
-        "resume crime scene",
+        "live resume review",
         "recruiter",
         "job description",
-        "ghosted",
         "open-book",
         "failed",
-        "npc",
         "ctrl+f",
         "answer key",
     ],
@@ -59,30 +58,19 @@ POSITIVE_MARKERS = {
         "scorecard",
     ],
     "humor": [
-        "beige",
-        "fake mustache",
-        "npc",
-        "oatmeal",
+        "i would circle",
+        "i searched",
+        "i am reading",
+        "i'm reading",
+        "i would write",
+        "i would rewrite",
+        "makes me guess",
+        "cannot see",
         "ctrl+f",
-        "beige wall",
-        "bestie",
-        "rude",
-        "side-eye",
-        "airport",
-        "hoodie",
-        "roast",
-        "mind-reading",
-        "yap",
-        "shrug",
-        "fog",
-        "name badge",
-        "intern fog",
-        "conference room",
-        "computer stuff",
-        "ghosted",
-        "open-book",
-        "shrug",
-        "business casual",
+        "the job post already told you",
+        "qualified people look weaker",
+        "do not fake anything",
+        "name the actual work",
     ],
 }
 
@@ -99,8 +87,10 @@ VISIBLE_ARTIFACT_MARKERS = [
 ]
 
 SERIES_FORMATS = [
+    "live resume review",
     "resume crime scene",
     "ats myth lab",
+    "job description review",
     "job description translation",
     "one bullet fix",
     "recruiter search test",
@@ -125,6 +115,13 @@ DISQUALIFIERS = [
 
 
 GENERIC_OR_WEAK = [
+    "npc",
+    "resume oatmeal",
+    "beige wall",
+    "bestie",
+    "business casual shrug",
+    "fake mustache",
+    "linkedin breath",
     "can your ai resume do the talking",
     "wanna discover",
     "genius at vague buzzwords",
@@ -151,12 +148,13 @@ ROBOTIC_OR_REPEATED = [
     "same person",
     "better signal",
     "same experience, clearer proof",
+    "score receipt",
 ]
 
 
 NARRATIVE_BEAT_GROUPS = {
     "conflict": [
-        "ghosted",
+        "rejected",
         "nothing",
         "vanished",
         "expensive",
@@ -164,7 +162,8 @@ NARRATIVE_BEAT_GROUPS = {
         "failed",
         "why this resume",
         "why this bullet",
-        "npc",
+        "circle",
+        "missed",
         "zero proof",
         "skipped",
     ],
@@ -184,6 +183,10 @@ NARRATIVE_BEAT_GROUPS = {
     "source_line": [
         "resume says",
         "bullet says",
+        "line says",
+        "resume line",
+        "this is the line",
+        "now here is the resume line",
         "resume replies",
         "resume answered",
         "your resume answered",
@@ -196,7 +199,9 @@ NARRATIVE_BEAT_GROUPS = {
     "consequence": [
         "recruiters do not guess",
         "cannot search",
+        "cannot see",
         "made me guess",
+        "makes me guess",
         "buried",
         "hid",
         "hidden",
@@ -212,6 +217,9 @@ NARRATIVE_BEAT_GROUPS = {
     ],
     "fix": [
         "rewrite",
+        "i would write",
+        "i would rewrite",
+        "name the actual work",
         "better bullet",
         "fix is",
         "fix:",
@@ -234,6 +242,24 @@ NARRATIVE_BEAT_GROUPS = {
         "free signal score",
     ],
 }
+
+
+HUMAN_REVIEW_MARKERS = [
+    "i am reading",
+    "i'm reading",
+    "i would circle",
+    "i'd circle",
+    "i would write",
+    "i'd write",
+    "i would rewrite",
+    "if i am screening",
+    "if i'm screening",
+    "here is the job post",
+    "now here is the resume line",
+    "line says",
+    "cannot see",
+    "makes me guess",
+]
 
 
 def read_json(path: Path) -> dict:
@@ -375,6 +401,11 @@ def narrative_beats(blob: str) -> set[str]:
     return found
 
 
+def human_review_marker_count(blob: str) -> int:
+    low = blob.lower()
+    return sum(1 for marker in HUMAN_REVIEW_MARKERS if marker in low)
+
+
 def script_word_count(short: dict) -> int:
     props = short.get("props") if isinstance(short.get("props"), dict) else {}
     text = str(props.get("voiceover_text") or short.get("script") or "")
@@ -433,7 +464,12 @@ def score_short(short: dict) -> dict:
     if count_markers(blob, POSITIVE_MARKERS["humor"]) >= 1:
         score += 12
     else:
-        notes.append("Add one job-search-safe joke or visual gag.")
+        notes.append("Add a natural reviewer reaction or human read, not meme-template slang.")
+
+    if human_review_marker_count(blob) >= 2:
+        score += 10
+    else:
+        blockers.append("Script needs first-person human review language, e.g. 'I would circle...' and 'I would write...'.")
 
     if count_markers(blob, POSITIVE_MARKERS["proof"]) >= 3:
         score += 18
@@ -455,10 +491,10 @@ def score_short(short: dict) -> dict:
         blockers.append(f"Script lacks a complete viral story spine; found beats: {', '.join(sorted(beats)) or 'none'}.")
 
     words = script_word_count(short)
-    if 38 <= words <= 82:
+    if 34 <= words <= 78:
         score += 7
     else:
-        blockers.append(f"Voiceover should be a tight 38-82 words for 18-32s Shorts; current estimate is {words}.")
+        blockers.append(f"Voiceover should be a tight 34-78 words for 18-32s Shorts; current estimate is {words}.")
 
     if has_visible_artifact(blob):
         score += 5
@@ -549,7 +585,18 @@ def score_packet(packet: dict) -> dict:
     if count_markers(blob, POSITIVE_MARKERS["humor"]) >= 3:
         score += 14
     else:
-        notes.append("Needs more safe humor that punches at vague resume language or job-search friction.")
+        notes.append("Needs more natural human-review reactions, not presenter/product-demo narration.")
+
+    if shorts and all(human_review_marker_count("\n".join(str(part) for part in [
+        short.get("title", ""),
+        short.get("hook", ""),
+        short.get("script", ""),
+        "\n".join(short.get("storyboard", []) or []),
+        short.get("props", {}).get("voiceover_text", "") if isinstance(short.get("props"), dict) else "",
+    ])) >= 2 for short in shorts[:3]):
+        score += 10
+    else:
+        blockers.append("Each short needs first-person human resume-review language before it can pass creative QA.")
 
     if has_numbered_payoff(blob) or any(has_score_props(short) for short in packet.get("shorts", []) or [] if isinstance(short, dict)):
         score += 10

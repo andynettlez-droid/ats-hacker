@@ -191,6 +191,111 @@
   },
   {
     "date": "2026-07-04",
+    "topic": "Human desk resume review inspired by Gohar Khan resume tips",
+    "series": "Daily Research Packet",
+    "packet": "marketing\\daily_content\\2026-07-04-human-desk-resume-review-inspired-by-gohar-khan-resume-tips",
+    "youtube": {
+      "title": "Human desk resume review inspired by Gohar Khan resume tips | Resume Teardown",
+      "status": "render_ready_review_required",
+      "target": "daily long-form YouTube",
+      "manifest": "marketing\\daily_content\\2026-07-04-human-desk-resume-review-inspired-by-gohar-khan-resume-tips\\channel_manifest.json",
+      "props": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_episode.json",
+      "output": "marketing/remotion/out/daily-human-desk-resume-review-inspired-by-gohar-khan-resume-tips-episode.mp4",
+      "autopostDraft": "marketing\\daily_content\\2026-07-04-human-desk-resume-review-inspired-by-gohar-khan-resume-tips\\autopost_drafts.json",
+      "qaGate": {
+        "required": true,
+        "passed": false,
+        "status": "requires_render_review"
+      }
+    },
+    "thumbnail": {
+      "composition": "SignalThumbnail",
+      "props": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_thumbnail.json",
+      "output": "marketing/remotion/out/daily-human-desk-resume-review-inspired-by-gohar-khan-resume-tips-thumbnail.png",
+      "format": "1280x720",
+      "status": "render_ready"
+    },
+    "shorts": [
+      {
+        "title": "I would rewrite this bullet immediately",
+        "brief": "marketing\\video_briefs\\2026-07-04-human-desk-resume-review-inspired-by-gohar-khan-resume-tips-short-1.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_1.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": null,
+          "voiceName": null,
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      },
+      {
+        "title": "The Ctrl+F test this resume fails",
+        "brief": "marketing\\video_briefs\\2026-07-04-human-desk-resume-review-inspired-by-gohar-khan-resume-tips-short-2.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_2.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": null,
+          "voiceName": null,
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      },
+      {
+        "title": "This resume missed the job posting",
+        "brief": "marketing\\video_briefs\\2026-07-04-human-desk-resume-review-inspired-by-gohar-khan-resume-tips-short-3.md",
+        "props": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_3.json",
+        "status": "render_ready",
+        "audioReadiness": {
+          "studioVoiceover": true,
+          "quietMusic": true,
+          "provider": "elevenlabs",
+          "voiceId": null,
+          "voiceName": null,
+          "reason": "ready via elevenlabs",
+          "wordLevelCaptions": true
+        }
+      }
+    ],
+    "creativeQuality": {
+      "overallScore": 100,
+      "passed": true,
+      "verdict": "post_grade_script_packet",
+      "notes": [],
+      "blockers": [],
+      "shorts": [
+        {
+          "title": "I would rewrite this bullet immediately",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "The Ctrl+F test this resume fails",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        },
+        {
+          "title": "This resume missed the job posting",
+          "score": 100,
+          "passed": true,
+          "notes": [],
+          "blockers": []
+        }
+      ]
+    },
+    "reviewStatus": "needs_render_and_review"
+  },
+  {
+    "date": "2026-07-04",
     "topic": "Online-native recruiter roast score receipt clips",
     "series": "Daily Research Packet",
     "packet": "marketing\\daily_content\\2026-07-04-online-native-recruiter-roast-score-receipt-clips",

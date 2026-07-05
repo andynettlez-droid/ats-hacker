@@ -1,0 +1,1842 @@
+{
+  "title": "Human desk resume review inspired by Gohar Khan resume tips | Resume Teardown",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "cta": "Paste the job description and check your free Signal score before you apply.",
+  "sections": [
+    {
+      "label": "Cold open",
+      "script": "Human desk resume review inspired by Gohar Khan resume tips This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
+      "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+    },
+    {
+      "label": "Open loop",
+      "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+      "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff."
+    },
+    {
+      "label": "Translate the job description",
+      "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+      "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+    },
+    {
+      "label": "Recruiter search test",
+      "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+      "visual": "Search console typing the first three job-description terms and showing weak matches."
+    },
+    {
+      "label": "Resume crime scene",
+      "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
+      "visual": "Red/yellow markups over weak bullets."
+    },
+    {
+      "label": "Why it gets missed",
+      "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+      "visual": "Zoom into the weak bullet and place missing proof labels beside it."
+    },
+    {
+      "label": "Live bullet fix",
+      "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. No fake claims, just usable evidence.",
+      "visual": "Before/after bullet rewrite."
+    },
+    {
+      "label": "Score reveal",
+      "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+      "visual": "Score meter jumps from low match to high match with before/after resume panels."
+    },
+    {
+      "label": "Trust and CTA",
+      "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+      "visual": "Free Signal score page, trust badges, and bundle CTA."
+    }
+  ],
+  "keywords": [
+    "SQL",
+    "Tableau",
+    "cohort analysis",
+    "churn dashboard",
+    "stakeholder insights"
+  ],
+  "weakBullets": [
+    "Created reports for business teams and leadership.",
+    "Worked with data to help teams understand customer trends.",
+    "Helped maintain dashboards for weekly performance meetings."
+  ],
+  "beforeBullet": "Created reports for business teams and leadership.",
+  "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+  "beforeScore": 32,
+  "afterScore": 89,
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.11,
+  "voiceoverVolume": 0.94,
+  "voiceover_text": "Human desk resume review inspired by Gohar Khan resume tips This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find. We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job. Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for. If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad. Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof. A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify. The fix is to say the real work clearly: what tool, what scope, what audience, and what result. No fake claims, just usable evidence. Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see. Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+  "voiceoverSegments": [
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-1-voiceover.mp3",
+      "fromFrame": 240,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-1-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Human",
+          "startMs": 58,
+          "endMs": 372,
+          "timestampMs": 58,
+          "confidence": null
+        },
+        {
+          "text": "desk",
+          "startMs": 430,
+          "endMs": 685,
+          "timestampMs": 430,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 755,
+          "endMs": 1126,
+          "timestampMs": 755,
+          "confidence": null
+        },
+        {
+          "text": "review",
+          "startMs": 1173,
+          "endMs": 1521,
+          "timestampMs": 1173,
+          "confidence": null
+        },
+        {
+          "text": "inspired",
+          "startMs": 1637,
+          "endMs": 2136,
+          "timestampMs": 1637,
+          "confidence": null
+        },
+        {
+          "text": "by",
+          "startMs": 2171,
+          "endMs": 2276,
+          "timestampMs": 2171,
+          "confidence": null
+        },
+        {
+          "text": "Gohar",
+          "startMs": 2345,
+          "endMs": 2717,
+          "timestampMs": 2345,
+          "confidence": null
+        },
+        {
+          "text": "Khan",
+          "startMs": 2786,
+          "endMs": 3088,
+          "timestampMs": 2786,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 3170,
+          "endMs": 3564,
+          "timestampMs": 3170,
+          "confidence": null
+        },
+        {
+          "text": "tips",
+          "startMs": 3611,
+          "endMs": 3994,
+          "timestampMs": 3611,
+          "confidence": null
+        },
+        {
+          "text": "This",
+          "startMs": 4435,
+          "endMs": 4644,
+          "timestampMs": 4435,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 4725,
+          "endMs": 5074,
+          "timestampMs": 4725,
+          "confidence": null
+        },
+        {
+          "text": "looks",
+          "startMs": 5108,
+          "endMs": 5294,
+          "timestampMs": 5108,
+          "confidence": null
+        },
+        {
+          "text": "professional,",
+          "startMs": 5341,
+          "endMs": 6049,
+          "timestampMs": 5341,
+          "confidence": null
+        },
+        {
+          "text": "which",
+          "startMs": 6095,
+          "endMs": 6281,
+          "timestampMs": 6095,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 6316,
+          "endMs": 6374,
+          "timestampMs": 6316,
+          "confidence": null
+        },
+        {
+          "text": "why",
+          "startMs": 6420,
+          "endMs": 6560,
+          "timestampMs": 6420,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 6618,
+          "endMs": 6687,
+          "timestampMs": 6618,
+          "confidence": null
+        },
+        {
+          "text": "mistake",
+          "startMs": 6734,
+          "endMs": 7105,
+          "timestampMs": 6734,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 7140,
+          "endMs": 7210,
+          "timestampMs": 7140,
+          "confidence": null
+        },
+        {
+          "text": "dangerous.",
+          "startMs": 7268,
+          "endMs": 7988,
+          "timestampMs": 7268,
+          "confidence": null
+        },
+        {
+          "text": "On",
+          "startMs": 8591,
+          "endMs": 8766,
+          "timestampMs": 8591,
+          "confidence": null
+        },
+        {
+          "text": "screen,",
+          "startMs": 8835,
+          "endMs": 9265,
+          "timestampMs": 8835,
+          "confidence": null
+        },
+        {
+          "text": "it",
+          "startMs": 9300,
+          "endMs": 9404,
+          "timestampMs": 9300,
+          "confidence": null
+        },
+        {
+          "text": "feels",
+          "startMs": 9451,
+          "endMs": 9694,
+          "timestampMs": 9451,
+          "confidence": null
+        },
+        {
+          "text": "polished.",
+          "startMs": 9752,
+          "endMs": 10344,
+          "timestampMs": 9752,
+          "confidence": null
+        },
+        {
+          "text": "In",
+          "startMs": 10670,
+          "endMs": 10797,
+          "timestampMs": 10670,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 10832,
+          "endMs": 10855,
+          "timestampMs": 10832,
+          "confidence": null
+        },
+        {
+          "text": "recruiter",
+          "startMs": 10925,
+          "endMs": 11366,
+          "timestampMs": 10925,
+          "confidence": null
+        },
+        {
+          "text": "search,",
+          "startMs": 11424,
+          "endMs": 11796,
+          "timestampMs": 11424,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 11819,
+          "endMs": 11912,
+          "timestampMs": 11819,
+          "confidence": null
+        },
+        {
+          "text": "proof",
+          "startMs": 11970,
+          "endMs": 12190,
+          "timestampMs": 11970,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 12249,
+          "endMs": 12318,
+          "timestampMs": 12249,
+          "confidence": null
+        },
+        {
+          "text": "still",
+          "startMs": 12353,
+          "endMs": 12562,
+          "timestampMs": 12353,
+          "confidence": null
+        },
+        {
+          "text": "hard",
+          "startMs": 12632,
+          "endMs": 12817,
+          "timestampMs": 12632,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 12852,
+          "endMs": 12910,
+          "timestampMs": 12852,
+          "confidence": null
+        },
+        {
+          "text": "find.",
+          "startMs": 12980,
+          "endMs": 13468,
+          "timestampMs": 12980,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-2-voiceover.mp3",
+      "fromFrame": 1753,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-2-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "We",
+          "startMs": 70,
+          "endMs": 163,
+          "timestampMs": 70,
+          "confidence": null
+        },
+        {
+          "text": "are",
+          "startMs": 197,
+          "endMs": 290,
+          "timestampMs": 197,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 325,
+          "endMs": 441,
+          "timestampMs": 325,
+          "confidence": null
+        },
+        {
+          "text": "adding",
+          "startMs": 499,
+          "endMs": 801,
+          "timestampMs": 499,
+          "confidence": null
+        },
+        {
+          "text": "fake",
+          "startMs": 882,
+          "endMs": 1161,
+          "timestampMs": 882,
+          "confidence": null
+        },
+        {
+          "text": "experience.",
+          "startMs": 1196,
+          "endMs": 1962,
+          "timestampMs": 1196,
+          "confidence": null
+        },
+        {
+          "text": "We",
+          "startMs": 2206,
+          "endMs": 2334,
+          "timestampMs": 2206,
+          "confidence": null
+        },
+        {
+          "text": "are",
+          "startMs": 2380,
+          "endMs": 2485,
+          "timestampMs": 2380,
+          "confidence": null
+        },
+        {
+          "text": "checking",
+          "startMs": 2519,
+          "endMs": 2856,
+          "timestampMs": 2519,
+          "confidence": null
+        },
+        {
+          "text": "whether",
+          "startMs": 2891,
+          "endMs": 3111,
+          "timestampMs": 2891,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 3158,
+          "endMs": 3228,
+          "timestampMs": 3158,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 3286,
+          "endMs": 3692,
+          "timestampMs": 3286,
+          "confidence": null
+        },
+        {
+          "text": "explains",
+          "startMs": 3738,
+          "endMs": 4284,
+          "timestampMs": 3738,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 4331,
+          "endMs": 4400,
+          "timestampMs": 4331,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 4458,
+          "endMs": 4632,
+          "timestampMs": 4458,
+          "confidence": null
+        },
+        {
+          "text": "experience",
+          "startMs": 4690,
+          "endMs": 5271,
+          "timestampMs": 4690,
+          "confidence": null
+        },
+        {
+          "text": "in",
+          "startMs": 5317,
+          "endMs": 5375,
+          "timestampMs": 5317,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5422,
+          "endMs": 5492,
+          "timestampMs": 5422,
+          "confidence": null
+        },
+        {
+          "text": "same",
+          "startMs": 5538,
+          "endMs": 5770,
+          "timestampMs": 5538,
+          "confidence": null
+        },
+        {
+          "text": "language",
+          "startMs": 5817,
+          "endMs": 6188,
+          "timestampMs": 5817,
+          "confidence": null
+        },
+        {
+          "text": "as",
+          "startMs": 6223,
+          "endMs": 6327,
+          "timestampMs": 6223,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 6374,
+          "endMs": 6444,
+          "timestampMs": 6374,
+          "confidence": null
+        },
+        {
+          "text": "target",
+          "startMs": 6490,
+          "endMs": 6850,
+          "timestampMs": 6490,
+          "confidence": null
+        },
+        {
+          "text": "job.",
+          "startMs": 6908,
+          "endMs": 7314,
+          "timestampMs": 6908,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-3-voiceover.mp3",
+      "fromFrame": 3266,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-3-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Before",
+          "startMs": 58,
+          "endMs": 360,
+          "timestampMs": 58,
+          "confidence": null
+        },
+        {
+          "text": "touching",
+          "startMs": 406,
+          "endMs": 720,
+          "timestampMs": 406,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 766,
+          "endMs": 836,
+          "timestampMs": 766,
+          "confidence": null
+        },
+        {
+          "text": "resume,",
+          "startMs": 882,
+          "endMs": 1405,
+          "timestampMs": 882,
+          "confidence": null
+        },
+        {
+          "text": "pull",
+          "startMs": 1556,
+          "endMs": 1741,
+          "timestampMs": 1556,
+          "confidence": null
+        },
+        {
+          "text": "out",
+          "startMs": 1788,
+          "endMs": 1904,
+          "timestampMs": 1788,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1939,
+          "endMs": 2009,
+          "timestampMs": 1939,
+          "confidence": null
+        },
+        {
+          "text": "role",
+          "startMs": 2067,
+          "endMs": 2287,
+          "timestampMs": 2067,
+          "confidence": null
+        },
+        {
+          "text": "title,",
+          "startMs": 2310,
+          "endMs": 2775,
+          "timestampMs": 2310,
+          "confidence": null
+        },
+        {
+          "text": "tools,",
+          "startMs": 2844,
+          "endMs": 3344,
+          "timestampMs": 2844,
+          "confidence": null
+        },
+        {
+          "text": "responsibilities,",
+          "startMs": 3413,
+          "endMs": 4412,
+          "timestampMs": 3413,
+          "confidence": null
+        },
+        {
+          "text": "metrics,",
+          "startMs": 4621,
+          "endMs": 5108,
+          "timestampMs": 4621,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 5132,
+          "endMs": 5224,
+          "timestampMs": 5132,
+          "confidence": null
+        },
+        {
+          "text": "proof",
+          "startMs": 5283,
+          "endMs": 5503,
+          "timestampMs": 5283,
+          "confidence": null
+        },
+        {
+          "text": "signals",
+          "startMs": 5550,
+          "endMs": 5991,
+          "timestampMs": 5550,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 6107,
+          "endMs": 6223,
+          "timestampMs": 6107,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 6281,
+          "endMs": 6467,
+          "timestampMs": 6281,
+          "confidence": null
+        },
+        {
+          "text": "actually",
+          "startMs": 6536,
+          "endMs": 6885,
+          "timestampMs": 6536,
+          "confidence": null
+        },
+        {
+          "text": "asks",
+          "startMs": 6954,
+          "endMs": 7279,
+          "timestampMs": 6954,
+          "confidence": null
+        },
+        {
+          "text": "for.",
+          "startMs": 7326,
+          "endMs": 7686,
+          "timestampMs": 7326,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-4-voiceover.mp3",
+      "fromFrame": 4779,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-4-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "If",
+          "startMs": 35,
+          "endMs": 151,
+          "timestampMs": 35,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 209,
+          "endMs": 244,
+          "timestampMs": 209,
+          "confidence": null
+        },
+        {
+          "text": "recruiter",
+          "startMs": 313,
+          "endMs": 789,
+          "timestampMs": 313,
+          "confidence": null
+        },
+        {
+          "text": "searches",
+          "startMs": 871,
+          "endMs": 1300,
+          "timestampMs": 871,
+          "confidence": null
+        },
+        {
+          "text": "for",
+          "startMs": 1347,
+          "endMs": 1440,
+          "timestampMs": 1347,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1474,
+          "endMs": 1544,
+          "timestampMs": 1474,
+          "confidence": null
+        },
+        {
+          "text": "first",
+          "startMs": 1614,
+          "endMs": 1892,
+          "timestampMs": 1614,
+          "confidence": null
+        },
+        {
+          "text": "three",
+          "startMs": 1939,
+          "endMs": 2171,
+          "timestampMs": 1939,
+          "confidence": null
+        },
+        {
+          "text": "important",
+          "startMs": 2206,
+          "endMs": 2635,
+          "timestampMs": 2206,
+          "confidence": null
+        },
+        {
+          "text": "terms",
+          "startMs": 2682,
+          "endMs": 3030,
+          "timestampMs": 2682,
+          "confidence": null
+        },
+        {
+          "text": "from",
+          "startMs": 3065,
+          "endMs": 3204,
+          "timestampMs": 3065,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 3239,
+          "endMs": 3309,
+          "timestampMs": 3239,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 3367,
+          "endMs": 3541,
+          "timestampMs": 3367,
+          "confidence": null
+        },
+        {
+          "text": "description,",
+          "startMs": 3599,
+          "endMs": 4272,
+          "timestampMs": 3599,
+          "confidence": null
+        },
+        {
+          "text": "this",
+          "startMs": 4598,
+          "endMs": 4783,
+          "timestampMs": 4598,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 4876,
+          "endMs": 5259,
+          "timestampMs": 4876,
+          "confidence": null
+        },
+        {
+          "text": "should",
+          "startMs": 5283,
+          "endMs": 5457,
+          "timestampMs": 5283,
+          "confidence": null
+        },
+        {
+          "text": "produce",
+          "startMs": 5492,
+          "endMs": 5863,
+          "timestampMs": 5492,
+          "confidence": null
+        },
+        {
+          "text": "useful",
+          "startMs": 5921,
+          "endMs": 6246,
+          "timestampMs": 5921,
+          "confidence": null
+        },
+        {
+          "text": "hits.",
+          "startMs": 6316,
+          "endMs": 6827,
+          "timestampMs": 6316,
+          "confidence": null
+        },
+        {
+          "text": "Right",
+          "startMs": 7268,
+          "endMs": 7488,
+          "timestampMs": 7268,
+          "confidence": null
+        },
+        {
+          "text": "now,",
+          "startMs": 7535,
+          "endMs": 7837,
+          "timestampMs": 7535,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 7883,
+          "endMs": 7988,
+          "timestampMs": 7883,
+          "confidence": null
+        },
+        {
+          "text": "source",
+          "startMs": 8045,
+          "endMs": 8313,
+          "timestampMs": 8045,
+          "confidence": null
+        },
+        {
+          "text": "bullet",
+          "startMs": 8336,
+          "endMs": 8591,
+          "timestampMs": 8336,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 8638,
+          "endMs": 8719,
+          "timestampMs": 8638,
+          "confidence": null
+        },
+        {
+          "text": "too",
+          "startMs": 8766,
+          "endMs": 8916,
+          "timestampMs": 8766,
+          "confidence": null
+        },
+        {
+          "text": "broad.",
+          "startMs": 8975,
+          "endMs": 9462,
+          "timestampMs": 8975,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-5-voiceover.mp3",
+      "fromFrame": 6292,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-5-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Now",
+          "startMs": 70,
+          "endMs": 209,
+          "timestampMs": 70,
+          "confidence": null
+        },
+        {
+          "text": "compare",
+          "startMs": 267,
+          "endMs": 673,
+          "timestampMs": 267,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 708,
+          "endMs": 778,
+          "timestampMs": 708,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 836,
+          "endMs": 1161,
+          "timestampMs": 836,
+          "confidence": null
+        },
+        {
+          "text": "line",
+          "startMs": 1207,
+          "endMs": 1428,
+          "timestampMs": 1207,
+          "confidence": null
+        },
+        {
+          "text": "by",
+          "startMs": 1463,
+          "endMs": 1591,
+          "timestampMs": 1463,
+          "confidence": null
+        },
+        {
+          "text": "line.",
+          "startMs": 1672,
+          "endMs": 2159,
+          "timestampMs": 1672,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 2763,
+          "endMs": 2879,
+          "timestampMs": 2763,
+          "confidence": null
+        },
+        {
+          "text": "weak",
+          "startMs": 2926,
+          "endMs": 3111,
+          "timestampMs": 2926,
+          "confidence": null
+        },
+        {
+          "text": "bullet",
+          "startMs": 3170,
+          "endMs": 3437,
+          "timestampMs": 3170,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 3483,
+          "endMs": 3564,
+          "timestampMs": 3483,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 3634,
+          "endMs": 3762,
+          "timestampMs": 3634,
+          "confidence": null
+        },
+        {
+          "text": "dishonest.",
+          "startMs": 3808,
+          "endMs": 4423,
+          "timestampMs": 3808,
+          "confidence": null
+        },
+        {
+          "text": "It",
+          "startMs": 4574,
+          "endMs": 4702,
+          "timestampMs": 4574,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 4748,
+          "endMs": 4818,
+          "timestampMs": 4748,
+          "confidence": null
+        },
+        {
+          "text": "just",
+          "startMs": 4865,
+          "endMs": 5039,
+          "timestampMs": 4865,
+          "confidence": null
+        },
+        {
+          "text": "too",
+          "startMs": 5074,
+          "endMs": 5224,
+          "timestampMs": 5074,
+          "confidence": null
+        },
+        {
+          "text": "vague",
+          "startMs": 5306,
+          "endMs": 5666,
+          "timestampMs": 5306,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 5700,
+          "endMs": 5759,
+          "timestampMs": 5700,
+          "confidence": null
+        },
+        {
+          "text": "carry",
+          "startMs": 5828,
+          "endMs": 6118,
+          "timestampMs": 5828,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 6165,
+          "endMs": 6235,
+          "timestampMs": 6165,
+          "confidence": null
+        },
+        {
+          "text": "role-specific",
+          "startMs": 6293,
+          "endMs": 7001,
+          "timestampMs": 6293,
+          "confidence": null
+        },
+        {
+          "text": "proof.",
+          "startMs": 7059,
+          "endMs": 7535,
+          "timestampMs": 7059,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-6-voiceover.mp3",
+      "fromFrame": 7805,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-6-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "A",
+          "startMs": 46,
+          "endMs": 93,
+          "timestampMs": 46,
+          "confidence": null
+        },
+        {
+          "text": "polished",
+          "startMs": 174,
+          "endMs": 534,
+          "timestampMs": 174,
+          "confidence": null
+        },
+        {
+          "text": "sentence",
+          "startMs": 592,
+          "endMs": 1045,
+          "timestampMs": 592,
+          "confidence": null
+        },
+        {
+          "text": "can",
+          "startMs": 1080,
+          "endMs": 1207,
+          "timestampMs": 1080,
+          "confidence": null
+        },
+        {
+          "text": "still",
+          "startMs": 1265,
+          "endMs": 1498,
+          "timestampMs": 1265,
+          "confidence": null
+        },
+        {
+          "text": "hide",
+          "startMs": 1556,
+          "endMs": 1776,
+          "timestampMs": 1556,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1811,
+          "endMs": 1881,
+          "timestampMs": 1811,
+          "confidence": null
+        },
+        {
+          "text": "most",
+          "startMs": 1916,
+          "endMs": 2090,
+          "timestampMs": 1916,
+          "confidence": null
+        },
+        {
+          "text": "important",
+          "startMs": 2136,
+          "endMs": 2577,
+          "timestampMs": 2136,
+          "confidence": null
+        },
+        {
+          "text": "evidence.",
+          "startMs": 2635,
+          "endMs": 3193,
+          "timestampMs": 2635,
+          "confidence": null
+        },
+        {
+          "text": "Recruiters",
+          "startMs": 3576,
+          "endMs": 4133,
+          "timestampMs": 3576,
+          "confidence": null
+        },
+        {
+          "text": "skim",
+          "startMs": 4168,
+          "endMs": 4423,
+          "timestampMs": 4168,
+          "confidence": null
+        },
+        {
+          "text": "for",
+          "startMs": 4505,
+          "endMs": 4609,
+          "timestampMs": 4505,
+          "confidence": null
+        },
+        {
+          "text": "tools,",
+          "startMs": 4667,
+          "endMs": 5120,
+          "timestampMs": 4667,
+          "confidence": null
+        },
+        {
+          "text": "scope,",
+          "startMs": 5236,
+          "endMs": 5642,
+          "timestampMs": 5236,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 5666,
+          "endMs": 5759,
+          "timestampMs": 5666,
+          "confidence": null
+        },
+        {
+          "text": "outcomes",
+          "startMs": 5828,
+          "endMs": 6316,
+          "timestampMs": 5828,
+          "confidence": null
+        },
+        {
+          "text": "because",
+          "startMs": 6560,
+          "endMs": 6827,
+          "timestampMs": 6560,
+          "confidence": null
+        },
+        {
+          "text": "those",
+          "startMs": 6850,
+          "endMs": 7094,
+          "timestampMs": 6850,
+          "confidence": null
+        },
+        {
+          "text": "make",
+          "startMs": 7140,
+          "endMs": 7314,
+          "timestampMs": 7140,
+          "confidence": null
+        },
+        {
+          "text": "fit",
+          "startMs": 7372,
+          "endMs": 7605,
+          "timestampMs": 7372,
+          "confidence": null
+        },
+        {
+          "text": "easy",
+          "startMs": 7697,
+          "endMs": 7976,
+          "timestampMs": 7697,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 8034,
+          "endMs": 8092,
+          "timestampMs": 8034,
+          "confidence": null
+        },
+        {
+          "text": "verify.",
+          "startMs": 8150,
+          "endMs": 8766,
+          "timestampMs": 8150,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-7-voiceover.mp3",
+      "fromFrame": 9318,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-7-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "The",
+          "startMs": 58,
+          "endMs": 151,
+          "timestampMs": 58,
+          "confidence": null
+        },
+        {
+          "text": "fix",
+          "startMs": 221,
+          "endMs": 441,
+          "timestampMs": 221,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 499,
+          "endMs": 580,
+          "timestampMs": 499,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 627,
+          "endMs": 685,
+          "timestampMs": 627,
+          "confidence": null
+        },
+        {
+          "text": "say",
+          "startMs": 743,
+          "endMs": 906,
+          "timestampMs": 743,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 964,
+          "endMs": 1033,
+          "timestampMs": 964,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 1103,
+          "endMs": 1324,
+          "timestampMs": 1103,
+          "confidence": null
+        },
+        {
+          "text": "work",
+          "startMs": 1382,
+          "endMs": 1625,
+          "timestampMs": 1382,
+          "confidence": null
+        },
+        {
+          "text": "clearly:",
+          "startMs": 1683,
+          "endMs": 2229,
+          "timestampMs": 1683,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 2438,
+          "endMs": 2659,
+          "timestampMs": 2438,
+          "confidence": null
+        },
+        {
+          "text": "tool,",
+          "startMs": 2717,
+          "endMs": 3158,
+          "timestampMs": 2717,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 3251,
+          "endMs": 3460,
+          "timestampMs": 3251,
+          "confidence": null
+        },
+        {
+          "text": "scope,",
+          "startMs": 3529,
+          "endMs": 4005,
+          "timestampMs": 3529,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 4214,
+          "endMs": 4447,
+          "timestampMs": 4214,
+          "confidence": null
+        },
+        {
+          "text": "audience,",
+          "startMs": 4505,
+          "endMs": 5074,
+          "timestampMs": 4505,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 5108,
+          "endMs": 5248,
+          "timestampMs": 5108,
+          "confidence": null
+        },
+        {
+          "text": "what",
+          "startMs": 5306,
+          "endMs": 5445,
+          "timestampMs": 5306,
+          "confidence": null
+        },
+        {
+          "text": "result.",
+          "startMs": 5515,
+          "endMs": 6084,
+          "timestampMs": 5515,
+          "confidence": null
+        },
+        {
+          "text": "No",
+          "startMs": 6594,
+          "endMs": 6780,
+          "timestampMs": 6594,
+          "confidence": null
+        },
+        {
+          "text": "fake",
+          "startMs": 6861,
+          "endMs": 7117,
+          "timestampMs": 6861,
+          "confidence": null
+        },
+        {
+          "text": "claims,",
+          "startMs": 7140,
+          "endMs": 7686,
+          "timestampMs": 7140,
+          "confidence": null
+        },
+        {
+          "text": "just",
+          "startMs": 7802,
+          "endMs": 7999,
+          "timestampMs": 7802,
+          "confidence": null
+        },
+        {
+          "text": "usable",
+          "startMs": 8069,
+          "endMs": 8417,
+          "timestampMs": 8069,
+          "confidence": null
+        },
+        {
+          "text": "evidence.",
+          "startMs": 8464,
+          "endMs": 9067,
+          "timestampMs": 8464,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-8-voiceover.mp3",
+      "fromFrame": 10831,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-8-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Once",
+          "startMs": 35,
+          "endMs": 255,
+          "timestampMs": 35,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 290,
+          "endMs": 372,
+          "timestampMs": 290,
+          "confidence": null
+        },
+        {
+          "text": "evidence",
+          "startMs": 441,
+          "endMs": 836,
+          "timestampMs": 441,
+          "confidence": null
+        },
+        {
+          "text": "matches",
+          "startMs": 894,
+          "endMs": 1242,
+          "timestampMs": 894,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 1300,
+          "endMs": 1370,
+          "timestampMs": 1300,
+          "confidence": null
+        },
+        {
+          "text": "role",
+          "startMs": 1428,
+          "endMs": 1649,
+          "timestampMs": 1428,
+          "confidence": null
+        },
+        {
+          "text": "language,",
+          "startMs": 1683,
+          "endMs": 2194,
+          "timestampMs": 1683,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 2310,
+          "endMs": 2415,
+          "timestampMs": 2310,
+          "confidence": null
+        },
+        {
+          "text": "example",
+          "startMs": 2473,
+          "endMs": 2926,
+          "timestampMs": 2473,
+          "confidence": null
+        },
+        {
+          "text": "score",
+          "startMs": 2961,
+          "endMs": 3262,
+          "timestampMs": 2961,
+          "confidence": null
+        },
+        {
+          "text": "moves",
+          "startMs": 3320,
+          "endMs": 3587,
+          "timestampMs": 3320,
+          "confidence": null
+        },
+        {
+          "text": "up.",
+          "startMs": 3669,
+          "endMs": 4040,
+          "timestampMs": 3669,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 4481,
+          "endMs": 4586,
+          "timestampMs": 4481,
+          "confidence": null
+        },
+        {
+          "text": "point",
+          "startMs": 4644,
+          "endMs": 4865,
+          "timestampMs": 4644,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 4911,
+          "endMs": 4981,
+          "timestampMs": 4911,
+          "confidence": null
+        },
+        {
+          "text": "not",
+          "startMs": 5039,
+          "endMs": 5166,
+          "timestampMs": 5039,
+          "confidence": null
+        },
+        {
+          "text": "gaming",
+          "startMs": 5224,
+          "endMs": 5561,
+          "timestampMs": 5224,
+          "confidence": null
+        },
+        {
+          "text": "a",
+          "startMs": 5608,
+          "endMs": 5631,
+          "timestampMs": 5608,
+          "confidence": null
+        },
+        {
+          "text": "robot.",
+          "startMs": 5700,
+          "endMs": 6304,
+          "timestampMs": 5700,
+          "confidence": null
+        },
+        {
+          "text": "The",
+          "startMs": 6745,
+          "endMs": 6861,
+          "timestampMs": 6745,
+          "confidence": null
+        },
+        {
+          "text": "point",
+          "startMs": 6920,
+          "endMs": 7152,
+          "timestampMs": 6920,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 7198,
+          "endMs": 7279,
+          "timestampMs": 7198,
+          "confidence": null
+        },
+        {
+          "text": "making",
+          "startMs": 7349,
+          "endMs": 7628,
+          "timestampMs": 7349,
+          "confidence": null
+        },
+        {
+          "text": "real",
+          "startMs": 7709,
+          "endMs": 7930,
+          "timestampMs": 7709,
+          "confidence": null
+        },
+        {
+          "text": "fit",
+          "startMs": 8010,
+          "endMs": 8266,
+          "timestampMs": 8010,
+          "confidence": null
+        },
+        {
+          "text": "easier",
+          "startMs": 8359,
+          "endMs": 8719,
+          "timestampMs": 8359,
+          "confidence": null
+        },
+        {
+          "text": "to",
+          "startMs": 8766,
+          "endMs": 8824,
+          "timestampMs": 8766,
+          "confidence": null
+        },
+        {
+          "text": "see.",
+          "startMs": 8905,
+          "endMs": 9334,
+          "timestampMs": 8905,
+          "confidence": null
+        }
+      ]
+    },
+    {
+      "src": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-9-voiceover.mp3",
+      "fromFrame": 12344,
+      "volume": 0.94,
+      "provider": "elevenlabs",
+      "alignmentRef": "audio/daily-2026-07-04-human-desk-resume-review-inspired--episode-9-voiceover.alignment.json",
+      "captions": [
+        {
+          "text": "Signal",
+          "startMs": 35,
+          "endMs": 406,
+          "timestampMs": 35,
+          "confidence": null
+        },
+        {
+          "text": "automates",
+          "startMs": 464,
+          "endMs": 964,
+          "timestampMs": 464,
+          "confidence": null
+        },
+        {
+          "text": "this",
+          "startMs": 1010,
+          "endMs": 1173,
+          "timestampMs": 1010,
+          "confidence": null
+        },
+        {
+          "text": "comparison.",
+          "startMs": 1231,
+          "endMs": 1974,
+          "timestampMs": 1231,
+          "confidence": null
+        },
+        {
+          "text": "Paste",
+          "startMs": 2148,
+          "endMs": 2508,
+          "timestampMs": 2148,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 2554,
+          "endMs": 2624,
+          "timestampMs": 2554,
+          "confidence": null
+        },
+        {
+          "text": "job",
+          "startMs": 2682,
+          "endMs": 2844,
+          "timestampMs": 2682,
+          "confidence": null
+        },
+        {
+          "text": "description,",
+          "startMs": 2902,
+          "endMs": 3576,
+          "timestampMs": 2902,
+          "confidence": null
+        },
+        {
+          "text": "upload",
+          "startMs": 3785,
+          "endMs": 4168,
+          "timestampMs": 3785,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 4203,
+          "endMs": 4272,
+          "timestampMs": 4203,
+          "confidence": null
+        },
+        {
+          "text": "resume,",
+          "startMs": 4319,
+          "endMs": 4818,
+          "timestampMs": 4319,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 4853,
+          "endMs": 4992,
+          "timestampMs": 4853,
+          "confidence": null
+        },
+        {
+          "text": "check",
+          "startMs": 5039,
+          "endMs": 5259,
+          "timestampMs": 5039,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 5317,
+          "endMs": 5387,
+          "timestampMs": 5317,
+          "confidence": null
+        },
+        {
+          "text": "free",
+          "startMs": 5433,
+          "endMs": 5631,
+          "timestampMs": 5433,
+          "confidence": null
+        },
+        {
+          "text": "score",
+          "startMs": 5654,
+          "endMs": 5933,
+          "timestampMs": 5654,
+          "confidence": null
+        },
+        {
+          "text": "first.",
+          "startMs": 5991,
+          "endMs": 6571,
+          "timestampMs": 5991,
+          "confidence": null
+        },
+        {
+          "text": "If",
+          "startMs": 7082,
+          "endMs": 7221,
+          "timestampMs": 7082,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 7268,
+          "endMs": 7338,
+          "timestampMs": 7268,
+          "confidence": null
+        },
+        {
+          "text": "gap",
+          "startMs": 7384,
+          "endMs": 7593,
+          "timestampMs": 7384,
+          "confidence": null
+        },
+        {
+          "text": "is",
+          "startMs": 7651,
+          "endMs": 7721,
+          "timestampMs": 7651,
+          "confidence": null
+        },
+        {
+          "text": "real,",
+          "startMs": 7802,
+          "endMs": 8185,
+          "timestampMs": 7802,
+          "confidence": null
+        },
+        {
+          "text": "then",
+          "startMs": 8278,
+          "endMs": 8440,
+          "timestampMs": 8278,
+          "confidence": null
+        },
+        {
+          "text": "the",
+          "startMs": 8475,
+          "endMs": 8545,
+          "timestampMs": 8475,
+          "confidence": null
+        },
+        {
+          "text": "paid",
+          "startMs": 8591,
+          "endMs": 8824,
+          "timestampMs": 8591,
+          "confidence": null
+        },
+        {
+          "text": "resume",
+          "startMs": 8882,
+          "endMs": 9323,
+          "timestampMs": 8882,
+          "confidence": null
+        },
+        {
+          "text": "and",
+          "startMs": 9358,
+          "endMs": 9439,
+          "timestampMs": 9358,
+          "confidence": null
+        },
+        {
+          "text": "cover",
+          "startMs": 9509,
+          "endMs": 9729,
+          "timestampMs": 9509,
+          "confidence": null
+        },
+        {
+          "text": "letter",
+          "startMs": 9776,
+          "endMs": 9985,
+          "timestampMs": 9776,
+          "confidence": null
+        },
+        {
+          "text": "package",
+          "startMs": 10031,
+          "endMs": 10426,
+          "timestampMs": 10031,
+          "confidence": null
+        },
+        {
+          "text": "makes",
+          "startMs": 10484,
+          "endMs": 10739,
+          "timestampMs": 10484,
+          "confidence": null
+        },
+        {
+          "text": "sense.",
+          "startMs": 10774,
+          "endMs": 11285,
+          "timestampMs": 10774,
+          "confidence": null
+        }
+      ]
+    }
+  ],
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "reason": "9 episode sections ready",
+    "wordLevelCaptions": true
+  }
+}

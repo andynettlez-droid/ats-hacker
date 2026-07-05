@@ -1,0 +1,30 @@
+{
+  "overallScore": 100,
+  "passed": true,
+  "verdict": "post_grade_script_packet",
+  "notes": [],
+  "blockers": [],
+  "shorts": [
+    {
+      "title": "I would rewrite this bullet immediately",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "The Ctrl+F test this resume fails",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    },
+    {
+      "title": "This resume missed the job posting",
+      "score": 100,
+      "passed": true,
+      "notes": [],
+      "blockers": []
+    }
+  ]
+}

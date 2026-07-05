@@ -11,6 +11,7 @@ The first studio shorts proved the pipeline can render and post, but the creativ
 Each day should produce three distinct short concepts:
 
 - Red-Marker Resume Roast: paper/resume-first, red markup, blunt recruiter energy.
+- Human Desk Review: top-down paper resume, job post nearby, reviewer-style narration, and one circled line. This is the default for clips that need to feel more human and less like a software demo.
 - Recruiter Search Console: search term premise, visible no-hit or weak-hit result, then the rewrite changes the search receipt.
 - Job-Description Answer Key: the JD is treated like the answer sheet, and the resume either answers it or fails it.
 - AI Resume Roast: funny, blunt, comic palette, fast pace.
@@ -29,6 +30,7 @@ Each day should produce three distinct short concepts:
 - Keep bottom-third reaction bubbles clear of the CTA and score badge.
 - Run visual safe-area QC after rendering stills so edge-clipped labels and CTA collisions fail before posting.
 - Music stays quiet; no harsh repetitive sound effects.
+- Prefer physical paper, desk, marker, highlighter, and sticky-note devices when the script is a resume teardown. Use dashboards only when the premise is explicitly a search console or product walkthrough.
 
 ## Narration Rules
 
@@ -40,7 +42,8 @@ Each day should produce three distinct short concepts:
 - End with the free Signal score, not an aggressive paid pitch.
 - Avoid template narration. Banned recurring reads include "JD asks for," "real, but buried," and "same person, clearer proof."
 - Also ban default HubSpot/CAC examples unless the selected case is explicitly a marketing role.
-- Prefer online-native recruiter phrasing when it fits the artifact: Ctrl+F, NPC bullet, resume oatmeal, answer key, business casual shrug.
+- Prefer first-person reviewer phrasing: "I would circle this...", "I searched the resume...", "I would write...".
+- Do not force meme slang. Terms like "NPC bullet", "resume oatmeal", "LinkedIn breath", and "business casual shrug" fail unless there is a very clear human reason to use them.
 - The score reveal must be earned. Show the score receipt first: keyword match, tool match, metric proof, and/or outcome clarity.
 
 ## Viral Script Spine
@@ -69,23 +72,24 @@ Before script generation, update or review `marketing/viral_swipe_file.md`. The 
 
 ## Current Pilot Batch
 
-Packet: `marketing/daily_content/2026-07-04-viral-recruiter-teardown-score-receipt-clips`
+Packet: `marketing/daily_content/2026-07-04-human-desk-resume-review-inspired-by-gohar-khan-resume-tips`
 
 Pilots:
 
-- `This resume sentence is quietly expensive`: red-marker resume roast with a score receipt before the 34->92 reveal.
-- `I searched Salesforce and this resume vanished`: recruiter search console with visible keyword/tool/search logic.
-- `This resume failed an open-book test`: job-description answer-key/highlighter format with keyword and outcome receipt.
+- `I would rewrite this bullet immediately`: human desk review of a Product Data Analyst resume.
+- `The Ctrl+F test this resume fails`: recruiter search test for a Mid-Market Account Executive resume.
+- `This resume missed the job posting`: job-description answer-key review for a Frontend Software Engineer resume.
 
 Rendered review pilot:
 
-- `marketing/remotion/out/daily-this-resume-sentence-is-quietly-expensive.mp4`
-- `marketing/remotion/out/daily-i-searched-salesforce-and-this-resume-vanished.mp4`
-- `marketing/remotion/out/daily-this-resume-failed-an-open-book-test.mp4`
+- `marketing/remotion/out/daily-i-would-rewrite-this-bullet-immediately.mp4`
+- `marketing/remotion/out/daily-the-ctrl-f-test-this-resume-fails.mp4`
+- `marketing/remotion/out/daily-this-resume-missed-the-job-posting.mp4`
 
 ## Current Gate Status
 
 - Current refreshed packet scores 100/100 and all three short concepts pass the stricter creator gate.
+- The current preferred render baseline is `ResumeDeskReview` for resume teardown shorts. It should be used before dashboard-style layouts unless the premise explicitly needs a software/search console.
 - Short/audio generation supports ElevenLabs first, then OpenAI TTS fallback.
 - Audio QC supports provider-specific TTS sample rates and checks final rendered audio.
 - ElevenLabs synthesis works with the configured voice ID, but the current key cannot list voices because it lacks `voices_read`; keep this documented until the key permission is corrected.
@@ -99,6 +103,7 @@ The shorts must now satisfy these non-technical checks before posting:
 
 - One-second readability: a viewer can identify the resume problem before the first swipe decision.
 - Authority premise: the narrator is doing a recruiter/search audit, not reading a SaaS feature list.
+- Human read: the script sounds like a person reviewing a resume aloud, not a generated product ad.
 - Specific artifact: every short shows a named role, real-looking one-page resume, target job description, weak source bullet, and rewritten proof.
 - Consequence: the weak line causes a visible miss such as "not searchable", "too vague", or "wrong language".
 - Payoff: the rewrite changes the score and reinforces honest positioning: no fake experience, clearer proof.

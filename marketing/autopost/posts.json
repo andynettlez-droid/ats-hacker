@@ -1074,7 +1074,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_3.json",
         "audioReadiness": {
@@ -1087,11 +1087,11 @@
             "wordLevelCaptions": true
         },
         "codexReviewDecision": {
-            "runId": "26205df308a7c5d2",
+            "runId": "7e82dc5619dc2d5d",
             "state": "REVISION_REQUESTED",
             "reviewer": "codex-chat",
-            "note": "Superseded by online-native script pass with data analyst receipts.",
-            "updatedAt": "2026-07-04T23:10:11.613655+00:00"
+            "note": "Rejected by user as AI slop; replacing with human desk-review format.",
+            "updatedAt": "2026-07-04T23:38:49.848773+00:00"
         }
     },
     {
@@ -1104,7 +1104,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_1.json",
         "audioReadiness": {
@@ -1115,6 +1115,13 @@
             "voiceName": "configured voice",
             "reason": "ready via elevenlabs",
             "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "92788abb8f3146d0",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Rejected by user as AI slop; replacing with human desk-review format.",
+            "updatedAt": "2026-07-04T23:38:49.794065+00:00"
         }
     },
     {
@@ -1127,7 +1134,7 @@
             "youtube"
         ],
         "status": "review_required",
-        "reviewStatus": "review_required",
+        "reviewStatus": "revision_requested",
         "composition": "ResumeCrimeScene",
         "renderProps": "marketing\\remotion\\props_daily_2026-07-04_online-native-recruiter-roast-score-receipt-clips_short_2.json",
         "audioReadiness": {
@@ -1136,6 +1143,82 @@
             "provider": "elevenlabs",
             "voiceId": "JBFqnCBsd6RMkjVDRZzb",
             "voiceName": "configured voice",
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        },
+        "codexReviewDecision": {
+            "runId": "c3c88f6d37309eb6",
+            "state": "REVISION_REQUESTED",
+            "reviewer": "codex-chat",
+            "note": "Rejected by user as AI slop; replacing with human desk-review format.",
+            "updatedAt": "2026-07-04T23:38:49.821390+00:00"
+        }
+    },
+    {
+        "title": "I would rewrite this bullet immediately",
+        "caption": "I would rewrite this bullet immediately. Show the missing proof first, score jump second. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-i-would-rewrite-this-bullet-immediately.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeDeskReview",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_1.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": null,
+            "voiceName": null,
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        }
+    },
+    {
+        "title": "The Ctrl+F test this resume fails",
+        "caption": "The Ctrl+F test this resume fails. Show the missing proof first, score jump second. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-the-ctrl-f-test-this-resume-fails.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeDeskReview",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_2.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": null,
+            "voiceName": null,
+            "reason": "ready via elevenlabs",
+            "wordLevelCaptions": true
+        }
+    },
+    {
+        "title": "This resume missed the job posting",
+        "caption": "This resume missed the job posting. The job post already told you. Answer-key miss: React, TypeScript, Next.js. Rewrite puts stack, metric, and outcome on screen: 41->90. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+        "file": "videos/daily-this-resume-missed-the-job-posting.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "status": "review_required",
+        "reviewStatus": "review_required",
+        "composition": "ResumeDeskReview",
+        "renderProps": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_3.json",
+        "audioReadiness": {
+            "studioVoiceover": true,
+            "quietMusic": true,
+            "provider": "elevenlabs",
+            "voiceId": null,
+            "voiceName": null,
             "reason": "ready via elevenlabs",
             "wordLevelCaptions": true
         }

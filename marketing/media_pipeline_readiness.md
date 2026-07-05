@@ -6,7 +6,7 @@ Reviewed: 2026-07-04
 
 The short-form pipeline is ready for supervised Codex review-gated posting. The current long-form YouTube render is a review cut only; it is not publish-ready because it fails the minimum long-form duration gate. The system is not yet ready for fully unattended daily channel production.
 
-The current `ResumeCrimeScene` shorts are materially stronger than the first mascot/product-demo cuts: the resume is the main character, the job description is visible, the weak bullet is grounded in a professional resume artifact, the Signal mascot is present without taking over, the CTA is clearer, and the audio direction is quieter and more premium. The latest batch also avoids the prior robotic repetition by rotating three distinct creator formats: Resume Crime Scene roast, Recruiter Search Test, and Job Description Translation.
+The current `ResumeDeskReview` shorts are materially stronger than the rejected mascot/product-demo and repeated dashboard cuts: the resume is the main character, the job description is visible, the weak bullet is grounded in a professional resume artifact, the narration uses first-person reviewer language, and the score reveal is preceded by visible low-score rationale. The latest batch also avoids the prior robotic repetition by rotating three distinct roles: Product Data Analyst, Mid-Market Account Executive, and Frontend Software Engineer.
 
 The new Codex approval layer now wraps the existing daily packet, Remotion render, QC, promotion, and posting queue. Videos move through a durable local SQLite state machine and stop at `AWAITING_CODEX_APPROVAL` until the exact reviewed file is approved in Codex.
 
@@ -14,7 +14,7 @@ The current long-form YouTube lane has a rendered 1920x1080 review cut, thumbnai
 
 ## What Is Ready
 
-- `ResumeCrimeScene` renders vertical 1080x1920, 30fps shorts.
+- `ResumeCrimeScene` and `ResumeDeskReview` render vertical 1080x1920, 30fps shorts.
 - Three daily studio short exports exist in `marketing/remotion/out/`.
 - Studio voiceover assets exist for the daily shorts and long-form episode. The latest reviewed batch uses ElevenLabs `/with-timestamps` for fresh narration and caption alignment.
 - Quiet music assets exist and are used instead of harsh SFX.
@@ -22,11 +22,11 @@ The current long-form YouTube lane has a rendered 1920x1080 review cut, thumbnai
 - The posting layer has a review gate for `draft` and `review_required` entries.
 - The posting layer now requires a matching `codexApproval.fileSha256` before `--approved` can publish a review-required entry.
 - `marketing_agent/codex_video_approval.py` renders, promotes, QC's, exports, and tracks videos through Codex approval state.
-- `ResumeCrimeScene` renders word-level captions when fresh ElevenLabs timestamp metadata exists.
+- `ResumeCrimeScene` and `ResumeDeskReview` render word-level captions when fresh ElevenLabs timestamp metadata exists.
 - The autopost dry run works and reports file hashes before publishing.
 - The Python marketing agent stack compiles.
 - The Remotion TypeScript check passes.
-- The current daily script packet passes the creative quality gate at 100/100, with repeated-opening and robotic-phrase checks enabled.
+- The current daily script packet passes the creative quality gate at 100/100, with repeated-opening, robotic-phrase, first-person reviewer, and role-rotation checks enabled.
 - The studio short metadata/queue QC gate passes.
 - The audio asset QC gate passes for linked short voiceovers, music, and all 9 long-form episode segments.
 - A source-backed trend intake file exists for the current daily packet.
@@ -35,7 +35,7 @@ The current long-form YouTube lane has a rendered 1920x1080 review cut, thumbnai
 
 ## What Is Not Ready Yet
 
-- Automated visual safe-area QC exists for bright/saturated margin issues. It is not a full semantic visual QA system for overlap, contrast, mascot personality, or whether the video is funny.
+- Automated visual safe-area QC exists for bright/saturated margin issues and now supports `ResumeDeskReview`. It is not a full semantic visual QA system for overlap, contrast, mascot personality, or whether the video is funny.
 - No automated audio loudness/peak/LUFS check. The current audio gate validates files, codecs, duration, sample rate, bitrate, channels, and mix-volume settings, but does not measure loudness.
 - Word-level caption alignment is available only for new ElevenLabs `/with-timestamps` generations. Existing cached daily voiceovers and OpenAI fallback voiceovers use scene captions.
 - The daily content agent now treats ElevenLabs as required when requested, uses the configured voice ID, and fails instead of silently falling back when `--require-elevenlabs` is set.
@@ -47,14 +47,13 @@ The current long-form YouTube lane has a rendered 1920x1080 review cut, thumbnai
 
 ## Current Codex Review Assets
 
-The active daily batch has three shorts in `AWAITING_CODEX_APPROVAL`. The long-form review cut rendered, but it remains in `RENDERED` because publish QA rejected it for duration.
-Older role-specific and episode approval records from the weaker repeated batch have been marked `REVISION_REQUESTED` so they are no longer the active review set.
+The active daily batch has three `ResumeDeskReview` shorts in `AWAITING_CODEX_APPROVAL`. The long-form episode for this packet has generated narration and render props, but it has not been rendered or promoted in this pass. Older approval records from the weaker repeated batch have been marked `REVISION_REQUESTED` so they are no longer the active review set.
 
 | Run ID | Title | Mobile review URL | Approval phrase |
 | --- | --- | --- | --- |
-| `c7ae03f367bfb58b` | This resume sentence is quietly expensive | `http://192.168.2.10:8765/20260704-c7ae03f367bfb58b-this-resume-sentence-is-quietly-expensive/daily-this-resume-sentence-is-quietly-expensive.mp4` | `APPROVE POST c7ae03f367bfb58b` |
-| `bf5494c753f4e577` | I searched Salesforce and this resume vanished | `http://192.168.2.10:8765/20260704-bf5494c753f4e577-i-searched-salesforce-and-this-resume-vanished/daily-i-searched-salesforce-and-this-resume-vanished.mp4` | `APPROVE POST bf5494c753f4e577` |
-| `5f93f025efd50915` | The job post gave the answer key | `http://192.168.2.10:8765/20260704-5f93f025efd50915-the-job-post-gave-the-answer-key/daily-the-job-post-gave-the-answer-key.mp4` | `APPROVE POST 5f93f025efd50915` |
+| `99bb86ba61d0ca1c` | I would rewrite this bullet immediately | `http://192.168.2.10:8765/20260705-99bb86ba61d0ca1c-i-would-rewrite-this-bullet-immediately/daily-i-would-rewrite-this-bullet-immediately.mp4` | `APPROVE POST 99bb86ba61d0ca1c` |
+| `b40eb88cf2c39668` | The Ctrl+F test this resume fails | `http://192.168.2.10:8765/20260705-b40eb88cf2c39668-the-ctrl-f-test-this-resume-fails/daily-the-ctrl-f-test-this-resume-fails.mp4` | `APPROVE POST b40eb88cf2c39668` |
+| `a389a69ed7d879e3` | This resume missed the job posting | `http://192.168.2.10:8765/20260705-a389a69ed7d879e3-this-resume-missed-the-job-posting/daily-this-resume-missed-the-job-posting.mp4` | `APPROVE POST a389a69ed7d879e3` |
 
 This file is local and git-ignored. To review on mobile from the repo root, run:
 
@@ -66,24 +65,18 @@ Then open the URLs printed by `prepare-review`.
 
 ## Current Studio Short Assets
 
-- `marketing/remotion/out/daily-this-marketing-resume-hid-the-actual-revenue-proof.mp4`
-- `marketing/remotion/out/daily-this-sales-resume-forgot-to-say-sales.mp4`
-- `marketing/remotion/out/daily-this-developer-resume-hides-the-stack.mp4`
-- `marketing/remotion/out/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-episode.mp4`
-- `marketing/remotion/out/daily-recruiter-reacts-to-real-resumes-against-real-job-descriptions-thumbnail.png`
-- `marketing/remotion/out/daily-this-resume-sentence-is-quietly-expensive.mp4`
-- `marketing/remotion/out/daily-i-searched-salesforce-and-this-resume-vanished.mp4`
-- `marketing/remotion/out/daily-the-job-post-gave-the-answer-key.mp4`
-- `marketing/remotion/out/daily-recruiter-search-tests-with-real-resume-teardowns-episode.mp4` review cut only
+- `marketing/remotion/out/daily-i-would-rewrite-this-bullet-immediately.mp4`
+- `marketing/remotion/out/daily-the-ctrl-f-test-this-resume-fails.mp4`
+- `marketing/remotion/out/daily-this-resume-missed-the-job-posting.mp4`
 
-The three `recruiter-search-tests-with-real-resume-teardowns` shorts are the active review assets. Older role-specific assets are retained in the tree for traceability but should not be posted without a fresh review.
+The three `human-desk-resume-review-inspired-by-gohar-khan-resume-tips` shorts are the active review assets. Older role-specific assets are retained in the tree for traceability but should not be posted without a fresh review.
 
 ## Current Queue Snapshot
 
 Latest manual pipeline output:
 
-- Three improved varied-format daily shorts rendered, passed QA, and exported to Codex review.
-- One 2:07 long-form review cut rendered, but publish QA blocked it for duration; expand before review approval.
+- Three human desk-review daily shorts rendered, passed QA, and exported to Codex review.
+- The long-form packet has generated voiceover segments and props, but the episode MP4 was not rendered in this pass; expand and render before review approval.
 - Older repeated/role-specific review records have been moved to `REVISION_REQUESTED`.
 - Autopost dry run confirms it is blocked until Codex approval and `--approved`.
 - Current post-grade packet: 1.
@@ -115,7 +108,7 @@ Current credential status:
 Recommended env values:
 
 ```env
-ELEVENLABS_API_KEY=sk_...
+ELEVENLABS_API_KEY=
 ELEVENLABS_VOICE_ID=JBFqnCBsd6RMkjVDRZzb
 ELEVENLABS_MODEL_ID=eleven_multilingual_v2
 ELEVENLABS_WITH_TIMESTAMPS=true

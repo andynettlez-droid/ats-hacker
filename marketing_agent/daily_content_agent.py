@@ -239,7 +239,7 @@ TEARDOWN_CASES = [
         "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
         "beforeScore": 32,
         "afterScore": 89,
-        "markedLabel": "Resume oatmeal",
+        "markedLabel": "Too vague",
         "scoreBasis": [
             {"label": "Search terms", "before": "reports", "after": "SQL + Tableau"},
             {"label": "Metric proof", "before": "missing", "after": "6 hrs saved"},
@@ -267,7 +267,7 @@ TEARDOWN_CASES = [
         "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
         "beforeScore": 37,
         "afterScore": 88,
-        "markedLabel": "No quota signal",
+        "markedLabel": "Missing proof",
         "scoreBasis": [
             {"label": "Search terms", "before": "0 strong", "after": "Salesforce + pipeline"},
             {"label": "Revenue proof", "before": "missing", "after": "$1.8M"},
@@ -323,7 +323,7 @@ TEARDOWN_CASES = [
         "afterBullet": "Owned Jira roadmap and weekly risk register for a 9-person rollout, reducing schedule variance from 18% to 6%.",
         "beforeScore": 39,
         "afterScore": 87,
-        "markedLabel": "No delivery proof",
+        "markedLabel": "Missing delivery proof",
         "scoreBasis": [
             {"label": "Tool match", "before": "missing", "after": "Jira roadmap"},
             {"label": "Delivery proof", "before": "broad", "after": "risk register"},
@@ -351,7 +351,7 @@ TEARDOWN_CASES = [
         "afterBullet": "Flagged renewal risk in Gainsight and ran QBR follow-ups that protected $420K ARR across 18 customer accounts.",
         "beforeScore": 36,
         "afterScore": 89,
-        "markedLabel": "No retention proof",
+        "markedLabel": "Missing retention proof",
         "scoreBasis": [
             {"label": "Platform", "before": "missing", "after": "Gainsight"},
             {"label": "Revenue proof", "before": "missing", "after": "$420K ARR"},
@@ -415,12 +415,12 @@ CASE_SERIES_ROTATION = [
 ]
 
 CASE_HUMOR_LINES = {
-    "data_analyst": "Resume oatmeal: warm, beige, and nobody asked for it.",
-    "sales_account_exec": "Pipeline proof is hiding under a hoodie.",
-    "frontend_engineer": "The tech stack is wearing a fake mustache.",
-    "project_manager": "The calendar is talking. Proof is in airplane mode.",
-    "customer_success": "Helpful-sounding customer success yap.",
-    "healthcare_rn": "Clinical proof is doing mind-reading homework.",
+    "data_analyst": "I believe the work happened; I just cannot see the proof yet.",
+    "sales_account_exec": "The sales work may be there; the pipeline proof is not.",
+    "frontend_engineer": "The stack is probably real, but the bullet makes me hunt for it.",
+    "project_manager": "The calendar is visible. The delivery result is not.",
+    "customer_success": "Helpful is not enough here; I need retention evidence.",
+    "healthcare_rn": "The care coordination is buried under generic clinical language.",
 }
 
 CASE_SPOKEN_REWRITES = {
@@ -435,118 +435,119 @@ CASE_SPOKEN_REWRITES = {
 CREATOR_FORMAT_PLAYBOOKS = [
     {
         "id": "recruiter_roast",
-        "series": "Resume Crime Scene",
-        "creativeFormat": "aiResumeRoast",
-        "visualStyle": "comic",
-        "formatArchetype": "redTeamAudit",
+        "series": "Live Resume Review",
+        "composition": "ResumeDeskReview",
+        "creativeFormat": "resumeCrimeScene",
+        "visualStyle": "stickyNote",
+        "formatArchetype": "deskMarkup",
         "pace": "fast",
-        "title": "This data bullet has NPC energy",
-        "hook": "This bullet has NPC energy.",
-        "subhook": "It says work happened. It does not say why anyone should care.",
+        "title": "I would rewrite this bullet immediately",
+        "hook": "I would circle this bullet first.",
+        "subhook": "The work may be real, but the proof is not visible yet.",
         "voiceover": (
-            "Pause. This bullet says: {beforeBullet} "
-            "That is resume oatmeal. "
-            "The role needs {kw1}, {kw2}, and {kw3}. "
-            "Score starts at {beforeScore}: no tool, no metric, zero proof. "
-            "Rewrite the real work: {spokenRewrite}. "
-            "Now the receipt has tool, metric, outcome: {afterScore}. "
+            "I am reading this {role} resume. "
+            "This line says: {beforeBullet} "
+            "I believe it. I cannot see {kw1}, {kw2}, or a result. "
+            "That starts at {beforeScore}: missing tool, missing metric. "
+            "I would write: {spokenRewrite}. "
+            "Now the proof is visible: {afterScore}. "
             "Run the free Signal score before you apply."
         ),
         "storyboard": [
-            "Cold open: slap an NPC ENERGY stamp on the weak bullet.",
-            "Signal side-eyes the bullet while a tiny receipt drawer opens.",
-            "Cut to role clues: {kw1}, {kw2}, {kw3}.",
-            "Show the low score because the bullet has activity but no proof.",
-            "Rewrite the line and fill the receipt before revealing the score.",
-            "End with a free Signal score CTA, not a hard product pitch.",
+            "Open on the resume as if a reviewer is reading it at a desk.",
+            "Circle the exact weak line: {beforeBullet}",
+            "Place the job description beside it with {kw1}, {kw2}, and {kw3} highlighted.",
+            "Show the low score because the reviewer cannot see the tool, metric, or result.",
+            "Rewrite the line in-place using only the real work.",
+            "Reveal the score after the low-score rationale is visible.",
         ],
         "signalLines": {
-            "hook": "NPC bullet.",
-            "problem": "No proof, no party.",
-            "teardown": "Roast the bullet, rescue the person.",
-            "fix": "Now it has a receipt.",
-            "cta": "Test yours before sending.",
+            "hook": "Circle this.",
+            "problem": "The proof is hidden.",
+            "teardown": "Name the work clearly.",
+            "fix": "Now I can read it.",
+            "cta": "Check before sending.",
         },
-        "problemPunchline": "Activity is not proof.",
-        "teardownPunchline": "Low score reason: no tool, no number, no outcome.",
-        "fixPunchline": "Specific proof beats generic polish.",
+        "problemPunchline": "The work may be real. The evidence is not readable.",
+        "teardownPunchline": "Low score reason: no visible tool, metric, or result.",
+        "fixPunchline": "A recruiter should not have to infer the proof.",
     },
     {
         "id": "search_console",
         "series": "Recruiter Search Test",
+        "composition": "ResumeDeskReview",
         "creativeFormat": "jobSearchTest",
         "visualStyle": "terminal",
         "formatArchetype": "recruiterSearch",
         "pace": "fast",
-        "title": "Recruiter Ctrl+F found absolutely nothing",
-        "hook": "I hit Ctrl+F. Bad news.",
-        "subhook": "The resume made the recruiter do detective work.",
+        "title": "The Ctrl+F test this resume fails",
+        "hook": "I searched the resume. Nothing.",
+        "subhook": "This is how a real screening miss happens.",
         "voiceover": (
-            "Recruiter Ctrl F test. I search {kw1}: nothing. "
-            "I search {kw2}: still dusty. "
-            "Then this bullet shows up: {beforeBullet} "
-            "Beige wall with a name tag. "
-            "Score starts at {beforeScore}: no tool, no number, no result. "
-            "Rewrite: {spokenRewrite}. "
-            "Now search finds proof: {afterScore}. "
-            "Run the free Signal score before you send yours."
+            "If I am screening this resume, I search first. "
+            "{kw1}: missing here. {kw2}: missing too. "
+            "The line says: {beforeBullet} "
+            "That makes me guess, so the match starts at {beforeScore}: missing term, missing proof. "
+            "I would write: {spokenRewrite}. "
+            "Now the search terms and proof are visible: {afterScore}. "
+            "Run the free Signal score before you apply."
         ),
         "storyboard": [
-            "Open with a giant Ctrl+F search for {kw1}; show zero hits immediately.",
-            "Rapid-cut {kw2} and show the second miss as a dry search console.",
-            "Reveal the resume bullet as the reason the search failed.",
-            "Stamp BEIGE WALL on the weak line and show the score receipt.",
-            "Rewrite the bullet and rerun the search with a clear match.",
-            "Close with the score jump and free score CTA.",
+            "Open on a reviewer search box over the resume, searching for {kw1}.",
+            "Show the weak bullet that does not include the searched language.",
+            "Search {kw2} and show the miss again.",
+            "Explain that the low score comes from hidden tool and result proof.",
+            "Rewrite the bullet and rerun the search with a visible match.",
+            "Close after the low-score rationale explains the jump.",
         ],
         "signalLines": {
-            "hook": "Ctrl+F said nope.",
-            "problem": "Detective work is not a strategy.",
-            "teardown": "Give the search a real term.",
-            "fix": "Now proof is findable.",
-            "cta": "Search-test your resume.",
+            "hook": "Search missed it.",
+            "problem": "Do not make them guess.",
+            "teardown": "Use the real term.",
+            "fix": "Now it is findable.",
+            "cta": "Search-test it first.",
         },
-        "problemPunchline": "A recruiter cannot search for the thought you meant.",
-        "teardownPunchline": "This is where vague language quietly loses.",
-        "fixPunchline": "Now the search term has proof behind it.",
+        "problemPunchline": "A reviewer cannot search for what you meant to say.",
+        "teardownPunchline": "The low score is from hidden tool and result proof.",
+        "fixPunchline": "Now the search term points to real evidence.",
     },
     {
         "id": "answer_key",
-        "series": "Job Description Translation",
+        "series": "Job Description Review",
+        "composition": "ResumeDeskReview",
         "creativeFormat": "oneBulletFix",
         "visualStyle": "highlighter",
         "formatArchetype": "splitTranslation",
         "pace": "fast",
-        "title": "This resume failed an open-book test",
-        "hook": "The answers were literally on the page.",
-        "subhook": "The resume still turned in a shrug.",
+        "title": "This resume missed the job posting",
+        "hook": "The job post already told you.",
+        "subhook": "The resume just did not answer it clearly.",
         "voiceover": (
-            "The job post gave the answer key: {kw1}, {kw2}, {kw3}. "
-            "Your resume answered: {beforeBullet} "
-            "That is a shrug in business casual. "
-            "Score starts at {beforeScore}: missing language, no metric, no outcome. "
-            "Rewrite with real proof: {spokenRewrite}. "
-            "Now it matches the answer key: {afterScore}. "
+            "Here is the job post: {kw1}, {kw2}, and {kw3}. "
+            "Now here is the resume line: {beforeBullet} "
+            "That mismatch starts at {beforeScore}: missing tool, missing metric. "
+            "Do not fake anything. I would write: {spokenRewrite}. "
+            "Now the tool, metric, and outcome are visible: {afterScore}. "
             "Run the free Signal score before you apply."
         ),
         "storyboard": [
-            "Open on an answer-key board with {kw1}, {kw2}, {kw3} already highlighted.",
-            "Slide the resume beside it with a SHRUG IN BUSINESS CASUAL stamp.",
-            "Show a score receipt: missing stack, missing metric, missing result.",
-            "Signal translates hidden proof into job-description language.",
-            "Reveal the rewritten bullet, then fill the score checklist.",
-            "End with the score jump and free Signal score CTA.",
+            "Open on the job post with {kw1}, {kw2}, and {kw3} highlighted.",
+            "Slide to the resume line and circle the mismatch.",
+            "Show the low-score rationale: missing tool, missing metric, missing outcome.",
+            "Rewrite the line without inventing anything.",
+            "Reveal the rewritten bullet and then the score movement.",
+            "End with the free Signal score CTA.",
         ],
         "signalLines": {
-            "hook": "Open-book test.",
-            "problem": "Business casual shrug.",
+            "hook": "Read the posting.",
+            "problem": "The answer is vague.",
             "teardown": "Translate. Do not exaggerate.",
-            "fix": "Now the answer key matches.",
+            "fix": "Now the proof matches.",
             "cta": "Paste the job first.",
         },
-        "problemPunchline": "The posting handed over the vocabulary.",
-        "teardownPunchline": "Low score reason: broad work, missing stack, no result.",
-        "fixPunchline": "Relevant proof first.",
+        "problemPunchline": "The role language is visible. The resume is not using it.",
+        "teardownPunchline": "Low score reason: broad work, missing tool, no result.",
+        "fixPunchline": "Use the job language only when the experience supports it.",
     },
 ]
 
@@ -957,9 +958,9 @@ def check_elevenlabs_health(probe_tts: bool = False) -> dict:
                     "text": "Signal audio probe.",
                     "model_id": config["modelId"],
                     "voice_settings": {
-                        "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.34")),
-                        "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.82")),
-                        "style": float(os.getenv("ELEVENLABS_STYLE", "0.72")),
+                        "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.52")),
+                        "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.76")),
+                        "style": float(os.getenv("ELEVENLABS_STYLE", "0.12")),
                         "use_speaker_boost": True,
                     },
                 },
@@ -1060,9 +1061,9 @@ def generate_elevenlabs_voiceover(text: str, dest_name: str) -> dict:
         "model_id": config["modelId"],
         "output_format": "mp3_44100_128",
         "voice_settings": {
-            "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.34")),
-            "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.82")),
-            "style": float(os.getenv("ELEVENLABS_STYLE", "0.72")),
+            "stability": float(os.getenv("ELEVENLABS_STABILITY", "0.52")),
+            "similarity_boost": float(os.getenv("ELEVENLABS_SIMILARITY", "0.76")),
+            "style": float(os.getenv("ELEVENLABS_STYLE", "0.12")),
             "use_speaker_boost": True,
         },
     }
@@ -1496,6 +1497,15 @@ def build_fallback_packet(seed: dict, publish_date: str) -> dict:
 
 
 def select_teardown_case(index: int, short: dict | None = None, props: dict | None = None) -> dict:
+    if isinstance(props, dict):
+        requested = str(props.get("preferredCaseId") or "").strip()
+        if requested:
+            for case in TEARDOWN_CASES:
+                if case["id"] == requested:
+                    return case
+    if os.getenv("SIGNAL_ALLOW_ROLE_INFERENCE", "false").lower() != "true":
+        return TEARDOWN_CASES[(index - 1) % len(TEARDOWN_CASES)]
+
     text_parts = []
     if isinstance(short, dict):
         text_parts.extend([
@@ -1503,15 +1513,6 @@ def select_teardown_case(index: int, short: dict | None = None, props: dict | No
             short.get("title", ""),
             short.get("hook", ""),
             short.get("script", ""),
-        ])
-    if isinstance(props, dict):
-        text_parts.extend([
-            props.get("resumeTitle", ""),
-            props.get("jobTitle", ""),
-            props.get("beforeBullet", ""),
-            props.get("afterBullet", ""),
-            " ".join(str(item) for item in props.get("missing", []) or []),
-            " ".join(str(item) for item in props.get("jobKeywords", []) or []),
         ])
     blob = " ".join(str(part).lower() for part in text_parts)
 
@@ -1529,7 +1530,7 @@ def select_teardown_case(index: int, short: dict | None = None, props: dict | No
         scores.append((score, case))
 
     best_score, best_case = max(scores, key=lambda item: item[0])
-    if best_score >= 2:
+    if best_score >= 3:
         return best_case
     return TEARDOWN_CASES[(index - 1) % len(TEARDOWN_CASES)]
 
@@ -1588,6 +1589,7 @@ def apply_teardown_case(short: dict, title: str, hook: str, script: str, storybo
         "pace": playbook["pace"],
         "subhook": case_subhook,
         "signalLines": playbook["signalLines"],
+        "renderComposition": playbook.get("composition", "ResumeCrimeScene"),
         "resumeName": case["resumeName"],
         "resumeTitle": case["resumeTitle"],
         "resumeMeta": case["resumeMeta"],
@@ -1657,12 +1659,12 @@ def normalize_short(short: dict, fallback: dict, index: int) -> dict:
     props.setdefault("hook1", str(hook)[:55])
     props.setdefault("hook2", "Check the match.")
     props.setdefault("subline", "Signal compares resume language to the target job.")
+    props.setdefault("cta", "Check your free Signal score.")
+    title, hook, script, storyboard, props = apply_teardown_case(short, str(title), str(hook), str(script), storyboard, props, index)
     props.setdefault("beforeScore", 38 + index)
     props.setdefault("afterScore", 86 + index)
-    props.setdefault("missing", ["SQL", "Tableau", "cohort analysis", "churn dashboard"])
-    props.setdefault("cta", "Check your free Signal score.")
+    props.setdefault("missing", ["role language", "tool proof", "measurable result"])
     props.setdefault("voiceover_text", str(script)[:650])
-    title, hook, script, storyboard, props = apply_teardown_case(short, str(title), str(hook), str(script), storyboard, props, index)
 
     return {
         "series": str(props.get("seriesOverride") or short.get("series") or fallback.get("series") or "Daily Short"),
@@ -2218,19 +2220,20 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
         props.setdefault("subline", "Signal compares resume language to the target job.")
         props.setdefault("beforeScore", 38)
         props.setdefault("afterScore", 88)
-        props.setdefault("missing", ["role language", "tools", "metrics"])
         props.setdefault("cta", "Check your free Signal score.")
-        props.setdefault("voiceover_text", short.get("script", "")[:650])
-        if not props.get("teardownCaseId"):
+        if not props.get("lockTeardownCase"):
             _, _, _, _, props = apply_teardown_case(short, str(short.get("title", "")), str(short.get("hook", "")), str(short.get("script", "")), short.get("storyboard", []), props, idx)
+        props.setdefault("missing", ["role language", "tool proof", "measurable result"])
+        props.setdefault("voiceover_text", short.get("script", "")[:650])
         props["cta"] = normalize_signal_cta(props.get("cta"))
         job_keywords = [
             str(item)
-            for item in (props.get("jobKeywords") or props.get("missing", ["SQL", "Tableau", "cohort analysis", "churn dashboard"]))
+            for item in (props.get("jobKeywords") or props.get("missing", ["role language", "tool proof", "measurable result"]))
         ][:5]
-        if sum(1 for item in job_keywords if item.lower() in {"role language", "tools", "proof", "metrics"}) >= 2:
-            job_keywords = ["SQL", "Tableau", "cohort analysis", "churn dashboard"]
+        if sum(1 for item in job_keywords if item.lower() in {"role language", "tools", "tool proof", "proof", "metrics", "measurable result"}) >= 2:
+            job_keywords = ["role language", "tool proof", "measurable result"]
         style = style_for_short(idx, short)
+        render_composition = str(props.get("renderComposition") or "ResumeCrimeScene")
         crime_scene_props = {
             "hook": short.get("hook", "This resume looks fine.")[:72],
             "subhook": str(props.get("subhook") or "The problem is vague proof, not fake experience."),
@@ -2321,7 +2324,7 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
             "",
             f"`{props_path.relative_to(ROOT)}`",
             "",
-            "Composition: `ResumeCrimeScene`",
+            f"Composition: `{render_composition}`",
             "",
             "## QA",
             "",
@@ -2337,7 +2340,7 @@ def write_short_briefs_and_props(packet: dict, packet_dir: Path, prepare_audio: 
             "brief": str(brief_path.relative_to(ROOT)),
             "props": str(props_path.relative_to(ROOT)),
             "title": short.get("title", "Signal short"),
-            "composition": "ResumeCrimeScene",
+            "composition": render_composition,
             "audioReadiness": crime_scene_props.get("audioReadiness", {}),
         })
     return written
@@ -2505,7 +2508,7 @@ def build_daily_caption(short: dict) -> str:
         elif archetype == "splitTranslation":
             lesson = f"Answer-key miss: {missing_part}. Rewrite puts stack, metric, and outcome on screen: {score_part}."
         else:
-            lesson = f"Score receipt: {missing_part}. Rewrite adds the missing tool, metric, and outcome: {score_part}."
+            lesson = f"Why it starts low: {missing_part}. Rewrite adds the missing tool, metric, and outcome: {score_part}."
     base = re.sub(
         r"\s+",
         " ",
@@ -2514,7 +2517,7 @@ def build_daily_caption(short: dict) -> str:
     tags = "#jobsearch #resumehelp #careertok #resumetips #airesume"
     caption = f"{base} {tags}"
     if len(caption) > 280:
-        caption = f"{title} Score receipt first, score jump second. Run the free Signal score before you apply. {tags}"
+        caption = f"{title} Show the missing proof first, score jump second. Run the free Signal score before you apply. {tags}"
     return caption
 
 

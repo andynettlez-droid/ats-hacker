@@ -1,0 +1,131 @@
+[
+  {
+    "title": "Human desk resume review inspired by Gohar Khan resume tips | Resume Teardown | Signal by ATSHac",
+    "caption": "Human desk resume review inspired by Gohar Khan resume tips | Resume Teardown. Paste the job description and check your free Signal score before you apply. #jobsearch #resumehelp #careeradvice #resumetips",
+    "file": "videos/daily-human-desk-resume-review-inspired-by-gohar-khan-resume-tips-episode.mp4",
+    "platforms": [
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "contentType": "youtube_long_form",
+    "youtubeKind": "long_form",
+    "target": "daily long-form YouTube",
+    "youtubeTitle": "Human desk resume review inspired by Gohar Khan resume tips | Resume Teardown | Signal by ATSHac",
+    "youtubeDescription": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "composition": "TeardownEpisode",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_episode.json",
+    "thumbnail": "marketing/remotion/out/daily-human-desk-resume-review-inspired-by-gohar-khan-resume-tips-thumbnail.png",
+    "thumbnailProps": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_thumbnail.json",
+    "renderStatus": "render_required",
+    "reviewStatus": "review_required",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "reason": "9 episode sections ready",
+      "wordLevelCaptions": true
+    },
+    "qaGate": {
+      "required": true,
+      "passed": false,
+      "status": "requires_render_review",
+      "minExpertViralScore": 94,
+      "checks": [
+        "Rendered MP4 exists in marketing/autopost/videos.",
+        "16:9 layout is readable on desktop and mobile YouTube surfaces.",
+        "Opening hook is visible in the first 5 seconds.",
+        "Signal mascot or brand mark is visible.",
+        "No old human presenter appears unless explicitly approved.",
+        "Audio is present, balanced, and not dominated by music or effects.",
+        "Claims avoid ATS auto-reject myths, guarantees, fake outcomes, and unsourced competitor rankings.",
+        "Thumbnail exists or is intentionally deferred.",
+        "Human reviewer approved exact file, title, description, thumbnail, and platform target."
+      ]
+    },
+    "expertViralGate": {
+      "required": true,
+      "minScore": 94,
+      "score": null,
+      "passed": false,
+      "status": "requires_expert_viral_review"
+    },
+    "reviewChecklist": [
+      "long-form render reviewed",
+      "thumbnail reviewed",
+      "audio present and balanced",
+      "claims reviewed",
+      "exact YouTube title and description reviewed",
+      "status remains review_required until approval"
+    ]
+  },
+  {
+    "title": "I would rewrite this bullet immediately",
+    "caption": "I would rewrite this bullet immediately. Show the missing proof first, score jump second. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-i-would-rewrite-this-bullet-immediately.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_1.json",
+    "composition": "ResumeDeskReview",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": null,
+      "voiceName": null,
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true
+    }
+  },
+  {
+    "title": "The Ctrl+F test this resume fails",
+    "caption": "The Ctrl+F test this resume fails. Show the missing proof first, score jump second. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-the-ctrl-f-test-this-resume-fails.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_2.json",
+    "composition": "ResumeDeskReview",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": null,
+      "voiceName": null,
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true
+    }
+  },
+  {
+    "title": "This resume missed the job posting",
+    "caption": "This resume missed the job posting. The job post already told you. Answer-key miss: React, TypeScript, Next.js. Rewrite puts stack, metric, and outcome on screen: 41->90. Run the free Signal score before you apply. #jobsearch #resumehelp #careertok #resumetips #airesume",
+    "file": "videos/daily-this-resume-missed-the-job-posting.mp4",
+    "platforms": [
+      "tiktok",
+      "instagram",
+      "youtube"
+    ],
+    "scheduleDate": null,
+    "status": "review_required",
+    "renderProps": "marketing\\remotion\\props_daily_2026-07-04_human-desk-resume-review-inspired-by-gohar-khan-resume-tips_short_3.json",
+    "composition": "ResumeDeskReview",
+    "audioReadiness": {
+      "studioVoiceover": true,
+      "quietMusic": true,
+      "provider": "elevenlabs",
+      "voiceId": null,
+      "voiceName": null,
+      "reason": "ready via elevenlabs",
+      "wordLevelCaptions": true
+    }
+  }
+]

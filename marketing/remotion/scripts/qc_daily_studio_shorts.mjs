@@ -385,7 +385,10 @@ const main = async () => {
   const drafts = readJson(options.drafts);
   const posts = readJson(postsPath);
   const studioDrafts = drafts.filter(
-    (draft) => draft.composition === "ResumeCrimeScene" || String(draft.file || "").endsWith("-studio.mp4"),
+    (draft) =>
+      draft.composition === "ResumeCrimeScene" ||
+      draft.composition === "ResumeDeskReview" ||
+      String(draft.file || "").endsWith("-studio.mp4"),
   );
 
   const report = {

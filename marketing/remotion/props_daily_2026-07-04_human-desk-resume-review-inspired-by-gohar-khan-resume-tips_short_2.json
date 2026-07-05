@@ -1,0 +1,624 @@
+{
+  "hook": "I searched the resume. Nothing.",
+  "subhook": "This is how a real screening miss happens.",
+  "creativeFormat": "jobSearchTest",
+  "visualStyle": "terminal",
+  "formatArchetype": "recruiterSearch",
+  "pace": "fast",
+  "seriesLabel": "Recruiter Search Test",
+  "signalLines": {
+    "hook": "Search missed it.",
+    "problem": "Do not make them guess.",
+    "teardown": "Use the real term.",
+    "fix": "Now it is findable.",
+    "cta": "Search-test it first."
+  },
+  "resumeName": "Maya Torres",
+  "resumeTitle": "Account Executive Resume",
+  "resumeMeta": [
+    "4 yrs SaaS sales",
+    "Mid-market accounts",
+    "Quota-carrying role"
+  ],
+  "jobTitle": "Mid-Market Account Executive",
+  "jobKeywords": [
+    "Salesforce",
+    "pipeline generation",
+    "quota attainment",
+    "discovery calls",
+    "MEDDICC"
+  ],
+  "weakBullets": [
+    "Managed customer conversations and followed up with prospects.",
+    "Responsible for sales opportunities in assigned territory.",
+    "Worked with marketing and customer success on accounts."
+  ],
+  "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+  "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+  "resumeDocument": {
+    "name": "Maya Torres",
+    "headline": "Account Executive",
+    "contact": [
+      "Chicago, IL",
+      "maya.torres@example.com",
+      "linkedin.com/in/maya-torres"
+    ],
+    "summary": "Quota-carrying SaaS seller with 4 years across SDR and AE roles, focused on discovery, account prioritization, CRM hygiene, and mid-market pipeline creation.",
+    "experience": [
+      {
+        "company": "BrightLedger",
+        "role": "Account Executive",
+        "dates": "2024 - Present",
+        "bullets": [
+          "Managed customer conversations and followed up with prospects.",
+          "Responsible for sales opportunities in assigned territory.",
+          "Worked with marketing and customer success on accounts.",
+          "Maintained Salesforce notes, next steps, and close-date updates for active opportunities."
+        ]
+      },
+      {
+        "company": "Pinecone Workflow",
+        "role": "Sales Development Representative",
+        "dates": "2021 - 2024",
+        "bullets": [
+          "Booked discovery meetings with operations and finance leaders.",
+          "Researched account triggers and personalized outbound email sequences.",
+          "Qualified inbound leads and routed opportunities to three AE teams."
+        ]
+      }
+    ],
+    "skills": [
+      "Salesforce",
+      "MEDDICC",
+      "Discovery calls",
+      "Pipeline generation",
+      "Outbound sequencing",
+      "Forecasting",
+      "Mutual action plans"
+    ],
+    "education": "B.S. Business Administration, DePaul University"
+  },
+  "jobDescription": {
+    "title": "Mid-Market Account Executive",
+    "company": "TargetCo",
+    "summary": "TargetCo is hiring a Mid-Market Account Executive who can connect practical execution with measurable business outcomes.",
+    "responsibilities": [
+      "Use Salesforce and pipeline generation to improve team execution and reporting.",
+      "Translate work into measurable outcomes tied to quota attainment.",
+      "Partner cross-functionally and communicate progress clearly to stakeholders."
+    ],
+    "requirements": [
+      "Salesforce",
+      "pipeline generation",
+      "quota attainment",
+      "discovery calls",
+      "MEDDICC"
+    ],
+    "searchQueries": [
+      "Salesforce",
+      "pipeline generation",
+      "quota attainment",
+      "discovery calls"
+    ]
+  },
+  "beforeScore": 37,
+  "afterScore": 88,
+  "scoreBasis": [
+    {
+      "label": "Search terms",
+      "before": "0 strong",
+      "after": "Salesforce + pipeline"
+    },
+    {
+      "label": "Revenue proof",
+      "before": "missing",
+      "after": "$1.8M"
+    },
+    {
+      "label": "Method",
+      "before": "vague",
+      "after": "MEDDICC"
+    }
+  ],
+  "markedLabel": "Missing proof",
+  "problemPunchline": "A reviewer cannot search for what you meant to say.",
+  "teardownPunchline": "The low score is from hidden tool and result proof.",
+  "fixPunchline": "Now the search term points to real evidence.",
+  "teardownIssues": [
+    "No quota proof",
+    "No CRM signal",
+    "No pipeline number"
+  ],
+  "cta": "Check your free Signal score.",
+  "musicSrc": "audio/signal-quiet-orbit.wav",
+  "musicVolume": 0.16,
+  "avatarLabel": "Recruiter review",
+  "audioReadiness": {
+    "studioVoiceover": true,
+    "quietMusic": true,
+    "provider": "elevenlabs",
+    "voiceId": null,
+    "voiceName": null,
+    "reason": "ready via elevenlabs",
+    "wordLevelCaptions": true
+  },
+  "voiceoverSrc": "audio/daily-2026-07-04-the-ctrl-f-test-this-resume-fails-2-voiceover.mp3",
+  "voiceoverVolume": 0.94,
+  "captions": [
+    {
+      "text": "If",
+      "startMs": 35,
+      "endMs": 139,
+      "timestampMs": 35,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 209,
+      "endMs": 232,
+      "timestampMs": 209,
+      "confidence": null
+    },
+    {
+      "text": "am",
+      "startMs": 302,
+      "endMs": 395,
+      "timestampMs": 302,
+      "confidence": null
+    },
+    {
+      "text": "screening",
+      "startMs": 453,
+      "endMs": 836,
+      "timestampMs": 453,
+      "confidence": null
+    },
+    {
+      "text": "this",
+      "startMs": 882,
+      "endMs": 1010,
+      "timestampMs": 882,
+      "confidence": null
+    },
+    {
+      "text": "resume,",
+      "startMs": 1080,
+      "endMs": 1591,
+      "timestampMs": 1080,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 1660,
+      "endMs": 1718,
+      "timestampMs": 1660,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 1834,
+      "endMs": 2113,
+      "timestampMs": 1834,
+      "confidence": null
+    },
+    {
+      "text": "first.",
+      "startMs": 2171,
+      "endMs": 2775,
+      "timestampMs": 2171,
+      "confidence": null
+    },
+    {
+      "text": "Salesforce:",
+      "startMs": 3286,
+      "endMs": 4110,
+      "timestampMs": 3286,
+      "confidence": null
+    },
+    {
+      "text": "missing",
+      "startMs": 4203,
+      "endMs": 4516,
+      "timestampMs": 4203,
+      "confidence": null
+    },
+    {
+      "text": "here.",
+      "startMs": 4574,
+      "endMs": 4923,
+      "timestampMs": 4574,
+      "confidence": null
+    },
+    {
+      "text": "pipeline",
+      "startMs": 5097,
+      "endMs": 5561,
+      "timestampMs": 5097,
+      "confidence": null
+    },
+    {
+      "text": "generation:",
+      "startMs": 5596,
+      "endMs": 6258,
+      "timestampMs": 5596,
+      "confidence": null
+    },
+    {
+      "text": "missing",
+      "startMs": 6351,
+      "endMs": 6699,
+      "timestampMs": 6351,
+      "confidence": null
+    },
+    {
+      "text": "too.",
+      "startMs": 6769,
+      "endMs": 7233,
+      "timestampMs": 6769,
+      "confidence": null
+    },
+    {
+      "text": "The",
+      "startMs": 7837,
+      "endMs": 7953,
+      "timestampMs": 7837,
+      "confidence": null
+    },
+    {
+      "text": "line",
+      "startMs": 8010,
+      "endMs": 8266,
+      "timestampMs": 8010,
+      "confidence": null
+    },
+    {
+      "text": "says:",
+      "startMs": 8313,
+      "endMs": 8707,
+      "timestampMs": 8313,
+      "confidence": null
+    },
+    {
+      "text": "Responsible",
+      "startMs": 8824,
+      "endMs": 9439,
+      "timestampMs": 8824,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 9474,
+      "endMs": 9578,
+      "timestampMs": 9474,
+      "confidence": null
+    },
+    {
+      "text": "sales",
+      "startMs": 9625,
+      "endMs": 9903,
+      "timestampMs": 9625,
+      "confidence": null
+    },
+    {
+      "text": "opportunities",
+      "startMs": 9938,
+      "endMs": 10612,
+      "timestampMs": 9938,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 10670,
+      "endMs": 10751,
+      "timestampMs": 10670,
+      "confidence": null
+    },
+    {
+      "text": "assigned",
+      "startMs": 10797,
+      "endMs": 11169,
+      "timestampMs": 10797,
+      "confidence": null
+    },
+    {
+      "text": "territory.",
+      "startMs": 11204,
+      "endMs": 11877,
+      "timestampMs": 11204,
+      "confidence": null
+    },
+    {
+      "text": "That",
+      "startMs": 12318,
+      "endMs": 12504,
+      "timestampMs": 12318,
+      "confidence": null
+    },
+    {
+      "text": "makes",
+      "startMs": 12562,
+      "endMs": 12759,
+      "timestampMs": 12562,
+      "confidence": null
+    },
+    {
+      "text": "me",
+      "startMs": 12806,
+      "endMs": 12899,
+      "timestampMs": 12806,
+      "confidence": null
+    },
+    {
+      "text": "guess,",
+      "startMs": 12957,
+      "endMs": 13386,
+      "timestampMs": 12957,
+      "confidence": null
+    },
+    {
+      "text": "so",
+      "startMs": 13468,
+      "endMs": 13572,
+      "timestampMs": 13468,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 13642,
+      "endMs": 13711,
+      "timestampMs": 13642,
+      "confidence": null
+    },
+    {
+      "text": "match",
+      "startMs": 13758,
+      "endMs": 13990,
+      "timestampMs": 13758,
+      "confidence": null
+    },
+    {
+      "text": "starts",
+      "startMs": 14036,
+      "endMs": 14373,
+      "timestampMs": 14036,
+      "confidence": null
+    },
+    {
+      "text": "at",
+      "startMs": 14408,
+      "endMs": 14489,
+      "timestampMs": 14408,
+      "confidence": null
+    },
+    {
+      "text": "37:",
+      "startMs": 14536,
+      "endMs": 15360,
+      "timestampMs": 14536,
+      "confidence": null
+    },
+    {
+      "text": "missing",
+      "startMs": 15569,
+      "endMs": 15906,
+      "timestampMs": 15569,
+      "confidence": null
+    },
+    {
+      "text": "term,",
+      "startMs": 15964,
+      "endMs": 16416,
+      "timestampMs": 15964,
+      "confidence": null
+    },
+    {
+      "text": "missing",
+      "startMs": 16509,
+      "endMs": 16823,
+      "timestampMs": 16509,
+      "confidence": null
+    },
+    {
+      "text": "proof.",
+      "startMs": 16881,
+      "endMs": 17403,
+      "timestampMs": 16881,
+      "confidence": null
+    },
+    {
+      "text": "I",
+      "startMs": 17914,
+      "endMs": 17961,
+      "timestampMs": 17914,
+      "confidence": null
+    },
+    {
+      "text": "would",
+      "startMs": 18030,
+      "endMs": 18181,
+      "timestampMs": 18030,
+      "confidence": null
+    },
+    {
+      "text": "write:",
+      "startMs": 18216,
+      "endMs": 18576,
+      "timestampMs": 18216,
+      "confidence": null
+    },
+    {
+      "text": "generated",
+      "startMs": 18692,
+      "endMs": 19226,
+      "timestampMs": 18692,
+      "confidence": null
+    },
+    {
+      "text": "1.8",
+      "startMs": 19284,
+      "endMs": 19876,
+      "timestampMs": 19284,
+      "confidence": null
+    },
+    {
+      "text": "million",
+      "startMs": 19958,
+      "endMs": 20283,
+      "timestampMs": 19958,
+      "confidence": null
+    },
+    {
+      "text": "in",
+      "startMs": 20352,
+      "endMs": 20445,
+      "timestampMs": 20352,
+      "confidence": null
+    },
+    {
+      "text": "qualified",
+      "startMs": 20515,
+      "endMs": 20991,
+      "timestampMs": 20515,
+      "confidence": null
+    },
+    {
+      "text": "Salesforce",
+      "startMs": 21037,
+      "endMs": 21606,
+      "timestampMs": 21037,
+      "confidence": null
+    },
+    {
+      "text": "pipeline.",
+      "startMs": 21653,
+      "endMs": 22326,
+      "timestampMs": 21653,
+      "confidence": null
+    },
+    {
+      "text": "Now",
+      "startMs": 22709,
+      "endMs": 22930,
+      "timestampMs": 22709,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 22999,
+      "endMs": 23081,
+      "timestampMs": 22999,
+      "confidence": null
+    },
+    {
+      "text": "search",
+      "startMs": 23139,
+      "endMs": 23417,
+      "timestampMs": 23139,
+      "confidence": null
+    },
+    {
+      "text": "terms",
+      "startMs": 23464,
+      "endMs": 23754,
+      "timestampMs": 23464,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 23789,
+      "endMs": 23858,
+      "timestampMs": 23789,
+      "confidence": null
+    },
+    {
+      "text": "proof",
+      "startMs": 23917,
+      "endMs": 24184,
+      "timestampMs": 23917,
+      "confidence": null
+    },
+    {
+      "text": "are",
+      "startMs": 24253,
+      "endMs": 24369,
+      "timestampMs": 24253,
+      "confidence": null
+    },
+    {
+      "text": "visible:",
+      "startMs": 24393,
+      "endMs": 24927,
+      "timestampMs": 24393,
+      "confidence": null
+    },
+    {
+      "text": "88.",
+      "startMs": 25205,
+      "endMs": 25867,
+      "timestampMs": 25205,
+      "confidence": null
+    },
+    {
+      "text": "Run",
+      "startMs": 26146,
+      "endMs": 26366,
+      "timestampMs": 26146,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 26413,
+      "endMs": 26482,
+      "timestampMs": 26413,
+      "confidence": null
+    },
+    {
+      "text": "free",
+      "startMs": 26529,
+      "endMs": 26738,
+      "timestampMs": 26529,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 26784,
+      "endMs": 27098,
+      "timestampMs": 26784,
+      "confidence": null
+    },
+    {
+      "text": "score",
+      "startMs": 27167,
+      "endMs": 27492,
+      "timestampMs": 27167,
+      "confidence": null
+    },
+    {
+      "text": "before",
+      "startMs": 27539,
+      "endMs": 27806,
+      "timestampMs": 27539,
+      "confidence": null
+    },
+    {
+      "text": "you",
+      "startMs": 27841,
+      "endMs": 27910,
+      "timestampMs": 27841,
+      "confidence": null
+    },
+    {
+      "text": "apply.",
+      "startMs": 27968,
+      "endMs": 28561,
+      "timestampMs": 27968,
+      "confidence": null
+    }
+  ],
+  "durationSeconds": 29.761,
+  "captionReadiness": {
+    "wordLevel": true,
+    "provider": "elevenlabs",
+    "alignmentRef": "audio/daily-2026-07-04-the-ctrl-f-test-this-resume-fails-2-voiceover.alignment.json"
+  }
+}

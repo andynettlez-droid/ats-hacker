@@ -1,0 +1,676 @@
+{
+  "publishDate": "2026-07-04",
+  "topic": "Human desk resume review inspired by Gohar Khan resume tips",
+  "series": "Daily Research Packet",
+  "thesis": "Turn a timely job-search pain point into one useful long-form teardown and several short proof clips.",
+  "sourceNotes": [
+    {
+      "title": "YouTube Partner Program eligibility",
+      "url": "https://support.google.com/youtube/answer/72851",
+      "note": "Use YouTube as a monetization target, but optimize first for site conversions."
+    },
+    {
+      "title": "Pew Research Center Social Media Fact Sheet",
+      "url": "https://www.pewresearch.org/internet/fact-sheet/social-media/",
+      "note": "YouTube, Instagram, and TikTok are large discovery channels for job-search education."
+    }
+  ],
+  "youtube": {
+    "script": {
+      "title": "Resume Roast: DIY vs. Expert Review",
+      "length": "8-10 minutes",
+      "chapters": [
+        {
+          "title": "Intro: Resume Woes",
+          "time": "0:00-0:50",
+          "content": "Open with a relatable job-hunting joke: 'Ever felt like your resume is just a rejection magnet? Let's see if we can turn that monster into a masterpiece!'"
+        },
+        {
+          "title": "The Professional Yap",
+          "time": "0:50-2:30",
+          "content": "Show a resume with excessive business jargon and dead phrases. Roast it hard: 'Your resume is a thesaurus on Xanax!'"
+        },
+        {
+          "title": "Job Description Decoding",
+          "time": "2:30-4:00",
+          "content": "Compare common job descriptions with what candidates actually submit. Use funny visuals to illustrate the mismatch."
+        },
+        {
+          "title": "Signal Score Breakdown",
+          "time": "4:00-6:00",
+          "content": "Explain the Signal score simply while keeping the humor in. Use the mascot to highlight areas like action verbs as 'resume vitamins.'"
+        },
+        {
+          "title": "Real Resume Review",
+          "time": "6:00-9:00",
+          "content": "Do a live resume teardown. Roast individual bullet points with blunt humor: 'This bullet is about as engaging as a tax seminar!'"
+        },
+        {
+          "title": "Wrap Up & CTA",
+          "time": "9:00-10:00",
+          "content": "Transition to a calm conclusion: 'Remember, a good resume can help you land jobs! Check your Signal score for free today!'"
+        }
+      ]
+    },
+    "storyboard": [
+      {
+        "time": "0:00",
+        "visual": "person scrolling endlessly through job apps on their phone, frustrated."
+      },
+      {
+        "time": "0:20",
+        "visual": "playful animation of a resume morphing into a scary monster."
+      },
+      {
+        "time": "1:00",
+        "visual": "show 'professional yap' examples on screen."
+      },
+      {
+        "time": "3:00",
+        "visual": "split-screen showing job description vs candidate's resume."
+      },
+      {
+        "time": "5:00",
+        "visual": "Signal mascot dancing around the resume points while highlighting them."
+      },
+      {
+        "time": "8:00",
+        "visual": "confetti when the phrase 'Check your free Signal score!' appears."
+      }
+    ],
+    "title": "Human desk resume review inspired by Gohar Khan resume tips | Resume Teardown",
+    "seoTitle": "Human desk resume review inspired by Gohar Khan resume tips | Resume Teardown | Signal by ATSHacker",
+    "description": "A funny recruiter-style teardown of why a qualified resume can be hard to find, how to translate a job description into resume proof, and where Signal fits without fake claims.",
+    "cta": "Paste the job description and check your free Signal score before you apply.",
+    "chapters": [
+      "0:00 Cold open",
+      "0:20 The open loop",
+      "0:55 Translate the job description",
+      "1:40 Recruiter search test",
+      "2:25 Resume crime scene",
+      "3:15 Why it gets missed",
+      "4:05 Live bullet fix",
+      "5:00 Score reveal",
+      "5:35 Trust check and CTA"
+    ],
+    "scriptSections": [
+      {
+        "label": "Cold open",
+        "script": "Human desk resume review inspired by Gohar Khan resume tips This resume looks professional, which is why the mistake is dangerous. On screen, it feels polished. In a recruiter search, the proof is still hard to find.",
+        "visual": "Cold open with comic red stamp, quick zoom, Signal mascot reaction, and resume/JD split screen."
+      },
+      {
+        "label": "Open loop",
+        "script": "We are not adding fake experience. We are checking whether the resume explains the real experience in the same language as the target job.",
+        "visual": "Show the weak resume score, then hold the improved score as the unresolved payoff."
+      },
+      {
+        "label": "Translate the job description",
+        "script": "Before touching the resume, pull out the role title, tools, responsibilities, metrics, and proof signals the job actually asks for.",
+        "visual": "Resume on left, job description on right, mismatched terms highlighted with funny labels."
+      },
+      {
+        "label": "Recruiter search test",
+        "script": "If a recruiter searches for the first three important terms from the job description, this resume should produce useful hits. Right now, the source bullet is too broad.",
+        "visual": "Search console typing the first three job-description terms and showing weak matches."
+      },
+      {
+        "label": "Resume crime scene",
+        "script": "Now compare the resume line by line. The weak bullet is not dishonest. It is just too vague to carry the role-specific proof.",
+        "visual": "Red/yellow markups over weak bullets."
+      },
+      {
+        "label": "Why it gets missed",
+        "script": "A polished sentence can still hide the most important evidence. Recruiters skim for tools, scope, and outcomes because those make fit easy to verify.",
+        "visual": "Zoom into the weak bullet and place missing proof labels beside it."
+      },
+      {
+        "label": "Live bullet fix",
+        "script": "The fix is to say the real work clearly: what tool, what scope, what audience, and what result. No fake claims, just usable evidence.",
+        "visual": "Before/after bullet rewrite."
+      },
+      {
+        "label": "Score reveal",
+        "script": "Once the evidence matches the role language, the example score moves up. The point is not gaming a robot. The point is making real fit easier to see.",
+        "visual": "Score meter jumps from low match to high match with before/after resume panels."
+      },
+      {
+        "label": "Trust and CTA",
+        "script": "Signal automates this comparison. Paste the job description, upload the resume, and check the free score first. If the gap is real, then the paid resume and cover letter package makes sense.",
+        "visual": "Free Signal score page, trust badges, and bundle CTA."
+      }
+    ]
+  },
+  "shorts": [
+    {
+      "series": "Live Resume Review",
+      "title": "I would rewrite this bullet immediately",
+      "hook": "I would circle this bullet first.",
+      "script": "I am reading this Product Data Analyst resume. This line says: Created reports for business teams and leadership. I believe it. I cannot see SQL, Tableau, or a result. That starts at 32: missing tool, missing metric. I would write: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts. Now the proof is visible: 89. Run the free Signal score before you apply.",
+      "storyboard": [
+        "Case: Data Analyst Resume against Product Data Analyst.",
+        "Open on the resume as if a reviewer is reading it at a desk.",
+        "Circle the exact weak line: Created reports for business teams and leadership.",
+        "Place the job description beside it with SQL, Tableau, and cohort analysis highlighted.",
+        "Show the low score because the reviewer cannot see the tool, metric, or result.",
+        "Rewrite the line in-place using only the real work.",
+        "Reveal the score after the low-score rationale is visible."
+      ],
+      "props": {
+        "hook1": "This bullet has a high chance of synergy and zero proof",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "cta": "Check your free Signal score.",
+        "teardownCaseId": "data_analyst",
+        "playbookId": "recruiter_roast",
+        "seriesOverride": "Live Resume Review",
+        "creativeFormat": "resumeCrimeScene",
+        "visualStyle": "stickyNote",
+        "formatArchetype": "deskMarkup",
+        "pace": "fast",
+        "subhook": "The work may be real, but the proof is not visible yet.",
+        "signalLines": {
+          "hook": "Circle this.",
+          "problem": "The proof is hidden.",
+          "teardown": "Name the work clearly.",
+          "fix": "Now I can read it.",
+          "cta": "Check before sending."
+        },
+        "renderComposition": "ResumeDeskReview",
+        "resumeName": "Jordan Lee",
+        "resumeTitle": "Data Analyst Resume",
+        "resumeMeta": [
+          "3 yrs analytics",
+          "SQL + dashboards",
+          "Customer churn reporting"
+        ],
+        "jobTitle": "Product Data Analyst",
+        "jobKeywords": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "weakBullets": [
+          "Created reports for business teams and leadership.",
+          "Worked with data to help teams understand customer trends.",
+          "Helped maintain dashboards for weekly performance meetings."
+        ],
+        "beforeBullet": "Created reports for business teams and leadership.",
+        "afterBullet": "Built SQL churn dashboard in Tableau that cut weekly reporting by 6 hours and flagged 18 at-risk customer accounts.",
+        "beforeScore": 32,
+        "afterScore": 89,
+        "scoreBasis": [
+          {
+            "label": "Search terms",
+            "before": "reports",
+            "after": "SQL + Tableau"
+          },
+          {
+            "label": "Metric proof",
+            "before": "missing",
+            "after": "6 hrs saved"
+          },
+          {
+            "label": "Business result",
+            "before": "vague",
+            "after": "18 risks found"
+          }
+        ],
+        "missing": [
+          "SQL",
+          "Tableau",
+          "cohort analysis",
+          "churn dashboard",
+          "stakeholder insights"
+        ],
+        "markedLabel": "Too vague",
+        "problemPunchline": "The work may be real. The evidence is not readable.",
+        "teardownPunchline": "Low score reason: no visible tool, metric, or result.",
+        "fixPunchline": "A recruiter should not have to infer the proof.",
+        "teardownIssues": [
+          "No SQL signal",
+          "No dashboard tool",
+          "No business result"
+        ],
+        "resumeDocument": {
+          "name": "Jordan Lee",
+          "headline": "Data Analyst",
+          "contact": [
+            "Austin, TX",
+            "jordan.lee@example.com",
+            "linkedin.com/in/jordan-lee"
+          ],
+          "summary": "Data analyst with 3 years building recurring reports, dashboard views, and customer trend analysis for product and revenue teams.",
+          "experience": [
+            {
+              "company": "Northstar Analytics",
+              "role": "Data Analyst",
+              "dates": "2023 - Present",
+              "bullets": [
+                "Created reports for business teams and leadership.",
+                "Worked with data to help teams understand customer trends.",
+                "Helped maintain dashboards for weekly performance meetings.",
+                "Cleaned product usage exports and sent weekly insights to customer success."
+              ]
+            },
+            {
+              "company": "CedarCloud Software",
+              "role": "Junior Operations Analyst",
+              "dates": "2021 - 2023",
+              "bullets": [
+                "Updated Excel trackers for sales, onboarding, and support activity.",
+                "Partnered with product managers to validate monthly account health data.",
+                "Reduced duplicate customer records by 17% through spreadsheet QA and CRM cleanup."
+              ]
+            }
+          ],
+          "skills": [
+            "SQL",
+            "Tableau",
+            "Excel",
+            "Customer churn",
+            "Cohort analysis",
+            "Data cleaning",
+            "Stakeholder reporting"
+          ],
+          "education": "B.S. Business Analytics, University of Texas at Austin"
+        },
+        "jobDescription": {
+          "title": "Product Data Analyst",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Product Data Analyst who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use SQL and Tableau to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to cohort analysis.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard",
+            "stakeholder insights"
+          ],
+          "searchQueries": [
+            "SQL",
+            "Tableau",
+            "cohort analysis",
+            "churn dashboard"
+          ]
+        },
+        "voiceover_text": "I am reading this Product Data Analyst resume. This line says: Created reports for business teams and leadership. I believe it. I cannot see SQL, Tableau, or a result. That starts at 32: missing tool, missing metric. I would write: built a SQL churn dashboard that saved six hours a week and flagged 18 at-risk accounts. Now the proof is visible: 89. Run the free Signal score before you apply."
+      }
+    },
+    {
+      "series": "Recruiter Search Test",
+      "title": "The Ctrl+F test this resume fails",
+      "hook": "I searched the resume. Nothing.",
+      "script": "If I am screening this resume, I search first. Salesforce: missing here. pipeline generation: missing too. The line says: Responsible for sales opportunities in assigned territory. That makes me guess, so the match starts at 37: missing term, missing proof. I would write: generated 1.8 million in qualified Salesforce pipeline. Now the search terms and proof are visible: 88. Run the free Signal score before you apply.",
+      "storyboard": [
+        "Case: Account Executive Resume against Mid-Market Account Executive.",
+        "Open on a reviewer search box over the resume, searching for Salesforce.",
+        "Show the weak bullet that does not include the searched language.",
+        "Search pipeline generation and show the miss again.",
+        "Explain that the low score comes from hidden tool and result proof.",
+        "Rewrite the bullet and rerun the search with a visible match.",
+        "Close after the low-score rationale explains the jump."
+      ],
+      "props": {
+        "hook1": "If I search SQL, does your resume even show up?",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "cta": "Check your free Signal score.",
+        "teardownCaseId": "sales_account_exec",
+        "playbookId": "search_console",
+        "seriesOverride": "Recruiter Search Test",
+        "creativeFormat": "jobSearchTest",
+        "visualStyle": "terminal",
+        "formatArchetype": "recruiterSearch",
+        "pace": "fast",
+        "subhook": "This is how a real screening miss happens.",
+        "signalLines": {
+          "hook": "Search missed it.",
+          "problem": "Do not make them guess.",
+          "teardown": "Use the real term.",
+          "fix": "Now it is findable.",
+          "cta": "Search-test it first."
+        },
+        "renderComposition": "ResumeDeskReview",
+        "resumeName": "Maya Torres",
+        "resumeTitle": "Account Executive Resume",
+        "resumeMeta": [
+          "4 yrs SaaS sales",
+          "Mid-market accounts",
+          "Quota-carrying role"
+        ],
+        "jobTitle": "Mid-Market Account Executive",
+        "jobKeywords": [
+          "Salesforce",
+          "pipeline generation",
+          "quota attainment",
+          "discovery calls",
+          "MEDDICC"
+        ],
+        "weakBullets": [
+          "Managed customer conversations and followed up with prospects.",
+          "Responsible for sales opportunities in assigned territory.",
+          "Worked with marketing and customer success on accounts."
+        ],
+        "beforeBullet": "Responsible for sales opportunities in assigned territory.",
+        "afterBullet": "Generated $1.8M in qualified Salesforce pipeline through 42 monthly discovery calls and MEDDICC-based account prioritization.",
+        "beforeScore": 37,
+        "afterScore": 88,
+        "scoreBasis": [
+          {
+            "label": "Search terms",
+            "before": "0 strong",
+            "after": "Salesforce + pipeline"
+          },
+          {
+            "label": "Revenue proof",
+            "before": "missing",
+            "after": "$1.8M"
+          },
+          {
+            "label": "Method",
+            "before": "vague",
+            "after": "MEDDICC"
+          }
+        ],
+        "missing": [
+          "Salesforce",
+          "pipeline generation",
+          "quota attainment",
+          "discovery calls",
+          "MEDDICC"
+        ],
+        "markedLabel": "Missing proof",
+        "problemPunchline": "A reviewer cannot search for what you meant to say.",
+        "teardownPunchline": "The low score is from hidden tool and result proof.",
+        "fixPunchline": "Now the search term points to real evidence.",
+        "teardownIssues": [
+          "No quota proof",
+          "No CRM signal",
+          "No pipeline number"
+        ],
+        "resumeDocument": {
+          "name": "Maya Torres",
+          "headline": "Account Executive",
+          "contact": [
+            "Chicago, IL",
+            "maya.torres@example.com",
+            "linkedin.com/in/maya-torres"
+          ],
+          "summary": "Quota-carrying SaaS seller with 4 years across SDR and AE roles, focused on discovery, account prioritization, CRM hygiene, and mid-market pipeline creation.",
+          "experience": [
+            {
+              "company": "BrightLedger",
+              "role": "Account Executive",
+              "dates": "2024 - Present",
+              "bullets": [
+                "Managed customer conversations and followed up with prospects.",
+                "Responsible for sales opportunities in assigned territory.",
+                "Worked with marketing and customer success on accounts.",
+                "Maintained Salesforce notes, next steps, and close-date updates for active opportunities."
+              ]
+            },
+            {
+              "company": "Pinecone Workflow",
+              "role": "Sales Development Representative",
+              "dates": "2021 - 2024",
+              "bullets": [
+                "Booked discovery meetings with operations and finance leaders.",
+                "Researched account triggers and personalized outbound email sequences.",
+                "Qualified inbound leads and routed opportunities to three AE teams."
+              ]
+            }
+          ],
+          "skills": [
+            "Salesforce",
+            "MEDDICC",
+            "Discovery calls",
+            "Pipeline generation",
+            "Outbound sequencing",
+            "Forecasting",
+            "Mutual action plans"
+          ],
+          "education": "B.S. Business Administration, DePaul University"
+        },
+        "jobDescription": {
+          "title": "Mid-Market Account Executive",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Mid-Market Account Executive who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use Salesforce and pipeline generation to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to quota attainment.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "Salesforce",
+            "pipeline generation",
+            "quota attainment",
+            "discovery calls",
+            "MEDDICC"
+          ],
+          "searchQueries": [
+            "Salesforce",
+            "pipeline generation",
+            "quota attainment",
+            "discovery calls"
+          ]
+        },
+        "voiceover_text": "If I am screening this resume, I search first. Salesforce: missing here. pipeline generation: missing too. The line says: Responsible for sales opportunities in assigned territory. That makes me guess, so the match starts at 37: missing term, missing proof. I would write: generated 1.8 million in qualified Salesforce pipeline. Now the search terms and proof are visible: 88. Run the free Signal score before you apply."
+      }
+    },
+    {
+      "series": "Job Description Review",
+      "title": "This resume missed the job posting",
+      "hook": "The job post already told you.",
+      "script": "Here is the job post: React, TypeScript, and Next.js. Now here is the resume line: Worked on frontend features for internal and customer-facing tools. That mismatch starts at 41: missing tool, missing metric. Do not fake anything. I would write: shipped React and TypeScript checkout work that reduced drop-off 14 percent. Now the tool, metric, and outcome are visible: 90. Run the free Signal score before you apply.",
+      "storyboard": [
+        "Case: Frontend Engineer Resume against Frontend Software Engineer.",
+        "Open on the job post with React, TypeScript, and Next.js highlighted.",
+        "Slide to the resume line and circle the mismatch.",
+        "Show the low-score rationale: missing tool, missing metric, missing outcome.",
+        "Rewrite the line without inventing anything.",
+        "Reveal the rewritten bullet and then the score movement.",
+        "End with the free Signal score CTA."
+      ],
+      "props": {
+        "hook1": "This resume is invisible because the best bullet is bur",
+        "hook2": "Check the match.",
+        "subline": "Signal compares resume language to the target job.",
+        "cta": "Check your free Signal score.",
+        "teardownCaseId": "frontend_engineer",
+        "playbookId": "answer_key",
+        "seriesOverride": "Job Description Review",
+        "creativeFormat": "oneBulletFix",
+        "visualStyle": "highlighter",
+        "formatArchetype": "splitTranslation",
+        "pace": "fast",
+        "subhook": "The resume just did not answer it clearly.",
+        "signalLines": {
+          "hook": "Read the posting.",
+          "problem": "The answer is vague.",
+          "teardown": "Translate. Do not exaggerate.",
+          "fix": "Now the proof matches.",
+          "cta": "Paste the job first."
+        },
+        "renderComposition": "ResumeDeskReview",
+        "resumeName": "Avery Patel",
+        "resumeTitle": "Frontend Engineer Resume",
+        "resumeMeta": [
+          "5 yrs product UI",
+          "React/TypeScript",
+          "Accessibility fixes"
+        ],
+        "jobTitle": "Frontend Software Engineer",
+        "jobKeywords": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "accessibility",
+          "performance"
+        ],
+        "weakBullets": [
+          "Worked on frontend features for internal and customer-facing tools.",
+          "Collaborated with designers and backend engineers.",
+          "Helped improve application performance and user experience."
+        ],
+        "beforeBullet": "Worked on frontend features for internal and customer-facing tools.",
+        "afterBullet": "Shipped React and TypeScript checkout components in Next.js, reducing form drop-off 14% and closing 11 accessibility issues.",
+        "beforeScore": 41,
+        "afterScore": 90,
+        "scoreBasis": [
+          {
+            "label": "Stack match",
+            "before": "hidden",
+            "after": "React + TS + Next"
+          },
+          {
+            "label": "Feature proof",
+            "before": "broad",
+            "after": "checkout"
+          },
+          {
+            "label": "Result",
+            "before": "missing",
+            "after": "drop-off -14%"
+          }
+        ],
+        "missing": [
+          "React",
+          "TypeScript",
+          "Next.js",
+          "accessibility",
+          "performance"
+        ],
+        "markedLabel": "Too broad",
+        "problemPunchline": "The role language is visible. The resume is not using it.",
+        "teardownPunchline": "Low score reason: broad work, missing tool, no result.",
+        "fixPunchline": "Use the job language only when the experience supports it.",
+        "teardownIssues": [
+          "Stack is vague",
+          "No shipped feature",
+          "No performance result"
+        ],
+        "resumeDocument": {
+          "name": "Avery Patel",
+          "headline": "Frontend Engineer",
+          "contact": [
+            "Seattle, WA",
+            "avery.patel@example.com",
+            "github.com/averypatel"
+          ],
+          "summary": "Frontend engineer with 5 years building product UI, design-system components, checkout flows, and accessibility improvements for SaaS products.",
+          "experience": [
+            {
+              "company": "MapleStack",
+              "role": "Frontend Engineer",
+              "dates": "2022 - Present",
+              "bullets": [
+                "Worked on frontend features for internal and customer-facing tools.",
+                "Collaborated with designers and backend engineers.",
+                "Helped improve application performance and user experience.",
+                "Maintained shared React components used by billing, onboarding, and account teams."
+              ]
+            },
+            {
+              "company": "OrbitCart",
+              "role": "UI Developer",
+              "dates": "2019 - 2022",
+              "bullets": [
+                "Converted Figma designs into responsive TypeScript UI components.",
+                "Triaged customer-reported accessibility issues with QA and support.",
+                "Added Playwright regression coverage for checkout and profile flows."
+              ]
+            }
+          ],
+          "skills": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "Design systems",
+            "WCAG",
+            "Performance profiling",
+            "Playwright"
+          ],
+          "education": "B.S. Computer Science, University of Washington"
+        },
+        "jobDescription": {
+          "title": "Frontend Software Engineer",
+          "company": "TargetCo",
+          "summary": "TargetCo is hiring a Frontend Software Engineer who can connect practical execution with measurable business outcomes.",
+          "responsibilities": [
+            "Use React and TypeScript to improve team execution and reporting.",
+            "Translate work into measurable outcomes tied to Next.js.",
+            "Partner cross-functionally and communicate progress clearly to stakeholders."
+          ],
+          "requirements": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "accessibility",
+            "performance"
+          ],
+          "searchQueries": [
+            "React",
+            "TypeScript",
+            "Next.js",
+            "accessibility"
+          ]
+        },
+        "voiceover_text": "Here is the job post: React, TypeScript, and Next.js. Now here is the resume line: Worked on frontend features for internal and customer-facing tools. That mismatch starts at 41: missing tool, missing metric. Do not fake anything. I would write: shipped React and TypeScript checkout work that reduced drop-off 14 percent. Now the tool, metric, and outcome are visible: 90. Run the free Signal score before you apply."
+      }
+    }
+  ],
+  "monetization": {
+    "aim": "Build audience engagement first, then monetize through the YouTube Partner Program.",
+    "goal": "Convert viewers to website visits and encourage them to check the free Signal score.",
+    "primaryGoal": "Site revenue from resume / cover letter packages, not ad revenue.",
+    "cta": "Free Signal score -> $9.99 resume or $14.99 bundle.",
+    "tracking": [
+      "utm_source=youtube",
+      "utm_medium=video",
+      "utm_campaign=daily_packet"
+    ],
+    "upsell": "Promote bundle after score completion and multi-role pack after first purchase."
+  },
+  "viewerCustomerReview": {
+    "5-star": "Helped change my resume from a snooze-fest to a showstopper!",
+    "4-star": "More humor, less jargon! But the tips were spot on.",
+    "3-star": "Funny bits but needed more actionable advice."
+  },
+  "creativeQualityGate": {
+    "overallScore": 100,
+    "passed": true,
+    "verdict": "post_grade_script_packet",
+    "notes": [],
+    "blockers": [],
+    "shorts": [
+      {
+        "title": "I would rewrite this bullet immediately",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "The Ctrl+F test this resume fails",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      },
+      {
+        "title": "This resume missed the job posting",
+        "score": 100,
+        "passed": true,
+        "notes": [],
+        "blockers": []
+      }
+    ]
+  }
+}

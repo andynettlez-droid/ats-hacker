@@ -6,6 +6,7 @@ Status: active research input for short-form generation.
 
 - TikTok creative best practices: hook/value proposition in the first 3-6 seconds, captions/overlays, transitions/graphics, direct CTA.
 - YouTube Shorts and public niche examples surfaced through search: recruiter resume review, 7-second resume test, resume formatting, resume prompt chains, recruiter search/readability videos.
+- Gohar Khan reference Short, "Resume Tips You Should Use": 27.84s, physical job-application/resume POV, plain human narration, one resume mistake, captions at the top, and a tiny story around a manager reading the paper.
 - Instagram/Reels search snippets for resume-review and recruiter-scan videos: F-pattern resume scanning, "recruiters scan, not read", specific formatting and keyword advice.
 - LinkedIn resume posts from recruiters/career coaches: clear formatting, quantified bullets, tools/technologies, resume reviewed against open jobs, 6-10 second scan framing.
 
@@ -17,6 +18,8 @@ Status: active research input for short-form generation.
 - Relatable diagnosis: "This is resume oatmeal."
 - Mistake reveal: "This line is costing interviews."
 - Open-book test: "The job post gave you the answer key."
+- First-person review: "I would circle this bullet first."
+- Search action: "I searched the resume. Nothing."
 - Time pressure: "You have 7 seconds. This bullet wastes 5."
 - Red flag: "This looks professional. That is the problem."
 - Before/after promise: "One bullet took this from low match to review-ready."
@@ -37,6 +40,7 @@ Status: active research input for short-form generation.
 
 ## Visual Formats
 
+- Human desk review: top-down paper resume, nearby job post, red marker, sticky-note rationale, reviewer hand/pencil motion. Use this when a clip needs to feel human instead of product-generated.
 - Recruiter search console: search terms typed, weak/no hits, then match after rewrite.
 - Red-marker resume roast: paper resume, red circle, stamp, "why this starts low" receipt.
 - Job-description answer key: JD keywords on an answer sheet, resume fails to answer with the same language.
@@ -53,7 +57,8 @@ Status: active research input for short-form generation.
 - Slightly amused recruiter, fast but clear.
 - Short pauses after punchlines.
 - Less corporate polish, more "I review resumes for a living."
-- Use online-native phrasing sparingly: "NPC energy", "beige wall", "business casual shrug", "detective work".
+- Use first-person reviewer language: "I would circle...", "I searched...", "I would write...".
+- Use online-native phrasing sparingly and only when it sounds human. Forced slang reads as AI slop and should fail.
 - Avoid monotone educational reads.
 
 ## Why The Pattern Works
@@ -71,6 +76,7 @@ Status: active research input for short-form generation.
 - One useful fix.
 - Fast score receipt before score reveal.
 - Short CTA to free Signal score.
+- Mini-story structure from the reference: someone reads a resume, reacts to one mistake, then gives one concrete fix.
 
 ## What Signal Should Avoid
 
@@ -78,6 +84,7 @@ Status: active research input for short-form generation.
 - Generic ATS fearmongering.
 - Repeating "same person, better signal."
 - HubSpot/CAC default scripts unless the actual resume is a marketing teardown.
+- Forced meme slang like "NPC energy", "resume oatmeal", "LinkedIn breath", or "business casual shrug" unless a human creator would actually say it in context.
 - Product-demo wording like "same experience, clearer proof."
 - Showing 34->92 without a visible reason.
 - One dark neon visual language across every short.

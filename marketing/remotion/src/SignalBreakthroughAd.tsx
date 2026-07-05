@@ -43,6 +43,7 @@ export const signalBreakthroughAdSchema = z.object({
   avatarStartFrame: z.number().optional(),
   avatarEndFrame: z.number().optional(),
   avatarLabel: z.string().optional(),
+  narrationMode: z.enum(["guided", "visual"]).optional(),
 });
 
 export type SignalBreakthroughAdProps = z.infer<typeof signalBreakthroughAdSchema>;
@@ -612,6 +613,7 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
   avatarStartFrame = 0,
   avatarEndFrame = 132,
   avatarLabel = "Career coach",
+  narrationMode = "guided",
   resumeName,
   resumeHeadline,
   resumeSummary,
@@ -870,10 +872,21 @@ export const SignalBreakthroughAd: React.FC<SignalBreakthroughAdProps> = ({
           <HiringManager reveal={managerReveal} />
         </div>
 
-        {frame >= 145 && frame < 245 ? <Caption emphasis="the resume">Signal grabs</Caption> : null}
-        {frame >= 245 && frame < 345 ? <Caption emphasis="company filters">Then breaks through</Caption> : null}
-        {frame >= 345 && frame < 515 ? <Caption emphasis="real proof">Then rebuilds your</Caption> : null}
-        {frame >= 515 && frame < 665 ? <Caption emphasis="the hiring manager screen">And phases it into</Caption> : null}
+        {narrationMode === "visual" ? (
+          <>
+            {frame >= 145 && frame < 245 ? <Caption emphasis="captured">Resume</Caption> : null}
+            {frame >= 245 && frame < 345 ? <Caption emphasis="cracking">Filters</Caption> : null}
+            {frame >= 345 && frame < 515 ? <Caption emphasis="unlocked">Proof</Caption> : null}
+            {frame >= 515 && frame < 665 ? <Caption emphasis="screen">Hiring manager</Caption> : null}
+          </>
+        ) : (
+          <>
+            {frame >= 145 && frame < 245 ? <Caption emphasis="the resume">Signal grabs</Caption> : null}
+            {frame >= 245 && frame < 345 ? <Caption emphasis="company filters">Then breaks through</Caption> : null}
+            {frame >= 345 && frame < 515 ? <Caption emphasis="real proof">Then rebuilds your</Caption> : null}
+            {frame >= 515 && frame < 665 ? <Caption emphasis="the hiring manager screen">And phases it into</Caption> : null}
+          </>
+        )}
       </AbsoluteFill>
 
       <AbsoluteFill style={{ opacity: scoreOpacity, alignItems: "center", justifyContent: "center", textAlign: "center" }}>

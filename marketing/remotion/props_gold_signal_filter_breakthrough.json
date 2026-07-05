@@ -1,39 +1,41 @@
 {
   "slug": "gold-signal-filter-breakthrough",
-  "hook1": "Signal just hit the resume filters.",
-  "hook2": "Now the proof gets seen.",
-  "subline": "A generic network resume becomes a clear story: BGP, Python, incidents, results.",
+  "hook1": "Signal takes the resume through.",
+  "hook2": "The proof lands on screen.",
+  "subline": "A generic IT support resume becomes a network administrator story: VLANs, Cisco, VPN, ticket reduction.",
   "missing": [
-    "BGP",
-    "Python",
-    "Linux",
+    "VLANs",
+    "Cisco switching",
+    "VPN",
     "incident response"
   ],
-  "beforeScore": 28,
-  "afterScore": 87,
+  "beforeScore": 31,
+  "afterScore": 82,
   "cta": "Free Signal score before you apply.",
-  "resumeName": "SHAWN CARTER",
-  "resumeHeadline": "Network Engineer Target",
-  "resumeSummary": "Network support specialist with routing, switching, Linux incident response, and cloud connectivity experience.",
+  "resumeName": "JORDAN ELLIS",
+  "resumeHeadline": "Network Administrator Target",
+  "resumeSummary": "IT support specialist with clinic connectivity, Cisco switching, VPN, and incident response experience.",
   "resumeBeforeLines": [
-    "Responsible for network support and troubleshooting.",
-    "Worked with routers and switches."
+    "Responsible for IT support and fixing network issues.",
+    "Helped with routers, switches, and user connectivity."
   ],
   "resumeAfterLines": [
-    "Automated BGP and VLAN health checks with Python, cutting outage triage time by 37%.",
-    "Resolved Linux DNS and firewall incidents across 42 network devices."
+    "Resolved recurring VLAN misconfiguration across 11 clinic workstations.",
+    "Documented Cisco switch changes and cut repeat tickets by 42%."
   ],
   "roleLanguage": [
-    "BGP",
-    "Python",
-    "Linux",
-    "Incidents"
+    "VLANs",
+    "Cisco",
+    "VPN",
+    "Tickets"
   ],
   "musicSrc": "audio/signal-quiet-orbit.wav",
-  "musicVolume": 0.12,
-  "voiceoverVolume": 0.94,
+  "musicVolume": 0.2,
+  "voiceoverSrc": "",
+  "voiceoverVolume": 0,
   "voiceoverPlaybackRate": 1.08,
   "sfxVolume": 0,
+  "narrationMode": "visual",
   "avatarStartFrame": 0,
   "avatarEndFrame": 0,
   "avatarLabel": "Signal",
@@ -48,8 +50,7 @@
     "previous_text": "Now show Signal moving through the resume filters.",
     "next_text": "End with the score receipt and the free-score CTA."
   },
-  "voiceover_text": "Signal grabs Shawn's resume, smashes through the keyword filters, throws out the generic junk, and drops the real proof on the hiring manager's screen. BGP. Python. Incidents. Actual numbers. That's the version people can read. Free Signal score before you apply.",
-  "voiceoverSrc": "audio/gold-signal-filter-breakthrough-voiceover.mp3",
+  "voiceover_text": "",
   "captions": [
     {
       "text": "Signal",

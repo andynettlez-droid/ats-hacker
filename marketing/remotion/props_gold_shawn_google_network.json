@@ -1,130 +1,130 @@
 {
-  "slug": "gold-shawn-google-network",
-  "title": "Shawn's network engineer resume is a mess",
-  "hook": "Shawn wants Google with this?",
-  "subhook": "Okay, let's fix the mess.",
+  "slug": "gold-jordan-health-network-admin",
+  "title": "Jordan's network admin resume hides the proof",
+  "hook": "Jordan has the proof. He buried it.",
+  "subhook": "Okay, this is fixable.",
   "creativeFormat": "resumeCrimeScene",
   "visualStyle": "comic",
   "formatArchetype": "deskMarkup",
   "pace": "fast",
   "seriesLabel": "Resume Roast",
   "signalLines": {
-    "hook": "Oof. Shawn.",
-    "problem": "Generic network soup.",
-    "teardown": "Google is not hunting for clues.",
-    "fix": "Feed the proof to Signal.",
+    "hook": "Jordan, come on.",
+    "problem": "Help desk wording.",
+    "teardown": "This reads like a ticket note.",
+    "fix": "Move the proof up.",
     "cta": "Fix before sending."
   },
-  "punchline": "Google is not doing a scavenger hunt.",
-  "problemPunchline": "The good network proof is buried under generic support language.",
+  "punchline": "This reads like a ticket note, not a network admin resume.",
+  "problemPunchline": "The real network admin proof is buried below generic support language.",
   "markedLabel": "Generic",
-  "teardownText": "This is not a network engineer bullet.",
-  "teardownEmphasis": "This is beige oatmeal.",
-  "teardownPunchline": "No BGP, no automation, no incident result.",
+  "teardownText": "This is too vague for the role.",
+  "teardownEmphasis": "This is help desk fog.",
+  "teardownPunchline": "No VLANs, no Cisco, no measurable result.",
   "teardownIssues": [
-    "Two pages",
-    "Generic styling",
-    "Missing BGP/Python"
+    "Generic first bullet",
+    "Missing VLAN/Cisco",
+    "Proof buried too low"
   ],
-  "fixText": "Signal pulls out the proof Google actually needs.",
-  "fixEmphasis": "BGP. Python. Incidents.",
-  "fixPunchline": "Still Shawn's experience. Just readable.",
-  "resumeName": "Shawn Carter",
-  "resumeTitle": "Network Engineer Resume",
+  "fixText": "Signal moves the real network proof up top.",
+  "fixEmphasis": "VLANs. Cisco. Ticket reduction.",
+  "fixPunchline": "Same experience, now it reads like the role.",
+  "resumeName": "Jordan Ellis",
+  "resumeTitle": "Network Administrator Resume",
   "resumeMeta": [
-    "5 yrs network support",
-    "Cisco + Linux",
-    "Cloud networking"
+    "4 yrs IT support",
+    "Cisco switching",
+    "Healthcare clinics"
   ],
   "resumeWarnings": [
-    "2 pages",
-    "generic",
-    "weak styling",
-    "missing keywords"
+    "generic opener",
+    "proof buried",
+    "missing role terms"
   ],
-  "jobTitle": "Network Engineer at Google",
+  "jobTitle": "Network Administrator at Northstar Health Network",
   "jobKeywords": [
-    "BGP",
-    "Python",
-    "Linux",
+    "VLANs",
+    "Cisco switching",
+    "VPN",
     "incident response",
-    "network automation"
+    "ticket reduction"
   ],
   "weakBullets": [
-    "Responsible for network support and troubleshooting.",
-    "Worked with routers and switches.",
-    "Helped maintain network uptime."
+    "Responsible for IT support and fixing network issues.",
+    "Helped with routers, switches, and user connectivity.",
+    "Worked tickets for clinic staff."
   ],
-  "beforeBullet": "Responsible for network support and troubleshooting.",
-  "afterBullet": "Automated BGP and VLAN health checks with Python, cutting outage triage time by 37% across 42 network devices.",
+  "beforeBullet": "Responsible for IT support and fixing network issues.",
+  "afterBullet": "Resolved recurring VLAN misconfiguration across 11 clinic workstations, documented Cisco switch changes, and cut repeat tickets by 42% in six weeks.",
   "resumeDocument": {
-    "name": "Shawn Carter",
-    "headline": "Network Support Specialist",
+    "name": "Jordan Ellis",
+    "headline": "IT Support Specialist",
     "contact": [
-      "Atlanta, GA",
-      "shawn.carter@example.com",
-      "linkedin.com/in/shawn-carter"
+      "Columbus, OH",
+      "jordan.ellis@example.com",
+      "linkedin.com/in/jordan-ellis"
     ],
-    "summary": "Network support specialist with experience helping teams troubleshoot connectivity, routing, switching, and cloud access issues across enterprise environments.",
+    "summary": "IT support specialist with hands-on experience resolving connectivity, switching, VPN, and clinic workstation issues across healthcare environments.",
     "experience": [
       {
-        "company": "Fictional Telecom Services",
-        "role": "Network Support Specialist",
+        "company": "Northstar Clinic Group",
+        "role": "IT Support Specialist",
         "dates": "2021 - Present",
         "bullets": [
-          "Responsible for network support and troubleshooting.",
-          "Worked with routers and switches.",
-          "Helped maintain network uptime.",
-          "Automated BGP and VLAN health checks with Python, cutting outage triage time by 37% across 42 network devices.",
-          "Resolved Linux DNS and firewall incidents for internal engineering teams."
+          "Responsible for IT support and fixing network issues.",
+          "Helped with routers, switches, and user connectivity.",
+          "Worked tickets for clinic staff.",
+          "Resolved recurring VLAN misconfiguration across 11 clinic workstations, documented Cisco switch changes, and cut repeat tickets by 42% in six weeks.",
+          "Supported VPN access and firewall rule escalations during after-hours clinic incidents."
         ]
       },
       {
-        "company": "Fictional Cloud Hosting",
-        "role": "Junior Network Technician",
+        "company": "Riverbend Managed IT",
+        "role": "Help Desk Technician",
         "dates": "2019 - 2021",
         "bullets": [
-          "Monitored network alerts and escalated routing issues to senior engineers.",
-          "Documented OSPF adjacency failures and switchport configuration changes.",
-          "Supported after-hours incident response for customer connectivity outages."
+          "Triaged workstation, printer, and VPN access tickets for small business clients.",
+          "Escalated switchport and DNS issues to network engineers with documented troubleshooting notes.",
+          "Maintained asset inventory and end-user setup checklists."
         ]
       }
     ],
     "skills": [
       "Cisco",
-      "Linux",
+      "VLANs",
       "TCP/IP",
       "DNS",
-      "Firewall support",
-      "Cloud networking"
+      "VPN support",
+      "ServiceNow"
     ],
-    "education": "A.A.S. Network Systems Technology"
+    "education": "CompTIA Network+ | A.A.S. Information Technology"
   },
   "jobDescription": {
-    "title": "Network Engineer",
-    "company": "Google",
-    "summary": "Google is hiring a Network Engineer to support large-scale routing, Linux systems, network automation, and incident response.",
+    "title": "Network Administrator",
+    "company": "Northstar Health Network",
+    "summary": "Northstar Health Network is hiring a Network Administrator to support clinic connectivity, Cisco switching, VPN access, and incident response.",
     "responsibilities": [
-      "Troubleshoot routing and switching issues across large-scale networks.",
-      "Use Python or similar scripting to automate network checks.",
-      "Partner with engineering teams during production incidents."
+      "Troubleshoot VLAN, switchport, and VPN access issues across clinic locations.",
+      "Document Cisco switch changes and recurring network incidents.",
+      "Partner with help desk and infrastructure teams to reduce repeat tickets."
     ],
     "requirements": [
-      "BGP",
-      "Python",
-      "Linux",
+      "VLANs",
+      "Cisco switching",
+      "VPN",
       "incident response",
-      "network automation"
+      "ticket reduction"
     ],
     "searchQueries": [
-      "BGP",
-      "Python",
-      "Linux",
-      "incident response"
+      "VLAN",
+      "Cisco",
+      "VPN",
+      "incident response",
+      "ServiceNow"
     ]
   },
-  "beforeScore": 28,
-  "afterScore": 87,
+  "beforeScore": 31,
+  "afterScore": 82,
   "scoreLabel": "Before fix",
   "scoreBasis": [
     {
@@ -153,60 +153,60 @@
     "scale": 100,
     "beforeTotal": 28,
     "afterTotal": 87,
-    "beforeExplanation": "The original resume hides network engineering proof behind generic support language and styling problems.",
-    "afterExplanation": "The rewrite moves the exact tools, scope, and result into the visible bullet.",
+    "beforeExplanation": "The original resume opens with generic support language even though the candidate has relevant network admin proof lower down.",
+    "afterExplanation": "The rewrite moves VLAN, Cisco, scope, and ticket reduction into the visible bullet.",
     "rows": [
       {
         "criterion": "Tool match",
         "label": "Tool match",
         "max": 25,
-        "before": 5,
-        "after": 22,
-        "beforeReason": "No BGP or Python",
-        "afterReason": "BGP and Python are visible"
+        "before": 6,
+        "after": 20,
+        "beforeReason": "No VLAN or Cisco in the lead bullet",
+        "afterReason": "VLAN and Cisco are visible"
       },
       {
         "criterion": "Metric proof",
         "label": "Metric proof",
         "max": 20,
-        "before": 1,
-        "after": 18,
+        "before": 2,
+        "after": 16,
         "beforeReason": "No measurable result",
-        "afterReason": "37% faster triage"
+        "afterReason": "42% fewer repeat tickets"
       },
       {
         "criterion": "Outcome clarity",
         "label": "Outcome clarity",
         "max": 20,
-        "before": 4,
-        "after": 16,
-        "beforeReason": "Troubleshooting is vague",
-        "afterReason": "Outage triage result is clear"
+        "before": 5,
+        "after": 15,
+        "beforeReason": "Fixing network issues is vague",
+        "afterReason": "VLAN issue and ticket reduction are clear"
       },
       {
         "criterion": "Scope/context",
         "label": "Scope/context",
         "max": 15,
         "before": 6,
-        "after": 13,
+        "after": 12,
         "beforeReason": "No environment size",
-        "afterReason": "42 network devices"
+        "afterReason": "11 clinic workstations"
       },
       {
         "criterion": "Role alignment",
         "label": "Role alignment",
         "max": 15,
-        "before": 8,
+        "before": 9,
         "after": 14,
-        "beforeReason": "Support role only",
-        "afterReason": "Network engineering work"
+        "beforeReason": "Support role wording",
+        "afterReason": "Network administrator work"
       },
       {
         "criterion": "Readability",
         "label": "Readability",
         "max": 5,
-        "before": 4,
-        "after": 4,
+        "before": 3,
+        "after": 5,
         "beforeReason": "Readable but generic",
         "afterReason": "Readable and specific"
       }
@@ -214,22 +214,22 @@
   },
   "evidenceLedger": {
     "sourceLocation": "Same resume, fourth bullet under current role",
-    "proofLine": "Automated BGP and VLAN health checks with Python, cutting outage triage time by 37% across 42 network devices.",
+    "proofLine": "Resolved recurring VLAN misconfiguration across 11 clinic workstations, documented Cisco switch changes, and cut repeat tickets by 42% in six weeks.",
     "visibleFacts": [
       {
-        "fact": "BGP and VLAN health checks",
+        "fact": "VLAN misconfiguration",
         "source": "existing resume bullet"
       },
       {
-        "fact": "Python",
+        "fact": "Cisco switch changes",
         "source": "existing resume bullet"
       },
       {
-        "fact": "37%",
+        "fact": "42%",
         "source": "existing resume bullet"
       },
       {
-        "fact": "42 network devices",
+        "fact": "11 clinic workstations",
         "source": "existing resume bullet"
       }
     ]
@@ -237,27 +237,27 @@
   "humanReadBeats": [
     {
       "beat": "setup",
-      "text": "Let's look at Shawn's resume for Google network engineer."
+      "text": "Here's Jordan applying for a network administrator role at a healthcare group."
     },
     {
       "beat": "roast",
-      "text": "It's two pages, generic, and the styling is doing him zero favors."
+      "text": "The resume is not awful. The first bullet is just too generic."
     },
     {
       "beat": "missing_keywords",
-      "text": "The first bullet says network support. Google asked for BGP, Python, Linux, incidents."
+      "text": "The job wants VLANs, Cisco switching, VPN, and incident response."
     },
     {
       "beat": "why_low_score",
-      "text": "The score starts low because the searchable proof is buried."
+      "text": "The score starts low because the network proof is buried."
     },
     {
       "beat": "fix",
-      "text": "Signal pulls the real proof up front."
+      "text": "Signal pulls the real clinic network proof up front."
     },
     {
       "beat": "why_score_moves",
-      "text": "Now the bullet shows the tools, scope, and outcome."
+      "text": "Now the bullet shows tools, scope, and a measurable result."
     },
     {
       "beat": "cta",
@@ -275,468 +275,608 @@
     "previous_text": "Let's take a look at a real resume and roast it a little.",
     "next_text": "Then show the polished version and the quick CTA."
   },
-  "voiceover_text": "Let's look at Shawn's resume. He's targeting network engineer at Google, and he's sending two pages of beige oatmeal. Generic styling, no BGP, no Python, no incident numbers. Google is not doing a scavenger hunt. Feed this thing to Signal, pull the real proof up top, and now a hiring team can actually understand what he did. Free Signal score before you apply.",
-  "voiceoverPlaybackRate": 1.1,
+  "voiceover_text": "Here's Jordan. He's applying for a network administrator role at a healthcare group. The resume is not awful. It's just written like a help desk ticket. The first bullet says responsible for IT support and fixing network issues. The job wants VLANs, Cisco switching, VPN, and incident response. Jordan has the proof lower down. Signal pulls it up: resolved a VLAN issue across 11 clinic workstations and cut repeat tickets 42%. That's a real network admin bullet. Free Signal score before you apply.",
+  "voiceoverPlaybackRate": 1.12,
   "cta": "Free Signal score before you apply.",
   "musicVolume": 0,
   "voiceoverVolume": 0.96,
-  "durationSeconds": 23.78,
+  "durationSeconds": 31.89,
   "captions": [
     {
-      "text": "Let's",
-      "startMs": 21,
-      "endMs": 211,
-      "timestampMs": 21,
+      "text": "Here's",
+      "startMs": 41,
+      "endMs": 279,
+      "timestampMs": 41,
       "confidence": null
     },
     {
-      "text": "look",
-      "startMs": 243,
-      "endMs": 348,
-      "timestampMs": 243,
-      "confidence": null
-    },
-    {
-      "text": "at",
-      "startMs": 380,
-      "endMs": 422,
-      "timestampMs": 380,
-      "confidence": null
-    },
-    {
-      "text": "Shawn's",
-      "startMs": 475,
-      "endMs": 739,
-      "timestampMs": 475,
-      "confidence": null
-    },
-    {
-      "text": "resume.",
-      "startMs": 781,
-      "endMs": 1309,
-      "timestampMs": 781,
+      "text": "Jordan.",
+      "startMs": 332,
+      "endMs": 736,
+      "timestampMs": 332,
       "confidence": null
     },
     {
       "text": "He's",
-      "startMs": 1710,
-      "endMs": 1889,
-      "timestampMs": 1710,
+      "startMs": 1192,
+      "endMs": 1369,
+      "timestampMs": 1192,
       "confidence": null
     },
     {
-      "text": "targeting",
-      "startMs": 1932,
-      "endMs": 2280,
-      "timestampMs": 1932,
+      "text": "applying",
+      "startMs": 1389,
+      "endMs": 1741,
+      "timestampMs": 1389,
+      "confidence": null
+    },
+    {
+      "text": "for",
+      "startMs": 1794,
+      "endMs": 1876,
+      "timestampMs": 1794,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 1918,
+      "endMs": 1938,
+      "timestampMs": 1918,
       "confidence": null
     },
     {
       "text": "network",
-      "startMs": 2333,
-      "endMs": 2607,
-      "timestampMs": 2333,
+      "startMs": 1980,
+      "endMs": 2271,
+      "timestampMs": 1980,
       "confidence": null
     },
     {
-      "text": "engineer",
-      "startMs": 2660,
-      "endMs": 2965,
-      "timestampMs": 2660,
+      "text": "administrator",
+      "startMs": 2332,
+      "endMs": 2892,
+      "timestampMs": 2332,
+      "confidence": null
+    },
+    {
+      "text": "role",
+      "startMs": 2934,
+      "endMs": 3172,
+      "timestampMs": 2934,
       "confidence": null
     },
     {
       "text": "at",
-      "startMs": 3008,
-      "endMs": 3061,
-      "timestampMs": 3008,
+      "startMs": 3213,
+      "endMs": 3307,
+      "timestampMs": 3213,
       "confidence": null
     },
     {
-      "text": "Google,",
-      "startMs": 3114,
-      "endMs": 3483,
-      "timestampMs": 3114,
+      "text": "a",
+      "startMs": 3328,
+      "endMs": 3348,
+      "timestampMs": 3328,
       "confidence": null
     },
     {
-      "text": "and",
-      "startMs": 3505,
-      "endMs": 3610,
-      "timestampMs": 3505,
+      "text": "healthcare",
+      "startMs": 3389,
+      "endMs": 3711,
+      "timestampMs": 3389,
       "confidence": null
     },
     {
-      "text": "he's",
-      "startMs": 3663,
-      "endMs": 3778,
-      "timestampMs": 3663,
+      "text": "group.",
+      "startMs": 3732,
+      "endMs": 4115,
+      "timestampMs": 3732,
       "confidence": null
     },
     {
-      "text": "sending",
-      "startMs": 3800,
-      "endMs": 4053,
-      "timestampMs": 3800,
+      "text": "The",
+      "startMs": 4738,
+      "endMs": 4841,
+      "timestampMs": 4738,
       "confidence": null
     },
     {
-      "text": "two",
-      "startMs": 4105,
-      "endMs": 4254,
-      "timestampMs": 4105,
-      "confidence": null
-    },
-    {
-      "text": "pages",
-      "startMs": 4306,
-      "endMs": 4655,
-      "timestampMs": 4306,
-      "confidence": null
-    },
-    {
-      "text": "of",
-      "startMs": 4728,
-      "endMs": 4803,
-      "timestampMs": 4728,
-      "confidence": null
-    },
-    {
-      "text": "beige",
-      "startMs": 4908,
-      "endMs": 5214,
-      "timestampMs": 4908,
-      "confidence": null
-    },
-    {
-      "text": "oatmeal.",
-      "startMs": 5266,
-      "endMs": 5795,
-      "timestampMs": 5266,
-      "confidence": null
-    },
-    {
-      "text": "Generic",
-      "startMs": 6048,
-      "endMs": 6417,
-      "timestampMs": 6048,
-      "confidence": null
-    },
-    {
-      "text": "styling,",
-      "startMs": 6470,
-      "endMs": 6955,
-      "timestampMs": 6470,
-      "confidence": null
-    },
-    {
-      "text": "no",
-      "startMs": 7093,
-      "endMs": 7209,
-      "timestampMs": 7093,
-      "confidence": null
-    },
-    {
-      "text": "BGP,",
-      "startMs": 7272,
-      "endMs": 7863,
-      "timestampMs": 7272,
-      "confidence": null
-    },
-    {
-      "text": "no",
-      "startMs": 8022,
-      "endMs": 8137,
-      "timestampMs": 8022,
-      "confidence": null
-    },
-    {
-      "text": "Python,",
-      "startMs": 8201,
-      "endMs": 8771,
-      "timestampMs": 8201,
-      "confidence": null
-    },
-    {
-      "text": "no",
-      "startMs": 8929,
-      "endMs": 9140,
-      "timestampMs": 8929,
-      "confidence": null
-    },
-    {
-      "text": "incident",
-      "startMs": 9245,
-      "endMs": 9594,
-      "timestampMs": 9245,
-      "confidence": null
-    },
-    {
-      "text": "numbers.",
-      "startMs": 9625,
-      "endMs": 10122,
-      "timestampMs": 9625,
-      "confidence": null
-    },
-    {
-      "text": "Google",
-      "startMs": 10344,
-      "endMs": 10755,
-      "timestampMs": 10344,
+      "text": "resume",
+      "startMs": 4893,
+      "endMs": 5329,
+      "timestampMs": 4893,
       "confidence": null
     },
     {
       "text": "is",
-      "startMs": 10797,
-      "endMs": 10893,
-      "timestampMs": 10797,
+      "startMs": 5390,
+      "endMs": 5484,
+      "timestampMs": 5390,
       "confidence": null
     },
     {
       "text": "not",
-      "startMs": 10945,
-      "endMs": 11072,
-      "timestampMs": 10945,
+      "startMs": 5556,
+      "endMs": 5743,
+      "timestampMs": 5556,
       "confidence": null
     },
     {
-      "text": "doing",
-      "startMs": 11115,
-      "endMs": 11305,
-      "timestampMs": 11115,
+      "text": "awful.",
+      "startMs": 5784,
+      "endMs": 6344,
+      "timestampMs": 5784,
+      "confidence": null
+    },
+    {
+      "text": "It's",
+      "startMs": 6686,
+      "endMs": 6872,
+      "timestampMs": 6686,
+      "confidence": null
+    },
+    {
+      "text": "just",
+      "startMs": 6935,
+      "endMs": 7142,
+      "timestampMs": 6935,
+      "confidence": null
+    },
+    {
+      "text": "written",
+      "startMs": 7184,
+      "endMs": 7412,
+      "timestampMs": 7184,
+      "confidence": null
+    },
+    {
+      "text": "like",
+      "startMs": 7463,
+      "endMs": 7587,
+      "timestampMs": 7463,
       "confidence": null
     },
     {
       "text": "a",
-      "startMs": 11336,
-      "endMs": 11357,
-      "timestampMs": 11336,
+      "startMs": 7619,
+      "endMs": 7640,
+      "timestampMs": 7619,
       "confidence": null
     },
     {
-      "text": "scavenger",
-      "startMs": 11399,
-      "endMs": 11779,
-      "timestampMs": 11399,
+      "text": "help",
+      "startMs": 7692,
+      "endMs": 7847,
+      "timestampMs": 7692,
       "confidence": null
     },
     {
-      "text": "hunt.",
-      "startMs": 11832,
-      "endMs": 12159,
-      "timestampMs": 11832,
+      "text": "desk",
+      "startMs": 7899,
+      "endMs": 8086,
+      "timestampMs": 7899,
       "confidence": null
     },
     {
-      "text": "Feed",
-      "startMs": 12455,
-      "endMs": 12687,
-      "timestampMs": 12455,
+      "text": "ticket.",
+      "startMs": 8137,
+      "endMs": 8614,
+      "timestampMs": 8137,
       "confidence": null
     },
     {
-      "text": "this",
-      "startMs": 12729,
-      "endMs": 12866,
-      "timestampMs": 12729,
+      "text": "The",
+      "startMs": 9071,
+      "endMs": 9174,
+      "timestampMs": 9071,
       "confidence": null
     },
     {
-      "text": "thing",
-      "startMs": 12919,
-      "endMs": 13077,
-      "timestampMs": 12919,
+      "text": "first",
+      "startMs": 9215,
+      "endMs": 9413,
+      "timestampMs": 9215,
       "confidence": null
     },
     {
-      "text": "to",
-      "startMs": 13130,
-      "endMs": 13183,
-      "timestampMs": 13130,
+      "text": "bullet",
+      "startMs": 9454,
+      "endMs": 9703,
+      "timestampMs": 9454,
       "confidence": null
     },
     {
-      "text": "Signal,",
-      "startMs": 13235,
-      "endMs": 13690,
-      "timestampMs": 13235,
+      "text": "says",
+      "startMs": 9744,
+      "endMs": 9910,
+      "timestampMs": 9744,
       "confidence": null
     },
     {
-      "text": "pull",
-      "startMs": 13848,
-      "endMs": 14027,
-      "timestampMs": 13848,
+      "text": "responsible",
+      "startMs": 9972,
+      "endMs": 10459,
+      "timestampMs": 9972,
       "confidence": null
     },
     {
-      "text": "the",
-      "startMs": 14080,
-      "endMs": 14144,
-      "timestampMs": 14080,
+      "text": "for",
+      "startMs": 10480,
+      "endMs": 10573,
+      "timestampMs": 10480,
       "confidence": null
     },
     {
-      "text": "real",
-      "startMs": 14196,
-      "endMs": 14375,
-      "timestampMs": 14196,
+      "text": "IT",
+      "startMs": 10636,
+      "endMs": 10863,
+      "timestampMs": 10636,
       "confidence": null
     },
     {
-      "text": "proof",
-      "startMs": 14439,
-      "endMs": 14661,
-      "timestampMs": 14439,
-      "confidence": null
-    },
-    {
-      "text": "up",
-      "startMs": 14766,
-      "endMs": 14904,
-      "timestampMs": 14766,
-      "confidence": null
-    },
-    {
-      "text": "top,",
-      "startMs": 14956,
-      "endMs": 15378,
-      "timestampMs": 14956,
+      "text": "support",
+      "startMs": 10998,
+      "endMs": 11382,
+      "timestampMs": 10998,
       "confidence": null
     },
     {
       "text": "and",
-      "startMs": 15484,
-      "endMs": 15642,
-      "timestampMs": 15484,
+      "startMs": 11569,
+      "endMs": 11776,
+      "timestampMs": 11569,
       "confidence": null
     },
     {
-      "text": "now",
-      "startMs": 15716,
-      "endMs": 15895,
-      "timestampMs": 15716,
+      "text": "fixing",
+      "startMs": 11828,
+      "endMs": 12107,
+      "timestampMs": 11828,
       "confidence": null
     },
     {
-      "text": "a",
-      "startMs": 15969,
-      "endMs": 16001,
-      "timestampMs": 15969,
+      "text": "network",
+      "startMs": 12159,
+      "endMs": 12439,
+      "timestampMs": 12159,
       "confidence": null
     },
     {
-      "text": "hiring",
-      "startMs": 16106,
-      "endMs": 16507,
-      "timestampMs": 16106,
+      "text": "issues.",
+      "startMs": 12491,
+      "endMs": 13009,
+      "timestampMs": 12491,
       "confidence": null
     },
     {
-      "text": "team",
-      "startMs": 16561,
-      "endMs": 16761,
-      "timestampMs": 16561,
+      "text": "The",
+      "startMs": 13352,
+      "endMs": 13445,
+      "timestampMs": 13352,
       "confidence": null
     },
     {
-      "text": "can",
-      "startMs": 16814,
-      "endMs": 16930,
-      "timestampMs": 16814,
+      "text": "job",
+      "startMs": 13496,
+      "endMs": 13683,
+      "timestampMs": 13496,
       "confidence": null
     },
     {
-      "text": "actually",
-      "startMs": 17004,
-      "endMs": 17468,
-      "timestampMs": 17004,
+      "text": "wants",
+      "startMs": 13735,
+      "endMs": 13911,
+      "timestampMs": 13735,
       "confidence": null
     },
     {
-      "text": "understand",
-      "startMs": 17542,
-      "endMs": 18059,
-      "timestampMs": 17542,
+      "text": "VLANs,",
+      "startMs": 13963,
+      "endMs": 14596,
+      "timestampMs": 13963,
       "confidence": null
     },
     {
-      "text": "what",
-      "startMs": 18144,
-      "endMs": 18323,
-      "timestampMs": 18144,
+      "text": "Cisco",
+      "startMs": 14668,
+      "endMs": 14979,
+      "timestampMs": 14668,
       "confidence": null
     },
     {
-      "text": "he",
-      "startMs": 18375,
-      "endMs": 18439,
-      "timestampMs": 18375,
+      "text": "switching,",
+      "startMs": 15021,
+      "endMs": 15446,
+      "timestampMs": 15021,
       "confidence": null
     },
     {
-      "text": "did.",
-      "startMs": 18503,
-      "endMs": 18893,
-      "timestampMs": 18503,
+      "text": "VPN,",
+      "startMs": 15477,
+      "endMs": 16036,
+      "timestampMs": 15477,
       "confidence": null
     },
     {
-      "text": "Free",
-      "startMs": 19295,
-      "endMs": 19558,
-      "timestampMs": 19295,
+      "text": "and",
+      "startMs": 16067,
+      "endMs": 16161,
+      "timestampMs": 16067,
+      "confidence": null
+    },
+    {
+      "text": "incident",
+      "startMs": 16222,
+      "endMs": 16534,
+      "timestampMs": 16222,
+      "confidence": null
+    },
+    {
+      "text": "response.",
+      "startMs": 16575,
+      "endMs": 17135,
+      "timestampMs": 16575,
+      "confidence": null
+    },
+    {
+      "text": "Jordan",
+      "startMs": 17529,
+      "endMs": 17850,
+      "timestampMs": 17529,
+      "confidence": null
+    },
+    {
+      "text": "has",
+      "startMs": 17892,
+      "endMs": 18016,
+      "timestampMs": 17892,
+      "confidence": null
+    },
+    {
+      "text": "the",
+      "startMs": 18068,
+      "endMs": 18130,
+      "timestampMs": 18068,
+      "confidence": null
+    },
+    {
+      "text": "proof",
+      "startMs": 18162,
+      "endMs": 18389,
+      "timestampMs": 18162,
+      "confidence": null
+    },
+    {
+      "text": "lower",
+      "startMs": 18493,
+      "endMs": 18721,
+      "timestampMs": 18493,
+      "confidence": null
+    },
+    {
+      "text": "down.",
+      "startMs": 18773,
+      "endMs": 19229,
+      "timestampMs": 18773,
       "confidence": null
     },
     {
       "text": "Signal",
-      "startMs": 19611,
-      "endMs": 19927,
-      "timestampMs": 19611,
+      "startMs": 19623,
+      "endMs": 19944,
+      "timestampMs": 19623,
+      "confidence": null
+    },
+    {
+      "text": "pulls",
+      "startMs": 19986,
+      "endMs": 20193,
+      "timestampMs": 19986,
+      "confidence": null
+    },
+    {
+      "text": "it",
+      "startMs": 20235,
+      "endMs": 20296,
+      "timestampMs": 20235,
+      "confidence": null
+    },
+    {
+      "text": "up:",
+      "startMs": 20348,
+      "endMs": 20690,
+      "timestampMs": 20348,
+      "confidence": null
+    },
+    {
+      "text": "resolved",
+      "startMs": 20939,
+      "endMs": 21323,
+      "timestampMs": 20939,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 21354,
+      "endMs": 21375,
+      "timestampMs": 21354,
+      "confidence": null
+    },
+    {
+      "text": "VLAN",
+      "startMs": 21427,
+      "endMs": 21883,
+      "timestampMs": 21427,
+      "confidence": null
+    },
+    {
+      "text": "issue",
+      "startMs": 21945,
+      "endMs": 22214,
+      "timestampMs": 21945,
+      "confidence": null
+    },
+    {
+      "text": "across",
+      "startMs": 22235,
+      "endMs": 22515,
+      "timestampMs": 22235,
+      "confidence": null
+    },
+    {
+      "text": "11",
+      "startMs": 22556,
+      "endMs": 22961,
+      "timestampMs": 22556,
+      "confidence": null
+    },
+    {
+      "text": "clinic",
+      "startMs": 23012,
+      "endMs": 23282,
+      "timestampMs": 23012,
+      "confidence": null
+    },
+    {
+      "text": "workstations",
+      "startMs": 23323,
+      "endMs": 24008,
+      "timestampMs": 23323,
+      "confidence": null
+    },
+    {
+      "text": "and",
+      "startMs": 24195,
+      "endMs": 24422,
+      "timestampMs": 24195,
+      "confidence": null
+    },
+    {
+      "text": "cut",
+      "startMs": 24474,
+      "endMs": 24620,
+      "timestampMs": 24474,
+      "confidence": null
+    },
+    {
+      "text": "repeat",
+      "startMs": 24671,
+      "endMs": 24920,
+      "timestampMs": 24671,
+      "confidence": null
+    },
+    {
+      "text": "tickets",
+      "startMs": 24962,
+      "endMs": 25272,
+      "timestampMs": 24962,
+      "confidence": null
+    },
+    {
+      "text": "42%.",
+      "startMs": 25355,
+      "endMs": 26257,
+      "timestampMs": 25355,
+      "confidence": null
+    },
+    {
+      "text": "That's",
+      "startMs": 26506,
+      "endMs": 26734,
+      "timestampMs": 26506,
+      "confidence": null
+    },
+    {
+      "text": "a",
+      "startMs": 26765,
+      "endMs": 26786,
+      "timestampMs": 26765,
+      "confidence": null
+    },
+    {
+      "text": "real",
+      "startMs": 26900,
+      "endMs": 27170,
+      "timestampMs": 26900,
+      "confidence": null
+    },
+    {
+      "text": "network",
+      "startMs": 27273,
+      "endMs": 27636,
+      "timestampMs": 27273,
+      "confidence": null
+    },
+    {
+      "text": "admin",
+      "startMs": 27698,
+      "endMs": 28020,
+      "timestampMs": 27698,
+      "confidence": null
+    },
+    {
+      "text": "bullet.",
+      "startMs": 28071,
+      "endMs": 28423,
+      "timestampMs": 28071,
+      "confidence": null
+    },
+    {
+      "text": "Free",
+      "startMs": 28672,
+      "endMs": 28870,
+      "timestampMs": 28672,
+      "confidence": null
+    },
+    {
+      "text": "Signal",
+      "startMs": 28911,
+      "endMs": 29170,
+      "timestampMs": 28911,
       "confidence": null
     },
     {
       "text": "score",
-      "startMs": 19991,
-      "endMs": 20371,
-      "timestampMs": 19991,
+      "startMs": 29212,
+      "endMs": 29419,
+      "timestampMs": 29212,
       "confidence": null
     },
     {
       "text": "before",
-      "startMs": 20413,
-      "endMs": 20983,
-      "timestampMs": 20413,
+      "startMs": 29450,
+      "endMs": 29657,
+      "timestampMs": 29450,
       "confidence": null
     },
     {
       "text": "you",
-      "startMs": 21141,
-      "endMs": 21363,
-      "timestampMs": 21141,
+      "startMs": 29688,
+      "endMs": 29751,
+      "timestampMs": 29688,
       "confidence": null
     },
     {
       "text": "apply.",
-      "startMs": 21521,
-      "endMs": 22144,
-      "timestampMs": 21521,
+      "startMs": 29812,
+      "endMs": 30300,
+      "timestampMs": 29812,
       "confidence": null
     }
   ],
   "captionReadiness": {
     "wordLevel": true,
     "provider": "elevenlabs",
-    "alignmentRef": "audio/gold-shawn-google-network-voiceover.alignment.json",
+    "alignmentRef": "audio/gold-jordan-health-network-admin-voiceover.alignment.json",
     "reason": "ElevenLabs with-timestamps word captions mapped into Remotion captions."
   },
-  "voiceoverSrc": "audio/gold-shawn-google-network-voiceover.mp3",
+  "voiceoverSrc": "audio/gold-jordan-health-network-admin-voiceover.mp3",
   "audioReadiness": {
     "studioVoiceover": true,
     "quietMusic": false,
     "musicPolicy": "music_omitted_no_sfx",
     "provider": "elevenlabs",
-    "reason": "Single-take creator-style ElevenLabs read, rendered at 1.1x for short-form pacing.",
+    "reason": "Single-take creator-style ElevenLabs read, rendered at 1.12x for short-form pacing.",
     "wordLevelCaptions": true,
     "withTimestamps": true
   }

@@ -10,19 +10,19 @@ Format: Vertical 9:16, recruiter-style teardown.
 
 ### Script
 
-Let's look at Shawn's resume. He's targeting network engineer at Google, and he's sending two pages of beige oatmeal. Generic styling, no BGP, no Python, no incident numbers. Google is not doing a scavenger hunt. Feed this thing to Signal, pull the real proof up top, and now a hiring team can actually understand what he did. Free Signal score before you apply.
+Here's Jordan. He's applying for a network administrator role at a healthcare group. The resume is not awful. It's just written like a help desk ticket. The first bullet says responsible for IT support and fixing network issues. The job wants VLANs, Cisco switching, VPN, and incident response. Jordan has the proof lower down. Signal pulls it up: resolved a VLAN issue across 11 clinic workstations and cut repeat tickets 42%. That's a real network admin bullet. Free Signal score before you apply.
 
 ### Storyboard
 
-1. Hook: "Shawn wants Google with this?"
-   Visual: Real-looking paper resume, job post card, Signal brand mark. Resume warning chips show "2 pages", "generic", "weak styling", "missing keywords".
+1. Hook: "Jordan has the proof. He buried it."
+   Visual: Real-looking paper resume, job post card, Signal brand mark. Resume warning chips show "generic opener", "proof buried", "missing role terms".
 2. Teardown: circle the weak line.
-   Visual: Red marker circles "Responsible for network support and troubleshooting."
+   Visual: Red marker circles "Responsible for IT support and fixing network issues."
 3. Score receipt: explain why the low score exists.
-   Visual: Missing receipt shows tool match, metric proof, outcome clarity, and scope/context are weak.
+   Visual: Missing receipt shows VLAN/Cisco, metric proof, outcome clarity, and scope/context are weak.
 4. Fix: pull the buried proof up top.
-   Visual: Green rewrite replaces the generic bullet with BGP, Python, 37%, and 42 devices.
-5. Reveal: 28/100 becomes 87/100.
+   Visual: Green rewrite replaces the generic bullet with VLAN, Cisco, 11 clinic workstations, and 42% fewer repeat tickets.
+5. Reveal: 31/100 becomes 82/100.
    Visual: Before and after score cards plus "what changed" proof ledger.
 6. CTA: "Free Signal score before you apply."
    Visual: Signal mascot and quick end card.
@@ -39,22 +39,22 @@ Format: Vertical 9:16, animated brand-action short.
 
 ### Script
 
-Signal grabs Shawn's resume, smashes through the keyword filters, throws out the generic junk, and drops the real proof on the hiring manager's screen. BGP. Python. Incidents. Actual numbers. That's the version people can read. Free Signal score before you apply.
+No spoken explainer. Quiet music only. The short should show Signal taking Jordan's resume through the filters, transforming the proof, and landing it on the hiring-manager screen.
 
 ### Storyboard
 
 The supplied three-panel image is the storyboard basis, not a pasted background:
 
-1. Pass the ATS.
-   Visual: Shawn's resume enters the scene with missing keyword chips. Signal visibly grabs it with an energy tether.
+1. Pass the filters.
+   Visual: Jordan's resume enters the scene with missing keyword chips. Signal visibly grabs it with an energy tether.
 2. Break the filter gates.
    Visual: Signal pulls the resume through company filters, role language, and proof gaps. Each gate cracks as the resume passes.
 3. Merge into the resume.
-   Visual: Generic lines transform into BGP, Python, Linux incident response, and measurable proof.
+   Visual: Generic lines transform into VLAN, Cisco, VPN, incident response, and measurable proof.
 4. In front of the hiring manager.
    Visual: Resume phases into a monitor/screen area with a hiring-manager review target.
 5. Score rationale.
-   Visual: Before score 28 remains visible beside after score 87 so the jump is understandable.
+   Visual: Before score 31 remains visible beside after score 82 so the jump is understandable.
 6. CTA.
    Visual: No fake experience. Just a clearer job match. Free Signal score before you apply.
 
@@ -66,5 +66,5 @@ This is the more professional interpretation of the reference image: same journe
 
 - Short 1 is better for social because it feels human and specific.
 - Short 2 is better for brand identity and landing-page/video ad use.
-- The next quality jump should be a reusable Signal mascot rig in Rive or Lottie, then composited in Remotion. Remotion remains the render pipeline.
+- The next quality jump should be a reusable Signal mascot rig in Rive or Cavalry, then composited in Remotion. Remotion remains the render and automation pipeline.
 - The image reference should guide composition, not become the video itself.

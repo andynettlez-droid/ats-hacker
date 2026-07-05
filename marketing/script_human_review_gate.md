@@ -39,6 +39,10 @@ Every packet must include `trendResearch`:
 - `platformPattern`: recruiter reacts, resume roast, search test, job-description translation, or one-bullet fix.
 - `copyFromResearch`: the researched short-form mechanic being copied.
 - `avoid`: the previous creative failure mode this script is avoiding.
+- `benchmarkUrls`: at least two high-view benchmark URLs or source-backed niche references.
+- `borrowedMechanic`: the exact mechanic being adapted.
+- `whyThisMechanicFits`: why this mechanic fits the chosen resume and job description.
+- `whatNotToCopy`: what the script must avoid copying from the source.
 
 The script must sound like a person entering a situation:
 
@@ -97,5 +101,26 @@ The score reveal cannot appear before the low-score reason is visible.
 - The script repeats a prior opening.
 - The script jumps from weak line to improved score without explaining the visible source evidence.
 - The packet lacks `trendResearch`.
+- The packet references no specific benchmark URLs or borrowed mechanics.
 - The opening could be used for any resume without changing a visible line.
 - The narrator sounds like software scoring a resume instead of a person reading it.
+
+## Gold Standard Candidate
+
+The current approval candidate is:
+
+- `marketing/remotion/props_gold_signal_search_test.json`
+- `marketing/remotion/out/gold-signal-search-test-review.mp4`
+- `marketing/gold_standard_short/2026-07-05-signal-search-test/packet.json`
+
+It demonstrates the required flow:
+
+1. Read one weak line.
+2. Compare it to visible job search terms.
+3. Show the low score receipt first.
+4. Point to proof already lower on the resume.
+5. Rewrite using only that proof.
+6. Show the improved score receipt.
+7. End with the free Signal score CTA.
+
+Daily clips should not resume until this candidate is approved or revised into a better baseline.

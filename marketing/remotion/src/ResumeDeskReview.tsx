@@ -391,7 +391,7 @@ const ReasonCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof pale
       }}
     >
       <div style={{ fontSize: 15, fontWeight: 950, color: RED, textTransform: "uppercase", letterSpacing: 1.2 }}>
-        Why {rubric?.beforeTotal ?? props.beforeScore}/100
+        Score receipt before
       </div>
       <div style={{ display: "grid", gap: 8, marginTop: 12 }}>
         {rows.map((row: { label: string; before: string; beforeReason: string }) => (
@@ -426,7 +426,7 @@ const RewriteCard: React.FC<{ props: ResumeCrimeSceneProps; palette: (typeof pal
       }}
     >
       <div style={{ fontSize: 15, fontWeight: 950, color: GREEN, textTransform: "uppercase", letterSpacing: 1.2 }}>
-        Why {rubric?.afterTotal ?? props.afterScore}/100
+        Score receipt after
       </div>
       <div style={{ marginTop: 10, fontSize: 20, lineHeight: 1.22, fontWeight: 900 }}>{props.afterBullet}</div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 13 }}>
@@ -498,6 +498,8 @@ export const ResumeDeskReview: React.FC<ResumeCrimeSceneProps> = (props) => {
   const markVisible = stageOpacity(frame, timings.read[0], timings.reason[1]);
   const reasonVisible = stageOpacity(frame, timings.reason[0], timings.fix[0] + 8);
   const fixVisible = stageOpacity(frame, timings.fix[0], timings.cta[0] + 12);
+  const beforeScoreVisible = stageOpacity(frame, timings.reason[0] + 18, timings.fix[0] + 8);
+  const afterScoreVisible = stageOpacity(frame, timings.fix[0] + 18, timings.cta[0] + 12);
   const ctaVisible = interpolate(frame, [timings.cta[0], timings.cta[0] + 18], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -563,20 +565,24 @@ export const ResumeDeskReview: React.FC<ResumeCrimeSceneProps> = (props) => {
 
       <div style={{ opacity: reasonVisible }}>
         <ReasonCard props={props} palette={palette} />
-        <StickyScore label={props.scoreLabel || "Signal Fit"} value={`${props.beforeScore}/100`} top={792} left={752} palette={palette} />
+        <div style={{ opacity: beforeScoreVisible }}>
+          <StickyScore label={props.scoreLabel || "Signal Fit"} value={`${props.beforeScore}/100`} top={792} left={752} palette={palette} />
+        </div>
       </div>
 
       <div style={{ opacity: fixVisible }}>
         <RewriteCard props={props} palette={palette} />
-        <StickyScore
-          label="After proof"
-          value={`${props.afterScore}/100`}
-          tone="good"
-          top={780}
-          left={742}
-          rotate={2.4}
-          palette={palette}
-        />
+        <div style={{ opacity: afterScoreVisible }}>
+          <StickyScore
+            label="After proof"
+            value={`${props.afterScore}/100`}
+            tone="good"
+            top={780}
+            left={742}
+            rotate={2.4}
+            palette={palette}
+          />
+        </div>
       </div>
 
       <div

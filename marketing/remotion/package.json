@@ -24,6 +24,8 @@
     "qc:daily:visual": "node scripts/qc_daily_visual_safe_area.mjs",
     "qc:youtube:longform": "node scripts/qc_youtube_longform.mjs",
     "voiceover:episode": "node scripts/generate_episode_voiceover.mjs",
+    "voiceover:short": "node scripts/generate_short_voiceover.mjs",
+    "render:gold:short": "remotion render ResumeDeskReview out/gold-signal-search-test-review.mp4 --props=props_gold_signal_search_test.json",
     "bundle": "remotion bundle",
     "typecheck": "tsc --noEmit"
   },

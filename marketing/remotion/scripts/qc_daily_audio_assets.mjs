@@ -114,6 +114,7 @@ const collectShortAssets = (drafts) => {
   for (const draft of drafts) {
     if (
       draft.composition !== "ResumeCrimeScene" &&
+      draft.composition !== "ResumeDeskReview" &&
       !String(draft.file || "").endsWith("-studio.mp4")
     ) {
       continue;

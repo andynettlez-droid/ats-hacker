@@ -7,6 +7,8 @@ Status: active research input for short-form generation.
 - TikTok creative best practices: hook/value proposition in the first 3-6 seconds, captions/overlays, transitions/graphics, direct CTA.
 - YouTube Shorts and public niche examples surfaced through search: recruiter resume review, 7-second resume test, resume formatting, resume prompt chains, recruiter search/readability videos.
 - 2026-07-05 research refresh: `marketing/content_research/resume_video_trends_2026-07-05.md`.
+- 2026-07-05 high-view benchmark sweep: `marketing/content_research/high_view_resume_video_swipe_2026-07-05.md`.
+- Point-in-time YouTube metadata benchmarks: Jeff Su resume videos at 4.35M and 2.65M views, Business Insider real-resume expert teardown at 3.57M, Farah Sharghi recruiter authority at 1.46M, Jerry Lee hidden eye-tracker experiment at 1.25M, Wonsulting 500-job experiment at 1.23M.
 - YouTube official Shorts guidance: vertical video, capture attention in the first few seconds, keep it short, use titles/descriptions/hashtags, iterate through analytics.
 - TikTok Resumes / CareerTok reference: career content works when it is creative, authentic, and useful rather than polished-product-first.
 - Former recruiter creator references: recruiter authority works when the creator sounds like they are coaching a candidate, not reading a brand script.
@@ -29,11 +31,15 @@ Status: active research input for short-form generation.
 - Time pressure: "You have 7 seconds. This bullet wastes 5."
 - Red flag: "This looks professional. That is the problem."
 - Before/after promise: "One bullet took this from low match to review-ready."
+- Cold human read: "I would rewrite this line first."
+- Search receipt: "I searched the job's exact words. This resume missed them."
+- Hidden proof: "The proof is already here. It is just in the wrong place."
+- Taboo debunk: "Do not use the viral resume hack. Do this instead."
 
 ## Average Clip Length
 
-- Target Signal shorts: 18-32 seconds.
-- Most concepts should land near 22-28 seconds.
+- Target Signal shorts: 18-28 seconds.
+- Most concepts should land near 20-24 seconds.
 - Anything above 32 seconds fails creative QA unless marked long-form.
 
 ## Pacing Style
@@ -85,6 +91,8 @@ Status: active research input for short-form generation.
 - Short CTA to free Signal score.
 - Mini-story structure from the reference: someone reads a resume, reacts to one mistake, then gives one concrete fix.
 - Product-second structure: Signal appears as the tool that verifies or automates the fix after the human teardown earns attention.
+- Benchmark-specific mechanics: red-pen resume review, expressive human reaction plus artifact, recruiter search/skim experiment, taboo hack debunk, and job-seeker frustration setup.
+- Score receipts with visible line-item proof before any numeric jump.
 
 ## What Signal Should Avoid
 
@@ -100,6 +108,7 @@ Status: active research input for short-form generation.
 - Voiceovers that sound like an explainer ad instead of a person reading a resume.
 - One dark neon visual language across every short.
 - Long setup before the resume appears.
+- Vague references to "viral style" without naming the specific benchmark mechanic being borrowed.
 
 ## Mandatory Trend Research Packet Fields
 
@@ -109,5 +118,9 @@ Every generated daily packet must include:
 - `trendResearch.platformPattern`
 - `trendResearch.copyFromResearch`
 - `trendResearch.avoid`
+- `trendResearch.benchmarkUrls`
+- `trendResearch.borrowedMechanic`
+- `trendResearch.whyThisMechanicFits`
+- `trendResearch.whatNotToCopy`
 
 These fields are not decorative. The creative gate should fail packets that do not make the opening human situation clear.

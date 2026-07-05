@@ -165,6 +165,12 @@ ROBOTIC_OR_REPEATED = [
     "the visible line starts at",
     "here is the score receipt",
     "now i see the tool",
+    "i would score it around",
+    "score it around",
+    "now i can see why it scores",
+    "so 88 makes sense",
+    "so 89 makes sense",
+    "so 90 makes sense",
 ]
 
 HUMAN_SITUATION_MARKERS = [
@@ -415,8 +421,19 @@ def trend_research_contract(packet: dict) -> dict:
 
 def has_trend_research_contract(packet: dict) -> bool:
     trend = trend_research_contract(packet)
-    required = ["humanPremise", "platformPattern", "copyFromResearch", "avoid"]
-    return all(str(trend.get(key) or "").strip() for key in required)
+    required = [
+        "humanPremise",
+        "platformPattern",
+        "copyFromResearch",
+        "avoid",
+        "borrowedMechanic",
+        "whyThisMechanicFits",
+        "whatNotToCopy",
+    ]
+    if not all(str(trend.get(key) or "").strip() for key in required):
+        return False
+    benchmark_urls = trend.get("benchmarkUrls")
+    return isinstance(benchmark_urls, list) and len([url for url in benchmark_urls if str(url).strip()]) >= 2
 
 
 def has_human_situation(blob: str) -> bool:
@@ -727,10 +744,10 @@ def score_short(short: dict) -> dict:
         blockers.append(f"Script lacks a complete viral story spine; found beats: {', '.join(sorted(beats)) or 'none'}.")
 
     words = script_word_count(short)
-    if 42 <= words <= 96:
+    if 38 <= words <= 72:
         score += 7
     else:
-        blockers.append(f"Voiceover should be a tight 42-96 words for 18-32s Shorts; current estimate is {words}.")
+        blockers.append(f"Voiceover should be a tight 38-72 words for punchy 18-28s Shorts; current estimate is {words}.")
 
     if has_visible_artifact(blob):
         score += 5
@@ -772,11 +789,17 @@ def score_short(short: dict) -> dict:
         notes.append("Replace robotic template phrasing with a more natural creator read.")
     if "rubric gives" in low or "so the rubric" in low or "the rubric starts" in low:
         blockers.append("Do not narrate the rubric as if software is talking; explain the human-visible evidence instead.")
+    if re.search(r"\b(?:i would|i'd|we would)\s+score (?:it|this|that)\s+around\b", low):
+        blockers.append("Do not invent a score in the voiceover; show the score receipt first, then reveal the number.")
+
+    final_score = max(0, min(100, score))
+    if blockers:
+        final_score = min(final_score, 87)
 
     return {
         "title": short.get("title", "Untitled"),
-        "score": max(0, min(100, score)),
-        "passed": score >= 88 and not blockers,
+        "score": final_score,
+        "passed": final_score >= 88 and not blockers,
         "notes": notes,
         "blockers": blockers,
     }
@@ -793,7 +816,10 @@ def score_packet(packet: dict) -> dict:
     if has_trend_research_contract(packet):
         score += 8
     else:
-        blockers.append("Packet needs trendResearch with humanPremise, platformPattern, copyFromResearch, and avoid.")
+        blockers.append(
+            "Packet needs trendResearch with humanPremise, platformPattern, copyFromResearch, avoid, "
+            "at least two benchmarkUrls, borrowedMechanic, whyThisMechanicFits, and whatNotToCopy."
+        )
 
     if has_human_situation(blob):
         score += 8
@@ -941,9 +967,13 @@ def score_packet(packet: dict) -> dict:
     if short_scores and not all(item["passed"] for item in short_scores[:3]):
         notes.append("One or more shorts failed the professional creator gate.")
 
-    passed = score >= 85 and not blockers and bool(short_scores) and all(item["passed"] for item in short_scores[:3])
+    final_score = max(0, min(100, score))
+    if blockers or (short_scores and not all(item["passed"] for item in short_scores[:3])):
+        final_score = min(final_score, 84)
+
+    passed = final_score >= 85 and not blockers and bool(short_scores) and all(item["passed"] for item in short_scores[:3])
     return {
-        "overallScore": max(0, min(100, score)),
+        "overallScore": final_score,
         "passed": passed,
         "verdict": "post_grade_script_packet" if passed else "needs_revision_before_posting",
         "notes": notes,

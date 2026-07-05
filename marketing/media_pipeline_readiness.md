@@ -6,7 +6,18 @@ Reviewed: 2026-07-05
 
 The video pipeline is paused for creative rebuild. The previous rendered shorts proved the render/posting mechanics, but they are no longer considered post-ready because the scripts still sounded generated when read aloud and the score reveals did not feel earned enough.
 
-The script layer has now been rebuilt first. A dated research brief, a `trendResearch` packet contract, stricter creative QA, and a new script-only validation packet are in place. No new video or audio was rendered during this pass.
+The script layer has now been rebuilt first. A dated research brief, a high-view benchmark swipe file, a stricter `trendResearch` packet contract, stricter creative QA, and a gold-standard single-short approval lane are in place.
+
+The current gold-standard candidate is rendered, queued as `review_required`, and awaiting Andrew's Codex approval before any daily posting resumes:
+
+- Review MP4: `marketing/autopost/videos/gold-signal-search-test-review.mp4`
+- Render output: `marketing/remotion/out/gold-signal-search-test-review.mp4`
+- Props: `marketing/remotion/props_gold_signal_search_test.json`
+- Review packet: `marketing/gold_standard_short/2026-07-05-signal-search-test/packet.json`
+- Draft metadata: `marketing/gold_standard_short/2026-07-05-signal-search-test/autopost_drafts.json`
+- Studio QC: `marketing/remotion/out/gold-signal-search-test-studio-qc.json`
+- Audio QC: `marketing/remotion/out/gold-signal-search-test-audio-qc.json`
+- Visual safe-area QC: `marketing/remotion/out/gold-signal-search-test-visual-qc.json`
 
 The new Codex approval layer now wraps the existing daily packet, Remotion render, QC, promotion, and posting queue. Videos move through a durable local SQLite state machine and stop at `AWAITING_CODEX_APPROVAL` until the exact reviewed file is approved in Codex.
 
@@ -32,7 +43,7 @@ New script validation packet:
 
 What changed:
 
-- Daily packets now require `trendResearch.humanPremise`, `platformPattern`, `copyFromResearch`, and `avoid`.
+- Daily packets now require `trendResearch.humanPremise`, `platformPattern`, `copyFromResearch`, `avoid`, at least two `benchmarkUrls`, `borrowedMechanic`, `whyThisMechanicFits`, and `whatNotToCopy`.
 - Script generation now prefers a human reviewer reading one resume line against one job requirement.
 - Score narration now uses human judgment language instead of "the rubric gives..." phrasing.
 - The older one-off `ResumeCrimeScene` preset no longer uses the rejected marketing-role/HubSpot/CAC script.
@@ -52,7 +63,11 @@ What changed:
 - The autopost dry run works and reports file hashes before publishing.
 - The Python marketing agent stack compiles.
 - The Remotion TypeScript check passes.
-- The current rebuilt script packet passes the creative quality gate at 100/100, with trend-research, human-premise, repeated-opening, robotic-phrase, first-person reviewer, score-rubric, evidence-ledger, and role-rotation checks enabled.
+- The previous rebuilt script packet is no longer considered sufficient after the high-view benchmark research pass. The gate now requires benchmark URLs, a named borrowed mechanic, 38-72 voiceover words, and no arbitrary "I would score it around..." narration.
+- A single gold-standard `ResumeDeskReview` candidate is rendered and queued for Codex approval before daily posting resumes.
+- The gold-standard lane uses ElevenLabs `/with-timestamps` through `marketing/remotion/scripts/generate_short_voiceover.mjs`, producing word-level captions for a 23.6s review short.
+- `ResumeDeskReview` now delays the big score badge until after the score receipt appears, so the score reveal is earned by visible evidence.
+- Studio QC now allows an honest `music_omitted_no_sfx` policy for clips where clean voice is preferred over annoying effects.
 - The studio short metadata/queue QC gate passes.
 - The audio asset QC gate passes for linked short voiceovers, music, and all 9 long-form episode segments.
 - A source-backed trend intake file exists for the current daily packet.
@@ -73,34 +88,36 @@ What changed:
 
 ## Current Codex Review Assets
 
-The previous active daily batch should remain review-only and should not be posted. The current rebuild produced a script-only packet for validation, not a new approval-ready render. Older approval records from the weaker repeated batch should remain `REVISION_REQUESTED` or be ignored so they do not dilute the new direction.
+The previous active daily batch should remain review-only and should not be posted. Older approval records from the weaker repeated batch should remain `REVISION_REQUESTED` or be ignored so they do not dilute the new direction.
 
 | Run ID | Title | Status |
 | --- | --- | --- |
+| `gold-signal-search-test` | I would rewrite this resume line first | Rendered, QC-passed, queued `review_required`, awaiting Codex approval. |
 | `405962b7592c8e26` | I would circle this line first | Failed creative review; do not approve/post. |
 | `553ac4f944fb4202` | I searched the resume. Bad news. | Failed creative review; do not approve/post. |
 | `1233c94bb025a999` | The job post gave the answer key | Failed creative review; do not approve/post. |
 
-When a new render is ready, export it to `marketing/codex_reviews` and serve it from the repo root with:
+Serve the current gold-standard review from the Remotion `out` directory or the autopost queue with:
 
 ```bat
-py -3 -m http.server 8765 --directory marketing/codex_reviews
+py -3 -m http.server 8765 --directory marketing/remotion/out
 ```
 
-Only use the URLs printed by the next `prepare-review` run for current approval decisions.
+Do not publish unless Andrew replies with an explicit approval phrase for the exact file.
 
 ## Current Studio Short Assets
 
 - Previous rendered files exist in `marketing/remotion/out/`, but they are no longer approved for posting after manual creative review.
-- Current script-only props exist under `marketing/remotion/props_daily_2026-07-05_human-recruiter-live-resume-teardown-rebuilt-from-viral-trend-re_*`.
+- The current approval candidate is `marketing/remotion/out/gold-signal-search-test-review.mp4`.
+- Current gold-standard props are `marketing/remotion/props_gold_signal_search_test.json`.
 
-The next render pass should use the new script-only packet only after art direction and audio have been updated.
+The next render pass should use this gold-standard pattern only after the candidate is reviewed and either approved or revised.
 
 ## Current Queue Snapshot
 
 Latest manual pipeline output:
 
-- Three human-read resume-review scripts passed the rebuilt creative gate; no new renders were produced in the rebuild pass.
+- One current gold-standard short is rendered and awaiting approval; no daily batch should resume until that direction is approved or revised.
 - The long-form packet has generated voiceover segments and props, but the episode MP4 was not rendered in this pass; expand and render before review approval.
 - Autopost dry run confirms it is blocked until Codex approval and `--approved`.
 - Current post-grade packet: 1.

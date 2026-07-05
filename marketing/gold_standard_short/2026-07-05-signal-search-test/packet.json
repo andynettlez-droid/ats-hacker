@@ -1,0 +1,39 @@
+{
+  "id": "2026-07-05-signal-search-test",
+  "status": "AWAITING_CODEX_APPROVAL",
+  "postingPolicy": "codex_approval_required",
+  "dailyPostingPaused": true,
+  "composition": "ResumeDeskReview",
+  "props": "marketing/remotion/props_gold_signal_search_test.json",
+  "renderTarget": "marketing/remotion/out/gold-signal-search-test-review.mp4",
+  "queuedReviewFile": "marketing/autopost/videos/gold-signal-search-test-review.mp4",
+  "creativeHypothesis": "A real reviewer circles one weak line, reads why it fails search, moves existing proof up, then reveals a score receipt.",
+  "benchmarkMechanics": [
+    "Business Insider resume expert teardown: concrete resume on screen, blunt but useful feedback.",
+    "Jerry Lee / Wonsulting recruiter search tests: show what a recruiter searches for instead of explaining ATS myths.",
+    "High-performing career shorts: one problem, immediate artifact, no setup, fast useful payoff."
+  ],
+  "humanRead": {
+    "voiceProvider": "ElevenLabs with timestamps",
+    "targetLengthSeconds": 22,
+    "direction": "Sharp recruiter reading a resume line out loud; slightly amused, not corporate, not product-demo."
+  },
+  "scriptGate": {
+    "oneIdeaOnly": true,
+    "resumeVisibleImmediately": true,
+    "specificWeakBullet": "Created reports for business teams and leadership.",
+    "visibleScoreRationale": [
+      "Tool match: reports only -> SQL + Tableau",
+      "Metric proof: missing -> 6 hours saved",
+      "Outcome clarity: vague -> 18 accounts flagged",
+      "Role fit: implied -> churn dashboard"
+    ],
+    "rewriteUsesExistingProofOnly": true,
+    "cta": "Run the free Signal score before you apply."
+  },
+  "approvalGate": {
+    "requiredPhrase": "APPROVE POST",
+    "publishBlockedUntilApproved": true,
+    "reviewInstructions": "Approve only if the script reads like a human reviewer, the score feels earned, and the visuals are not boring or AI-slop."
+  }
+}

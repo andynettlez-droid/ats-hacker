@@ -328,9 +328,9 @@ const checkProps = (draft, postsEntry, checks) => {
   );
   addCheck(
     checks,
-    props.audioReadiness?.quietMusic === true,
-    "quiet music marked ready",
-    props.audioReadiness?.reason || "",
+    props.audioReadiness?.quietMusic === true || props.audioReadiness?.musicPolicy === "music_omitted_no_sfx",
+    "quiet music marked ready or intentionally omitted",
+    props.audioReadiness?.musicPolicy || props.audioReadiness?.reason || "",
   );
   addCheck(
     checks,
@@ -356,9 +356,9 @@ const checkProps = (draft, postsEntry, checks) => {
   const musicPath = resolvePublicRef(props.musicSrc);
   addCheck(
     checks,
-    Boolean(musicPath && existsSync(musicPath)),
-    "music asset exists",
-    musicPath ? rel(musicPath) : "missing musicSrc",
+    Boolean(musicPath && existsSync(musicPath)) || props.audioReadiness?.musicPolicy === "music_omitted_no_sfx",
+    "music asset exists or is intentionally omitted",
+    musicPath ? rel(musicPath) : props.audioReadiness?.musicPolicy || "missing musicSrc",
   );
 
   const claimText = [

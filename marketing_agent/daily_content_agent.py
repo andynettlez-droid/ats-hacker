@@ -27,6 +27,7 @@ REMOTION_AUDIO_DIR = REMOTION_PUBLIC_DIR / "audio"
 CALENDAR_PATH = MARKETING_DIR / "content_calendar.json"
 TREND_INTAKE_PATH = MARKETING_DIR / "content_research" / "trend_intake_latest.json"
 TREND_RESEARCH_BRIEF_PATH = MARKETING_DIR / "content_research" / "resume_video_trends_2026-07-05.md"
+HIGH_VIEW_SWIPE_PATH = MARKETING_DIR / "content_research" / "high_view_resume_video_swipe_2026-07-05.md"
 DEFAULT_ELEVENLABS_VOICE_ID = "JBFqnCBsd6RMkjVDRZzb"
 LEGACY_ELEVENLABS_VOICE_ID = "21m00Tcm4TlvDq8ikWAM"
 ELEVENLABS_VOICE_CACHE: dict | None = None
@@ -45,6 +46,20 @@ TREND_RESEARCH_CONTRACT = {
         "and score jumps that appear before the viewer sees why."
     ),
     "researchBrief": str(TREND_RESEARCH_BRIEF_PATH.relative_to(ROOT)),
+    "benchmarkUrls": [
+        "https://www.youtube.com/watch?v=VDFgGi-lrD0",
+        "https://www.youtube.com/watch?v=veFlfYjRo1Y",
+    ],
+    "borrowedMechanic": "expert red-pen teardown plus recruiter search test",
+    "whyThisMechanicFits": (
+        "High-view resume videos win when a human reviews a visible resume artifact, "
+        "reacts to one exact flaw, then proves the fix with evidence."
+    ),
+    "whatNotToCopy": (
+        "Do not copy creator likeness, exact wording, or generic list-video pacing; "
+        "adapt only the artifact-first review mechanic."
+    ),
+    "highViewSwipeFile": str(HIGH_VIEW_SWIPE_PATH.relative_to(ROOT)),
 }
 
 
@@ -53,6 +68,11 @@ TREND_RESEARCH_SOURCE_NOTES = [
         "title": "Resume video trend research brief",
         "url": "marketing/content_research/resume_video_trends_2026-07-05.md",
         "note": "Local swipe-file synthesis for human-first resume teardown, recruiter reacts, search-test, and voice/art-direction rules.",
+    },
+    {
+        "title": "High-view resume video swipe file",
+        "url": "marketing/content_research/high_view_resume_video_swipe_2026-07-05.md",
+        "note": "Point-in-time benchmark sweep of highly viewed resume, recruiter, job-search, and resume-mistake videos.",
     },
     {
         "title": "YouTube Shorts official guide",
@@ -2172,12 +2192,26 @@ def normalize_packet(packet: dict, seed: dict, publish_date: str) -> dict:
         trend_research = {}
     for key, value in TREND_RESEARCH_CONTRACT.items():
         trend_research.setdefault(key, value)
-    for key in ("humanPremise", "platformPattern", "copyFromResearch", "avoid", "researchBrief"):
+    for key in (
+        "humanPremise",
+        "platformPattern",
+        "copyFromResearch",
+        "avoid",
+        "researchBrief",
+        "borrowedMechanic",
+        "whyThisMechanicFits",
+        "whatNotToCopy",
+        "highViewSwipeFile",
+    ):
         value = trend_research.get(key)
         if isinstance(value, list):
             trend_research[key] = "; ".join(str(item).strip() for item in value if str(item).strip())
         elif value is not None:
             trend_research[key] = str(value)
+    benchmark_urls = trend_research.get("benchmarkUrls")
+    if not isinstance(benchmark_urls, list):
+        benchmark_urls = [benchmark_urls] if benchmark_urls else []
+    trend_research["benchmarkUrls"] = [str(url).strip() for url in benchmark_urls if str(url).strip()]
     packet["trendResearch"] = trend_research
 
     youtube = packet.get("youtube")
@@ -2330,7 +2364,8 @@ def maybe_generate_with_openai(seed: dict, publish_date: str) -> dict:
             "Claims must avoid auto-reject, guarantees, fake outcomes, and unsupported competitor claims.",
             "CTA must send users to the free Signal score.",
             "Use recruiter-reacts / resume-teardown energy, not generic SaaS demo energy.",
-            "Include a trendResearch object with humanPremise, platformPattern, copyFromResearch, and avoid.",
+            "Include a trendResearch object with humanPremise, platformPattern, copyFromResearch, avoid, benchmarkUrls, borrowedMechanic, whyThisMechanicFits, and whatNotToCopy.",
+            "Every trendResearch.benchmarkUrls list must include at least two URLs from the high-view swipe file or current niche research.",
             "For every short include title, series, hook, script, storyboard, and Remotion props.",
             "Return strict JSON matching keys: publishDate, topic, series, thesis, sourceNotes, trendResearch, youtube, shorts, monetization, viewerCustomerReview.",
         ],

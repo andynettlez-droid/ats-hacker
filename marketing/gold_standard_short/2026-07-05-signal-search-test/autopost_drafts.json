@@ -1,0 +1,27 @@
+[
+  {
+    "id": "gold-signal-search-test",
+    "status": "review_required",
+    "reviewStatus": "gold_standard_codex_review_required",
+    "platforms": [
+      "youtube_shorts",
+      "tiktok",
+      "instagram_reels"
+    ],
+    "composition": "ResumeDeskReview",
+    "renderProps": "marketing\\remotion\\props_gold_signal_search_test.json",
+    "file": "videos/gold-signal-search-test-review.mp4",
+    "title": "I would rewrite this resume line first",
+    "caption": "Fine sentence. Bad evidence. Run the free Signal score before you apply.",
+    "description": "A human-style resume teardown: one vague bullet hides SQL, Tableau, saved time, and churn proof. Signal turns the existing proof into a clearer resume line without inventing experience.",
+    "cta": "Run the free Signal score before you apply.",
+    "utm": {
+      "source": "youtube_shorts",
+      "medium": "organic_short",
+      "campaign": "gold_standard_signal_search_test",
+      "content": "resume_line_first"
+    },
+    "publishBlocked": true,
+    "requiresCodexApproval": true
+  }
+]

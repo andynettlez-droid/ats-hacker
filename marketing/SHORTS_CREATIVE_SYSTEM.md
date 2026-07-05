@@ -66,6 +66,11 @@ Every packet now needs a `trendResearch` object:
 - `humanPremise`: the real-feeling situation in the first frame.
 - `platformPattern`: the short-form pattern being copied.
 - `copyFromResearch`: which researched mechanic the clip borrows.
+- `avoid`: the failed pattern this script is explicitly avoiding.
+- `benchmarkUrls`: at least two real benchmark URLs from the high-view swipe file or current niche research.
+- `borrowedMechanic`: the specific mechanic being adapted, such as red-pen teardown, recruiter experiment, taboo hack debunk, or job-seeker frustration setup.
+- `whyThisMechanicFits`: why that benchmark mechanic fits this resume/JD case.
+- `whatNotToCopy`: what must not be copied from the benchmark, such as exact wording, creator likeness, or generic list pacing.
 - `avoid`: which previous failure mode the clip refuses to repeat.
 
 If the clip starts as a product demo instead of a human review situation, it fails before rendering.
@@ -85,11 +90,16 @@ If the clip starts as a product demo instead of a human review situation, it fai
 
 The previous rendered pilot batch is now treated as failed creative QA. It proved the technical pipeline, but the scripts still sounded generated when read aloud and the score movement did not feel earned enough.
 
-Current rebuild baseline:
+Current gold-standard baseline:
 
-- Script-only packet: `marketing/daily_content/2026-07-05-evidence-ledger-human-resume-review-script-rebuild`
+- Review packet: `marketing/gold_standard_short/2026-07-05-signal-search-test/packet.json`
+- Props: `marketing/remotion/props_gold_signal_search_test.json`
+- Render: `marketing/remotion/out/gold-signal-search-test-review.mp4`
+- Queue file: `marketing/autopost/videos/gold-signal-search-test-review.mp4`
 - Research brief: `marketing/content_research/resume_video_trends_2026-07-05.md`
-- No new video should render until the script layer passes the trend gate, human-read gate, score-rationale gate, and voice plan gate.
+- Status: rendered, QC-passed, `review_required`, awaiting Codex approval.
+
+Daily posting remains paused until this exact direction is approved or revised.
 
 ## Current Gate Status
 
@@ -100,6 +110,8 @@ Current rebuild baseline:
 - Visual QC renders representative short frames and scans safe margins for clipped high-attention UI.
 - Remotion typecheck passes after mascot/personality changes.
 - Current post candidates remain review-only until viewed end to end for pacing, humor, text safe areas, Signal personality, and human voice believability.
+- The gold-standard candidate uses `music_omitted_no_sfx`; this is allowed only when the voice is clean and no annoying sound effects are present.
+- `ResumeDeskReview` delays score badges until after the score receipt appears. New formats must keep this rule.
 
 Supporting docs:
 

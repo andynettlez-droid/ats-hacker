@@ -3,6 +3,8 @@ set -euo pipefail
 
 WORKDIR="${WORKDIR:-$PWD}"
 OUT="${OUT:-signal_pipeline_review.mp4}"
+BACKGROUND_CLIP="${BACKGROUND_CLIP:-}"
+BURN_CAPTIONS="${BURN_CAPTIONS:-false}"
 cd "$WORKDIR"
 
 for tool in ffmpeg ffprobe; do
@@ -29,7 +31,7 @@ done
 
 dur(){ ffprobe -v error -show_entries format=duration -of csv=p=0 "$1"; }
 
-vf="scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1,format=yuv420p"
+vf="scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=yuv420p"
 segments_json="["
 timeline=0
 list_file="concat_list.txt"
@@ -37,6 +39,11 @@ list_file="concat_list.txt"
 
 for i in "${!shots[@]}"; do
   idx="$(printf "%02d" "$((i + 1))")"
+  overlay="overlay$idx.png"
+  shot="${shots[$i]}"
+  if [[ -n "$BACKGROUND_CLIP" ]]; then
+    shot="$BACKGROUND_CLIP"
+  fi
   duration="$(dur "${voices[$i]}")"
   fade_start="$(python3 - "$duration" <<'PY'
 import sys
@@ -47,16 +54,30 @@ PY
   if [[ -f "${texts[$i]}" ]]; then
     caption="$(tr '\n' ' ' < "${texts[$i]}" | sed 's/[[:space:]]\+/ /g;s/^ //;s/ $//')"
   fi
-  ffmpeg -y \
-    -stream_loop -1 -i "${shots[$i]}" \
-    -i "${voices[$i]}" \
-    -t "$duration" \
-    -vf "$vf" \
-    -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
-    -map 0:v -map 1:a \
-    -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
-    -c:a aac -ar 48000 -ac 2 \
-    "segment_$idx.mp4"
+  if [[ -f "$overlay" ]]; then
+    ffmpeg -y \
+      -stream_loop -1 -i "$shot" \
+      -i "${voices[$i]}" \
+      -i "$overlay" \
+      -t "$duration" \
+      -filter_complex "[0:v]$vf[base];[base][2:v]overlay=0:0:format=auto[v]" \
+      -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
+      -map "[v]" -map 1:a \
+      -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
+      -c:a aac -ar 48000 -ac 2 \
+      "segment_$idx.mp4"
+  else
+    ffmpeg -y \
+      -stream_loop -1 -i "$shot" \
+      -i "${voices[$i]}" \
+      -t "$duration" \
+      -vf "$vf" \
+      -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
+      -map 0:v -map 1:a \
+      -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
+      -c:a aac -ar 48000 -ac 2 \
+      "segment_$idx.mp4"
+  fi
   printf "file 'segment_%s.mp4'\n" "$idx" >> "$list_file"
   end="$(python3 - "$timeline" "$duration" <<'PY'
 import sys
@@ -107,10 +128,16 @@ with open("signal_pipeline_captions.srt", "w", encoding="utf-8") as handle:
     handle.write("\r\n".join(lines))
 PY
 
-ffmpeg -y -i signal_pipeline_rough.mp4 \
-  -vf "subtitles=signal_pipeline_captions.srt:force_style='Fontsize=18,Bold=1,Alignment=2,MarginV=120,Outline=2,Shadow=1'" \
-  -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
-  -c:a copy -movflags +faststart "$OUT"
+if [[ "$BURN_CAPTIONS" == "true" || "$BURN_CAPTIONS" == "1" ]]; then
+  ffmpeg -y -i signal_pipeline_rough.mp4 \
+    -vf "subtitles=signal_pipeline_captions.srt:force_style='Fontsize=10,Bold=1,Alignment=2,MarginV=76,Outline=1,Shadow=0'" \
+    -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
+    -c:a copy -movflags +faststart "$OUT"
+else
+  ffmpeg -y -i signal_pipeline_rough.mp4 \
+    -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
+    -c:a copy -movflags +faststart "$OUT"
+fi
 
 ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -of default=nw=1 "$OUT"
 ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 "$OUT"

@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import Any
 
 import requests
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 MARKETING_DIR = ROOT / "marketing"
@@ -34,6 +35,8 @@ ASSEMBLE_PS1 = SKILLS_DIR / "assemble.ps1"
 
 ABBY_VOICE_ID = "lkFHOvhI41u53xDdGZoZ"
 DEFAULT_VEO_MODEL = "veo-3.1-lite-generate-preview"
+
+OVERLAY_CANVAS = (1080, 1920)
 
 STATUS_ORDER = {
     "QUEUED",
@@ -415,6 +418,245 @@ def generate_veo(args: argparse.Namespace) -> None:
     emit({"status": "VIDEO_GENERATED", "video": str(output), "operation": operation_name})
 
 
+def font(name: str, size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
+    candidates = [
+        Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts" / name,
+        Path("C:/Windows/Fonts") / name,
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return ImageFont.truetype(str(candidate), size=size)
+    return ImageFont.load_default()
+
+
+def wrapped_lines(draw: ImageDraw.ImageDraw, text: str, font_obj: ImageFont.ImageFont, width: int) -> list[str]:
+    words = text.split()
+    lines: list[str] = []
+    current = ""
+    for word in words:
+        trial = f"{current} {word}".strip()
+        if draw.textbbox((0, 0), trial, font=font_obj)[2] <= width or not current:
+            current = trial
+        else:
+            lines.append(current)
+            current = word
+    if current:
+        lines.append(current)
+    return lines
+
+
+def rounded_rect(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], radius: int, fill: tuple[int, int, int, int], outline: tuple[int, int, int, int] | None = None, width: int = 1) -> None:
+    draw.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=width)
+
+
+def draw_resume_base(draw: ImageDraw.ImageDraw) -> dict[str, tuple[int, int, int, int]]:
+    paper = (152, 300, 928, 1420)
+    shadow = (paper[0] + 16, paper[1] + 18, paper[2] + 16, paper[3] + 18)
+    rounded_rect(draw, shadow, 28, (0, 0, 0, 72))
+    rounded_rect(draw, (paper[0] - 18, paper[1] - 22, paper[2] + 18, paper[3] + 22), 34, (18, 24, 31, 220), (255, 255, 255, 48), 2)
+    rounded_rect(draw, paper, 18, (252, 252, 247, 248), (20, 27, 38, 70), 2)
+
+    title = font("segoeuib.ttf", 36)
+    subtitle = font("segoeui.ttf", 17)
+    section = font("segoeuib.ttf", 16)
+    role = font("segoeuib.ttf", 20)
+    body = font("segoeui.ttf", 18)
+    small = font("segoeui.ttf", 15)
+    tiny = font("segoeui.ttf", 14)
+    mono = font("consola.ttf", 14)
+
+    x = paper[0] + 56
+    y = paper[1] + 48
+    draw.text((x, y), "SHAWN MARTIN", font=title, fill=(15, 23, 42, 255))
+    draw.text((x, y + 44), "Network Support Specialist  |  Austin, TX  |  shawn.m@example.com  |  linkedin.com/in/shawnmartin", font=subtitle, fill=(72, 84, 104, 255))
+    draw.line((x, y + 78, paper[2] - 56, y + 78), fill=(20, 27, 38, 80), width=2)
+
+    y += 105
+    draw.text((x, y), "PROFESSIONAL SUMMARY", font=section, fill=(9, 102, 93, 255))
+    y += 27
+    summary = "Network support specialist with 4+ years supporting hybrid offices, user access, endpoint deployment, and recurring incident triage across healthcare and logistics teams."
+    for line in wrapped_lines(draw, summary, small, paper[2] - 112 - x):
+        draw.text((x, y), line, font=small, fill=(31, 41, 55, 255))
+        y += 22
+
+    y += 20
+    draw.text((x, y), "TECHNICAL SKILLS", font=section, fill=(9, 102, 93, 255))
+    y += 28
+    skill_rows = [
+        ("Networking", "TCP/IP, DNS, DHCP, VLANs, VPN access, Wi-Fi troubleshooting"),
+        ("Platforms", "Windows 10/11, Microsoft 365, Azure AD, ServiceNow, Intune, Jamf"),
+        ("Hardware", "Cisco switches, Meraki APs, laptops, printers, conference rooms"),
+        ("Reporting", "ticket trends, root-cause notes, knowledge base articles, SLA follow-up"),
+    ]
+    for label, value in skill_rows:
+        draw.text((x, y), label + ":", font=font("segoeuib.ttf", 14), fill=(15, 23, 42, 255))
+        draw.text((x + 118, y), value, font=tiny, fill=(55, 65, 81, 255))
+        y += 22
+
+    y += 20
+    draw.text((x, y), "EXPERIENCE", font=section, fill=(9, 102, 93, 255))
+    y += 30
+    draw.text((x, y), "IT Support Analyst  |  Northstar Health Systems", font=role, fill=(15, 23, 42, 255))
+    draw.text((paper[2] - 230, y + 3), "2022 - Present", font=small, fill=(72, 84, 104, 255))
+    y += 36
+
+    bullets = [
+        "Handled network issues for internal users across four office locations.",
+        "Closed 35-50 weekly tickets covering VPN access, device setup, account lockouts, printer failures, and conference-room support.",
+        "Partnered with infrastructure team to document recurring Wi-Fi drops and reduce repeat tickets by 18% over two quarters.",
+        "Configured onboarding access for 120+ employees across Microsoft 365, Azure AD groups, and ServiceNow requests.",
+        "Updated 24 knowledge-base articles so night-shift technicians could resolve repeat VPN and printer issues without escalation.",
+    ]
+    boxes: dict[str, tuple[int, int, int, int]] = {}
+    for idx, bullet in enumerate(bullets):
+        bullet_y = y
+        draw.text((x + 4, bullet_y + 2), u"\u2022", font=body, fill=(15, 23, 42, 255))
+        line_x = x + 34
+        lines = wrapped_lines(draw, bullet, body, paper[2] - 92 - line_x)
+        for line_index, line in enumerate(lines):
+            draw.text((line_x, bullet_y + line_index * 25), line, font=body, fill=(15, 23, 42, 255))
+        box_h = max(30, len(lines) * 25)
+        if idx == 0:
+            boxes["weak_bullet"] = (line_x - 10, bullet_y - 8, paper[2] - 66, bullet_y + box_h + 6)
+        y += box_h + 15
+
+    y += 10
+    draw.text((x, y), "Desktop Support Technician  |  Lakeside Logistics", font=role, fill=(15, 23, 42, 255))
+    draw.text((paper[2] - 230, y + 3), "2020 - 2022", font=small, fill=(72, 84, 104, 255))
+    y += 34
+    earlier_bullets = [
+        "Imaged and deployed 180+ Windows laptops during warehouse device refresh.",
+        "Tracked recurring scanner, printer, and Wi-Fi issues in ServiceNow for operations managers.",
+    ]
+    for bullet in earlier_bullets:
+        draw.text((x + 4, y + 2), u"\u2022", font=body, fill=(15, 23, 42, 255))
+        for line in wrapped_lines(draw, bullet, small, paper[2] - 145 - x):
+            draw.text((x + 34, y), line, font=small, fill=(31, 41, 55, 255))
+            y += 22
+        y += 8
+
+    y += 14
+    draw.text((x, y), "NETWORK PROJECTS", font=section, fill=(9, 102, 93, 255))
+    y += 28
+    projects = [
+        "VPN migration support: validated user access, documented common failures, and escalated firewall-rule gaps.",
+        "Office refresh: imaged 80+ laptops, mapped printers, and tested switch ports before go-live.",
+    ]
+    for project in projects:
+        draw.text((x + 4, y + 2), u"\u2022", font=body, fill=(15, 23, 42, 255))
+        for line in wrapped_lines(draw, project, small, paper[2] - 145 - x):
+            draw.text((x + 34, y), line, font=small, fill=(31, 41, 55, 255))
+            y += 22
+        y += 8
+
+    y += 10
+    draw.text((x, y), "CERTIFICATIONS", font=section, fill=(9, 102, 93, 255))
+    y += 28
+    draw.text((x, y), "CompTIA Network+ (2023)  |  Google IT Support Certificate  |  Cisco Networking Basics", font=small, fill=(31, 41, 55, 255))
+
+    y += 40
+    chip_x = paper[0] + 56
+    for skill in ["Windows", "Azure AD", "ServiceNow", "VPN", "Cisco", "Meraki"]:
+        tw = draw.textbbox((0, 0), skill, font=mono)[2]
+        rounded_rect(draw, (chip_x, y, chip_x + tw + 28, y + 32), 16, (235, 245, 244, 255), (9, 102, 93, 90), 1)
+        draw.text((chip_x + 14, y + 7), skill, font=mono, fill=(9, 102, 93, 255))
+        chip_x += tw + 38
+    boxes["paper"] = paper
+    return boxes
+
+
+def draw_top_cleanup(draw: ImageDraw.ImageDraw) -> None:
+    for y in range(0, 130):
+        alpha = max(0, int(220 * (1 - (y / 130))))
+        draw.rectangle((0, y, OVERLAY_CANVAS[0], y + 1), fill=(28, 18, 10, alpha))
+
+
+def draw_keyword_chips(draw: ImageDraw.ImageDraw, chips: list[str], x: int, y: int) -> None:
+    chip_font = font("segoeuib.ttf", 24)
+    for chip in chips:
+        bbox = draw.textbbox((0, 0), chip, font=chip_font)
+        w = bbox[2] - bbox[0] + 42
+        rounded_rect(draw, (x, y, x + w, y + 52), 24, (14, 165, 145, 238), (255, 255, 255, 130), 2)
+        draw.text((x + 21, y + 12), chip, font=chip_font, fill=(255, 255, 255, 255))
+        y += 66
+
+
+def draw_small_caption(draw: ImageDraw.ImageDraw, text: str) -> None:
+    caption_font = font("segoeuib.ttf", 22)
+    lines = wrapped_lines(draw, text, caption_font, 760)
+    line_h = 30
+    h = line_h * len(lines) + 30
+    box = (162, 1590, 918, 1590 + h)
+    rounded_rect(draw, box, 18, (7, 11, 18, 150), (255, 255, 255, 55), 1)
+    y = box[1] + 16
+    for line in lines:
+        bbox = draw.textbbox((0, 0), line, font=caption_font)
+        draw.text(((1080 - (bbox[2] - bbox[0])) / 2, y), line, font=caption_font, fill=(255, 255, 255, 224))
+        y += line_h
+
+
+def generate_overlays(args: argparse.Namespace) -> None:
+    work_dir = Path(args.work_dir).resolve()
+    work_dir.mkdir(parents=True, exist_ok=True)
+    title_font = font("segoeuib.ttf", 46)
+    note_font = font("segoeuib.ttf", 30)
+    body_font = font("segoeui.ttf", 25)
+
+    weak_text = "Handled network issues"
+    rewrite = "Resolved 40+ weekly network incidents across Cisco switches, VPN access, and firewall changes."
+
+    outputs: list[str] = []
+    for index in range(1, 5):
+        image = Image.new("RGBA", OVERLAY_CANVAS, (0, 0, 0, 0))
+        draw = ImageDraw.Draw(image)
+        draw_top_cleanup(draw)
+        boxes = draw_resume_base(draw)
+        weak = boxes["weak_bullet"]
+        paper = boxes["paper"]
+
+        if index >= 2:
+            draw.rounded_rectangle(weak, radius=12, outline=(239, 68, 68, 235), width=7)
+            draw.line((weak[0] + 18, weak[3] - 18, weak[2] - 18, weak[3] - 18), fill=(239, 68, 68, 235), width=6)
+            if index < 4:
+                draw.text((weak[0], weak[1] - 44), "too vague", font=note_font, fill=(239, 68, 68, 255))
+
+        if index >= 3:
+            draw_keyword_chips(draw, ["Cisco", "VPN", "Firewall", "Incidents"], 108, 1080)
+            draw_small_caption(draw, "Use the job's language.")
+
+        if index >= 4:
+            cover = (paper[0] + 40, 830, paper[2] - 40, 1114)
+            rounded_rect(draw, cover, 18, (255, 255, 255, 248), (20, 27, 38, 72), 2)
+            draw.text((cover[0] + 24, cover[1] + 20), "Replace this:", font=note_font, fill=(239, 68, 68, 255))
+            draw.text((cover[0] + 24, cover[1] + 64), weak_text, font=body_font, fill=(15, 23, 42, 255))
+            draw.line((cover[0] + 24, cover[1] + 84, cover[0] + 350, cover[1] + 84), fill=(239, 68, 68, 230), width=5)
+            draw.text((cover[0] + 24, cover[1] + 112), "With this:", font=note_font, fill=(9, 102, 93, 255))
+            y = cover[1] + 154
+            for line in wrapped_lines(draw, rewrite, body_font, cover[2] - cover[0] - 48):
+                draw.text((cover[0] + 24, y), line, font=body_font, fill=(15, 23, 42, 255))
+                y += 34
+            draw_small_caption(draw, "Now the proof is searchable.")
+        elif index == 1:
+            draw_small_caption(draw, "One weak line can bury the resume.")
+        elif index == 2:
+            draw_small_caption(draw, "This tells a recruiter almost nothing.")
+
+        out = work_dir / f"overlay{index:02d}.png"
+        image.save(out)
+        outputs.append(str(out))
+
+    if args.run_id:
+        conn = db()
+        get_run(conn, args.run_id)
+        metadata = json.loads(get_run(conn, args.run_id)["metadata_json"] or "{}")
+        metadata["resumeOverlays"] = outputs
+        update_run(conn, args.run_id, metadata_json=json.dumps(metadata))
+        log_event(conn, args.run_id, "resume_overlays_generated", {"overlays": outputs})
+        conn.commit()
+
+    emit({"status": "OVERLAYS_GENERATED", "overlays": outputs})
+
+
 def find_exe(name: str) -> str:
     found = shutil.which(name)
     if found:
@@ -443,6 +685,8 @@ def assemble(args: argparse.Namespace) -> None:
         "-Out",
         out,
     ]
+    if getattr(args, "background_clip", None):
+        command.extend(["-BackgroundClip", str(Path(args.background_clip).resolve())])
     subprocess.run(command, cwd=str(ROOT), check=True)
     video_path = work_dir / out
     if args.run_id:
@@ -762,10 +1006,16 @@ def build_parser() -> argparse.ArgumentParser:
     veo.add_argument("--dry-run", action="store_true")
     veo.set_defaults(func=generate_veo)
 
+    overlays = sub.add_parser("overlays", help="Generate deterministic readable resume overlays for Veo footage")
+    overlays.add_argument("--work-dir", required=True)
+    overlays.add_argument("--run-id")
+    overlays.set_defaults(func=generate_overlays)
+
     assm = sub.add_parser("assemble", help="Run the sync-safe ffmpeg assembly script")
     assm.add_argument("--work-dir", default=str(Path.home() / "Downloads"))
     assm.add_argument("--out", default="signal_ad_final_pipeline.mp4")
     assm.add_argument("--run-id")
+    assm.add_argument("--background-clip")
     assm.set_defaults(func=assemble)
 
     quality = sub.add_parser("qa", help="Validate render technical requirements")

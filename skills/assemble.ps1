@@ -1,6 +1,8 @@
 param(
   [string]$WorkDir = (Get-Location).Path,
-  [string]$Out = "signal_pipeline_review.mp4"
+  [string]$Out = "signal_pipeline_review.mp4",
+  [string]$BackgroundClip = "",
+  [switch]$BurnCaptions = $false
 )
 
 $ErrorActionPreference = "Stop"
@@ -105,7 +107,7 @@ if (Test-Path -LiteralPath $Out) {
   Copy-Item -LiteralPath $Out -Destination $backup -Force
 }
 
-$VideoFilter = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1,format=yuv420p"
+$VideoFilter = "scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=yuv420p"
 $Segments = New-Object System.Collections.Generic.List[object]
 $ConcatLines = New-Object System.Collections.Generic.List[string]
 $timelineStart = 0.0
@@ -114,28 +116,53 @@ for ($i = 0; $i -lt $Inputs.Count; $i++) {
   $input = $Inputs[$i]
   $index = "{0:00}" -f ($i + 1)
   $segmentPath = "segment_$index.mp4"
+  $overlayPath = "overlay$index.png"
+  $shotPath = if ($BackgroundClip) { $BackgroundClip } else { $input.Shot }
   $duration = Get-Duration $input.Voice
   $fadeOutStart = [math]::Max(0.0, $duration - 0.12)
   $audioFilter = "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$('{0:F3}' -f $fadeOutStart):d=0.12"
-  Invoke-FFmpeg @(
-    "-y",
-    "-stream_loop", "-1",
-    "-i", $input.Shot,
-    "-i", $input.Voice,
-    "-t", ("{0:F3}" -f $duration),
-    "-vf", $VideoFilter,
-    "-af", $audioFilter,
-    "-map", "0:v",
-    "-map", "1:a",
-    "-c:v", "libx264",
-    "-preset", "medium",
-    "-crf", "18",
-    "-pix_fmt", "yuv420p",
-    "-c:a", "aac",
-    "-ar", "48000",
-    "-ac", "2",
-    $segmentPath
-  )
+  if (Test-Path -LiteralPath $overlayPath) {
+    Invoke-FFmpeg @(
+      "-y",
+      "-stream_loop", "-1",
+      "-i", $shotPath,
+      "-i", $input.Voice,
+      "-i", $overlayPath,
+      "-t", ("{0:F3}" -f $duration),
+      "-filter_complex", "[0:v]$VideoFilter[base];[base][2:v]overlay=0:0:format=auto[v]",
+      "-af", $audioFilter,
+      "-map", "[v]",
+      "-map", "1:a",
+      "-c:v", "libx264",
+      "-preset", "medium",
+      "-crf", "18",
+      "-pix_fmt", "yuv420p",
+      "-c:a", "aac",
+      "-ar", "48000",
+      "-ac", "2",
+      $segmentPath
+    )
+  } else {
+    Invoke-FFmpeg @(
+      "-y",
+      "-stream_loop", "-1",
+      "-i", $shotPath,
+      "-i", $input.Voice,
+      "-t", ("{0:F3}" -f $duration),
+      "-vf", $VideoFilter,
+      "-af", $audioFilter,
+      "-map", "0:v",
+      "-map", "1:a",
+      "-c:v", "libx264",
+      "-preset", "medium",
+      "-crf", "18",
+      "-pix_fmt", "yuv420p",
+      "-c:a", "aac",
+      "-ar", "48000",
+      "-ac", "2",
+      $segmentPath
+    )
+  }
   $ConcatLines.Add("file '$segmentPath'")
   $Segments.Add([pscustomobject]@{
     Start = $timelineStart
@@ -149,18 +176,32 @@ Set-Content -LiteralPath "concat_list.txt" -Value ($ConcatLines -join "`n") -NoN
 Invoke-FFmpeg @("-y", "-f", "concat", "-safe", "0", "-i", "concat_list.txt", "-c", "copy", "signal_pipeline_rough.mp4")
 
 Write-Srt $Segments "signal_pipeline_captions.srt"
-Invoke-FFmpeg @(
-  "-y",
-  "-i", "signal_pipeline_rough.mp4",
-  "-vf", "subtitles=signal_pipeline_captions.srt:force_style='Fontsize=18,Bold=1,Alignment=2,MarginV=120,Outline=2,Shadow=1'",
-  "-c:v", "libx264",
-  "-preset", "medium",
-  "-crf", "18",
-  "-pix_fmt", "yuv420p",
-  "-c:a", "copy",
-  "-movflags", "+faststart",
-  $Out
-)
+if ($BurnCaptions) {
+  Invoke-FFmpeg @(
+    "-y",
+    "-i", "signal_pipeline_rough.mp4",
+    "-vf", "subtitles=signal_pipeline_captions.srt:force_style='Fontsize=10,Bold=1,Alignment=2,MarginV=76,Outline=1,Shadow=0'",
+    "-c:v", "libx264",
+    "-preset", "medium",
+    "-crf", "18",
+    "-pix_fmt", "yuv420p",
+    "-c:a", "copy",
+    "-movflags", "+faststart",
+    $Out
+  )
+} else {
+  Invoke-FFmpeg @(
+    "-y",
+    "-i", "signal_pipeline_rough.mp4",
+    "-c:v", "libx264",
+    "-preset", "medium",
+    "-crf", "18",
+    "-pix_fmt", "yuv420p",
+    "-c:a", "copy",
+    "-movflags", "+faststart",
+    $Out
+  )
+}
 
 & $ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -of default=nw=1 $Out
 & $ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 $Out

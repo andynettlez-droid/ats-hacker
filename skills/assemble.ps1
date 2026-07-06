@@ -1,17 +1,6 @@
 param(
   [string]$WorkDir = (Get-Location).Path,
-  [string]$Hook = "Woman_talking_about_resume_keywords_202607060959.mp4",
-  [string]$Search = "Resume_cards_in_dark_void_202607060958.mp4",
-  [string]$DemoVideo = "signal_feature_demo_recording.mp4",
-  [string]$DemoImage = "signal_landing_demo.png",
-  [string]$Cta = "Woman_speaking_to_camera_202607060956.mp4",
-  [string]$VO1 = "ElevenLabs_2026-07-06T15_01_46_Abby_ivc_sp100_s50_sb75_se0_b_m2.mp3",
-  [string]$VO2 = "ElevenLabs_2026-07-06T14_58_04_Abby_ivc_sp100_s50_sb75_se0_b_m2.mp3",
-  [string]$Out = "signal_ad_final.mp4",
-  [string]$Caption1 = 'The viral "ATS hack" is a myth',
-  [string]$Caption2 = "Recruiters SEARCH. You're not ranking.",
-  [string]$Caption3 = "Resume Crime Scene: 34 to 92",
-  [string]$Caption4 = "Free score in bio - $9.99, no subscription"
+  [string]$Out = "signal_pipeline_review.mp4"
 )
 
 $ErrorActionPreference = "Stop"
@@ -20,21 +9,12 @@ Set-Location -LiteralPath $WorkDir
 function Find-Tool([string]$Name) {
   $cmd = Get-Command $Name -ErrorAction SilentlyContinue
   if ($cmd) { return $cmd.Source }
-  $winget = Get-ChildItem -Path "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Recurse -Filter "$Name.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
-  if ($winget) { return $winget.FullName }
-  throw "$Name not found. Install ffmpeg/ffprobe first."
-}
-
-$ffmpeg = Find-Tool "ffmpeg"
-$ffprobe = Find-Tool "ffprobe"
-
-foreach ($file in @($Hook, $Search, $Cta, $VO1, $VO2)) {
-  if (-not (Test-Path -LiteralPath $file)) {
-    throw "Missing input: $file"
+  $wingetRoot = Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Packages"
+  if (Test-Path -LiteralPath $wingetRoot) {
+    $match = Get-ChildItem -Path $wingetRoot -Recurse -Filter "$Name.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($match) { return $match.FullName }
   }
-}
-if (-not (Test-Path -LiteralPath $DemoVideo) -and -not (Test-Path -LiteralPath $DemoImage)) {
-  throw "Missing demo input: expected $DemoVideo or $DemoImage"
+  throw "$Name not found. Install ffmpeg/ffprobe first."
 }
 
 function Invoke-FFmpeg([string[]]$ArgsList) {
@@ -57,47 +37,130 @@ function Format-Timestamp([double]$Seconds) {
   "{0:00}:{1:00}:{2:00},{3:000}" -f $hh, $mm, $ss, $mmm
 }
 
+function Read-Caption([string]$Path, [string]$Fallback) {
+  if (Test-Path -LiteralPath $Path) {
+    $text = (Get-Content -LiteralPath $Path -Raw).Trim()
+    if ($text) { return $text }
+  }
+  return $Fallback
+}
+
+function Split-Caption([string]$Text) {
+  $words = $Text -replace "\s+", " " -split " "
+  $chunks = New-Object System.Collections.Generic.List[string]
+  $current = New-Object System.Collections.Generic.List[string]
+  foreach ($word in $words) {
+    if ($current.Count -ge 7) {
+      $chunks.Add(($current -join " "))
+      $current.Clear()
+    }
+    $current.Add($word)
+  }
+  if ($current.Count -gt 0) {
+    $chunks.Add(($current -join " "))
+  }
+  return $chunks
+}
+
+function Write-Srt([object[]]$Segments, [string]$Path) {
+  $cue = 1
+  $lines = New-Object System.Collections.Generic.List[string]
+  foreach ($segment in $Segments) {
+    $chunks = Split-Caption $segment.Caption
+    if ($chunks.Count -eq 0) { continue }
+    $span = ($segment.End - $segment.Start) / $chunks.Count
+    for ($i = 0; $i -lt $chunks.Count; $i++) {
+      $start = $segment.Start + ($span * $i)
+      $end = if ($i -eq $chunks.Count - 1) { $segment.End } else { $segment.Start + ($span * ($i + 1)) }
+      $lines.Add([string]$cue)
+      $lines.Add("$(Format-Timestamp $start) --> $(Format-Timestamp $end)")
+      $lines.Add($chunks[$i])
+      $lines.Add("")
+      $cue += 1
+    }
+  }
+  Set-Content -LiteralPath $Path -Value ($lines -join "`r`n") -Encoding UTF8
+}
+
+$ffmpeg = Find-Tool "ffmpeg"
+$ffprobe = Find-Tool "ffprobe"
+
+$Inputs = @(
+  @{ Shot = "shot01.mp4"; Voice = "vo_hook.mp3"; Caption = Read-Caption "vo_hook.txt" "Let's look at this resume." },
+  @{ Shot = "shot02.mp4"; Voice = "vo_search.mp3"; Caption = Read-Caption "vo_search.txt" "The recruiter search misses it." },
+  @{ Shot = "shot03.mp4"; Voice = "vo_demo.mp3"; Caption = Read-Caption "vo_demo.txt" "Now rewrite the weak bullet." },
+  @{ Shot = "shot04.mp4"; Voice = "vo_cta.mp3"; Caption = Read-Caption "vo_cta.txt" "Need yours fixed? Link in bio." }
+)
+
+foreach ($input in $Inputs) {
+  foreach ($name in @($input.Shot, $input.Voice)) {
+    if (-not (Test-Path -LiteralPath $name)) {
+      throw "Missing input: $name"
+    }
+  }
+}
+
 if (Test-Path -LiteralPath $Out) {
   $backup = [IO.Path]::GetFileNameWithoutExtension($Out) + "_backup_" + (Get-Date -Format "yyyyMMddHHmmss") + [IO.Path]::GetExtension($Out)
   Copy-Item -LiteralPath $Out -Destination $backup -Force
 }
 
-$DHook = Get-Duration $Hook
-$DCta = Get-Duration $Cta
-$DVO1 = Get-Duration $VO1
-$DVO2 = Get-Duration $VO2
-$DemoFrames = [int][math]::Ceiling($DVO2 * 30)
+$VideoFilter = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1,format=yuv420p"
+$Segments = New-Object System.Collections.Generic.List[object]
+$ConcatLines = New-Object System.Collections.Generic.List[string]
+$timelineStart = 0.0
 
-$VF = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30,setsar=1"
-$DemoVF = "fps=30,scale=1215:2160,crop=1080:1920:(iw-ow)/2:min(220\,n*220/$DemoFrames),setsar=1"
-
-Invoke-FFmpeg @("-y", "-i", $Hook, "-vf", $VF, "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s1.mp4")
-Invoke-FFmpeg @("-y", "-stream_loop", "-1", "-i", $Search, "-i", $VO1, "-t", ("{0:F3}" -f $DVO1), "-vf", $VF, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s2.mp4")
-if (Test-Path -LiteralPath $DemoVideo) {
-  Invoke-FFmpeg @("-y", "-stream_loop", "-1", "-i", $DemoVideo, "-i", $VO2, "-t", ("{0:F3}" -f $DVO2), "-vf", $VF, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s3.mp4")
-} else {
-  Invoke-FFmpeg @("-y", "-loop", "1", "-i", $DemoImage, "-i", $VO2, "-t", ("{0:F3}" -f $DVO2), "-vf", $DemoVF, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s3.mp4")
+for ($i = 0; $i -lt $Inputs.Count; $i++) {
+  $input = $Inputs[$i]
+  $index = "{0:00}" -f ($i + 1)
+  $segmentPath = "segment_$index.mp4"
+  $duration = Get-Duration $input.Voice
+  $fadeOutStart = [math]::Max(0.0, $duration - 0.12)
+  $audioFilter = "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$('{0:F3}' -f $fadeOutStart):d=0.12"
+  Invoke-FFmpeg @(
+    "-y",
+    "-stream_loop", "-1",
+    "-i", $input.Shot,
+    "-i", $input.Voice,
+    "-t", ("{0:F3}" -f $duration),
+    "-vf", $VideoFilter,
+    "-af", $audioFilter,
+    "-map", "0:v",
+    "-map", "1:a",
+    "-c:v", "libx264",
+    "-preset", "medium",
+    "-crf", "18",
+    "-pix_fmt", "yuv420p",
+    "-c:a", "aac",
+    "-ar", "48000",
+    "-ac", "2",
+    $segmentPath
+  )
+  $ConcatLines.Add("file '$segmentPath'")
+  $Segments.Add([pscustomobject]@{
+    Start = $timelineStart
+    End = $timelineStart + $duration
+    Caption = $input.Caption
+  })
+  $timelineStart += $duration
 }
-Invoke-FFmpeg @("-y", "-i", $Cta, "-vf", $VF, "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s4.mp4")
 
-Set-Content -LiteralPath "list.txt" -Value "file 's1.mp4'`nfile 's2.mp4'`nfile 's3.mp4'`nfile 's4.mp4'`n" -NoNewline
-Invoke-FFmpeg @("-y", "-f", "concat", "-safe", "0", "-i", "list.txt", "-c", "copy", "signal_ad_rough.mp4")
+Set-Content -LiteralPath "concat_list.txt" -Value ($ConcatLines -join "`n") -NoNewline
+Invoke-FFmpeg @("-y", "-f", "concat", "-safe", "0", "-i", "concat_list.txt", "-c", "copy", "signal_pipeline_rough.mp4")
 
-$T0 = 0.0
-$T1 = $DHook
-$T2 = $DHook + $DVO1
-$T3 = $DHook + $DVO1 + $DVO2
-$T4 = $DHook + $DVO1 + $DVO2 + $DCta
-
-$Srt = @(
-  "1", "$(Format-Timestamp $T0) --> $(Format-Timestamp $T1)", $Caption1, "",
-  "2", "$(Format-Timestamp $T1) --> $(Format-Timestamp $T2)", $Caption2, "",
-  "3", "$(Format-Timestamp $T2) --> $(Format-Timestamp $T3)", $Caption3, "",
-  "4", "$(Format-Timestamp $T3) --> $(Format-Timestamp $T4)", $Caption4, ""
-) -join "`r`n"
-Set-Content -LiteralPath "signal_captions.srt" -Value $Srt -Encoding UTF8
-
-Invoke-FFmpeg @("-y", "-i", "signal_ad_rough.mp4", "-vf", "subtitles=signal_captions.srt:force_style='Fontsize=16,Bold=1,Alignment=2,MarginV=90,Outline=2,Shadow=1'", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", $Out)
+Write-Srt $Segments "signal_pipeline_captions.srt"
+Invoke-FFmpeg @(
+  "-y",
+  "-i", "signal_pipeline_rough.mp4",
+  "-vf", "subtitles=signal_pipeline_captions.srt:force_style='Fontsize=18,Bold=1,Alignment=2,MarginV=120,Outline=2,Shadow=1'",
+  "-c:v", "libx264",
+  "-preset", "medium",
+  "-crf", "18",
+  "-pix_fmt", "yuv420p",
+  "-c:a", "copy",
+  "-movflags", "+faststart",
+  $Out
+)
 
 & $ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -of default=nw=1 $Out
 & $ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 $Out

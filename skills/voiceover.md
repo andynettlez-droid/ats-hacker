@@ -2,7 +2,7 @@
 
 ## Voice
 
-Use Abby as the brand reviewer voice:
+Use Abby as the consistent brand reviewer voice:
 
 ```env
 ELEVENLABS_ABBY_VOICE_ID=lkFHOvhI41u53xDdGZoZ
@@ -17,7 +17,7 @@ ELEVENLABS_VOICE_ID=lkFHOvhI41u53xDdGZoZ
 
 ## Endpoint
 
-Use the timestamp endpoint so captions and edit beats can be synchronized:
+Use the timestamp endpoint so captions and edit beats can sync to the actual read:
 
 ```text
 POST https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps
@@ -26,16 +26,17 @@ POST https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps
 Store:
 
 - `*.mp3` audio from `audio_base64`.
-- `*.alignment.json` containing the raw character alignment.
+- `*.alignment.json` with normalized word timing plus raw alignment.
 
 ## Voice Direction
 
-- Fast creator read.
-- Human, amused, direct.
-- Short pause after the joke or blunt teardown.
-- No corporate trailer voice.
+- Human recruiter read.
+- Faster than corporate narration.
+- Slightly amused, direct, useful.
+- Short pauses after punchlines.
 - No monotone AI explainer cadence.
-- Keep sentences short enough to read naturally.
+- No over-polished trailer voice.
+- If it sounds robotic, rewrite the script out loud before regenerating.
 
 Recommended settings:
 
@@ -48,4 +49,4 @@ Recommended settings:
 }
 ```
 
-If the read sounds robotic, do not keep rendering videos. Rewrite the script aloud first, then regenerate the voice.
+If ElevenLabs quota is exhausted, stop and report the quota issue. Do not silently switch to a worse voice for a public post.

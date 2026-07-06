@@ -1,99 +1,97 @@
 # Signal Growth Engine Agent Guide
 
-This repo now uses the Signal Growth Engine pipeline for marketing videos. The old `marketing_agent/video_pipeline.py` path is retired because it produced brittle demo timing, repeated AI-style scripts, and inconsistent voice.
+Codex should use this repo as the production home for the Signal content pipeline:
 
-## Primary Workflow
+`research -> script -> Veo video -> ElevenLabs Abby voice -> ffmpeg edit -> QA -> Codex review`
 
-Run video work in this order:
+The old `marketing_agent/video_pipeline.py` path is retired. Do not revive it. Do not build new public shorts through the older failed daily batch unless Andrew explicitly asks for that exact legacy asset. Remotion can remain in the repo for historical assets, but the active ad/short pipeline is the playbook in `/skills` plus `marketing_agent/signal_growth_pipeline.py`.
 
-1. Research current resume/job-search short-form patterns.
-2. Write one human reviewer script from the research and `skills/hook_playbook.md`.
-3. Build a shot sheet from `skills/veo_prompt_template.md`.
-4. Generate video clips with Veo/Gemini, using Abby and Signal/orb reference images where available.
-5. Generate voiceover with ElevenLabs Abby voice from `skills/voiceover.md`.
-6. Capture the live Signal score demo with `marketing_agent/capture_signal_demo.mjs` when a product walkthrough is part of the video.
-7. Assemble with `skills/assemble.ps1` or `skills/assemble.sh`.
-8. QA with `marketing_agent/signal_growth_pipeline.py qa`.
-9. Export a reviewable file and stop for Codex chat approval before posting.
+Hard stop: do not create public marketing videos with Remotion, Pillow, custom Python renderers, canvas mocks, or any other local visual fallback. If Veo/Gemini is not configured or fails, stop and report the blocker. The only acceptable non-Veo visuals are real user-provided/owned footage, screen recordings, or licensed assets explicitly selected for the video.
 
-Do not publish from an automated run. The final publish gate remains explicit Codex approval for the exact rendered file.
+## Required Local Inputs
 
-## Current Abby Voice
-
-Use this ElevenLabs voice unless Andrew rotates it:
+- Google AI / Gemini / Veo API key in a local `.env`.
+- ElevenLabs API key in a local `.env`.
+- `ffmpeg` and `ffprobe` available on the machine.
+- Abby voice ID:
 
 ```text
 ELEVENLABS_ABBY_VOICE_ID=lkFHOvhI41u53xDdGZoZ
+ELEVENLABS_MODEL_ID=eleven_multilingual_v2
 ```
 
-Keep keys in `marketing_agent/.env` or your local shell environment. Never paste API keys into chat, docs, commits, or generated artifacts.
+Never paste keys into chat, docs, commits, captions, or generated artifacts.
+
+## Active Workflow
+
+1. **RESEARCH**: Search current short-form trends for the topic. Summarize 3 winning angles with what to copy and what to avoid.
+2. **SCRIPT**: Use `skills/hook_playbook.md` and `skills/brand.md` to write a 30s human reviewer script with hook, beats, CTA, and captions.
+3. **VIDEO**: Use `skills/veo_prompt_template.md` to generate each 9:16 clip through Veo/Gemini. Download clips into the run folder or `/assets`. Do not ask Veo to create on-screen text.
+4. **VOICE**: Use `skills/voiceover.md` to generate Abby narration through ElevenLabs `/with-timestamps`. Save the MP3 and alignment JSON.
+5. **EDIT**: Run `skills/assemble.sh` or `skills/assemble.ps1`. Segment durations must follow the measured audio/video durations. Captions are generated from those real timings.
+6. **QA**: Run ffprobe/QA checks for 1080x1920, H.264/AAC, 30fps, A/V duration match, readable captions, no unsupported claims, no unwanted source watermarks, and no wrong visible URL/logo.
+7. **REVIEW**: Export a reviewable file and stop in Codex chat before posting unless Andrew explicitly says to post that exact file.
 
 ## Commands
 
-Confirm the Abby voice ID if the ElevenLabs key allows voice listing:
-
-```powershell
-py -3 marketing_agent/signal_growth_pipeline.py resolve-abby
-```
-
-Create a reusable production folder:
+Create a queued run:
 
 ```powershell
 py -3 marketing_agent/signal_growth_pipeline.py init-run --topic "resume teardown"
 ```
 
-Generate Abby narration with timestamps:
+Create multiple queued runs:
 
 ```powershell
-py -3 marketing_agent/signal_growth_pipeline.py voice --text-file marketing/growth_runs/latest/vo1.txt --out marketing/growth_runs/latest/vo1.mp3
+py -3 marketing_agent/signal_growth_pipeline.py batch-init --topics "network engineer teardown" "resume score myth" "job description answer key"
 ```
 
-Generate a Veo clip when a shot needs cinematic motion:
+Generate Abby voice:
 
 ```powershell
-py -3 marketing_agent/signal_growth_pipeline.py veo --text-file marketing/growth_runs/latest/shot01.txt --out marketing/growth_runs/latest/shot01.mp4
+py -3 marketing_agent/signal_growth_pipeline.py voice --text-file marketing/growth_runs/RUN_ID/vo_hook.txt --out marketing/growth_runs/RUN_ID/vo_hook.mp3 --run-id RUN_ID
 ```
 
-Capture the real Signal score demo instead of using a static product screenshot:
+Generate a Veo clip:
 
 ```powershell
-$env:PLAYWRIGHT_CORE_DIR = "$env:TEMP\signal-playwright-core\node_modules"
-node marketing_agent/capture_signal_demo.mjs --out C:\Users\andyn\Downloads\signal_feature_demo_recording.mp4 --seconds 18
+py -3 marketing_agent/signal_growth_pipeline.py veo --text-file marketing/growth_runs/RUN_ID/shot01.txt --out marketing/growth_runs/RUN_ID/shot01.mp4 --run-id RUN_ID
 ```
 
-Keep the local web app running at `http://localhost:3100` while recording. The recorder mocks the score API with a deterministic sample so the video shows the upload, job description, low score, missing-keyword receipt, unlock preview, and paid CTA without flicker.
+Run voice/Veo work for several runs concurrently:
 
-Assemble the ad with sync-safe timing:
+```powershell
+py -3 marketing_agent/signal_growth_pipeline.py batch-process --runs RUN_ID_1 RUN_ID_2 RUN_ID_3 --stage all --max-workers 3
+```
+
+Assemble a review cut:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File skills/assemble.ps1 -WorkDir C:\Users\andyn\Downloads -Out signal_ad_final.mp4
 ```
 
-QA the final render:
+QA a final render:
 
 ```powershell
-py -3 marketing_agent/signal_growth_pipeline.py qa --video C:\Users\andyn\Downloads\signal_ad_final.mp4
+py -3 marketing_agent/signal_growth_pipeline.py qa --video C:\Users\andyn\Downloads\signal_ad_final.mp4 --write
 ```
 
-Print the Codex review packet for the exact rendered file:
+Print a review packet:
 
 ```powershell
 py -3 marketing_agent/signal_growth_pipeline.py review --run-id RUN_ID
 ```
 
-Only after Andrew approves the exact video in Codex chat:
-
-```powershell
-py -3 marketing_agent/signal_growth_pipeline.py approve --run-id RUN_ID --phrase "APPROVE POST RUN_ID"
-```
-
-## Creative Guardrails
+## Creative Rules
 
 - The resume or job description is the visual hero.
-- Signal mascot is a fun guide, not the presenter.
-- Abby can appear as the human/recruiter voice, but do not make the clip feel like a founder ad.
+- Signal mascot/orb is optional. Do not force it into resume-review content.
+- Most short-form videos should make the resume/JD mistake the entertainment. Signal can be the fix in the caption, spoken CTA, and link in bio.
+- Abby can be the voice, but the clip should not feel like a polished founder ad.
 - No fake experience.
 - No outcome guarantees.
 - No "ATS auto-rejected you" claims.
-- Score jumps need a visible receipt before the reveal.
-- The CTA is fast: "Run the free Signal score before you apply."
+- Score jumps need visible receipts before the reveal.
+- CTA: "Need yours fixed? Link in bio." or "Run the free Signal score before you apply."
+- Do not put an actual website URL on-screen unless Andrew explicitly asks for it. Use the URL in metadata and social bio.
+- If a generated source clip has a visible provider watermark, do not mask it. Regenerate cleanly, use a licensed export, or replace it with owned/captured assets.

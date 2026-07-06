@@ -15,7 +15,7 @@ Use Veo/Gemini for short cinematic 9:16 clips only when motion adds value. Keep 
 - Do not use Signal/orb reference images unless the brief is explicitly an animated Signal mascot concept.
 - Smooth camera movement. Avoid glitch flicker.
 - If the output has a visible provider watermark, do not use it for public posting unless the source license/export allows it.
-- For visible edit/fix videos, generate a separate real-hand plate through Veo instead of inventing a local hand graphic. The hand plate should be the same reviewer/hands as the desk footage, shot over a pure green background, and saved as `handplateNN.mp4`. The assembler chroma-keys it above the readable resume layer.
+- For visible edit/fix videos, keep the reviewer and hands inside the base Veo shot. Do not generate separate AI hand plates for normal production cuts; they are only allowed when Andrew has separately approved the plate and the assembler is explicitly run with hand plates enabled.
 
 ## Shot Sheet JSON
 
@@ -46,13 +46,13 @@ Vertical 9:16 realistic desk audit. The same adult woman reviewer, wearing a neu
 ## Link-In-Bio Resume Review Shot
 
 ```text
-Vertical 9:16 creator-style phone video. Overhead view of a tablet on a warm wood desk showing a mostly blank resume layout area. The same adult woman reviewer in a neutral sweater uses a stylus; keep the same hands, same tablet, same desk setup, same warm daylight, and same camera angle across shots. The stylus pauses near the job title area, then circles a blank bullet area. Human pacing, believable desk-review feel, clean central screen space for edit-layer text, no branding, no mascot, no visible URL, no generated captions or readable fake text.
+Vertical 9:16 creator-style phone video. Overhead view of a tablet on a warm wood desk showing a mostly blank resume layout area. The same adult woman reviewer in a neutral sweater keeps her hands naturally near the tablet edges while reviewing. Keep the same hands, same tablet, same desk setup, same warm daylight, and same camera angle across shots. Human pacing, believable desk-review feel, clean central screen space for edit-layer text, no branding, no mascot, no visible URL, no generated captions or readable fake text.
 ```
 
-## Real Hand Plate For Live Edits
+## Optional Roto / Hand Layer
 
-Use this when the hand must visibly edit the deterministic resume overlay.
+Use this only after the hand layer has been separately approved. It is not part of the default pipeline.
 
 ```text
-Vertical 9:16 green-screen hand plate. Same adult woman reviewer from the desk-audit footage, only her real right hand and stylus visible, matching the same skin tone, sleeve, hand size, and stylus style. Pure bright green background (#00FF00), flat even lighting, no desk, no paper, no tablet, no text, no shadows on the green background. The hand enters from the lower right, circles an invisible bullet area in the upper middle of frame, draws a horizontal strike-through, then moves like it is typing or writing a replacement line. Keep the hand movement natural and smooth. No captions, no logos, no generated text, no watermark.
+Vertical 9:16 roto-ready hand layer. Same adult woman reviewer from the desk-audit footage, only her real right hand visible, matching the same skin tone, sleeve, hand size, and movement style. Clean high-contrast background for later rotoscoping. The hand enters from the lower right and points near the upper-middle resume area without drawing visible marks. Natural smooth movement. No captions, no logos, no generated text, no watermark.
 ```

@@ -5,6 +5,7 @@ WORKDIR="${WORKDIR:-$PWD}"
 OUT="${OUT:-signal_pipeline_review.mp4}"
 BACKGROUND_CLIP="${BACKGROUND_CLIP:-}"
 BURN_CAPTIONS="${BURN_CAPTIONS:-false}"
+USE_HAND_PLATES="${USE_HAND_PLATES:-false}"
 cd "$WORKDIR"
 
 for tool in ffmpeg ffprobe; do
@@ -32,7 +33,7 @@ done
 dur(){ ffprobe -v error -show_entries format=duration -of csv=p=0 "$1"; }
 
 vf="scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=yuv420p"
-hand_vf="scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,chromakey=0x00FF00:0.16:0.08,format=rgba"
+hand_vf="scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=rgba,colorkey=0x23B82E:0.34:0.03"
 segments_json="["
 timeline=0
 list_file="concat_list.txt"
@@ -44,6 +45,10 @@ for i in "${!shots[@]}"; do
   overlay_frame_dir="overlay${idx}_frames"
   overlay_frame_pattern="$overlay_frame_dir/%04d.png"
   handplate="handplate$idx.mp4"
+  use_handplate=false
+  if [[ "$USE_HAND_PLATES" == "true" || "$USE_HAND_PLATES" == "1" ]]; then
+    [[ -f "$handplate" ]] && use_handplate=true
+  fi
   shot="${shots[$i]}"
   if [[ -n "$BACKGROUND_CLIP" ]]; then
     shot="$BACKGROUND_CLIP"
@@ -58,7 +63,7 @@ PY
   if [[ -f "${texts[$i]}" ]]; then
     caption="$(tr '\n' ' ' < "${texts[$i]}" | sed 's/[[:space:]]\+/ /g;s/^ //;s/ $//')"
   fi
-  if [[ -d "$overlay_frame_dir" && -f "$handplate" ]]; then
+  if [[ -d "$overlay_frame_dir" && "$use_handplate" == "true" ]]; then
     ffmpeg -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
@@ -83,7 +88,7 @@ PY
       -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
       -c:a aac -ar 48000 -ac 2 \
       "segment_$idx.mp4"
-  elif [[ -f "$overlay" && -f "$handplate" ]]; then
+  elif [[ -f "$overlay" && "$use_handplate" == "true" ]]; then
     ffmpeg -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
@@ -108,7 +113,7 @@ PY
       -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
       -c:a aac -ar 48000 -ac 2 \
       "segment_$idx.mp4"
-  elif [[ -f "$handplate" ]]; then
+  elif [[ "$use_handplate" == "true" ]]; then
     ffmpeg -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \

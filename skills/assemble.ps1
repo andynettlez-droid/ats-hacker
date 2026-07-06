@@ -2,7 +2,8 @@ param(
   [string]$WorkDir = (Get-Location).Path,
   [string]$Out = "signal_pipeline_review.mp4",
   [string]$BackgroundClip = "",
-  [switch]$BurnCaptions = $false
+  [switch]$BurnCaptions = $false,
+  [switch]$UseHandPlates = $false
 )
 
 $ErrorActionPreference = "Stop"
@@ -108,7 +109,7 @@ if (Test-Path -LiteralPath $Out) {
 }
 
 $VideoFilter = "scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=yuv420p"
-$HandPlateFilter = "scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,chromakey=0x00FF00:0.16:0.08,format=rgba"
+$HandPlateFilter = "scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=rgba,colorkey=0x23B82E:0.34:0.03"
 $Segments = New-Object System.Collections.Generic.List[object]
 $ConcatLines = New-Object System.Collections.Generic.List[string]
 $timelineStart = 0.0
@@ -121,11 +122,12 @@ for ($i = 0; $i -lt $Inputs.Count; $i++) {
   $overlayFrameDir = "overlay$index`_frames"
   $overlayFramePattern = Join-Path $overlayFrameDir "%04d.png"
   $handPlatePath = "handplate$index.mp4"
+  $useHandPlate = $UseHandPlates -and (Test-Path -LiteralPath $handPlatePath)
   $shotPath = if ($BackgroundClip) { $BackgroundClip } else { $input.Shot }
   $duration = Get-Duration $input.Voice
   $fadeOutStart = [math]::Max(0.0, $duration - 0.12)
   $audioFilter = "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$('{0:F3}' -f $fadeOutStart):d=0.12"
-  if ((Test-Path -LiteralPath $overlayFrameDir) -and (Test-Path -LiteralPath $handPlatePath)) {
+  if ((Test-Path -LiteralPath $overlayFrameDir) -and $useHandPlate) {
     Invoke-FFmpeg @(
       "-y",
       "-stream_loop", "-1",
@@ -171,7 +173,7 @@ for ($i = 0; $i -lt $Inputs.Count; $i++) {
       "-ac", "2",
       $segmentPath
     )
-  } elseif ((Test-Path -LiteralPath $overlayPath) -and (Test-Path -LiteralPath $handPlatePath)) {
+  } elseif ((Test-Path -LiteralPath $overlayPath) -and $useHandPlate) {
     Invoke-FFmpeg @(
       "-y",
       "-stream_loop", "-1",
@@ -215,7 +217,7 @@ for ($i = 0; $i -lt $Inputs.Count; $i++) {
       "-ac", "2",
       $segmentPath
     )
-  } elseif (Test-Path -LiteralPath $handPlatePath) {
+  } elseif ($useHandPlate) {
     Invoke-FFmpeg @(
       "-y",
       "-stream_loop", "-1",

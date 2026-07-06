@@ -117,11 +117,35 @@ for ($i = 0; $i -lt $Inputs.Count; $i++) {
   $index = "{0:00}" -f ($i + 1)
   $segmentPath = "segment_$index.mp4"
   $overlayPath = "overlay$index.png"
+  $overlayFrameDir = "overlay$index`_frames"
+  $overlayFramePattern = Join-Path $overlayFrameDir "%04d.png"
   $shotPath = if ($BackgroundClip) { $BackgroundClip } else { $input.Shot }
   $duration = Get-Duration $input.Voice
   $fadeOutStart = [math]::Max(0.0, $duration - 0.12)
   $audioFilter = "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$('{0:F3}' -f $fadeOutStart):d=0.12"
-  if (Test-Path -LiteralPath $overlayPath) {
+  if (Test-Path -LiteralPath $overlayFrameDir) {
+    Invoke-FFmpeg @(
+      "-y",
+      "-stream_loop", "-1",
+      "-i", $shotPath,
+      "-i", $input.Voice,
+      "-framerate", "30",
+      "-i", $overlayFramePattern,
+      "-t", ("{0:F3}" -f $duration),
+      "-filter_complex", "[0:v]$VideoFilter[base];[base][2:v]overlay=0:0:format=auto[v]",
+      "-af", $audioFilter,
+      "-map", "[v]",
+      "-map", "1:a",
+      "-c:v", "libx264",
+      "-preset", "medium",
+      "-crf", "18",
+      "-pix_fmt", "yuv420p",
+      "-c:a", "aac",
+      "-ar", "48000",
+      "-ac", "2",
+      $segmentPath
+    )
+  } elseif (Test-Path -LiteralPath $overlayPath) {
     Invoke-FFmpeg @(
       "-y",
       "-stream_loop", "-1",

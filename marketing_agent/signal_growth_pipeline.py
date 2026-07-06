@@ -657,6 +657,263 @@ def generate_overlays(args: argparse.Namespace) -> None:
     emit({"status": "OVERLAYS_GENERATED", "overlays": outputs})
 
 
+def draw_progress_line(draw: ImageDraw.ImageDraw, start: tuple[int, int], end: tuple[int, int], progress: float, fill: tuple[int, int, int, int], width: int) -> None:
+    progress = max(0.0, min(1.0, progress))
+    x = start[0] + (end[0] - start[0]) * progress
+    y = start[1] + (end[1] - start[1]) * progress
+    draw.line((start[0], start[1], x, y), fill=fill, width=width)
+
+
+def draw_progress_rect(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], progress: float, fill: tuple[int, int, int, int], width: int = 6) -> None:
+    progress = max(0.0, min(1.0, progress))
+    x1, y1, x2, y2 = box
+    segments = [
+        ((x1, y1), (x2, y1)),
+        ((x2, y1), (x2, y2)),
+        ((x2, y2), (x1, y2)),
+        ((x1, y2), (x1, y1)),
+    ]
+    remaining = progress * 4
+    for start, end in segments:
+        if remaining <= 0:
+            break
+        draw_progress_line(draw, start, end, min(1.0, remaining), fill, width)
+        remaining -= 1
+
+
+def draw_badge(draw: ImageDraw.ImageDraw, text: str, x: int, y: int, fill: tuple[int, int, int, int], text_fill: tuple[int, int, int, int]) -> None:
+    badge_font = font("segoeuib.ttf", 23)
+    bbox = draw.textbbox((0, 0), text, font=badge_font)
+    width = bbox[2] - bbox[0] + 28
+    height = bbox[3] - bbox[1] + 18
+    rounded_rect(draw, (x, y, x + width, y + height), 14, fill, (255, 255, 255, 80), 1)
+    draw.text((x + 14, y + 8), text, font=badge_font, fill=text_fill)
+
+
+def draw_live_edit_resume_base(draw: ImageDraw.ImageDraw, updated: bool = False, typed_rewrite: str = "") -> dict[str, tuple[int, int, int, int]]:
+    paper = (132, 270, 948, 1468)
+    shadow = (paper[0] + 16, paper[1] + 18, paper[2] + 16, paper[3] + 18)
+    rounded_rect(draw, shadow, 28, (0, 0, 0, 78))
+    rounded_rect(draw, (paper[0] - 18, paper[1] - 22, paper[2] + 18, paper[3] + 22), 34, (18, 24, 31, 220), (255, 255, 255, 48), 2)
+    rounded_rect(draw, paper, 18, (252, 252, 248, 250), (20, 27, 38, 70), 2)
+
+    title = font("segoeuib.ttf", 36)
+    subtitle = font("segoeui.ttf", 17)
+    section = font("segoeuib.ttf", 16)
+    role = font("segoeuib.ttf", 20)
+    body = font("segoeui.ttf", 18)
+    small = font("segoeui.ttf", 15)
+    tiny = font("segoeui.ttf", 14)
+    mono = font("consola.ttf", 14)
+
+    x = paper[0] + 56
+    y = paper[1] + 44
+    draw.text((x, y), "MAYA RIVERA", font=title, fill=(15, 23, 42, 255))
+    draw.text((x, y + 44), "Customer Success Manager  |  Denver, CO  |  maya.r@example.com  |  linkedin.com/in/mayarivera", font=subtitle, fill=(72, 84, 104, 255))
+    draw.line((x, y + 78, paper[2] - 56, y + 78), fill=(20, 27, 38, 80), width=2)
+
+    y += 105
+    draw.text((x, y), "PROFESSIONAL SUMMARY", font=section, fill=(9, 102, 93, 255))
+    y += 27
+    summary = "Customer success manager with 5+ years supporting B2B SaaS onboarding, renewal risk reviews, user adoption, and executive account updates."
+    for line in wrapped_lines(draw, summary, small, paper[2] - 112 - x):
+        draw.text((x, y), line, font=small, fill=(31, 41, 55, 255))
+        y += 22
+
+    y += 18
+    draw.text((x, y), "CORE SKILLS", font=section, fill=(9, 102, 93, 255))
+    y += 28
+    skill_rows = [
+        ("Customer Success", "onboarding, renewals, QBRs, adoption plans, churn-risk reviews"),
+        ("Tools", "Salesforce, Gainsight, Zendesk, Looker, Slack, Google Workspace"),
+        ("Metrics", "NRR, GRR, health scores, product usage, expansion pipeline, SLA follow-up"),
+        ("Industries", "B2B SaaS, education technology, healthcare operations"),
+    ]
+    for label, value in skill_rows:
+        draw.text((x, y), label + ":", font=font("segoeuib.ttf", 14), fill=(15, 23, 42, 255))
+        draw.text((x + 136, y), value, font=tiny, fill=(55, 65, 81, 255))
+        y += 22
+
+    y += 18
+    draw.text((x, y), "EXPERIENCE", font=section, fill=(9, 102, 93, 255))
+    y += 30
+    draw.text((x, y), "Customer Success Manager  |  Northline Software", font=role, fill=(15, 23, 42, 255))
+    draw.text((paper[2] - 230, y + 3), "2022 - Present", font=small, fill=(72, 84, 104, 255))
+    y += 36
+
+    weak_bullet = "Helped customers with onboarding and renewals."
+    strong_bullet = "Led onboarding for 42 B2B accounts, flagged churn risk in Gainsight, and protected $1.2M in annual renewals."
+    bullets = [
+        strong_bullet if updated else weak_bullet,
+        "Managed a book of 68 SMB and mid-market accounts with weekly usage reviews, renewal notes, and escalation follow-up.",
+        "Built onboarding checklists that reduced first-value time from 21 days to 14 days across new customer cohorts.",
+        "Partnered with sales on expansion handoffs and documented customer health trends in Salesforce.",
+        "Hosted monthly QBRs for strategic accounts, translating product usage data into clear next-step plans.",
+    ]
+    boxes: dict[str, tuple[int, int, int, int]] = {}
+    for idx, bullet in enumerate(bullets):
+        bullet_y = y
+        draw.text((x + 4, bullet_y + 2), u"\u2022", font=body, fill=(15, 23, 42, 255))
+        line_x = x + 34
+        if idx == 0 and typed_rewrite:
+            rounded_rect(draw, (line_x - 8, bullet_y - 8, paper[2] - 62, bullet_y + 72), 12, (255, 255, 255, 250), (20, 27, 38, 45), 1)
+            typed_lines = wrapped_lines(draw, typed_rewrite, body, paper[2] - 92 - line_x)
+            for line_index, line in enumerate(typed_lines[:3]):
+                draw.text((line_x, bullet_y + line_index * 25), line, font=body, fill=(15, 23, 42, 255))
+            box_h = max(58, len(typed_lines[:3]) * 25)
+            boxes["weak_bullet"] = (line_x - 10, bullet_y - 8, paper[2] - 66, bullet_y + 62)
+            boxes["rewrite_bullet"] = (line_x - 10, bullet_y - 8, paper[2] - 66, bullet_y + box_h + 8)
+            y += box_h + 20
+            continue
+        lines = wrapped_lines(draw, bullet, body, paper[2] - 92 - line_x)
+        for line_index, line in enumerate(lines):
+            draw.text((line_x, bullet_y + line_index * 25), line, font=body, fill=(15, 23, 42, 255))
+        box_h = max(30, len(lines) * 25)
+        if idx == 0:
+            boxes["weak_bullet"] = (line_x - 10, bullet_y - 8, paper[2] - 66, bullet_y + box_h + 6)
+        y += box_h + 15
+
+    y += 12
+    draw.text((x, y), "Customer Success Associate  |  Brightpath Learning", font=role, fill=(15, 23, 42, 255))
+    draw.text((paper[2] - 230, y + 3), "2020 - 2022", font=small, fill=(72, 84, 104, 255))
+    y += 34
+    earlier_bullets = [
+        "Answered implementation questions for 90+ school-district customers using Zendesk and product usage reports.",
+        "Created renewal briefing notes for account executives before district budget meetings.",
+    ]
+    for bullet in earlier_bullets:
+        draw.text((x + 4, y + 2), u"\u2022", font=body, fill=(15, 23, 42, 255))
+        for line in wrapped_lines(draw, bullet, small, paper[2] - 145 - x):
+            draw.text((x + 34, y), line, font=small, fill=(31, 41, 55, 255))
+            y += 22
+        y += 8
+
+    y += 14
+    draw.text((x, y), "PROJECTS", font=section, fill=(9, 102, 93, 255))
+    y += 28
+    projects = [
+        "Churn-risk dashboard: tagged renewal accounts by product usage, support volume, and executive sponsor engagement.",
+        "Onboarding library: rewrote customer kickoff templates and reduced repeat support questions during launch week.",
+    ]
+    for project in projects:
+        draw.text((x + 4, y + 2), u"\u2022", font=body, fill=(15, 23, 42, 255))
+        for line in wrapped_lines(draw, project, small, paper[2] - 145 - x):
+            draw.text((x + 34, y), line, font=small, fill=(31, 41, 55, 255))
+            y += 22
+        y += 8
+
+    y += 8
+    draw.text((x, y), "EDUCATION", font=section, fill=(9, 102, 93, 255))
+    y += 28
+    draw.text((x, y), "B.A. Communication, University of Colorado  |  Certified Customer Success Manager", font=small, fill=(31, 41, 55, 255))
+
+    y += 38
+    chip_x = paper[0] + 56
+    for skill in ["Salesforce", "Gainsight", "Renewals", "Onboarding", "Churn Risk"]:
+        tw = draw.textbbox((0, 0), skill, font=mono)[2]
+        rounded_rect(draw, (chip_x, y, chip_x + tw + 28, y + 32), 16, (235, 245, 244, 255), (9, 102, 93, 90), 1)
+        draw.text((chip_x + 14, y + 7), skill, font=mono, fill=(9, 102, 93, 255))
+        chip_x += tw + 38
+        if chip_x > paper[2] - 150:
+            chip_x = paper[0] + 56
+            y += 38
+
+    boxes["paper"] = paper
+    boxes["strong_bullet_text"] = (0, 0, 0, 0)
+    return boxes
+
+
+def draw_live_edit_frame(draw: ImageDraw.ImageDraw, stage: int, progress: float) -> None:
+    draw_top_cleanup(draw)
+    rewrite = "Led onboarding for 42 B2B accounts, flagged churn risk in Gainsight, and protected $1.2M in annual renewals."
+    typed_rewrite = ""
+    updated = stage >= 4
+    if stage == 3:
+        type_progress = max(0.0, min(1.0, (progress - 0.28) / 0.62))
+        typed_rewrite = rewrite[: int(len(rewrite) * type_progress)]
+    boxes = draw_live_edit_resume_base(draw, updated=updated, typed_rewrite=typed_rewrite)
+    weak = boxes["weak_bullet"]
+
+    small_note = font("segoeuib.ttf", 23)
+    red = (239, 68, 68, 235)
+    green = (14, 165, 145, 235)
+
+    if stage == 1:
+        draw_small_caption(draw, "This resume looks real. One line is still doing nothing.")
+    elif stage == 2:
+        draw_progress_rect(draw, weak, progress, red, width=7)
+        if progress > 0.35:
+            draw_badge(draw, "too vague", weak[2] - 158, weak[1] - 42, (127, 29, 29, 232), (255, 255, 255, 255))
+        if progress > 0.65:
+            draw_small_caption(draw, "Circle the claim with no proof.")
+    elif stage == 3:
+        draw.rounded_rectangle(weak, radius=12, outline=red, width=6)
+        draw_progress_line(draw, (weak[0] + 18, weak[3] - 18), (weak[2] - 18, weak[3] - 18), min(1.0, progress * 1.8), red, 6)
+        draw_badge(draw, "delete vague", weak[2] - 198, weak[1] - 42, (127, 29, 29, 232), (255, 255, 255, 255))
+        if progress > 0.25:
+            draw.text((weak[0], weak[3] + 16), "typing proof...", font=small_note, fill=(9, 102, 93, 255))
+        draw_small_caption(draw, "Now the edit is happening on the page.")
+    else:
+        highlight = boxes["weak_bullet"]
+        draw.rounded_rectangle((highlight[0], highlight[1], highlight[2], highlight[3] + 26), radius=14, outline=(14, 165, 145, 210), width=5)
+        draw_keyword_chips(draw, ["Salesforce", "Gainsight", "Renewals", "Churn Risk"], 96, 1080)
+        draw_badge(draw, "fixed with proof", highlight[2] - 220, highlight[1] - 42, (6, 95, 70, 232), (255, 255, 255, 255))
+        draw_small_caption(draw, "Upload it to Signal before you apply.")
+
+
+def voice_duration_sec(work_dir: Path, voice_name: str, fallback: float) -> float:
+    voice_path = work_dir / voice_name
+    if not voice_path.exists():
+        return fallback
+    try:
+        ffprobe = find_exe("ffprobe")
+        proc = subprocess.run(
+            [ffprobe, "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(voice_path)],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
+        return max(0.4, float(proc.stdout.strip()))
+    except Exception:
+        return fallback
+
+
+def generate_live_edit_overlays(args: argparse.Namespace) -> None:
+    work_dir = Path(args.work_dir).resolve()
+    work_dir.mkdir(parents=True, exist_ok=True)
+    fps = 30
+    defaults = [4.6, 5.4, 8.1, 5.4]
+    voices = ["vo_hook.mp3", "vo_search.mp3", "vo_demo.mp3", "vo_cta.mp3"]
+    outputs: list[str] = []
+
+    for stage, (voice_name, fallback) in enumerate(zip(voices, defaults), start=1):
+        duration = voice_duration_sec(work_dir, voice_name, fallback)
+        frame_count = max(2, int(duration * fps))
+        frame_dir = work_dir / f"overlay{stage:02d}_frames"
+        if frame_dir.exists():
+            shutil.rmtree(frame_dir)
+        frame_dir.mkdir(parents=True, exist_ok=True)
+        for frame in range(frame_count):
+            progress = 1.0 if frame_count <= 1 else frame / (frame_count - 1)
+            image = Image.new("RGBA", OVERLAY_CANVAS, (0, 0, 0, 0))
+            draw = ImageDraw.Draw(image)
+            draw_live_edit_frame(draw, stage, progress)
+            image.save(frame_dir / f"{frame:04d}.png")
+        outputs.append(str(frame_dir))
+
+    if args.run_id:
+        conn = db()
+        get_run(conn, args.run_id)
+        metadata = json.loads(get_run(conn, args.run_id)["metadata_json"] or "{}")
+        metadata["liveEditOverlayFrames"] = outputs
+        update_run(conn, args.run_id, metadata_json=json.dumps(metadata))
+        log_event(conn, args.run_id, "live_edit_overlays_generated", {"frameDirs": outputs})
+        conn.commit()
+
+    emit({"status": "LIVE_EDIT_OVERLAYS_GENERATED", "frameDirs": outputs})
+
+
 def find_exe(name: str) -> str:
     found = shutil.which(name)
     if found:
@@ -1010,6 +1267,11 @@ def build_parser() -> argparse.ArgumentParser:
     overlays.add_argument("--work-dir", required=True)
     overlays.add_argument("--run-id")
     overlays.set_defaults(func=generate_overlays)
+
+    live_edit = sub.add_parser("live-edit-overlays", help="Generate animated resume edit overlay frames for Veo footage")
+    live_edit.add_argument("--work-dir", required=True)
+    live_edit.add_argument("--run-id")
+    live_edit.set_defaults(func=generate_live_edit_overlays)
 
     assm = sub.add_parser("assemble", help="Run the sync-safe ffmpeg assembly script")
     assm.add_argument("--work-dir", default=str(Path.home() / "Downloads"))

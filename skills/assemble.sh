@@ -40,6 +40,8 @@ list_file="concat_list.txt"
 for i in "${!shots[@]}"; do
   idx="$(printf "%02d" "$((i + 1))")"
   overlay="overlay$idx.png"
+  overlay_frame_dir="overlay${idx}_frames"
+  overlay_frame_pattern="$overlay_frame_dir/%04d.png"
   shot="${shots[$i]}"
   if [[ -n "$BACKGROUND_CLIP" ]]; then
     shot="$BACKGROUND_CLIP"
@@ -54,7 +56,19 @@ PY
   if [[ -f "${texts[$i]}" ]]; then
     caption="$(tr '\n' ' ' < "${texts[$i]}" | sed 's/[[:space:]]\+/ /g;s/^ //;s/ $//')"
   fi
-  if [[ -f "$overlay" ]]; then
+  if [[ -d "$overlay_frame_dir" ]]; then
+    ffmpeg -y \
+      -stream_loop -1 -i "$shot" \
+      -i "${voices[$i]}" \
+      -framerate 30 -i "$overlay_frame_pattern" \
+      -t "$duration" \
+      -filter_complex "[0:v]$vf[base];[base][2:v]overlay=0:0:format=auto[v]" \
+      -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
+      -map "[v]" -map 1:a \
+      -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
+      -c:a aac -ar 48000 -ac 2 \
+      "segment_$idx.mp4"
+  elif [[ -f "$overlay" ]]; then
     ffmpeg -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \

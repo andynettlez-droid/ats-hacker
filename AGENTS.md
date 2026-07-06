@@ -27,7 +27,7 @@ Never paste keys into chat, docs, commits, captions, or generated artifacts.
 1. **RESEARCH**: Search current short-form trends for the topic. Summarize 3 winning angles with what to copy and what to avoid.
 2. **SCRIPT**: Use `skills/hook_playbook.md` and `skills/brand.md` to write a 30s human reviewer script with hook, beats, CTA, and captions.
 3. **VIDEO**: Use `skills/veo_prompt_template.md` to generate each 9:16 clip through Veo/Gemini. Download clips into the run folder or `/assets`. Do not ask Veo to create readable resume/JD text.
-4. **OVERLAYS**: Generate deterministic readable resume/JD overlays with `py -3 marketing_agent/signal_growth_pipeline.py overlays --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID`. These overlays carry the resume text, red markup, keyword chips, and rewritten bullet. Resume overlays must look like real one-page resumes: name/title line, summary, skills, multiple experience bullets, dates, projects, certifications, and one clearly weak bullet being repaired.
+4. **OVERLAYS**: Generate deterministic readable resume/JD overlays with `py -3 marketing_agent/signal_growth_pipeline.py overlays --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID`. These overlays carry the resume text, red markup, keyword chips, and rewritten bullet. Resume overlays must look like real one-page resumes: name/title line, summary, skills, multiple experience bullets, dates, projects, certifications, and one clearly weak bullet being repaired. When the concept is a live edit, use `py -3 marketing_agent/signal_growth_pipeline.py live-edit-overlays --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID` so marks, strike-throughs, and replacement bullets appear over time rather than popping in.
 5. **VOICE**: Use `skills/voiceover.md` to generate Abby narration through ElevenLabs `/with-timestamps`. Save the MP3 and alignment JSON.
 6. **EDIT**: Run `skills/assemble.sh` or `skills/assemble.ps1`. Segment durations must follow the measured audio/video durations. Captions are generated from those real timings but are opt-in for this format; default review cuts should rely on the readable overlay and small in-design captions only.
 7. **QA**: Run ffprobe/QA checks for 1080x1920, H.264/AAC, 30fps, A/V duration match, readable captions, readable resume overlays, no unsupported claims, no unwanted source watermarks, and no wrong visible URL/logo.
@@ -65,6 +65,12 @@ Generate readable resume overlays:
 py -3 marketing_agent/signal_growth_pipeline.py overlays --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID
 ```
 
+Generate animated live-edit overlays:
+
+```powershell
+py -3 marketing_agent/signal_growth_pipeline.py live-edit-overlays --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID
+```
+
 Run voice/Veo work for several runs concurrently:
 
 ```powershell
@@ -95,6 +101,7 @@ py -3 marketing_agent/signal_growth_pipeline.py review --run-id RUN_ID
 - Veo creates motion and human context; deterministic overlays create readable resume/JD text.
 - Never rely on model-generated document text for a teardown. If a viewer needs to read it, create it in the edit layer.
 - Never use generic three-line resumes for teardown videos. The resume must look detailed enough that a real job seeker would recognize it as a resume.
+- For edit/fix videos, the weak bullet should visibly change on screen: circle or underline, strike the vague wording, type or reveal the replacement, then show the cleaned final state.
 - Burned-in subtitles are optional and should stay off when they compete with the resume artifact.
 - Signal mascot/orb is optional. Do not force it into resume-review content.
 - Most short-form videos should make the resume/JD mistake the entertainment. Signal can be the fix in the caption, spoken CTA, and link in bio.

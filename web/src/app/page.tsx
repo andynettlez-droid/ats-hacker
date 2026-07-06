@@ -705,7 +705,6 @@ export default function Home() {
       <header id="features" className="relative overflow-hidden border-b border-cyan-400/10 bg-[#030712] py-16 lg:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(56,213,255,0.18),transparent_28rem),radial-gradient(circle_at_86%_22%,rgba(37,99,235,0.2),transparent_32rem),radial-gradient(circle_at_52%_82%,rgba(52,211,153,0.08),transparent_28rem)]" />
         <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(125,223,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(125,223,255,0.07)_1px,transparent_1px)] [background-size:52px_52px]" />
-        <SignalPeek className="right-8 top-24 xl:right-14 xl:top-28" size="h-16 w-16" />
         <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Hero Content */}
           <div className="relative z-10 lg:col-span-7 space-y-8">

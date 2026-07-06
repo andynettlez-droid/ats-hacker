@@ -20,6 +20,9 @@ venv/
 marketing_agent/runs/
 marketing/video_pipeline_state.sqlite
 marketing/video_pipeline_state.sqlite-*
+marketing/signal_growth_engine.sqlite
+marketing/signal_growth_engine.sqlite-*
+marketing/growth_runs/
 marketing/codex_reviews/
 
 # OS / editor

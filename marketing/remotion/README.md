@@ -2,6 +2,12 @@
 
 Programmatic video production for Signal by ATSHacker. The current production lane is recruiter-style resume teardown content for TikTok, Instagram Reels, YouTube Shorts, and long-form YouTube.
 
+## 2026-07-06 Signal Growth Engine Note
+
+The old `marketing_agent/video_pipeline.py` entrypoint is retired. Use the repo-level `AGENTS.md` and `marketing_agent/signal_growth_pipeline.py` for the current research -> script -> Veo clip -> Abby voice -> sync-safe edit -> QA -> Codex approval workflow.
+
+Remotion remains useful for deterministic resume teardown graphics and long-form compositions. The current polished cinematic ad uses Veo clips plus `skills/assemble.ps1` because that path solved the Abby voice timing and site-demo flicker issues from the previous builds.
+
 The primary short-form template is `ResumeCrimeScene`, not the older `ScoreReveal` ad. It now supports rotating creative formats, visual styles, pacing, and scene-by-scene Signal mascot reactions. See `marketing/SHORTS_CREATIVE_SYSTEM.md` for the active creative standard.
 
 The winning format family is:

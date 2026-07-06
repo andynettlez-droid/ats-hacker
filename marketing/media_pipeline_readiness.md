@@ -1,6 +1,46 @@
 # Signal Media Pipeline Readiness Review
 
-Reviewed: 2026-07-05
+Reviewed: 2026-07-06
+
+## 2026-07-06 Active Pipeline Reset
+
+The old `marketing_agent/video_pipeline.py` path is now retired. It remains only as a guardrail message that points agents to the new Signal Growth Engine runner. Do not use the old HeyGen/legacy Remotion command path for new public shorts.
+
+Active production lane:
+
+- Research and hook rules: `AGENTS.md`, `skills/hook_playbook.md`, `skills/brand.md`
+- Veo shot direction: `skills/veo_prompt_template.md`
+- Abby voice direction and timestamp endpoint: `skills/voiceover.md`
+- Pipeline/state CLI: `marketing_agent/signal_growth_pipeline.py`
+- Sync-safe editor: `skills/assemble.ps1` on Windows, `skills/assemble.sh` on bash
+- Logo assets: `marketing/brand/signal-logo-mark.png` and `marketing/brand/signal-logo-mark.svg`
+
+Current proven ad render:
+
+- Final file: `C:\Users\andyn\Downloads\signal_ad_final.mp4`
+- Mobile review URL while local server is running: `http://192.168.2.10:8770/signal_ad_final.mp4`
+- QA: 1080x1920, H.264, AAC, 30fps, 47.53s
+- Demo flicker fix: the site demo section now uses a stable `signal_landing_demo.png` pan instead of the flickering GIF-derived segment.
+
+Codex approval is the only review gate. The pipeline may render, QA, prepare metadata, and produce a review packet, but posting stays blocked until Andrew approves the exact video in Codex chat.
+
+Core commands:
+
+```bat
+py -3 marketing_agent\signal_growth_pipeline.py init-run --topic "resume teardown"
+py -3 marketing_agent\signal_growth_pipeline.py resolve-abby
+py -3 marketing_agent\signal_growth_pipeline.py voice --text-file marketing\growth_runs\RUN_ID\vo.txt --out marketing\growth_runs\RUN_ID\vo.mp3 --run-id RUN_ID
+py -3 marketing_agent\signal_growth_pipeline.py veo --text-file marketing\growth_runs\RUN_ID\shot01.txt --out marketing\growth_runs\RUN_ID\shot01.mp4 --run-id RUN_ID
+powershell -ExecutionPolicy Bypass -File skills\assemble.ps1 -WorkDir C:\Users\andyn\Downloads -Out signal_ad_final.mp4
+py -3 marketing_agent\signal_growth_pipeline.py qa --video C:\Users\andyn\Downloads\signal_ad_final.mp4 --run-id RUN_ID --write
+py -3 marketing_agent\signal_growth_pipeline.py review --run-id RUN_ID
+```
+
+Known remaining gaps:
+
+- The new runner can call Veo and ElevenLabs directly, but it does not yet automate the whole creative research/script-writing judgment. Keep the script/hook human-sounding gate active.
+- The sync-safe assembler currently matches the successful Abby/Veo/site-demo ad structure. Future teardown shorts should get their own deterministic assembler or Remotion composition once the gold standard is approved.
+- QA is technical plus approval-state gating. It still needs automated LUFS/true-peak checks and semantic visual overlap detection.
 
 ## Verdict
 

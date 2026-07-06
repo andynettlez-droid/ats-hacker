@@ -101,7 +101,7 @@ py -3 marketing_agent/signal_growth_pipeline.py review --run-id RUN_ID
 - Veo creates motion and human context; deterministic overlays create readable resume/JD text.
 - Never rely on model-generated document text for a teardown. If a viewer needs to read it, create it in the edit layer.
 - Never use generic three-line resumes for teardown videos. The resume must look detailed enough that a real job seeker would recognize it as a resume.
-- For edit/fix videos, the weak bullet should visibly change on screen: circle or underline, strike the vague wording, type or reveal the replacement, then show the cleaned final state.
+- For edit/fix videos, the weak bullet should visibly change on screen: circle or underline, strike the vague wording, type or reveal the replacement, then show the cleaned final state. The visible editing hand/stylus must be composited above the readable resume layer; background hands underneath the resume do not count as an edit.
 - Burned-in subtitles are optional and should stay off when they compete with the resume artifact.
 - Signal mascot/orb is optional. Do not force it into resume-review content.
 - Most short-form videos should make the resume/JD mistake the entertainment. Signal can be the fix in the caption, spoken CTA, and link in bio.

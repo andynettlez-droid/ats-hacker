@@ -690,6 +690,58 @@ def draw_badge(draw: ImageDraw.ImageDraw, text: str, x: int, y: int, fill: tuple
     draw.text((x + 14, y + 8), text, font=badge_font, fill=text_fill)
 
 
+def point_on_rect(box: tuple[int, int, int, int], progress: float) -> tuple[int, int]:
+    progress = max(0.0, min(1.0, progress))
+    x1, y1, x2, y2 = box
+    perimeter = 2 * ((x2 - x1) + (y2 - y1))
+    distance = progress * perimeter
+    top = x2 - x1
+    right = y2 - y1
+    bottom = x2 - x1
+    if distance <= top:
+        return int(x1 + distance), y1
+    distance -= top
+    if distance <= right:
+        return x2, int(y1 + distance)
+    distance -= right
+    if distance <= bottom:
+        return int(x2 - distance), y2
+    distance -= bottom
+    return x1, int(y2 - min(distance, y2 - y1))
+
+
+def draw_editor_hand(draw: ImageDraw.ImageDraw, tip: tuple[int, int], marker: tuple[int, int, int, int] = (239, 68, 68, 245)) -> None:
+    """Draw a small top-layer editing hand so visible changes happen on the readable resume."""
+    tip_x, tip_y = tip
+    tail_x = tip_x + 92
+    tail_y = tip_y + 78
+    skin = (229, 181, 139, 248)
+    skin_dark = (180, 122, 89, 210)
+    nail = (250, 238, 228, 245)
+    shadow = (0, 0, 0, 42)
+
+    # Soft shadow and wrist.
+    draw.ellipse((tail_x + 10, tail_y + 42, tail_x + 190, tail_y + 138), fill=shadow)
+    rounded_rect(draw, (tail_x + 78, tail_y + 52, tail_x + 178, tail_y + 126), 28, skin, skin_dark, 2)
+
+    # Palm and thumb around the stylus.
+    draw.ellipse((tail_x + 36, tail_y + 18, tail_x + 142, tail_y + 102), fill=skin, outline=skin_dark, width=2)
+    draw.ellipse((tail_x + 18, tail_y + 42, tail_x + 78, tail_y + 98), fill=skin, outline=skin_dark, width=2)
+
+    # Fingers, intentionally simplified so they read at Shorts scale.
+    for offset, length in [(0, 82), (25, 76), (49, 66)]:
+        finger_box = (tail_x + 30 + offset, tail_y - 18 + offset // 4, tail_x + 62 + offset, tail_y - 18 + length)
+        rounded_rect(draw, finger_box, 15, skin, skin_dark, 2)
+        nail_y = finger_box[1] + 6
+        draw.ellipse((finger_box[0] + 8, nail_y, finger_box[2] - 8, nail_y + 16), fill=nail)
+
+    # Stylus/marker. The tip lands exactly where the animated edit is happening.
+    draw.line((tail_x + 20, tail_y + 26, tip_x, tip_y), fill=(20, 27, 38, 210), width=16)
+    draw.line((tail_x + 20, tail_y + 26, tip_x, tip_y), fill=(245, 250, 255, 255), width=10)
+    draw.line((tip_x + 3, tip_y + 3, tip_x + 26, tip_y + 26), fill=marker, width=10)
+    draw.ellipse((tip_x - 9, tip_y - 9, tip_x + 9, tip_y + 9), fill=marker)
+
+
 def draw_live_edit_resume_base(draw: ImageDraw.ImageDraw, updated: bool = False, typed_rewrite: str = "") -> dict[str, tuple[int, int, int, int]]:
     paper = (132, 270, 948, 1468)
     shadow = (paper[0] + 16, paper[1] + 18, paper[2] + 16, paper[3] + 18)
@@ -842,14 +894,32 @@ def draw_live_edit_frame(draw: ImageDraw.ImageDraw, stage: int, progress: float)
         draw_small_caption(draw, "This resume looks real. One line is still doing nothing.")
     elif stage == 2:
         draw_progress_rect(draw, weak, progress, red, width=7)
+        draw_editor_hand(draw, point_on_rect(weak, progress), red)
         if progress > 0.35:
             draw_badge(draw, "too vague", weak[2] - 158, weak[1] - 42, (127, 29, 29, 232), (255, 255, 255, 255))
         if progress > 0.65:
             draw_small_caption(draw, "Circle the claim with no proof.")
     elif stage == 3:
         draw.rounded_rectangle(weak, radius=12, outline=red, width=6)
-        draw_progress_line(draw, (weak[0] + 18, weak[3] - 18), (weak[2] - 18, weak[3] - 18), min(1.0, progress * 1.8), red, 6)
+        strike_progress = min(1.0, progress * 1.8)
+        strike_start = (weak[0] + 18, weak[3] - 18)
+        strike_end = (weak[2] - 18, weak[3] - 18)
+        draw_progress_line(draw, strike_start, strike_end, strike_progress, red, 6)
         draw_badge(draw, "delete vague", weak[2] - 198, weak[1] - 42, (127, 29, 29, 232), (255, 255, 255, 255))
+        if progress < 0.32:
+            hand_tip = (
+                int(strike_start[0] + (strike_end[0] - strike_start[0]) * strike_progress),
+                strike_start[1],
+            )
+            draw_editor_hand(draw, hand_tip, red)
+        else:
+            type_progress = max(0.0, min(1.0, (progress - 0.28) / 0.62))
+            hand_tip = (
+                min(weak[2] - 160, weak[0] + 24 + int((weak[2] - weak[0] - 210) * type_progress)),
+                weak[1] + 55,
+            )
+            draw.line((hand_tip[0], hand_tip[1] - 24, hand_tip[0], hand_tip[1] + 16), fill=(9, 102, 93, 230), width=4)
+            draw_editor_hand(draw, hand_tip, green)
         if progress > 0.25:
             draw.text((weak[0], weak[3] + 16), "typing proof...", font=small_note, fill=(9, 102, 93, 255))
         draw_small_caption(draw, "Now the edit is happening on the page.")
@@ -858,6 +928,7 @@ def draw_live_edit_frame(draw: ImageDraw.ImageDraw, stage: int, progress: float)
         draw.rounded_rectangle((highlight[0], highlight[1], highlight[2], highlight[3] + 26), radius=14, outline=(14, 165, 145, 210), width=5)
         draw_keyword_chips(draw, ["Salesforce", "Gainsight", "Renewals", "Churn Risk"], 96, 1080)
         draw_badge(draw, "fixed with proof", highlight[2] - 220, highlight[1] - 42, (6, 95, 70, 232), (255, 255, 255, 255))
+        draw_editor_hand(draw, (highlight[2] - 36, highlight[3] + 18), green)
         draw_small_caption(draw, "Upload it to Signal before you apply.")
 
 

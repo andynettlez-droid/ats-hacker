@@ -761,9 +761,6 @@ export default function Home() {
           <div className="lg:col-span-5 relative">
             <div className="absolute inset-0 bg-cyan-400/12 rounded-3xl blur-3xl -z-10 transform scale-95"></div>
             <div className="relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-[#07111f]/90 p-5 shadow-[0_28px_120px_rgba(0,0,0,0.45),0_0_80px_rgba(56,213,255,0.12)] backdrop-blur space-y-4">
-              <div className="pointer-events-none absolute right-4 top-4 hidden sm:block">
-                <SignalMascot className="signal-mascot h-16 w-16" />
-              </div>
               <div className="text-center pb-2 border-b border-cyan-400/15">
                 <h3 className="text-xs font-black text-cyan-100 tracking-wider uppercase">
                   Signal Match Report

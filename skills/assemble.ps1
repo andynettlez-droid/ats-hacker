@@ -2,6 +2,7 @@ param(
   [string]$WorkDir = (Get-Location).Path,
   [string]$Hook = "Woman_talking_about_resume_keywords_202607060959.mp4",
   [string]$Search = "Resume_cards_in_dark_void_202607060958.mp4",
+  [string]$DemoVideo = "signal_feature_demo_recording.mp4",
   [string]$DemoImage = "signal_landing_demo.png",
   [string]$Cta = "Woman_speaking_to_camera_202607060956.mp4",
   [string]$VO1 = "ElevenLabs_2026-07-06T15_01_46_Abby_ivc_sp100_s50_sb75_se0_b_m2.mp3",
@@ -27,10 +28,13 @@ function Find-Tool([string]$Name) {
 $ffmpeg = Find-Tool "ffmpeg"
 $ffprobe = Find-Tool "ffprobe"
 
-foreach ($file in @($Hook, $Search, $DemoImage, $Cta, $VO1, $VO2)) {
+foreach ($file in @($Hook, $Search, $Cta, $VO1, $VO2)) {
   if (-not (Test-Path -LiteralPath $file)) {
     throw "Missing input: $file"
   }
+}
+if (-not (Test-Path -LiteralPath $DemoVideo) -and -not (Test-Path -LiteralPath $DemoImage)) {
+  throw "Missing demo input: expected $DemoVideo or $DemoImage"
 }
 
 function Invoke-FFmpeg([string[]]$ArgsList) {
@@ -69,7 +73,11 @@ $DemoVF = "fps=30,scale=1215:2160,crop=1080:1920:(iw-ow)/2:min(220\,n*220/$DemoF
 
 Invoke-FFmpeg @("-y", "-i", $Hook, "-vf", $VF, "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s1.mp4")
 Invoke-FFmpeg @("-y", "-stream_loop", "-1", "-i", $Search, "-i", $VO1, "-t", ("{0:F3}" -f $DVO1), "-vf", $VF, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s2.mp4")
-Invoke-FFmpeg @("-y", "-loop", "1", "-i", $DemoImage, "-i", $VO2, "-t", ("{0:F3}" -f $DVO2), "-vf", $DemoVF, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s3.mp4")
+if (Test-Path -LiteralPath $DemoVideo) {
+  Invoke-FFmpeg @("-y", "-stream_loop", "-1", "-i", $DemoVideo, "-i", $VO2, "-t", ("{0:F3}" -f $DVO2), "-vf", $VF, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s3.mp4")
+} else {
+  Invoke-FFmpeg @("-y", "-loop", "1", "-i", $DemoImage, "-i", $VO2, "-t", ("{0:F3}" -f $DVO2), "-vf", $DemoVF, "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s3.mp4")
+}
 Invoke-FFmpeg @("-y", "-i", $Cta, "-vf", $VF, "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", "s4.mp4")
 
 Set-Content -LiteralPath "list.txt" -Value "file 's1.mp4'`nfile 's2.mp4'`nfile 's3.mp4'`nfile 's4.mp4'`n" -NoNewline

@@ -4,6 +4,7 @@ set -euo pipefail
 WORKDIR="${WORKDIR:-$PWD}"
 HOOK="${HOOK:-Woman_talking_about_resume_keywords_202607060959.mp4}"
 SEARCH="${SEARCH:-Resume_cards_in_dark_void_202607060958.mp4}"
+DEMO_VIDEO="${DEMO_VIDEO:-signal_feature_demo_recording.mp4}"
 DEMO_IMAGE="${DEMO_IMAGE:-signal_landing_demo.png}"
 CTA="${CTA:-Woman_speaking_to_camera_202607060956.mp4}"
 VO1="${VO1:-ElevenLabs_2026-07-06T15_01_46_Abby_ivc_sp100_s50_sb75_se0_b_m2.mp3}"
@@ -30,7 +31,11 @@ AENC=(-c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -c:a aac -ar 48000 -a
 
 ffmpeg -y -i "$HOOK" -vf "$VF" "${AENC[@]}" s1.mp4
 ffmpeg -y -stream_loop -1 -i "$SEARCH" -i "$VO1" -t "$D_VO1" -vf "$VF" -map 0:v -map 1:a "${AENC[@]}" s2.mp4
-ffmpeg -y -loop 1 -i "$DEMO_IMAGE" -i "$VO2" -t "$D_VO2" -vf "$VF_DEMO" -map 0:v -map 1:a "${AENC[@]}" s3.mp4
+if [[ -f "$DEMO_VIDEO" ]]; then
+  ffmpeg -y -stream_loop -1 -i "$DEMO_VIDEO" -i "$VO2" -t "$D_VO2" -vf "$VF" -map 0:v -map 1:a "${AENC[@]}" s3.mp4
+else
+  ffmpeg -y -loop 1 -i "$DEMO_IMAGE" -i "$VO2" -t "$D_VO2" -vf "$VF_DEMO" -map 0:v -map 1:a "${AENC[@]}" s3.mp4
+fi
 ffmpeg -y -i "$CTA" -vf "$VF" "${AENC[@]}" s4.mp4
 
 printf "file 's1.mp4'\nfile 's2.mp4'\nfile 's3.mp4'\nfile 's4.mp4'\n" > list.txt

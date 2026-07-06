@@ -11,9 +11,10 @@ Run video work in this order:
 3. Build a shot sheet from `skills/veo_prompt_template.md`.
 4. Generate video clips with Veo/Gemini, using Abby and Signal/orb reference images where available.
 5. Generate voiceover with ElevenLabs Abby voice from `skills/voiceover.md`.
-6. Assemble with `skills/assemble.ps1` or `skills/assemble.sh`.
-7. QA with `marketing_agent/signal_growth_pipeline.py qa`.
-8. Export a reviewable file and stop for Codex chat approval before posting.
+6. Capture the live Signal score demo with `marketing_agent/capture_signal_demo.mjs` when a product walkthrough is part of the video.
+7. Assemble with `skills/assemble.ps1` or `skills/assemble.sh`.
+8. QA with `marketing_agent/signal_growth_pipeline.py qa`.
+9. Export a reviewable file and stop for Codex chat approval before posting.
 
 Do not publish from an automated run. The final publish gate remains explicit Codex approval for the exact rendered file.
 
@@ -52,6 +53,15 @@ Generate a Veo clip when a shot needs cinematic motion:
 ```powershell
 py -3 marketing_agent/signal_growth_pipeline.py veo --text-file marketing/growth_runs/latest/shot01.txt --out marketing/growth_runs/latest/shot01.mp4
 ```
+
+Capture the real Signal score demo instead of using a static product screenshot:
+
+```powershell
+$env:PLAYWRIGHT_CORE_DIR = "$env:TEMP\signal-playwright-core\node_modules"
+node marketing_agent/capture_signal_demo.mjs --out C:\Users\andyn\Downloads\signal_feature_demo_recording.mp4 --seconds 18
+```
+
+Keep the local web app running at `http://localhost:3100` while recording. The recorder mocks the score API with a deterministic sample so the video shows the upload, job description, low score, missing-keyword receipt, unlock preview, and paid CTA without flicker.
 
 Assemble the ad with sync-safe timing:
 

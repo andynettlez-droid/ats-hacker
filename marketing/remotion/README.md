@@ -6,7 +6,7 @@ Programmatic video production for Signal by ATSHacker. The current production la
 
 The old `marketing_agent/video_pipeline.py` entrypoint is retired. Use the repo-level `AGENTS.md` and `marketing_agent/signal_growth_pipeline.py` for the current research -> script -> Veo clip -> Abby voice -> sync-safe edit -> QA -> Codex approval workflow.
 
-Remotion remains useful for deterministic resume teardown graphics and long-form compositions. The current polished cinematic ad uses Veo clips plus `skills/assemble.ps1` because that path solved the Abby voice timing and site-demo flicker issues from the previous builds.
+Remotion remains useful for deterministic resume teardown graphics and long-form compositions. The current polished cinematic ad uses Veo clips, a live Signal score screen recording from `marketing_agent/capture_signal_demo.mjs`, and `skills/assemble.ps1` because that path solved the Abby voice timing and product-demo flicker issues from the previous builds.
 
 The primary short-form template is `ResumeCrimeScene`, not the older `ScoreReveal` ad. It now supports rotating creative formats, visual styles, pacing, and scene-by-scene Signal mascot reactions. See `marketing/SHORTS_CREATIVE_SYSTEM.md` for the active creative standard.
 
@@ -118,6 +118,15 @@ py -3 marketing_agent\daily_content_agent.py --check-elevenlabs --probe-elevenla
 The current configured voice is `JBFqnCBsd6RMkjVDRZzb`. The active key is restricted to Text to Speech, so voice-list reads may be denied; use the configured voice ID as authoritative. For production review batches, pass `--require-elevenlabs` so the run fails instead of silently falling back.
 
 ## Review Gate
+
+For videos that include the product demo, capture the current site first:
+
+```bat
+set PLAYWRIGHT_CORE_DIR=%TEMP%\signal-playwright-core\node_modules
+node marketing_agent\capture_signal_demo.mjs --out C:\Users\andyn\Downloads\signal_feature_demo_recording.mp4 --seconds 18
+```
+
+Keep the Next app running at `http://localhost:3100`. The sync-safe assembler automatically uses `signal_feature_demo_recording.mp4` when it is present in the work directory.
 
 Before promoting or posting:
 

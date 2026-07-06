@@ -32,6 +32,7 @@ done
 dur(){ ffprobe -v error -show_entries format=duration -of csv=p=0 "$1"; }
 
 vf="scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=yuv420p"
+hand_vf="scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,chromakey=0x00FF00:0.16:0.08,format=rgba"
 segments_json="["
 timeline=0
 list_file="concat_list.txt"
@@ -42,6 +43,7 @@ for i in "${!shots[@]}"; do
   overlay="overlay$idx.png"
   overlay_frame_dir="overlay${idx}_frames"
   overlay_frame_pattern="$overlay_frame_dir/%04d.png"
+  handplate="handplate$idx.mp4"
   shot="${shots[$i]}"
   if [[ -n "$BACKGROUND_CLIP" ]]; then
     shot="$BACKGROUND_CLIP"
@@ -56,13 +58,39 @@ PY
   if [[ -f "${texts[$i]}" ]]; then
     caption="$(tr '\n' ' ' < "${texts[$i]}" | sed 's/[[:space:]]\+/ /g;s/^ //;s/ $//')"
   fi
-  if [[ -d "$overlay_frame_dir" ]]; then
+  if [[ -d "$overlay_frame_dir" && -f "$handplate" ]]; then
+    ffmpeg -y \
+      -stream_loop -1 -i "$shot" \
+      -i "${voices[$i]}" \
+      -framerate 30 -i "$overlay_frame_pattern" \
+      -stream_loop -1 -i "$handplate" \
+      -t "$duration" \
+      -filter_complex "[0:v]$vf[base];[base][2:v]overlay=0:0:format=auto[doc];[3:v]$hand_vf[hand];[doc][hand]overlay=0:0:format=auto[v]" \
+      -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
+      -map "[v]" -map 1:a \
+      -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
+      -c:a aac -ar 48000 -ac 2 \
+      "segment_$idx.mp4"
+  elif [[ -d "$overlay_frame_dir" ]]; then
     ffmpeg -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
       -framerate 30 -i "$overlay_frame_pattern" \
       -t "$duration" \
       -filter_complex "[0:v]$vf[base];[base][2:v]overlay=0:0:format=auto[v]" \
+      -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
+      -map "[v]" -map 1:a \
+      -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
+      -c:a aac -ar 48000 -ac 2 \
+      "segment_$idx.mp4"
+  elif [[ -f "$overlay" && -f "$handplate" ]]; then
+    ffmpeg -y \
+      -stream_loop -1 -i "$shot" \
+      -i "${voices[$i]}" \
+      -i "$overlay" \
+      -stream_loop -1 -i "$handplate" \
+      -t "$duration" \
+      -filter_complex "[0:v]$vf[base];[base][2:v]overlay=0:0:format=auto[doc];[3:v]$hand_vf[hand];[doc][hand]overlay=0:0:format=auto[v]" \
       -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
       -map "[v]" -map 1:a \
       -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
@@ -75,6 +103,18 @@ PY
       -i "$overlay" \
       -t "$duration" \
       -filter_complex "[0:v]$vf[base];[base][2:v]overlay=0:0:format=auto[v]" \
+      -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
+      -map "[v]" -map 1:a \
+      -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
+      -c:a aac -ar 48000 -ac 2 \
+      "segment_$idx.mp4"
+  elif [[ -f "$handplate" ]]; then
+    ffmpeg -y \
+      -stream_loop -1 -i "$shot" \
+      -i "${voices[$i]}" \
+      -stream_loop -1 -i "$handplate" \
+      -t "$duration" \
+      -filter_complex "[0:v]$vf[base];[2:v]$hand_vf[hand];[base][hand]overlay=0:0:format=auto[v]" \
       -af "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$fade_start:d=0.12" \
       -map "[v]" -map 1:a \
       -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \

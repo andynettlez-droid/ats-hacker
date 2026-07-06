@@ -108,6 +108,7 @@ if (Test-Path -LiteralPath $Out) {
 }
 
 $VideoFilter = "scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=yuv420p"
+$HandPlateFilter = "scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,chromakey=0x00FF00:0.16:0.08,format=rgba"
 $Segments = New-Object System.Collections.Generic.List[object]
 $ConcatLines = New-Object System.Collections.Generic.List[string]
 $timelineStart = 0.0
@@ -119,11 +120,36 @@ for ($i = 0; $i -lt $Inputs.Count; $i++) {
   $overlayPath = "overlay$index.png"
   $overlayFrameDir = "overlay$index`_frames"
   $overlayFramePattern = Join-Path $overlayFrameDir "%04d.png"
+  $handPlatePath = "handplate$index.mp4"
   $shotPath = if ($BackgroundClip) { $BackgroundClip } else { $input.Shot }
   $duration = Get-Duration $input.Voice
   $fadeOutStart = [math]::Max(0.0, $duration - 0.12)
   $audioFilter = "loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.04,afade=t=out:st=$('{0:F3}' -f $fadeOutStart):d=0.12"
-  if (Test-Path -LiteralPath $overlayFrameDir) {
+  if ((Test-Path -LiteralPath $overlayFrameDir) -and (Test-Path -LiteralPath $handPlatePath)) {
+    Invoke-FFmpeg @(
+      "-y",
+      "-stream_loop", "-1",
+      "-i", $shotPath,
+      "-i", $input.Voice,
+      "-framerate", "30",
+      "-i", $overlayFramePattern,
+      "-stream_loop", "-1",
+      "-i", $handPlatePath,
+      "-t", ("{0:F3}" -f $duration),
+      "-filter_complex", "[0:v]$VideoFilter[base];[base][2:v]overlay=0:0:format=auto[doc];[3:v]$HandPlateFilter[hand];[doc][hand]overlay=0:0:format=auto[v]",
+      "-af", $audioFilter,
+      "-map", "[v]",
+      "-map", "1:a",
+      "-c:v", "libx264",
+      "-preset", "medium",
+      "-crf", "18",
+      "-pix_fmt", "yuv420p",
+      "-c:a", "aac",
+      "-ar", "48000",
+      "-ac", "2",
+      $segmentPath
+    )
+  } elseif (Test-Path -LiteralPath $overlayFrameDir) {
     Invoke-FFmpeg @(
       "-y",
       "-stream_loop", "-1",
@@ -145,6 +171,29 @@ for ($i = 0; $i -lt $Inputs.Count; $i++) {
       "-ac", "2",
       $segmentPath
     )
+  } elseif ((Test-Path -LiteralPath $overlayPath) -and (Test-Path -LiteralPath $handPlatePath)) {
+    Invoke-FFmpeg @(
+      "-y",
+      "-stream_loop", "-1",
+      "-i", $shotPath,
+      "-i", $input.Voice,
+      "-i", $overlayPath,
+      "-stream_loop", "-1",
+      "-i", $handPlatePath,
+      "-t", ("{0:F3}" -f $duration),
+      "-filter_complex", "[0:v]$VideoFilter[base];[base][2:v]overlay=0:0:format=auto[doc];[3:v]$HandPlateFilter[hand];[doc][hand]overlay=0:0:format=auto[v]",
+      "-af", $audioFilter,
+      "-map", "[v]",
+      "-map", "1:a",
+      "-c:v", "libx264",
+      "-preset", "medium",
+      "-crf", "18",
+      "-pix_fmt", "yuv420p",
+      "-c:a", "aac",
+      "-ar", "48000",
+      "-ac", "2",
+      $segmentPath
+    )
   } elseif (Test-Path -LiteralPath $overlayPath) {
     Invoke-FFmpeg @(
       "-y",
@@ -154,6 +203,28 @@ for ($i = 0; $i -lt $Inputs.Count; $i++) {
       "-i", $overlayPath,
       "-t", ("{0:F3}" -f $duration),
       "-filter_complex", "[0:v]$VideoFilter[base];[base][2:v]overlay=0:0:format=auto[v]",
+      "-af", $audioFilter,
+      "-map", "[v]",
+      "-map", "1:a",
+      "-c:v", "libx264",
+      "-preset", "medium",
+      "-crf", "18",
+      "-pix_fmt", "yuv420p",
+      "-c:a", "aac",
+      "-ar", "48000",
+      "-ac", "2",
+      $segmentPath
+    )
+  } elseif (Test-Path -LiteralPath $handPlatePath) {
+    Invoke-FFmpeg @(
+      "-y",
+      "-stream_loop", "-1",
+      "-i", $shotPath,
+      "-i", $input.Voice,
+      "-stream_loop", "-1",
+      "-i", $handPlatePath,
+      "-t", ("{0:F3}" -f $duration),
+      "-filter_complex", "[0:v]$VideoFilter[base];[2:v]$HandPlateFilter[hand];[base][hand]overlay=0:0:format=auto[v]",
       "-af", $audioFilter,
       "-map", "[v]",
       "-map", "1:a",

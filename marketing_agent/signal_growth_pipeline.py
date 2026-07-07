@@ -359,11 +359,20 @@ def generate_veo(args: argparse.Namespace) -> None:
     output = Path(args.out).resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     model = args.model or os.getenv("GEMINI_VEO_MODEL", DEFAULT_VEO_MODEL)
+    first_frame = Path(args.first_frame).resolve() if args.first_frame else None
     reference_images = [Path(path).resolve() for path in (args.reference_image or [])]
     if reference_images and "lite" in model:
         model = os.getenv("GEMINI_VEO_REFERENCE_MODEL", "veo-3.1-generate-preview")
     base_url = "https://generativelanguage.googleapis.com/v1beta"
     instance: dict[str, Any] = {"prompt": prompt}
+    if first_frame:
+        if not first_frame.exists():
+            raise SystemExit(f"First-frame image not found: {first_frame}")
+        mime_type = mimetypes.guess_type(first_frame.name)[0] or "image/png"
+        instance["image"] = {
+            "mimeType": mime_type,
+            "bytesBase64Encoded": base64.b64encode(first_frame.read_bytes()).decode("ascii"),
+        }
     if reference_images:
         refs: list[dict[str, Any]] = []
         for path in reference_images[:3]:
@@ -373,24 +382,27 @@ def generate_veo(args: argparse.Namespace) -> None:
             refs.append(
                 {
                     "image": {
-                        "inlineData": {
-                            "mimeType": mime_type,
-                            "data": base64.b64encode(path.read_bytes()).decode("ascii"),
-                        }
+                        "mimeType": mime_type,
+                        "bytesBase64Encoded": base64.b64encode(path.read_bytes()).decode("ascii"),
                     },
-                    "referenceType": "asset",
+                    "referenceType": args.reference_type,
                 }
             )
         instance["referenceImages"] = refs
     request_body: dict[str, Any] = {
         "instances": [instance],
-        "parameters": {"aspectRatio": args.aspect_ratio},
+        "parameters": {"aspectRatio": args.aspect_ratio, "durationSeconds": 8},
     }
+    if reference_images:
+        request_body["parameters"]["personGeneration"] = "allow_adult"
     if args.dry_run:
         safe_request = json.loads(json.dumps(request_body))
+        if "image" in safe_request["instances"][0]:
+            data = safe_request["instances"][0]["image"].get("bytesBase64Encoded", "")
+            safe_request["instances"][0]["image"]["bytesBase64Encoded"] = f"<base64:{len(data)} chars>"
         for ref in safe_request["instances"][0].get("referenceImages", []):
-            data = ref.get("image", {}).get("inlineData", {}).get("data", "")
-            ref["image"]["inlineData"]["data"] = f"<base64:{len(data)} chars>"
+            data = ref.get("image", {}).get("bytesBase64Encoded", "")
+            ref["image"]["bytesBase64Encoded"] = f"<base64:{len(data)} chars>"
         emit({"dryRun": True, "model": model, "request": safe_request, "out": str(output)})
         return
 
@@ -1289,6 +1301,8 @@ def build_parser() -> argparse.ArgumentParser:
     veo.add_argument("--model")
     veo.add_argument("--aspect-ratio", default="9:16")
     veo.add_argument("--reference-image", action="append", help="Reference image for Veo 3.1/3.1 Fast. Repeat up to three times.")
+    veo.add_argument("--reference-type", choices=["asset", "style"], default="asset")
+    veo.add_argument("--first-frame", help="Starting frame image for image-to-video. Use when the composition must stay stable.")
     veo.add_argument("--poll-sec", type=int, default=10)
     veo.add_argument("--timeout-sec", type=int, default=900)
     veo.add_argument("--dry-run", action="store_true")

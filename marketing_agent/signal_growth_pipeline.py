@@ -12,6 +12,7 @@ import argparse
 import base64
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
+import mimetypes
 import os
 import shutil
 import sqlite3
@@ -358,13 +359,39 @@ def generate_veo(args: argparse.Namespace) -> None:
     output = Path(args.out).resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     model = args.model or os.getenv("GEMINI_VEO_MODEL", DEFAULT_VEO_MODEL)
+    reference_images = [Path(path).resolve() for path in (args.reference_image or [])]
+    if reference_images and "lite" in model:
+        model = os.getenv("GEMINI_VEO_REFERENCE_MODEL", "veo-3.1-generate-preview")
     base_url = "https://generativelanguage.googleapis.com/v1beta"
+    instance: dict[str, Any] = {"prompt": prompt}
+    if reference_images:
+        refs: list[dict[str, Any]] = []
+        for path in reference_images[:3]:
+            if not path.exists():
+                raise SystemExit(f"Reference image not found: {path}")
+            mime_type = mimetypes.guess_type(path.name)[0] or "image/png"
+            refs.append(
+                {
+                    "image": {
+                        "inlineData": {
+                            "mimeType": mime_type,
+                            "data": base64.b64encode(path.read_bytes()).decode("ascii"),
+                        }
+                    },
+                    "referenceType": "asset",
+                }
+            )
+        instance["referenceImages"] = refs
     request_body: dict[str, Any] = {
-        "instances": [{"prompt": prompt}],
+        "instances": [instance],
         "parameters": {"aspectRatio": args.aspect_ratio},
     }
     if args.dry_run:
-        emit({"dryRun": True, "model": model, "request": request_body, "out": str(output)})
+        safe_request = json.loads(json.dumps(request_body))
+        for ref in safe_request["instances"][0].get("referenceImages", []):
+            data = ref.get("image", {}).get("inlineData", {}).get("data", "")
+            ref["image"]["inlineData"]["data"] = f"<base64:{len(data)} chars>"
+        emit({"dryRun": True, "model": model, "request": safe_request, "out": str(output)})
         return
 
     response = requests.post(
@@ -1261,6 +1288,7 @@ def build_parser() -> argparse.ArgumentParser:
     veo.add_argument("--run-id")
     veo.add_argument("--model")
     veo.add_argument("--aspect-ratio", default="9:16")
+    veo.add_argument("--reference-image", action="append", help="Reference image for Veo 3.1/3.1 Fast. Repeat up to three times.")
     veo.add_argument("--poll-sec", type=int, default=10)
     veo.add_argument("--timeout-sec", type=int, default=900)
     veo.add_argument("--dry-run", action="store_true")

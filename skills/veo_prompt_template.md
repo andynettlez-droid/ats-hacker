@@ -17,6 +17,52 @@ Use Veo/Gemini for short cinematic 9:16 clips only when motion adds value. Keep 
 - If the output has a visible provider watermark, do not use it for public posting unless the source license/export allows it.
 - For visible edit/fix videos, keep the reviewer and hands inside the base Veo shot. Do not generate separate AI hand plates for normal production cuts; they are only allowed when Andrew has separately approved the plate and the assembler is explicitly run with hand plates enabled.
 
+## Signal Tablet Teardown Style
+
+Use this direction when Andrew asks for the tablet/stylus resume-review concept. The references are ingredients, not frames to copy:
+
+```text
+marketing/assets/references/tablet_resume_review_reference_clean.jpg          # composition: real phone/tablet/stylus layout
+marketing/assets/references/signal_tablet_teardown_premium_tech_audit.png     # mood: darker premium recruiter audit
+marketing/assets/references/signal_tablet_teardown_bright_score_receipt.png    # UI idea: compact score receipt rows
+```
+
+Keep the successful mechanic:
+
+- Overhead vertical phone-video angle, not cinematic side angle.
+- Warm wood desk fills the background.
+- A black or charcoal tablet case fills most of the lower frame.
+- A detailed professional resume displayed on the tablet.
+- One right hand holds a white stylus over the resume.
+- Natural creator/Reels feel, not SaaS demo, not neon, not futuristic UI.
+- Same tablet, same hand, same stylus, same lighting, same desk, same angle for every shot.
+- If the resume text needs to be readable or logically edited, create that in the deterministic overlay layer after Veo. Veo should own the realistic tablet/stylus motion and overall look.
+
+Make it Signal's own style:
+
+- Use red only for the problem mark: vague, missing metric, missing tool, weak title.
+- Use Signal teal/green for the fix mark: proof added, keyword matched, metric surfaced.
+- Use clean audit strokes, underline marks, bracket marks, and small score receipts instead of copied red handwritten numbers.
+- Resume role and candidate should change per video; do not reuse the accountant example from the reference.
+- Add a subtle premium desk-audit mood: matte tablet, clean desk, soft daylight, focused reviewer hand, no clutter.
+- The on-screen edit language should feel like a recruiter note: "no metric", "where's the tool?", "better", "proof".
+- Blend the premium tech-audit look with the brighter score-receipt system: compact rows for keyword match, metric proof, tool match, and outcome clarity.
+
+Avoid:
+
+- Social app chrome, usernames, mini-player overlays, phone status bars, share buttons, TikTok/Instagram UI.
+- Provider watermarks.
+- Extra hands, changing hands, switching gender/person, multiple editors.
+- Mascot, orb, website URL, fake app UI, dark cyber styling.
+- Copying another brand's exact red-number visual language or caption treatment.
+- Random desk props or camera cuts that break the continuous tablet-review look.
+
+Signal-owned prompt pattern:
+
+```text
+Vertical 9:16 realistic social-video shot using the supplied references as ingredients, not frames to copy. Use the real tablet screenshot for composition, the premium tech-audit mockup for darker walnut desk and high-contrast audit mood, and the bright mockup for the compact score-receipt idea. Overhead phone-camera view of a charcoal-cased tablet on a warm walnut desk. A detailed professional resume fills the tablet screen. One right hand holds a white stylus over the resume, making small natural reviewer motions. The visual language is Signal's own: red problem marks for weak resume evidence and teal/green fix marks for proof, keywords, and metrics. Include a small clean score receipt with keyword match, metric proof, tool match, and outcome clarity. Keep the same tablet, hand, stylus, desk, lighting, and camera angle throughout. Natural creator/Reels style, no cinematic cuts, no generated social app UI, no captions, no logos, no website URL, no mascot, no watermark. Leave the resume central area stable enough for deterministic readable text/edit overlays in post.
+```
+
 ## Shot Sheet JSON
 
 ```json

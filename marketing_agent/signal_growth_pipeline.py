@@ -14,6 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 import mimetypes
 import os
+import re
 import shutil
 import sqlite3
 import subprocess
@@ -393,6 +394,9 @@ def generate_veo(args: argparse.Namespace) -> None:
         "instances": [instance],
         "parameters": {"aspectRatio": args.aspect_ratio, "durationSeconds": 8},
     }
+    resolution = args.resolution or os.getenv("GEMINI_VEO_RESOLUTION", "").strip()
+    if resolution:
+        request_body["parameters"]["resolution"] = resolution
     if reference_images:
         request_body["parameters"]["personGeneration"] = "allow_adult"
     if args.dry_run:
@@ -918,7 +922,22 @@ def voice_duration_sec(work_dir: Path, voice_name: str, fallback: float) -> floa
         )
         return max(0.4, float(proc.stdout.strip()))
     except Exception:
-        return fallback
+        try:
+            ffmpeg = find_exe("ffmpeg")
+            proc = subprocess.run(
+                [ffmpeg, "-i", str(voice_path)],
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
+            match = re.search(r"Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)", proc.stderr)
+            if not match:
+                return fallback
+            hours, minutes, seconds = match.groups()
+            duration = (int(hours) * 3600) + (int(minutes) * 60) + float(seconds)
+            return max(0.4, duration)
+        except Exception:
+            return fallback
 
 
 def generate_live_edit_overlays(args: argparse.Namespace) -> None:
@@ -960,6 +979,15 @@ def find_exe(name: str) -> str:
     found = shutil.which(name)
     if found:
         return found
+    if name == "ffmpeg":
+        try:
+            import imageio_ffmpeg
+
+            ffmpeg = Path(imageio_ffmpeg.get_ffmpeg_exe())
+            if ffmpeg.exists():
+                return str(ffmpeg)
+        except Exception:
+            pass
     winget_root = Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft" / "WinGet" / "Packages"
     if winget_root.exists():
         matches = sorted(winget_root.rglob(f"{name}.exe"))
@@ -998,24 +1026,50 @@ def assemble(args: argparse.Namespace) -> None:
 
 
 def ffprobe_json(video: Path) -> dict[str, Any]:
-    ffprobe = find_exe("ffprobe")
-    proc = subprocess.run(
-        [
-            ffprobe,
-            "-v",
-            "error",
-            "-show_streams",
-            "-show_format",
-            "-of",
-            "json",
-            str(video),
-        ],
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=True,
-    )
-    return json.loads(proc.stdout)
+    try:
+        ffprobe = find_exe("ffprobe")
+        proc = subprocess.run(
+            [
+                ffprobe,
+                "-v",
+                "error",
+                "-show_streams",
+                "-show_format",
+                "-of",
+                "json",
+                str(video),
+            ],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
+        return json.loads(proc.stdout)
+    except Exception:
+        import imageio.v3 as iio
+
+        meta = iio.immeta(video)
+        width, height = meta.get("size") or meta.get("source_size") or (0, 0)
+        fps = float(meta.get("fps") or 0)
+        duration = float(meta.get("duration") or 0)
+        streams: list[dict[str, Any]] = [
+            {
+                "codec_type": "video",
+                "codec_name": meta.get("codec", ""),
+                "width": width,
+                "height": height,
+                "avg_frame_rate": f"{int(round(fps * 1000))}/1000" if fps else "0/1",
+            }
+        ]
+        if meta.get("audio_codec"):
+            streams.append(
+                {
+                    "codec_type": "audio",
+                    "codec_name": meta.get("audio_codec", ""),
+                    "sample_rate": str(meta.get("audio_fps") or 48000),
+                }
+            )
+        return {"streams": streams, "format": {"duration": str(duration), "size": str(video.stat().st_size)}}
 
 
 def frame_rate(stream: dict[str, Any]) -> float:
@@ -1303,6 +1357,7 @@ def build_parser() -> argparse.ArgumentParser:
     veo.add_argument("--reference-image", action="append", help="Reference image for Veo 3.1/3.1 Fast. Repeat up to three times.")
     veo.add_argument("--reference-type", choices=["asset", "style"], default="asset")
     veo.add_argument("--first-frame", help="Starting frame image for image-to-video. Use when the composition must stay stable.")
+    veo.add_argument("--resolution", choices=["720p", "1080p", "4k"], help="Requested Veo output resolution when supported by the model.")
     veo.add_argument("--poll-sec", type=int, default=10)
     veo.add_argument("--timeout-sec", type=int, default=900)
     veo.add_argument("--dry-run", action="store_true")

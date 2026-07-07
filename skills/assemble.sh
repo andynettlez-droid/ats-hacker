@@ -8,12 +8,14 @@ BURN_CAPTIONS="${BURN_CAPTIONS:-false}"
 USE_HAND_PLATES="${USE_HAND_PLATES:-false}"
 cd "$WORKDIR"
 
-for tool in ffmpeg ffprobe; do
-  command -v "$tool" >/dev/null 2>&1 || {
-    echo "$tool not found. Install ffmpeg/ffprobe first." >&2
-    exit 1
-  }
-done
+if command -v ffmpeg >/dev/null 2>&1; then
+  FFMPEG="$(command -v ffmpeg)"
+else
+  FFMPEG="$(python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())' 2>/dev/null || true)"
+fi
+[[ -n "$FFMPEG" && -x "$FFMPEG" ]] || { echo "ffmpeg not found. Install ffmpeg or imageio-ffmpeg first." >&2; exit 1; }
+
+FFPROBE="$(command -v ffprobe || true)"
 
 shots=(shot01.mp4 shot02.mp4 shot03.mp4 shot04.mp4)
 voices=(vo_hook.mp3 vo_search.mp3 vo_demo.mp3 vo_cta.mp3)
@@ -30,7 +32,13 @@ for i in "${!shots[@]}"; do
   [[ -f "${voices[$i]}" ]] || { echo "Missing input: ${voices[$i]}" >&2; exit 1; }
 done
 
-dur(){ ffprobe -v error -show_entries format=duration -of csv=p=0 "$1"; }
+dur(){
+  if [[ -n "$FFPROBE" ]]; then
+    "$FFPROBE" -v error -show_entries format=duration -of csv=p=0 "$1"
+  else
+    "$FFMPEG" -i "$1" 2>&1 | sed -nE 's/.*Duration: ([0-9]+):([0-9]+):([0-9.]+).*/\1 \2 \3/p' | awk '{print ($1*3600)+($2*60)+$3; exit}'
+  fi
+}
 
 vf="scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=yuv420p"
 hand_vf="scale=1188:2112:force_original_aspect_ratio=increase,crop=1080:1920:(iw-ow)/2:(ih-oh)/2,fps=30,setsar=1,format=rgba,colorkey=0x23B82E:0.34:0.03"
@@ -64,7 +72,7 @@ PY
     caption="$(tr '\n' ' ' < "${texts[$i]}" | sed 's/[[:space:]]\+/ /g;s/^ //;s/ $//')"
   fi
   if [[ -d "$overlay_frame_dir" && "$use_handplate" == "true" ]]; then
-    ffmpeg -y \
+    "$FFMPEG" -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
       -framerate 30 -i "$overlay_frame_pattern" \
@@ -77,7 +85,7 @@ PY
       -c:a aac -ar 48000 -ac 2 \
       "segment_$idx.mp4"
   elif [[ -d "$overlay_frame_dir" ]]; then
-    ffmpeg -y \
+    "$FFMPEG" -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
       -framerate 30 -i "$overlay_frame_pattern" \
@@ -89,7 +97,7 @@ PY
       -c:a aac -ar 48000 -ac 2 \
       "segment_$idx.mp4"
   elif [[ -f "$overlay" && "$use_handplate" == "true" ]]; then
-    ffmpeg -y \
+    "$FFMPEG" -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
       -i "$overlay" \
@@ -102,7 +110,7 @@ PY
       -c:a aac -ar 48000 -ac 2 \
       "segment_$idx.mp4"
   elif [[ -f "$overlay" ]]; then
-    ffmpeg -y \
+    "$FFMPEG" -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
       -i "$overlay" \
@@ -114,7 +122,7 @@ PY
       -c:a aac -ar 48000 -ac 2 \
       "segment_$idx.mp4"
   elif [[ "$use_handplate" == "true" ]]; then
-    ffmpeg -y \
+    "$FFMPEG" -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
       -stream_loop -1 -i "$handplate" \
@@ -126,7 +134,7 @@ PY
       -c:a aac -ar 48000 -ac 2 \
       "segment_$idx.mp4"
   else
-    ffmpeg -y \
+    "$FFMPEG" -y \
       -stream_loop -1 -i "$shot" \
       -i "${voices[$i]}" \
       -t "$duration" \
@@ -154,7 +162,7 @@ PY
 done
 segments_json+="]"
 
-ffmpeg -y -f concat -safe 0 -i "$list_file" -c copy signal_pipeline_rough.mp4
+"$FFMPEG" -y -f concat -safe 0 -i "$list_file" -c copy signal_pipeline_rough.mp4
 
 python3 - "$segments_json" <<'PY'
 import json, sys
@@ -188,17 +196,21 @@ with open("signal_pipeline_captions.srt", "w", encoding="utf-8") as handle:
 PY
 
 if [[ "$BURN_CAPTIONS" == "true" || "$BURN_CAPTIONS" == "1" ]]; then
-  ffmpeg -y -i signal_pipeline_rough.mp4 \
+  "$FFMPEG" -y -i signal_pipeline_rough.mp4 \
     -vf "subtitles=signal_pipeline_captions.srt:force_style='Fontsize=10,Bold=1,Alignment=2,MarginV=76,Outline=1,Shadow=0'" \
     -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
     -c:a copy -movflags +faststart "$OUT"
 else
-  ffmpeg -y -i signal_pipeline_rough.mp4 \
+  "$FFMPEG" -y -i signal_pipeline_rough.mp4 \
     -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p \
     -c:a copy -movflags +faststart "$OUT"
 fi
 
-ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -of default=nw=1 "$OUT"
-ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 "$OUT"
-ffprobe -v error -show_entries format=duration,size -of default=nw=1 "$OUT"
+if [[ -n "$FFPROBE" ]]; then
+  "$FFPROBE" -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -of default=nw=1 "$OUT"
+  "$FFPROBE" -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 "$OUT"
+  "$FFPROBE" -v error -show_entries format=duration,size -of default=nw=1 "$OUT"
+else
+  echo "ffprobe not found; assembled with embedded ffmpeg and skipped stream summary."
+fi
 echo "Done -> $(pwd)/$OUT"

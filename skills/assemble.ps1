@@ -9,14 +9,19 @@ param(
 $ErrorActionPreference = "Stop"
 Set-Location -LiteralPath $WorkDir
 
-function Find-Tool([string]$Name) {
+function Find-Tool([string]$Name, [switch]$Optional) {
   $cmd = Get-Command $Name -ErrorAction SilentlyContinue
   if ($cmd) { return $cmd.Source }
+  if ($Name -eq "ffmpeg") {
+    $embedded = (& py -3 -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())" 2>$null).Trim()
+    if ($embedded -and (Test-Path -LiteralPath $embedded)) { return $embedded }
+  }
   $wingetRoot = Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Packages"
   if (Test-Path -LiteralPath $wingetRoot) {
     $match = Get-ChildItem -Path $wingetRoot -Recurse -Filter "$Name.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($match) { return $match.FullName }
   }
+  if ($Optional) { return "" }
   throw "$Name not found. Install ffmpeg/ffprobe first."
 }
 
@@ -28,7 +33,15 @@ function Invoke-FFmpeg([string[]]$ArgsList) {
 }
 
 function Get-Duration([string]$Path) {
-  [double](& $ffprobe -v error -show_entries format=duration -of csv=p=0 $Path)
+  if ($ffprobe) {
+    return [double](& $ffprobe -v error -show_entries format=duration -of csv=p=0 $Path)
+  }
+  $probeText = (& $ffmpeg -i $Path 2>&1 | Out-String)
+  $match = [regex]::Match($probeText, "Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)")
+  if (-not $match.Success) {
+    throw "Could not determine duration for $Path without ffprobe."
+  }
+  return ([double]$match.Groups[1].Value * 3600) + ([double]$match.Groups[2].Value * 60) + [double]$match.Groups[3].Value
 }
 
 function Format-Timestamp([double]$Seconds) {
@@ -86,7 +99,7 @@ function Write-Srt([object[]]$Segments, [string]$Path) {
 }
 
 $ffmpeg = Find-Tool "ffmpeg"
-$ffprobe = Find-Tool "ffprobe"
+$ffprobe = Find-Tool "ffprobe" -Optional
 
 $Inputs = @(
   @{ Shot = "shot01.mp4"; Voice = "vo_hook.mp3"; Caption = Read-Caption "vo_hook.txt" "Let's look at this resume." },
@@ -300,7 +313,11 @@ if ($BurnCaptions) {
   )
 }
 
-& $ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -of default=nw=1 $Out
-& $ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 $Out
-& $ffprobe -v error -show_entries format=duration,size -of default=nw=1 $Out
+if ($ffprobe) {
+  & $ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -of default=nw=1 $Out
+  & $ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 $Out
+  & $ffprobe -v error -show_entries format=duration,size -of default=nw=1 $Out
+} else {
+  Write-Host "ffprobe not found; assembled with embedded ffmpeg and skipped stream summary."
+}
 Write-Host "Done -> $((Resolve-Path -LiteralPath $Out).Path)"

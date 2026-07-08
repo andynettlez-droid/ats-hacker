@@ -1518,5 +1518,902 @@
         "renderProps": "marketing/remotion/props_gold_signal_filter_breakthrough.json",
         "reviewRequired": true,
         "notes": "Visual-first animated Signal journey. Minimal labels, quiet music, no explanatory voiceover. Do not publish without explicit Codex chat approval."
+    },
+    {
+        "title": "The ATS hack is a myth",
+        "caption": "The viral ATS hack is a myth. Recruiters search for role language, proof, and clear bullets. Run the free Signal score before you apply. #jobsearch #resumehelp #resumetips #careeradvice #careertok",
+        "description": "Signal helps job seekers compare a resume to a target role, see missing job language, and fix real experience without fake claims. Free score before you apply.",
+        "youtubeTitle": "The ATS hack is a myth | Signal Resume Score",
+        "youtubeDescription": "The viral ATS hack is a myth. Recruiters search for role language, proof, and clear bullets. Run the free Signal score before you apply: https://ats-hacker-swart.vercel.app/?utm_source=youtube&utm_medium=short&utm_campaign=signal_ad_final_20260706\n\n#jobsearch #resumehelp #resumetips #careeradvice #shorts",
+        "file": "videos/signal-ad-final-20260706.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "posted",
+        "approvedFromCodexChat": true,
+        "codexApproval": {
+            "approved": true,
+            "approvedAt": "2026-07-06T16:34:49.434Z",
+            "reviewer": "codex-chat-user-request",
+            "phrase": "post the last clip to our socials",
+            "fileSha256": "a86a7c151f8ceae3ee6c4fee41ed2661f1c753932010da6e8fcf54b62eda8f30",
+            "file": "videos/signal-ad-final-20260706.mp4"
+        },
+        "qaGate": {
+            "passed": true,
+            "checkedAt": "2026-07-06T16:34:49.435Z",
+            "video": "C:/Users/andyn/Downloads/signal_ad_final.mp4",
+            "width": 1080,
+            "height": 1920,
+            "fps": 30,
+            "durationSec": 47.533
+        },
+        "reviewApproval": {
+            "reviewer": "codex-chat-user-request",
+            "approvedAt": "2026-07-06T16:35:07.668Z",
+            "fileSha256": "a86a7c151f8ceae3ee6c4fee41ed2661f1c753932010da6e8fcf54b62eda8f30",
+            "file": "videos/signal-ad-final-20260706.mp4",
+            "caption": "The viral ATS hack is a myth. Recruiters search for role language, proof, and clear bullets. Run the free Signal score before you apply. #jobsearch #resumehelp #resumetips #careeradvice #careertok",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "The ATS hack is a myth",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "postedAt": "2026-07-06T16:35:50.472Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=10f0ce2ebc984fc4879f5e26428b1b67. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "10f0ce2ebc984fc4879f5e26428b1b67",
+            "total_platforms": 3,
+            "job_id": "8697297ebaf04567a273df8a7a11364b"
+        },
+        "uploadStatus": {
+            "status": "completed",
+            "completed": 3,
+            "total": 3,
+            "request_id": "10f0ce2ebc984fc4879f5e26428b1b67",
+            "last_update": {
+                "$date": "2026-07-06T16:36:51.070Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "XMQwcLb4sdc",
+                    "post_url": "https://www.youtube.com/watch?v=XMQwcLb4sdc",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T16:36:04.500Z"
+                    },
+                    "media_size_bytes": 22799780,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 47.534,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "8697297ebaf04567a273df8a7a11364b"
+                },
+                {
+                    "platform": "instagram",
+                    "success": true,
+                    "platform_post_id": "18084120191181617",
+                    "post_url": "https://www.instagram.com/reel/DadVcBqlCK0/",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T16:36:41.503Z"
+                    },
+                    "media_size_bytes": 22799780,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 47.534,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "8697297ebaf04567a273df8a7a11364b"
+                },
+                {
+                    "platform": "tiktok",
+                    "success": true,
+                    "platform_post_id": "7659454675745393927",
+                    "post_url": "https://www.tiktok.com/@Andrew/video/7659454675745393927",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T16:36:51.070Z"
+                    },
+                    "media_size_bytes": 22799780,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 47.534,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "8697297ebaf04567a273df8a7a11364b"
+                }
+            ]
+        }
+    },
+    {
+        "title": "This Resume Looks Fine, But Recruiters Miss It",
+        "caption": "This resume looks fine, but one vague line makes it harder to find in recruiter search. Signal shows what is missing and helps rewrite your real experience before you apply. Run the free Signal score before you apply. #jobsearch #resumehelp #resumetips #careertok #careeradvice",
+        "description": "A recruiter-style teardown of one detailed resume line that sounds fine but is too vague for the target role. Signal helps turn real experience into clearer resume proof without fake claims. Run the free Signal score before you apply.",
+        "youtubeTitle": "This Resume Looks Fine, But Recruiters Miss It",
+        "youtubeDescription": "A recruiter-style teardown of one detailed resume line that sounds fine but is too vague for the target role. Signal helps turn real experience into clearer resume proof without fake claims. Run the free Signal score before you apply. #shorts #resume #jobsearch",
+        "file": "videos/signal-shawn-network-review-v3.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "posted",
+        "contentType": "short",
+        "landingUrl": "https://ats-hacker-swart.vercel.app/?utm_source=social&utm_medium=short&utm_campaign=signal_growth&utm_content=20260706-1332-faaad908",
+        "codexApproval": {
+            "approved": true,
+            "reviewer": "codex-chat",
+            "approvedAt": "2026-07-06T19:18:35.408524+00:00",
+            "fileSha256": "231a123e2525c1d211727760e91aaea4a66190ff16e9826a36fc1a028cb8b2bd",
+            "file": "videos/signal-shawn-network-review-v3.mp4",
+            "runId": "20260706-1332-faaad908"
+        },
+        "reviewApproval": {
+            "reviewer": "andyn",
+            "approvedAt": "2026-07-06T19:18:58.456Z",
+            "fileSha256": "231a123e2525c1d211727760e91aaea4a66190ff16e9826a36fc1a028cb8b2bd",
+            "file": "videos/signal-shawn-network-review-v3.mp4",
+            "caption": "This resume looks fine, but one vague line makes it harder to find in recruiter search. Signal shows what is missing and helps rewrite your real experience before you apply. Run the free Signal score before you apply. #jobsearch #resumehelp #resumetips #careertok #careeradvice",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "This Resume Looks Fine, But Recruiters Miss It",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "postedAt": "2026-07-06T19:19:34.935Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=3c1a430b5610455492890d7c41d3d6ee. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "3c1a430b5610455492890d7c41d3d6ee",
+            "total_platforms": 3,
+            "job_id": "1740644986294c16abb7f29c46e794fc"
+        },
+        "uploadStatus": {
+            "status": "completed",
+            "completed": 3,
+            "total": 3,
+            "request_id": "3c1a430b5610455492890d7c41d3d6ee",
+            "last_update": {
+                "$date": "2026-07-06T19:20:32.682Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "f5rZLvj8-2U",
+                    "post_url": "https://www.youtube.com/watch?v=f5rZLvj8-2U",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T19:19:49.321Z"
+                    },
+                    "media_size_bytes": 11315058,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 27.067,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "1740644986294c16abb7f29c46e794fc"
+                },
+                {
+                    "platform": "instagram",
+                    "success": true,
+                    "platform_post_id": "18116914339853245",
+                    "post_url": "https://www.instagram.com/reel/DadoL25FXhX/",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T19:20:32.247Z"
+                    },
+                    "media_size_bytes": 11315058,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 27.067,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "1740644986294c16abb7f29c46e794fc"
+                },
+                {
+                    "platform": "tiktok",
+                    "success": true,
+                    "platform_post_id": "7659496813396872466",
+                    "post_url": "https://www.tiktok.com/@Andrew/video/7659496813396872466",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T19:20:32.682Z"
+                    },
+                    "media_size_bytes": 11315058,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 27.067,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "1740644986294c16abb7f29c46e794fc"
+                }
+            ]
+        }
+    },
+    {
+        "title": "Watch This Resume Bullet Get Fixed Live",
+        "caption": "This resume looks polished, but the first bullet is too vague for a customer success role. We crossed out the empty line and rewrote it with onboarding, churn-risk, Gainsight, and renewal proof. Run the free Signal score before you apply. #jobsearch #resumehelp #resumetips #careertok #customersuccess",
+        "description": "A live resume edit for a customer success manager resume. Signal helps job seekers spot vague bullets and turn real experience into clearer proof before applying.",
+        "youtubeTitle": "Watch This Resume Bullet Get Fixed Live",
+        "youtubeDescription": "This customer success resume looks polished, but the first bullet is too vague. We rewrite it with onboarding, churn-risk, Gainsight, and renewal proof. Run the free Signal score before you apply: https://ats-hacker-swart.vercel.app/?utm_source=youtube&utm_medium=short&utm_campaign=signal_live_edit_maya\n\n#shorts #resume #jobsearch #customersuccess",
+        "file": "videos/signal-maya-customer-success-live-edit-v2.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "posted",
+        "contentType": "short",
+        "landingUrl": "https://ats-hacker-swart.vercel.app/?utm_source=social&utm_medium=short&utm_campaign=signal_live_edit&utm_content=20260706-1526-ff50fac1",
+        "codexApproval": {
+            "approved": true,
+            "reviewer": "codex-chat",
+            "approvedAt": "2026-07-06T20:05:28.290Z",
+            "fileSha256": "62de0f0c94abd9a2524a6fcd628ecf13f579f92835c7902a2e66752176ef6426",
+            "file": "videos/signal-maya-customer-success-live-edit-v2.mp4",
+            "runId": "20260706-1526-ff50fac1",
+            "phrase": "post this to our socials in the meantime"
+        },
+        "reviewApproval": {
+            "reviewer": "andyn",
+            "approvedAt": "2026-07-06T20:05:41.960Z",
+            "fileSha256": "62de0f0c94abd9a2524a6fcd628ecf13f579f92835c7902a2e66752176ef6426",
+            "file": "videos/signal-maya-customer-success-live-edit-v2.mp4",
+            "caption": "This resume looks polished, but the first bullet is too vague for a customer success role. We crossed out the empty line and rewrote it with onboarding, churn-risk, Gainsight, and renewal proof. Run the free Signal score before you apply. #jobsearch #resumehelp #resumetips #careertok #customersuccess",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "Watch This Resume Bullet Get Fixed Live",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "qaGate": {
+            "passed": true,
+            "checkedAt": "2026-07-06T19:42:41+00:00",
+            "video": "C:/Users/andyn/.gemini/antigravity/scratch/ats_hacker/marketing/growth_runs/20260706-1526-ff50fac1/signal_maya_customer_success_live_edit_v2.mp4",
+            "width": 1080,
+            "height": 1920,
+            "fps": 30,
+            "durationSec": 30.9,
+            "videoCodec": "h264",
+            "audioCodec": "aac"
+        },
+        "notes": "Approved by Codex chat for immediate social posting. Known next improvement: hands should interact above the readable resume layer, not underneath it.",
+        "postedAt": "2026-07-06T20:06:14.644Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=4314351e87274d05b8f9936f4a72aff3. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "4314351e87274d05b8f9936f4a72aff3",
+            "total_platforms": 3,
+            "job_id": "4612ab70881e4297acd22bd3a3475a75"
+        },
+        "uploadStatus": {
+            "status": "completed",
+            "completed": 3,
+            "total": 3,
+            "request_id": "4314351e87274d05b8f9936f4a72aff3",
+            "last_update": {
+                "$date": "2026-07-06T20:07:15.039Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "qlIVnTjjIGw",
+                    "post_url": "https://www.youtube.com/watch?v=qlIVnTjjIGw",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T20:06:29.293Z"
+                    },
+                    "media_size_bytes": 11581898,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 30.9,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "4612ab70881e4297acd22bd3a3475a75"
+                },
+                {
+                    "platform": "instagram",
+                    "success": true,
+                    "platform_post_id": "18091534160064332",
+                    "post_url": "https://www.instagram.com/reel/DadtgNRAZ_H/",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T20:07:02.313Z"
+                    },
+                    "media_size_bytes": 11581898,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 30.9,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "4612ab70881e4297acd22bd3a3475a75"
+                },
+                {
+                    "platform": "tiktok",
+                    "success": true,
+                    "platform_post_id": "7659508890320555285",
+                    "post_url": "https://www.tiktok.com/@Andrew/video/7659508890320555285",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-06T20:07:15.039Z"
+                    },
+                    "media_size_bytes": 11581898,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 30.9,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "4612ab70881e4297acd22bd3a3475a75"
+                }
+            ]
+        }
+    },
+    {
+        "title": "Watch This Network Engineer Resume Bullet Get Fixed",
+        "caption": "This network engineer resume looks clean, but one vague bullet hides the proof recruiters search for. We rewrote it with Cisco, VPN, firewall incidents, MTTR, and site impact. Run the free Signal score before you apply. #jobsearch #resumehelp #resumetips #careertok #networkengineer",
+        "description": "A recruiter-style live resume teardown for a senior network engineer resume. Signal helps turn real experience into clear role-language proof without fake claims.",
+        "youtubeTitle": "Watch This Network Engineer Resume Bullet Get Fixed",
+        "youtubeDescription": "This network engineer resume looks clean, but one vague bullet hides the proof recruiters search for. We rewrite it with Cisco, VPN, firewall incidents, MTTR, and site impact. Run the free Signal score before you apply: https://ats-hacker-swart.vercel.app/?utm_source=youtube&utm_medium=short&utm_campaign=signal_network_live_edit_20260706`n`n#shorts #resume #jobsearch #networkengineer",
+        "file": "videos/signal-maya-network-engineer-live-edit-20260706.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "posted",
+        "contentType": "short",
+        "landingUrl": "https://ats-hacker-swart.vercel.app/?utm_source=social&utm_medium=short&utm_campaign=signal_network_live_edit&utm_content=20260706-2218-f06d1fd9",
+        "codexApproval": {
+            "approved": true,
+            "reviewer": "codex-chat",
+            "approvedAt": "2026-07-07T03:06:16.0021752Z",
+            "fileSha256": "ceb7bc5ed222b13a98f69938441e03cc8544e7c654d950f8dd931d3230042182",
+            "file": "videos/signal-maya-network-engineer-live-edit-20260706.mp4",
+            "runId": "20260706-2218-f06d1fd9",
+            "phrase": "post it to our socials"
+        },
+        "qaGate": {
+            "passed": true,
+            "checkedAt": "2026-07-07T03:06:16.0101723Z",
+            "video": "C:\\Users\\andyn\\.gemini\\antigravity\\scratch\\ats_hacker\\marketing\\growth_runs\\20260706-2218-f06d1fd9\\signal_maya_network_engineer_live_edit_review.mp4",
+            "width": 1080,
+            "height": 1920,
+            "fps": 30,
+            "durationSec": 34.266,
+            "videoCodec": "h264",
+            "audioCodec": "aac"
+        },
+        "notes": "Approved by Codex chat for immediate social posting. Known issue: base generated hand is below the deterministic resume overlay; next pipeline fix needs occlusion/roto or real footage capture.",
+        "reviewApproval": {
+            "reviewer": "andyn",
+            "approvedAt": "2026-07-07T03:06:52.923Z",
+            "fileSha256": "ceb7bc5ed222b13a98f69938441e03cc8544e7c654d950f8dd931d3230042182",
+            "file": "videos/signal-maya-network-engineer-live-edit-20260706.mp4",
+            "caption": "This network engineer resume looks clean, but one vague bullet hides the proof recruiters search for. We rewrote it with Cisco, VPN, firewall incidents, MTTR, and site impact. Run the free Signal score before you apply. #jobsearch #resumehelp #resumetips #careertok #networkengineer",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "Watch This Network Engineer Resume Bullet Get Fixed",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "postedAt": "2026-07-07T03:07:33.175Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=96f653dc6f2c400e944190d6413413fa. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "96f653dc6f2c400e944190d6413413fa",
+            "total_platforms": 3,
+            "job_id": "d5ff6f874fc34fb9834ad79f4907a146"
+        },
+        "uploadStatus": {
+            "status": "completed",
+            "completed": 3,
+            "total": 3,
+            "request_id": "96f653dc6f2c400e944190d6413413fa",
+            "last_update": {
+                "$date": "2026-07-07T03:08:56.525Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "uw8tq2ERWAY",
+                    "post_url": "https://www.youtube.com/watch?v=uw8tq2ERWAY",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-07T03:07:48.629Z"
+                    },
+                    "media_size_bytes": 8208377,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 34.267,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "d5ff6f874fc34fb9834ad79f4907a146"
+                },
+                {
+                    "platform": "instagram",
+                    "success": true,
+                    "platform_post_id": "17973606999077964",
+                    "post_url": "https://www.instagram.com/reel/Daedt9bjYiC/",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-07T03:08:20.538Z"
+                    },
+                    "media_size_bytes": 8208377,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 34.267,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "d5ff6f874fc34fb9834ad79f4907a146"
+                },
+                {
+                    "platform": "tiktok",
+                    "success": true,
+                    "platform_post_id": "7659617480414956821",
+                    "post_url": "https://www.tiktok.com/@Andrew/video/7659617480414956821",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-07T03:08:56.525Z"
+                    },
+                    "media_size_bytes": 8208377,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 34.267,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "d5ff6f874fc34fb9834ad79f4907a146"
+                }
+            ]
+        }
+    },
+    {
+        "title": "Noah Had The Skills. His Resume Hid Them.",
+        "youtubeTitle": "Noah Had The Skills. His Resume Hid Them.",
+        "caption": "Noah has the skills. His resume hid them behind vague wording. We rewrote one weak line into SQL, Power BI, and four hours saved. Run the free Signal score before you apply. #resumehelp #jobsearch #careertok #resumetips #dataanalyst",
+        "description": "A quick Signal resume teardown: Noah is applying for a junior data analyst role, but a vague line hides the searchable proof recruiters look for. Run the free Signal score before you apply.",
+        "file": "videos/signal-noah-data-analyst-review-v4-20260707.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": "2026-07-08T15:00:00Z",
+        "status": "scheduled",
+        "reviewStatus": "approved_for_scheduled_post",
+        "runId": "20260707-0003-2cea9fb1",
+        "landingUrl": "https://ats-hacker-swart.vercel.app/?utm_source=social&utm_medium=short&utm_campaign=signal_growth&utm_content=20260707-0003-2cea9fb1",
+        "codexApproval": {
+            "approved": true,
+            "reviewer": "andyn",
+            "approvedAt": "2026-07-07T04:42:34.570Z",
+            "fileSha256": "4a2ff646ba9c6419f98e4b61f1ae33b7afe45ac3feaaa36b66d6d1870e5c1ada",
+            "phrase": "queue up v4 as tomorrows socials post"
+        },
+        "qaGate": {
+            "passed": true,
+            "checkedAt": "2026-07-07T04:42:34.576Z",
+            "video": "marketing/growth_runs/20260707-0003-2cea9fb1/signal_noah_data_analyst_screen_recording_review_v4.mp4",
+            "width": 1080,
+            "height": 1920,
+            "fps": 30,
+            "durationSec": 28.653,
+            "videoCodec": "h264",
+            "audioCodec": "aac"
+        },
+        "notes": "Approved by Andrew in Codex chat to queue v4 as tomorrow social post. Scheduled for 2026-07-08 11:00 AM America/New_York.",
+        "reviewApproval": {
+            "reviewer": "andyn",
+            "approvedAt": "2026-07-07T04:42:55.251Z",
+            "fileSha256": "4a2ff646ba9c6419f98e4b61f1ae33b7afe45ac3feaaa36b66d6d1870e5c1ada",
+            "file": "videos/signal-noah-data-analyst-review-v4-20260707.mp4",
+            "caption": "Noah has the skills. His resume hid them behind vague wording. We rewrote one weak line into SQL, Power BI, and four hours saved. Run the free Signal score before you apply. #resumehelp #jobsearch #careertok #resumetips #dataanalyst",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "Noah Had The Skills. His Resume Hid Them.",
+            "thumbnail": null,
+            "scheduleDate": "2026-07-08T15:00:00Z"
+        },
+        "postedAt": "2026-07-07T04:43:17.514Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=908d922fe49f41bfa1dbbe9e0b68674c. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "908d922fe49f41bfa1dbbe9e0b68674c",
+            "total_platforms": 3,
+            "job_id": "799c558b2928442e946fba7978c0a25d"
+        }
+    },
+    {
+        "title": "Jordan's Cybersecurity Resume Hid The Proof",
+        "youtubeTitle": "Jordan's Cybersecurity Resume Hid The Proof",
+        "caption": "Jordan's cybersecurity resume looked fine, but one line hid the proof recruiters search for: Sentinel, CrowdStrike, phishing, and alert volume. We fixed it with real evidence. Need your resume or cover letter fixed to match the job? Use the link below before you apply. #jobsearch #resumehelp #cybersecurity #careertok #resumetips",
+        "description": "A recruiter-style Signal resume teardown for a junior cybersecurity analyst resume. One vague line gets rewritten with Sentinel, CrowdStrike, alert volume, and measurable proof.",
+        "youtubeDescription": "Jordan's cybersecurity resume looked fine, but one line hid the proof recruiters search for: Sentinel, CrowdStrike, phishing, and alert volume. We fixed it with real evidence. Need your resume or cover letter fixed to match the job? Use the link below before you apply: https://ats-hacker-swart.vercel.app/?utm_source=youtube&utm_medium=short&utm_campaign=signal_gold_screen_teardown&utm_content=20260707-2053-7e5c30f5\n\n#shorts #resume #jobsearch #cybersecurity",
+        "file": "videos/signal-jordan-cybersecurity-screen-teardown-20260708.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "posted",
+        "contentType": "short",
+        "landingUrl": "https://ats-hacker-swart.vercel.app/?utm_source=social&utm_medium=short&utm_campaign=signal_gold_screen_teardown&utm_content=20260707-2053-7e5c30f5",
+        "containsSyntheticMedia": true,
+        "youtubeStatus": {
+            "containsSyntheticMedia": true,
+            "selfDeclaredMadeForKids": false
+        },
+        "codexApproval": {
+            "approved": true,
+            "reviewer": "codex-chat",
+            "approvedAt": "2026-07-08T14:56:16.8710059Z",
+            "fileSha256": "7106c2b9f01e5f6153d385c314323f34f95454ec38984fd8625aa38bfc1d377e",
+            "file": "videos/signal-jordan-cybersecurity-screen-teardown-20260708.mp4",
+            "runId": "20260707-2053-7e5c30f5",
+            "phrase": "Approve and post to our socials"
+        },
+        "qaGate": {
+            "passed": true,
+            "checkedAt": "2026-07-08T14:56:16.8710059Z",
+            "video": "C:\\Users\\andyn\\.gemini\\antigravity\\scratch\\ats_hacker\\marketing\\growth_runs\\20260707-2053-7e5c30f5\\signal_gold_screen_teardown_jordan_v1.mp4",
+            "width": 1080,
+            "height": 1920,
+            "fps": 30,
+            "durationSec": 31.886,
+            "videoCodec": "h264",
+            "audioCodec": "aac"
+        },
+        "notes": "Approved by Andrew in Codex chat for immediate social posting. Built from the gold-standard screen-only resume teardown pipeline.",
+        "reviewApproval": {
+            "reviewer": "codex-chat",
+            "approvedAt": "2026-07-08T14:56:50.380Z",
+            "fileSha256": "7106c2b9f01e5f6153d385c314323f34f95454ec38984fd8625aa38bfc1d377e",
+            "file": "videos/signal-jordan-cybersecurity-screen-teardown-20260708.mp4",
+            "caption": "Jordan's cybersecurity resume looked fine, but one line hid the proof recruiters search for: Sentinel, CrowdStrike, phishing, and alert volume. We fixed it with real evidence. Need your resume or cover letter fixed to match the job? Use the link below before you apply. #jobsearch #resumehelp #cybersecurity #careertok #resumetips",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "Jordan's Cybersecurity Resume Hid The Proof",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "postedAt": "2026-07-08T14:57:11.688Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=036d8c0657c74f5892b1495d133a79b3. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "036d8c0657c74f5892b1495d133a79b3",
+            "total_platforms": 3,
+            "job_id": "a366527a373149778d6bc6141fc8c3b2"
+        },
+        "uploadStatus": {
+            "status": "completed",
+            "completed": 3,
+            "total": 3,
+            "request_id": "036d8c0657c74f5892b1495d133a79b3",
+            "last_update": {
+                "$date": "2026-07-08T14:58:25.367Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "EmuocEG-59o",
+                    "post_url": "https://www.youtube.com/watch?v=EmuocEG-59o",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-08T14:57:25.376Z"
+                    },
+                    "media_size_bytes": 4299995,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 31.887,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "a366527a373149778d6bc6141fc8c3b2"
+                },
+                {
+                    "platform": "instagram",
+                    "success": true,
+                    "platform_post_id": "18101704838585525",
+                    "post_url": "https://www.instagram.com/reel/DaiTuSsCasf/",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-08T14:57:58.489Z"
+                    },
+                    "media_size_bytes": 4299995,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 31.887,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "a366527a373149778d6bc6141fc8c3b2"
+                },
+                {
+                    "platform": "tiktok",
+                    "success": true,
+                    "platform_post_id": "7660171437755387154",
+                    "post_url": "https://www.tiktok.com/@Andrew/video/7660171437755387154",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-08T14:58:25.367Z"
+                    },
+                    "media_size_bytes": 4299995,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 31.887,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "a366527a373149778d6bc6141fc8c3b2"
+                }
+            ]
+        }
+    },
+    {
+        "title": "Ethan's Project Coordinator Resume Hid The Timeline Proof",
+        "youtubeTitle": "Ethan's Project Coordinator Resume Hid The Timeline Proof",
+        "caption": "Ethan's project coordinator resume looked fine, but one line hid the proof recruiters search for: Jira, rollout schedules, stakeholder updates, and saved launch time. We fixed it with real evidence. Need your resume or cover letter fixed to match the job? Use the link below before you apply. #jobsearch #resumehelp #projectcoordinator #careertok #resumetips",
+        "description": "A recruiter-style Signal resume teardown for a project coordinator resume. One vague line gets rewritten with Jira, rollout schedules, stakeholder updates, and measurable time saved.",
+        "youtubeDescription": "Ethan's project coordinator resume looked fine, but one line hid the proof recruiters search for: Jira, rollout schedules, stakeholder updates, and saved launch time. We fixed it with real evidence. Need your resume or cover letter fixed to match the job? Use the link below before you apply: https://ats-hacker-swart.vercel.app/?utm_source=youtube&utm_medium=short&utm_campaign=signal_gold_screen_teardown&utm_content=20260708-1058-6e546e55\n\n#shorts #resume #jobsearch #projectcoordinator",
+        "file": "videos/signal-ethan-project-coordinator-screen-teardown-20260708.mp4",
+        "platforms": [
+            "tiktok",
+            "instagram",
+            "youtube"
+        ],
+        "scheduleDate": null,
+        "status": "posted",
+        "contentType": "short",
+        "landingUrl": "https://ats-hacker-swart.vercel.app/?utm_source=social&utm_medium=short&utm_campaign=signal_gold_screen_teardown&utm_content=20260708-1058-6e546e55",
+        "containsSyntheticMedia": true,
+        "youtubeStatus": {
+            "containsSyntheticMedia": true,
+            "selfDeclaredMadeForKids": false
+        },
+        "codexApproval": {
+            "approved": true,
+            "reviewer": "codex-chat",
+            "approvedAt": "2026-07-08T16:17:51.2139566Z",
+            "fileSha256": "df18fd92c111ed3f92892f791ccf081ada1b6d28a4616458d988f88e2bd44825",
+            "file": "videos/signal-ethan-project-coordinator-screen-teardown-20260708.mp4",
+            "runId": "20260708-1058-6e546e55",
+            "phrase": "ethans is good. post ethans."
+        },
+        "qaGate": {
+            "passed": true,
+            "checkedAt": "2026-07-08T16:17:51.2139566Z",
+            "video": "C:\\Users\\andyn\\.gemini\\antigravity\\scratch\\ats_hacker\\marketing\\growth_runs\\20260708-1058-6e546e55\\signal_ethan_project_coordinator_screen_teardown_v1.mp4",
+            "width": 1080,
+            "height": 1920,
+            "fps": 30,
+            "durationSec": 31.672,
+            "videoCodec": "h264",
+            "audioCodec": "aac"
+        },
+        "notes": "Approved by Andrew in Codex chat for immediate social posting. Built from the gold-standard screen-only resume teardown pipeline.",
+        "reviewApproval": {
+            "reviewer": "codex-chat",
+            "approvedAt": "2026-07-08T16:18:20.764Z",
+            "fileSha256": "df18fd92c111ed3f92892f791ccf081ada1b6d28a4616458d988f88e2bd44825",
+            "file": "videos/signal-ethan-project-coordinator-screen-teardown-20260708.mp4",
+            "caption": "Ethan's project coordinator resume looked fine, but one line hid the proof recruiters search for: Jira, rollout schedules, stakeholder updates, and saved launch time. We fixed it with real evidence. Need your resume or cover letter fixed to match the job? Use the link below before you apply. #jobsearch #resumehelp #projectcoordinator #careertok #resumetips",
+            "platforms": [
+                "tiktok",
+                "instagram",
+                "youtube"
+            ],
+            "title": "Ethan's Project Coordinator Resume Hid The Timeline Proof",
+            "thumbnail": null,
+            "scheduleDate": null
+        },
+        "postedAt": "2026-07-08T16:18:44.968Z",
+        "uploadPostResult": {
+            "success": true,
+            "message": "Upload initiated successfully in background. Your synchronous request was taking too long and has been durably handed off to the upload worker. Check its status with GET /api/uploadposts/status?request_id=d9ee388d63d147aa88bd4b470b14acaa. Docs: https://docs.upload-post.com/api/upload-status",
+            "request_id": "d9ee388d63d147aa88bd4b470b14acaa",
+            "total_platforms": 3,
+            "job_id": "eb97cf053e2f472b93adbd05da5b09e1"
+        },
+        "uploadStatus": {
+            "status": "completed",
+            "completed": 3,
+            "total": 3,
+            "request_id": "d9ee388d63d147aa88bd4b470b14acaa",
+            "last_update": {
+                "$date": "2026-07-08T16:20:01.499Z"
+            },
+            "results": [
+                {
+                    "platform": "youtube",
+                    "success": true,
+                    "platform_post_id": "xxO3nXTl5Zw",
+                    "post_url": "https://www.youtube.com/watch?v=xxO3nXTl5Zw",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-08T16:18:58.369Z"
+                    },
+                    "media_size_bytes": 4221606,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 31.673,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "eb97cf053e2f472b93adbd05da5b09e1"
+                },
+                {
+                    "platform": "instagram",
+                    "success": true,
+                    "platform_post_id": "18039302837804377",
+                    "post_url": "https://www.instagram.com/reel/DaidDeAFLnq/",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-08T16:19:29.786Z"
+                    },
+                    "media_size_bytes": 4221606,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 31.673,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "eb97cf053e2f472b93adbd05da5b09e1"
+                },
+                {
+                    "platform": "tiktok",
+                    "success": true,
+                    "platform_post_id": "7660192425243102482",
+                    "post_url": "https://www.tiktok.com/@Andrew/video/7660192425243102482",
+                    "error_message": null,
+                    "error_code": null,
+                    "upload_timestamp": {
+                        "$date": "2026-07-08T16:20:01.499Z"
+                    },
+                    "media_size_bytes": 4221606,
+                    "video_was_transcoded": false,
+                    "prevalidation_metadata": {
+                        "width": 1080,
+                        "height": 1920,
+                        "fps": 30,
+                        "duration": 31.673,
+                        "container": "mov,mp4,m4a,3gp,3g2,mj2",
+                        "video_codec": "h264",
+                        "audio_codec": "aac"
+                    },
+                    "job_id": "eb97cf053e2f472b93adbd05da5b09e1"
+                }
+            ]
+        }
     }
 ]

@@ -51,8 +51,8 @@ Identity-call:
 3. Say why a human recruiter/search would miss it.
 4. Show the job-language receipt.
 5. Rewrite one bullet using only real experience.
-6. Explain the score movement from visible factors.
-7. CTA: "Run the free Signal score before you apply."
+6. Show a compact tool/volume/result receipt. Use a numeric score only when a deterministic score receipt exists.
+7. CTA: "Need your resume or cover letter fixed to match the job? Use the link below before you apply."
 
 ## Score-Jump Payoff
 

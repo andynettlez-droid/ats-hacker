@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://signal.local/schemas/controlled-screen-finish-manifest-v1.json",
+  "title": "Signal controlled-screen optional Adobe finish manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "manifestType",
+    "state",
+    "createdAt",
+    "runId",
+    "inputs",
+    "toolchain",
+    "finishContract",
+    "outputs",
+    "validationPolicy",
+    "publishing",
+    "manifestSha256"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "marketing/adobe/after_effects/controlled_screen_finish_manifest.schema.json"
+    },
+    "schemaVersion": {
+      "const": "signal.adobe_finish_manifest.v1"
+    },
+    "manifestType": {
+      "const": "controlled_screen_optional_finish"
+    },
+    "state": {
+      "const": "prepared_for_reviewed_project_handoff"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceShort", "beatMap"],
+      "properties": {
+        "sourceShort": {
+          "type": "object",
+          "required": ["path", "sha256", "media", "audioProvenance"],
+          "properties": {
+            "path": { "type": "string", "minLength": 1 },
+            "sha256": { "$ref": "#/$defs/sha256" },
+            "media": { "$ref": "#/$defs/sourceMedia" },
+            "audioProvenance": { "$ref": "#/$defs/audioProvenance" }
+          }
+        },
+        "beatMap": {
+          "type": "object",
+          "required": ["path", "sha256", "maxAudioVisualDeltaSec", "events"],
+          "properties": {
+            "path": { "type": "string", "minLength": 1 },
+            "sha256": { "$ref": "#/$defs/sha256" },
+            "maxAudioVisualDeltaSec": { "const": 0.5 },
+            "events": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/beatEvent" }
+            }
+          }
+        }
+      }
+    },
+    "toolchain": {
+      "type": "object",
+      "required": [
+        "afterEffectsPath",
+        "aerenderPath",
+        "ffprobePath",
+        "ffmpegPath",
+        "directProjectGeneration"
+      ],
+      "properties": {
+        "afterEffectsPath": { "type": "string", "minLength": 1 },
+        "aerenderPath": { "type": "string", "minLength": 1 },
+        "ffprobePath": { "type": "string", "minLength": 1 },
+        "ffmpegPath": { "type": "string", "minLength": 1 },
+        "directProjectGeneration": {
+          "type": "object",
+          "required": ["enabled", "mode", "reason"],
+          "properties": {
+            "enabled": { "const": false },
+            "mode": { "const": "manual_review_required" },
+            "reason": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "finishContract": {
+      "type": "object",
+      "required": [
+        "effectsAreOptional",
+        "composition",
+        "layers",
+        "audio",
+        "allowedEffects",
+        "forbiddenOperations"
+      ],
+      "properties": {
+        "effectsAreOptional": { "const": true },
+        "composition": {
+          "type": "object",
+          "required": ["width", "height", "frameRate", "frameCount", "duration", "sourceTransform"],
+          "properties": {
+            "width": { "const": 1080 },
+            "height": { "const": 1920 },
+            "frameRate": { "$ref": "#/$defs/fraction" },
+            "frameCount": { "type": "integer", "minimum": 1 },
+            "duration": { "$ref": "#/$defs/fraction" },
+            "sourceTransform": {
+              "type": "object",
+              "required": ["positionPx", "scalePercent", "rotationDegrees", "keyframesAllowed", "timeRemapAllowed"],
+              "properties": {
+                "positionPx": { "const": [540, 960] },
+                "scalePercent": { "const": 100 },
+                "rotationDegrees": { "const": 0 },
+                "keyframesAllowed": { "const": false },
+                "timeRemapAllowed": { "const": false }
+              }
+            }
+          }
+        },
+        "layers": {
+          "type": "object",
+          "required": ["singleBakedSourceLayerRequired", "newTextLayersAllowed", "camerasAllowed", "threeDLayersAllowed"],
+          "properties": {
+            "singleBakedSourceLayerRequired": { "const": true },
+            "newTextLayersAllowed": { "const": false },
+            "camerasAllowed": { "const": false },
+            "threeDLayersAllowed": { "const": false }
+          }
+        },
+        "audio": {
+          "type": "object",
+          "required": ["importIntoAdobe", "retimingAllowed", "finalStrategy"],
+          "properties": {
+            "importIntoAdobe": { "const": false },
+            "retimingAllowed": { "const": false },
+            "finalStrategy": { "const": "copy_original_aac_packets" }
+          }
+        },
+        "allowedEffects": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["id", "optional", "usesBakedPixelsOnly"],
+            "properties": {
+              "id": {
+                "enum": ["marker_sweep", "screen_paper_texture", "soft_shadow", "cta_polish"]
+              },
+              "optional": { "const": true },
+              "usesBakedPixelsOnly": { "const": true }
+            }
+          }
+        },
+        "forbiddenOperations": {
+          "type": "array",
+          "contains": { "const": "resume_text_generation" }
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "required": ["reviewedProject", "adobeVideoOnly", "finalShort", "validationReceipt"],
+      "properties": {
+        "reviewedProject": {
+          "type": "object",
+          "required": ["reviewPath", "requiredBeforeRender"],
+          "properties": {
+            "reviewPath": { "type": "string", "minLength": 1 },
+            "requiredBeforeRender": { "const": true }
+          }
+        },
+        "adobeVideoOnly": {
+          "type": "object",
+          "required": ["path", "requiredAudioStreamCount", "status"],
+          "properties": {
+            "path": { "type": "string", "minLength": 1 },
+            "requiredAudioStreamCount": { "const": 0 },
+            "status": { "const": "not_rendered" }
+          }
+        },
+        "finalShort": {
+          "type": "object",
+          "required": ["path", "container", "videoCodec", "audioCodec", "status"],
+          "properties": {
+            "path": { "type": "string", "minLength": 1 },
+            "container": { "const": "mp4" },
+            "videoCodec": { "const": "h264" },
+            "audioCodec": { "const": "aac" },
+            "status": { "const": "not_finalized" }
+          }
+        },
+        "validationReceipt": {
+          "type": "object",
+          "required": ["path"],
+          "properties": {
+            "path": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "validationPolicy": {
+      "type": "object",
+      "required": [
+        "dimensionsExact",
+        "frameRateMustMatchSource",
+        "frameCountMustMatchSource",
+        "maxTimestampDifferenceSec",
+        "audioPacketPayloadMustMatchSource",
+        "audioPacketTimingMustMatchSource"
+      ],
+      "properties": {
+        "dimensionsExact": { "const": [1080, 1920] },
+        "frameRateMustMatchSource": { "const": true },
+        "frameCountMustMatchSource": { "const": true },
+        "maxTimestampDifferenceSec": { "const": 0.001 },
+        "audioPacketPayloadMustMatchSource": { "const": true },
+        "audioPacketTimingMustMatchSource": { "const": true }
+      }
+    },
+    "publishing": {
+      "type": "object",
+      "required": ["allowed", "performedByBridge", "destination"],
+      "properties": {
+        "allowed": { "const": false },
+        "performedByBridge": { "const": false },
+        "destination": { "type": "null" }
+      }
+    },
+    "manifestSha256": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "fraction": {
+      "type": "string",
+      "pattern": "^-?[0-9]+/[1-9][0-9]*$"
+    },
+    "sourceMedia": {
+      "type": "object",
+      "required": [
+        "videoStreamCount",
+        "audioStreamCount",
+        "otherStreamCount",
+        "otherStreamTypes",
+        "formatNames",
+        "video",
+        "audio"
+      ],
+      "properties": {
+        "videoStreamCount": { "const": 1 },
+        "audioStreamCount": { "const": 1 },
+        "otherStreamCount": { "const": 0 },
+        "otherStreamTypes": { "const": [] },
+        "formatNames": {
+          "type": "array",
+          "contains": { "const": "mp4" }
+        },
+        "video": {
+          "type": "object",
+          "required": [
+            "codec",
+            "width",
+            "height",
+            "sampleAspectRatio",
+            "rotationDegrees",
+            "frameRate",
+            "nominalFrameRate",
+            "frameCount",
+            "startTime",
+            "duration"
+          ],
+          "properties": {
+            "codec": { "const": "h264" },
+            "width": { "const": 1080 },
+            "height": { "const": 1920 },
+            "sampleAspectRatio": { "enum": ["", "1:1"] },
+            "rotationDegrees": { "const": 0 },
+            "frameRate": { "$ref": "#/$defs/fraction" },
+            "nominalFrameRate": { "$ref": "#/$defs/fraction" },
+            "frameCount": { "type": "integer", "minimum": 1 },
+            "startTime": { "$ref": "#/$defs/fraction" },
+            "duration": { "$ref": "#/$defs/fraction" }
+          }
+        },
+        "audio": {
+          "type": "object",
+          "required": ["codec", "sampleRate", "channels", "startTime", "duration", "timeBase"],
+          "properties": {
+            "codec": { "const": "aac" },
+            "sampleRate": { "type": "integer", "minimum": 1 },
+            "channels": { "type": "integer", "minimum": 1 },
+            "startTime": { "$ref": "#/$defs/fraction" },
+            "duration": { "$ref": "#/$defs/fraction" },
+            "timeBase": { "$ref": "#/$defs/fraction" }
+          }
+        }
+      }
+    },
+    "audioProvenance": {
+      "type": "object",
+      "required": [
+        "codec",
+        "sampleRate",
+        "channels",
+        "packetCount",
+        "packetPayloadSha256",
+        "relativeTimingSha256",
+        "firstPacketPts"
+      ],
+      "properties": {
+        "codec": { "const": "aac" },
+        "sampleRate": { "type": "integer", "minimum": 1 },
+        "channels": { "type": "integer", "minimum": 1 },
+        "packetCount": { "type": "integer", "minimum": 1 },
+        "packetPayloadSha256": { "$ref": "#/$defs/sha256" },
+        "relativeTimingSha256": { "$ref": "#/$defs/sha256" },
+        "firstPacketPts": { "$ref": "#/$defs/fraction" }
+      }
+    },
+    "beatEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "audioSec", "visualSec"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^beat-[0-9]{3}$" },
+        "role": {
+          "enum": ["opening", "weak_line", "proof", "delete", "rewrite", "receipt", "cta", "beat"]
+        },
+        "audioSec": { "type": "number", "minimum": 0 },
+        "visualSec": { "type": "number", "minimum": 0 }
+      }
+    }
+  }
+}

@@ -28,7 +28,7 @@ Good:
 - "I'm stopping on this line."
 - "The experience is probably fine. The sentence is useless."
 - "The job post gave you the answer key."
-- "Run the free Signal score before you apply."
+- "Need your resume or cover letter fixed to match the job? Use the link below before you apply."
 - "Need yours fixed? Link in bio."
 
 Avoid:
@@ -38,6 +38,10 @@ Avoid:
 - "Guaranteed interviews."
 - "ATS auto-rejected this resume."
 - Repeating "Same person. Better signal."
+
+Voice production note:
+
+- Abby sometimes mispronounces "resume" in fast reads. The voice lab now supplies an accented pronunciation form to ElevenLabs while preserving normal on-screen spelling. Do not schedule a post if the final watch still sounds wrong.
 
 ## Visual Style
 

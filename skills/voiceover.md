@@ -37,14 +37,26 @@ Store:
 - No monotone AI explainer cadence.
 - No over-polished trailer voice.
 - If it sounds robotic, rewrite the script out loud before regenerating.
+- The voice lab converts the word `resume` to the accented pronunciation form in API text while keeping on-screen copy unchanged. Never post a clip with the known `resum` mispronunciation.
 
-Recommended settings:
+Production method:
+
+- Generate three deterministic takes with the current `TAKE_PRESETS` in `voice_lab.py`.
+- Target 150-160 WPM for the human reviewer lane; reject anything below 140 or above 190.
+- Select on pacing and pause structure, then apply at most a 1.22x transparent `atempo` correction.
+- Retimestamp every aligned word by the exact same factor.
+- Trim only the dead tail and normalize to -16 LUFS / -1.5 dBTP.
+
+The current presets vary stability, style, similarity, and API speed up to 1.20. Do not reduce this to one corporate-sounding take.
+
+Example API settings for one candidate take:
 
 ```json
 {
-  "stability": 0.42,
-  "similarity_boost": 0.86,
-  "style": 0.35,
+  "stability": 0.4,
+  "similarity_boost": 0.84,
+  "style": 0.28,
+  "speed": 1.2,
   "use_speaker_boost": true
 }
 ```

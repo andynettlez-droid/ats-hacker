@@ -1,6 +1,56 @@
 # ATSHacker Build Roadmap Status
 
-Reviewed: 2026-07-05
+Reviewed: 2026-07-09
+
+## 2026-07-09 Update - Evidence-Backed Gold Short Pipeline
+
+- Daily research now fails closed on recency, platform mix, transcripts, contact-sheet review, creator concentration, novelty, and cross-platform angle support.
+- The current packet passed with 22 reviewed shorts, 12 recent examples, 12 YouTube sources, 10 valid transcripts, 2 browser-observed TikToks, and 3 browser-observed Instagram Reels.
+- Script generation now uses a five-option creative council. It selected the direct human review and rejected procedural/product-forward variants without asking Andrew to approve intermediate copy.
+- Production resumes are full professional artifacts with two roles, 6-10 experience bullets, projects, education, certifications, one believable weak line, and explicit proof references.
+- Abby voice generation now creates multiple expressive takes, fixes known pronunciation risks, normalizes to -16 LUFS, trims dead tail, and retimes both audio and timestamps toward a measured creator pace.
+- The active renderer is `controlled_resume_capture.mjs`, synchronized by `controlled_screen_sync.py`. The legacy screen renderer and Remotion lane remain retired.
+- Final review freezes the video, script, AAC audio, beat map, and evidence ledger by SHA-256. Posting requires approval of the unchanged final file.
+- After Effects 2026 and aerender are detected. `adobe_finish_bridge.py` prepares a fail-closed optional handoff, but unattended `.aep` creation remains disabled after local ExtendScript hangs. Adobe cannot block the daily base pipeline.
+- Gold test run `20260709-1922-4ff62c61` is 1080x1920, H.264/AAC, 30 fps, 27.5 seconds, passes deterministic QA, and is awaiting exact-video Codex review. It is not posted.
+
+Immediate next actions:
+
+1. Review the frozen Leah cybersecurity short as a viewer; revise only if the actual watch reveals a human-flow or readability problem.
+2. Once one exact file is approved, use it as the screen-only visual baseline for two role-varied tests.
+3. Build one manually reviewed AE comparison project later; keep it only if side-by-side review beats the base without reducing resume readability.
+4. Continue the revenue path: social UTM -> free score -> sample proof -> paid resume/cover-letter package.
+
+## 2026-07-08 Update - Site Trust And Video Pipeline Guardrails
+
+Current direction:
+
+- Keep the site focused on income: free score -> clear sample proof -> paid resume, cover letter, or application pack.
+- Reduce gimmicky mascot/decorative energy around the money path. Signal can stay as a small brand/helper, but the resume, job description, sample files, guarantee, and checkout trust signals need to carry the sale.
+- Keep the stable screen-only resume teardown as the production video baseline until a real tablet/monitor composite beats it on clarity.
+- Treat physical tablet, paper, monitor, Veo/Flow, and Adobe/After Effects variants as finishing experiments that must inherit the same creative gates.
+
+Work completed in this pass:
+
+- Landing-page CTA language was tightened around `Check Free Resume Score`, `Start Free Score`, and `See Sample Rewrite`.
+- The old "Crime Scene" label was softened to `Sample Teardown` in the visible navigation/CTA layer.
+- Decorative duplicate mascot peeks were removed from the upload/pricing/FAQ money path.
+- The sample-output/download band was moved toward a calmer white/slate trust treatment with explicit "inspect the files before checkout" framing.
+- Upload flow now includes clearer privacy/payment reassurance near the resume dropzone.
+- Video runner now has a first-class `voice_qa` quality gate. Full screen/surface builds and final `qa --run-id` require it.
+- `research-swipe` now defaults to 20 sources instead of 5.
+- `AGENTS.md`, `marketing/video_pipeline_quality_gates.md`, and the Adobe upgrade plan now document the updated gate order.
+- Adobe 2026 install is verified locally: After Effects, aerender, Media Encoder, Photoshop, and Premiere Pro are available.
+- A first After Effects finishing scaffold now exists under `marketing/adobe/after_effects/` with preflight, payload generation, AE project creation, render, schema, and usage docs.
+- The Adobe helper refuses normal payload creation unless the source run has already passed creative, script, visual, and voice gates. Old pre-voice-gate runs require an explicit local-experiment override.
+- The score-results section has been moved toward a calmer white/slate trust-report style with clearer buyer proof, less mascot/gimmick energy, and direct paid unlock CTAs.
+
+Immediate next build actions:
+
+1. Run the AE finishing scaffold on a fresh screen-only teardown that has passed `voice_qa`, then compare it against the current baseline for readability, pacing, and trust.
+2. Continue homepage trust polish below the score-results area: sample deliverable, guarantee/refund, checkout reassurance, and tighter mobile proof flow.
+3. Add money-path reliability tests for checkout, rewrite fulfillment, success restore, PDF/DOCX downloads, and paid unlock behavior.
+4. Keep all new social videos at Codex approval until the exact rendered file is approved.
 
 ## Goal
 
@@ -20,7 +70,7 @@ The product should make money from the offers, not from vague "AI resume" hype. 
 
 - `web/`: Next.js product site, score flow, checkout, rewrite fulfillment, SEO pages, admin stats.
 - `marketing/`: revenue strategy, SEO/content plans, daily content packets, media readiness docs.
-- `marketing/remotion/`: Remotion video renderer for Shorts, long-form review cuts, thumbnails, and mascot ads.
+- `marketing/remotion/`: historical renderer only; do not use it for the active production short lane.
 - `marketing/autopost/`: Upload-Post queue and review-gated posting to TikTok, Instagram, and YouTube.
 - `marketing_agent/`: content agent, quality gates, video pipeline helpers, content monitor.
 

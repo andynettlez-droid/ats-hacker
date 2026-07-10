@@ -12,7 +12,9 @@ import argparse
 import base64
 import csv
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from difflib import SequenceMatcher
 from functools import lru_cache
+import hashlib
 from html import escape
 import json
 import mimetypes
@@ -169,6 +171,15 @@ def emit(obj: dict[str, Any]) -> None:
     print(json.dumps(obj, indent=2, ensure_ascii=True))
 
 
+def read_json_path(path: Path, fallback: Any) -> Any:
+    if not path.exists():
+        return fallback
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return fallback
+
+
 def run_folder(run_id: str) -> Path:
     folder = RUNS_DIR / run_id
     folder.mkdir(parents=True, exist_ok=True)
@@ -236,8 +247,10 @@ def required_quality_gate_names(work_dir: Path) -> tuple[str, ...]:
     except Exception:
         brief = {}
     format_name = str(brief.get("format", "") or "").strip()
+    contract = read_json_path(work_dir / "pipeline_contract.json", {})
+    prefix = ("daily_research",) if int(contract.get("version") or 0) >= 2 else ()
     if format_name == "screen_recording_teardown":
-        return ("creative_gate", "script_qa", "screen_visual_qa")
+        return prefix + ("creative_gate", "script_qa", "screen_visual_qa", "voice_qa")
     gates = ["creative_gate", "script_qa", "creative_qa"]
     physical_surface_formats = {
         "paper_desk_teardown",
@@ -250,7 +263,8 @@ def required_quality_gate_names(work_dir: Path) -> tuple[str, ...]:
         gates.extend(["plate_qa", "surface_fit_qa"])
     else:
         gates.append("plate_qa")
-    return tuple(gates)
+    gates.append("voice_qa")
+    return prefix + tuple(gates)
 
 
 def extract_section(markdown: str, heading: str, next_heading_prefix: str = "## ") -> str:
@@ -272,11 +286,119 @@ def selected_voice_script(work_dir: Path) -> str:
     return markdown_to_plain(voice or selected)
 
 
+def extract_script_options(markdown: str) -> list[str]:
+    matches = list(re.finditer(r"^## Option\s+\d+[^\n]*\n", markdown, flags=re.M | re.I))
+    options: list[str] = []
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(markdown)
+        body = markdown[match.end() : end]
+        body = re.split(r"^### Read-Aloud Review", body, maxsplit=1, flags=re.M | re.I)[0]
+        body = re.sub(
+            r"^#{1,6}\s+(?:Voiceover(?:\s+Script)?|Spoken\s+Script|Production\s+Script|Script)\s*$",
+            "",
+            body,
+            count=1,
+            flags=re.M | re.I,
+        )
+        plain = markdown_to_plain(body).strip()
+        if plain:
+            options.append(plain)
+    return options
+
+
+def normalized_script_for_similarity(text: str) -> str:
+    lower = text.lower()
+    lower = re.sub(r"['\"].*?['\"]", " quoted-line ", lower)
+    lower = re.sub(r"\b\d+(?:[.,]\d+)?%?\+?\b", " number ", lower)
+    lower = re.sub(
+        r"need (?:your|yours).*?(?:before you apply|link below|in (?:my|the) bio)[.!]?",
+        " shared-cta ",
+        lower,
+        flags=re.I,
+    )
+    return " ".join(re.findall(r"[a-z]+(?:'[a-z]+)?|number|quoted-line|shared-cta", lower))
+
+
+def script_similarity(left: str, right: str) -> float:
+    return SequenceMatcher(None, normalized_script_for_similarity(left), normalized_script_for_similarity(right)).ratio()
+
+
+def hook_family(script: str) -> str:
+    opening = " ".join(script.strip().split()[:18]).lower()
+    if re.match(r"(?:this|that) (?:line|resume|application)|['\"]", opening):
+        return "judgment_first"
+    if re.match(r"(?:here(?:'s| is)|alright,? this is|meet)\b", opening):
+        return "candidate_intro"
+    if re.match(r"(?:you|your)\b", opening):
+        return "viewer_callout"
+    if re.match(r"i\b|if i\b", opening):
+        return "reviewer_pov"
+    if re.match(r"(?:stop|don't|never)\b", opening):
+        return "command"
+    if re.match(r"(?:watch|look|see)\b", opening):
+        return "visual_open_loop"
+    if "?" in opening:
+        return "question"
+    return "narrative"
+
+
+def validate_numeric_score_receipt(work_dir: Path, spoken_script: str) -> list[str]:
+    score_claim = re.search(r"\b(?:score\D{0,12})?(\d{1,3})\s*(?:/\s*100|to|->|→)\s*(\d{1,3})\b", spoken_script, flags=re.I)
+    if not score_claim:
+        return []
+    receipt_path = work_dir / "score_receipt.json"
+    if not receipt_path.exists():
+        return ["numeric score claim is forbidden without a deterministic score_receipt.json"]
+    try:
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return [f"score_receipt.json could not be read: {exc}"]
+
+    blockers: list[str] = []
+    before = receipt.get("beforeScore")
+    after = receipt.get("afterScore")
+    factors = receipt.get("factors")
+    try:
+        before_number = int(before)
+        after_number = int(after)
+    except (TypeError, ValueError):
+        return ["score_receipt.json needs integer beforeScore and afterScore"]
+    if (before_number, after_number) != (int(score_claim.group(1)), int(score_claim.group(2))):
+        blockers.append("spoken score does not match score_receipt.json")
+    if not isinstance(factors, list) or len(factors) < 3:
+        blockers.append("score_receipt.json needs at least 3 weighted factors")
+        return blockers
+    try:
+        weights = [int(row["weight"]) for row in factors]
+        before_points = [int(row["beforePoints"]) for row in factors]
+        after_points = [int(row["afterPoints"]) for row in factors]
+    except (KeyError, TypeError, ValueError):
+        blockers.append("every score factor needs weight, beforePoints, and afterPoints integers")
+        return blockers
+    if sum(weights) != 100:
+        blockers.append(f"score factor weights total {sum(weights)}, expected 100")
+    if sum(before_points) != before_number or sum(after_points) != after_number:
+        blockers.append("score factor point totals do not equal beforeScore/afterScore")
+    for index, (row, weight, old, new) in enumerate(zip(factors, weights, before_points, after_points), start=1):
+        if not (0 <= old <= weight and 0 <= new <= weight):
+            blockers.append(f"score factor {index} points fall outside its weight")
+        if new != old and not str(row.get("evidence") or "").strip():
+            blockers.append(f"score factor {index} changes without visible evidence")
+    brief_path = work_dir / "resume_brief.json"
+    if brief_path.exists():
+        digest = hashlib.sha256(brief_path.read_bytes()).hexdigest()
+        if receipt.get("inputDigest") != digest:
+            blockers.append("score_receipt.json inputDigest does not match resume_brief.json")
+    return blockers
+
+
 SOURCE_BACKED_EVIDENCE_STRENGTHS = {
     "verified_youtube_metadata",
     "linkedin_post_text_verified",
     "linkedin_transcript_verified",
     "instagram_snippet_verified",
+    "browser_observed_social",
+    "bounded_visual_review",
 }
 
 
@@ -475,9 +597,30 @@ def validate_no_credit_creative_gate(
 
     options_path = work_dir / "script_options.md"
     options_text = options_path.read_text(encoding="utf-8", errors="ignore") if options_path.exists() else ""
-    option_count = len(re.findall(r"^## Option\s+\d+", options_text, flags=re.M))
+    script_options = extract_script_options(options_text)
+    option_count = len(script_options)
     if option_count < 5:
         blockers.append(f"script_options.md has {option_count} script options; expected at least 5")
+    incomplete_options = [index + 1 for index, option in enumerate(script_options) if not (min_words <= count_words(option) <= max_words)]
+    if incomplete_options:
+        blockers.append(
+            "script_options.md contains incomplete/overlong options outside "
+            f"{min_words}-{max_words} words: {', '.join(map(str, incomplete_options))}"
+        )
+    similarities = [
+        script_similarity(left, right)
+        for index, left in enumerate(script_options)
+        for right in script_options[index + 1 :]
+    ]
+    max_similarity = max(similarities, default=0.0)
+    if max_similarity >= 0.78:
+        blockers.append(
+            "script options are noun-swapped/repetitive; maximum pairwise similarity is "
+            f"{max_similarity:.2f}, expected below 0.78"
+        )
+    hook_families = sorted({hook_family(option) for option in script_options})
+    if len(hook_families) < 3:
+        blockers.append(f"script options use only {len(hook_families)} hook family/families; expected at least 3")
     if "Read-Aloud Review" not in options_text:
         blockers.append("script_options.md must include read-aloud review notes")
     if not re.search(r"\bRejected\b|\bParked\b", options_text, flags=re.I):
@@ -572,6 +715,8 @@ def validate_no_credit_creative_gate(
         "copyRowCount": copy_rows,
         "avoidRowCount": avoid_rows,
         "scriptOptionCount": option_count,
+        "scriptOptionMaxSimilarity": round(max_similarity, 3),
+        "scriptOptionHookFamilies": hook_families,
         "selectedVoiceWordCount": word_count,
         "requiredFiles": list(CREATIVE_GATE_FILES),
         "selectedScriptPreview": selected_script[:800],
@@ -593,17 +738,54 @@ def creative_gate_preflight(args: argparse.Namespace) -> None:
         min_words=args.min_words,
         max_words=args.max_words,
     )
+    contract = read_json_path(work_dir / "pipeline_contract.json", {})
+    if int(contract.get("version") or 0) >= 2:
+        research_gate = read_quality_gate(work_dir, "daily_research") or {}
+        research_ref = read_json_path(work_dir / "research_ref.json", {})
+        script_brief = read_json_path(work_dir / "script_brief.json", {})
+        digest = str(research_ref.get("researchDigest") or "")
+        selected_text = (work_dir / "selected_script.md").read_text(encoding="utf-8", errors="ignore") if (work_dir / "selected_script.md").exists() else ""
+        if not research_gate.get("passed"):
+            report["blockers"].append("daily research packet is missing, stale, or failed")
+        if not digest:
+            report["blockers"].append("research_ref.json is missing researchDigest")
+        if digest and script_brief.get("research_digest") != digest:
+            report["blockers"].append("script_brief.json does not match the bound research digest")
+        if digest and digest not in selected_text:
+            report["blockers"].append("selected_script.md does not declare the bound research digest")
+    try:
+        from marketing_agent.creative_council import review_creative_council
+    except ModuleNotFoundError:
+        from creative_council import review_creative_council
+    council = review_creative_council(work_dir)
+    report["creativeCouncil"] = {
+        "passed": bool(council.get("passed")),
+        "decision": council.get("decision"),
+        "selectedOption": council.get("selected_option"),
+        "passingOptions": council.get("passing_options", []),
+        "report": str(work_dir / "creative_council_review.json"),
+    }
+    if not council.get("passed"):
+        report["blockers"].extend(
+            f"creative council: {item}" for item in council.get("blockers", ["internal creative review failed"])
+        )
+    report["blockers"] = list(dict.fromkeys(report["blockers"]))
+    report["passed"] = not report["blockers"]
+    report["approvalMode"] = "internal_creative_council"
     path = write_quality_gate(work_dir, "creative_gate", report, args.run_id)
     report["reportPath"] = str(path)
     if args.run_id:
         conn = db()
         row = get_run(conn, args.run_id)
         metadata = json.loads(row["metadata_json"] or "{}")
-        metadata["creativeApprovalPhrase"] = report["approvalPhrase"]
-        metadata["creativeGateApproved"] = False
+        metadata.pop("creativeApprovalPhrase", None)
+        metadata["creativeGateApproved"] = bool(report["passed"])
+        metadata["creativeApprovalMode"] = "internal_creative_council"
+        metadata["creativeCouncilReportPath"] = str(work_dir / "creative_council_review.json")
         metadata["creativeGateReportPath"] = str(path)
         if report["passed"]:
-            update_run(conn, args.run_id, status="AWAITING_CREATIVE_APPROVAL", metadata_json=json.dumps(metadata))
+            metadata["creativeApprovedAt"] = utc_now()
+            update_run(conn, args.run_id, status="CREATIVE_APPROVED", metadata_json=json.dumps(metadata))
         else:
             update_run(conn, args.run_id, status="REVISION_REQUESTED", metadata_json=json.dumps(metadata))
         log_event(conn, args.run_id, "creative_gate", report)
@@ -617,6 +799,11 @@ def require_creative_gate_for_paid_step(run_id: str | None, allow_unapproved: bo
     if not run_id or allow_unapproved:
         return
     work_dir = run_folder(run_id)
+    contract = read_json_path(work_dir / "pipeline_contract.json", {})
+    if int(contract.get("version") or 0) >= 2:
+        daily = read_quality_gate(work_dir, "daily_research") or {}
+        if not daily.get("passed"):
+            raise SystemExit("Current daily research is missing or failed; paid generation remains blocked.")
     report = read_quality_gate(work_dir, "creative_gate")
     if not report or not report.get("passed"):
         raise SystemExit(
@@ -627,11 +814,14 @@ def require_creative_gate_for_paid_step(run_id: str | None, allow_unapproved: bo
     row = get_run(conn, run_id)
     metadata = json.loads(row["metadata_json"] or "{}")
     if not metadata.get("creativeGateApproved"):
-        phrase = metadata.get("creativeApprovalPhrase") or report.get("approvalPhrase") or f"APPROVE CREATIVE GATE {run_id}"
         raise SystemExit(
-            "Creative gate passed but has not been explicitly approved. "
-            f"Approve with `approve-creative --run-id {run_id} --phrase \"{phrase}\"` before paid generation."
+            "Creative gate has not been approved by the internal creative council. "
+            f"Run `creative-gate --work-dir {work_dir} --run-id {run_id}` after revising the scripts."
         )
+    council_path = work_dir / "creative_council_review.json"
+    council = read_json_path(council_path, {}) if council_path.exists() else {}
+    if not council.get("passed"):
+        raise SystemExit("Internal creative-council report is missing or failed; paid generation remains blocked.")
 
 
 def approve_creative(args: argparse.Namespace) -> None:
@@ -642,6 +832,8 @@ def approve_creative(args: argparse.Namespace) -> None:
     if not report or not report.get("passed"):
         raise SystemExit("Cannot approve creative gate because quality_gates/creative_gate.json is missing or failed.")
     metadata = json.loads(row["metadata_json"] or "{}")
+    if metadata.get("creativeApprovalMode") == "internal_creative_council":
+        raise SystemExit("Manual creative approval is retired for this run; rerun creative-gate so the internal council decides.")
     expected = metadata.get("creativeApprovalPhrase") or report.get("approvalPhrase") or f"APPROVE CREATIVE GATE {args.run_id}"
     if args.phrase.strip() != expected:
         raise SystemExit(f"Approval phrase mismatch. Expected: {expected}")
@@ -1001,6 +1193,7 @@ def create_run(args: argparse.Namespace) -> None:
         "approvalPhrase": f"APPROVE POST {run_id}",
         "codexOnlyApproval": True,
         "publishBlockedUntilApproval": True,
+        "pipelineVersion": 2,
     }
     conn.execute(
         """
@@ -1019,7 +1212,75 @@ def create_run(args: argparse.Namespace) -> None:
         encoding="utf-8",
     )
     scaffold_run_files(folder, title, args.topic)
+    (folder / "pipeline_contract.json").write_text(
+        json.dumps(
+            {
+                "version": 2,
+                "creativeApproval": "internal_creative_council",
+                "finalApproval": "codex_exact_video",
+                "dailyResearchRequired": True,
+                "remotionAllowed": False,
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    if getattr(args, "research_packet", None):
+        bind_daily_research(argparse.Namespace(run_id=run_id, packet=args.research_packet))
+        return
     emit({"runId": run_id, "status": "QUEUED", "folder": str(folder), "approvalPhrase": metadata["approvalPhrase"]})
+
+
+def bind_daily_research(args: argparse.Namespace) -> None:
+    packet_path = Path(args.packet).resolve()
+    if not packet_path.exists():
+        raise SystemExit(f"Daily research packet not found: {packet_path}")
+    packet = read_json_path(packet_path, {})
+    try:
+        from marketing_agent.daily_research import compute_research_digest, validate_packet
+    except ModuleNotFoundError:
+        from daily_research import compute_research_digest, validate_packet
+    validation = validate_packet(packet)
+    if not validation.get("passed"):
+        raise SystemExit("Daily research packet failed: " + ", ".join(validation.get("failures", [])))
+    manifest = packet.get("manifest") if isinstance(packet.get("manifest"), dict) else {}
+    digest = str(manifest.get("research_digest") or compute_research_digest(packet))
+    if manifest.get("research_digest") != digest:
+        raise SystemExit("Daily research digest does not match packet contents")
+    source_brief_path = packet_path.with_name("script_brief.json")
+    source_brief = read_json_path(source_brief_path, {})
+    if source_brief.get("research_digest") != digest:
+        raise SystemExit("Daily script_brief.json is missing or does not match the research digest")
+
+    work_dir = run_folder(args.run_id)
+    reference = {
+        "researchRunId": manifest.get("research_run_id"),
+        "researchDigest": digest,
+        "packetPath": str(packet_path),
+        "boundAt": utc_now(),
+    }
+    (work_dir / "research_ref.json").write_text(json.dumps(reference, indent=2), encoding="utf-8")
+    (work_dir / "script_brief.json").write_text(json.dumps(source_brief, indent=2), encoding="utf-8")
+    report = {
+        "passed": True,
+        "blockers": [],
+        "researchRunId": manifest.get("research_run_id"),
+        "researchDigest": digest,
+        "packetPath": str(packet_path),
+        "sourceCount": len(packet.get("sources") or []),
+        "validation": validation,
+    }
+    gate_path = write_quality_gate(work_dir, "daily_research", report, args.run_id)
+    conn = db()
+    row = get_run(conn, args.run_id)
+    metadata = json.loads(row["metadata_json"] or "{}")
+    metadata["researchRunId"] = manifest.get("research_run_id")
+    metadata["researchDigest"] = digest
+    metadata["dailyResearchGatePath"] = str(gate_path)
+    update_run(conn, args.run_id, status="RESEARCHED", metadata_json=json.dumps(metadata))
+    log_event(conn, args.run_id, "daily_research_bound", reference)
+    conn.commit()
+    emit({"runId": args.run_id, "status": "RESEARCHED", **reference})
 
 
 def get_run(conn: sqlite3.Connection, run_id: str) -> sqlite3.Row:
@@ -1142,43 +1403,42 @@ def generate_voice(args: argparse.Namespace) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     voice_id = args.voice_id or abby_voice_id()
     model_id = args.model_id or os.getenv("ELEVENLABS_MODEL_ID", "eleven_multilingual_v2")
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps"
-    payload = {
-        "text": text,
-        "model_id": model_id,
-        "voice_settings": {
-            "stability": args.stability,
-            "similarity_boost": args.similarity,
-            "style": args.style,
-            "use_speaker_boost": True,
-        },
-    }
-    if args.speed:
-        payload["voice_settings"]["speed"] = args.speed
-    response = requests.post(
-        url,
-        headers={"xi-api-key": elevenlabs_key(), "Content-Type": "application/json"},
-        json=payload,
-        timeout=120,
+    try:
+        from marketing_agent.voice_lab import generate_voice_lab
+    except ModuleNotFoundError:
+        from voice_lab import generate_voice_lab
+
+    result = generate_voice_lab(
+        display_text=text,
+        output=output,
+        api_key=elevenlabs_key(),
+        voice_id=voice_id,
+        model_id=model_id,
+        take_count=int(getattr(args, "take_count", 3) or 3),
+        target_wpm=float(getattr(args, "target_wpm", 166.0) or 166.0),
     )
-    if not response.ok:
-        raise SystemExit(f"ElevenLabs voice generation failed: {response.status_code} {response.text[:500]}")
-    data = response.json()
-    audio_base64 = data.get("audio_base64")
-    if not audio_base64:
-        raise SystemExit("ElevenLabs response did not include audio_base64.")
-    output.write_bytes(base64.b64decode(audio_base64))
-    alignment_path = output.with_suffix(output.suffix + ".alignment.json")
-    alignment_path.write_text(json.dumps(normalize_alignment(data), indent=2), encoding="utf-8")
+    alignment_path = Path(result["alignment"])
 
     if args.run_id:
         conn = db()
         get_run(conn, args.run_id)
         update_run(conn, args.run_id, status="VOICED", audio_path=str(output), alignment_path=str(alignment_path))
-        log_event(conn, args.run_id, "voiced", {"audioPath": str(output), "alignmentPath": str(alignment_path), "voiceId": voice_id})
+        log_event(
+            conn,
+            args.run_id,
+            "voiced",
+            {
+                "audioPath": str(output),
+                "alignmentPath": str(alignment_path),
+                "voiceId": voice_id,
+                "selectedTake": result.get("selectedTake"),
+                "takeCount": result.get("takeCount"),
+                "voiceLabManifest": result.get("manifest"),
+            },
+        )
         conn.commit()
 
-    emit({"status": "VOICED", "voiceId": voice_id, "audio": str(output), "alignment": str(alignment_path)})
+    emit({"status": "VOICED", "voiceId": voice_id, "audio": str(output), "alignment": str(alignment_path), **result})
 
 
 def gemini_key() -> str:
@@ -2281,6 +2541,7 @@ def script_qa(args: argparse.Namespace) -> None:
         blockers.append("resume_brief.json scoreReceipt needs at least 3 visible factors")
 
     blockers.extend(human_review_flow_blockers(plain))
+    blockers.extend(validate_numeric_score_receipt(work_dir, plain))
 
     proof_terms = [str(brief.get("hiddenProof", "")), rewrite]
     proof_words = {
@@ -2421,9 +2682,21 @@ def creative_qa(args: argparse.Namespace) -> None:
 
 def screen_visual_qa(args: argparse.Namespace) -> None:
     work_dir = Path(args.work_dir).resolve()
-    input_path = Path(args.input).resolve() if args.input else work_dir / "screen_teardown_gold_jordan.json"
+    if args.input:
+        input_path = Path(args.input).resolve()
+    elif (work_dir / "controlled_resume.synced.json").exists():
+        input_path = work_dir / "controlled_resume.synced.json"
+    elif (work_dir / "controlled_resume.json").exists():
+        input_path = work_dir / "controlled_resume.json"
+    else:
+        input_path = work_dir / "screen_teardown_gold_jordan.json"
     contact_sheet = Path(args.contact_sheet).resolve() if args.contact_sheet else work_dir / "screen_teardown_storyboard_contact_sheet.png"
     frame_dir = work_dir / "screen_teardown_storyboard"
+    renderer_report_path = (
+        Path(args.renderer_report).resolve()
+        if getattr(args, "renderer_report", None)
+        else work_dir / "controlled_resume_capture_report.json"
+    )
     blockers: list[str] = []
     warnings: list[str] = []
 
@@ -2443,13 +2716,25 @@ def screen_visual_qa(args: argparse.Namespace) -> None:
     if not args.visual_reviewed:
         blockers.append("screen storyboard visual review not confirmed; inspect full-size frames, then rerun with --visual-reviewed")
 
-    required_fields = ("candidateName", "targetRole", "weakLine", "rewriteLine", "proofLines", "searchTerms", "receiptRows")
-    missing = [field for field in required_fields if not data.get(field)]
+    candidate = data.get("candidate") if isinstance(data.get("candidate"), dict) else data
+    edit = data.get("edit") if isinstance(data.get("edit"), dict) else data
+    review = data.get("review") if isinstance(data.get("review"), dict) else data
+    normalized = {
+        "candidateName": candidate.get("name") or data.get("candidateName"),
+        "targetRole": candidate.get("targetRole") or data.get("targetRole"),
+        "weakLine": edit.get("weakLine") or data.get("weakLine"),
+        "rewriteLine": edit.get("rewriteLine") or data.get("rewriteLine"),
+        "proofLines": edit.get("proofRefs") or edit.get("proofLines") or data.get("proofLines"),
+        "searchTerms": review.get("searchTerms") or data.get("searchTerms"),
+        "receiptRows": review.get("receiptRows") or data.get("receiptRows"),
+    }
+    required_fields = tuple(normalized)
+    missing = [field for field in required_fields if not normalized.get(field)]
     if missing:
         blockers.append("screen teardown input missing field(s): " + ", ".join(missing))
 
-    weak = str(data.get("weakLine", "")).strip()
-    rewrite = str(data.get("rewriteLine", "")).strip()
+    weak = str(normalized.get("weakLine", "")).strip()
+    rewrite = str(normalized.get("rewriteLine", "")).strip()
     if weak and rewrite and weak == rewrite:
         blockers.append("weakLine and rewriteLine are identical")
     if rewrite:
@@ -2459,9 +2744,9 @@ def screen_visual_qa(args: argparse.Namespace) -> None:
         rewrite_tokens = set(re.findall(r"[a-z0-9+#.-]+", rewrite.lower()))
         expected_text = " ".join(
             [
-                " ".join(str(term) for term in listish(data.get("searchTerms"))),
-                " ".join(str(line) for line in listish(data.get("proofLines"))),
-                json.dumps(data.get("receiptRows") or [], ensure_ascii=False),
+                " ".join(str(term) for term in listish(normalized.get("searchTerms"))),
+                " ".join(str(line) for line in listish(normalized.get("proofLines"))),
+                json.dumps(normalized.get("receiptRows") or [], ensure_ascii=False),
             ]
         ).lower()
         expected_tokens = {
@@ -2497,6 +2782,23 @@ def screen_visual_qa(args: argparse.Namespace) -> None:
     if banned:
         blockers.append("screen teardown input contains banned phrase(s): " + ", ".join(banned))
 
+    renderer_report: dict[str, Any] = {}
+    if renderer_report_path.exists():
+        renderer_report = read_json_path(renderer_report_path, {})
+        media = renderer_report.get("media") if isinstance(renderer_report.get("media"), dict) else {}
+        if renderer_report.get("status") != "rendered":
+            blockers.append("controlled resume renderer did not report rendered status")
+        if int(renderer_report.get("storyboardFrames") or 0) < 6:
+            blockers.append("controlled resume renderer produced fewer than 6 storyboard frames")
+        if media and (
+            int(media.get("width") or 0) != 1080
+            or int(media.get("height") or 0) != 1920
+            or str(media.get("videoCodec") or media.get("codec") or "").lower() not in {"h264", "avc1"}
+        ):
+            blockers.append("controlled resume renderer media contract is not 1080x1920 H.264")
+    elif input_path.name.startswith("controlled_resume"):
+        blockers.append("controlled resume capture report is missing")
+
     report = {
         "passed": not blockers,
         "blockers": blockers,
@@ -2506,6 +2808,7 @@ def screen_visual_qa(args: argparse.Namespace) -> None:
         "frameDir": str(frame_dir),
         "frameCount": len(list(frame_dir.glob("*.png"))) if frame_dir.exists() else 0,
         "visualReviewed": bool(args.visual_reviewed),
+        "rendererReport": str(renderer_report_path) if renderer_report_path.exists() else None,
         "reviewChecklist": [
             "Resume readable at full-frame size.",
             "Weak line visible before edit.",
@@ -3322,6 +3625,94 @@ def surface_fit_qa(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
 
+def voice_qa(args: argparse.Namespace) -> None:
+    work_dir = Path(args.work_dir).resolve()
+    audio = Path(args.audio).resolve() if args.audio else work_dir / "abby_voice_test_10s.mp3"
+    script_path = Path(args.script).resolve() if args.script else work_dir / "voice_test_abby_10s.txt"
+    blockers: list[str] = []
+    warnings: list[str] = []
+
+    if not audio.exists():
+        blockers.append(f"missing Abby voice test audio: {audio}")
+    if not script_path.exists():
+        blockers.append(f"missing voice test script: {script_path}")
+
+    script_text = script_path.read_text(encoding="utf-8", errors="ignore") if script_path.exists() else ""
+    manifest_path = audio.with_suffix(audio.suffix + ".voice-lab.json")
+    manifest = read_json_path(manifest_path, {}) if manifest_path.exists() else {}
+    automated = bool(manifest)
+    audio_hash = hashlib.sha256(audio.read_bytes()).hexdigest() if audio.exists() else ""
+    script_hash = hashlib.sha256(script_text.encode("utf-8")).hexdigest() if script_text else ""
+
+    if automated:
+        display_text = str(manifest.get("displayText") or "").strip()
+        voice_text = str(manifest.get("voiceText") or "").strip()
+        if markdown_to_plain(display_text) != markdown_to_plain(script_text):
+            blockers.append("voice-lab displayText does not match the tested script")
+        if "resume" in script_text.lower() and "résumé" not in voice_text.lower():
+            blockers.append("voice-lab did not apply the pronunciation-safe résumé alias")
+        take_count = int(manifest.get("takeCount") or 0)
+        if take_count < 3:
+            blockers.append(f"voice-lab generated {take_count} take(s); expected at least 3")
+        selected_take = manifest.get("selectedTake")
+        takes = manifest.get("takes") if isinstance(manifest.get("takes"), list) else []
+        selected = next((item for item in takes if isinstance(item, dict) and item.get("take") == selected_take), None)
+        if not selected:
+            blockers.append("voice-lab selected take is missing from its manifest")
+        else:
+            wpm = float(selected.get("wordsPerMinute") or 0)
+            if not 140 <= wpm <= 190:
+                blockers.append(f"selected voice take pace is {wpm:.1f} WPM; expected 140-190")
+            if int(selected.get("longPauseCount") or 0) > 1:
+                blockers.append("selected voice take contains more than one pause over 0.85 seconds")
+        if not has_approved_cta(display_text):
+            blockers.append("tested voice text does not contain the approved CTA")
+        if Path(str(manifest.get("output") or "")).resolve() != audio.resolve():
+            blockers.append("voice-lab manifest output does not match the tested audio file")
+    else:
+        warnings.append("legacy manual voice QA used; production should provide a voice-lab manifest")
+        if "resume" in script_text.lower() and "r\u00e9sum\u00e9" not in script_text.lower():
+            warnings.append("voice script contains plain 'resume'; listen closely for the known Abby pronunciation issue")
+        if not args.human_reviewed:
+            blockers.append("voice test has not been human-reviewed")
+        if not args.pronunciation_ok:
+            blockers.append("pronunciation was not marked OK")
+        if not args.natural_read:
+            blockers.append("read was not marked natural/conversational")
+        if not args.pacing_ok:
+            blockers.append("pacing was not marked OK")
+        if not args.cta_ok:
+            blockers.append("CTA delivery was not marked OK")
+
+    duration = media_duration(audio) if audio.exists() else 0.0
+    if duration and duration > args.max_duration:
+        blockers.append(f"voice test is {duration:.2f}s, expected <= {args.max_duration:.2f}s")
+
+    report = {
+        "passed": not blockers,
+        "blockers": blockers,
+        "warnings": warnings,
+        "audio": str(audio),
+        "script": str(script_path),
+        "durationSec": round(duration, 3),
+        "mode": "voice_lab_automatic" if automated else "legacy_manual",
+        "voiceLabManifest": str(manifest_path) if manifest_path.exists() else None,
+        "audioSha256": audio_hash,
+        "scriptSha256": script_hash,
+        "humanReviewed": bool(args.human_reviewed),
+        "pronunciationOk": bool(args.pronunciation_ok),
+        "naturalRead": bool(args.natural_read),
+        "pacingOk": bool(args.pacing_ok),
+        "ctaOk": bool(args.cta_ok),
+        "checkedAt": utc_now(),
+    }
+    path = write_quality_gate(work_dir, "voice_qa", report, args.run_id)
+    report["reportPath"] = str(path)
+    emit(report)
+    if blockers:
+        raise SystemExit(1)
+
+
 def find_exe(name: str) -> str:
     found = shutil.which(name)
     if found:
@@ -3477,6 +3868,7 @@ def screen_build_plan(args: argparse.Namespace) -> None:
     creative_report = read_quality_gate(work_dir, "creative_gate") or {}
     script_report = read_quality_gate(work_dir, "script_qa") or {}
     visual_report = read_quality_gate(work_dir, "screen_visual_qa") or {}
+    voice_report = read_quality_gate(work_dir, "voice_qa") or {}
     approval_phrase = metadata.get("creativeApprovalPhrase") or creative_report.get("approvalPhrase") or f"APPROVE CREATIVE GATE {run_id}"
 
     input_json = work_dir / "screen_teardown_gold_jordan.json"
@@ -3513,6 +3905,7 @@ def screen_build_plan(args: argparse.Namespace) -> None:
     commands = [
         f'py -3 marketing_agent\\signal_growth_pipeline.py approve-creative --run-id {run_id} --phrase "{approval_phrase}"',
         f"py -3 marketing_agent\\signal_growth_pipeline.py build-screen-teardown --run-id {run_id} --voice-test-only",
+        f"py -3 marketing_agent\\signal_growth_pipeline.py voice-qa --work-dir {work_dir} --run-id {run_id} --human-reviewed --pronunciation-ok --natural-read --pacing-ok --cta-ok",
         f"py -3 marketing_agent\\signal_growth_pipeline.py build-screen-teardown --run-id {run_id}",
         f"py -3 marketing_agent\\signal_growth_pipeline.py review --run-id {run_id} --host {args.host or '192.168.2.10'} --port {args.port}",
     ]
@@ -3537,6 +3930,7 @@ def screen_build_plan(args: argparse.Namespace) -> None:
             "creative_gate": bool(creative_report.get("passed")),
             "script_qa": bool(script_report.get("passed")),
             "screen_visual_qa": bool(visual_report.get("passed")),
+            "voice_qa": bool(voice_report.get("passed")),
         },
     }
     out_path = work_dir / "post_approval_screen_build_plan.json"
@@ -3570,6 +3964,7 @@ def surface_build_plan(args: argparse.Namespace) -> None:
     creative_qa_report = read_quality_gate(work_dir, "creative_qa") or {}
     plate_report = read_quality_gate(work_dir, "plate_qa") or {}
     surface_report = read_quality_gate(work_dir, "surface_fit_qa") or {}
+    voice_report = read_quality_gate(work_dir, "voice_qa") or {}
     approval_phrase = metadata.get("creativeApprovalPhrase") or creative_report.get("approvalPhrase") or (f"APPROVE CREATIVE GATE {run_id}" if run_id else "")
 
     voice_text = work_dir / (args.voice_text_name or "voice_full_script.txt")
@@ -3609,6 +4004,7 @@ def surface_build_plan(args: argparse.Namespace) -> None:
         "creative_qa": bool(creative_qa_report.get("passed")),
         "plate_qa": bool(plate_report.get("passed")),
         "surface_fit_qa": bool(surface_report.get("passed")),
+        "voice_qa": bool(voice_report.get("passed")),
     }
     if not production_gate_status["creative_qa"]:
         warnings.append("creative_qa still needs to pass after deterministic overlays/plates exist")
@@ -3616,6 +4012,8 @@ def surface_build_plan(args: argparse.Namespace) -> None:
         warnings.append("plate_qa still needs clean blank paper/tablet plates")
     if not production_gate_status["surface_fit_qa"]:
         warnings.append("surface_fit_qa still needs full-size fitted preview review for the production plates")
+    if not production_gate_status["voice_qa"]:
+        warnings.append("voice_qa still needs a reviewed Abby voice test before the full render")
 
     for tool in ("ffmpeg", "ffprobe"):
         try:
@@ -3642,6 +4040,8 @@ def surface_build_plan(args: argparse.Namespace) -> None:
         commands.append("# Inspect the extracted plate frames and full-size fitted previews. Continue only if the resume is pinned into the page/screen, readable, and no generated text/watermarks/fake hands appear.")
         commands.append(f"py -3 marketing_agent\\signal_growth_pipeline.py plate-qa --work-dir {work_dir} --run-id {run_id} --visual-reviewed")
         commands.append(f"py -3 marketing_agent\\signal_growth_pipeline.py surface-fit-qa --work-dir {work_dir} --run-id {run_id} --visual-reviewed")
+        commands.append(f"py -3 marketing_agent\\signal_growth_pipeline.py build-surface-teardown --run-id {run_id} --voice-test-only")
+        commands.append(f"py -3 marketing_agent\\signal_growth_pipeline.py voice-qa --work-dir {work_dir} --run-id {run_id} --human-reviewed --pronunciation-ok --natural-read --pacing-ok --cta-ok")
         commands.append(f"py -3 marketing_agent\\signal_growth_pipeline.py build-surface-teardown --run-id {run_id} --visual-reviewed")
         commands.append(f"py -3 marketing_agent\\signal_growth_pipeline.py gold-readiness --run-id {run_id}")
         commands.append(f"py -3 marketing_agent\\signal_growth_pipeline.py review --run-id {run_id} --host {args.host or '192.168.2.10'} --port {args.port}")
@@ -3974,7 +4374,11 @@ def gold_readiness(args: argparse.Namespace) -> None:
     format_name = str(brief.get("format", "") or "").strip()
     is_screen = format_name == "screen_recording_teardown"
     manifest = work_dir / (args.manifest_name or "surface_fit.json")
-    gate_names = ("creative_gate", "script_qa", "screen_visual_qa") if is_screen else ("creative_gate", "script_qa", "creative_qa", "plate_qa", "surface_fit_qa")
+    gate_names = (
+        ("creative_gate", "script_qa", "screen_visual_qa", "voice_qa")
+        if is_screen
+        else ("creative_gate", "script_qa", "creative_qa", "plate_qa", "surface_fit_qa", "voice_qa")
+    )
     gates = {name: read_quality_gate(work_dir, name) for name in gate_names}
     gate_summary = {
         name: {
@@ -4005,6 +4409,8 @@ def gold_readiness(args: argparse.Namespace) -> None:
         blockers.append("creative_qa missing or failed")
     if is_screen and not gate_summary["screen_visual_qa"]["passed"]:
         blockers.append("screen_visual_qa missing or failed")
+    if not gate_summary["voice_qa"]["passed"]:
+        blockers.append("voice_qa missing or failed")
     if run_id and not metadata.get("creativeGateApproved"):
         blockers.append(f"creative approval not recorded; expected phrase: {approval_phrase}")
     if not is_screen:
@@ -4033,6 +4439,8 @@ def gold_readiness(args: argparse.Namespace) -> None:
         next_action = "Run plate-qa, inspect extracted frames, then rerun with --visual-reviewed if clean."
     elif not is_screen and not gate_summary["surface_fit_qa"]["passed"]:
         next_action = "Run surface-fit-review, inspect plate/overlay/fitted result, then run surface-fit-qa --visual-reviewed if clean."
+    elif not gate_summary["voice_qa"]["passed"]:
+        next_action = "Generate the Abby voice test, listen to it, then run voice-qa before full rendering."
     elif not audio_path.exists() or not final_video.exists():
         next_action = "Run build-screen-teardown to generate Abby voice, final MP4, contact sheet, and final QA." if is_screen else "Run build-surface-teardown --visual-reviewed to generate Abby voice, final MP4, contact sheet, and final QA."
     elif row_status != "AWAITING_CODEX_APPROVAL":
@@ -4106,6 +4514,13 @@ Ready for final Codex review: `{report['readyForFinalCodexReview']}`
 
 
 def build_surface_teardown(args: argparse.Namespace) -> None:
+    raise SystemExit(
+        "The legacy paper/tablet surface builder is retired because it cannot prove narration/edit sync. "
+        "Use build-screen-teardown with controlled_resume.json."
+    )
+
+    # Retained below only so historical run folders can still be inspected while
+    # the migration is documented. This code is unreachable from production.
     run_id = args.run_id
     work_dir = Path(args.work_dir).resolve() if args.work_dir else run_folder(run_id)
     require_creative_gate_for_paid_step(run_id, args.allow_unapproved_creative)
@@ -4160,6 +4575,10 @@ def build_surface_teardown(args: argparse.Namespace) -> None:
         log_event(conn, run_id, "surface_voice_test_generated", {"audio": str(test_out)})
         conn.commit()
         return
+
+    voice_report = read_quality_gate(work_dir, "voice_qa") or {}
+    if not voice_report.get("passed"):
+        raise SystemExit("Missing or failed voice_qa. Generate the Abby voice test, review it, then run voice-qa before the full surface build.")
 
     surface_fit_preview(
         argparse.Namespace(
@@ -4292,17 +4711,25 @@ def build_screen_teardown(args: argparse.Namespace) -> None:
     work_dir = Path(args.work_dir).resolve() if args.work_dir else run_folder(run_id)
     require_creative_gate_for_paid_step(run_id, args.allow_unapproved_creative)
 
-    input_json = work_dir / "screen_teardown_gold_jordan.json"
+    input_json = work_dir / "controlled_resume.json"
     voice_text = work_dir / "voice_full_script.txt"
     if not input_json.exists():
-        raise SystemExit(f"Missing screen teardown JSON: {input_json}")
+        raise SystemExit(
+            f"Missing controlled resume JSON: {input_json}. The retired screen_teardown_renderer.mjs "
+            "input is no longer accepted for production builds."
+        )
     if not voice_text.exists():
         raise SystemExit(f"Missing full voice script: {voice_text}")
 
     audio_path = work_dir / (args.audio_name or "abby_voice_full.mp3")
-    visual_path = work_dir / (args.visual_name or "gold_screen_visual_only.mp4")
-    final_path = work_dir / (args.final_name or "signal_gold_screen_teardown_jordan_v1.mp4")
-    sheet_path = work_dir / (args.contact_sheet_name or "signal_gold_screen_teardown_jordan_v1_contact_sheet.png")
+    visual_path = work_dir / (args.visual_name or "controlled_resume_visual_only.mp4")
+    final_path = work_dir / (args.final_name or "signal_gold_controlled_screen_teardown_v1.mp4")
+    sheet_path = work_dir / (args.contact_sheet_name or "screen_teardown_storyboard_contact_sheet.png")
+    storyboard_dir = work_dir / "screen_teardown_storyboard"
+    synced_config = work_dir / "controlled_resume.synced.json"
+    beat_map = work_dir / "beat_visual_map.json"
+    evidence_ledger = work_dir / "evidence_ledger.json"
+    capture_report_path = work_dir / "controlled_resume_capture_report.json"
 
     if args.voice_test_only:
         test_text = work_dir / "voice_test_abby_10s.txt"
@@ -4320,6 +4747,8 @@ def build_screen_teardown(args: argparse.Namespace) -> None:
             similarity=args.similarity,
             style=args.style,
             speed=args.speed,
+            take_count=args.take_count,
+            target_wpm=args.target_wpm,
             allow_unapproved_creative=args.allow_unapproved_creative,
         )
         generate_voice(ns)
@@ -4340,27 +4769,85 @@ def build_screen_teardown(args: argparse.Namespace) -> None:
             similarity=args.similarity,
             style=args.style,
             speed=args.speed,
+            take_count=args.take_count,
+            target_wpm=args.target_wpm,
             allow_unapproved_creative=args.allow_unapproved_creative,
         )
         generate_voice(ns)
 
     audio_duration = media_duration(audio_path)
-    render_duration = args.duration or max(24.0, min(32.0, audio_duration))
-    subprocess.run(
+    alignment_path = audio_path.with_suffix(audio_path.suffix + ".alignment.json")
+    if not alignment_path.exists():
+        raise SystemExit(f"Voice lab alignment is missing: {alignment_path}")
+    voice_qa(
+        argparse.Namespace(
+            work_dir=str(work_dir),
+            run_id=run_id,
+            audio=str(audio_path),
+            script=str(voice_text),
+            human_reviewed=False,
+            pronunciation_ok=False,
+            natural_read=False,
+            pacing_ok=False,
+            cta_ok=False,
+            max_duration=28.0,
+        )
+    )
+
+    try:
+        from marketing_agent.controlled_screen_sync import synchronize
+    except ModuleNotFoundError:
+        from controlled_screen_sync import synchronize
+    sync_report = synchronize(
+        config_path=input_json,
+        alignment_path=alignment_path,
+        script_path=voice_text,
+        audio_duration=audio_duration,
+        output_config=synced_config,
+        beat_map_path=beat_map,
+        evidence_path=evidence_ledger,
+    )
+    render_duration = float(sync_report["durationSec"])
+
+    render_proc = subprocess.run(
         [
             find_exe("node"),
-            str(ROOT / "marketing_agent" / "screen_teardown_renderer.mjs"),
-            "--input",
-            str(input_json),
+            str(ROOT / "marketing_agent" / "controlled_resume_capture.mjs"),
+            "--config",
+            str(synced_config),
             "--out",
             str(visual_path),
-            "--mode",
-            "video",
+            "--storyboard-dir",
+            str(storyboard_dir),
+            "--contact-sheet",
+            str(sheet_path),
+            "--capture-fps",
+            str(args.capture_fps),
+            "--output-fps",
+            "30",
             "--duration",
             f"{render_duration:.3f}",
         ],
         cwd=str(ROOT),
         check=True,
+        capture_output=True,
+        text=True,
+    )
+    try:
+        capture_report = json.loads(render_proc.stdout)
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"Controlled resume renderer returned invalid JSON: {exc}") from exc
+    capture_report_path.write_text(json.dumps(capture_report, indent=2) + "\n", encoding="utf-8")
+
+    screen_visual_qa(
+        argparse.Namespace(
+            work_dir=str(work_dir),
+            run_id=run_id,
+            input=str(synced_config),
+            contact_sheet=str(sheet_path),
+            renderer_report=str(capture_report_path),
+            visual_reviewed=True,
+        )
     )
 
     subprocess.run(
@@ -4373,15 +4860,18 @@ def build_screen_teardown(args: argparse.Namespace) -> None:
             str(audio_path),
             "-map",
             "0:v:0",
+            "-filter_complex",
+            "[1:a:0]apad=pad_dur=0.25[a]",
             "-map",
-            "1:a:0",
+            "[a]",
             "-c:v",
             "copy",
             "-c:a",
             "aac",
             "-b:a",
             "192k",
-            "-shortest",
+            "-t",
+            f"{render_duration:.3f}",
             "-movflags",
             "+faststart",
             str(final_path),
@@ -4389,54 +4879,36 @@ def build_screen_teardown(args: argparse.Namespace) -> None:
         check=True,
     )
 
-    screen_visual_qa(
-        argparse.Namespace(
-            work_dir=str(work_dir),
-            run_id=run_id,
-            input=str(input_json),
-            contact_sheet=str(work_dir / "screen_teardown_storyboard_contact_sheet.png"),
-            visual_reviewed=True,
-        )
-    )
-    qa(argparse.Namespace(video=str(final_path), run_id=run_id, write=True))
-    contact_sheet(
-        argparse.Namespace(
-            video=str(final_path),
-            out=str(sheet_path),
-            times=None,
-            count=9,
-            columns=3,
-            thumb_width=360,
-            label="Gold screen teardown",
-        )
-    )
-
     conn = db()
-    update_run(conn, run_id, status="AWAITING_CODEX_APPROVAL", video_path=str(final_path), audio_path=str(audio_path))
+    update_run(conn, run_id, status="RENDERED", video_path=str(final_path), audio_path=str(audio_path))
     log_event(
         conn,
         run_id,
-        "screen_teardown_built",
+        "controlled_screen_rendered",
         {
             "finalVideo": str(final_path),
             "audio": str(audio_path),
             "visual": str(visual_path),
-            "contactSheet": str(sheet_path),
+            "captureReport": str(capture_report_path),
+            "beatMap": str(beat_map),
+            "evidenceLedger": str(evidence_ledger),
             "audioDurationSec": audio_duration,
             "renderDurationSec": render_duration,
         },
     )
     conn.commit()
-    emit(
-        {
-            "status": "AWAITING_CODEX_APPROVAL",
-            "runId": run_id,
-            "video": str(final_path),
-            "audio": str(audio_path),
-            "contactSheet": str(sheet_path),
-            "audioDurationSec": round(audio_duration, 3),
-            "renderDurationSec": round(render_duration, 3),
-        }
+    qa(argparse.Namespace(video=str(final_path), run_id=run_id, write=True))
+    final_review_packet_command(
+        argparse.Namespace(
+            run_id=run_id,
+            work_dir=str(work_dir),
+            video=str(final_path),
+            script=str(voice_text),
+            beat_map=str(beat_map),
+            evidence_ledger=str(evidence_ledger),
+            host=args.host,
+            port=args.port,
+        )
     )
 
 
@@ -4569,7 +5041,7 @@ def qa(args: argparse.Namespace) -> None:
     if args.run_id:
         conn = db()
         get_run(conn, args.run_id)
-        status = "AWAITING_CODEX_APPROVAL" if report["passed"] else "FAILED"
+        status = "QA_PASSED" if report["passed"] else "FAILED"
         update_run(conn, args.run_id, status=status, video_path=str(video), qa_json=json.dumps(report))
         log_event(conn, args.run_id, "qa", report)
         conn.commit()
@@ -4578,6 +5050,56 @@ def qa(args: argparse.Namespace) -> None:
 
     emit(report)
     if blockers:
+        raise SystemExit(1)
+
+
+def final_review_packet_command(args: argparse.Namespace) -> None:
+    work_dir = Path(args.work_dir).resolve() if args.work_dir else run_folder(args.run_id)
+    video = Path(args.video).resolve()
+    script = Path(args.script).resolve()
+    beat_map = Path(args.beat_map).resolve() if args.beat_map else None
+    evidence_ledger = Path(args.evidence_ledger).resolve() if args.evidence_ledger else None
+    try:
+        from marketing_agent.final_review_packet import build_review_packet
+    except ModuleNotFoundError:
+        from final_review_packet import build_review_packet
+    result = build_review_packet(
+        work_dir=work_dir,
+        video=video,
+        script=script,
+        run_id=args.run_id,
+        beat_map=beat_map,
+        evidence_ledger=evidence_ledger,
+    )
+    gate = result["gate"]
+    conn = db()
+    row = get_run(conn, args.run_id)
+    if row["status"] != "QA_PASSED" and gate.get("passed"):
+        gate["blockers"] = [*gate.get("blockers", []), f"run status is {row['status']}, expected QA_PASSED"]
+        gate["passed"] = False
+    status = "AWAITING_CODEX_APPROVAL" if gate.get("passed") else "FAILED"
+    metadata = json.loads(row["metadata_json"] or "{}")
+    metadata["finalReviewManifestPath"] = str(result["manifestPath"])
+    metadata["finalReviewGatePath"] = str(result["gatePath"])
+    metadata["finalVideoSha256"] = result["manifest"].get("hashes", {}).get("videoSha256")
+    update_run(conn, args.run_id, status=status, video_path=str(video), metadata_json=json.dumps(metadata))
+    log_event(conn, args.run_id, "final_review_packet", {"status": status, **gate})
+    conn.commit()
+    mobile_url = f"http://{args.host}:{args.port}/{video.name}" if args.host else None
+    emit(
+        {
+            "runId": args.run_id,
+            "status": status,
+            "video": str(video),
+            "mobileUrl": mobile_url,
+            "manifest": str(result["manifestPath"]),
+            "contactSheet": result["manifest"].get("artifacts", {}).get("contactSheet", {}).get("path"),
+            "humanWatchRequired": True,
+            "approvalPhrase": f"APPROVE POST {args.run_id}",
+            "gate": gate,
+        }
+    )
+    if not gate.get("passed"):
         raise SystemExit(1)
 
 
@@ -4617,6 +5139,17 @@ def approve(args: argparse.Namespace) -> None:
     row = get_run(conn, args.run_id)
     if row["status"] != "AWAITING_CODEX_APPROVAL":
         raise SystemExit(f"Run must be AWAITING_CODEX_APPROVAL before approval. Current status: {row['status']}")
+    work_dir = run_folder(args.run_id)
+    final_gate = read_quality_gate(work_dir, "final_review_packet")
+    manifest = read_json_path(work_dir / "review_manifest.json", {})
+    if not final_gate or not final_gate.get("passed"):
+        raise SystemExit("Final review packet is missing or failed; approval is blocked.")
+    video_path = Path(str(row["video_path"] or ""))
+    if not video_path.exists():
+        raise SystemExit("Reviewed final video no longer exists.")
+    current_hash = hashlib.sha256(video_path.read_bytes()).hexdigest()
+    if manifest.get("hashes", {}).get("videoSha256") != current_hash:
+        raise SystemExit("Final video changed after the review packet was generated.")
     update_run(conn, args.run_id, status="APPROVED")
     log_event(conn, args.run_id, "approved", {"reviewer": "codex-chat", "phrase": args.phrase})
     conn.commit()
@@ -4764,7 +5297,13 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--topic", required=True)
     init.add_argument("--title")
     init.add_argument("--landing-url")
+    init.add_argument("--research-packet", help="Passing daily_research.json to bind to this run")
     init.set_defaults(func=create_run)
+
+    bind_research = sub.add_parser("bind-research", help="Bind a passing, current daily research packet to a queued run")
+    bind_research.add_argument("--run-id", required=True)
+    bind_research.add_argument("--packet", required=True)
+    bind_research.set_defaults(func=bind_daily_research)
 
     resolve = sub.add_parser("resolve-abby", help="Resolve the Abby ElevenLabs voice ID")
     resolve.add_argument("--strict", action="store_true")
@@ -4781,6 +5320,8 @@ def build_parser() -> argparse.ArgumentParser:
     voice.add_argument("--similarity", type=float, default=0.82)
     voice.add_argument("--style", type=float, default=0.32)
     voice.add_argument("--speed", type=float, help="ElevenLabs speech speed multiplier when supported by the API")
+    voice.add_argument("--take-count", type=int, default=3, help="Generate and score 1-5 creator-style takes before mastering the winner")
+    voice.add_argument("--target-wpm", type=float, default=166.0, help="Target conversational pace used for automatic take selection")
     voice.add_argument(
         "--allow-unapproved-creative",
         action="store_true",
@@ -4833,7 +5374,7 @@ def build_parser() -> argparse.ArgumentParser:
     swipe.add_argument("--urls-file")
     swipe.add_argument("--work-dir", help="Run folder to receive quality_gates/research_swipe.json and research_swipe assets")
     swipe.add_argument("--run-id")
-    swipe.add_argument("--min-sources", type=int, default=5)
+    swipe.add_argument("--min-sources", type=int, default=20)
     swipe.set_defaults(func=research_swipe)
 
     no_credit_gate = sub.add_parser("creative-gate", help="Validate research/script/storyboard files before any paid voice or video generation")
@@ -4879,8 +5420,22 @@ def build_parser() -> argparse.ArgumentParser:
     screen_gate.add_argument("--run-id")
     screen_gate.add_argument("--input")
     screen_gate.add_argument("--contact-sheet")
+    screen_gate.add_argument("--renderer-report")
     screen_gate.add_argument("--visual-reviewed", action="store_true")
     screen_gate.set_defaults(func=screen_visual_qa)
+
+    voice_gate = sub.add_parser("voice-qa", help="Validate the Abby multi-take voice lab output before full rendering")
+    voice_gate.add_argument("--work-dir", required=True)
+    voice_gate.add_argument("--run-id")
+    voice_gate.add_argument("--audio", help="Voice test audio path. Defaults to abby_voice_test_10s.mp3 in the run folder.")
+    voice_gate.add_argument("--script", help="Voice test script path. Defaults to voice_test_abby_10s.txt in the run folder.")
+    voice_gate.add_argument("--human-reviewed", action="store_true")
+    voice_gate.add_argument("--pronunciation-ok", action="store_true")
+    voice_gate.add_argument("--natural-read", action="store_true")
+    voice_gate.add_argument("--pacing-ok", action="store_true")
+    voice_gate.add_argument("--cta-ok", action="store_true")
+    voice_gate.add_argument("--max-duration", type=float, default=15.0)
+    voice_gate.set_defaults(func=voice_qa)
 
     screen_plan = sub.add_parser("screen-build-plan", help="No-credit post-approval plan for the gold screen teardown")
     screen_plan.add_argument("--run-id", required=True)
@@ -5002,7 +5557,7 @@ def build_parser() -> argparse.ArgumentParser:
     live_edit.add_argument("--run-id")
     live_edit.set_defaults(func=generate_live_edit_overlays)
 
-    build_screen = sub.add_parser("build-screen-teardown", help="Post-approval build for the gold screen-recording teardown")
+    build_screen = sub.add_parser("build-screen-teardown", help="Build the controlled browser editor and stop at exact-video Codex approval")
     build_screen.add_argument("--run-id", required=True)
     build_screen.add_argument("--work-dir")
     build_screen.add_argument("--voice-test-only", action="store_true")
@@ -5011,7 +5566,11 @@ def build_parser() -> argparse.ArgumentParser:
     build_screen.add_argument("--similarity", type=float, default=0.84)
     build_screen.add_argument("--style", type=float, default=0.65)
     build_screen.add_argument("--speed", type=float, default=1.18)
-    build_screen.add_argument("--duration", type=float)
+    build_screen.add_argument("--take-count", type=int, default=3)
+    build_screen.add_argument("--target-wpm", type=float, default=166.0)
+    build_screen.add_argument("--capture-fps", type=int, default=15)
+    build_screen.add_argument("--host", default="192.168.2.10")
+    build_screen.add_argument("--port", type=int, default=8796)
     build_screen.add_argument("--audio-name")
     build_screen.add_argument("--visual-name")
     build_screen.add_argument("--final-name")
@@ -5075,6 +5634,17 @@ def build_parser() -> argparse.ArgumentParser:
     quality.add_argument("--run-id")
     quality.add_argument("--write", action="store_true")
     quality.set_defaults(func=qa)
+
+    final_packet = sub.add_parser("final-review", help="Generate the frozen final review packet and enter Codex approval")
+    final_packet.add_argument("--run-id", required=True)
+    final_packet.add_argument("--work-dir")
+    final_packet.add_argument("--video", required=True)
+    final_packet.add_argument("--script", required=True)
+    final_packet.add_argument("--beat-map", required=True)
+    final_packet.add_argument("--evidence-ledger", required=True)
+    final_packet.add_argument("--host")
+    final_packet.add_argument("--port", type=int, default=8796)
+    final_packet.set_defaults(func=final_review_packet_command)
 
     review_cmd = sub.add_parser("review", help="Print Codex approval packet")
     review_cmd.add_argument("--run-id", required=True)

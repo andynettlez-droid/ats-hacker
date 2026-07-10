@@ -21,10 +21,72 @@ Until a real-device composite clearly beats it, the production default is the sc
 
 Physical tablet/paper/Veo plates are experimental. They must not replace the screen-only spine unless they beat it on readability, authenticity, and edit clarity.
 
+### Active Gold Contract - 2026-07-09
+
+The production path is now:
+
+1. `youtube_research_evidence.py` plus reviewed browser evidence.
+2. `assemble_daily_research_input.py` and `daily_research.py`; every hard gate must pass.
+3. `materialize_run_research.py` writes the traceable swipe file and exemplar matrix.
+4. `creative_council.py` evaluates exactly five scripts and selects one exact option.
+5. `voice_lab.py` generates and scores Abby takes, normalizes loudness, and preserves corrected timestamps.
+6. `controlled_screen_sync.py` derives visual beats from spoken cues and writes the evidence ledger.
+7. `controlled_resume_capture.mjs` renders the readable same-slot edit.
+8. `final_review_packet.py` freezes hashes, literal opening frames, beat timing, evidence agreement, and audio QA.
+9. Only the unchanged final video may receive `APPROVE POST RUN_ID`.
+
+Do not ask for manual approval at research, script, voice, or storyboard stages. Failed intermediate gates trigger internal revision. Codex approval is reserved for the exact final video.
+
+## Current Experimental Lane: Physical Desk Story
+
+Added after reviewing the Gohar Khan resume tips Short and adjacent high-view resume examples on 2026-07-09.
+
+The next experimental style should copy the viral mechanic, not the exact content:
+
+- use a real or clean generated desk plate,
+- make the resume a tactile paper prop or clean editor surface,
+- show one obvious mistake in the first two seconds,
+- use large simple labels only for the active joke or critique,
+- create a visible action every 2-3 seconds,
+- keep the product out until the CTA.
+
+This is a story/prop lane, not a fake tablet-edit lane. Do not use fake hands, fake stylus layers, or generated readable text. If hands appear, they must come from real filmed footage or a plate that is consistent for the full shot.
+
+Recommended sequence:
+
+1. Resume or job application lands on desk.
+2. One weak line is boxed or stamped.
+3. A short joke/critique label appears: `too vague`, `no tool`, `no proof`, or `lost in the pile`.
+4. The proof already on the resume appears as a small card or callout.
+5. The weak line is covered, crossed, torn, or replaced.
+6. The rebuilt line appears as the hero.
+7. Optional receipt appears after the proof: tool, volume, result.
+8. CTA appears for the service.
+
+After Effects is allowed in this lane only for:
+
+- paper slide and landing motion,
+- stamp hits,
+- cover-strip/delete animations,
+- green rewrite reveal,
+- small proof cards,
+- subtle camera shake,
+- final cover frame.
+
+Hard reject the experimental lane if it becomes another SaaS UI demo, if resume text floats above the paper/screen, if labels dominate the resume, if the joke is not visually clear, or if the CTA appears before the human critique is earned.
+
+Reference research note:
+
+- `marketing/research/after_effects_viral_style_20260708/viral_style_research_notes.md`
+
 ## Codex-Accessible Upgrade Stack
 
 Use these tools deliberately:
 
+- After Effects: optional finishing pass for approved screen teardowns; use it for restrained highlight motion, delete/rewrite emphasis, proof callouts, and CTA polish only after all normal gates pass.
+- Media Encoder: final platform encodes and batch presets after the AE or baseline video already passes creative review.
+- Photoshop: first-frame, thumbnail, and reusable highlight/texture assets; not the source of readable resume content.
+- Premiere Pro: manual/long-form finishing only; it is not the automated daily-short engine.
 - Browser/Chrome control: capture real product flows, inspect mobile review links, and verify the viewer sees the edit clearly.
 - HyperFrames: prototype pacing, captions, title-card movement, and lower-thirds without spending Veo/Flow credits.
 - Canva: create thumbnails, cover frames, and platform-specific variants after a video passes creative QA.
@@ -33,6 +95,26 @@ Use these tools deliberately:
 - ffmpeg/ffprobe: final assembly, loudness checks, specs, contact sheets, and duration verification.
 
 Do not treat access to more tools as permission to add complexity. If a tool makes the video feel less human, reject it.
+
+### Optional Adobe Finishing Pass
+
+Adobe does not replace the Signal pipeline. It only upgrades polish after the short is already good.
+
+Run this pass only after the selected run has passed:
+
+- `creative_gate`,
+- `script_qa`,
+- `voice_qa`,
+- `screen_visual_qa` for the screen-only baseline, or `creative_qa` + `plate_qa` + `surface_fit_qa` for physical tablet/paper/monitor tests.
+
+Controlled-screen Adobe commands:
+
+```powershell
+py -3 marketing_agent/adobe_finish_bridge.py readiness --source marketing/growth_runs/RUN_ID/final.mp4 --beat-map marketing/growth_runs/RUN_ID/beat_visual_map.json
+py -3 marketing_agent/adobe_finish_bridge.py prepare --source marketing/growth_runs/RUN_ID/final.mp4 --beat-map marketing/growth_runs/RUN_ID/beat_visual_map.json --manifest marketing/growth_runs/RUN_ID/adobe_finish_manifest.json --adobe-video-out marketing/growth_runs/RUN_ID/adobe_finish_video_only.mov --final-out marketing/growth_runs/RUN_ID/final_adobe.mp4 --run-id RUN_ID
+```
+
+Hard reject the Adobe pass if it makes the resume less readable, adds dominant captions, feels like a product demo, adds fake hands/stylus, changes the approved script, or creates a score/CTA that was not already earned by the visible edit.
 
 ## Required Gate Order
 
@@ -115,6 +197,7 @@ py -3 marketing_agent/signal_growth_pipeline.py creative-qa --work-dir marketing
 py -3 marketing_agent/signal_growth_pipeline.py plate-qa --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID --visual-reviewed
 py -3 marketing_agent/signal_growth_pipeline.py surface-fit-preview --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID
 py -3 marketing_agent/signal_growth_pipeline.py surface-fit-qa --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID --visual-reviewed
+py -3 marketing_agent/signal_growth_pipeline.py voice-qa --work-dir marketing/growth_runs/RUN_ID --run-id RUN_ID --human-reviewed --pronunciation-ok --natural-read --pacing-ok --cta-ok
 py -3 marketing_agent/signal_growth_pipeline.py build-surface-teardown --run-id RUN_ID --visual-reviewed
 py -3 marketing_agent/signal_growth_pipeline.py review --run-id RUN_ID --host 192.168.2.10 --port 8797
 ```
@@ -145,7 +228,7 @@ py -3 marketing_agent/signal_growth_pipeline.py screen-build-plan --run-id RUN_I
 
 This writes `post_approval_screen_build_plan.json` and confirms the voice-test, full render, final QA, contact-sheet, and review commands are ready once creative approval is recorded.
 
-Final QA with `--run-id` will fail if any of the first four reports are missing or failed.
+Final QA with `--run-id` will fail if any required report for the selected format is missing or failed. Screen-only teardowns require `creative_gate`, `script_qa`, `screen_visual_qa`, and `voice_qa`. Physical tablet, paper, monitor, or Veo/Flow plate teardowns require `creative_gate`, `script_qa`, `creative_qa`, `plate_qa`, `surface_fit_qa`, and `voice_qa`.
 
 For daily live-edit shorts, set the overlay frame rate before generating overlays:
 
@@ -219,6 +302,28 @@ Common blockers:
 - Score without proof.
 - "Beat the bots" or "ATS auto-rejected you" language.
 - Product-demo narration instead of human reviewer narration.
+
+### voice-qa
+
+Creates:
+
+- `quality_gates/voice_qa.json`
+
+Pass condition:
+
+- A short Abby voice test exists in the run folder.
+- The exact test audio has been listened to before the full render.
+- "Resume" / "resume" pronunciation sounds natural, or the script has been rewritten around the issue.
+- The read sounds like a human reviewer: conversational, lightly amused, and not corporate.
+- Pacing is fast enough for an 18-32 second short.
+- CTA delivery sounds natural instead of like product copy.
+
+Common blockers:
+
+- Abby says "resum" or otherwise mispronounces the core word.
+- The read is slow, monotone, over-enunciated, or too polished.
+- The CTA feels bolted on.
+- The gate is marked without listening to the test audio.
 
 ### creative-qa
 
@@ -388,3 +493,24 @@ No public posting until:
 2. Final QA passes with `--run-id`.
 3. Codex provides the review link.
 4. Andrew explicitly approves the exact rendered video.
+
+## Physical Prop Resume Teardown Lane
+
+Use this for Gohar-inspired desk/prop concepts such as paper roast, stamped resume, crumple/toss, rebuilt resume, and score receipt.
+
+Hard pass conditions:
+
+- The resume must look like a real professional one-page resume, not a three-line placeholder.
+- The candidate, target role, weak line, proof, and rewrite must all be readable in the contact sheet.
+- The weak mistake must be believable for a professional resume.
+- The proof must exist elsewhere on the visible resume before the rewrite is revealed.
+- The physical gag may reject the weak line or old version, but must not imply the person is bad or hopeless.
+- Use deterministic text overlays only. No generated readable text.
+- If using a physical desk/tablet/monitor plate, corner-pin or mask the resume into the surface; it cannot float above the paper or screen.
+- After Effects finishing is recommended for final polish: paper shadow, stamp bounce, crumple/throw physics, subtle camera shake, paper texture, and motion blur.
+- Abby voice should be generated only after script length is checked. Target 24-30 seconds before TTS; do not rely on heavy speed-up to fix a bloated script.
+
+Current baseline run:
+
+- `marketing/growth_runs/20260709-physical-desk-prop-marcus-v3-production`
+- This is approved as a direction baseline only, not a universal standard. Next upgrade should replace the deterministic desk with a real overhead plate or After Effects-finished physical composite.

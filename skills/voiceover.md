@@ -41,13 +41,14 @@ Store:
 
 Production method:
 
-- Generate three deterministic takes with the current `TAKE_PRESETS` in `voice_lab.py`.
-- Target 150-160 WPM for the human reviewer lane; reject anything below 140 or above 190.
-- Select on pacing and pause structure, then apply at most a 1.22x transparent `atempo` correction.
-- Retimestamp every aligned word by the exact same factor.
+- Use Sarah Casual (`uG1JFy6xppqckhHCs2KG`) with `eleven_v3` as the current screen-review baseline. Her tested native delivery lands near 142-150 WPM without waveform speed-up.
+- Keep Abby available for comparison, but do not make the current clone the default. Its tested native cadence is roughly 113-123 WPM and forcing it faster made the read sound robotic.
+- Generate three takes with the current `TAKE_PRESETS` in `voice_lab.py`.
+- Target 135-155 WPM for the human reviewer lane; reject anything below 120 or above 175.
+- Select on pacing and pause structure. Do not time-compress the waveform to hit a numeric WPM target; shorten the script instead.
 - Trim only the dead tail and normalize to -16 LUFS / -1.5 dBTP.
 
-The current presets vary stability, style, similarity, and API speed up to 1.20. Do not reduce this to one corporate-sounding take.
+The current presets vary stability, style, similarity, and API speed only from 1.00 to 1.07. Do not reduce this to one corporate-sounding take or restore the old 1.20 API speed plus `atempo` stack.
 
 Example API settings for one candidate take:
 

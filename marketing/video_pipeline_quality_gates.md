@@ -17,7 +17,7 @@ Until a real-device composite clearly beats it, the production default is the sc
 - search terms and proof appear before the rewrite,
 - rewrite happens in the same resume slot,
 - score/receipt appears only after visible evidence,
-- Abby voice is used only after a short voice test passes.
+- the selected narrator is used only after a short native-pace voice test passes.
 
 Physical tablet/paper/Veo plates are experimental. They must not replace the screen-only spine unless they beat it on readability, authenticity, and edit clarity.
 
@@ -29,7 +29,7 @@ The production path is now:
 2. `assemble_daily_research_input.py` and `daily_research.py`; every hard gate must pass.
 3. `materialize_run_research.py` writes the traceable swipe file and exemplar matrix.
 4. `creative_council.py` evaluates exactly five scripts and selects one exact option.
-5. `voice_lab.py` generates and scores Abby takes, normalizes loudness, and preserves corrected timestamps.
+5. `voice_lab.py` generates and scores narrator takes, normalizes loudness, and preserves timestamps without forcing waveform speed-up.
 6. `controlled_screen_sync.py` derives visual beats from spoken cues and writes the evidence ledger.
 7. `controlled_resume_capture.mjs` renders the readable same-slot edit.
 8. `final_review_packet.py` freezes hashes, literal opening frames, beat timing, evidence agreement, and audio QA.
@@ -167,23 +167,26 @@ The new state path is:
 
 `RESEARCHED -> SCRIPT_OPTIONS_WRITTEN -> HUMAN_READ_PASSED -> STORYBOARD_SELECTED -> CODEX_CREATIVE_APPROVAL -> VOICE_TEST_ALLOWED -> VIDEO_RENDER_ALLOWED`
 
-If this gate fails, do not synthesize Abby voice, generate video, render final edits, or post.
+If this gate fails, do not synthesize the full narration, generate video, render final edits, or post.
 
 ### Voice Quality Gate
 
-Before a full render, generate and review a short Abby test for the exact script voice. Fail the run if:
+Before a full render, generate and review a short test for the exact script and narrator. Sarah Casual with `eleven_v3` is the current baseline; the existing Abby clone is an alternate until it is retrained. Fail the run if:
 
 - "resume" is pronounced unnaturally,
 - the read sounds corporate, robotic, or over-enunciated,
 - the pacing drags past 32 seconds for a short,
 - the CTA sounds like product copy instead of a creator close.
+- the measured pace falls outside 120-175 WPM, or outside the preferred 135-155 WPM approval band.
+- any post-generation time-compression is used to force the voice into range.
 
 Fix order:
 
-1. Rewrite the sentence so Abby reads it naturally.
-2. Use accented `résumé` in voice text if needed.
-3. Split long clauses into shorter spoken lines.
-4. Regenerate the voice test before rendering the full video.
+1. Shorten the script while preserving the full reviewer logic.
+2. Split long clauses into shorter spoken lines.
+3. Use accented `résumé` in voice text if needed.
+4. Try the approved Sarah v3 baseline or another audited conversational voice.
+5. Regenerate the voice test before rendering the full video.
 
 Mia `20260708-1058-5fa73ec3` is the current caution case: visual structure passed, but voiceover quality did not, so it must not post until regenerated.
 

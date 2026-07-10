@@ -1,6 +1,6 @@
 import unittest
 
-from marketing_agent.voice_lab import normalize_alignment, prepare_voice_text, retime_words, score_take
+from marketing_agent.voice_lab import generate_voice_lab, normalize_alignment, prepare_voice_text, retime_words, score_take
 
 
 class VoiceLabTests(unittest.TestCase):
@@ -41,6 +41,10 @@ class VoiceLabTests(unittest.TestCase):
         retimed = retime_words(words, 1.2)
         self.assertEqual(retimed[1]["startSec"], 0.667)
         self.assertEqual(retimed[1]["endSec"], 1.0)
+
+    def test_voice_lab_defaults_do_not_force_time_compression(self):
+        self.assertEqual(generate_voice_lab.__kwdefaults__["max_post_speed"], 1.0)
+        self.assertEqual(generate_voice_lab.__kwdefaults__["target_wpm"], 145.0)
 
 
 if __name__ == "__main__":

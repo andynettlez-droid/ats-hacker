@@ -917,7 +917,7 @@ function buildEditorHtml(config) {
     .map((experience, index) => renderExperience(experience, index, config, proofKeys))
     .join("\n");
   const searchTerms = config.review.searchTerms
-    .map((term) => `<div class="term-row">${escapeHtml(term)}</div>`)
+    .map((term, index) => `<div class="term-row" data-term-index="${index}">${escapeHtml(term)}</div>`)
     .join("");
   const proofRows = config.edit.proofs
     .map((proof, index) => `<div class="evidence-row">
@@ -1293,6 +1293,16 @@ function buildEditorHtml(config) {
       font-size: 13px;
       line-height: 1.25;
     }
+    .opening-quote {
+      max-width: 820px;
+      font-size: 23px;
+      line-height: 1.18;
+    }
+    .opening-judgment {
+      color: #8a4b08;
+      font-size: 15px;
+      font-weight: 800;
+    }
     .term-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1308,6 +1318,13 @@ function buildEditorHtml(config) {
       background: #f4f8fb;
       font-size: 14px;
       font-weight: 700;
+      opacity: 0.38;
+    }
+    .term-row.is-active {
+      color: #143f5e;
+      border-color: #5b8db0;
+      background: #eaf4fb;
+      opacity: 1;
     }
     .evidence-grid {
       display: grid;
@@ -1463,9 +1480,9 @@ function buildEditorHtml(config) {
 
       <aside class="review-surface">
         <section class="review-panel" id="searchPanel">
-          <div class="panel-kicker">RECRUITER CHECK</div>
-          <div class="panel-title">${escapeHtml(config.candidate.targetRole)}</div>
-          <div class="panel-note">Concrete terms the resume needs to support.</div>
+          <div class="panel-kicker">LINE I'M STOPPING ON</div>
+          <div class="panel-title opening-quote">&ldquo;${escapeHtml(config.edit.weakLine)}&rdquo;</div>
+          <div class="panel-note opening-judgment">${escapeHtml(config.review.judgment)}</div>
           <div class="term-grid">${searchTerms}</div>
         </section>
         <section class="review-panel" id="proofPanel">
@@ -1509,6 +1526,7 @@ function buildEditorHtml(config) {
       receipt: document.getElementById("receiptPanel"),
     };
     const proofLines = Array.from(document.querySelectorAll(".proof-line"));
+    const termRows = Array.from(document.querySelectorAll(".term-row"));
     const clamp = (value, minimum, maximum) => Math.max(minimum, Math.min(maximum, value));
     const smooth = (value) => {
       const x = clamp(value, 0, 1);
@@ -1565,6 +1583,13 @@ function buildEditorHtml(config) {
         lineFlag.textContent = "";
       }
       lineFlag.style.display = t >= timeline.weak ? "block" : "none";
+
+      const searchWindow = Math.max(3.2, Math.min(6, timeline.proof - timeline.weak));
+      const activeTerms = Math.min(
+        termRows.length,
+        Math.max(1, Math.floor(progress(t, timeline.weak, timeline.weak + searchWindow) * termRows.length) + 1),
+      );
+      termRows.forEach((row, index) => row.classList.toggle("is-active", index < activeTerms));
 
       if (t < timeline.proof) {
         showPanel("search");

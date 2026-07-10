@@ -98,6 +98,32 @@ class ControlledScreenSyncTests(unittest.TestCase):
         )
         self.assertEqual(found, (1.4, 1.7))
 
+    def test_sync_accepts_natural_reviewer_action_cue(self) -> None:
+        natural_script = SCRIPT.replace(
+            "So delete the soft line and write:",
+            "I'd write:",
+        )
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            config_path = root / "controlled_resume.json"
+            alignment_path = root / "voice.mp3.alignment.json"
+            script_path = root / "voice_full_script.txt"
+            config_path.write_text(json.dumps(config()), encoding="utf-8")
+            alignment_path.write_text(json.dumps(fake_alignment(natural_script)), encoding="utf-8")
+            script_path.write_text(natural_script, encoding="utf-8")
+
+            result = synchronize(
+                config_path=config_path,
+                alignment_path=alignment_path,
+                script_path=script_path,
+                audio_duration=20.0,
+                output_config=root / "out.json",
+                beat_map_path=root / "beats.json",
+                evidence_path=root / "evidence.json",
+            )
+
+            self.assertGreater(result["timeline"]["type"], result["timeline"]["delete"])
+
     def test_sync_writes_timed_config_beat_map_and_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as raw:
             root = Path(raw)

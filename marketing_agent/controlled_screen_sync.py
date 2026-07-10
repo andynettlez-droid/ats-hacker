@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 
-TOKEN_RE = re.compile(r"[a-z0-9]+(?:[.+#%/-][a-z0-9+%.-]+)*", re.IGNORECASE)
+TOKEN_RE = re.compile(r"[a-z0-9]+(?:['.+#%/-][a-z0-9+%.'-]+)*", re.IGNORECASE)
 METRIC_RE = re.compile(r"(?<![\w.])(?:\$?\d[\d,.]*\+?%?|\d+x)(?![\w.])", re.IGNORECASE)
 
 
@@ -127,10 +127,12 @@ def _clamp_timeline(values: dict[str, float], duration: float) -> dict[str, floa
     values["weak"] = 0.0
     values["proof"] = max(2.0, values["proof"])
     values["select"] = max(values["proof"] + 1.0, values["select"])
-    values["delete"] = max(values["select"] + 0.4, values["delete"])
-    values["type"] = max(values["delete"] + 0.8, values["type"])
-    values["receipt"] = max(values["type"] + 1.5, values["receipt"])
-    values["cta"] = max(values["receipt"] + 0.5, values["cta"])
+    # Keep a small safety margin above the renderer's 0.4s minimum after
+    # three-decimal serialization; exact 0.400 differences can round below it.
+    values["delete"] = max(values["select"] + 0.42, values["delete"])
+    values["type"] = max(values["delete"] + 0.82, values["type"])
+    values["receipt"] = max(values["type"] + 1.52, values["receipt"])
+    values["cta"] = max(values["receipt"] + 0.52, values["cta"])
     if values["cta"] >= duration - 0.5:
         raise ValueError("voice read leaves less than 0.5 seconds for the CTA; revise the script or voice pacing")
     return {key: round(value, 3) for key, value in values.items()}
@@ -149,7 +151,19 @@ def derive_timeline(
 
     weak_cue = find_phrase(words, [weak_line, "resume says", "line says"])
     proof_cue = find_phrase(words, ["lower down", "proof is already there", "proof is there", "the proof"])
-    action_cue = find_phrase(words, ["so delete", "delete the", "replace it", "so replace", "write this"])
+    action_cue = find_phrase(
+        words,
+        [
+            "so delete",
+            "delete the",
+            "replace it",
+            "so replace",
+            "write this",
+            "i'd write",
+            "i would write",
+            "here's what i'd write",
+        ],
+    )
     rewrite_tokens = tokens(rewrite)
     rewrite_lead = rewrite_tokens[0] if rewrite_tokens else ""
     rewrite_cue = find_phrase(

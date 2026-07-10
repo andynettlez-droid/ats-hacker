@@ -15,11 +15,11 @@ import requests
 
 
 TAKE_PRESETS = (
-    {"stability": 0.34, "similarity_boost": 0.82, "style": 0.34, "speed": 1.16},
-    {"stability": 0.40, "similarity_boost": 0.84, "style": 0.28, "speed": 1.20},
-    {"stability": 0.46, "similarity_boost": 0.86, "style": 0.22, "speed": 1.12},
-    {"stability": 0.37, "similarity_boost": 0.80, "style": 0.31, "speed": 1.18},
-    {"stability": 0.43, "similarity_boost": 0.85, "style": 0.25, "speed": 1.14},
+    {"stability": 0.34, "similarity_boost": 0.82, "style": 0.30, "speed": 1.00},
+    {"stability": 0.40, "similarity_boost": 0.84, "style": 0.24, "speed": 1.04},
+    {"stability": 0.46, "similarity_boost": 0.86, "style": 0.18, "speed": 1.07},
+    {"stability": 0.37, "similarity_boost": 0.80, "style": 0.28, "speed": 1.02},
+    {"stability": 0.43, "similarity_boost": 0.85, "style": 0.20, "speed": 1.05},
 )
 
 
@@ -76,7 +76,7 @@ def normalize_alignment(payload: dict[str, Any]) -> list[dict[str, Any]]:
     return words
 
 
-def score_take(words: list[dict[str, Any]], target_wpm: float = 166.0) -> TakeScore:
+def score_take(words: list[dict[str, Any]], target_wpm: float = 145.0) -> TakeScore:
     if not words:
         return TakeScore(0.0, 0.0, 0.0, 99, 0)
     duration = max(float(words[-1]["endSec"]), 0.001)
@@ -89,7 +89,7 @@ def score_take(words: list[dict[str, Any]], target_wpm: float = 166.0) -> TakeSc
     long_pause_count = sum(1 for pause in pauses if pause > 0.85)
     very_short_count = sum(1 for pause in pauses if 0 < pause < 0.015)
     pace_penalty = abs(wpm - target_wpm) * 0.85
-    range_penalty = 35 if wpm < 140 or wpm > 190 else 0
+    range_penalty = 35 if wpm < 120 or wpm > 175 else 0
     score = 120 - pace_penalty - long_pause_count * 18 - very_short_count * 0.5 - range_penalty
     return TakeScore(round(score, 3), round(duration, 3), round(wpm, 2), long_pause_count, word_count)
 
@@ -186,7 +186,8 @@ def generate_voice_lab(
     voice_id: str,
     model_id: str = "eleven_multilingual_v2",
     take_count: int = 3,
-    target_wpm: float = 166.0,
+    target_wpm: float = 145.0,
+    max_post_speed: float = 1.0,
 ) -> dict[str, Any]:
     output = output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -233,7 +234,9 @@ def generate_voice_lab(
     raw_alignment = json.loads(Path(selected["alignment"]).read_text(encoding="utf-8"))
     raw_words = raw_alignment.get("words") or []
     raw_wpm = float(selected.get("wordsPerMinute") or 0)
-    post_speed_factor = min(max(target_wpm / raw_wpm, 1.0), 1.22) if raw_wpm > 0 else 1.0
+    if max_post_speed < 1.0 or max_post_speed > 1.08:
+        raise ValueError("max_post_speed must be between 1.0 and 1.08")
+    post_speed_factor = min(max(target_wpm / raw_wpm, 1.0), max_post_speed) if raw_wpm > 0 else 1.0
     mastered_words = retime_words(raw_words, post_speed_factor)
     mastered_score = score_take(mastered_words, target_wpm)
     mastering = master_audio(
@@ -270,6 +273,7 @@ def generate_voice_lab(
         "voiceText": voice_text,
         "takeCount": len(takes),
         "targetWordsPerMinute": target_wpm,
+        "maxPostSpeedFactor": max_post_speed,
         "selectedTake": selected["take"],
         "selectedScore": selected["score"],
         "postSpeedFactor": round(post_speed_factor, 6),

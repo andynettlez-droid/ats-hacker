@@ -14,6 +14,14 @@ Reviewed: 2026-07-09
 - After Effects 2026 and aerender are detected. `adobe_finish_bridge.py` prepares a fail-closed optional handoff, but unattended `.aep` creation remains disabled after local ExtendScript hangs. Adobe cannot block the daily base pipeline.
 - Gold test run `20260709-1922-4ff62c61` is 1080x1920, H.264/AAC, 30 fps, 27.5 seconds, passes deterministic QA, and is awaiting exact-video Codex review. It is not posted.
 
+Voice correction after review:
+
+- The Abby master on the first gold cut was rejected as robotic. It stacked API speed `1.12` with a second `1.216x` waveform speed-up.
+- Waveform time-compression is now disabled by default. Script length, punctuation, and voice choice must carry pacing.
+- Sarah Casual with `eleven_v3` is the new screen-review baseline. The revised Leah cut lands at 142 WPM naturally and runs 27.3 seconds.
+- The opening visual now shows the exact weak line and reviewer judgment at readable size while recruiter terms reveal sequentially. It adds retention beats without zoom, fake hands, or caption slabs.
+- The screen-only lane is ready for a controlled social test after final human review, but real overhead footage with real hands remains the higher-upside authenticity experiment.
+
 Immediate next actions:
 
 1. Review the frozen Leah cybersecurity short as a viewer; revise only if the actual watch reveals a human-flow or readability problem.

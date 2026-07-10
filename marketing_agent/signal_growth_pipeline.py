@@ -41,6 +41,7 @@ SKILLS_DIR = ROOT / "skills"
 ASSEMBLE_PS1 = SKILLS_DIR / "assemble.ps1"
 
 ABBY_VOICE_ID = "lkFHOvhI41u53xDdGZoZ"
+SARAH_CASUAL_VOICE_ID = "uG1JFy6xppqckhHCs2KG"
 DEFAULT_VEO_MODEL = "veo-3.1-lite-generate-preview"
 
 OVERLAY_CANVAS = (1080, 1920)
@@ -1415,7 +1416,7 @@ def generate_voice(args: argparse.Namespace) -> None:
         voice_id=voice_id,
         model_id=model_id,
         take_count=int(getattr(args, "take_count", 3) or 3),
-        target_wpm=float(getattr(args, "target_wpm", 166.0) or 166.0),
+        target_wpm=float(getattr(args, "target_wpm", 145.0) or 145.0),
     )
     alignment_path = Path(result["alignment"])
 
@@ -4741,7 +4742,7 @@ def build_screen_teardown(args: argparse.Namespace) -> None:
             text_file=str(test_text),
             out=str(test_out),
             run_id=None,
-            voice_id=None,
+            voice_id=getattr(args, "voice_id", None),
             model_id=args.model_id,
             stability=args.stability,
             similarity=args.similarity,
@@ -4763,7 +4764,7 @@ def build_screen_teardown(args: argparse.Namespace) -> None:
             text_file=str(voice_text),
             out=str(audio_path),
             run_id=run_id,
-            voice_id=None,
+            voice_id=getattr(args, "voice_id", None),
             model_id=args.model_id,
             stability=args.stability,
             similarity=args.similarity,
@@ -5321,7 +5322,7 @@ def build_parser() -> argparse.ArgumentParser:
     voice.add_argument("--style", type=float, default=0.32)
     voice.add_argument("--speed", type=float, help="ElevenLabs speech speed multiplier when supported by the API")
     voice.add_argument("--take-count", type=int, default=3, help="Generate and score 1-5 creator-style takes before mastering the winner")
-    voice.add_argument("--target-wpm", type=float, default=166.0, help="Target conversational pace used for automatic take selection")
+    voice.add_argument("--target-wpm", type=float, default=145.0, help="Target natural creator pace used for take selection; audio is not time-compressed to reach it")
     voice.add_argument(
         "--allow-unapproved-creative",
         action="store_true",
@@ -5561,13 +5562,18 @@ def build_parser() -> argparse.ArgumentParser:
     build_screen.add_argument("--run-id", required=True)
     build_screen.add_argument("--work-dir")
     build_screen.add_argument("--voice-test-only", action="store_true")
-    build_screen.add_argument("--model-id", default="eleven_multilingual_v2")
+    build_screen.add_argument("--model-id", default="eleven_v3")
+    build_screen.add_argument(
+        "--voice-id",
+        default=SARAH_CASUAL_VOICE_ID,
+        help="ElevenLabs voice ID; defaults to Sarah Casual for natural creator pacing. Pass the Abby clone explicitly to audition it.",
+    )
     build_screen.add_argument("--stability", type=float, default=0.32)
     build_screen.add_argument("--similarity", type=float, default=0.84)
     build_screen.add_argument("--style", type=float, default=0.65)
-    build_screen.add_argument("--speed", type=float, default=1.18)
+    build_screen.add_argument("--speed", type=float, default=1.0)
     build_screen.add_argument("--take-count", type=int, default=3)
-    build_screen.add_argument("--target-wpm", type=float, default=166.0)
+    build_screen.add_argument("--target-wpm", type=float, default=145.0)
     build_screen.add_argument("--capture-fps", type=int, default=15)
     build_screen.add_argument("--host", default="192.168.2.10")
     build_screen.add_argument("--port", type=int, default=8796)
